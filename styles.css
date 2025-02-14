@@ -1,5 +1,6 @@
 body {
-    background: #121212;
+    background: url('assets/metal_texture.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: #cccccc;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -16,15 +17,41 @@ nav ul li {
     margin: 0 15px;
 }
 nav ul li a {
-    color: #3399ff;
+    color: #ffd700; /* Yellow for Linux penguin theme */
     text-decoration: none;
     font-size: 18px;
 }
-.logo {
+header .logo {
     width: 250px;
     display: block;
     margin: 20px auto;
 }
 h1 {
-    color: #ff9900; /* Ember glow effect */
+    color: #ffd700; /* Yellow glow effect for Linux penguin */
+}
+
+/* Additional pages */
+.services, .toptier, .publications, .contact {
+    display: block;
+    padding: 20px;
+}
+.services::before {
+    content: '\1F4BB'; /* Laptop icon */
+    font-size: 24px;
+    margin-right: 10px;
+}
+.toptier::before {
+    content: '\1F4DA'; /* Books icon */
+    font-size: 24px;
+    margin-right: 10px;
+}
+.publications::before {
+    content: '\1F4D1'; /* File icon */
+    font-size: 24px;
+    margin-right: 10px;
+}
+.contact::before {
+    content: '\2709'; /* Envelope icon */
+    font-size: 24px;
+    margin-right: 10px;
 }
