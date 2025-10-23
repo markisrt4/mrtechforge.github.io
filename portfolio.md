@@ -1,33 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoD Technical Publications - M.R. TechForge</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="toptier.html">TopTier Edits</a></li>
-                <li><a href="publications.html">DoD Publications</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>DoD Technical Publications</h1>
-        <p>Browse our research contributions to embedded systems and defense technology:</p>
-        <ul>
+---
+layout: page
+title: Portfolio
+---
+
+Here are some examples of our work:
+
+- **Project 1:** Embedded Linux solution for automation.  
+- **Project 2:** Balanced audio/video system for a small business.  
+- **Project 3:** Website & network monitoring for a church.  
+
+*(Images and YouTube video placeholders can be added to the assets/images folder.)*
+
+
+<!--
             <li><a href="https://www.mobilityengineeringtech.com/component/content/article/50043-deterministic-and-modular-architecture-for-embedded-vehicle-systems">Deterministic and Modular Architecture for Embedded Vehicle Systems</a></li>
             <li><a href="http://gvsets.ndia-mich.org/documents/MOSA/2023/10%2010AM%20Deterministic%20Modular%20Architecture%20for%20Embedded%20Vehicle%20Systems.pdf">Deterministic Modular Architecture for Embedded Vehicle Systems (PDF)</a></li>
             <li><a href="https://ndia-mich.org/images/events/gvsets/2023/presentations/mosa/10%2010AM%20Deterministic%20&%20Modular%20Architecture%20for%20Embedded%20Vehicle%20Systems.pdf">Deterministic & Modular Architecture for Embedded Vehicle Systems (PDF)</a></li>
             <li><a href="https://saemobilus.sae.org/papers/gvsets-2020-paper-multiple-crew-station-xecutor-mcsx-2024-01-3860">Multiple Crew Station Xecutor (MCSX) - SAE Paper</a></li>
-        </ul>
-    </main>
-</body>
-</html>
+-->
