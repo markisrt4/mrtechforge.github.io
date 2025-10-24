@@ -1,5 +1,55 @@
+# Site settings
 title: "M.R. TechForge"
 description: "Forging Relationships, Tech, & Innovative Solutions"
-baseurl: "" # leave empty for root
-url: "https://www.mrtechforge.com"
+url: "https://mrtechforge.com"       # Replace with your domain
+baseurl: ""                          # Leave empty if at root of domain
+lang: "en-US"
+
+# Theme
 theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-redirect-from
+
+# Pagination (for blog index)
+paginate: 5
+paginate_path: "/page:num/"
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Mark Gregory Russell"
+
+# SEO settings
+seo:
+  type: "website"
+  title: "M.R. TechForge"
+  description: "Forging Relationships, Tech, & Innovative Solutions"
+  url: "https://mrtechforge.com"
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Include these (optional)
+include:
+  - _pages
+  - _posts
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
