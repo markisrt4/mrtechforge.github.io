@@ -1,32 +1,32 @@
-/* ===== M.R. TechForge — Forged Tech Workshop Theme (v2.0) ===== */
+/* ===== M.R. TechForge — Refined Dark Forge Theme ===== */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Inter:wght@400;500&display=swap');
 
 :root {
   --forge-bg: #0d0d0d;
   --forge-surface: #111;
   --forge-accent: #00b8d4;
   --forge-accent-dark: #007a9e;
-  --forge-hotmetal: #f5b841;
   --forge-text: #d3d3d3;
   --forge-subtext: #9ea3a8;
+  --forge-yellow: #ffc107; /* from your logo */
 }
 
 body {
-  background-image: radial-gradient(circle at 20% 10%, #101010 0%, #000 100%);
-  background-attachment: fixed;
+  background: radial-gradient(circle at 20% 10%, #0f0f0f 0%, #000 100%);
   color: var(--forge-text);
-  font-family: "Orbitron", "Roboto", sans-serif;
+  font-family: "Inter", "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
   margin: 0;
   padding: 0;
-  line-height: 1.7;
 }
 
 /* === Header === */
 header {
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(10, 10, 10, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
-  box-shadow: 0 0 18px rgba(0, 184, 212, 0.25);
+  box-shadow: 0 0 18px rgba(0, 184, 212, 0.3);
   text-align: center;
   padding: 1.5rem 0;
   position: sticky;
@@ -36,62 +36,77 @@ header {
 }
 
 header h1 a {
-  color: var(--forge-blue);
-  text-transform: uppercase;
+  color: var(--forge-accent);
   text-decoration: none;
-  font-size: 2.1rem;
+  font-family: "Exo 2", sans-serif;
+  font-size: 2rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 15px rgba(245, 184, 65, 0.7);
-  transition: all 0.3s ease;
+  text-shadow: 0 0 15px rgba(0, 184, 212, 0.6);
 }
 
-header h1 a:hover {
-  color: var(--forge-accent);
-  text-shadow: 0 0 20px rgba(0, 184, 212, 0.8);
+nav {
+  margin-top: 0.5rem;
 }
 
 nav a {
   color: var(--forge-subtext);
   margin: 0 1rem;
-  font-weight: 600;
+  font-weight: 500;
+  font-family: "Exo 2", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 nav a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.6);
+  color: var(--forge-accent);
+  text-shadow: 0 0 10px var(--forge-accent);
 }
 
 /* === Main Content === */
 main {
   padding: 2.5rem 1rem;
   max-width: 950px;
-  margin: 2rem auto;
-  background: linear-gradient(180deg, rgba(20,20,20,0.88), rgba(5,5,5,0.95));
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(20,20,20,0.85), rgba(8,8,8,0.95));
   border: 1px solid rgba(0,184,212,0.15);
   border-radius: 12px;
   box-shadow: 0 0 25px rgba(0,184,212,0.08);
 }
 
+/* Headings: tech/industrial aesthetic */
 h1, h2, h3 {
-  color: var(--forge-hotmetal);
+  color: var(--forge-accent);
+  font-family: "Exo 2", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.5);
+  margin-top: 1.5rem;
 }
 
+/* Body text readability boost */
+p {
+  color: #e0e0e0;
+  font-family: "Inter", sans-serif;
+  max-width: 70ch;
+  margin-bottom: 1.25rem;
+}
+
+/* Highlight key words or terms */
+strong, em {
+  color: var(--forge-yellow);
+}
+
+/* === Links === */
 a {
   color: var(--forge-accent);
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(245, 184, 65, 0.6);
+  color: #00d4ff;
+  text-shadow: 0 0 8px var(--forge-accent);
 }
 
+/* === Code / Blockquote === */
 code {
   background-color: #1a1a1a;
   color: #8ac6ff;
@@ -105,25 +120,27 @@ blockquote {
   padding-left: 1rem;
   color: #b0c4de;
   font-style: italic;
-  background: rgba(20,20,20,0.4);
+  background: rgba(20,20,20,0.5);
   border-radius: 6px;
 }
 
 /* === Buttons === */
 button, input[type="submit"] {
-  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent));
+  background: linear-gradient(90deg, var(--forge-accent-dark), var(--forge-accent));
   color: #fff;
   border: none;
-  border-radius: 10px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  text-transform: uppercase;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 button:hover, input[type="submit"]:hover {
-  box-shadow: 0 0 25px rgba(245, 184, 65, 0.8);
-  transform: translateY(-3px);
+  box-shadow: 0 0 20px var(--forge-accent);
+  transform: translateY(-2px);
 }
 
 /* === Footer === */
@@ -136,16 +153,15 @@ footer {
   margin-top: 3rem;
   box-shadow: 0 -3px 15px rgba(0,184,212,0.15);
   font-size: 0.9rem;
-  transition: color 0.4s ease, text-shadow 0.4s ease;
-}
-
-footer:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(245, 184, 65, 0.6);
+  font-family: "Inter", sans-serif;
 }
 
 /* === Glow Animation === */
 @keyframes forgeGlow {
-  0%, 100% { text-shadow: 0 0 10px rgba(245,184,65,0.8); }
-  50% { text-shadow: 0 0 20px rgba(245,184,65,1); }
+  0%, 100% { text-shadow: 0 0 12px rgba(0,184,212,0.8); }
+  50% { text-shadow: 0 0 22px rgba(0,184,212,1); }
+}
+
+header h1 a:hover {
+  animation: forgeGlow 1.8s infinite alternate;
 }
