@@ -162,6 +162,42 @@ footer {
   50% { text-shadow: 0 0 22px rgba(0,184,212,1); }
 }
 
+/* === Forge Steel Shimmer on Header Text === */
+@keyframes forgeShimmer {
+  0% {
+    background-position: -200%;
+  }
+  50% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+header h1 a {
+  background: linear-gradient(
+    120deg,
+    #00b8d4 0%,
+    #6bb2ff 30%,
+    #ffcc00 50%,
+    #6bb2ff 70%,
+    #00b8d4 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: forgeShimmer 10s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(0, 184, 212, 0.5);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Speed up shimmer on hover */
+header h1 a:hover {
+  animation-duration: 3s;
+  text-shadow: 0 0 25px rgba(0, 184, 212, 0.8);
+}
 header h1 a:hover {
   animation: forgeGlow 1.8s infinite alternate;
 }
