@@ -1,17 +1,17 @@
 <header>
-  <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-    <img src="{{ '/assets/images/transparent_bg_logo.png' | relative_url }}" 
-         alt="M.R. TechForge Logo" 
-         style="height:70px;vertical-align:middle;">
-    <h1 style="margin:0;">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </h1>
+  <div class="header-container">
+    <div class="logo">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/images/transparent_bg_logo.png' | relative_url }}" alt="M.R. TechForge Logo">
+      </a>
+      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    </div>
+
+    <nav>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/services' | relative_url }}">Services</a>
+      <a href="{{ '/about' | relative_url }}">About</a>
+      <a href="{{ '/contact' | relative_url }}">Contact</a>
+    </nav>
   </div>
-  <nav style="margin-top:0.75rem;">
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/about/' | relative_url }}">About</a>
-    <a href="{{ '/services/' | relative_url }}">Services</a>
-    <a href="{{ '/portfolio.html' | relative_url }}">Portfolio</a>
-    <a href="{{ '/contact.html' | relative_url }}">Contact</a>
-  </nav>
 </header>
