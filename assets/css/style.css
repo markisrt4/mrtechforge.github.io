@@ -165,3 +165,53 @@ footer {
 header h1 a:hover {
   animation: forgeGlow 1.8s infinite alternate;
 }
+
+/* === Header Flex Layout === */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo img {
+  height: 55px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(0, 184, 212, 0.6));
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* === Yellow Button Variant === */
+.button-yellow,
+input[type="submit"].button-yellow {
+  background: linear-gradient(90deg, var(--forge-yellow), #d9a200);
+  color: #111;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+  transition: all 0.3s ease;
+}
+
+.button-yellow:hover,
+input[type="submit"].button-yellow:hover {
+  box-shadow: 0 0 25px rgba(255, 193, 7, 0.5);
+  transform: translateY(-2px);
+}
