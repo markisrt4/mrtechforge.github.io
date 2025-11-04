@@ -1,6 +1,6 @@
-/* ===== M.R. TechForge — Forged Theme v4.0 ===== */
+/* ===== M.R. TechForge — Forged Tech Workshop Theme (v3.0) ===== */
 
-/* --- Base Variables --- */
+/* --- Variables & Fonts --- */
 :root {
   --forge-bg: #0d0d0d;
   --forge-surface: #111;
@@ -11,15 +11,23 @@
   --forge-subtext: #9ea3a8;
 }
 
-/* --- Fonts --- */
 body {
   background-image: radial-gradient(circle at 20% 10%, #101010 0%, #000 100%);
   background-attachment: fixed;
   color: var(--forge-text);
-  font-family: "Roboto", "Helvetica Neue", sans-serif;   /* readable body font */
+  font-family: "Orbitron", "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.7;
+}
+
+/* === Readable body font === */
+main, p, li, blockquote {
+  font-family: "Titillium", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  letter-spacing: 0.25px;
+  color: var(--forge-text);
 }
 
 /* === Header === */
@@ -32,13 +40,6 @@ body {
   border-bottom: 2px solid var(--forge-accent-dark);
   box-shadow: 0 0 20px rgba(0,184,212,0.2);
   backdrop-filter: blur(6px);
-  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
-}
-
-@keyframes forgeHeaderGlow {
-  0% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
-  50% { box-shadow: 0 0 22px rgba(245,184,65,0.3); }
-  100% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
 }
 
 .header-inner {
@@ -51,37 +52,33 @@ body {
   flex-wrap: wrap;
 }
 
-/* --- Logo + Title Glow --- */
-.forge-logo {
-  max-height: 65px;
-  width: auto;
-  filter: drop-shadow(0 0 8px rgba(245,184,65,0.8))
-          drop-shadow(0 0 16px rgba(245,184,65,0.5));
-  transition: transform 0.3s ease, filter 0.4s ease;
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
+
+.forge-logo {
+  height: 65px;
+  width: auto;
+  filter: drop-shadow(0 0 12px rgba(0,184,212,0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
 .forge-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 14px rgba(245,184,65,1))
-          drop-shadow(0 0 25px rgba(0,184,212,0.9));
+  filter: drop-shadow(0 0 18px rgba(245,184,65,0.8));
 }
 
 .forge-title {
+  color: var(--forge-hotmetal);
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: clamp(1.5rem, 2.3vw, 2rem);
-  animation: forgeRainbowGlow 6s linear infinite;
-  background: linear-gradient(90deg,
-    #f5b841, #ff9a00, #00b8d4, #f5b841);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* --- Rainbow Glow Animation --- */
-@keyframes forgeRainbowGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(245,184,65,0.7);
+  margin: 0;
 }
 
 /* === Navigation === */
@@ -93,6 +90,7 @@ body {
   align-items: center;
 }
 
+/* Desktop: links always visible */
 .forge-nav a {
   color: var(--forge-subtext);
   text-decoration: none;
@@ -102,6 +100,7 @@ body {
   position: relative;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
+
 .forge-nav a::after {
   content: "";
   position: absolute;
@@ -112,22 +111,30 @@ body {
   background: var(--forge-hotmetal);
   transition: width 0.25s ease;
 }
+
 .forge-nav a:hover {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 8px rgba(245,184,65,0.6);
 }
-.forge-nav a:hover::after { width: 100%; }
 
-/* === Hamburger === */
-.nav-toggle { display: none; }
+.forge-nav a:hover::after {
+  width: 100%;
+}
+
+/* === Hamburger Toggle === */
+.nav-toggle {
+  display: none;
+}
+
 .nav-toggle-label {
   display: none;
   cursor: pointer;
   width: 32px;
   height: 24px;
   position: relative;
-  z-index: 1001;
+  z-index: 1001; /* ensure it sits above everything */
 }
+
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
@@ -139,20 +146,42 @@ body {
   transition: all 0.3s ease;
   border-radius: 2px;
 }
-.nav-toggle-label span { top: 50%; transform: translateY(-50%); }
-.nav-toggle-label span::before { top: -9px; }
-.nav-toggle-label span::after { top: 9px; }
-.nav-toggle:checked + .nav-toggle-label span { background: transparent; }
-.nav-toggle:checked + .nav-toggle-label span::before {
-  transform: rotate(45deg); top: 0;
-}
-.nav-toggle:checked + .nav-toggle-label span::after {
-  transform: rotate(-45deg); top: 0;
+
+.nav-toggle-label span {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* === Mobile Layout === */
+.nav-toggle-label span::before {
+  top: -9px;
+}
+
+.nav-toggle-label span::after {
+  top: 9px;
+}
+
+/* Animate into X when open */
+.nav-toggle:checked + .nav-toggle-label span {
+  background: transparent;
+}
+
+.nav-toggle:checked + .nav-toggle-label span::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label span::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* === Mobile layout === */
 @media (max-width: 760px) {
-  .nav-toggle-label { display: block; }
+  .nav-toggle-label {
+    display: block;
+  }
+
+  /* hide nav by default on small screens */
   .forge-nav {
     flex-direction: column;
     align-items: center;
@@ -161,15 +190,19 @@ body {
     width: 100%;
     transition: max-height 0.4s ease-in-out;
   }
+
+  /* reveal nav when hamburger checked */
   .nav-toggle:checked ~ .forge-nav {
-    max-height: none;
+    max-height: none; /* large enough for all links */
     margin-top: 0.6rem;
   }
+
   .forge-nav a {
     display: block;
     padding: 0.6rem 0;
     font-size: 1.1rem;
   }
+
   .header-inner {
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -188,21 +221,32 @@ main {
   box-shadow: 0 0 25px rgba(0,184,212,0.08);
 }
 
-/* === Headings === */
 h1, h2, h3 {
-  font-family: "Orbitron", sans-serif;
   color: var(--forge-hotmetal);
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 12px rgba(245,184,65,0.5);
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.5);
+  font-family: "Orbitron", sans-serif;
 }
 
-/* === Paragraphs & Links === */
-p { font-size: 1rem; line-height: 1.8; color: var(--forge-text); }
-a { color: var(--forge-accent); transition: color 0.25s ease, text-shadow 0.25s ease; }
-a:hover { color: var(--forge-hotmetal); text-shadow: 0 0 10px rgba(245,184,65,0.6); }
+a {
+  color: var(--forge-accent);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
 
-/* === Blockquotes === */
+a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(245, 184, 65, 0.6);
+}
+
+code {
+  background-color: #1a1a1a;
+  color: #8ac6ff;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: "Ubuntu Mono", monospace;
+}
+
 blockquote {
   border-left: 4px solid var(--forge-accent-dark);
   padding-left: 1rem;
@@ -212,14 +256,85 @@ blockquote {
   border-radius: 6px;
 }
 
-/* === Footer === */
+/* === Homepage Enhancements === */
+.home h1 {
+  font-size: 2.6rem;
+  text-align: center;
+  animation: forgeGlow 4s infinite;
+  margin-bottom: 1.5rem;
+}
+
+.home p {
+  text-align: center;
+  color: var(--forge-subtext);
+  font-size: 1.15rem;
+  max-width: 750px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+.home h2 {
+  color: var(--forge-accent);
+  font-size: 1.4rem;
+  margin-top: 2.2rem;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid rgba(0,184,212,0.25);
+  padding-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.home h2::before {
+  content: attr(data-icon);
+  font-size: 1.2em;
+}
+
+.home section {
+  background: rgba(20, 20, 20, 0.7);
+  border: 1px solid rgba(0,184,212,0.1);
+  border-radius: 10px;
+  padding: 1.5rem 1.2rem;
+  margin: 2rem 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0,184,212,0.15);
+}
+
+.home a.btn {
+  display: inline-block;
+  margin: 1.2rem 0.6rem 0;
+  background: linear-gradient(90deg, var(--forge-accent-dark), var(--forge-accent));
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home a.btn:hover {
+  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent));
+  box-shadow: 0 0 25px rgba(245, 184, 65, 0.7);
+  transform: translateY(-3px);
+}
+
+/* === Footer Redesign === */
 .forge-footer {
+  position: relative;
   margin-top: 4rem;
   background: linear-gradient(180deg, #050505 0%, #000 100%);
   border-top: 2px solid var(--forge-accent-dark);
   box-shadow: 0 -4px 25px rgba(0,184,212,0.2);
   overflow: hidden;
 }
+
 .footer-inner {
   max-width: 900px;
   margin: 0 auto;
@@ -228,35 +343,322 @@ blockquote {
   position: relative;
   z-index: 1;
 }
+
 .forge-footer .tagline {
   font-size: 1rem;
   color: var(--forge-text);
   margin-bottom: 0.8rem;
   letter-spacing: 0.5px;
 }
+
+.forge-footer .tagline span {
+  color: var(--forge-hotmetal);
+}
+
 .footer-links a {
   color: var(--forge-accent);
   text-decoration: none;
   font-weight: 600;
   margin: 0 0.5rem;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
-.footer-links a:hover { color: var(--forge-hotmetal); }
 
-/* === Glow Animations === */
+.footer-links a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(245,184,65,0.6);
+}
+
+.footer-links .divider {
+  color: var(--forge-subtext);
+  margin: 0 0.2rem;
+}
+
+/* Animated glow pulse across the footer */
+.footer-glow {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(90deg,
+              transparent,
+              rgba(245,184,65,0.8),
+              rgba(0,184,212,0.8),
+              transparent);
+  opacity: 0.5;
+  animation: footerPulse 10s linear infinite;
+}
+
+@keyframes footerPulse {
+  0%   { transform: translateX(-50%) scaleX(0.8); opacity: 0.3; }
+  50%  { transform: translateX(50%) scaleX(1); opacity: 0.7; }
+  100% { transform: translateX(150%) scaleX(0.8); opacity: 0.3; }
+}
+
+/* === Social Icons === */
+.footer-social {
+  margin: 1rem 0 0.6rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.social-icon {
+  font-size: 1.4rem;
+  color: var(--forge-subtext);
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px) scale(1.1);
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 12px rgba(245,184,65,0.6);
+}
+
+.social-icon.github:hover   { color: #8ac6ff; text-shadow: 0 0 10px rgba(138,198,255,0.8); }
+.social-icon.linkedin:hover { color: #00b8d4; text-shadow: 0 0 10px rgba(0,184,212,0.8); }
+.social-icon.youtube:hover  { color: #f44336; text-shadow: 0 0 10px rgba(244,67,54,0.8); }
+
+/* === Glow Animation === */
 @keyframes forgeGlow {
-  0%,100% { text-shadow: 0 0 10px rgba(245,184,65,0.8); }
+  0%, 100% { text-shadow: 0 0 10px rgba(245,184,65,0.8); }
   50% { text-shadow: 0 0 20px rgba(245,184,65,1); }
 }
 
-/* === Responsive Type Tweaks === */
+/* === Animated Forge Background Layer === */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+body::before {
+  background: radial-gradient(circle at 30% 40%, rgba(245,184,65,0.15), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(0,184,212,0.15), transparent 60%);
+  animation: forgeFlow 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  background: repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.02) 3px, transparent 6px);
+  animation: forgeDrift 60s linear infinite;
+  opacity: 0.05;
+}
+
+@keyframes forgeFlow {
+  0%   { background-position: 20% 40%, 70% 60%; transform: scale(1); }
+  50%  { background-position: 50% 60%, 40% 30%; transform: scale(1.05); }
+  100% { background-position: 30% 50%, 80% 70%; transform: scale(1); }
+}
+
+@keyframes forgeDrift {
+  0%   { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(360deg); }
+}
+
+/* === Forge Logo + Title Glow === */
+.forge-logo {
+  max-height: 65px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(245,184,65,0.8))
+          drop-shadow(0 0 16px rgba(245,184,65,0.5));
+  transition: transform 0.3s ease, filter 0.4s ease;
+}
+
+.forge-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 14px rgba(245,184,65,1))
+          drop-shadow(0 0 25px rgba(255,140,0,0.9));
+}
+
+.forge-title {
+  color: var(--forge-hotmetal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(245,184,65,0.7),
+               0 0 20px rgba(245,184,65,0.4),
+               0 0 35px rgba(245,184,65,0.2);
+  animation: forgeLavaGlow 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes forgeLavaGlow {
+  0% {
+    text-shadow: 0 0 8px rgba(245,184,65,0.6),
+                 0 0 16px rgba(245,120,0,0.4);
+    color: var(--forge-hotmetal);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255,140,0,0.9),
+                 0 0 40px rgba(255,100,0,0.5);
+    color: #ffae00;
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(245,184,65,0.7),
+                 0 0 25px rgba(245,120,0,0.3);
+    color: var(--forge-hotmetal);
+  }
+}
+
+.forge-header {
+  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes forgeHeaderGlow {
+  0%   { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
+  50%  { box-shadow: 0 0 22px rgba(245,184,65,0.3); }
+  100% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
+}
+
+/* === Forge Title (animated molten glow) === */
+.forge-title {
+  color: var(--forge-hotmetal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-family: "Orbitron", sans-serif;
+  animation: forgeLavaGlow 4s ease-in-out infinite alternate;
+  text-shadow:
+    0 0 10px rgba(245,184,65,0.8),
+    0 0 20px rgba(245,120,0,0.5),
+    0 0 30px rgba(245,100,0,0.3);
+}
+
+@keyframes forgeLavaGlow {
+  0% {
+    color: #ffcc66;
+    text-shadow:
+      0 0 6px rgba(255,200,100,0.8),
+      0 0 18px rgba(255,150,50,0.6);
+  }
+  50% {
+    color: #ffae00;
+    text-shadow:
+      0 0 10px rgba(255,160,0,0.9),
+      0 0 25px rgba(255,100,0,0.7);
+  }
+  100% {
+    color: #ffd580;
+    text-shadow:
+      0 0 8px rgba(255,200,100,0.8),
+      0 0 20px rgba(255,140,0,0.5);
+  }
+}
+
+/* === Multicolor gradient glow for title === */
+.forge-title {
+  background: linear-gradient(90deg, #f5b841, #ff9a00, #00b8d4, #f5b841);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: forgeTitleSpectrum 6s linear infinite;
+}
+
+@keyframes forgeTitleSpectrum {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Mobile tagline scaling (refined) === */
 @media (max-width: 760px) {
-  body { font-size: 0.95rem; }
   .home h1 {
-    font-size: clamp(1rem, 4vw, 1.3rem);
-    line-height: 1.3;
-    margin-bottom: 1rem;
+    font-size: clamp(0.9rem, 3.6vw, 1.15rem);
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
     text-align: center;
   }
   .home h1 br { display: none; }
-  .home p { font-size: 0.95rem; line-height: 1.5; }
+  .home p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+}
+
+/* === Forge Card Layout (used on About, Services, etc.) === */
+.page-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-intro h1 {
+  font-family: "Orbitron", sans-serif;
+  color: var(--forge-hotmetal);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  animation: forgeGlow 4s ease-in-out infinite;
+}
+
+.forge-card {
+  background: rgba(20,20,20,0.7);
+  border: 1px solid rgba(0,184,212,0.1);
+  border-radius: 10px;
+  padding: 1.6rem 1.3rem;
+  margin: 2rem 0;
+  box-shadow: 0 0 20px rgba(0,184,212,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.forge-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0,184,212,0.15);
+}
+.forge-card h2 {
+  color: var(--forge-accent);
+  border-bottom: 1px solid rgba(0,184,212,0.25);
+  padding-bottom: 0.3rem;
+  margin-top: 0;
+}
+
+/* === Forge Terminal Section === */
+.forge-terminal {
+  background: #000;
+  border: 1px solid rgba(0,184,212,0.25);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 2rem 0;
+  font-family: "Ubuntu Mono", monospace;
+  color: #00ffc8;
+  text-shadow: 0 0 6px rgba(0,255,200,0.4);
+  box-shadow: 0 0 15px rgba(0,184,212,0.08);
+}
+
+.forge-terminal pre {
+  margin: 0;
+  white-space: pre-wrap;
+  animation: terminalPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes terminalPulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; text-shadow: 0 0 8px rgba(0,255,200,0.6); }
+  100% { opacity: 0.8; }
+}
+
+/* === Contact List === */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0;
+}
+
+.contact-list li {
+  margin: 0.4rem 0;
+  font-size: 1.05rem;
+}
+
+.contact-list a {
+  color: var(--forge-accent);
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(245,184,65,0.6);
 }

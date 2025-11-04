@@ -6,41 +6,43 @@ permalink: /about/
 
 <div class="page-intro">
   <h1>About <span class="forge-highlight">M.R. TechForge</span></h1>
-  <p class="tagline">Forging relationships. Building confidence. Securing the digital world.</p>
+  <p class="tagline">Forging Relationships. Building Confidence. Securing the Digital World.</p>
 </div>
 
 <section class="forge-card">
-  <p><strong>M.R. TechForge</strong> was founded by <strong>Mark G. Russell</strong> in 2025 with a single goal: to help individuals, families, and organizations navigate the complex world of technology with clarity, integrity, and practical solutions.</p>
+  <p><strong>M.R. TechForge</strong> was founded by <strong>Mark G. Russell</strong> in 2025 with one mission in mind — to help everyday people and organizations take control of their technology with clarity, security, and purpose.</p>
 
-  <p>We believe technology should empower, not confuse. Whether working with individuals, small businesses, or institutions, our approach emphasizes <strong>relationships first</strong> — ensuring that every solution we provide is understandable, reliable, and tailored to your needs.</p>
+  <p>We believe that technology should *serve you*, not confuse you. Every system, seminar, and solution we build is guided by integrity, practicality, and a genuine desire to empower others.</p>
 </section>
 
 <section class="forge-card">
   <h2>Our Mission</h2>
-  <p><strong>To forge relationships, technology, and innovative solutions.</strong> We bring a hands-on, problem-solving mindset to every project, ensuring that clients feel supported, confident, and educated along the way.</p>
+  <p>To <strong>forge relationships, technology, and innovative solutions</strong> through education, mentorship, and hands-on guidance.  
+  Whether we’re teaching digital safety, securing a home network, or inspiring young coders — our focus remains the same: building confidence through understanding.</p>
 </section>
 
 <section class="forge-card">
   <h2>About Mark G. Russell</h2>
-  <p>Mark is a <strong>technology specialist</strong> with a passion to help others learn, build, integrate, and secure computer-based solutions. He brings years of experience in <strong>embedded software development, network infrastructure, security research, and hardware-software integration</strong>.</p>
+  <p>Mark is a lifelong technologist and problem-solver who loves demystifying the complex. His background in embedded systems, networking, and software development gives him a rare mix of deep technical skill and an educator’s heart.</p>
 
-  <p>He works to ensure that <strong>faith-based principles of integrity, diligence, and excellence</strong> are the foundation of each project — delivering results that are effective, trustworthy, and sustainable.</p>
+  <p>He brings a faith-based foundation of <strong>integrity, diligence, and excellence</strong> to every project — ensuring the work is not only technically sound, but also trustworthy and sustainable.</p>
 </section>
 
 <section class="forge-card">
-  <h2>Our Approach</h2>
-  <p>At M.R. TechForge, we don’t just provide technical solutions — we work alongside our clients to <strong>teach, guide, and build lasting relationships</strong>. We focus on practical results and actionable guidance rather than just delivering tools or code.</p>
+  <h2>How We Work</h2>
+  <p>We approach each engagement as a partnership — guiding you through your technology goals with clear explanations, actionable steps, and patient, personal support.</p>
 
   <ul>
-    <li>Transparent and understandable</li>
-    <li>Built with long-term reliability in mind</li>
-    <li>Centered on client confidence and empowerment</li>
+    <li><strong>Transparent.</strong> You’ll understand what we’re doing and why.</li>
+    <li><strong>Reliable.</strong> Our solutions are built to last, not just to impress.</li>
+    <li><strong>Empowering.</strong> We want you to feel confident — not dependent.</li>
   </ul>
 </section>
 
 <section class="forge-card">
-  <h2>Why Choose Us?</h2>
-  <p>Clients choose M.R. TechForge because we are not just consultants — we are <strong>partners</strong>. Our goal is to make technology work for you, removing complexity, improving security, and ensuring that every solution aligns with your objectives and values.</p>
+  <h2>Why Choose M.R. TechForge?</h2>
+  <p>Because we don’t just fix technology — we teach it, refine it, and make it work for you.  
+  From digital-security education to home and online tech solutions, everything we deliver is forged with precision, purpose, and heart.</p>
 
-  <blockquote>“Forging Relationships, Tech, & Innovative Solutions” — a commitment we take to every project and every client.</blockquote>
+  <blockquote>“Forging Relationships, Tech, & Innovative Solutions” — our promise to every client, every time.</blockquote>
 </section>
