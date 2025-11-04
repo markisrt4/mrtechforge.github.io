@@ -1,17 +1,36 @@
 ---
 layout: home
-title: Welcome
+title: M.R. TechForge
 ---
 
-## What We Do
+# Forging Relationships. Building Confidence. Securing the Digital World.
 
-At **M.R. TechForge**, we focus on empowering people with practical, reliable technology education and support.
+Welcome to **M.R. TechForge** — where technology meets clarity, integrity, and purpose.  
+We believe tech should *work for you*, not confuse you.
 
-- **Digital Security Education** – Learn how to protect your data, devices, and online identity through simple, real-world habits and seminars.  
-- **Home & Online Tech Solutions** – Get hands-on help setting up, securing, and troubleshooting your everyday technology.  
-- **Coding 101 for Young People** – Inspire the next generation with approachable, hands-on programming lessons in Python and more.  
-- **Technical Documentation & Product Testing** – Through *TopTier Edits*, we make complex manuals and product instructions clear, accurate, and user-friendly.
+<section>
+<h2 data-icon="🔐">Digital Security Education</h2>
+Learn how to protect what matters most — your data, your identity, your family.  
+Our hands-on seminars and one-on-one sessions teach everyday users how to browse, share, and communicate safely online.
+</section>
 
-> Whether you’re looking to improve your digital safety, learn to code, or simply make sense of your tech, we’re here to help — with integrity, patience, and practical know-how.
+<section>
+<h2 data-icon="🏠">Home & Online Tech Solutions</h2>
+Bring peace of mind to your connected world.  
+We help you set up, secure, and streamline your technology — from your home network to your devices.
+</section>
 
-[Explore Our Full Services →](/services/)
+<section>
+<h2 data-icon="💻">Coding 101 for Young People</h2>
+Our beginner-friendly Python courses introduce coding as a creative, problem-solving skill.
+</section>
+
+<section>
+<h2 data-icon="📝">Technical Documentation & Product Testing (TopTier Edits)</h2>
+We turn complex manuals into clear, readable instructions and actionable reviews.
+</section>
+
+<p style="text-align:center;">
+<a class="btn" href="/services/">Explore Services</a>
+<a class="btn" href="/about/">Learn More</a>
+</p>
