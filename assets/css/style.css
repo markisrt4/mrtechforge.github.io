@@ -451,3 +451,76 @@ body::after {
   0%   { transform: scale(1) rotate(0deg); }
   100% { transform: scale(1.1) rotate(360deg); }
 }
+
+/* === Forge Logo + Title Glow === */
+.forge-logo {
+  max-height: 65px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(245,184,65,0.8))
+          drop-shadow(0 0 16px rgba(245,184,65,0.5));
+  transition: transform 0.3s ease, filter 0.4s ease;
+}
+
+.forge-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 14px rgba(245,184,65,1))
+          drop-shadow(0 0 25px rgba(255,140,0,0.9));
+}
+
+.forge-title {
+  color: var(--forge-hotmetal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(245,184,65,0.7),
+               0 0 20px rgba(245,184,65,0.4),
+               0 0 35px rgba(245,184,65,0.2);
+  animation: forgeLavaGlow 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes forgeLavaGlow {
+  0% {
+    text-shadow: 0 0 8px rgba(245,184,65,0.6),
+                 0 0 16px rgba(245,120,0,0.4);
+    color: var(--forge-hotmetal);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255,140,0,0.9),
+                 0 0 40px rgba(255,100,0,0.5);
+    color: #ffae00;
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(245,184,65,0.7),
+                 0 0 25px rgba(245,120,0,0.3);
+    color: var(--forge-hotmetal);
+  }
+}
+
+.forge-header {
+  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes forgeHeaderGlow {
+  0%   { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
+  50%  { box-shadow: 0 0 22px rgba(245,184,65,0.3); }
+  100% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
+}
+
+
+/* === Mobile Adjustments === */
+@media (max-width: 760px) {
+  .home h1 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .home h1 br {
+    display: none; /* collapse line breaks on small screens */
+  }
+
+  .home p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
