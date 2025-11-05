@@ -12,8 +12,8 @@ body {
   font-family: "Titillium Web", "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.8;
-  font-size: 1.05rem;
+  line-height: 1.9;
+  font-size: 1.07rem;
   letter-spacing: 0.25px;
 }
 
@@ -43,7 +43,7 @@ h1, h2, h3 {
 
 /* --- Paragraphs & Lists --- */
 p, li, blockquote {
-  color: #e2e2e2;
+  color: var(--forge-text);
   font-family: "Titillium Web", sans-serif;
 }
 

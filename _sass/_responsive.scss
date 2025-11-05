@@ -96,13 +96,26 @@
 }
 
 /* --- Tablets / Small Laptops --- */
-@media (min-width: 761px) and (max-width: 1024px) {
-  main {
-    padding: 2rem 1.2rem;
-    margin: 1.5rem auto;
+@media (max-width: 760px) {
+  .forge-nav {
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    width: 100%;
+    transition: max-height 0.5s ease-in-out; /* slower, smoother */
   }
+
+  .nav-toggle:checked ~ .forge-nav {
+    max-height: 1200px; /* big enough for all links */
+  }
+
   .forge-nav a {
-    font-size: 0.95rem;
+    display: block;
+    padding: 0.9rem 0; /* slightly taller link area */
+    font-size: 1.15rem; /* slightly larger text */
+    width: 100%;
+    text-align: center;
   }
 }
 
