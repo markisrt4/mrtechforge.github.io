@@ -662,3 +662,28 @@ body::after {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 10px rgba(245,184,65,0.6);
 }
+
+/* === Copy Button === */
+.btn-glow {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--forge-accent-dark), var(--forge-accent));
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 8px rgba(0,184,212,0.4);
+}
+
+.btn-glow:hover {
+  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent));
+  box-shadow: 0 0 18px rgba(245,184,65,0.7);
+  transform: translateY(-2px);
+}
+
+.btn-glow.copied {
+  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent-dark));
+  box-shadow: 0 0 20px rgba(245,184,65,0.9);
+}

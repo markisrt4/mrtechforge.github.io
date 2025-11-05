@@ -1,0 +1,8 @@
+.page-intro { text-align:center; margin-bottom:2rem; }
+.page-intro h1 {
+  font-family:"Orbitron",sans-serif;
+  color:var(--forge-hotmetal);
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  animation: forgeGlow 4s ease-in-out infinite;
+}

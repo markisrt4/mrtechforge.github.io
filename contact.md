@@ -43,6 +43,35 @@ permalink: /contact.html
   <p>Drop a line describing what you need help with, and we’ll figure out the best next step together.</p>
 </section>
 
+<section class="forge-card">
+  <h2>Suggested Email Template</h2>
+  <p>If you’re not sure what to say, here’s a quick format you can copy and adjust.</p>
+
+  <button id="copy-template" class="btn-glow">Copy Template</button>
+
+  <div class="forge-terminal" id="email-template">
+<pre>
+To: mark@mrtechforge.com
+Subject: TechForge Inquiry – [Your Topic Here]
+
+Hello Mark,
+
+I came across M.R. TechForge and wanted to reach out about:
+→ [briefly describe what you need help with]
+
+My preferred contact method: [email / phone / video chat]
+My availability: [weekday evenings / weekends / flexible]
+
+Additional details:
+[share any technical context, goals, or setup info here]
+
+Looking forward to connecting,
+[Your Name]
+</pre>
+  </div>
+</section>
+
+
 <section class="forge-terminal">
   <pre>
 > SIGNAL RECEIVED.  

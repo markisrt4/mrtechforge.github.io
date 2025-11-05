@@ -1,0 +1,128 @@
+/* ===== Layout: Header, Nav, Footer ===== */
+
+main {
+  display: block;
+  max-width: 950px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  text-align: left;
+}
+
+/* Header */
+.forge-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10,10,10,0.92);
+  border-bottom: 2px solid var(--forge-accent-dark);
+  box-shadow: 0 0 20px rgba(0,184,212,0.2);
+  backdrop-filter: blur(6px);
+  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  flex-wrap: wrap;
+}
+
+.logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
+.forge-logo {
+  height: 65px;
+  width: auto;
+  filter: drop-shadow(0 0 12px rgba(0,184,212,0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.forge-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 18px rgba(245,184,65,0.8));
+}
+
+/* Animated title */
+.forge-title {
+  background: linear-gradient(90deg, #f5b841, #ff9a00, #00b8d4, #f5b841);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: forgeTitleSpectrum 6s linear infinite;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+/* Navigation */
+.forge-nav { display: flex; gap: 1.2rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+.forge-nav a {
+  color: var(--forge-subtext);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.forge-nav a::after {
+  content: "";
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--forge-hotmetal);
+  transition: width 0.25s ease;
+}
+.forge-nav a:hover { color: var(--forge-hotmetal); text-shadow: 0 0 8px rgba(245,184,65,0.6); }
+.forge-nav a:hover::after { width: 100%; }
+
+/* Footer */
+.forge-footer {
+  margin-top: 4rem;
+  background: linear-gradient(180deg, #050505 0%, #000 100%);
+  border-top: 2px solid var(--forge-accent-dark);
+  box-shadow: 0 -4px 25px rgba(0,184,212,0.2);
+  overflow: hidden;
+}
+.footer-inner {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1rem; text-align: center;
+}
+.footer-links a {
+  color: var(--forge-accent);
+  font-weight: 600;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.footer-links a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(245,184,65,0.6);
+}
+
+/* Background Animations */
+body::before, body::after {
+  content: "";
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1; opacity: 0.25; pointer-events: none;
+}
+body::before {
+  background: radial-gradient(circle at 30% 40%, rgba(245,184,65,0.15), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(0,184,212,0.15), transparent 60%);
+  animation: forgeFlow 18s ease-in-out infinite alternate;
+}
+body::after {
+  background: repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.02) 3px, transparent 6px);
+  animation: forgeDrift 60s linear infinite; opacity: 0.05;
+}
+
+/* Keyframes */
+@keyframes forgeHeaderGlow {
+  0% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
+  50% { box-shadow: 0 0 22px rgba(245,184,65,0.3); }
+  100% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
+}
+@keyframes forgeFlow { 0% { background-position:20%40%; } 100% { background-position:80%70%; } }
+@keyframes forgeDrift { 0%{transform:scale(1)}100%{transform:scale(1.1)rotate(360deg)} }
+@keyframes forgeTitleSpectrum { 0%{background-position:0%50%}50%{background-position:100%50%}100%{background-position:0%50%} }
