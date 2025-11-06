@@ -20,11 +20,11 @@ permalink: /services/
         <li>Strategies for safe passwords, email aliases, and online accounts</li>
         <li>Tips for secure browsing, social media, and cloud practices</li>
         <li>Guidance for households, schools, libraries, or small businesses</li>
-      <li><div class="service-actions">
-        <a class="btn-glow" href="/assets/downloads/Online-Digital-Seminar-Outline.pdf" download>
+      <div class="service-actions">
+        <pre>   <a class="btn-glow" href="/assets/downloads/Online-Digital-Seminar-Outline.pdf" download>
     ⬇ Download the Online Seminar Outline (PDF)
-        </a>
-      </div></li>
+        </a> </pre>
+      </div>
         </ul>
       <blockquote>Security isn’t just about tools — it’s about habits. We teach people how to build safe, sustainable digital practices.</blockquote>
     </article>
@@ -52,7 +52,7 @@ permalink: /services/
     </article>
 
     <article class="service-card">
-      <h3>Technical Documentation &amp; Product Testing <span class="subtext">(TopTier Edits)</span></h3>
+      <h3>Technical Documentation &amp; Product Testing </h3>
       <p>We help make technical information <strong>clear and actionable</strong>:</p>
       <ul class="service-list">
         <li>Translate complex manuals or instructions into plain English</li>

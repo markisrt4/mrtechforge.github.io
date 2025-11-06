@@ -26,11 +26,12 @@ Our beginner-friendly Python courses introduce coding as a creative, problem-sol
 </section>
 
 <section>
-<h2 data-icon="📝">Technical Documentation & Product Testing (TopTier Edits)</h2>
-We turn complex manuals into clear, readable instructions and actionable reviews.
+<h2 data-icon="📝">Technical Documentation & Product Testing</h2>
+We turn complex manuals into clear, readable instructions and actionable reviews.  In addition, we'd love to test your company's products!   We will provide a detailed report as well providing suggestions to improve your product or it's manual(s).
 </section>
 
 <p style="text-align:center;">
 <a class="btn" href="/services/">Explore Services</a>
+<a class="btn" href="/documentation/">Docs & Testing</a>
 <a class="btn" href="/about/">Learn More</a>
 </p>
