@@ -1,0 +1,32 @@
+---
+layout: page
+title: The Cross
+permalink: /cross/
+---
+
+<meta name="robots" content="noindex, nofollow">
+
+<h1>Quick Poll 😇</h1>
+<form id="crossForm">
+  <p>Do you like the cross on the logo?</p>
+  <label><input type="radio" name="like" value="yes"> Yes</label><br>
+  <label><input type="radio" name="like" value="no"> No</label><br><br>
+
+  <p>What would you change if you could?</p>
+  <textarea name="change" rows="3" cols="40"
+    placeholder="Your brilliant suggestion..."></textarea><br><br>
+
+  <button type="submit" class="btn-glow">Submit</button>
+</form>
+
+<p id="thanks" style="display:none; margin-top:1rem;">
+  Thanks for playing along 😊 — no data was sent anywhere.
+</p>
+
+<script>
+document.getElementById('crossForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('crossForm').style.display = 'none';
+  document.getElementById('thanks').style.display = 'block';
+});
+</script>
