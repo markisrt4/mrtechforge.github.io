@@ -1,0 +1,155 @@
+/* === Documentation Example Section (Forge Theme) === */
+.examples-section {
+  margin-top: 3rem;
+}
+
+.example-card {
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(0,184,212,0.15);
+  border-left: 4px solid var(--forge-accent);
+  border-radius: 10px;
+  padding: 1.5rem 1.2rem;
+  margin: 2rem 0;
+  box-shadow: 0 0 25px rgba(0,184,212,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.example-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0,184,212,0.18);
+}
+
+.example-card h3 {
+  color: var(--forge-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+
+.example-card blockquote {
+  border-left: 4px solid var(--forge-hotmetal);
+  background: rgba(0,0,0,0.4);
+  color: var(--forge-text);
+  padding: 0.6rem 1rem;
+  font-style: italic;
+  border-radius: 8px;
+  margin: 0.8rem 0;
+}
+
+.example-card .result {
+  margin-top: 0.8rem;
+  color: var(--forge-subtext);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.examples-section a {
+  color: var(--forge-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.examples-section a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 8px rgba(245,184,65,0.6);
+}
+
+/* Mobile adjustments */
+@media (max-width: 760px) {
+  .example-card {
+    padding: 1.2rem 1rem;
+  }
+  .example-card h3 {
+    font-size: 1.1rem;
+  }
+  .example-card blockquote {
+    font-size: 0.9rem;
+  }
+}
+
+/* === Enhanced Forge Style for Example Rewrites === */
+.examples-section {
+  margin-top: 3rem;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.example-card {
+  background: linear-gradient(180deg, rgba(25,25,25,0.9), rgba(10,10,10,0.95));
+  border: 1px solid rgba(0,184,212,0.2);
+  border-left: 4px solid var(--forge-accent);
+  border-radius: 12px;
+  padding: 1.6rem 1.3rem;
+  margin: 2rem 0;
+  box-shadow: 0 0 25px rgba(0,184,212,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.example-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0,184,212,0.18);
+}
+
+.example-card h3 {
+  color: var(--forge-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 10px rgba(0,184,212,0.5);
+}
+
+.example-card blockquote {
+  border-left: 4px solid var(--forge-hotmetal);
+  background: rgba(0,0,0,0.35);
+  color: var(--forge-text);
+  padding: 0.7rem 1rem;
+  font-style: italic;
+  border-radius: 8px;
+  margin: 0.8rem 0;
+}
+
+.example-card blockquote.forge-fixed {
+  border-left-color: var(--forge-accent);
+  background: rgba(0,184,212,0.08);
+  color: #e6e6e6;
+  font-style: normal;
+}
+
+.example-card .result {
+  margin-top: 0.8rem;
+  color: var(--forge-subtext);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.examples-section a {
+  color: var(--forge-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.examples-section a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 8px rgba(245,184,65,0.6);
+}
+
+/* Subtle appearance animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 760px) {
+  .example-card {
+    padding: 1.2rem 1rem;
+  }
+  .example-card h3 {
+    font-size: 1.05rem;
+  }
+  .example-card blockquote {
+    font-size: 0.9rem;
+  }
+}
