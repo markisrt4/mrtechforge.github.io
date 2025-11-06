@@ -27,6 +27,7 @@ permalink: /contact.html
     <li>📧 <strong>Email:</strong> <a href="mailto:mark@mrtechforge.com">mark@mrtechforge.com</a></li>
     <li>🐙 <strong>GitHub:</strong> <a href="https://github.com/markisrt4" target="_blank">github.com/markisrt4</a></li>
     <li>▶️ <strong>YouTube:</strong> <a href="https://youtube.com/@mrtechforge" target="_blank">youtube.com/@mrtechforge</a></li>
+    <li>   <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61582641067637" target="_blank">facebook.com/@mrtechforge</a></li>
   </ul>
 
   <blockquote>“Every connection is an opportunity to build, teach, or secure something that matters.”</blockquote>

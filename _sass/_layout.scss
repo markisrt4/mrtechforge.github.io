@@ -117,6 +117,13 @@ body::after {
   animation: forgeDrift 60s linear infinite; opacity: 0.05;
 }
 
+.page-intro h1, .services-intro h1, .home .page-heading{
+  background:linear-gradient(90deg,#f5b841,#00b8d4,#f5b841);
+  background-size:300%; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:forgeTitleSpectrum 6s linear infinite;
+}
+@keyframes forgeTitleSpectrum{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
 /* Keyframes */
 @keyframes forgeHeaderGlow {
   0% { box-shadow: 0 0 12px rgba(245,184,65,0.15); }
@@ -126,22 +133,3 @@ body::after {
 @keyframes forgeFlow { 0% { background-position:20%40%; } 100% { background-position:80%70%; } }
 @keyframes forgeDrift { 0%{transform:scale(1)}100%{transform:scale(1.1)rotate(360deg)} }
 @keyframes forgeTitleSpectrum { 0%{background-position:0%50%}50%{background-position:100%50%}100%{background-position:0%50%} }
-
-/* === Secret Footer Link (Forge Easter Egg) === */
-.secret-link {
-  position: absolute;
-  right: 12px;
-  bottom: 6px;
-  width: 24px;
-  height: 24px;
-  color: transparent;
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-.secret-link:hover,
-.secret-link:focus {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(245,184,65,0.7);
-  opacity: 1;
-}

@@ -4,7 +4,6 @@ layout: page
 permalink: /documentation/
 ---
 
-# Documentation & Product Testing  
 ### *Forging clarity between engineers, products, and people.*
 
 In technology, the difference between frustration and satisfaction often comes down to **clarity**.  
