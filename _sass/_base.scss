@@ -1,7 +1,7 @@
 /* ===== Base & Typography (Forge v3.1) ===== */
 
 /* --- Font Imports --- */
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&family=Orbitron:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
 /* --- Body --- */
@@ -45,6 +45,7 @@ h1, h2, h3 {
 p, li, blockquote {
   color: var(--forge-text);
   font-family: "Titillium Web", sans-serif;
+  text-shadow: 0 0 4px rgba(0,184,212,0.25);
 }
 
 ul, ol {

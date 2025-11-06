@@ -98,26 +98,47 @@
 /* --- Tablets / Small Laptops --- */
 @media (max-width: 760px) {
   .forge-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10,10,10,0.97);
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
     overflow: hidden;
     max-height: 0;
-    width: 100%;
-    transition: max-height 0.5s ease-in-out; /* slower, smoother */
+    transition: max-height 0.4s ease-in-out;
+    z-index: 999;
+    border-top: 1px solid rgba(0,184,212,0.25);
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 1200px; /* big enough for all links */
+    max-height: 500px; /* enough to show all links */
+    padding: 1rem 0;
   }
 
   .forge-nav a {
     display: block;
-    padding: 0.9rem 0; /* slightly taller link area */
-    font-size: 1.15rem; /* slightly larger text */
     width: 100%;
     text-align: center;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    color: var(--forge-subtext);
+  }
+
+  .forge-nav a:hover {
+    color: var(--forge-hotmetal);
+  }
+
+  /* Keep header-inner stacked properly */
+  .header-inner {
+    position: relative;
   }
 }
+
 
 /* --- Large Screens --- */
 @media (min-width: 1400px) {
