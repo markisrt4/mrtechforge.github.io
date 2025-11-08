@@ -1,125 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MRTF ICE Tag — In Case of Emergency</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MRTF ICE — Smart Tag</title>
 <style>
-  :root {
-    --bg-dark: #0b0d0f;
-    --bg-light: #111316;
-    --accent: #00b8d4;
-    --text: #e0e0e0;
-    --muted: #9aaeb5;
-  }
-  body {
-    margin: 0;
-    font-family: "Inter", system-ui, sans-serif;
-    background: radial-gradient(circle at top left, var(--bg-dark) 0%, var(--bg-light) 100%);
-    color: var(--text);
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
-  h1 {
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-  }
-  p {
-    color: var(--muted);
-    max-width: 480px;
-    line-height: 1.4;
-  }
-  button {
-    background: linear-gradient(90deg, #007c91, var(--accent));
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 0 12px rgba(0, 184, 212, 0.3);
-  }
-  button:hover {
-    box-shadow: 0 0 20px rgba(0, 184, 212, 0.6);
-  }
-  #status { margin-top: 1rem; color: var(--muted); font-size: 0.95rem; }
-  #manual a { color: var(--accent); word-break: break-all; }
-  footer {
-    position: absolute;
-    bottom: 12px;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  footer img {
-    height: 14px;
-    vertical-align: middle;
-    margin-right: 4px;
-    opacity: 0.8;
-  }
+  :root{--bg:#0b0d0f;--muted:#9aaeb5;--accent:#00b8d4;--card:#111416;--text:#dfeef3}
+  body{margin:0;font-family:Inter,system-ui,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#071013,#0b0d0f);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .card{max-width:560px;width:100%;background:var(--card);border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);text-align:center}
+  h1{color:var(--accent);margin:0 0 8px;font-size:1.25rem}
+  p{color:var(--muted);margin:0 0 16px}
+  button{background:linear-gradient(90deg,#007c91,#00b8d4);border:none;color:#fff;padding:12px 18px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(0,184,212,0.12)}
+  .small{font-size:0.9rem;color:var(--muted);margin-top:12px}
+  .link{display:block;margin-top:14px;color:#a9e8f0;word-break:break-all}
+  .hidden{display:none}
 </style>
 </head>
 <body>
-  <h1>Forge ICE Tag</h1>
-  <p>This tag helps you quickly text your <strong>In Case of Emergency</strong> contact with your current location.</p>
-  <button id="sendBtn">Send ICE Text</button>
-  <p id="status">Tap the button and allow location access when prompted.</p>
+  <div class="card" role="main" aria-live="polite">
+    <h1>ICE Tag</h1>
+    <p id="desc">Tap the button to text your ICE contact. Page will use encoded parameters if present.</p>
 
-  <div id="manual" style="display:none;">
-    <p>If your phone didn’t open the Messages app automatically, tap below:</p>
-    <a id="smsLink" href="#">Open SMS manually</a>
+    <div id="controls">
+      <button id="goBtn">Send ICE Text</button>
+      <p id="status" class="small">Ready.</p>
+    </div>
+
+    <div id="manual" class="hidden">
+      <p class="small">If automatic opening fails, tap the manual link below:</p>
+      <a id="smsLink" class="link" href="#">Open SMS manually</a>
+      <a id="mapsLink" class="link hidden" href="#" target="_blank" rel="noopener">Open location in Maps</a>
+    </div>
+
+    <p class="small">M.R. TechForge — we do not store your location. Everything runs locally on your device.</p>
   </div>
 
-  <footer>
-    <img src="/assets/images/forge_cross_icon.png" alt="Cross"> M.R. TechForge — Faith-Built Integrity
-  </footer>
+<script>
+(function(){
+  const DEFAULT_ICE_NUMBER = "+5551212"; // fallback if no ice= param
+  const PARAMS = new URLSearchParams(window.location.search);
+  const iceParam = PARAMS.get('ice');             // +1555...
+  const coordsParam = PARAMS.get('coords');       // "lat,lon" or "none"
+  const ICE_NUMBER = iceParam ? iceParam : DEFAULT_ICE_NUMBER;
 
-  <script>
-  const ICE_NUMBER = "+12488024493";  // <-- Replace with your ICE number
-  const btn = document.getElementById("sendBtn");
-  const status = document.getElementById("status");
-  const manual = document.getElementById("manual");
-  const smsLink = document.getElementById("smsLink");
+  const goBtn = document.getElementById('goBtn');
+  const status = document.getElementById('status');
+  const manual = document.getElementById('manual');
+  const smsLink = document.getElementById('smsLink');
+  const mapsLink = document.getElementById('mapsLink');
 
-  function buildSmsUri(number, message) {
-    const encoded = encodeURIComponent(message);
-    return `sms:${number}?body=${encoded}`;
-  }
+  function urlEncode(s){ return encodeURIComponent(s); }
+  function buildSmsUri(number, body){ return `sms:${number}?body=${urlEncode(body)}`; }
 
-  function openSms(uri) {
+  function openUri(uri){
     window.location.href = uri;
-    setTimeout(() => { manual.style.display = "block"; }, 1500);
+    setTimeout(()=> manual.classList.remove('hidden'), 1200);
   }
 
-  btn.addEventListener("click", () => {
-    if (!navigator.geolocation) {
-      status.textContent = "Geolocation not supported on this device.";
+  function useStaticCoords(coordText){
+    // coordText expected "lat,lon" (simple validation)
+    const parts = coordText.split(',');
+    if(parts.length !== 2) return null;
+    const lat = parseFloat(parts[0]);
+    const lon = parseFloat(parts[1]);
+    if(isNaN(lat) || isNaN(lon)) return null;
+    return { lat: lat.toFixed(6), lon: lon.toFixed(6) };
+  }
+
+  async function handleSend(){
+    status.textContent = "Preparing message...";
+    // Case A: coords param explicitly set to "none" -> no location
+    if(coordsParam && coordsParam.toLowerCase() === "none"){
+      const message = `This is an emergency. Please call me.`;
+      const smsUri = buildSmsUri(ICE_NUMBER, message);
+      smsLink.href = smsUri;
+      openUri(smsUri);
       return;
     }
-    status.textContent = "Getting your current location...";
-    navigator.geolocation.getCurrentPosition(pos => {
-      const lat = pos.coords.latitude.toFixed(5);
-      const lon = pos.coords.longitude.toFixed(5);
-      const mapsUrl = `https://maps.google.com/?q=${lat},${lon}`;
-      const message = `This is an emergency. My current location: ${mapsUrl}`;
-      const smsUri = buildSmsUri(ICE_NUMBER, message);
 
-      status.textContent = "Location acquired. Opening your SMS app...";
-      smsLink.href = smsUri;
-      openSms(smsUri);
-    }, err => {
-      status.textContent = "Could not get location. Opening SMS without it.";
+    // Case B: coords param contains static coords
+    if(coordsParam){
+      const parsed = useStaticCoords(coordsParam);
+      if(parsed){
+        const mapsUrl = `https://maps.google.com/?q=${parsed.lat},${parsed.lon}`;
+        const message = `This is an emergency. My location: ${mapsUrl}`;
+        const smsUri = buildSmsUri(ICE_NUMBER, message);
+        smsLink.href = smsUri;
+        mapsLink.href = mapsUrl;
+        mapsLink.classList.remove('hidden');
+        openUri(smsUri);
+        return;
+      }
+      // fallthrough to geolocation if coords param is invalid
+    }
+
+    // Case C: No coords param -> attempt browser geolocation
+    if(!navigator.geolocation){
+      status.textContent = "Geolocation not available — opening SMS without location.";
       const smsUri = buildSmsUri(ICE_NUMBER, "This is an emergency. Please call me!");
       smsLink.href = smsUri;
-      openSms(smsUri);
-    });
-  });
-  </script>
+      openUri(smsUri);
+      return;
+    }
+
+    status.textContent = "Requesting location permission...";
+    navigator.geolocation.getCurrentPosition(pos => {
+      const lat = pos.coords.latitude.toFixed(6);
+      const lon = pos.coords.longitude.toFixed(6);
+      const mapsUrl = `https://maps.google.com/?q=${lat},${lon}`;
+      const message = `This is an emergency. My location: ${mapsUrl}`;
+      const smsUri = buildSmsUri(ICE_NUMBER, message);
+      smsLink.href = smsUri;
+      mapsLink.href = mapsUrl;
+      mapsLink.classList.remove('hidden');
+      status.textContent = "Location acquired — opening SMS app...";
+      openUri(smsUri);
+    }, err => {
+      // if user blocks location or error, fallback to SMS without coords
+      status.textContent = "Location unavailable — opening SMS without location.";
+      const smsUri = buildSmsUri(ICE_NUMBER, "This is an emergency. Please call me!");
+      smsLink.href = smsUri;
+      openUri(smsUri);
+    }, { enableHighAccuracy:true, timeout:10000, maximumAge:0 });
+  }
+
+  goBtn.addEventListener('click', handleSend);
+
+  // Pre-fill manual link if no JS action yet
+  smsLink.href = buildSmsUri(ICE_NUMBER, "This is an emergency. Please call me!");
+  smsLink.textContent = `Send ICE text to ${ICE_NUMBER}`;
+
+})();
+</script>
 </body>
 </html>
