@@ -1,37 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MRTF Car Finder</title>
 <style>
-body { background:#0d0d0d; color:#cfd8dc; font-family:sans-serif; text-align:center; padding:2rem; }
-button { background:#00b8d4; color:white; border:none; border-radius:8px; padding:1rem 2rem; font-size:1.1rem; }
+  body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background: radial-gradient(circle at top left,#0b0c0d 0%,#111316 100%);
+    color: #cfd8dc;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    color: #00b8d4;
+    letter-spacing: 1px;
+  }
+  button {
+    background: linear-gradient(90deg,#007c91,#00b8d4);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    box-shadow: 0 0 12px rgba(0,184,212,0.3);
+  }
+  button:hover { box-shadow: 0 0 20px rgba(0,184,212,0.6); }
+  #status { margin-top: 1rem; color: #90a4ae; }
+  footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.8rem;
+    color: #607d8b;
+  }
+  footer img {
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 4px;
+    opacity: 0.8;
+  }
 </style>
 </head>
 <body>
-<h1>MRTF Car Finder</h1>
-<p>Tap below to save your current location.</p>
-<button onclick="saveCar()">Save Parking Spot</button>
-<p id="status"></p>
+  <h1>Forge Car Finder</h1>
+  <p>Tap below to mark your current location.<br>
+  When Maps opens, tap your <strong>blue dot → “Save Parking.”</strong></p>
 
-<script>
-function saveCar() {
-  const status = document.getElementById("status");
-  if (!navigator.geolocation) {
-    status.textContent = "Geolocation not supported.";
-    return;
+  <button onclick="saveCar()">Open in Maps</button>
+  <p id="status"></p>
+
+  <footer>
+    <img src="/assets/images/forge_cross_icon.png" alt="Cross"> M.R. TechForge
+  </footer>
+
+  <script>
+  function saveCar() {
+    const status = document.getElementById("status");
+    if (!navigator.geolocation) {
+      status.textContent = "Geolocation not supported.";
+      return;
+    }
+    status.textContent = "Fetching your location...";
+    navigator.geolocation.getCurrentPosition(pos => {
+      const lat = pos.coords.latitude.toFixed(5);
+      const lon = pos.coords.longitude.toFixed(5);
+      const mapsURL = `https://maps.google.com/?q=${lat},${lon}`;
+      status.innerHTML = `Opening Maps at: ${lat}, ${lon}`;
+      window.location = mapsURL; // opens Google Maps at live position
+    }, err => {
+      status.textContent = "Location access denied or unavailable.";
+    });
   }
-  status.textContent = "Getting your location...";
-  navigator.geolocation.getCurrentPosition(pos => {
-    const lat = pos.coords.latitude.toFixed(5);
-    const lon = pos.coords.longitude.toFixed(5);
-    const mapsURL = `https://maps.google.com/?q=${lat},${lon}`;
-    status.innerHTML = `Location saved: <a href="${mapsURL}">${lat},${lon}</a>`;
-    window.location = mapsURL; // open Maps directly
-  }, err => {
-    status.textContent = "Location access denied.";
-  });
-}
-</script>
+  </script>
 </body>
 </html>
