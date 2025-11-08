@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRTF ICE Tag — In Case of Emergency</title>
+<style>
+  :root {
+    --bg-dark: #0b0d0f;
+    --bg-light: #111316;
+    --accent: #00b8d4;
+    --text: #e0e0e0;
+    --muted: #9aaeb5;
+  }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    background: radial-gradient(circle at top left, var(--bg-dark) 0%, var(--bg-light) 100%);
+    color: var(--text);
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  h1 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  p {
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.4;
+  }
+  button {
+    background: linear-gradient(90deg, #007c91, var(--accent));
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(0, 184, 212, 0.3);
+  }
+  button:hover {
+    box-shadow: 0 0 20px rgba(0, 184, 212, 0.6);
+  }
+  #status { margin-top: 1rem; color: var(--muted); font-size: 0.95rem; }
+  #manual a { color: var(--accent); word-break: break-all; }
+  footer {
+    position: absolute;
+    bottom: 12px;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  footer img {
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 4px;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+  <h1>Forge ICE Tag</h1>
+  <p>This tag helps you quickly text your <strong>In Case of Emergency</strong> contact with your current location.</p>
+  <button id="sendBtn">Send ICE Text</button>
+  <p id="status">Tap the button and allow location access when prompted.</p>
+
+  <div id="manual" style="display:none;">
+    <p>If your phone didn’t open the Messages app automatically, tap below:</p>
+    <a id="smsLink" href="#">Open SMS manually</a>
+  </div>
+
+  <footer>
+    <img src="/assets/images/forge_cross_icon.png" alt="Cross"> M.R. TechForge — Faith-Built Integrity
+  </footer>
+
+  <script>
+  const ICE_NUMBER = "+12488024493";  // <-- Replace with your ICE number
+  const btn = document.getElementById("sendBtn");
+  const status = document.getElementById("status");
+  const manual = document.getElementById("manual");
+  const smsLink = document.getElementById("smsLink");
+
+  function buildSmsUri(number, message) {
+    const encoded = encodeURIComponent(message);
+    return `sms:${number}?body=${encoded}`;
+  }
+
+  function openSms(uri) {
+    window.location.href = uri;
+    setTimeout(() => { manual.style.display = "block"; }, 1500);
+  }
+
+  btn.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      status.textContent = "Geolocation not supported on this device.";
+      return;
+    }
+    status.textContent = "Getting your current location...";
+    navigator.geolocation.getCurrentPosition(pos => {
+      const lat = pos.coords.latitude.toFixed(5);
+      const lon = pos.coords.longitude.toFixed(5);
+      const mapsUrl = `https://maps.google.com/?q=${lat},${lon}`;
+      const message = `This is an emergency. My current location: ${mapsUrl}`;
+      const smsUri = buildSmsUri(ICE_NUMBER, message);
+
+      status.textContent = "Location acquired. Opening your SMS app...";
+      smsLink.href = smsUri;
+      openSms(smsUri);
+    }, err => {
+      status.textContent = "Could not get location. Opening SMS without it.";
+      const smsUri = buildSmsUri(ICE_NUMBER, "This is an emergency. Please call me!");
+      smsLink.href = smsUri;
+      openSms(smsUri);
+    });
+  });
+  </script>
+</body>
+</html>
