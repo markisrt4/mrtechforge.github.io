@@ -8,6 +8,100 @@
   price: 8
   image: /assets/images/nfc_vpn_tag.png
 
+# ===============================
+# M.R. TechForge NFC Product Line
+# ===============================
+
+- name: Home Mode NFC Tag
+  description: >
+    Tap to instantly enable or disable your home connectivity — toggling Wi-Fi,
+    Bluetooth, and optional Do Not Disturb in one go. Perfect for transitioning
+    between home and travel modes. Works natively with Android or via Shortcuts
+    automation on iPhone.
+  price: 7
+  image: /assets/images/nfc_home_mode_tag.png
+  short_features:
+    - "Toggle Wi-Fi and Bluetooth together with one tap"
+    - "Supports Android (true toggle) and iPhone Shortcuts"
+    - "Optional DND or playlist automation"
+    - "Ideal for home entryways or desks"
+
+- name: Guest Wi-Fi NFC Tag
+  description: >
+    Simplify guest access to your Wi-Fi network. A quick tap automatically connects
+    Android users and opens Wi-Fi settings or a QR code for iPhone users.
+    Great for homes, small offices, or AirBnB setups.
+  price: 6
+  image: /assets/images/nfc_guest_wifi_tag.png
+  short_features:
+    - "One-tap guest Wi-Fi access"
+    - "Android auto-connect / iPhone QR fallback"
+    - "Securely stores your Wi-Fi SSID & password"
+    - "Includes setup card and adhesive mount"
+
+- name: SOS Emergency NFC Tag
+  description: >
+    A single tap prepares or sends your prewritten emergency text — optionally
+    including your GPS location link. Keep one on your keychain, backpack,
+    or near your bedside for quick access.
+  price: 8
+  image: /assets/images/nfc_sos_tag.png
+  short_features:
+    - "Tap to send a prewritten SOS text message"
+    - "Optionally include GPS location link"
+    - "Android: direct SMS intent / iPhone: Shortcut automation"
+    - "Bright red coin-style tag with emergency label"
+
+- name: Car Mode NFC Tag
+  description: >
+    Instantly launch navigation, turn on Bluetooth, and activate Do Not Disturb
+    when entering your vehicle. Configure with your favorite mapping or music app
+    for a seamless drive start routine.
+  price: 7
+  image: /assets/images/nfc_car_mode_tag.png
+  short_features:
+    - "Enables Car Mode or Navigation on tap"
+    - "Turns on Bluetooth and DND automatically"
+    - "Works with Android (Tasker/NFC Tools) and iPhone Shortcuts"
+    - "Mount near dash or center console"
+
+- name: NFC Business Card
+  description: >
+    Replace paper business cards with a reusable digital one. Share your contact
+    info, website, or portfolio instantly with a tap — no apps required.
+  price: 9
+  image: /assets/images/nfc_business_card.png
+  short_features:
+    - "Stores full vCard or URL"
+    - "Tap to share instantly with Android or iPhone"
+    - "Reusable — rewrite anytime"
+    - "Optional custom printing available"
+
+- name: Serenity (Bedtime) NFC Tag
+  description: >
+    A simple tap transitions your phone into a quiet nighttime state — enabling
+    Do Not Disturb, lowering brightness, and silencing notifications. Perfect for
+    bedrooms or nightstands.
+  price: 6
+  image: /assets/images/nfc_serenity_tag.png
+  short_features:
+    - "Enables Sleep / DND mode with one tap"
+    - "Android: NFC Tools or Tasker automation"
+    - "iPhone: Shortcuts ‘Sleep Focus’ trigger"
+    - "Optional ‘Wake Up’ tag available as companion"
+
+- name: Car Finder NFC Tag
+  description: >
+    Never lose your parked car again. Tap before you walk away to drop a location
+    pin and save your spot in Google or Apple Maps. Works with both Android and iPhone.
+  price: 7
+  image: /assets/images/nfc_car_finder_tag.png
+  short_features:
+    - "Tap to mark your current parking location"
+    - "Opens Google/Apple Maps with a dropped pin"
+    - "Android: direct geo: link / iPhone: Shortcut automation"
+    - "Durable adhesive tag for dashboards or keychains"
+
 - name: ForgeSecure USB
   description: Pre-loaded USB with privacy and digital security tools.
   price: 12
