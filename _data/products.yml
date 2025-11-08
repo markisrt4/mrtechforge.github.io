@@ -17,3 +17,19 @@
   description: One-hour secure remote support for troubleshooting or guidance.
   price: 45
   image: /assets/images/remote_support.png
+
+- name: MRTF Ultimate Drive
+  description: >
+    A pre-loaded multi-boot USB toolkit assembled and tested by M.R. TechForge.
+    The MRTF Ultimate Drive includes a curated set of open-source operating systems
+    and trusted recovery utilities for diagnostics, system repair, cloning, forensics,
+    and privacy-focused troubleshooting. Built on Ventoy for easy drag-and-drop updates,
+    and assembled on reliable name-brand USB media.
+  price: 40
+  image: /assets/images/mrtf_ultimate_drive_generic.png
+  short_features:
+    - "Boot into multiple Linux & recovery systems (BIOS & UEFI)"
+    - "Includes Kali Linux for advanced troubleshooting & pentest tooling"
+    - "Pre-loaded rescue & anti-virus tools for offline scanning and repair"
+    - "Disk cloning, partitioning, memory & hardware diagnostics"
+    - "Easy updates via Ventoy; optional update pack available"
