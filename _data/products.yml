@@ -1,0 +1,19 @@
+- name: Wi-Fi Toggle NFC Tag
+  description: Tap to instantly enable or disable Wi-Fi on your device.
+  price: 6
+  image: /assets/images/nfc_wifi_tag.png
+
+- name: VPN Connect NFC Tag
+  description: Tap to connect your device to your private WireGuard VPN.
+  price: 8
+  image: /assets/images/nfc_vpn_tag.png
+
+- name: ForgeSecure USB
+  description: Pre-loaded USB with privacy and digital security tools.
+  price: 12
+  image: /assets/images/forge_usb.png
+
+- name: Remote Support Session
+  description: One-hour secure remote support for troubleshooting or guidance.
+  price: 45
+  image: /assets/images/remote_support.png
