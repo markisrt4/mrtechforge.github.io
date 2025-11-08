@@ -14,7 +14,7 @@ permalink: /products/
   <div class="product-grid">
     {% for item in site.data.products %}
     <div class="product-card">
-      <img src="{{ item.image }}" alt="{{ item.name }}">
+      <img src="{{ site.baseurl }}{{ item.image }}" alt="{{ item.name }}">
       <h3>{{ item.name }}</h3>
       <p>{{ item.description }}</p>
       <span class="price">${{ item.price | round: 2 }}</span>
@@ -116,6 +116,7 @@ window.addEventListener('DOMContentLoaded', () => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  justify-items: center;   /* centers the cards */
   padding: 1rem;
 }
 
