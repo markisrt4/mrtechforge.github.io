@@ -30,10 +30,6 @@ Our beginner-friendly Python courses introduce coding as a creative, problem-sol
 We turn complex manuals into clear, readable instructions and actionable reviews.  In addition, we'd love to test your company's products!   We will provide a detailed report as well providing suggestions to improve your product or it's manual(s).
 </section>
 
-<div class="forge-terminal">
-<pre><code>$ sudo apt update && sudo apt upgrade
-# Security starts with healthy systems.</code></pre>
-</div>
 
 <section class="hero-card">
   <p class="hero-tag">
