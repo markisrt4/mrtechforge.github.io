@@ -6,67 +6,36 @@
 <title>MRTF NFC – Clear Browser Cache & Cookies</title>
 <style>
   :root {
-    --bg-dark: #0b0d0f;
-    --bg-light: #111316;
-    --accent: #00b8d4;
-    --text: #dfeef3;
-    --muted: #9aaeb5;
+    --bg-dark:#0b0d0f;--bg-light:#111316;--accent:#00b8d4;
+    --text:#dfeef3;--muted:#9aaeb5;
   }
   body {
-    margin: 0;
-    font-family: "Inter", system-ui, sans-serif;
-    background: radial-gradient(circle at top left, var(--bg-dark) 0%, var(--bg-light) 100%);
-    color: var(--text);
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+    margin:0;font-family:Inter,system-ui,sans-serif;
+    background:radial-gradient(circle at top left,var(--bg-dark)0%,var(--bg-light)100%);
+    color:var(--text);text-align:center;
+    min-height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;padding:2rem;
   }
-  h1 {
-    color: var(--accent);
-    margin-bottom: 0.25rem;
+  h1{color:var(--accent);margin-bottom:.25rem;}
+  p{color:var(--muted);margin:.5rem 0 1.5rem;max-width:420px;}
+  button{
+    background:linear-gradient(90deg,#007c91,var(--accent));
+    border:none;border-radius:10px;color:#fff;
+    padding:1rem 2rem;font-size:1.1rem;font-weight:600;
+    cursor:pointer;box-shadow:0 0 10px rgba(0,184,212,0.4);
+    transition:box-shadow .3s ease;
   }
-  p {
-    color: var(--muted);
-    margin: 0.5rem 0 1.5rem;
-    max-width: 400px;
+  button:hover{box-shadow:0 0 20px rgba(0,184,212,.8);}
+  #manual{
+    display:none;margin-top:1.5rem;font-size:.95rem;
+    max-width:420px;color:var(--muted);
   }
-  button {
-    background: linear-gradient(90deg, #007c91, var(--accent));
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 184, 212, 0.4);
-    transition: box-shadow 0.3s ease;
+  #manual strong{color:var(--accent);}
+  footer{
+    position:absolute;bottom:12px;font-size:.8rem;color:var(--muted);
   }
-  button:hover {
-    box-shadow: 0 0 20px rgba(0, 184, 212, 0.8);
-  }
-  #manualLink {
-    display: none;
-    margin-top: 1.5rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  footer {
-    position: absolute;
-    bottom: 12px;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  footer img {
-    height: 14px;
-    vertical-align: middle;
-    margin-right: 4px;
-    opacity: 0.8;
+  footer img{
+    height:14px;vertical-align:middle;margin-right:4px;opacity:.8;
   }
 </style>
 </head>
@@ -74,7 +43,7 @@
   <h1>Clear Browser Cache & Cookies</h1>
   <p>This opens your browser’s App Info screen where you can clear cache and cookies.</p>
   <button id="openBtn">Open Browser Settings</button>
-  <a id="manualLink" href="#" target="_blank" rel="noopener">Try opening manually</a>
+  <div id="manual"></div>
 
   <footer>
     <img src="/assets/images/forge_cross_icon.png" alt="Cross">
@@ -82,55 +51,71 @@
   </footer>
 
 <script>
-(function() {
-  const openBtn = document.getElementById("openBtn");
-  const manualLink = document.getElementById("manualLink");
-
-  // Map browsers to Android package names
-  const androidPackages = {
-    "chrome": "com.android.chrome",
-    "brave": "com.brave.browser",
-    "edge": "com.microsoft.emmx",
-    "firefox": "org.mozilla.firefox",
-    "samsung": "com.sec.android.app.sbrowser"
+(function(){
+  const openBtn=document.getElementById("openBtn");
+  const manual=document.getElementById("manual");
+  const androidPkgs={
+    "chrome":"com.android.chrome",
+    "brave":"com.brave.browser",
+    "edge":"com.microsoft.emmx",
+    "firefox":"org.mozilla.firefox",
+    "samsung":"com.sec.android.app.sbrowser"
   };
 
-  function detectBrowser() {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes("brave")) return "brave";
-    if (ua.includes("edg")) return "edge";
-    if (ua.includes("firefox")) return "firefox";
-    if (ua.includes("samsungbrowser")) return "samsung";
-    if (ua.includes("chrome")) return "chrome";
-    if (ua.includes("safari")) return "safari";
+  function detectBrowser(){
+    const ua=navigator.userAgent.toLowerCase();
+    if(ua.includes("brave")) return "brave";
+    if(ua.includes("edg")) return "edge";
+    if(ua.includes("firefox")) return "firefox";
+    if(ua.includes("samsungbrowser")) return "samsung";
+    if(ua.includes("chrome")) return "chrome";
+    if(ua.includes("safari")) return "safari";
     return "unknown";
   }
-
-  function detectOS() {
-    if (/android/i.test(navigator.userAgent)) return "android";
-    if (/iphone|ipad|ipod/i.test(navigator.userAgent)) return "ios";
+  function detectOS(){
+    if(/android/i.test(navigator.userAgent)) return "android";
+    if(/iphone|ipad|ipod/i.test(navigator.userAgent)) return "ios";
     return "unknown";
   }
-
-  function buildIntent(packageName) {
-    return `intent:#Intent;action=android.settings.APPLICATION_DETAILS_SETTINGS;data=package:${packageName};end`;
+  function buildIntent(pkg){
+    return `intent:#Intent;action=android.settings.APPLICATION_DETAILS_SETTINGS;data=package:${pkg};end`;
   }
 
-  openBtn.addEventListener("click", () => {
-    const os = detectOS();
-    const browser = detectBrowser();
+  openBtn.addEventListener("click",()=>{
+    const os=detectOS();
+    const browser=detectBrowser();
 
-    if (os === "android") {
-      const pkg = androidPackages[browser] || "com.android.chrome";
-      const uri = buildIntent(pkg);
-      manualLink.href = uri;
-      manualLink.style.display = "inline-block";
-      window.location.href = uri;
-    } else if (os === "ios") {
-      // Safari instructions
-      alert("To clear Safari cache & cookies:\n\n1️⃣ Open Settings → Safari\n2️⃣ Tap 'Clear History and Website Data'\n3️⃣ Confirm to clear.");
+    if(os==="android"){
+      const pkg=androidPkgs[browser]||"com.android.chrome";
+      const uri=buildIntent(pkg);
+
+      // Try to launch Settings via intent (works in Chromium browsers)
+      window.location.href=uri;
+
+      // Fallback text for browsers that block intent URIs
+      setTimeout(()=>{
+        manual.style.display="block";
+        manual.innerHTML=`
+          <p><strong>Did nothing happen?</strong><br>
+          Some browsers (like Firefox) block direct Settings links.<br><br>
+          Manually open:<br>
+          <strong>Settings → Apps → ${pkg}</strong><br>
+          Then tap <strong>Storage</strong> → Clear Cache / Clear Data.</p>`;
+      },1500);
+
+    } else if(os==="ios"){
+      // iPhone Safari/Chrome instructions
+      manual.style.display="block";
+      manual.innerHTML=`
+        <p><strong>Safari:</strong><br>
+        1️⃣ Open <strong>Settings → Safari</strong><br>
+        2️⃣ Tap <strong>Clear History and Website Data</strong><br><br>
+        <strong>Chrome (iOS):</strong><br>
+        1️⃣ Open Chrome → ⋮ Menu → <strong>History</strong><br>
+        2️⃣ Tap <strong>Clear Browsing Data</strong>.</p>`;
     } else {
-      alert("Please open your browser settings manually to clear cache and cookies.");
+      manual.style.display="block";
+      manual.textContent="Please open your browser settings manually to clear cache and cookies.";
     }
   });
 })();
