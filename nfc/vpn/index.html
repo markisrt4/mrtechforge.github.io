@@ -17,19 +17,17 @@
     justify-content:center;align-items:center;padding:2rem;
   }
   h1{color:var(--accent);margin-bottom:.25rem;}
-  p{color:var(--muted);margin:.5rem 0 1.5rem;max-width:420px;}
+  p{color:var(--muted);margin:.5rem 0 1.5rem;max-width:440px;}
   button{
     background:linear-gradient(90deg,#007c91,var(--accent));
     border:none;border-radius:10px;color:#fff;
     padding:1rem 2rem;font-size:1.1rem;font-weight:600;
     cursor:pointer;box-shadow:0 0 10px rgba(0,184,212,.4);
-    transition:box-shadow .3s ease;
+    transition:box-shadow .3s ease;margin:0.4rem;
   }
   button:hover{box-shadow:0 0 20px rgba(0,184,212,.8);}
-  #info{
-    display:none;margin-top:1.5rem;font-size:.95rem;
-    max-width:440px;color:var(--muted);
-  }
+  #buttons { margin-bottom: 1.5rem; }
+  #info{color:var(--muted);font-size:.95rem;max-width:440px;}
   #info strong{color:var(--accent);}
   footer{
     position:absolute;bottom:12px;font-size:.8rem;color:var(--muted);
@@ -40,10 +38,10 @@
 </style>
 </head>
 <body>
-  <h1>VPN Connection Helper</h1>
-  <p>This opens your VPN settings so you can quickly connect or disconnect your VPN.</p>
+  <h1>Forge VPN Helper</h1>
+  <p>Quickly open or connect your preferred VPN app.</p>
 
-  <button id="openBtn">Open VPN Settings</button>
+  <div id="buttons"></div>
   <div id="info"></div>
 
   <footer>
@@ -53,8 +51,16 @@
 
 <script>
 (function(){
-  const openBtn = document.getElementById("openBtn");
+  const buttonsDiv = document.getElementById("buttons");
   const info = document.getElementById("info");
+
+  const vpnApps = [
+    {name:"WireGuard", pkg:"com.wireguard.android"},
+    {name:"OpenVPN Connect", pkg:"net.openvpn.openvpn"},
+    {name:"ProtonVPN", pkg:"ch.protonvpn.android"},
+    {name:"NordVPN", pkg:"com.nordvpn.android"},
+    {name:"ExpressVPN", pkg:"com.expressvpn.vpn"}
+  ];
 
   function detectOS(){
     const ua = navigator.userAgent.toLowerCase();
@@ -63,36 +69,37 @@
     return "other";
   }
 
-  function buildVpnIntent(){
-    // Android's VPN settings panel
-    return "intent:#Intent;action=android.net.vpn.SETTINGS;end";
+  function createButton(label, intent){
+    const btn=document.createElement("button");
+    btn.textContent=label;
+    btn.onclick=()=>{ window.location.href=intent; };
+    buttonsDiv.appendChild(btn);
   }
 
-  openBtn.addEventListener("click", () => {
-    const os = detectOS();
-    info.style.display = "block";
+  const os = detectOS();
+  if(os==="android"){
+    // Android: show buttons for known apps
+    vpnApps.forEach(app=>{
+      const intent=`intent:#Intent;package=${app.pkg};end`;
+      createButton(`Open ${app.name}`, intent);
+    });
+    // Always include generic VPN settings fallback
+    createButton("Open VPN Settings", "intent:#Intent;action=android.net.vpn.SETTINGS;end");
 
-    if(os === "android"){
-      const uri = buildVpnIntent();
-      info.innerHTML = `
-        <p><strong>Android detected.</strong><br>
-        Trying to open the system VPN settings panel…<br><br>
-        If nothing happens, open it manually via:<br>
-        <strong>Settings → Network & Internet → VPN</strong>.</p>`;
-      // Attempt to jump to VPN settings (works in Chrome/Brave/Edge)
-      window.location.href = uri;
-    } else if(os === "ios"){
-      info.innerHTML = `
-        <p><strong>iPhone / iPad detected.</strong><br>
-        iOS does not allow VPN settings to open directly from the browser.<br><br>
-        Open manually via:<br>
-        <strong>Settings → VPN</strong><br>
-        or <strong>Settings → General → VPN & Device Management → VPN</strong> (on some versions).</p>`;
-    } else {
-      info.textContent =
-        "Please open your system's network or VPN settings to connect or disconnect your VPN.";
-    }
-  });
+    info.innerHTML=`<p>If a button doesn't respond, that app may not be installed.<br>
+    You can always manage your VPNs manually via<br>
+    <strong>Settings → Network & Internet → VPN</strong>.</p>`;
+  } 
+  else if(os==="ios") {
+    info.innerHTML=`<p><strong>iPhone / iPad detected.</strong><br>
+    iOS does not allow apps or web pages to open VPN connections directly.<br><br>
+    Open manually via:<br>
+    <strong>Settings → VPN</strong><br>
+    or <strong>Settings → General → VPN & Device Management → VPN</strong>.</p>`;
+  } 
+  else {
+    info.textContent="Use your system's VPN or network settings to connect.";
+  }
 })();
 </script>
 </body>
