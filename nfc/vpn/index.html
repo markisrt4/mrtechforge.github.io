@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRTF NFC – VPN Helper</title>
+<style>
+  :root {
+    --bg-dark:#0b0d0f;--bg-light:#111316;--accent:#00b8d4;
+    --text:#dfeef3;--muted:#9aaeb5;
+  }
+  body {
+    margin:0;font-family:Inter,system-ui,sans-serif;
+    background:radial-gradient(circle at top left,var(--bg-dark)0%,var(--bg-light)100%);
+    color:var(--text);text-align:center;
+    min-height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;padding:2rem;
+  }
+  h1{color:var(--accent);margin-bottom:.25rem;}
+  p{color:var(--muted);margin:.5rem 0 1.5rem;max-width:420px;}
+  button{
+    background:linear-gradient(90deg,#007c91,var(--accent));
+    border:none;border-radius:10px;color:#fff;
+    padding:1rem 2rem;font-size:1.1rem;font-weight:600;
+    cursor:pointer;box-shadow:0 0 10px rgba(0,184,212,.4);
+    transition:box-shadow .3s ease;
+  }
+  button:hover{box-shadow:0 0 20px rgba(0,184,212,.8);}
+  #info{
+    display:none;margin-top:1.5rem;font-size:.95rem;
+    max-width:440px;color:var(--muted);
+  }
+  #info strong{color:var(--accent);}
+  footer{
+    position:absolute;bottom:12px;font-size:.8rem;color:var(--muted);
+  }
+  footer img{
+    height:14px;vertical-align:middle;margin-right:4px;opacity:.8;
+  }
+</style>
+</head>
+<body>
+  <h1>VPN Connection Helper</h1>
+  <p>This opens your VPN settings so you can quickly connect or disconnect your VPN.</p>
+
+  <button id="openBtn">Open VPN Settings</button>
+  <div id="info"></div>
+
+  <footer>
+    <img src="/assets/images/forge_cross_icon.png" alt="Cross">
+    M.R. TechForge — Faith-Built Integrity
+  </footer>
+
+<script>
+(function(){
+  const openBtn = document.getElementById("openBtn");
+  const info = document.getElementById("info");
+
+  function detectOS(){
+    const ua = navigator.userAgent.toLowerCase();
+    if(/android/i.test(ua)) return "android";
+    if(/iphone|ipad|ipod/i.test(ua)) return "ios";
+    return "other";
+  }
+
+  function buildVpnIntent(){
+    // Android's VPN settings panel
+    return "intent:#Intent;action=android.net.vpn.SETTINGS;end";
+  }
+
+  openBtn.addEventListener("click", () => {
+    const os = detectOS();
+    info.style.display = "block";
+
+    if(os === "android"){
+      const uri = buildVpnIntent();
+      info.innerHTML = `
+        <p><strong>Android detected.</strong><br>
+        Trying to open the system VPN settings panel…<br><br>
+        If nothing happens, open it manually via:<br>
+        <strong>Settings → Network & Internet → VPN</strong>.</p>`;
+      // Attempt to jump to VPN settings (works in Chrome/Brave/Edge)
+      window.location.href = uri;
+    } else if(os === "ios"){
+      info.innerHTML = `
+        <p><strong>iPhone / iPad detected.</strong><br>
+        iOS does not allow VPN settings to open directly from the browser.<br><br>
+        Open manually via:<br>
+        <strong>Settings → VPN</strong><br>
+        or <strong>Settings → General → VPN & Device Management → VPN</strong> (on some versions).</p>`;
+    } else {
+      info.textContent =
+        "Please open your system's network or VPN settings to connect or disconnect your VPN.";
+    }
+  });
+})();
+</script>
+</body>
+</html>
