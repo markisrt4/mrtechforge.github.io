@@ -52,6 +52,23 @@ ul, ol {
   padding-left: 1.2rem;
 }
 
+/* Ensure list supports custom icons */
+ul li[data-icon] {
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;    /* space for the icon */
+}
+
+/* Render the icon before the list item */
+ul li[data-icon]::before {
+  content: attr(data-icon);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2rem;     /* adjust size here */
+  line-height: 1.2rem;
+}
+
 /* --- Links --- */
 a {
   color: var(--forge-accent);

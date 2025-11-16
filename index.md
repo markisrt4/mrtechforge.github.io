@@ -3,10 +3,10 @@ layout: home
 title: M.R. TechForge
 ---
 
-# Forging Relationships. Building Confidence. Securing the Digital World.
+# Crafting Clarity. Forging Solutions. Secured with Integrity.
 
 Welcome to **M.R. TechForge** — where technology meets clarity, integrity, and purpose.  
-We believe tech should *work for you*, not confuse you.
+We believe tech should *work for you*, not confuse you.  Let's build relationships & tech - together.  
 
 <section>
 <h2 data-icon="🔐">Digital Security Education</h2>
@@ -33,7 +33,7 @@ We turn complex manuals into clear, readable instructions and actionable reviews
 
 <section class="hero-card">
   <p class="hero-tag">
-    Forging Relationships • Building Confidence • Securing the Digital World
+    Crafting Clarity • Forging Solutions • Secured with Integrity
   </p>
   <div class="hero-actions">
     <a class="btn-outline" href="/services/">View Services</a>
