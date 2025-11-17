@@ -1,12 +1,12 @@
-/* ===== Base & Typography (Forge v3.1) ===== */
+/* ===== Base & Typography (Forge v4.0 – Updated to New Brand Colors) ===== */
 
 /* --- Font Imports --- */
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&family=Orbitron:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
 /* --- Body --- */
 body {
-  background-image: radial-gradient(circle at 20% 10%, #101010 0%, #000 100%);
+  /* Updated background: deeper steel-blue/black gradient */
+  background-image: radial-gradient(circle at 20% 10%, #0A0D12 0%, #000 95%);
   background-attachment: fixed;
   color: var(--forge-text);
   font-family: "Titillium Web", "Roboto", sans-serif;
@@ -23,18 +23,28 @@ main {
   max-width: 950px;
   margin: 2rem auto;
   padding: 2rem 1rem;
-  background: linear-gradient(180deg, rgba(20, 20, 20, 0.9), rgba(5, 5, 5, 0.95));
-  border: 1px solid rgba(0, 184, 212, 0.15);
+
+  /* Darker, smoother gradient matching your anvil background */
+  background: linear-gradient(180deg, rgba(12, 14, 20, 0.92), rgba(5, 6, 10, 0.96));
+
+  /* Replace teal border with electric blue */
+  border: 1px solid rgba(10, 109, 255, 0.18);
+
   border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 184, 212, 0.08);
+
+  /* Swap teal glow for electric blue glow */
+  box-shadow: 0 0 25px rgba(10, 109, 255, 0.08);
 }
 
 /* --- Headings --- */
 h1, h2, h3 {
-  color: var(--forge-hotmetal);
+  color: var(--forge-hotmetal);  /* forge orange/gold */
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.5);
+
+  /* Glow updated to match your anvil’s orange underglow */
+  text-shadow: 0 0 14px rgba(255, 143, 31, 0.55);
+
   font-family: "Orbitron", sans-serif;
   line-height: 1.4;
   margin-top: 1.5rem;
@@ -45,28 +55,30 @@ h1, h2, h3 {
 p, li, blockquote {
   color: var(--forge-text);
   font-family: "Titillium Web", sans-serif;
-  text-shadow: 0 0 4px rgba(0,184,212,0.25);
+
+  /* Updated soft text glow (subtle electric blue instead of teal) */
+  text-shadow: 0 0 5px rgba(10, 109, 255, 0.18);
 }
 
 ul, ol {
   padding-left: 1.2rem;
 }
 
-/* Ensure list supports custom icons */
+/* Custom list icons */
 ul li[data-icon] {
   list-style: none;
   position: relative;
-  padding-left: 2rem;    /* space for the icon */
+  padding-left: 2rem;
 }
 
-/* Render the icon before the list item */
 ul li[data-icon]::before {
   content: attr(data-icon);
   position: absolute;
   left: 0;
   top: 0;
-  font-size: 1.2rem;     /* adjust size here */
+  font-size: 1.2rem;
   line-height: 1.2rem;
+  filter: drop-shadow(0 0 8px rgba(10, 109, 255, 0.35));
 }
 
 /* --- Links --- */
@@ -77,17 +89,20 @@ a {
 }
 a:hover {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(245, 184, 65, 0.6);
+  text-shadow: 0 0 12px rgba(255, 143, 31, 0.6);
 }
 
 /* --- Code Snippets --- */
 code {
   background-color: #1a1a1a;
-  color: #8ac6ff;
+  color: #97c9ff; /* Updated blue that matches your fingerprint circle */
   padding: 0.15rem 0.3rem;
   border-radius: 4px;
   font-family: "Ubuntu Mono", monospace;
   font-size: 0.95rem;
+
+  /* Blue glow instead of greenish teal */
+  text-shadow: 0 0 6px rgba(10, 109, 255, 0.3);
 }
 
 /* --- Blockquotes --- */
@@ -95,14 +110,19 @@ blockquote {
   border-left: 4px solid var(--forge-accent-dark);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: #b0c4de;
+
+  /* More modern blue-tinted steel */
+  color: #aac4e8;
+
   font-style: italic;
-  background: rgba(20, 20, 20, 0.4);
+  background: rgba(12, 14, 20, 0.55);
   border-radius: 6px;
+  box-shadow: 0 0 10px rgba(10, 109, 255, 0.1);
 }
 
 /* --- Page Intros (for About / Services / etc.) --- */
-.page-intro, .services-intro {
+.page-intro,
+.services-intro {
   text-align: center;
   margin: 0 auto 2rem;
   max-width: 800px;
