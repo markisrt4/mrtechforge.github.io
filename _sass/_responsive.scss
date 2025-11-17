@@ -1,4 +1,4 @@
-/* ===== Responsive Adjustments ===== */
+/* ===== Responsive Adjustments (Updated for New MR TechForge Colors) ===== */
 
 /* --- Hamburger Navigation --- */
 .nav-toggle { display: none; }
@@ -11,6 +11,8 @@
   position: relative;
   z-index: 1001;
 }
+
+/* Bars */
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
@@ -18,15 +20,16 @@
   content: "";
   height: 3px;
   width: 100%;
-  background: var(--forge-hotmetal);
+  background: var(--forge-hotmetal); /* forge orange */
   transition: all 0.3s ease;
   border-radius: 2px;
 }
+
 .nav-toggle-label span { top: 50%; transform: translateY(-50%); }
 .nav-toggle-label span::before { top: -9px; }
-.nav-toggle-label span::after { top: 9px; }
+.nav-toggle-label span::after  { top: 9px; }
 
-/* Animate into X when open */
+/* Animate into X when opened */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
@@ -41,6 +44,7 @@
 
 /* --- Mobile Layout --- */
 @media (max-width: 760px) {
+
   .nav-toggle-label {
     display: block;
   }
@@ -64,6 +68,7 @@
     display: block;
     padding: 0.6rem 0;
     font-size: 1.1rem;
+    text-align: center;
   }
 
   .header-inner {
@@ -80,16 +85,13 @@
     text-align: center;
   }
 
-  .home h1 br {
-    display: none;
-  }
+  .home h1 br { display: none; }
 
   .home p {
     font-size: 0.92rem;
     line-height: 1.5;
   }
 
-  /* Stack footer elements neatly */
   .footer-inner {
     padding: 1.5rem 1rem;
   }
@@ -97,13 +99,16 @@
 
 /* --- Tablets / Small Laptops --- */
 @media (max-width: 760px) {
+
   .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(10,10,10,0.97);
-    display: flex;
+
+    /* Updated background: dark navy + slight blue glow */
+    background: rgba(5, 8, 16, 0.97);
+
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -112,11 +117,13 @@
     max-height: 0;
     transition: max-height 0.4s ease-in-out;
     z-index: 999;
-    border-top: 1px solid rgba(0,184,212,0.25);
+
+    /* replace old teal border */
+    border-top: 1px solid rgba(10, 109, 255, 0.25); /* electric blue */
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 500px; /* enough to show all links */
+    max-height: 500px;
     padding: 1rem 0;
   }
 
@@ -131,14 +138,11 @@
 
   .forge-nav a:hover {
     color: var(--forge-hotmetal);
+    text-shadow: 0 0 10px rgba(255, 143, 31, 0.6);
   }
 
-  /* Keep header-inner stacked properly */
-  .header-inner {
-    position: relative;
-  }
+  .header-inner { position: relative; }
 }
-
 
 /* --- Large Screens --- */
 @media (min-width: 1400px) {
