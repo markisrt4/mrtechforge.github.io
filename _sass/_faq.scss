@@ -1,18 +1,13 @@
-/* ===== FAQ Page Styles (M.R. TechForge v3.1) ===== */
-
-.faq-container {
-  max-width: 850px;
-  margin: 2rem auto 4rem;
-  padding: 1rem 1.5rem;
-}
+/* ===== FAQ Page Styles (Forge v5.0 — Consistent Glow System) ===== */
 
 .faq-heading {
   text-align: center;
   font-size: 2rem;
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(255,143,31,0.55);
+  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
   font-family: "Orbitron", sans-serif;
   letter-spacing: 1px;
+  margin-bottom: 1rem;
 }
 
 .faq-subtitle {
@@ -22,15 +17,16 @@
   font-family: "Titillium Web", sans-serif;
 }
 
-/* --- Accordion Items --- */
+/* FAQ Item (accordion) */
 .faq-item {
   margin: 0.8rem 0;
   border-radius: 10px;
-  background: rgba(12,14,20,0.7);
+  background: rgba(12,14,20,0.72);
+
   border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.07);
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.08);
+
   overflow: hidden;
-  position: relative;
   backdrop-filter: blur(4px);
 }
 
@@ -39,7 +35,7 @@
   display: none;
 }
 
-/* --- Question Line --- */
+/* Question line */
 .faq-question {
   display: block;
   padding: 0.9rem 1.1rem;
@@ -47,16 +43,15 @@
   cursor: pointer;
   color: var(--forge-accent);
   font-family: "Titillium Web", sans-serif;
-  position: relative;
   transition: all 0.3s ease;
 }
 
 .faq-question:hover {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(255,143,31,0.6);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.55);
 }
 
-/* --- Answer Section --- */
+/* Answer text */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
@@ -66,13 +61,13 @@
   transition: max-height 0.4s ease, padding 0.3s ease;
 }
 
+/* Open state */
 .faq-item input:checked ~ .faq-answer {
   max-height: 280px;
   padding: 0.9rem 1.1rem 1.2rem;
 }
 
-/* Glow effect when open */
 .faq-item input:checked ~ .faq-question {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(255,143,31,0.8);
+  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.8);
 }

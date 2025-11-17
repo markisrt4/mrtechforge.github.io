@@ -70,14 +70,14 @@ Just reach out through my contact page. Tell me what you’re dealing with, and 
 ---
 
 <section class="forge-card">
-    Creative tech + dad energy + a sprinkle of nerdiness.  
-    If you’ve ever wondered how Mark thinks... (maybe you shouldn't)
+    ### Creative tech + dad energy + a sprinkle of nerdiness.  
+    ### If you’ve ever wondered how Mark thinks... (maybe you shouldn't)
 </section>
 ---
 
+#
+#
 # Fun FAQs
-
-<div class="faq-container">
 
 ## **Why “TechForge”?**
 <details><summary>Click to expand</summary>
@@ -172,8 +172,6 @@ They just quietly crash — which honestly feels refreshing.
 Of course!  
 I’ll guide you gently. You’ll thank me later.
 </details>
-
-</div>
 
 ---
 

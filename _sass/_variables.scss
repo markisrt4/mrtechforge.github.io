@@ -1,11 +1,20 @@
 /* ===== M.R. TechForge Variables ===== */
 
 :root {
-  --forge-bg: #0A0D12;
-  --forge-text: #D8D8D8;
-  --forge-accent: #0A6DFF;
-  --forge-accent-dark: #1B3C66;
-  --forge-hotmetal: #FF9B28;
-  --forge-steel: #C0C0C0;
-  --forge-silver: #D8D8D8;
+  /* Primary brand colors */
+  --forge-accent: #0A6DFF;           /* electric blue */
+  --forge-accent-dark: #153D77;      /* deep steel blue */
+
+  /* Forge orange — restored */
+  --forge-hotmetal: #F5B841;
+  --forge-hotmetal-light: #FFC65A;
+  --forge-hotmetal-deep: #DFA12C;
+  --forge-hotmetal-rgb: 245, 184, 65;
+
+  /* Text colors */
+  --forge-text: #dfe6f0;
+  --forge-subtext: #aab4c7;
+
+  /* Blue RGB helper */
+  --forge-accent-rgb: 10, 109, 255;
 }
