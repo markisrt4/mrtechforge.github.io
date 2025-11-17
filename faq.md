@@ -1,6 +1,8 @@
-Title: Frequently Asked Questions
-Slug: faq
-Summary: Friendly and fun answers to common questions about M.R. TechForge.
+---
+title: FAQ
+layout: page
+permalink: /faq/
+---
 
 # Frequently Asked Questions
 ![FAQ Icon](/assets/images/faq-icon.png)
