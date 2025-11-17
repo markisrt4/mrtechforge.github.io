@@ -12,8 +12,6 @@ Welcome to the M.R. TechForge FAQ — where real questions meet real answers wit
 
 ---
 
-# Real FAQs
-
 ## **What services does M.R. TechForge offer?**
 <details><summary>Click to expand</summary>
 I provide digital security guidance, home-based tech solutions, website builds, innovative tech products, and general tech consulting. If it boots, beeps, or misbehaves, I can help.
@@ -71,9 +69,10 @@ Just reach out through my contact page. Tell me what you’re dealing with, and 
 
 ---
 
-Creative tech + dad energy + a sprinkle of nerdiness.  
-If you’ve ever wondered how Mark thinks... (maybe you shouldn't)
-
+<section class="forge-card">
+    Creative tech + dad energy + a sprinkle of nerdiness.  
+    If you’ve ever wondered how Mark thinks... (maybe you shouldn't)
+</section>
 ---
 
 # Fun FAQs
