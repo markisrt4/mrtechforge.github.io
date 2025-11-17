@@ -5,15 +5,18 @@ permalink: /faq/
 ---
 
 # Frequently Asked Questions
+
 ![FAQ Icon](/assets/images/faq-icon.png)
 
 Welcome to the M.R. TechForge FAQ — where real questions meet real answers with a touch of tech humor.
+
+---
 
 # Real FAQs
 
 ## **What services does M.R. TechForge offer?**
 <details><summary>Click to expand</summary>
-I provide digital security guidance, home-based tech solutions, website builds, and innovative tech products, and general tech consulting. If it boots, beeps, or misbehaves, I can help.
+I provide digital security guidance, home-based tech solutions, website builds, innovative tech products, and general tech consulting. If it boots, beeps, or misbehaves, I can help.
 </details>
 
 ---
@@ -34,7 +37,7 @@ Yes. Many issues can be solved over video call, secure remote sessions, or step-
 
 ## **Do you travel for in-person support?**
 <details><summary>Click to expand</summary>
-Yes — within reasonable driving distance of the metro Detroit area  
+Yes — within reasonable driving distance of the metro Detroit area.  
 (If you're far away, remote might be faster!)
 </details>
 
@@ -66,24 +69,29 @@ It’s a practical, easy-to-understand workshop covering passwords, online safet
 Just reach out through my contact page. Tell me what you’re dealing with, and we’ll take it from there — simple, friendly, no pressure.
 </details>
 
-Creative Tech + dad energy + a sprinkle of nerdiness.  
-If you’ve ever wondered how Mark thinks ... (maybe you shouldn't)
+---
+
+Creative tech + dad energy + a sprinkle of nerdiness.  
+If you’ve ever wondered how Mark thinks... (maybe you shouldn't)
 
 ---
+
+# Fun FAQs
 
 <div class="faq-container">
 
 ## **Why “TechForge”?**
 <details><summary>Click to expand</summary>
 Because good technology should be built with intention.  
-Also because “Mark Build You Tech Things” didn’t test well  
+Also because “Mark Build You Tech Things” didn’t test well.
 </details>
 
 ---
 
 ## **Does Mark like Microsoft Windows?**
 <details><summary>Click to expand</summary>
-Is that like asking if I like the blue-screen of death?  Let's just say ive been hurt before.  By Windows. A LOT.
+Is that like asking if I enjoy the blue-screen of death?  
+Let’s just say I’ve been hurt before. By Windows. A LOT.
 </details>
 
 ---
@@ -92,7 +100,7 @@ Is that like asking if I like the blue-screen of death?  Let's just say ive been
 <details><summary>Click to expand</summary>
 I’m an Android guy.  
 I like freedom, customization, and buttons that don’t yell at me.  
-But if you use an iPhone, just be ok with the fact that an angel loses it's wings.
+But if you use an iPhone, just be okay with the fact that an angel loses its wings.
 </details>
 
 ---
@@ -101,7 +109,7 @@ But if you use an iPhone, just be ok with the fact that an angel loses it's wing
 <details><summary>Click to expand</summary>
 Coffee? Possibly.  
 But Mountain Dew + Cheetos?  
-Let's talk.
+Let’s talk.
 </details>
 
 ---
@@ -131,14 +139,15 @@ I personally taught Babbage everything he knows.
 ## **Do you really like Linux that much?**
 <details><summary>Click to expand</summary>
 Absolutely.  
-Linux is dependable, logical, and free!  It's written by a bunch of cool nerds like me.
+Linux is dependable, logical, and free! It's written by a bunch of cool nerds like me.
 </details>
 
 ---
 
 ## **Will you judge my terrible passwords?**
 <details><summary>Click to expand</summary>
-No judgment — but I *will* lovingly guide you away from “password123,”. I'm a lit nicer than the bad guys.
+No judgment — but I *will* lovingly guide you away from “password123.”  
+I’m a bit nicer than the bad guys.
 </details>
 
 ---
@@ -153,7 +162,7 @@ But every time I fix a printer, I die a little inside.
 
 ## **Why do you like computers?**
 <details><summary>Click to expand</summary>
-As a dad, I appreciate that computers don’t hit, scream, or call me names.
+As a dad, I appreciate that computers don’t hit, scream, or call me names.  
 They just quietly crash — which honestly feels refreshing.
 </details>
 
@@ -162,8 +171,10 @@ They just quietly crash — which honestly feels refreshing.
 ## **Will you help me switch to Linux?**
 <details><summary>Click to expand</summary>
 Of course!  
-I’ll guide you gently.  You'll thank me later.
+I’ll guide you gently. You’ll thank me later.
 </details>
+
+</div>
 
 ---
 
@@ -173,5 +184,3 @@ I’m always happy to help — whether it’s digital security, tech guidance, o
 
 👉 **[Contact M.R. TechForge](../contact/)**  
 Let’s build something great together.
-
-</div>
