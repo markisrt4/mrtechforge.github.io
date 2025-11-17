@@ -1,4 +1,4 @@
-/* ===== Reusable Components ===== */
+ /* ===== Reusable Components (Updated for New Brand Glow System) ===== */
 
 /* === Buttons === */
 .btn-glow {
@@ -11,57 +11,71 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 8px rgba(0,184,212,0.4);
-}
-.btn-glow:hover {
-  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent));
-  box-shadow: 0 0 18px rgba(245,184,65,0.7);
-  transform: translateY(-2px);
-}
-.btn-glow.copied {
-  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent-dark));
-  box-shadow: 0 0 20px rgba(245,184,65,0.9);
+
+  /* updated blue glow */
+  box-shadow: 0 0 10px rgba(10, 109, 255, 0.4);
 }
 
+.btn-glow:hover {
+  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent));
+  
+  /* forge orange glow */
+  box-shadow: 0 0 22px rgba(255, 208, 103, 0.75);
+  transform: translateY(-2px);
+}
+
+.btn-glow.copied {
+  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent-dark));
+
+  /* brighter forge glow for confirmation */
+  box-shadow: 0 0 26px rgba(255, 208, 103, 0.9);
+}
+
+/* === Outline Button === */
 .btn-outline {
   display: inline-block;
   padding: 0.7rem 1.2rem;
   border-radius: 8px;
   font-weight: 700;
-  border: 1px solid rgba(245,184,65,0.6);
+  border: 1px solid rgba(255, 208, 103, 0.6);
   color: var(--forge-hotmetal);
   text-decoration: none;
   transition: all 0.25s ease;
 }
+
 .btn-outline:hover {
-  background: rgba(245,184,65,0.1);
-  box-shadow: 0 0 18px rgba(245,184,65,0.35);
+  background: rgba(255, 208, 103, 0.1);
+  box-shadow: 0 0 22px rgba(255, 208, 103, 0.35);
 }
 
 /* === Forge Card === */
 .forge-card {
-  background: rgba(20,20,20,0.7);
-  border: 1px solid rgba(0,184,212,0.1);
+  background: rgba(20,20,20,0.75);
+  border: 1px solid rgba(10, 109, 255, 0.12); /* subtle blue border */
   border-radius: 10px;
   padding: 1.6rem 1.3rem;
   margin: 2rem 0;
-  box-shadow: 0 0 20px rgba(0,184,212,0.06);
+
+  /* updated soft blue glow */
+  box-shadow: 0 0 22px rgba(10, 109, 255, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .forge-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(0,184,212,0.15);
+  box-shadow: 0 0 30px rgba(10, 109, 255, 0.16);
 }
 
 /* === Forms === */
 form {
-  background: rgba(20,20,20,0.6);
-  border: 1px solid rgba(0,184,212,0.15);
+  background: rgba(20,20,20,0.65);
+  border: 1px solid rgba(10, 109, 255, 0.15);
   border-radius: 10px;
   padding: 1rem 1.5rem;
   max-width: 500px;
   margin: 2rem auto;
 }
+
 label, textarea {
   color: var(--forge-text);
 }
@@ -71,15 +85,21 @@ label, textarea {
   margin: 1.2rem 0 2rem;
   padding: 1.2rem 1rem;
   text-align: center;
+
   background: linear-gradient(180deg, rgba(20,20,20,0.65), rgba(5,5,5,0.9));
-  border: 1px solid rgba(0,184,212,0.18);
+  border: 1px solid rgba(10, 109, 255, 0.22);
+
+  /* new subtle glow */
+  box-shadow: 0 0 26px rgba(10, 109, 255, 0.09);
+
   border-radius: 12px;
-  box-shadow: 0 0 22px rgba(0,184,212,0.08);
 }
+
 .hero-tag {
   color: #e6e6e6;
   letter-spacing: 0.3px;
 }
+
 .hero-actions {
   margin-top: 0.8rem;
   display: flex;
@@ -106,23 +126,28 @@ label, textarea {
   left: 0.2rem;
   top: 0.05rem;
   font-size: 1.2rem;
-  filter: drop-shadow(0 0 6px rgba(0,184,212,0.35));
+
+  /* updated blue glow */
+  filter: drop-shadow(0 0 8px rgba(10, 109, 255, 0.35));
 }
 
-/* === Forge Terminal === */
 /* === Forge Terminal === */
 .forge-terminal {
   position: relative;
   background: #000;
-  border: 1px solid rgba(0,184,212,0.25);
+  border: 1px solid rgba(10, 109, 255, 0.25);
   border-radius: 8px;
   padding: 1rem;
   margin: 2rem 0;
+
   font-family: "Ubuntu Mono", monospace;
   color: #00ffc8;
-  text-shadow: 0 0 6px rgba(0,255,200,0.4);
-  box-shadow: 0 0 15px rgba(0,184,212,0.08);
-  overflow: hidden; /* ensures sparks stay inside */
+
+  /* neon text glow updated slightly */
+  text-shadow: 0 0 6px rgba(0, 255, 200, 0.4);
+
+  box-shadow: 0 0 18px rgba(10, 109, 255, 0.08);
+  overflow: hidden;
 }
 
 /* animated “forge spark” along the top */
@@ -133,12 +158,14 @@ label, textarea {
   left: -50%;
   width: 200%;
   height: 2px;
+
   background: linear-gradient(90deg,
               transparent,
-              rgba(245,184,65,0.9),
-              rgba(0,184,212,0.9),
+              rgba(255, 208, 103, 0.9),
+              rgba(10, 109, 255, 0.9),
               transparent);
-  opacity: 0.8;
+
+  opacity: 0.85;
   animation: forgeSpark 5s linear infinite;
 }
 
@@ -151,6 +178,8 @@ label, textarea {
 .forge-terminal pre {
   margin: 0;
   white-space: pre-wrap;
+
+  /* same pulse, now matches glow */
   animation: terminalPulse 4s ease-in-out infinite alternate;
   text-align: left;
 }
@@ -160,4 +189,3 @@ label, textarea {
   50%  { opacity: 1; text-shadow: 0 0 8px rgba(0,255,200,0.6); }
   100% { opacity: 0.8; }
 }
-
