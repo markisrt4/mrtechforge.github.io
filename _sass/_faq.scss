@@ -1,0 +1,78 @@
+/* ===== FAQ Page Styles (M.R. TechForge v3.1) ===== */
+
+.faq-container {
+  max-width: 850px;
+  margin: 2rem auto 4rem;
+  padding: 1rem 1.5rem;
+}
+
+.faq-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 12px rgba(255,143,31,0.55);
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+}
+
+.faq-subtitle {
+  text-align: center;
+  color: var(--forge-subtext);
+  margin-bottom: 2rem;
+  font-family: "Titillium Web", sans-serif;
+}
+
+/* --- Accordion Items --- */
+.faq-item {
+  margin: 0.8rem 0;
+  border-radius: 10px;
+  background: rgba(12,14,20,0.7);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.07);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+/* Hide checkbox */
+.faq-item input {
+  display: none;
+}
+
+/* --- Question Line --- */
+.faq-question {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--forge-accent);
+  font-family: "Titillium Web", sans-serif;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(255,143,31,0.6);
+}
+
+/* --- Answer Section --- */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.1rem;
+  color: var(--forge-text);
+  line-height: 1.7;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-item input:checked ~ .faq-answer {
+  max-height: 280px;
+  padding: 0.9rem 1.1rem 1.2rem;
+}
+
+/* Glow effect when open */
+.faq-item input:checked ~ .faq-question {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 12px rgba(255,143,31,0.8);
+}
