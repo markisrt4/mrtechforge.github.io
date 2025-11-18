@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Russell;Mark;;;
+FN:Mark G. Russell
+ORG:M.R. TechForge
+TITLE:Founder & Technical Consultant
+TEL;TYPE=work:+19476220685
+EMAIL;TYPE=work:mark@mrtechforge.com
+URL:https://mrtechforge.com
+PHOTO;VALUE=URI:https://mrtechforge.com/assets/images/banners/social_banner.jpg
+NOTE:Crafting Clarity, Forging Solutions, Secured with Integrity.
+X-SOCIALPROFILE;TYPE=LinkedIn:https://www.linkedin.com/in/mark-russell-26278456
+REV:2025-11-08T00:00:00Z
+END:VCARD
