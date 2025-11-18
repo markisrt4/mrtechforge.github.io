@@ -37,7 +37,7 @@ We turn complex manuals into clear, readable instructions and actionable reviews
   </p>
   <div class="hero-actions">
     <a class="btn-outline" href="/services/">View Services</a>
-    <a class="btn-outline" href="/contact/">Contact</a>
+    <a class="btn-outline" href="/contact.html">Contact</a>
     <a class="btn-outline" href="/documentation/">Docs & Testing</a>
   </div>
 </section>
