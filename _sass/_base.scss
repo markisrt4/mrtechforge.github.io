@@ -1,27 +1,41 @@
-/* ===== Base & Typography (Forge v5.0 — Orange Primary Glow Edition) ===== */
+/* ============================================================================
+   BASE & TYPOGRAPHY — M.R. TechForge (Forge v5.2 — Clean Canonical Edition)
+   ============================================================================ */
 
-/* Fonts */
+/* ========================
+   FONTS
+   ======================== */
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&family=Orbitron:wght@400;600&display=swap');
 
-/* Body */
+
+/* ========================
+   BODY ROOT
+   ======================== */
 body {
   background-image: radial-gradient(circle at 20% 10%, #0A0D12 0%, #000 95%);
   background-attachment: fixed;
-  color: var(--forge-text);
-  font-family: "Titillium Web", "Roboto", sans-serif;
 
   margin: 0;
   padding: 0;
+
+  color: var(--forge-text);
+  font-family: "Titillium Web", "Roboto", sans-serif;
 
   line-height: 1.9;
   font-size: 1.07rem;
   letter-spacing: 0.25px;
 }
 
-/* Main container */
-main {
+
+/* ============================================================================
+   MAIN CONTENT CONTAINER
+   ============================================================================ */
+
+/* Requires <main class="forge-main"> in layout.html */
+.forge-main {
   display: block;
   max-width: 950px;
+
   margin: 2rem auto;
   padding: 2rem 1rem;
 
@@ -33,8 +47,28 @@ main {
   box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.1);
 }
 
-/* Headings */
-h1, h2, h3 {
+/* Hide the auto-generated H1 Jekyll inserts from Markdown */
+.forge-main > h1:first-of-type {
+  display: none;
+}
+
+
+/* ============================================================================
+   HEADINGS
+   ============================================================================ */
+
+/* Clean minimal H1 (page-intro override replaces this) */
+h1 {
+  color: var(--forge-hotmetal);
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Strong Forge-styled H2, H3 */
+h2, h3 {
   color: var(--forge-hotmetal);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -43,16 +77,53 @@ h1, h2, h3 {
 
   font-family: "Orbitron", sans-serif;
   line-height: 1.4;
-
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
-/* Paragraphs & Lists */
+
+/* ============================================================================
+   PAGE INTRO SECTIONS (Hero Titles on Pages)
+   ============================================================================ */
+.page-intro,
+.services-intro {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 800px;
+}
+
+/* Special glowing Forge gradient titles */
+.page-intro h1,
+.services-intro h1 {
+  background: linear-gradient(
+    90deg,
+    #F5B841,
+    #F5B841,
+    #0A6DFF,
+    #153D77,
+    #F5B841
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: forgeTitleSpectrum 6s linear infinite;
+
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+
+/* ============================================================================
+   TEXT / PARAGRAPHS / LISTS
+   ============================================================================ */
 p, li, blockquote {
   color: var(--forge-text);
   font-family: "Titillium Web", sans-serif;
-
   text-shadow: 0 0 5px rgba(var(--forge-accent-rgb), 0.18);
 }
 
@@ -60,24 +131,25 @@ ul, ol {
   padding-left: 1.2rem;
 }
 
-/* Custom list icons */
+/* Custom icon bullets */
 ul li[data-icon] {
   list-style: none;
   position: relative;
   padding-left: 2rem;
 }
-
 ul li[data-icon]::before {
   content: attr(data-icon);
   position: absolute;
   left: 0;
   top: 0;
   font-size: 1.2rem;
-
   filter: drop-shadow(0 0 7px rgba(var(--forge-accent-rgb), 0.32));
 }
 
-/* Links */
+
+/* ============================================================================
+   LINKS
+   ============================================================================ */
 a {
   color: var(--forge-accent);
   text-decoration: none;
@@ -88,50 +160,52 @@ a:hover {
   text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
 }
 
-/* Code blocks */
+
+/* ============================================================================
+   CODE BLOCKS
+   ============================================================================ */
 code {
   background-color: #1a1a1a;
   color: #98caff;
+
   padding: 0.15rem 0.3rem;
   border-radius: 4px;
+
   font-family: "Ubuntu Mono", monospace;
   font-size: 0.95rem;
 
   text-shadow: 0 0 6px rgba(var(--forge-accent-rgb), 0.35);
 }
 
-/* Blockquotes */
+
+/* ============================================================================
+   BLOCKQUOTES
+   ============================================================================ */
 blockquote {
   border-left: 4px solid var(--forge-accent-dark);
   padding-left: 1rem;
   margin: 1.5rem 0;
 
   color: #b9c9e6;
+  font-style: italic;
 
   background: rgba(12,14,20,0.55);
   border-radius: 6px;
 
   box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.1);
-
-  font-style: italic;
 }
 
-/* Page intros */
-.page-intro,
-.services-intro {
-  text-align: center;
-  margin: 0 auto 2rem;
-  max-width: 800px;
-}
 
-/* Responsive */
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
 @media (max-width: 760px) {
   body {
     font-size: 0.98rem;
     line-height: 1.65;
   }
 
-  main {
+  .forge-main {
     margin: 1.2rem auto;
     padding: 1.5rem 1rem;
   }
