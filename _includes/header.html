@@ -9,44 +9,22 @@
       <h1 class="forge-title">{{ site.title }}</h1>
     </a>
 
-    <!-- Hamburger -->
+    <!-- Hamburger checkbox -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
       <span></span>
     </label>
 
-    <!-- NAVIGATION -->
+    <!-- Navigation -->
     <nav class="forge-nav">
 
       <a href="{{ '/' | relative_url }}">Home</a>
       <a href="{{ '/about/' | relative_url }}">About</a>
 
       <!-- SERVICES DROPDOWN -->
-      <li class="nav-item dropdown">
+      <div class="nav-item dropdown">
 
+        <!-- Parent clickable toggle -->
         <button class="dropdown-toggle">
           <span class="dropdown-parent-text">Services</span>
-          <span class="dropdown-arrow">▼</span>
-        </button>
-
-        <div class="dropdown-content">
-          <!-- Overview -->
-          <a href="/services/" class="dropdown-overview">SERVICES OVERVIEW</a>
-
-          <!-- Subpages -->
-          <a href="/services/digital-security/">DIGITAL SECURITY</a>
-          <a href="/services/digital-security/life-without-google/"
-             data-child="true">
-            LIFE WITHOUT GOOGLE
-          </a>
-        </div>
-
-      </li>
-
-      <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
-      <a href="{{ '/faq/' | relative_url }}">FAQ</a>
-      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
-
-    </nav>
-  </div>
-</header>
+          <span class="dropdown-arrow">▼
