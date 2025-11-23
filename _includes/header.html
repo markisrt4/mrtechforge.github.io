@@ -1,51 +1,63 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + Title -->
-    <a href="{{ '/' | relative_url }}" class="logo-link">
+    <!-- Logo -->
+    <a href="/" class="logo-link">
       <img src="{{ '/assets/images/logo_transparent.png' | relative_url }}"
            alt="M.R. TechForge Logo"
            class="forge-logo">
-      <h1 class="forge-title">{{ site.title }}</h1>
+      <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Hamburger Toggle -->
+    <!-- Hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
-    <!-- Main Navigation -->
+    <!-- NAVIGATION -->
     <nav class="forge-nav">
 
       <a href="{{ '/' | relative_url }}">Home</a>
       <a href="{{ '/about/' | relative_url }}">About</a>
 
-      <!-- SERVICES DROPDOWN -->
+      <!-- ===============================
+           SERVICES DROPDOWN — FIXED
+           =============================== -->
       <div class="nav-item dropdown">
 
-        <!-- Parent Toggle -->
-        <button class="dropdown-toggle" type="button">
-          <span class="dropdown-parent-text">Services</span>
+        <!-- Parent link (goes to Services Overview) -->
+        <a href="{{ '/services/' | relative_url }}" 
+           class="dropdown-parent-text">
+          Services
+        </a>
+
+        <!-- Arrow toggle (opens submenu) -->
+        <button class="dropdown-toggle" aria-label="Open services submenu">
           <span class="dropdown-arrow">▼</span>
         </button>
 
-        <!-- Dropdown Links -->
+        <!-- Submenu links -->
         <div class="dropdown-content">
-          <a href="/services/" class="dropdown-overview">Services Overview</a>
-          <a href="/services/digital-security/">Digital Security</a>
-          <a href="/services/digital-security/life-without-google/" data-child="true">
+          <a href="{{ '/services/' | relative_url }}" class="dropdown-overview">
+            Services Overview
+          </a>
+
+          <a href="{{ '/services/digital-security/' | relative_url }}">
+            Digital Security
+          </a>
+
+          <a href="{{ '/services/digital-security/life-without-google/' | relative_url }}"
+             data-child="true">
             Life Without Google
           </a>
         </div>
-
       </div>
 
       <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
       <a href="{{ '/faq/' | relative_url }}">FAQ</a>
-      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
 
     </nav>
-
   </div>
 </header>
