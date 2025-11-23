@@ -1,6 +1,6 @@
 # Site settings
 title: "M.R. TechForge"
-description: "Forging Relationships, Tech, & Innovative Solutions"
+description: "Crafting Clarity. Forging Solutions. Secured with Integrity." 
 url: "https://mrtechforge.com"       # Replace with your domain
 baseurl: ""                          # Leave empty if at root of domain
 lang: "en-US"
@@ -34,7 +34,7 @@ defaults:
 seo:
   type: "website"
   title: "M.R. TechForge"
-  description: "Forging Relationships, Tech, & Innovative Solutions"
+  description: "Crafting Clarity. Forging Solutions. Secured with Integrity."
   url: "https://mrtechforge.com"
 
 # Exclude from build
