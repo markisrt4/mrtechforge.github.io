@@ -1,189 +1,233 @@
-/* ===== Reusable Components (Forge v5.0 — Orange Primary Glow) ===== */
+/* ============================================
+   MR TECHFORGE — RESPONSIVE + DROPDOWNS v7.1
+   ============================================ */
 
-/* === Buttons === */
-.btn-glow {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--forge-accent-dark), var(--forge-accent));
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
+/* ---------------------------
+   HAMBURGER TOGGLE
+---------------------------- */
+.nav-toggle { display: none; }
+
+.nav-toggle-label {
+  display: none;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  /* subtle blue idle glow */
-  box-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.35);
-}
-
-.btn-glow:hover {
-  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent));
-
-  /* bright forge orange emphasis */
-  box-shadow: 0 0 24px rgba(var(--forge-hotmetal-rgb), 0.75);
-  transform: translateY(-2px);
-}
-
-.btn-glow.copied {
-  background: linear-gradient(90deg, var(--forge-hotmetal), var(--forge-accent-dark));
-  box-shadow: 0 0 28px rgba(var(--forge-hotmetal-rgb), 0.9);
-}
-
-/* === Outline Button === */
-.btn-outline {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 700;
-
-  /* soft orange border */
-  border: 1px solid rgba(var(--forge-hotmetal-rgb), 0.55);
-  color: var(--forge-hotmetal);
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-
-.btn-outline:hover {
-  background: rgba(var(--forge-hotmetal-rgb), 0.12);
-  box-shadow: 0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
-}
-
-/* === Forge Card === */
-.forge-card {
-  background: rgba(20,20,20,0.75);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.15);
-  border-radius: 10px;
-  padding: 1.6rem 1.3rem;
-  margin: 2rem 0;
-
-  /* soft steel-blue glow */
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.forge-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-/* === Forms === */
-form {
-  background: rgba(20,20,20,0.65);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  max-width: 500px;
-  margin: 2rem auto;
-}
-
-label, textarea {
-  color: var(--forge-text);
-}
-
-/* === Hero Card === */
-.hero-card {
-  margin: 1.2rem 0 2rem;
-  padding: 1.2rem 1rem;
-  text-align: center;
-
-  background: linear-gradient(180deg, rgba(20,20,20,0.65), rgba(5,5,5,0.9));
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.2);
-
-  box-shadow: 0 0 24px rgba(var(--forge-accent-rgb), 0.1);
-
-  border-radius: 12px;
-}
-
-.hero-tag {
-  color: #e6e6e6;
-  letter-spacing: 0.3px;
-}
-
-.hero-actions {
-  margin-top: 0.8rem;
-  display: flex;
-  gap: 0.6rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* === Icon Lists === */
-.icon-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.icon-list li {
+  width: 32px;
+  height: 24px;
   position: relative;
-  padding-left: 2rem;
-  margin: 0.5rem 0;
-  color: var(--forge-text);
+  z-index: 2000;
 }
 
-.icon-list li::before {
-  content: attr(data-icon);
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
   position: absolute;
-  left: 0.2rem;
-  top: 0.05rem;
-  font-size: 1.2rem;
-
-  /* subtle blue highlight */
-  filter: drop-shadow(0 0 6px rgba(var(--forge-accent-rgb), 0.35));
-}
-
-/* === Forge Terminal === */
-.forge-terminal {
-  position: relative;
-  background: #000;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.28);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 2rem 0;
-
-  font-family: "Ubuntu Mono", monospace;
-  color: #00ffc8;
-  text-shadow: 0 0 6px rgba(0,255,200,0.45);
-
-  box-shadow: 0 0 20px rgba(var(--forge-accent-rgb), 0.1);
-  overflow: hidden;
-}
-
-/* animated forge spark */
-.forge-terminal::before {
   content: "";
-  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--forge-hotmetal);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle-label span { top: 50%; transform: translateY(-50%); }
+.nav-toggle-label span::before { top: -9px; }
+.nav-toggle-label span::after { top: 9px; }
+
+.nav-toggle:checked + .nav-toggle-label span {
+  background: transparent;
+}
+.nav-toggle:checked + .nav-toggle-label span::before {
   top: 0;
-  left: -50%;
-  width: 200%;
-  height: 2px;
-
-  background: linear-gradient(90deg,
-              transparent,
-              rgba(var(--forge-hotmetal-rgb), 0.9),
-              rgba(var(--forge-accent-rgb), 0.85),
-              transparent);
-
-  opacity: 0.85;
-  animation: forgeSpark 4.5s linear infinite;
+  transform: rotate(45deg);
+}
+.nav-toggle:checked + .nav-toggle-label span::after {
+  top: 0;
+  transform: rotate(-45deg);
 }
 
-@keyframes forgeSpark {
-  0%   { transform: translateX(-50%) scaleX(0.8); opacity: 0.4; }
-  30%  { transform: translateX(10%) scaleX(1); opacity: 0.9; }  /* shorter blue phase */
-  60%  { transform: translateX(80%) scaleX(1); opacity: 0.6; }
-  100% { transform: translateX(150%) scaleX(0.8); opacity: 0.4; }
+/* ---------------------------
+   MOBILE NAVIGATION
+---------------------------- */
+@media (max-width: 760px) {
+
+  .nav-toggle-label { display: block; }
+
+  .forge-nav {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #050810;
+    border-top: 1px solid rgba(10,109,255,0.25);
+    transition: max-height 0.4s ease;
+    z-index: 1500;
+  }
+
+  .nav-toggle:checked ~ .forge-nav {
+    max-height: 500px;
+    padding: 1rem 0;
+  }
+
+  .forge-nav a {
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
+    color: var(--forge-subtext);
+  }
 }
 
-.forge-terminal pre {
-  margin: 0;
-  white-space: pre-wrap;
-  animation: terminalPulse 4s ease-in-out infinite alternate;
-  text-align: left;
+/* ---------------------------
+   DESKTOP NAVIGATION
+---------------------------- */
+@media (min-width: 761px) {
+  .forge-nav {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
 }
 
-@keyframes terminalPulse {
-  0%   { opacity: 0.8; }
-  50%  { opacity: 1; text-shadow: 0 0 8px rgba(0,255,200,0.6); }
-  100% { opacity: 0.8; }
+/* ---------------------------
+   DROPDOWN — PARENT
+---------------------------- */
+.nav-item.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-parent-text {
+  color: var(--forge-subtext);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.dropdown-arrow {
+  font-size: 1.3rem;
+  color: var(--forge-subtext);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* Rotate when open */
+.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+  color: var(--forge-hotmetal);
+}
+
+/* ---------------------------
+   DROPDOWN CONTENT (DESKTOP)
+---------------------------- */
+@media (min-width: 761px) {
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    background: rgba(5,8,16,0.98);
+    border: 1px solid rgba(10,109,255,0.25);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    min-width: 240px;
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    z-index: 9999;
+  }
+
+  .nav-item.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow:
+      0 0 12px rgba(10,109,255,0.45),
+      0 0 4px rgba(10,109,255,0.65) inset;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: var(--forge-subtext);
+    text-align: left;
+  }
+
+  .dropdown-content a:hover {
+    color: var(--forge-hotmetal);
+    background: rgba(10,109,255,0.12);
+  }
+}
+
+/* ---------------------------
+   DROPDOWN CONTENT (MOBILE)
+---------------------------- */
+@media (max-width: 760px) {
+
+  .nav-item.dropdown {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dropdown-parent-text,
+  .dropdown-toggle {
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 0.5rem 0.25rem !important;
+  }
+
+  .dropdown-arrow {
+    font-size: 1.6rem !important;
+    padding: 0.2rem;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: static !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    padding: 0;
+    margin: 0.25rem 0 0.5rem 1.5rem; /* indent */
+  }
+
+  .dropdown-toggle:focus + .dropdown-content,
+  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    padding: 0.4rem 0;
+    text-align: left !important;
+    width: auto;
+  }
+}
+
+/* ---------------------------
+   SPECIAL: BOLD OVERVIEW + DIVIDER
+---------------------------- */
+.dropdown-overview {
+  font-weight: 700 !important;
+  color: var(--forge-hotmetal) !important;
+}
+
+.dropdown-divider {
+  height: 1px;
+  margin: 0.25rem 0 0.5rem;
+  background: rgba(var(--forge-accent-rgb), 0.25);
 }
