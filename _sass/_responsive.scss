@@ -258,3 +258,104 @@
     box-shadow: 0 0 10px rgba(10, 109, 255, 0.35);
   }
 }
+
+
+/* =========================================
+   Dropdown Parent (Split Link + Toggle)
+   ========================================= */
+
+.nav-item.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  position: relative;
+}
+
+/* ------- Parent Text Link -------- */
+.dropdown-parent-text {
+  color: var(--forge-subtext);
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+.dropdown-parent-text:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(255, 143, 31, 0.6);
+}
+
+/* ------- Arrow Toggle Button -------- */
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-arrow {
+  font-size: 0.9rem;
+  color: var(--forge-subtext);
+  transition: transform 0.25s ease;
+}
+
+/* Rotate arrow on open */
+.dropdown-content:hover ~ .dropdown-toggle .dropdown-arrow,
+.dropdown-toggle:focus .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ------- Dropdown Menu -------- */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  min-width: 240px;
+  background: rgba(5, 8, 16, 0.97); /* matches your nav background */
+  border: 1px solid rgba(10, 109, 255, 0.25);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  z-index: 9999;
+
+  /* glow + animation */
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out,
+              box-shadow 0.3s ease;
+}
+
+/* Hover state (desktop) */
+@media (min-width: 761px) {
+  .dropdown-toggle:hover + .dropdown-content,
+  .dropdown-content:hover {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+
+    box-shadow:
+      0 0 12px rgba(10, 109, 255, 0.45),
+      0 0 4px rgba(10, 109, 255, 0.65) inset;
+  }
+}
+
+/* Mobile: open on tap/focus */
+@media (max-width: 760px) {
+  .dropdown-toggle:focus + .dropdown-content,
+  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: none;
+    box-shadow: none;
+    position: static;
+    border: none;
+    background: transparent;
+  }
+
+  .dropdown-content a {
+    text-align: center;
+    display: block;
+    padding: 0.6rem 0;
+  }
+}
