@@ -1,15 +1,15 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo -->
+    <!-- Logo + Site Title -->
     <a href="{{ '/' | relative_url }}" class="logo-link">
-      <img src="{{ '/assets/images/logo_transparent.png' | relative_url }}" 
-           alt="M.R. TechForge Logo" 
+      <img src="{{ '/assets/images/logo_transparent.png' | relative_url }}"
+           alt="M.R. TechForge Logo"
            class="forge-logo">
       <h1 class="forge-title">{{ site.title }}</h1>
     </a>
 
-    <!-- Hamburger Toggle -->
+    <!-- Mobile hamburger toggle -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
       <span></span>
@@ -18,42 +18,35 @@
     <!-- Navigation -->
     <nav class="forge-nav">
 
-      <!-- Standard top-level links -->
-      <div class="nav-item"><a href="{{ '/' | relative_url }}">Home</a></div>
-      <div class="nav-item"><a href="{{ '/about/' | relative_url }}">About</a></div>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
 
-      <!-- ===============================
-           SERVICES DROPDOWN (Pattern #2)
-           =============================== -->
+      <!-- ===========================
+           SERVICES DROPDOWN (Option A)
+           =========================== -->
       <div class="nav-item dropdown">
 
-        <!-- Split behavior: text is link, arrow is toggle -->
-        <a href="{{ '/services/' | relative_url }}" class="dropdown-parent-text">Services</a>
-
-        <button class="dropdown-toggle" aria-label="Open submenu">
-          <span class="dropdown-arrow">▾</span>
+        <button class="dropdown-toggle" aria-expanded="false">
+          <span class="dropdown-parent-text">Services</span>
+          <span class="dropdown-arrow">▼</span>
         </button>
 
-        <!-- Dropdown menu items -->
         <div class="dropdown-content">
-          <a href="{{ '/services/digital-security/' | relative_url }}">
-            Digital Security & Best Practices
-          </a>
 
-          <a href="{{ '/services/digital-security/life-without-google/' | relative_url }}">
-            💔 Life Without Google
-          </a>
+          <!-- Services main page -->
+          <a href="/services/" class="dropdown-overview">Services Overview</a>
+          <div class="dropdown-divider"></div>
 
-          <!-- Future subpages go here -->
+          <!-- Subpages -->
+          <a href="/services/digital-security/">Digital Security</a>
+          <a href="/services/digital-security/life-without-google/">Life Without Google</a>
         </div>
       </div>
-      <!-- End Services Dropdown -->
+      <!-- =========================== -->
 
-
-      <!-- Remaining menu items -->
-      <div class="nav-item"><a href="{{ '/documentation/' | relative_url }}">Documentation</a></div>
-      <div class="nav-item"><a href="{{ '/faq/' | relative_url }}">FAQ</a></div>
-      <div class="nav-item"><a href="{{ '/contact.html' | relative_url }}">Contact</a></div>
+      <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
+      <a href="{{ '/faq/' | relative_url }}">FAQ</a>
+      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
 
     </nav>
   </div>
