@@ -1,7 +1,7 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + Site Title -->
+    <!-- Logo -->
     <a href="{{ '/' | relative_url }}" class="logo-link">
       <img src="{{ '/assets/images/logo_transparent.png' | relative_url }}"
            alt="M.R. TechForge Logo"
@@ -9,40 +9,39 @@
       <h1 class="forge-title">{{ site.title }}</h1>
     </a>
 
-    <!-- Mobile hamburger toggle -->
+    <!-- Hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
       <span></span>
     </label>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav class="forge-nav">
 
       <a href="{{ '/' | relative_url }}">Home</a>
       <a href="{{ '/about/' | relative_url }}">About</a>
 
-      <!-- ===========================
-           SERVICES DROPDOWN (Option A)
-           =========================== -->
-      <div class="nav-item dropdown">
+      <!-- SERVICES DROPDOWN -->
+      <li class="nav-item dropdown">
 
-        <button class="dropdown-toggle" aria-expanded="false">
+        <button class="dropdown-toggle">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
         </button>
 
         <div class="dropdown-content">
-
-          <!-- Services main page -->
-          <a href="/services/" class="dropdown-overview">Services Overview</a>
-          <div class="dropdown-divider"></div>
+          <!-- Overview -->
+          <a href="/services/" class="dropdown-overview">SERVICES OVERVIEW</a>
 
           <!-- Subpages -->
-          <a href="/services/digital-security/">Digital Security</a>
-          <a href="/services/digital-security/life-without-google/">Life Without Google</a>
+          <a href="/services/digital-security/">DIGITAL SECURITY</a>
+          <a href="/services/digital-security/life-without-google/"
+             data-child="true">
+            LIFE WITHOUT GOOGLE
+          </a>
         </div>
-      </div>
-      <!-- =========================== -->
+
+      </li>
 
       <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
       <a href="{{ '/faq/' | relative_url }}">FAQ</a>
