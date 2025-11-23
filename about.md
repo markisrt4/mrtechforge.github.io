@@ -6,7 +6,7 @@ permalink: /about/
 
 <div class="page-intro">
   <h1>About <span class="forge-highlight">M.R. TechForge</span></h1>
-  <p class="tagline">Forging Relationships. Building Confidence. Securing the Digital World.</p>
+  <p class="tagline">Crafting Clarity. Forging Solutions. Secured with Integrity</p>
 </div>
 
 <section class="forge-card">
