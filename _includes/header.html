@@ -15,13 +15,22 @@
 
     <!-- Navigation -->
     <nav class="forge-nav">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/about/' | relative_url }}">About</a>
-      <a href="{{ '/services/' | relative_url }}">Services</a>
-      <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
-      <a href="{{ '/faq/' | relative_url }}">FAQ</a>
-      <!--<a href="{{ '/portfolio.html' | relative_url }}">Portfolio</a>-->
-      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
-    </nav>
+  <div class="nav-item"><a href="{{ '/' | relative_url }}">Home</a></div>
+  <div class="nav-item"><a href="{{ '/about/' | relative_url }}">About</a></div>
+
+  <!-- Dropdown: Services -->
+  <div class="nav-item dropdown">
+    <a href="{{ '/services/' | relative_url }}">Services</a>
+    <div class="dropdown-content">
+      <a href="{{ '/services/digital-security/' | relative_url }}">Digital Security & Best Practices</a>
+      <a href="{{ '/services/digital-security/life-without-google/' | relative_url }}">💔 Life Without Google</a>
+      <!-- Add more subpages here later -->
+    </div>
+  </div>
+
+  <div class="nav-item"><a href="{{ '/documentation/' | relative_url }}">Documentation</a></div>
+  <div class="nav-item"><a href="{{ '/faq/' | relative_url }}">FAQ</a></div>
+  <div class="nav-item"><a href="{{ '/contact.html' | relative_url }}">Contact</a></div>
+</nav>
   </div>
 </header>
