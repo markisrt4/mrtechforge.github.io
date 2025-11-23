@@ -34,10 +34,14 @@ Stay tuned — this section will evolve as we build out more tools and resources
 
 ---
 
-## 📘 A Quick Note
-
-These resources are intentionally high-level.  
-They’re meant to give you clarity, confidence, and a starting point — not to replace hands-on guidance.
-
-For detailed walk-throughs, personalized digital-security planning, or full seminar content, feel free to reach out through the Contact page.  
-Private consultations and workshops include expanded material not available online.
+<div class="callout-box">
+  <h3>📘 Quick Note</h3>
+  <p>
+    These resources are intentionally high-level and provide general guidance only. 
+    Detailed, hands-on instruction is available through private consultations and seminars.
+    Full workshop and training material is <em>not</em> published online.
+  </p>
+  <p>
+    If you'd like personalized help or deeper instruction, feel free to reach out through the Contact page.
+  </p>
+</div>
