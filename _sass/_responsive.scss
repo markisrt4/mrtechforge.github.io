@@ -221,3 +221,40 @@
     text-align: center;
   }
 }
+
+
+/* =============================
+   Forge Glow Effects for Dropdown
+   ============================= */
+
+/* Fade + glow when dropdown becomes visible */
+@media (min-width: 761px) {
+  .forge-nav .dropdown-content {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out,
+                box-shadow 0.3s ease;
+  }
+
+  .forge-nav .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+
+    /* Subtle Forge-blue glow */
+    box-shadow:
+      0 0 12px rgba(10, 109, 255, 0.45),      /* outer blue glow */
+      0 0 4px rgba(10, 109, 255, 0.65) inset; /* inner edge glow */
+  }
+}
+
+/* Mobile version: only a *very* light glow to avoid clutter */
+@media (max-width: 760px) {
+  .forge-nav .dropdown-content {
+    transition: box-shadow 0.25s ease;
+  }
+
+  .forge-nav .dropdown:focus-within .dropdown-content,
+  .forge-nav .dropdown:hover .dropdown-content {
+    box-shadow: 0 0 10px rgba(10, 109, 255, 0.35);
+  }
+}
