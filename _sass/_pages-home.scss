@@ -38,14 +38,15 @@
 
 /* --- Intro paragraph below tagline --- */
 .home-intro {
-  text-align: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
   max-width: 780px;
-  margin: 0 auto 2.5rem;
   font-size: 1.1rem;
   color: var(--forge-text);
   line-height: 1.75;
 }
 
+  
 /* --- Section Cards --- */
 .home section {
   background: rgba(20, 20, 20, 0.75);
