@@ -209,16 +209,7 @@ body::after {
   100% { background-position: 80% 70%; }
 }
 
-/* Hide default Markdown H1 to prevent duplicate page titles */
-main > h1 {
-  display: none !important;
-}
 
-/* Keep custom styled H1 visible */
-.page-intro h1,
-.services-intro h1 {
-  display: block !important;
-}
 @keyframes forgeDrift {
   0%   { transform: scale(1); }
   100% { transform: scale(1.1) rotate(360deg); }
@@ -228,4 +219,12 @@ main > h1 {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* FORCE HIDE duplicate page titles */
+.page-intro ~ h1,
+.services-intro ~ h1,
+main > h1 + h1,
+main > h1:first-of-type {
+  display: none !important;
 }
