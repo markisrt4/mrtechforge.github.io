@@ -27,4 +27,25 @@
         <!-- Parent clickable toggle -->
         <button class="dropdown-toggle">
           <span class="dropdown-parent-text">Services</span>
-          <span class="dropdown-arrow">▼
+          <span class="dropdown-arrow">▼</span>
+        </button>
+
+        <!-- Dropdown items -->
+        <div class="dropdown-content">
+          <a href="/services/" class="dropdown-overview">Services Overview</a>
+          <a href="/services/digital-security/">Digital Security</a>
+          <a href="/services/digital-security/life-without-google/"
+             data-child="true">
+            Life Without Google
+          </a>
+        </div>
+
+      </div>
+
+      <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
+      <a href="{{ '/faq/' | relative_url }}">FAQ</a>
+      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
+
+    </nav>
+  </div>
+</header>
