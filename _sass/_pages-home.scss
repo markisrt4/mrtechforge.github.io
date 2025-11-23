@@ -1,9 +1,10 @@
-.home h1 {
+/* Home Page — custom subtitle only */
+.home h1:not(.page-heading) {
   font-size: 2.6rem;
   text-align: center;
-  animation: forgeGlow 4s infinite;
   margin-bottom: 1.5rem;
 }
+
 .home p {
   text-align: center;
   color: var(--forge-subtext);
