@@ -123,3 +123,15 @@ It’s the perfect balance of privacy and practicality.
 | Google Contacts | Cloud-managed identity mapping | DAVx⁵ + Nextcloud/Mailbox.org | Private, encrypted | Great on Android |
 | Google Calendar | Behavioral analysis for scheduling | Proton Calendar | Encrypted | Works across devices |
 | Gboard | Keylogging metadata | AnySoftKeyboard / FlorisBoard | Open-source | Lightweight & safe |
+
+
+
+---
+
+## 📘 Disclaimer
+
+This guide is intentionally high-level and simplifies several technical topics for clarity.  
+Every person, family, and business has unique needs, and this page is not a substitute for individualized guidance.
+
+If you'd like deeper instruction, personalized migration help, or access to the full seminar material, please reach out through the Contact page.  
+Private sessions include hands-on steps, best-practice walkthroughs, and expanded content not published online.
