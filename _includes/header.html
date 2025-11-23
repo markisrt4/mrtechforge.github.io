@@ -1,7 +1,7 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo -->
+    <!-- Logo + Title -->
     <a href="{{ '/' | relative_url }}" class="logo-link">
       <img src="{{ '/assets/images/logo_transparent.png' | relative_url }}"
            alt="M.R. TechForge Logo"
@@ -9,13 +9,13 @@
       <h1 class="forge-title">{{ site.title }}</h1>
     </a>
 
-    <!-- Hamburger checkbox -->
+    <!-- Hamburger Toggle -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
       <span></span>
     </label>
 
-    <!-- Navigation -->
+    <!-- Main Navigation -->
     <nav class="forge-nav">
 
       <a href="{{ '/' | relative_url }}">Home</a>
@@ -24,18 +24,17 @@
       <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Parent clickable toggle -->
-        <button class="dropdown-toggle">
+        <!-- Parent Toggle -->
+        <button class="dropdown-toggle" type="button">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
         </button>
 
-        <!-- Dropdown items -->
+        <!-- Dropdown Links -->
         <div class="dropdown-content">
           <a href="/services/" class="dropdown-overview">Services Overview</a>
           <a href="/services/digital-security/">Digital Security</a>
-          <a href="/services/digital-security/life-without-google/"
-             data-child="true">
+          <a href="/services/digital-security/life-without-google/" data-child="true">
             Life Without Google
           </a>
         </div>
@@ -44,8 +43,9 @@
 
       <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
       <a href="{{ '/faq/' | relative_url }}">FAQ</a>
-      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
 
     </nav>
+
   </div>
 </header>
