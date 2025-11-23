@@ -150,3 +150,74 @@
     max-width: 1100px;
   }
 }
+
+/* =============================
+   Dropdown Navigation (Forge Safe)
+   ============================= */
+
+/* Parent nav item for dropdown */
+.forge-nav .dropdown {
+  position: relative;
+}
+
+/* Hidden until hover or tap */
+.forge-nav .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: rgba(5, 8, 16, 0.98); /* matches your mobile nav background */
+  border: 1px solid rgba(10, 109, 255, 0.25); /* same electric blue border */
+
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  min-width: 240px;
+  z-index: 9999;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+/* Dropdown links */
+.forge-nav .dropdown-content a {
+  display: block;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  color: var(--forge-subtext);
+  font-size: 0.95rem;
+}
+
+.forge-nav .dropdown-content a:hover {
+  color: var(--forge-hotmetal);
+  background: rgba(10, 109, 255, 0.12);
+  text-shadow: 0 0 6px rgba(255, 143, 31, 0.6);
+}
+
+/* Desktop: show dropdown on hover */
+@media (min-width: 761px) {
+  .forge-nav .dropdown:hover .dropdown-content {
+    display: block;
+  }
+}
+
+/* Mobile: show dropdown on tap/focus */
+@media (max-width: 760px) {
+  .forge-nav .dropdown-content {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding-left: 1rem;
+  }
+
+  .forge-nav .dropdown:focus-within .dropdown-content,
+  .forge-nav .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .forge-nav .dropdown-content a {
+    width: 100%;
+    padding: 0.6rem 0;
+    text-align: center;
+  }
+}
