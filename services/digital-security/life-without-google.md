@@ -128,10 +128,9 @@ It’s the perfect balance of privacy and practicality.
 
 ---
 
-## 📘 Disclaimer
-
-This guide is intentionally high-level and simplifies several technical topics for clarity.  
-Every person, family, and business has unique needs, and this page is not a substitute for individualized guidance.
-
-If you'd like deeper instruction, personalized migration help, or access to the full seminar material, please reach out through the Contact page.  
-Private sessions include hands-on steps, best-practice walkthroughs, and expanded content not published online.
+<div class="notice--info">
+  <strong>📘 Quick Note</strong><br>
+  These resources are intentionally high-level and meant as overviews only.  
+  For personalized digital-security guidance, hands-on training, or access to full seminar material, 
+  please reach out through the Contact page.
+</div>
