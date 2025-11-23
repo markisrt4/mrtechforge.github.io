@@ -359,3 +359,48 @@
     padding: 0.6rem 0;
   }
 }
+
+/* ==========================
+   MOBILE DROPDOWN FIX
+   ========================== */
+
+@media (max-width: 760px) {
+
+  /* Make subpages INDENTED instead of full-width boxes */
+  .dropdown-content {
+    position: static !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0.25rem 0 0.5rem 1.5rem !important; /* indent */
+  }
+
+  .dropdown-content a {
+    width: auto !important;
+    text-align: left !important;
+    padding: 0.4rem 0 !important;
+    font-size: 1rem !important;
+    color: var(--forge-subtext) !important;
+  }
+
+  /* Prevent parent item from showing twice */
+  .nav-item.dropdown > .dropdown-content > .dropdown-parent-text {
+    display: none;
+  }
+
+  /* Glow OFF for mobile */
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    box-shadow: none !important;
+  }
+
+  /* Make the arrow larger + easier to tap */
+  .dropdown-toggle {
+    padding: 0.6rem 0.6rem !important;
+  }
+
+  .dropdown-arrow {
+    font-size: 1.2rem !important;
+  }
+}
