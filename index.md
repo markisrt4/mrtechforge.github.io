@@ -3,6 +3,8 @@ layout: home
 title: M.R. TechForge
 ---
 
+<h1 class="hero-title forge-title">M.R. TechForge</h1>
+
 # Crafting Clarity. Forging Solutions. Secured with Integrity.
 
 Welcome to **M.R. TechForge** — where technology meets clarity, integrity, and purpose.  
