@@ -109,9 +109,8 @@ It’s the perfect balance of privacy and practicality.
 ---
 
 # 🗂️ Step 3: The Big Comparison Table  
-*(A living document you can update as you discover new tools)*
 
-```markdown
+
 | Google Service | What It Does (Really) | Privacy-Respecting Alternative | Why It’s Better | Notes |
 |----------------|------------------------|-------------------------------|------------------|-------|
 | Gmail | Central hub of your digital identity and metadata | Proton Mail | Encrypted, private, no tracking | Smooth app experience |
