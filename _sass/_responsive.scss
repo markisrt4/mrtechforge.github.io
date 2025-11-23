@@ -404,3 +404,39 @@
     font-size: 1.2rem !important;
   }
 }
+
+@media (max-width: 760px) {
+
+  /* Keep Services text + arrow on the same line */
+  .nav-item.dropdown {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Prevent text and arrow from going full width */
+  .dropdown-parent-text,
+  .dropdown-toggle {
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 0.5rem 0.25rem !important;
+  }
+
+  /* Center Services + arrow in the menu */
+  .dropdown-parent-text {
+    text-align: center !important;
+  }
+
+  /* Make arrow look normal, not like a weird white box */
+  .dropdown-toggle {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* Slightly larger arrow tap area for thumbs */
+  .dropdown-arrow {
+    font-size: 1.4rem !important;
+    color: var(--forge-subtext);
+  }
+}
