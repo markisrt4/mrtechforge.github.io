@@ -27,19 +27,29 @@
   margin-bottom: 0.8rem;
 }
 
-/* blurred “M.R. TECHFORGE” stamp */
+/* =====================================================
+   HERO STAMP — M.R. TechForge Professional Glow
+   Clean, sharp, subtle, non-blurry watermark line
+   ===================================================== */
+
 .hero-stamp {
   font-family: "Orbitron", sans-serif;
-  font-size: clamp(2.4rem, 5vw, 3.5rem);
-  letter-spacing: 0.25em;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color: var(--forge-hotmetal);
-  opacity: 0.25;
-  filter: blur(2px);
+  color: rgba(var(--forge-hotmetal-rgb), 0.22);   /* soft “molten gold” */
+  text-align: center;
 
-  text-shadow: 0 0 20px rgba(var(--forge-hotmetal-rgb), 0.5);
-  margin: 0.4rem 0 1.1rem;
+  /* soft forge glow */
+  text-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.35),
+    0 0 14px rgba(var(--forge-hotmetal-rgb), 0.25);
+
+  margin: 1.2rem 0 1.8rem;
+
+  /* slight pulsing glow, very subtle */
+  animation: heroStampPulse 6s ease-in-out infinite;
 }
 
 /* main hero title */
@@ -316,4 +326,10 @@
 @keyframes fadeInHome {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroStampPulse {
+  0%   { opacity: 0.25; text-shadow: 0 0 6px rgba(var(--forge-hotmetal-rgb), 0.28); }
+  50%  { opacity: 0.33; text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.45); }
+  100% { opacity: 0.25; text-shadow: 0 0 6px rgba(var(--forge-hotmetal-rgb), 0.28); }
 }
