@@ -1,6 +1,7 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v3.0 Clean Build)
-   Sharp title • Fixed dropdown • Perfect mobile behavior
+   M.R. TECHFORGE — NAVIGATION (v3.0 Clean Hover Build)
+   Desktop: Hover dropdown
+   Mobile: Tap to open
    ===================================================== */
 
 /* -----------------------------------------------------
@@ -16,6 +17,7 @@
   border-bottom: 2px solid var(--forge-accent-dark);
   backdrop-filter: blur(6px);
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
+
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
@@ -23,13 +25,14 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.6rem 1rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* -----------------------------------------------------
-   LOGO
+   LOGO + TITLE
 ------------------------------------------------------ */
 .logo-link {
   display: flex;
@@ -40,18 +43,16 @@
 
 .forge-logo {
   height: 65px;
-  filter: drop-shadow(0 0 10px rgba(var(--forge-accent-rgb), 0.45));
+  width: auto;
+  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .forge-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 18px rgba(var(--forge-hotmetal-rgb), 0.75));
+  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
 }
 
-/* -----------------------------------------------------
-   ANIMATED TITLE — SHARP VERSION
------------------------------------------------------- */
 .forge-title {
   font-family: "Orbitron", sans-serif;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
@@ -69,13 +70,7 @@
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: forgeTitleSpectrum 6s linear infinite;
-
-  /* Clean glow (NOT blurry) */
-  text-shadow:
-    0 0 4px rgba(var(--forge-accent-rgb), 0.65),
-    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45);
 }
 
 /* -----------------------------------------------------
@@ -101,7 +96,7 @@
 }
 
 /* -----------------------------------------------------
-   HAMBURGER
+   HAMBURGER (MOBILE)
 ------------------------------------------------------ */
 .nav-toggle {
   display: none;
@@ -156,26 +151,30 @@
     position: absolute;
     top: 100%;
     left: 0;
-    flex-direction: column;
-    width: 100%;
+
     background: #050810;
     border-top: 1px solid rgba(10,109,255,0.25);
+
+    width: 100%;
+    flex-direction: column;
+
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease-in-out;
+
     animation: mobileSlideDown 0.35s ease-out;
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 650px;
+    max-height: 600px;
     padding: 1rem 0;
   }
 
   .forge-nav a {
     width: 100%;
-    text-align: center;
     padding: 0.75rem 0;
     font-size: 1.15rem;
+    text-align: center;
   }
 }
 
@@ -185,39 +184,49 @@
 }
 
 /* -----------------------------------------------------
-   SERVICES DROPDOWN (DESKTOP)
+   SERVICES DROPDOWN — SHARED
 ------------------------------------------------------ */
 .nav-item.dropdown {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
 }
 
-.dropdown-toggle {
+/* Unified trigger */
+.dropdown-toggle-all {
   background: none;
   border: none;
+  color: var(--forge-subtext);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  transition: 0.25s ease;
+}
+
+.dropdown-toggle-all:hover {
+  color: var(--forge-hotmetal);
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
-  color: var(--forge-subtext);
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
-.dropdown-open .dropdown-arrow {
-  transform: rotate(180deg);
-  color: var(--forge-hotmetal);
-}
-
+/* -----------------------------------------------------
+   DESKTOP (Hover to open)
+------------------------------------------------------ */
 @media (min-width: 761px) {
   .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
+
     min-width: 260px;
 
     background: rgba(5,8,16,0.98);
@@ -228,9 +237,11 @@
     opacity: 0;
     transform: translateY(6px);
     transition: 0.25s ease;
+
     z-index: 9999;
   }
 
+  /* Hover opens menu */
   .nav-item.dropdown:hover .dropdown-content {
     display: block;
     opacity: 1;
@@ -240,12 +251,24 @@
       0 0 4px rgba(10,109,255,0.65) inset;
   }
 
-  .dropdown-content a {
-    padding: 0.55rem 1rem;
-    display: block;
+  /* Hover arrow animation */
+  .nav-item.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--forge-hotmetal);
   }
 
-  /* hierarchy */
+  .dropdown-content a {
+    display: block;
+    padding: 0.55rem 1rem;
+    color: var(--forge-subtext);
+  }
+
+  .dropdown-content a:hover {
+    color: var(--forge-hotmetal);
+    background: rgba(10,109,255,0.12);
+  }
+
+  /* hierarchy alignment */
   .dropdown-content a[data-child="true"] {
     margin-left: 0.75rem;
   }
@@ -256,9 +279,10 @@
 }
 
 /* -----------------------------------------------------
-   SERVICES DROPDOWN (MOBILE)
+   MOBILE DROPDOWN (tap to expand)
 ------------------------------------------------------ */
 @media (max-width: 760px) {
+
   .dropdown-content {
     display: none;
     position: static !important;
@@ -266,8 +290,7 @@
     margin-top: 0.35rem;
   }
 
-  .dropdown-toggle:focus + .dropdown-content,
-  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
+  .dropdown-toggle-all:focus + .dropdown-content {
     display: block;
   }
 
@@ -280,24 +303,8 @@
   }
 }
 
-/* -----------------------------------------------------
-   OVERVIEW STYLE
------------------------------------------------------- */
+/* Highlighted overview */
 .dropdown-overview {
   font-weight: 700;
   color: var(--forge-hotmetal) !important;
-}
-
-/* -----------------------------------------------------
-   HEADER ANIMATIONS
------------------------------------------------------- */
-@keyframes forgeHeaderGlow {
-  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
-  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
-}
-
-@keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
