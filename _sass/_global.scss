@@ -1,38 +1,22 @@
-/* ============================================================
-   M.R. TECHFORGE — GLOBAL STYLES (v9.0 Stable)
-   Consolidates:
-   - Layout
-   - Typography
-   - Header / Nav / Dropdowns
-   - Mobile menu
-   - Footer
-   - Glow animations
-   ============================================================ */
+/* =====================================================
+   M.R. TECHFORGE — GLOBAL STYLES (v8.2 Stable Build)
+   Consolidated layout, header, nav, dropdowns, footer,
+   background, typography, animations, fixes.
+   ===================================================== */
 
 /* ---------------------------------------
-   ROOT VARIABLES (should be in variables.scss)
----------------------------------------- */
-/* (Assumes your :root is still in _variables.scss) */
-
-
-/* ---------------------------------------
-   GLOBAL BACKGROUND + BODY RESET
+   GLOBAL BACKGROUND + TYPOGRAPHY
 ---------------------------------------- */
 html, body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(180deg, #050505 0%, #000 100%);
+  background-attachment: fixed;
   color: var(--forge-text);
-  background: #000;
   font-family: "Titillium Web", sans-serif;
   min-height: 100%;
-}
-
-body {
-  line-height: 1.7;
+  line-height: 1.65;
   font-size: 1.05rem;
-  background-image: radial-gradient(circle at 20% 10%, #0A0D12 0%, #000 95%);
-  background-attachment: fixed;
-  overflow-x: hidden;
 }
 
 /* ---------------------------------------
@@ -41,69 +25,13 @@ body {
 main {
   max-width: 950px;
   margin: 2rem auto;
-  padding: 2rem 1rem;
+  padding: 1rem;
   text-align: left;
-  background: transparent;
 }
 
-/* ============================================================
-   TYPOGRAPHY (HEADINGS, PARAGRAPHS, LISTS, QUOTES, CODE)
-============================================================ */
-
-h1, h2, h3 {
-  color: var(--forge-hotmetal);
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  font-family: "Orbitron", sans-serif;
-  text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
-  margin-top: 1.6rem;
-  margin-bottom: 1rem;
-}
-
-p, li {
-  color: var(--forge-text);
-  font-family: "Titillium Web", sans-serif;
-  text-shadow: 0 0 6px rgba(var(--forge-accent-rgb), 0.18);
-  line-height: 1.75;
-}
-
-ul, ol { padding-left: 1.3rem; }
-
-ul li[data-icon] {
-  list-style: none;
-  padding-left: 2rem;
-  position: relative;
-}
-ul li[data-icon]::before {
-  content: attr(data-icon);
-  position: absolute;
-  left: 0;
-  top: 1px;
-  font-size: 1.2rem;
-  filter: drop-shadow(0 0 7px rgba(var(--forge-accent-rgb), 0.3));
-}
-
-blockquote {
-  border-left: 4px solid var(--forge-accent-dark);
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  background: rgba(12,14,20,0.55);
-  border-radius: 6px;
-  color: #b9c9e6;
-  font-style: italic;
-}
-
-code {
-  background: #1a1a1a;
-  padding: 0.18rem 0.3rem;
-  border-radius: 4px;
-  color: #98caff;
-  font-family: "Ubuntu Mono", monospace;
-}
-
-/* ============================================================
-   HEADER
-============================================================ */
+/* =======================================
+   HEADER + LOGO + TITLE WAVE ANIMATION
+======================================= */
 
 .forge-header {
   position: sticky;
@@ -111,10 +39,10 @@ code {
   width: 100%;
   z-index: 1000;
 
-  background: rgba(10,10,12,0.92);
+  background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
-  backdrop-filter: blur(6px);
 
+  backdrop-filter: blur(6px);
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
 
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
@@ -122,14 +50,15 @@ code {
 
 .header-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap !important;
+  justify-content: space-between;
+  flex-wrap: nowrap;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.6rem 1rem;
 }
 
+/* LOGO */
 .logo-link {
   display: flex;
   align-items: center;
@@ -141,7 +70,7 @@ code {
   height: 65px;
   width: auto;
   filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .forge-logo:hover {
@@ -149,35 +78,36 @@ code {
   filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
 }
 
+/* Animated “M.R. TechForge” text */
 .forge-title {
   background: linear-gradient(
     90deg,
     #F5B841,
     #F5B841,
-    #F5B841,
     #0A6DFF,
     #153D77,
-    #F5B841,
     #F5B841
   );
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   animation: forgeTitleSpectrum 6s linear infinite;
+
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
 }
 
-/* ============================================================
+/* =======================================
    DESKTOP NAVIGATION
-============================================================ */
+======================================= */
 
 .forge-nav {
   display: flex;
-  align-items: center;
   gap: 1.2rem;
+  align-items: center;
 }
 
 .forge-nav a {
@@ -185,9 +115,9 @@ code {
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .5px;
-  transition: 0.25s;
+  letter-spacing: 0.5px;
   position: relative;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .forge-nav a:hover {
@@ -195,11 +125,18 @@ code {
   text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
 }
 
-/* ============================================================
-   MOBILE HAMBURGER
-============================================================ */
+/* Visited link color */
+.forge-nav a:visited {
+  color: var(--forge-hotmetal-light);
+}
 
-.nav-toggle { display: none; }
+/* =======================================
+   MOBILE NAV + HAMBURGER
+======================================= */
+
+.nav-toggle {
+  display: none;
+}
 
 .nav-toggle-label {
   display: none;
@@ -213,38 +150,37 @@ code {
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-  content: "";
   position: absolute;
+  content: "";
   height: 3px;
   width: 100%;
   background: var(--forge-hotmetal);
   border-radius: 2px;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .nav-toggle-label span {
   top: 50%;
   transform: translateY(-50%);
 }
-.nav-toggle-label span::before { top: -9px; }
-.nav-toggle-label span::after  { top: 9px; }
 
+.nav-toggle-label span::before { top: -9px; }
+.nav-toggle-label span::after { top: 9px; }
+
+/* Turn into X */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
 .nav-toggle:checked + .nav-toggle-label span::before {
-  transform: rotate(45deg);
   top: 0;
+  transform: rotate(45deg);
 }
 .nav-toggle:checked + .nav-toggle-label span::after {
-  transform: rotate(-45deg);
   top: 0;
+  transform: rotate(-45deg);
 }
 
-/* ============================================================
-   MOBILE NAV MENU
-============================================================ */
-
+/* MOBILE MENU */
 @media (max-width: 760px) {
 
   .nav-toggle-label {
@@ -255,71 +191,71 @@ code {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-
-    flex-direction: column;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height .4s ease-in-out;
-
     background: #050810;
     border-top: 1px solid rgba(10,109,255,0.25);
-
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
     z-index: 1500;
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 600px;
+    max-height: 550px;
     padding: 1rem 0;
   }
 
   .forge-nav a {
     width: 100%;
     text-align: center;
-    padding: .75rem 0;
+    padding: 0.75rem 0;
     font-size: 1.1rem;
   }
 }
 
-/* ============================================================
+/* =======================================
    DROPDOWN MENU
-============================================================ */
+======================================= */
 
 /* Parent container */
 .nav-item.dropdown {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: .25rem;
-  position: relative;
+  gap: 0.2rem; /* tightened visually */
 }
 
-/* Parent link */
+/* Parent text */
 .dropdown-parent-text {
   color: var(--forge-subtext);
   font-weight: 600;
   text-transform: uppercase;
 }
 
-/* Arrow */
-.dropdown-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: .25rem;
-}
+/* ▼ arrow */
 .dropdown-arrow {
-  font-size: 1.3rem;
+  font-size: 1rem;        /* <<< FIXED SIZE */
+  line-height: 1;
   color: var(--forge-subtext);
-  transition: .25s;
+  transition: transform 0.25s ease;
 }
 
+/* Rotated arrow on open */
 .dropdown-open .dropdown-arrow {
   transform: rotate(180deg);
   color: var(--forge-hotmetal);
 }
 
-/* Desktop submenu */
+/* DESKTOP DROPDOWN */
 @media (min-width: 761px) {
+
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
 
   .dropdown-content {
     display: none;
@@ -328,15 +264,15 @@ code {
     left: 0;
 
     min-width: 240px;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
 
-    background: rgba(5,8,16,.98);
-    border: 1px solid rgba(10,109,255,.25);
+    background: rgba(5,8,16,0.98);
+    border: 1px solid rgba(10,109,255,0.25);
     border-radius: 8px;
 
     opacity: 0;
     transform: translateY(6px);
-    transition: 0.25s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease;
     z-index: 9999;
   }
 
@@ -346,66 +282,61 @@ code {
     transform: translateY(0);
 
     box-shadow:
-      0 0 12px rgba(10,109,255,.45),
-      0 0 4px  rgba(10,109,255,.65) inset;
+      0 0 12px rgba(10,109,255,0.45),
+      0 0 4px rgba(10,109,255,0.65) inset;
   }
 
   .dropdown-content a {
     display: block;
-    padding: .6rem 1rem;
-    text-align: left;
+    padding: 0.6rem 1rem;
     color: var(--forge-subtext);
   }
 
   .dropdown-content a:hover {
     color: var(--forge-hotmetal);
-    background: rgba(10,109,255,.12);
+    background: rgba(10,109,255,0.12);
   }
 }
 
-/* Mobile submenu */
+/* MOBILE DROPDOWN */
 @media (max-width: 760px) {
 
   .nav-item.dropdown {
     justify-content: center;
   }
 
-  .dropdown-arrow {
-    font-size: 1.6rem !important;
+  .dropdown-toggle {
+    display: inline-flex;
   }
 
   .dropdown-content {
     display: none;
     position: static !important;
-
-    margin-top: .35rem;
-    padding-left: 1.8rem;
-
     background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+    padding-left: 1.8rem;
+    margin-top: 0.35rem;
   }
 
   .dropdown-toggle:focus + .dropdown-content,
   .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
     display: block;
   }
-
-  .dropdown-content a {
-    padding: .4rem 0;
-    text-align: left !important;
-  }
 }
 
+/* Hierarchy styles */
 .dropdown-overview {
+  font-weight: 700;
   color: var(--forge-hotmetal) !important;
-  font-weight: 700 !important;
 }
 
-/* ============================================================
-   FOOTER
-============================================================ */
+.dropdown-content [data-child="true"] {
+  margin-left: 1rem;
+  opacity: 0.8;
+}
 
+/* ---------------------------------------
+   FOOTER
+---------------------------------------- */
 .forge-footer {
   margin-top: 4rem;
   background: linear-gradient(180deg, #050505 0%, #000 100%);
@@ -415,23 +346,21 @@ code {
 
 .footer-inner {
   max-width: 900px;
-  padding: 2rem 1rem;
   margin: 0 auto;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
-/* ============================================================
-   REMOVE DUPLICATE PAGE TITLES
-============================================================ */
-
+/* ---------------------------------------
+   REMOVE DUPLICATE TITLES
+---------------------------------------- */
 main > h1:first-child {
   display: none !important;
 }
 
-/* ============================================================
+/* ---------------------------------------
    ANIMATIONS
-============================================================ */
-
+---------------------------------------- */
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
