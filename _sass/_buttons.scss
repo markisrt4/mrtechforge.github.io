@@ -1,136 +1,132 @@
-/* ===========================================================
-   M.R. TECHFORGE — BUTTON SYSTEM (v1.0)
-   Glow buttons, outline buttons, plus optional icon support.
-   Clean, modular, NO overrides.
-   =========================================================== */
+/* ==========================================================
+   M.R. TECHFORGE — BUTTONS (v3.0 Moderate Forge Glow Edition)
+   Includes:
+     - .btn-forge   (orange glow, animated, CTA)
+     - .btn-outline (minimal outline)
+     - .btn-icon    (optional icon support)
+   All effects are subtle + professional, no over-the-top neon.
+   ========================================================== */
 
-/* ---------------------------------------
-   SHARED BUTTON BASE
----------------------------------------- */
-.forge-btn {
+/* Shared base */
+.btn {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
 
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.6px;
+  text-transform: uppercase;
   text-decoration: none;
-  border-radius: 10px;
 
-  padding: 0.65rem 1.25rem;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
+
+  position: relative;
+  overflow: hidden;
 }
 
-/* Auto icon sizing */
-.forge-btn i {
-  font-size: 1.1rem;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
+/* =======================================
+   1) FORGE GLOW BUTTON (Moderate Glow)
+   ======================================= */
 
-.forge-btn:hover i {
-  opacity: 1;
-}
+.btn-forge {
+  color: #000;
+  background: var(--forge-hotmetal);
+  border: 1px solid var(--forge-hotmetal-deep);
 
-/* ---------------------------------------
-   GLOW BUTTON (Primary CTA)
----------------------------------------- */
-
-.btn-glow {
-  @extend .forge-btn;
-
-  background: linear-gradient(
-    90deg,
-    var(--forge-accent-dark),
-    var(--forge-accent)
-  );
-  color: #fff;
-
-  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.45);
-}
-
-.btn-glow:hover {
-  background: linear-gradient(
-    90deg,
-    var(--forge-hotmetal),
-    var(--forge-accent)
-  );
   box-shadow:
-    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.7),
-    0 0 8px rgba(var(--forge-accent-rgb), 0.4);
-  transform: translateY(-2px);
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55),
+    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.35) inset;
+
+  /* Gentle breathing effect */
+  animation: forgePulse 3s ease-in-out infinite;
 }
 
-/* ---------------------------------------
-   OUTLINE BUTTON
----------------------------------------- */
+.btn-forge:hover {
+  background: var(--forge-hotmetal-light);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.75),
+    0 0 28px rgba(var(--forge-hotmetal-rgb), 0.55) inset;
+}
+
+.btn-forge:active {
+  transform: scale(0.97);
+}
+
+/* Pulse animation */
+@keyframes forgePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(var(--forge-hotmetal-rgb), 0.45),
+      0 0 18px rgba(var(--forge-hotmetal-rgb), 0.28) inset;
+  }
+  50% {
+    box-shadow:
+      0 0 16px rgba(var(--forge-hotmetal-rgb), 0.75),
+      0 0 25px rgba(var(--forge-hotmetal-rgb), 0.45) inset;
+  }
+}
+
+/* =======================================
+   2) OUTLINE BUTTON (Cool, Minimal)
+   ======================================= */
 
 .btn-outline {
-  @extend .forge-btn;
-
-  border: 2px solid var(--forge-accent);
   color: var(--forge-accent);
   background: transparent;
+  border: 2px solid var(--forge-accent);
+
+  box-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.2);
+
+  transition: all 0.25s ease;
 }
 
 .btn-outline:hover {
-  color: var(--forge-hotmetal);
-  border-color: var(--forge-hotmetal);
-
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
-  box-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.35);
-
+  background: rgba(var(--forge-accent-rgb), 0.15);
+  box-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.35);
   transform: translateY(-2px);
 }
 
-/* ---------------------------------------
-   SIZE VARIANTS
----------------------------------------- */
-
-.btn-small {
-  padding: 0.45rem 1rem;
-  font-size: 0.9rem;
+.btn-outline:active {
+  transform: scale(0.97);
 }
 
-.btn-large {
-  padding: 0.9rem 1.7rem;
+/* =======================================
+   3) ICON SUPPORT (Optional)
+   ======================================= */
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  /* Icons from FontAwesome or inline SVG */
+}
+
+.btn-icon i,
+.btn-icon svg {
   font-size: 1.2rem;
+  transition: transform 0.25s ease;
 }
 
-.btn-full {
-  width: 100%;
-  justify-content: center;
+.btn-icon:hover i,
+.btn-icon:hover svg {
+  transform: scale(1.15);
 }
 
-/* ---------------------------------------
-   OPTIONAL ICON HELPERS
-   (You can call buttons like: <a class="btn-glow btn-icon">
----------------------------------------- */
-
-.btn-icon i {
-  font-size: 1.2rem;
-}
-
-/* Icon themes */
-.icon-secure { color: var(--forge-accent); }
-.icon-alert  { color: #ff4d4d; }
-.icon-doc    { color: var(--forge-hotmetal); }
-.icon-gear   { color: var(--forge-accent-dark); }
-
-/* ---------------------------------------
-   DANGER BUTTON (For warnings / critical)
----------------------------------------- */
-.btn-danger {
-  @extend .forge-btn;
-
-  background: linear-gradient(90deg, #b80000, #ff4d4d);
-  color: #fff;
-  box-shadow: 0 0 10px rgba(255,0,0,0.45);
-}
-
-.btn-danger:hover {
-  background: linear-gradient(90deg, #ff1a1a, #ff8080);
-  box-shadow: 0 0 18px rgba(255,40,40,0.7);
-  transform: translateY(-2px);
+/* =======================================
+   MOBILE ADJUSTMENTS
+   ======================================= */
+@media (max-width: 760px) {
+  .btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+  }
 }
