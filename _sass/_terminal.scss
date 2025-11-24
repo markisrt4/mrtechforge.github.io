@@ -1,0 +1,44 @@
+/* ==========================================================
+   TERMINAL BLOCK — Official Forge Terminal Styling (v2.0)
+   ========================================================== */
+
+.forge-terminal {
+  background: #01070f;
+  border: 1px solid rgba(0, 204, 255, 0.45);
+  border-radius: 10px;
+  padding: 1.3rem 1.6rem;
+  margin: 2.5rem 0;
+
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.05rem;
+  color: #16e0d4;
+
+  box-shadow:
+    0 0 12px rgba(0, 204, 255, 0.25),
+    0 0 32px rgba(0, 204, 255, 0.12) inset;
+
+  position: relative;
+  overflow: hidden;
+
+  animation: forgeTerminalPulse 5s ease-in-out infinite alternate;
+}
+
+/* Genuine cyber terminal glow */
+@keyframes forgeTerminalPulse {
+  0% {
+    box-shadow:
+      0 0 10px rgba(0, 204, 255, 0.3),
+      0 0 25px rgba(0, 204, 255, 0.1) inset;
+  }
+  100% {
+    box-shadow:
+      0 0 14px rgba(0, 204, 255, 0.45),
+      0 0 40px rgba(0, 204, 255, 0.18) inset;
+  }
+}
+
+/* Prompt ($ …) always tinted neon green */
+.forge-terminal .prompt {
+  color: #1cff9c;
+  font-weight: 600;
+}
