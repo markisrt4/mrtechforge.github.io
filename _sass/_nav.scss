@@ -1,18 +1,18 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION SYSTEM (v1.0 Clean Build)
-   Contains ONLY:
-   - Header + logo  
-   - Title animation  
-   - Desktop nav  
-   - Mobile hamburger  
-   - Dropdown menus  
-   - Hierarchy rules
-   - Mobile slide-in animation
-   ============================================================== */
+   M.R. TECHFORGE — NAVIGATION SYSTEM (v2.0 Animated Build)
+   Includes:
+   - Header + logo
+   - Title animation
+   - Desktop nav
+   - Mobile hamburger
+   - Dropdowns
+   - Mobile slide + fade animation (corrected)
+   - Submenu fade animation
+   ===================================================== */
 
-/* -----------------------------------------------------
+/* --------------------------------------
    HEADER WRAPPER
------------------------------------------------------- */
+--------------------------------------- */
 .forge-header {
   position: sticky;
   top: 0;
@@ -22,8 +22,8 @@
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
   backdrop-filter: blur(6px);
-
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
+
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
@@ -31,15 +31,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.6rem 1rem;
 }
 
-/* -----------------------------------------------------
+/* --------------------------------------
    LOGO
------------------------------------------------------- */
+--------------------------------------- */
 .logo-link {
   display: flex;
   align-items: center;
@@ -59,9 +58,9 @@
   filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
 }
 
-/* -----------------------------------------------------
-   ANIMATED TITLE
------------------------------------------------------- */
+/* --------------------------------------
+   TITLE ANIMATION
+--------------------------------------- */
 .forge-title {
   background: linear-gradient(
     90deg,
@@ -83,9 +82,9 @@
   font-size: clamp(1.4rem, 2.2vw, 2rem);
 }
 
-/* -----------------------------------------------------
+/* --------------------------------------
    DESKTOP NAVIGATION
------------------------------------------------------- */
+--------------------------------------- */
 .forge-nav {
   display: flex;
   gap: 1.2rem;
@@ -94,7 +93,6 @@
 
 .forge-nav a {
   color: var(--forge-subtext);
-  text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -110,9 +108,9 @@
   color: var(--forge-hotmetal-light);
 }
 
-/* -----------------------------------------------------
-   HAMBURGER (MOBILE)
------------------------------------------------------- */
+/* --------------------------------------
+   HAMBURGER MENU
+--------------------------------------- */
 .nav-toggle {
   display: none;
 }
@@ -129,8 +127,8 @@
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-  position: absolute;
   content: "";
+  position: absolute;
   height: 3px;
   width: 100%;
   background: var(--forge-hotmetal);
@@ -143,34 +141,26 @@
   transform: translateY(-50%);
 }
 
-.nav-toggle-label span::before {
-  top: -9px;
-}
-.nav-toggle-label span::after {
-  top: 9px;
-}
+.nav-toggle-label span::before { top: -9px; }
+.nav-toggle-label span::after  { top:  9px; }
 
-/* X transition */
+/* X transformation */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
 .nav-toggle:checked + .nav-toggle-label span::before {
-  top: 0;
-  transform: rotate(45deg);
+  transform: rotate(45deg); top: 0;
 }
 .nav-toggle:checked + .nav-toggle-label span::after {
-  top: 0;
-  transform: rotate(-45deg);
+  transform: rotate(-45deg); top: 0;
 }
 
-/* -----------------------------------------------------
-   MOBILE NAV MENU
------------------------------------------------------- */
+/* --------------------------------------
+   MOBILE NAVIGATION
+--------------------------------------- */
 @media (max-width: 760px) {
 
-  .nav-toggle-label {
-    display: block;
-  }
+  .nav-toggle-label { display: block; }
 
   .forge-nav {
     position: absolute;
@@ -187,32 +177,31 @@
 
     transition: max-height 0.4s ease-in-out;
     z-index: 1500;
-
-    animation: mobileSlideDown 0.35s ease-out;
   }
 
+  /* REAL animation: only plays when menu opens */
   .nav-toggle:checked ~ .forge-nav {
     max-height: 650px;
     padding: 1rem 0;
+    animation: mobileMenuFade 0.35s ease-out;
+  }
+
+  @keyframes mobileMenuFade {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .forge-nav a {
+    text-align: center;
     width: 100%;
     padding: 0.75rem 0;
-    text-align: center;
     font-size: 1.1rem;
   }
 }
 
-/* Mobile slide animation */
-@keyframes mobileSlideDown {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* -----------------------------------------------------
-   SERVICES DROPDOWN (PARENT)
------------------------------------------------------- */
+/* --------------------------------------
+   SERVICES DROPDOWN (DESKTOP)
+--------------------------------------- */
 .nav-item.dropdown {
   display: flex;
   align-items: center;
@@ -226,10 +215,8 @@
   text-transform: uppercase;
 }
 
-/* ▼ arrow */
 .dropdown-arrow {
   font-size: 0.75rem;
-  line-height: 1;
   color: var(--forge-subtext);
   transition: transform 0.25s ease, color 0.25s ease;
 }
@@ -239,9 +226,6 @@
   color: var(--forge-hotmetal);
 }
 
-/* -----------------------------------------------------
-   DESKTOP DROPDOWN LIST
------------------------------------------------------- */
 @media (min-width: 761px) {
 
   .dropdown-toggle {
@@ -257,12 +241,12 @@
     top: 100%;
     left: 0;
 
-    min-width: 240px;
-    padding: 0.5rem 0;
-
     background: rgba(5,8,16,0.98);
     border: 1px solid rgba(10,109,255,0.25);
     border-radius: 8px;
+
+    min-width: 240px;
+    padding: 0.5rem 0;
 
     opacity: 0;
     transform: translateY(6px);
@@ -275,10 +259,6 @@
     display: block;
     opacity: 1;
     transform: translateY(0);
-
-    box-shadow:
-      0 0 12px rgba(10,109,255,0.45),
-      0 0 4px rgba(10,109,255,0.65) inset;
   }
 
   .dropdown-content a {
@@ -293,48 +273,24 @@
   }
 }
 
-/* -----------------------------------------------------
-   MOBILE DROPDOWN LIST
------------------------------------------------------- */
+/* --------------------------------------
+   MOBILE DROPDOWN
+--------------------------------------- */
 @media (max-width: 760px) {
 
   .dropdown-content {
     display: none;
     position: static !important;
-    background: transparent !important;
-    padding-left: 1.8rem;
+    padding-left: 1.6rem;
     margin-top: 0.35rem;
+    opacity: 0;
+
+    animation: dropdownFade 0.25s ease-out forwards;
   }
 
   .dropdown-toggle:focus + .dropdown-content,
   .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
     display: block;
   }
-}
 
-/* -----------------------------------------------------
-   VISUAL HIERARCHY
------------------------------------------------------- */
-.dropdown-overview {
-  font-weight: 700;
-  color: var(--forge-hotmetal) !important;
-}
-
-.dropdown-content [data-child="true"] {
-  margin-left: 1rem;
-  opacity: 0.85;
-}
-
-/* -----------------------------------------------------
-   HEADER ANIMATIONS
------------------------------------------------------- */
-@keyframes forgeHeaderGlow {
-  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
-  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
-}
-
-@keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  @keyframes dropdownFade {
