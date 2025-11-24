@@ -1,162 +1,88 @@
 /* ==========================================================
-   M.R. TECHFORGE — BUTTON SYSTEM (v1.0)
-   Base button styles + hero variants + spark hover + ripple
+   M.R. TECHFORGE — BUTTONS (v1.0)
+   Glow • Outline • Raised • Ripple • Icons Support
    ========================================================== */
 
-/* ---------------------------------------
-   BASE BUTTON STYLE
----------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-
+  gap: 0.4rem;
   padding: 0.65rem 1.4rem;
-  border-radius: 8px;
 
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
 
+  border-radius: 10px;
   cursor: pointer;
+  text-decoration: none;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* -------------------------------------
+   GLOW BUTTON
+-------------------------------------- */
+.btn-glow {
+  background: linear-gradient(90deg, var(--forge-accent-dark), var(--forge-accent));
+  color: white;
+  box-shadow: 0 0 14px rgba(var(--forge-accent-rgb),0.6);
+}
+
+.btn-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb),0.9);
+}
+
+/* -------------------------------------
+   OUTLINE BUTTON
+-------------------------------------- */
+.btn-outline {
+  color: var(--forge-accent);
+  border: 2px solid var(--forge-accent);
+  background: rgba(0,0,0,0.3);
+}
+
+.btn-outline:hover {
+  border-color: var(--forge-hotmetal);
+  color: var(--forge-hotmetal);
+  box-shadow: 0 0 18px rgba(var(--forge-hotmetal-rgb),0.5);
+}
+
+/* -------------------------------------
+   RAISED BUTTON
+-------------------------------------- */
+.btn-raised {
+  background: #0a0e15;
+  border: 1px solid rgba(var(--forge-accent-rgb),0.4);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+}
+
+.btn-raised:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+}
+
+/* -------------------------------------
+   RIPPLE EFFECT
+-------------------------------------- */
+.btn-ripple {
   position: relative;
   overflow: hidden;
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-              background 0.25s ease, color 0.25s ease;
-
-  border: none;
-  text-decoration: none;
-  user-select: none;
-
-  background: rgba(20,20,20,0.85);
-  color: var(--forge-accent);
-  box-shadow: 0 0 8px rgba(var(--forge-accent-rgb), 0.25);
 }
 
-/* Hover lift */
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-/* ---------------------------------------
-   HOVER SPARK EFFECT
----------------------------------------- */
-.btn::before,
-.btn::after {
+.btn-ripple::after {
   content: "";
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: var(--forge-hotmetal);
+  width: 1px; height: 1px;
+  background: rgba(255,255,255,0.35);
   border-radius: 50%;
   opacity: 0;
-
-  transform: scale(0.2);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: scale(1);
+  transition: transform 0.4s, opacity 0.4s;
 }
 
-.btn:hover::before {
-  top: 10%;
-  left: 15%;
+.btn-ripple:active::after {
   opacity: 1;
-  transform: scale(1.4);
-}
-
-.btn:hover::after {
-  bottom: 15%;
-  right: 20%;
-  opacity: 1;
-  transform: scale(1.5);
-}
-
-/* ---------------------------------------
-   RIPPLE EFFECT ON CLICK
----------------------------------------- */
-.btn:active::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 200%;
-  height: 200%;
-  margin: auto;
-
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-
-  transform: scale(0.1);
-  opacity: 0.75;
-  animation: btn-ripple 0.45s ease-out forwards;
-}
-
-@keyframes btn-ripple {
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-}
-
-/* ---------------------------------------
-   HERO BUTTONS (3 THEMES)
----------------------------------------- */
-
-/* 🔥 1) ORANGE HERO BUTTON */
-.btn-hero-orange {
-  background: linear-gradient(
-    90deg,
-    var(--forge-hotmetal),
-    var(--forge-hotmetal-light),
-    var(--forge-hotmetal)
-  );
-  color: #000;
-  box-shadow: 0 0 18px rgba(var(--forge-hotmetal-rgb), 0.45);
-}
-
-.btn-hero-orange:hover {
-  box-shadow: 0 0 28px rgba(var(--forge-hotmetal-rgb), 0.75);
-}
-
-/* 🔵 2) BLUE HERO BUTTON */
-.btn-hero-blue {
-  background: linear-gradient(
-    90deg,
-    var(--forge-accent-dark),
-    var(--forge-accent),
-    var(--forge-accent-dark)
-  );
-  color: #fff;
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.45);
-}
-
-.btn-hero-blue:hover {
-  box-shadow: 0 0 28px rgba(var(--forge-accent-rgb), 0.75);
-}
-
-/* 🔵🔥 3) FORGE-GRADIENT HERO BUTTON (orange → blue) */
-.btn-hero-forge {
-  background: linear-gradient(
-    90deg,
-    var(--forge-hotmetal),
-    var(--forge-accent),
-    var(--forge-accent-dark)
-  );
-  color: #000;
-  box-shadow:
-    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.4),
-    0 0 18px rgba(var(--forge-accent-rgb), 0.35);
-}
-
-.btn-hero-forge:hover {
-  box-shadow:
-    0 0 28px rgba(var(--forge-hotmetal-rgb), 0.65),
-    0 0 28px rgba(var(--forge-accent-rgb), 0.50);
-}
-
-/* ---------------------------------------
-   BUTTON ICON SUPPORT
----------------------------------------- */
-
-.btn i {
-  font-size: 1.15rem;
-  line-height: 0;
+  transform: scale(65);
 }

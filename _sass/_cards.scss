@@ -1,0 +1,26 @@
+/* ==========================================================
+   M.R. TECHFORGE — CARDS (v1.0)
+   Hover-lift service/document cards
+   ========================================================== */
+
+.forge-card {
+  background: rgba(20,20,20,0.75);
+  border: 1px solid rgba(var(--forge-accent-rgb),0.2);
+  border-radius: 12px;
+  padding: 1.6rem 1.3rem;
+  margin: 2rem 0;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb),0.08);
+}
+
+.forge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb),0.18);
+}
+
+.forge-card h3 {
+  margin-top: 0;
+  color: var(--forge-accent);
+  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb),0.5);
+}

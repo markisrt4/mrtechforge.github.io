@@ -1,0 +1,30 @@
+/* ==========================================================
+   HOMEPAGE HERO SECTION (v1.0)
+   Titles • Taglines • Button row
+   ========================================================== */
+
+.home-hero {
+  text-align: center;
+  margin: 1rem auto 2.5rem;
+  max-width: 850px;
+}
+
+.home-hero .hero-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  background: var(--forge-title-gradient);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: forgeTitleSpectrum 6s linear infinite;
+}
+
+.home-hero .hero-tagline {
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  font-weight: 500;
+  color: var(--forge-subtext);
+  margin-bottom: 2.2rem;
+}

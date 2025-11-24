@@ -1,79 +1,70 @@
-/* ======================================
-   RESPONSIVE TABLES — FORGE STYLE
-   ====================================== */
+/* ==========================================================
+   M.R. TECHFORGE — RESPONSIVE TABLES (v1.0)
+   Easy • Medium • Hard difficulty tables
+   Clean, readable, mobile-friendly
+   ========================================================== */
 
-table {
+.forge-table-wrapper {
+  margin: 2rem 0;
+  background: rgba(15,15,18,0.65);
+  border: 1px solid rgba(var(--forge-accent-rgb),0.25);
+  border-radius: 12px;
+  padding: 1.2rem;
+  overflow-x: auto;
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb),0.15);
+}
+
+table.forge-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 2rem 0;
-  background: rgba(15, 15, 20, 0.9);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.15);
 }
 
-th, td {
-  padding: 0.9rem 0.7rem;
-  border: 1px solid rgba(255,255,255,0.05);
+table.forge-table th {
+  color: var(--forge-hotmetal);
+  padding: 0.75rem;
   text-align: left;
-  color: var(--forge-text);
-}
-
-th {
-  background: rgba(10,109,255,0.15);
-  font-weight: 700;
-  color: var(--forge-accent);
+  border-bottom: 1px solid rgba(var(--forge-accent-rgb),0.2);
   text-transform: uppercase;
+  font-family: "Orbitron", sans-serif;
   letter-spacing: 1px;
 }
 
-tr:nth-child(even) {
-  background: rgba(255,255,255,0.03);
+table.forge-table td {
+  padding: 0.75rem;
+  color: var(--forge-text);
+  border-bottom: 1px solid rgba(var(--forge-accent-rgb),0.1);
 }
 
-tr:hover {
-  background: rgba(10,109,255,0.08);
-  transition: background 0.3s ease;
-}
-
-/* --------- MOBILE --------- */
+/* Mobile collapse */
 @media (max-width: 760px) {
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
-
-  thead {
+  table.forge-table thead {
     display: none;
   }
 
-  tr {
-    background: rgba(15,15,20,0.85);
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    padding: 0.6rem;
-    box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.12);
+  table.forge-table tr {
+    display: block;
+    margin-bottom: 0.9rem;
+    border: 1px solid rgba(var(--forge-accent-rgb),0.25);
+    border-radius: 8px;
+    padding: 0.8rem;
+    background: rgba(10,10,12,0.55);
   }
 
-  td {
-    padding: 0.6rem 0.4rem;
-    border: none;
-    position: relative;
-    padding-left: 45%;
-    text-align: left;
+  table.forge-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
   }
 
-  td::before {
+  table.forge-table td::before {
     content: attr(data-label);
-    position: absolute;
-    left: 0.6rem;
-    width: 40%;
-    font-weight: 700;
-    color: var(--forge-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: var(--forge-hotmetal);
+    margin-right: 1rem;
   }
 }
+
+/* Table themes */
+.table-easy     { border-left: 4px solid var(--forge-accent); }
+.table-medium   { border-left: 4px solid var(--forge-hotmetal); }
+.table-hard     { border-left: 4px solid var(--forge-hotmetal-deep); }

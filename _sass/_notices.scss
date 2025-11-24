@@ -1,0 +1,19 @@
+/* ==========================================================
+   NOTICE BOXES (Info, Warning, Tips)
+   ========================================================== */
+
+.notice--info {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--forge-accent);
+  background: rgba(10,20,35,0.6);
+  border-radius: 8px;
+}
+
+.notice--warn {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--forge-hotmetal);
+  background: rgba(40,25,0,0.6);
+  border-radius: 8px;
+}

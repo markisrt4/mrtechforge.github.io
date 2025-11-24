@@ -1,25 +1,29 @@
+/* ==========================================================
+   CONTACT PAGE — TERMINAL BOX (v1.0)
+   ========================================================== */
+
 .forge-terminal {
-  background:#000;
-  border:1px solid rgba(0,184,212,0.25);
-  border-radius:8px;
-  padding:1rem;
-  margin:2rem 0;
-  font-family:"Ubuntu Mono",monospace;
-  color:#00ffc8;
-  text-shadow:0 0 6px rgba(0,255,200,0.4);
-  box-shadow:0 0 15px rgba(0,184,212,0.08);
+  background: #000;
+  border: 1px solid rgba(var(--forge-accent-rgb),0.25);
+  border-radius: 8px;
+
+  padding: 1rem;
+  margin: 2rem 0;
+
+  font-family: "Ubuntu Mono", monospace;
+  color: #00ffc8;
+
+  box-shadow: 0 0 15px rgba(0,255,200,0.2);
 }
+
 .forge-terminal pre {
-  margin:0;
-  white-space:pre-wrap;
-  animation: terminalPulse 4s ease-in-out infinite alternate;
+  margin: 0;
+  white-space: pre-wrap;
+  animation: terminalPulse 3.25s ease-in-out infinite alternate;
 }
+
 @keyframes terminalPulse {
-  0%{opacity:0.8}
-  50%{opacity:1;text-shadow:0 0 8px rgba(0,255,200,0.6)}
-  100%{opacity:0.8}
+  0%   { opacity: 0.7; }
+  50%  { opacity: 1; text-shadow: 0 0 8px rgba(0,255,200,0.6); }
+  100% { opacity: 0.7; }
 }
-.contact-list { list-style:none; padding:0; margin:0.8rem 0; }
-.contact-list li { margin:0.4rem 0; font-size:1.05rem; }
-.contact-list a { color:var(--forge-accent); text-decoration:none; }
-.contact-list a:hover { color:var(--forge-hotmetal); text-shadow:0 0 10px rgba(245,184,65,0.6); }

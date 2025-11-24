@@ -5,12 +5,16 @@
 @import "variables";
 @import "global";
 @import "nav";
-@import "tables";
 @import "buttons";
-@import "components";
+@import "tables";
+@import "cards";
+@import "forms";
+@import "hero";
+@import "notices";
+
+@import "pages-contact";
 @import "pages-home";
 @import "pages-about";
-@import "pages-contact";
-@import "pages-documentation";
 @import "pages-services";
+@import "pages-documentation";
 @import "faq";

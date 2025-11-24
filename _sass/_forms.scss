@@ -1,0 +1,29 @@
+/* ==========================================================
+   M.R. TECHFORGE — FORMS (v1.0)
+   Contact page form
+   ========================================================== */
+
+.forge-form {
+  margin-top: 2rem;
+}
+
+.forge-form input,
+.forge-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.6rem 0;
+
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(var(--forge-accent-rgb),0.35);
+  border-radius: 8px;
+
+  color: var(--forge-text);
+  font-size: 1rem;
+}
+
+.forge-form input:focus,
+.forge-form textarea:focus {
+  border-color: var(--forge-hotmetal);
+  outline: none;
+  box-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb),0.4);
+}
