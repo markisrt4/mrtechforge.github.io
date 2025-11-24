@@ -1,6 +1,6 @@
 /* ==========================================================
-   M.R. TECHFORGE — GLOBAL STYLES (v9.5 Final Build)
-   Background • Typography • Layout • Link Behavior
+   M.R. TECHFORGE — GLOBAL STYLES (v10.0 Stable Build)
+   Background • Typography • Layout • Link Behavior • Fixes
    ========================================================== */
 
 /* ------------------------------
@@ -19,15 +19,16 @@ html, body {
   color: var(--forge-text);
   font-size: 1.05rem;
   line-height: 1.65;
-  overflow-x: hidden !important;
+
+  overflow-x: hidden !important;   /* prevents white edge scroll */
 }
 
-/* Prevent layout overflow */
 body {
   overflow-x: hidden;
   position: relative;
-  background-color: #000; /* ensures no white base layer */
+  background-color: #000; /* ensures no base white */
 }
+
 /* ------------------------------
    MAIN CONTENT WRAPPER
 ------------------------------ */
@@ -38,14 +39,29 @@ main {
 }
 
 /* ------------------------------
-   HEADINGS
+   HEADINGS (with anti-clipping padding)
 ------------------------------ */
+
 h1, h2, h3 {
   color: var(--forge-hotmetal);
   font-family: "Orbitron", sans-serif;
   letter-spacing: 1.4px;
   text-transform: uppercase;
+
   text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
+
+  /* prevent clipping of glow */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  overflow-wrap: break-word;
+}
+
+/* reduced glow on mobile to prevent cut-off */
+@media (max-width: 600px) {
+  h1, h2, h3 {
+    text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45);
+    letter-spacing: 1.2px;
+  }
 }
 
 /* ------------------------------
@@ -81,9 +97,13 @@ main > h1:first-child {
   display: none !important;
 }
 
-/* Ensure footer centers properly */
+/* ------------------------------
+   FOOTER — FULL CENTERING FIX
+------------------------------ */
+
 .forge-footer {
   text-align: center;
+  width: 100%;
 }
 
 .footer-inner {
