@@ -1,7 +1,7 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + Title -->
+    <!-- Logo -->
     <a href="/" class="logo-link">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
@@ -9,13 +9,13 @@
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Hamburger toggle -->
+    <!-- Main Mobile Toggle -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
       <span></span>
     </label>
 
-    <!-- MAIN NAV -->
+    <!-- Navigation -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
@@ -24,17 +24,24 @@
       <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Parent -->
-        <a href="/services/" class="dropdown-parent-text" tabindex="0">
+        <!-- Hidden mobile-only toggle -->
+        <input type="checkbox"
+               id="mobile-services-toggle"
+               class="mobile-dropdown-toggle">
+
+        <!-- Parent label -->
+        <label for="mobile-services-toggle"
+               class="dropdown-parent-text">
           Services
-        </a>
+        </label>
 
-        <!-- Arrow -->
-        <button class="dropdown-toggle" tabindex="0" aria-label="Open Services menu">
+        <!-- Arrow (also toggles) -->
+        <label for="mobile-services-toggle"
+               class="dropdown-toggle">
           <span class="dropdown-arrow">▼</span>
-        </button>
+        </label>
 
-        <!-- Dropdown Menu -->
+        <!-- Dropdown -->
         <div class="dropdown-content">
           <a href="/services/" class="dropdown-overview">Services Overview</a>
 
@@ -47,6 +54,7 @@
             Life Without Google
           </a>
         </div>
+
       </div>
 
       <a href="/documentation/">Documentation</a>
