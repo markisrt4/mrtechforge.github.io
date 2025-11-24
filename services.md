@@ -1,73 +1,126 @@
 ---
 title: Services
-layout: page
+layout: default
 permalink: /services/
 ---
 
-<div class="services-intro">
-  <p>At <strong>M.R. TechForge</strong>, we provide practical technology solutions and educational services for individuals, families, small businesses, and institutions. Our goal is to <strong>empower people with the knowledge and tools to use technology safely and effectively</strong>.</p>
+# Services  
+
+At **M.R. TechForge**, we provide practical technology solutions and educational services for  
+individuals, families, small businesses, churches, and **libraries**.  
+
+Our goal is simple:
+
+> **Empower people with the knowledge and tools to use technology safely, clearly, and confidently.**
+
+We focus on **education first**, then tools. No jargon, no mystery — just clear guidance, honest feedback,  
+and solutions that actually fit how you live and work.
+
+---
+
+## 🔐 Digital Security Seminars & Best Practices  
+
+We focus on **education and practical guidance**, helping people understand and protect their digital lives:
+
+- Personalized workshops and seminars on digital security  
+- Strategies for safe passwords, email aliases, and online accounts  
+- Guidance for safer browsing, social media, and cloud use  
+- Step-by-step help with two-factor authentication (2FA/TOTP)  
+- Sessions tailored for **households, small businesses, churches, and libraries**
+
+For **libraries**, this can include:
+
+- Patron-friendly classes on staying safe online  
+- “Intro to Digital Security” seminars for community members  
+- Staff training on safer account practices and device handling  
+
+<div class="hero-actions" style="margin-top: 1.2rem; margin-bottom: 1.8rem;">
+  <a class="btn-forge" href="/assets/downloads/Online-Digital-Seminar-Outline.pdf">
+    <span class="btn-icon">📄</span>
+    Download Seminar Outline (PDF)
+  </a>
 </div>
 
-<section class="services-section">
-  <div class="services-grid">
+Security isn’t just about tools — it’s about **habits**.  
+We don’t sell fear. We teach people how to build safe, sustainable digital practices they can actually keep.
 
-    <article class="service-card">
-      <h3>Digital Security Seminars &amp; Best Practices</h3>
-      <p>We focus on <strong>education and practical guidance</strong>, helping people understand and protect their digital lives:</p>
+---
 
-      <ul class="service-list">
-        <li data-icon="🔐">Personalized workshops and seminars on digital security</li>
-        <li data-icon="⚙️">Strategies for safe passwords, email aliases, and online accounts</li>
-        <li data-icon="🌐">Tips for secure browsing, social media, and cloud practices</li>
-        <li data-icon="🧰">Guidance for households, schools, libraries, or small businesses</li>
-      </ul>
-      <div class="service-actions">
-        &nbsp;&nbsp;<a class="btn-glow" href="/assets/downloads/Online-Digital-Seminar-Outline.pdf" download>
-    ⬇ Download the Online Seminar Outline (PDF)
-        </a> 
-      </div>
+## 🏠 Home-Based & Online Technology Solutions  
 
-      <blockquote>Security isn’t just about tools — it’s about habits. We teach people how to build safe, sustainable digital practices.</blockquote>
-    </article>
-    <div class="forge-divider"></div>
+Not everyone wants to be their own IT department. That’s where we come in.
 
-    <article class="service-card">
-      <h3>Home-Based &amp; Online Technology Solutions</h3>
-      <p>We provide support for technology at home or online:</p>
-      <ul class="service-list">
-        <li data-icon="🔌">Setup and configuration of personal computers, devices, and home networks</li>
-        <li data-icon="💬">Troubleshooting and guidance for day-to-day technology use</li>
-        <li data-icon="☁️">Personalized online consultations to solve technical challenges remotely</li>
-      </ul>
-      <blockquote>Our approach is practical, patient, and tailored to your specific needs — no jargon, just solutions.</blockquote>
-    </article>
+We provide **patient, practical support** for technology at home or online:
 
-    <article class="service-card">
-      <h3>Coding 101</h3>
-      <p>We’re passionate about teaching the next generation of programmers:</p>
-      <ul class="service-list">
-        <li data-icon="🧑‍💻">Beginner-friendly coding lessons for kids and teens</li>
-        <li data-icon="🐍">Focus on Python and other approachable tools for learning programming fundamentals</li>
-        <li data-icon="🔌">Interactive, hands-on exercises to make coding fun and understandable</li>
-      </ul>
-      <blockquote>Inspiring moldable minds to code builds confidence, problem-solving skills, and digital literacy.</blockquote>
-    </article>
+- Setup and configuration of personal computers, devices, and home networks  
+- Guidance on choosing privacy-respecting tools and services  
+- Help taming cluttered tech: accounts, logins, backups, email, and more  
+- Remote consultations for troubleshooting day-to-day issues  
 
-    <article class="service-card">
-      <h3>Technical Documentation &amp; Product Testing </h3>
-      <p>We help make technical information <strong>clear and actionable</strong>:</p>
-      <ul class="service-list">
-        <li data-icon="💬">Translate complex manuals or instructions into plain English</li>
-        <li data-icon="⚙️">Test products or procedures and provide detailed reviews</li>
-        <li data-icon="📘">Create guides that are easy to follow for users of all levels</li>
-      </ul>
-      <blockquote>Clear documentation saves time, reduces errors, and helps users succeed.</blockquote>
-    </article>
+Our approach is **hands-on and non-judgmental**.  
+You don’t need to “speak tech” — that’s our job.
 
-  </div>
-</section>
+---
 
-<div class="cta-banner">
-  <p>At <strong>M.R. TechForge</strong>, we combine <strong>expert guidance, education, and practical solutions</strong>. Every service is designed to give clients the confidence and knowledge to navigate their technology effectively, safely, and independently.</p>
-  <a class="btn-glow" href="/contact.html">Get in Touch</a>
+## 🧩 Small Business & Organization Tech Support  
+
+For small businesses, churches, and community organizations, we offer **custom solutions** that support:
+
+- **Online presence** – basic website help, hosting guidance, and content structure  
+- **Security & access** – safer account practices, password managers, and account cleanup  
+- **Network provisioning** – small office / building Wi-Fi and basic network layout guidance  
+- **E-commerce basics** – getting from “no system” to a simple, workable online payment flow  
+- **Data preservation** – backup strategies and options to avoid losing critical files  
+
+We’ll help you figure out *what you actually need* — not push a one-size-fits-all stack.  
+Everything is tailored to your size, comfort level, and budget.
+
+---
+
+## 💻 Coding 101 – Teaching the Next Generation  
+
+We’re passionate about helping the next generation understand how technology works — not just how to tap it.
+
+Our **Coding 101** offerings (for kids, teens, and motivated adults) focus on:
+
+- Beginner-friendly programming lessons with an emphasis on **Python**  
+- Approachable explanations of core concepts (logic, variables, loops, functions)  
+- Hands-on projects that make code feel **useful and fun**, not intimidating  
+- Flexible formats: one-on-one, small group, or partner-hosted classes (churches, libraries, community centers)
+
+The goal isn’t to turn everyone into a professional developer overnight —  
+it’s to **build confidence**, curiosity, and problem-solving skills that last.
+
+---
+
+## 📘 Technical Documentation & Product Testing  
+
+Well-designed tech still fails if the user experience is confusing.  
+That’s why documentation and testing matter.
+
+We help bridge the gap between the people who **build** technology and the people who **use** it through:
+
+- **Documentation Overhaul** – rewriting confusing manuals or procedures into clear, friendly, accurate content  
+- **Usability & Product Testing** – trying products like real users would and noting gaps in clarity or behavior  
+- **Technical Validation** – sanity-checking workflows, wording, and expectations against how the system actually works  
+
+Deliverables can include:
+
+- Cleaned-up user guides and quick-start sheets  
+- Annotated PDFs with comments and recommendations  
+- Draft content for websites, onboarding emails, or internal training material  
+
+The result: **less frustration**, **fewer support calls**, and **more trust** in your product or service.
+
+---
+
+## 🤝 Ready to Talk?  
+
+Whether you need a one-time consult, a digital security talk for your library or church,  
+or ongoing help with your small business tech stack, we’d love to hear from you.
+
+<div class="hero-actions" style="margin-top: 0.5rem;">
+  <a class="btn-forge btn-forge--outline" href="/contact.html">
+    Start a Conversation
+  </a>
 </div>
