@@ -29,13 +29,44 @@ main {
    GLOBAL COLORS FOR HEADINGS + TEXT
 ---------------------------------------------------------- */
 
+/* ----------------------------------------------------------
+   GLOBAL TYPOGRAPHY – FORGE CLASSIC
+---------------------------------------------------------- */
+
+/* Headings: orange, Orbitron, glowy */
 h1, h2, h3 {
-  color: var(--forge-accent);
-  text-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.45);
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
+
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
+/* Body text: light, readable, not screaming orange */
 p, li {
+  color: var(--forge-text);
+  font-family: "Titillium Web", sans-serif;
+  text-shadow: 0 0 5px rgba(var(--forge-accent-rgb), 0.18);
+}
+
+/* Links (unchanged, but keeping here for clarity) */
+a {
+  color: var(--forge-accent);
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+a:hover {
   color: var(--forge-hotmetal);
+  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
+}
+
+a:visited {
+  color: var(--forge-hotmetal-light);
 }
 
 a {
