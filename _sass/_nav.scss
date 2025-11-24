@@ -1,11 +1,13 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v4.0 Stable Build)
-   Desktop hover nav • Mobile accordion • Clean title glow
+   M.R. TECHFORGE — NAVIGATION (v4.0 Clean Rebuild)
+   Header • Animated title • Desktop nav • Mobile nav
+   Services dropdown fixed for mobile + desktop
    ===================================================== */
 
 /* -----------------------------------------------------
    HEADER WRAPPER
 ------------------------------------------------------ */
+
 .forge-header {
   position: sticky;
   top: 0;
@@ -44,40 +46,42 @@
 .forge-logo {
   height: 65px;
   width: auto;
-
-  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.5));
+  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .forge-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.8));
+  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
 }
 
+/* Animated “M.R. TechForge” text in header */
 .forge-title {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
+  letter-spacing: 1px;
 
   background: linear-gradient(
     90deg,
-    #F5B841,
-    #F5B841,
-    #0A6DFF,
-    #153D77,
-    #F5B841
+    #f5b841 0%,
+    #f7d372 20%,
+    #0a6dff 50%,
+    #153d77 80%,
+    #f5b841 100%
   );
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation: forgeTitleSpectrum 6s linear infinite;
+  animation: forgeTitleSpectrum 6s linear infinite,
+             forgeTitleGlow 4s ease-in-out infinite;
 }
 
 /* -----------------------------------------------------
    DESKTOP NAVIGATION
 ------------------------------------------------------ */
+
 .forge-nav {
   display: flex;
   gap: 1.4rem;
@@ -88,17 +92,17 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
   font-weight: 600;
 
   color: var(--forge-subtext);
-
-  text-transform: uppercase;
   text-decoration: none;
-  transition: 0.25s ease;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .forge-nav a:hover {
   color: var(--forge-hotmetal);
+  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
 }
 
 /* -----------------------------------------------------
@@ -135,20 +139,17 @@
   top: 50%;
   transform: translateY(-50%);
 }
-
 .nav-toggle-label span::before { top: -9px; }
 .nav-toggle-label span::after  { top: 9px; }
 
-/* X animation */
+/* “X” transition */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
-
 .nav-toggle:checked + .nav-toggle-label span::before {
   transform: rotate(45deg);
   top: 0;
 }
-
 .nav-toggle:checked + .nav-toggle-label span::after {
   transform: rotate(-45deg);
   top: 0;
@@ -157,6 +158,7 @@
 /* -----------------------------------------------------
    MOBILE NAV
 ------------------------------------------------------ */
+
 @media (max-width: 760px) {
 
   .nav-toggle-label {
@@ -168,14 +170,16 @@
     top: 100%;
     left: 0;
 
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
 
     background: #050810;
     border-top: 1px solid rgba(10,109,255,0.25);
 
     max-height: 0;
     overflow: hidden;
+    gap: 0;
 
     transition: max-height 0.35s ease-in-out;
     animation: mobileSlideDown 0.35s ease-out;
@@ -188,19 +192,14 @@
 
   .forge-nav a {
     width: 100%;
-    padding: 0.75rem 0;
     text-align: center;
-    font-size: 1.15rem;
+    padding: 0.85rem 0;
+    font-size: 1.1rem;
   }
 }
 
-@keyframes mobileSlideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 /* -----------------------------------------------------
-   SERVICES DROPDOWN — UNIVERSAL WRAPPER
+   SERVICES DROPDOWN — SHARED
 ------------------------------------------------------ */
 
 .nav-item.dropdown {
@@ -210,7 +209,6 @@
   gap: 0.25rem;
 }
 
-/* Ensure typography matches */
 .dropdown-parent-text {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
@@ -219,7 +217,6 @@
   letter-spacing: 0.5px;
 
   color: var(--forge-subtext);
-  cursor: pointer;
 }
 
 .dropdown-arrow {
@@ -228,11 +225,17 @@
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
+.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+  color: var(--forge-hotmetal);
+}
+
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN (Hover)
+   DESKTOP DROPDOWN
 ------------------------------------------------------ */
 
 @media (min-width: 761px) {
+
   .dropdown-toggle {
     background: none;
     border: none;
@@ -247,10 +250,11 @@
     left: 0;
 
     min-width: 260px;
+    padding: 0.5rem 0;
+
     background: rgba(5,8,16,0.98);
     border: 1px solid rgba(10,109,255,0.25);
     border-radius: 8px;
-    padding: 0.5rem 0;
 
     opacity: 0;
     transform: translateY(6px);
@@ -263,7 +267,6 @@
     display: block;
     opacity: 1;
     transform: translateY(0);
-
     box-shadow:
       0 0 12px rgba(10,109,255,0.45),
       0 0 4px rgba(10,109,255,0.65) inset;
@@ -275,7 +278,6 @@
     font-family: "Titillium Web", sans-serif;
   }
 
-  /* Indentation levels */
   .dropdown-content a[data-child="true"] {
     margin-left: 0.75rem;
   }
@@ -286,55 +288,71 @@
 }
 
 /* -----------------------------------------------------
-   MOBILE DROPDOWN — CHECKBOX ACCORDION
+   MOBILE DROPDOWN
 ------------------------------------------------------ */
 
 @media (max-width: 760px) {
 
-  /* Hidden checkbox toggle */
-  .mobile-dropdown-toggle {
-    display: none;
+  .nav-item.dropdown {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.3rem;
   }
 
-  /* By default: hide submenu */
-  .mobile-dropdown-toggle ~ .dropdown-content {
-    display: none;
+  .dropdown-parent-text,
+  .dropdown-toggle {
+    cursor: pointer;
   }
 
-  /* Show when checked */
-  .mobile-dropdown-toggle:checked ~ .dropdown-content {
-    display: block;
-    padding-left: 2rem;
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    padding: 0 0.35rem;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: static !important;
+
+    width: 100%;
+    padding-left: 1.8rem;
     margin-top: 0.35rem;
   }
 
-  /* Arrow rotation */
-  .mobile-dropdown-toggle:checked ~ .dropdown-toggle .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
+  /* When either the “Services” text OR the arrow gets focus */
+  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content,
+  .dropdown-toggle:focus + .dropdown-content {
+    display: block !important;
   }
 
-  /* Mobile spacing */
+  .dropdown-content a {
+    text-align: left;
+    padding: 0.55rem 0;
+    font-size: 1rem;
+  }
+
   .dropdown-content a[data-child="true"] {
-    margin-left: 0.5rem;
+    margin-left: 0.8rem;
   }
 
   .dropdown-content a[data-grandchild="true"] {
-    margin-left: 1.2rem;
+    margin-left: 1.6rem;
   }
 }
 
 /* -----------------------------------------------------
-   OVERVIEW STYLE
+   OVERVIEW ITEM
 ------------------------------------------------------ */
+
 .dropdown-overview {
   font-weight: 700;
   color: var(--forge-hotmetal) !important;
 }
 
 /* -----------------------------------------------------
-   HEADER ANIMATIONS
+   ANIMATIONS
 ------------------------------------------------------ */
+
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
@@ -344,4 +362,15 @@
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@keyframes forgeTitleGlow {
+  0%   { text-shadow: 0 0 10px rgba(245,184,65,0.4); }
+  50%  { text-shadow: 0 0 22px rgba(245,184,65,0.9); }
+  100% { text-shadow: 0 0 10px rgba(245,184,65,0.4); }
+}
+
+@keyframes mobileSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
