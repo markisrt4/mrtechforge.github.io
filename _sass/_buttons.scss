@@ -1,132 +1,162 @@
 /* ==========================================================
-   M.R. TECHFORGE — BUTTONS (v3.0 Moderate Forge Glow Edition)
-   Includes:
-     - .btn-forge   (orange glow, animated, CTA)
-     - .btn-outline (minimal outline)
-     - .btn-icon    (optional icon support)
-   All effects are subtle + professional, no over-the-top neon.
+   M.R. TECHFORGE — BUTTON SYSTEM (v1.0)
+   Base button styles + hero variants + spark hover + ripple
    ========================================================== */
 
-/* Shared base */
+/* ---------------------------------------
+   BASE BUTTON STYLE
+---------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
 
-  padding: 0.65rem 1.25rem;
+  padding: 0.65rem 1.4rem;
   border-radius: 8px;
 
-  font-family: "Titillium Web", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.6px;
+  font-weight: 700;
   text-transform: uppercase;
-  text-decoration: none;
+  letter-spacing: 0.8px;
 
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
-
   position: relative;
   overflow: hidden;
-}
 
-/* =======================================
-   1) FORGE GLOW BUTTON (Moderate Glow)
-   ======================================= */
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              background 0.25s ease, color 0.25s ease;
 
-.btn-forge {
-  color: #000;
-  background: var(--forge-hotmetal);
-  border: 1px solid var(--forge-hotmetal-deep);
+  border: none;
+  text-decoration: none;
+  user-select: none;
 
-  box-shadow:
-    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55),
-    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.35) inset;
-
-  /* Gentle breathing effect */
-  animation: forgePulse 3s ease-in-out infinite;
-}
-
-.btn-forge:hover {
-  background: var(--forge-hotmetal-light);
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.75),
-    0 0 28px rgba(var(--forge-hotmetal-rgb), 0.55) inset;
-}
-
-.btn-forge:active {
-  transform: scale(0.97);
-}
-
-/* Pulse animation */
-@keyframes forgePulse {
-  0%, 100% {
-    box-shadow:
-      0 0 10px rgba(var(--forge-hotmetal-rgb), 0.45),
-      0 0 18px rgba(var(--forge-hotmetal-rgb), 0.28) inset;
-  }
-  50% {
-    box-shadow:
-      0 0 16px rgba(var(--forge-hotmetal-rgb), 0.75),
-      0 0 25px rgba(var(--forge-hotmetal-rgb), 0.45) inset;
-  }
-}
-
-/* =======================================
-   2) OUTLINE BUTTON (Cool, Minimal)
-   ======================================= */
-
-.btn-outline {
+  background: rgba(20,20,20,0.85);
   color: var(--forge-accent);
-  background: transparent;
-  border: 2px solid var(--forge-accent);
-
-  box-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.2);
-
-  transition: all 0.25s ease;
+  box-shadow: 0 0 8px rgba(var(--forge-accent-rgb), 0.25);
 }
 
-.btn-outline:hover {
-  background: rgba(var(--forge-accent-rgb), 0.15);
-  box-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.35);
-  transform: translateY(-2px);
+/* Hover lift */
+.btn:hover {
+  transform: translateY(-3px);
 }
 
-.btn-outline:active {
-  transform: scale(0.97);
+/* ---------------------------------------
+   HOVER SPARK EFFECT
+---------------------------------------- */
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--forge-hotmetal);
+  border-radius: 50%;
+  opacity: 0;
+
+  transform: scale(0.2);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* =======================================
-   3) ICON SUPPORT (Optional)
-   ======================================= */
-
-.btn-icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  /* Icons from FontAwesome or inline SVG */
+.btn:hover::before {
+  top: 10%;
+  left: 15%;
+  opacity: 1;
+  transform: scale(1.4);
 }
 
-.btn-icon i,
-.btn-icon svg {
-  font-size: 1.2rem;
-  transition: transform 0.25s ease;
+.btn:hover::after {
+  bottom: 15%;
+  right: 20%;
+  opacity: 1;
+  transform: scale(1.5);
 }
 
-.btn-icon:hover i,
-.btn-icon:hover svg {
-  transform: scale(1.15);
+/* ---------------------------------------
+   RIPPLE EFFECT ON CLICK
+---------------------------------------- */
+.btn:active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 200%;
+  height: 200%;
+  margin: auto;
+
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+
+  transform: scale(0.1);
+  opacity: 0.75;
+  animation: btn-ripple 0.45s ease-out forwards;
 }
 
-/* =======================================
-   MOBILE ADJUSTMENTS
-   ======================================= */
-@media (max-width: 760px) {
-  .btn {
-    padding: 0.55rem 1rem;
-    font-size: 0.95rem;
+@keyframes btn-ripple {
+  to {
+    transform: scale(1.8);
+    opacity: 0;
   }
+}
+
+/* ---------------------------------------
+   HERO BUTTONS (3 THEMES)
+---------------------------------------- */
+
+/* 🔥 1) ORANGE HERO BUTTON */
+.btn-hero-orange {
+  background: linear-gradient(
+    90deg,
+    var(--forge-hotmetal),
+    var(--forge-hotmetal-light),
+    var(--forge-hotmetal)
+  );
+  color: #000;
+  box-shadow: 0 0 18px rgba(var(--forge-hotmetal-rgb), 0.45);
+}
+
+.btn-hero-orange:hover {
+  box-shadow: 0 0 28px rgba(var(--forge-hotmetal-rgb), 0.75);
+}
+
+/* 🔵 2) BLUE HERO BUTTON */
+.btn-hero-blue {
+  background: linear-gradient(
+    90deg,
+    var(--forge-accent-dark),
+    var(--forge-accent),
+    var(--forge-accent-dark)
+  );
+  color: #fff;
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.45);
+}
+
+.btn-hero-blue:hover {
+  box-shadow: 0 0 28px rgba(var(--forge-accent-rgb), 0.75);
+}
+
+/* 🔵🔥 3) FORGE-GRADIENT HERO BUTTON (orange → blue) */
+.btn-hero-forge {
+  background: linear-gradient(
+    90deg,
+    var(--forge-hotmetal),
+    var(--forge-accent),
+    var(--forge-accent-dark)
+  );
+  color: #000;
+  box-shadow:
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.4),
+    0 0 18px rgba(var(--forge-accent-rgb), 0.35);
+}
+
+.btn-hero-forge:hover {
+  box-shadow:
+    0 0 28px rgba(var(--forge-hotmetal-rgb), 0.65),
+    0 0 28px rgba(var(--forge-accent-rgb), 0.50);
+}
+
+/* ---------------------------------------
+   BUTTON ICON SUPPORT
+---------------------------------------- */
+
+.btn i {
+  font-size: 1.15rem;
+  line-height: 0;
 }
