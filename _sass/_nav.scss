@@ -1,7 +1,6 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v4.0 Polished Build)
-   Desktop nav • Mobile hamburger • Services dropdown
-   Glowing title • Correct fonts • Clean mobile behavior
+   M.R. TECHFORGE — NAVIGATION (v4.0 Stable Build)
+   Desktop hover nav • Mobile accordion • Clean title glow
    ===================================================== */
 
 /* -----------------------------------------------------
@@ -11,7 +10,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 2000;
+  z-index: 1000;
 
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
@@ -32,7 +31,7 @@
 }
 
 /* -----------------------------------------------------
-   LOGO
+   LOGO + ANIMATED TITLE
 ------------------------------------------------------ */
 
 .logo-link {
@@ -45,59 +44,40 @@
 .forge-logo {
   height: 65px;
   width: auto;
-  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
+
+  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.5));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .forge-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
+  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.8));
 }
-
-/* -----------------------------------------------------
-   ANIMATED TITLE (Glow + Spectrum, NON-blurry)
------------------------------------------------------- */
 
 .forge-title {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
 
-  /* animated gradient */
   background: linear-gradient(
     90deg,
-    var(--forge-hotmetal) 0%,
-    var(--forge-hotmetal) 20%,
-    var(--forge-accent) 50%,
-    var(--forge-accent-dark) 80%,
-    var(--forge-hotmetal) 100%
+    #F5B841,
+    #F5B841,
+    #0A6DFF,
+    #153D77,
+    #F5B841
   );
   background-size: 300%;
-
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   animation: forgeTitleSpectrum 6s linear infinite;
-
-  /* sharp glow without blur */
-  text-shadow:
-    0 0 6px rgba(var(--forge-accent-rgb), 0.55),
-    0 0 14px rgba(var(--forge-hotmetal-rgb), 0.45),
-    0 0 22px rgba(var(--forge-accent-rgb), 0.35);
-}
-
-/* title animation */
-@keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* -----------------------------------------------------
    DESKTOP NAVIGATION
 ------------------------------------------------------ */
-
 .forge-nav {
   display: flex;
   gap: 1.4rem;
@@ -108,9 +88,9 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+  font-weight: 600;
 
   color: var(--forge-subtext);
-  font-weight: 600;
 
   text-transform: uppercase;
   text-decoration: none;
@@ -122,7 +102,7 @@
 }
 
 /* -----------------------------------------------------
-   HAMBURGER MENU
+   HAMBURGER — MOBILE
 ------------------------------------------------------ */
 
 .nav-toggle {
@@ -132,17 +112,18 @@
 .nav-toggle-label {
   display: none;
   cursor: pointer;
+
   width: 32px;
   height: 24px;
   position: relative;
-  z-index: 3000;
+  z-index: 2000;
 }
 
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-  content: "";
   position: absolute;
+  content: "";
   height: 3px;
   width: 100%;
   background: var(--forge-hotmetal);
@@ -150,27 +131,32 @@
   transition: all 0.3s ease;
 }
 
-.nav-toggle-label span { top: 50%; transform: translateY(-50%); }
+.nav-toggle-label span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .nav-toggle-label span::before { top: -9px; }
 .nav-toggle-label span::after  { top: 9px; }
 
-/* animate into an X */
+/* X animation */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
+
 .nav-toggle:checked + .nav-toggle-label span::before {
   transform: rotate(45deg);
   top: 0;
 }
+
 .nav-toggle:checked + .nav-toggle-label span::after {
   transform: rotate(-45deg);
   top: 0;
 }
 
 /* -----------------------------------------------------
-   MOBILE NAV MENU
+   MOBILE NAV
 ------------------------------------------------------ */
-
 @media (max-width: 760px) {
 
   .nav-toggle-label {
@@ -182,8 +168,8 @@
     top: 100%;
     left: 0;
 
-    width: 100%;
     flex-direction: column;
+    width: 100%;
 
     background: #050810;
     border-top: 1px solid rgba(10,109,255,0.25);
@@ -193,7 +179,6 @@
 
     transition: max-height 0.35s ease-in-out;
     animation: mobileSlideDown 0.35s ease-out;
-    z-index: 2500;
   }
 
   .nav-toggle:checked ~ .forge-nav {
@@ -203,8 +188,8 @@
 
   .forge-nav a {
     width: 100%;
-    text-align: center;
     padding: 0.75rem 0;
+    text-align: center;
     font-size: 1.15rem;
   }
 }
@@ -215,7 +200,7 @@
 }
 
 /* -----------------------------------------------------
-   SERVICES DROPDOWN — UNIVERSAL SETTINGS
+   SERVICES DROPDOWN — UNIVERSAL WRAPPER
 ------------------------------------------------------ */
 
 .nav-item.dropdown {
@@ -225,33 +210,29 @@
   gap: 0.25rem;
 }
 
+/* Ensure typography matches */
 .dropdown-parent-text {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
-  letter-spacing: 0.5px;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+
   color: var(--forge-subtext);
+  cursor: pointer;
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
-  line-height: 1;
   color: var(--forge-subtext);
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
-.dropdown-open .dropdown-arrow {
-  transform: rotate(180deg);
-  color: var(--forge-hotmetal);
-}
-
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN
+   DESKTOP DROPDOWN (Hover)
 ------------------------------------------------------ */
 
 @media (min-width: 761px) {
-
   .dropdown-toggle {
     background: none;
     border: none;
@@ -266,17 +247,16 @@
     left: 0;
 
     min-width: 260px;
-    padding: 0.5rem 0;
-
     background: rgba(5,8,16,0.98);
     border: 1px solid rgba(10,109,255,0.25);
     border-radius: 8px;
+    padding: 0.5rem 0;
 
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.25s ease, transform 0.25s ease;
 
-    z-index: 4000;
+    z-index: 9999;
   }
 
   .nav-item.dropdown:hover .dropdown-content {
@@ -295,39 +275,46 @@
     font-family: "Titillium Web", sans-serif;
   }
 
-  /* hierarchy */
+  /* Indentation levels */
   .dropdown-content a[data-child="true"] {
     margin-left: 0.75rem;
   }
+
   .dropdown-content a[data-grandchild="true"] {
     margin-left: 1.6rem;
   }
 }
 
 /* -----------------------------------------------------
-   MOBILE DROPDOWN (Tap works)
+   MOBILE DROPDOWN — CHECKBOX ACCORDION
 ------------------------------------------------------ */
 
 @media (max-width: 760px) {
 
-  .dropdown-parent-text,
-  .dropdown-toggle {
-    cursor: pointer;
+  /* Hidden checkbox toggle */
+  .mobile-dropdown-toggle {
+    display: none;
   }
 
-  .dropdown-content {
+  /* By default: hide submenu */
+  .mobile-dropdown-toggle ~ .dropdown-content {
     display: none;
-    position: static !important;
+  }
 
+  /* Show when checked */
+  .mobile-dropdown-toggle:checked ~ .dropdown-content {
+    display: block;
     padding-left: 2rem;
     margin-top: 0.35rem;
   }
 
-  .dropdown-toggle:focus + .dropdown-content,
-  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
-    display: block !important;
+  /* Arrow rotation */
+  .mobile-dropdown-toggle:checked ~ .dropdown-toggle .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--forge-hotmetal);
   }
 
+  /* Mobile spacing */
   .dropdown-content a[data-child="true"] {
     margin-left: 0.5rem;
   }
@@ -338,7 +325,7 @@
 }
 
 /* -----------------------------------------------------
-   OVERVIEW ITEM
+   OVERVIEW STYLE
 ------------------------------------------------------ */
 .dropdown-overview {
   font-weight: 700;
@@ -346,9 +333,15 @@
 }
 
 /* -----------------------------------------------------
-   HEADER GLOW ANIMATION
+   HEADER ANIMATIONS
 ------------------------------------------------------ */
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
+}
+
+@keyframes forgeTitleSpectrum {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
