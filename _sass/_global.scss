@@ -30,6 +30,12 @@ html, body {
 body {
   line-height: 1.65;
   font-size: 1.05rem;
+  background-image: radial-gradient(circle at 20% 10%, #0A0D12 0%, #000 95%);
+  background-attachment: fixed;
+  color: var(--forge-text);
+  font-family: "Titillium Web", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 main {
