@@ -1,44 +1,53 @@
 /* ==========================================================
-   TERMINAL BLOCK — Official Forge Terminal Styling (v2.0)
+   CONTACT PAGE — FORGE TERMINAL (v2.0 Neon Restore Build)
+   Stronger cyan glow • pulse • darker shell
    ========================================================== */
 
 .forge-terminal {
-  background: #01070f;
-  border: 1px solid rgba(0, 204, 255, 0.45);
+  background: #000;
+  border: 1px solid rgba(0, 255, 200, 0.35);
   border-radius: 10px;
-  padding: 1.3rem 1.6rem;
-  margin: 2.5rem 0;
 
-  font-family: "Source Code Pro", monospace;
-  font-size: 1.05rem;
-  color: #16e0d4;
+  padding: 1.2rem;
+  margin: 2.4rem 0;
 
+  font-family: "Ubuntu Mono", monospace;
+  color: #22ffe0;
+
+  /* Outer glow */
   box-shadow:
-    0 0 12px rgba(0, 204, 255, 0.25),
-    0 0 32px rgba(0, 204, 255, 0.12) inset;
-
-  position: relative;
-  overflow: hidden;
-
-  animation: forgeTerminalPulse 5s ease-in-out infinite alternate;
+    0 0 22px rgba(0, 255, 200, 0.25),
+    0 0 40px rgba(0, 255, 200, 0.18) inset;
 }
 
-/* Genuine cyber terminal glow */
-@keyframes forgeTerminalPulse {
+.forge-terminal pre {
+  margin: 0;
+  white-space: pre-wrap;
+
+  /* Brighter pulse */
+  animation: terminalPulse 3s ease-in-out infinite alternate;
+  text-shadow:
+    0 0 8px rgba(0,255,200,0.8),
+    0 0 14px rgba(0,255,200,0.5);
+}
+
+@keyframes terminalPulse {
   0% {
-    box-shadow:
-      0 0 10px rgba(0, 204, 255, 0.3),
-      0 0 25px rgba(0, 204, 255, 0.1) inset;
+    opacity: 0.6;
+    text-shadow:
+      0 0 4px rgba(0,255,200,0.5),
+      0 0 8px rgba(0,255,200,0.35);
+  }
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 10px rgba(0,255,200,0.9),
+      0 0 22px rgba(0,255,200,0.75);
   }
   100% {
-    box-shadow:
-      0 0 14px rgba(0, 204, 255, 0.45),
-      0 0 40px rgba(0, 204, 255, 0.18) inset;
+    opacity: 0.6;
+    text-shadow:
+      0 0 4px rgba(0,255,200,0.5),
+      0 0 8px rgba(0,255,200,0.35);
   }
-}
-
-/* Prompt ($ …) always tinted neon green */
-.forge-terminal .prompt {
-  color: #1cff9c;
-  font-weight: 600;
 }
