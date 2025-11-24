@@ -1,6 +1,12 @@
 /* ==========================================================
-   M.R. TECHFORGE — CLEAN GLOBAL STYLES (v9.0 Final Build)
-   Header, nav, dropdowns, typography, links, layout, footer
+   M.R. TECHFORGE — GLOBAL STYLES (v10.0 Final Clean Build)
+   Contains ONLY:
+   - global background & typography
+   - global layout
+   - links
+   - footer
+   - page-level fixes
+   DOES NOT contain ANY nav/header/hamburger/dropdown code.
    ========================================================== */
 
 /* ----------------------------------------------------------
@@ -19,6 +25,9 @@ html, body {
   min-height: 100%;
 }
 
+/* ----------------------------------------------------------
+   MAIN CONTENT WRAPPER
+---------------------------------------------------------- */
 main {
   max-width: 950px;
   margin: 2rem auto;
@@ -26,34 +35,29 @@ main {
 }
 
 /* ----------------------------------------------------------
-   GLOBAL COLORS FOR HEADINGS + TEXT
+   GLOBAL HEADINGS + TEXT
 ---------------------------------------------------------- */
 
-/* ----------------------------------------------------------
-   GLOBAL TYPOGRAPHY – FORGE CLASSIC
----------------------------------------------------------- */
-
-/* Headings: orange, Orbitron, glowy */
 h1, h2, h3 {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
-
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
-/* Body text: light, readable, not screaming orange */
 p, li {
   color: var(--forge-text);
   font-family: "Titillium Web", sans-serif;
   text-shadow: 0 0 5px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-/* Links (unchanged, but keeping here for clarity) */
+/* ----------------------------------------------------------
+   LINKS
+---------------------------------------------------------- */
+
 a {
   color: var(--forge-accent);
   text-decoration: none;
@@ -67,304 +71,6 @@ a:hover {
 
 a:visited {
   color: var(--forge-hotmetal-light);
-}
-
-a {
-  color: var(--forge-accent);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
-}
-
-a:visited {
-  color: var(--forge-hotmetal-light);
-}
-
-/* ----------------------------------------------------------
-   HEADER + TITLE + LOGO
----------------------------------------------------------- */
-
-.forge-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-
-  background: rgba(10, 10, 12, 0.92);
-  border-bottom: 2px solid var(--forge-accent-dark);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
-
-  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.6rem 1rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.forge-logo {
-  height: 65px;
-  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-.forge-logo:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
-}
-
-/* ANIMATED M.R. TECHFORGE TITLE */
-.forge-title {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  background: linear-gradient(
-    90deg,
-    #F5B841,
-    #F5B841,
-    #0A6DFF,
-    #153D77,
-    #F5B841
-  );
-  background-size: 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation: forgeTitleSpectrum 6s linear infinite;
-}
-
-/* ----------------------------------------------------------
-   NAVIGATION (DESKTOP)
----------------------------------------------------------- */
-
-.forge-nav {
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.forge-nav a {
-  font-weight: 600;
-  color: var(--forge-subtext);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.forge-nav a:hover {
-  color: var(--forge-hotmetal);
-}
-
-/* ----------------------------------------------------------
-   HAMBURGER (MOBILE)
----------------------------------------------------------- */
-
-.nav-toggle {
-  display: none;
-}
-
-.nav-toggle-label {
-  display: none;
-  cursor: pointer;
-  width: 32px;
-  height: 24px;
-  position: relative;
-  z-index: 2000;
-}
-
-.nav-toggle-label span,
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
-  content: "";
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: var(--forge-hotmetal);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.nav-toggle-label span { top: 50%; transform: translateY(-50%); }
-.nav-toggle-label span::before { top: -9px; }
-.nav-toggle-label span::after { top: 9px; }
-
-.nav-toggle:checked + .nav-toggle-label span {
-  background: transparent;
-}
-.nav-toggle:checked + .nav-toggle-label span::before {
-  transform: rotate(45deg);
-  top: 0;
-}
-.nav-toggle:checked + .nav-toggle-label span::after {
-  transform: rotate(-45deg);
-  top: 0;
-}
-
-/* MOBILE MENU */
-@media (max-width: 760px) {
-
-  .nav-toggle-label {
-    display: block;
-  }
-
-  .forge-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-
-    background: #050810;
-    border-top: 1px solid rgba(10,109,255,0.25);
-
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-  }
-
-  .nav-toggle:checked ~ .forge-nav {
-    max-height: 600px;
-    padding: 1rem 0;
-  }
-
-  .forge-nav a {
-    width: 100%;
-    padding: 0.75rem 0;
-    font-size: 1.1rem;
-    text-align: center;
-  }
-}
-
-/* ----------------------------------------------------------
-   DROPDOWN MENU — CLEAN FINAL BUILD
----------------------------------------------------------- */
-
-.nav-item.dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.dropdown-parent-text {
-  font-weight: 600;
-  color: var(--forge-subtext);
-  text-transform: uppercase;
-}
-
-.dropdown-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.2rem 0.35rem;
-}
-
-.dropdown-arrow {
-  font-size: 0.85rem;
-  color: var(--forge-subtext);
-  transition: transform 0.25s ease, color 0.25s ease;
-}
-
-.dropdown-open .dropdown-arrow {
-  transform: rotate(180deg);
-  color: var(--forge-hotmetal);
-}
-
-/* Desktop dropdown */
-@media (min-width: 761px) {
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-
-    background: rgba(5,8,16,0.98);
-    border: 1px solid rgba(10,109,255,0.25);
-    border-radius: 8px;
-
-    min-width: 260px;
-    padding: 0.5rem 0;
-
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 9999;
-  }
-
-  .nav-item.dropdown:hover .dropdown-content {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-
-    box-shadow:
-      0 0 12px rgba(10,109,255,0.45),
-      0 0 4px rgba(10,109,255,0.65) inset;
-  }
-
-  .dropdown-content a {
-    padding: 0.6rem 1rem;
-    color: var(--forge-subtext);
-  }
-
-  .dropdown-content a:hover {
-    color: var(--forge-hotmetal);
-    background: rgba(10,109,255,0.12);
-  }
-
-  /* hierarchy */
-  .dropdown-content a[data-child="true"] {
-    margin-left: 1.25rem;
-  }
-
-  .dropdown-content a[data-grandchild="true"] {
-    margin-left: 2rem;
-  }
-}
-
-/* Mobile dropdown */
-@media (max-width: 760px) {
-
-  .dropdown-content {
-    display: none;
-    position: static !important;
-    padding-left: 1.8rem;
-    margin-top: 0.4rem;
-  }
-
-  .dropdown-toggle:focus + .dropdown-content,
-  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content {
-    display: block;
-  }
-
-  .dropdown-content a[data-child="true"] {
-    margin-left: 1rem;
-  }
-
-  .dropdown-content a[data-grandchild="true"] {
-    margin-left: 1.75rem;
-  }
-}
-
-.dropdown-overview {
-  font-weight: 700;
-  color: var(--forge-hotmetal) !important;
 }
 
 /* ----------------------------------------------------------
@@ -394,16 +100,14 @@ main > h1:first-child {
 }
 
 /* ----------------------------------------------------------
-   ANIMATIONS
+   GENERIC GLOBAL ANIMATIONS (non-nav)
 ---------------------------------------------------------- */
 
-@keyframes forgeHeaderGlow {
-  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
-  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
+@keyframes fadeInHome {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.fade-in {
+  animation: fadeInHome 0.6s ease-out;
 }
