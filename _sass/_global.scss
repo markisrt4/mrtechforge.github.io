@@ -22,6 +22,12 @@ html, body {
   overflow-x: hidden !important;
 }
 
+/* Prevent layout overflow */
+body {
+  overflow-x: hidden;
+  position: relative;
+  background-color: #000; /* ensures no white base layer */
+}
 /* ------------------------------
    MAIN CONTENT WRAPPER
 ------------------------------ */
