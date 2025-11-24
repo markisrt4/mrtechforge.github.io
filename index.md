@@ -30,7 +30,6 @@ class: home
       <span class="hero-tag">Linux</span>
       <span class="hero-tag">Digital Security</span>
       <span class="hero-tag">Networking</span>
-      <span class="hero-tag">Embedded</span>
       <span class="hero-tag">Web Services</span>
     </div>
 
