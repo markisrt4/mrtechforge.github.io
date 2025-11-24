@@ -73,3 +73,14 @@ a:visited {
 main > h1:first-child {
   display: none !important;
 }
+
+/* Ensure footer centers properly */
+.forge-footer {
+  text-align: center;
+}
+
+.footer-inner {
+  margin: 0 auto !important;
+  text-align: center !important;
+  max-width: 900px;
+}
