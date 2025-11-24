@@ -28,3 +28,96 @@
   color: var(--forge-subtext);
   margin-bottom: 2.2rem;
 }
+
+/* ==========================================================
+   HERO TITLE — Blue/Orange Spectrum Wave (Restored)
+   ========================================================== */
+
+.hero-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+
+  background: linear-gradient(
+    90deg,
+    #f5b841,
+    #f5b841,
+    #0a6dff,
+    #153d77,
+    #f5b841
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: heroSpectrum 6s linear infinite;
+  margin-bottom: 1.6rem;
+}
+
+@keyframes heroSpectrum {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================
+   HERO BACKGROUND — Circuit Trace Overlay (Subtle)
+   ========================================================== */
+
+.hero-section {
+  position: relative;
+  padding: 4rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* circuit overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 153, 255, 0.08) 0px,
+      rgba(0, 153, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 153, 255, 0.08) 0px,
+      rgba(0, 153, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* slight animated circuit shimmer */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(0, 140, 255, 0.15),
+    transparent 60%
+  );
+
+  opacity: 0.25;
+  animation: circuitPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes circuitPulse {
+  0% { opacity: 0.15; transform: scale(1); }
+  100% { opacity: 0.3; transform: scale(1.04); }
+}
+
