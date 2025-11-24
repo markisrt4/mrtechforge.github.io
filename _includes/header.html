@@ -1,34 +1,36 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo -->
+    <!-- Logo + Title -->
     <a href="/" class="logo-link">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
            class="forge-logo">
+      <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Animated Title — separate from link to prevent blur -->
-    <h1 class="forge-title">M.R. TechForge</h1>
-
-    <!-- Mobile Toggle -->
+    <!-- Hamburger toggle -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
       <span></span>
     </label>
 
-    <!-- Navigation -->
+    <!-- MAIN NAV -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES DROPDOWN (Classic Model) -->
+      <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Unified trigger (no separate arrow button) -->
-        <button class="dropdown-toggle-all" aria-expanded="false">
+        <!-- Parent -->
+        <a href="/services/" class="dropdown-parent-text" tabindex="0">
           Services
+        </a>
+
+        <!-- Arrow -->
+        <button class="dropdown-toggle" tabindex="0" aria-label="Open Services menu">
           <span class="dropdown-arrow">▼</span>
         </button>
 
@@ -45,7 +47,6 @@
             Life Without Google
           </a>
         </div>
-
       </div>
 
       <a href="/documentation/">Documentation</a>
