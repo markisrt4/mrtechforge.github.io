@@ -5,6 +5,11 @@ title: M.R. TechForge
 
 <h1 class="hero-title forge-title">M.R. TechForge</h1>
 
+<div class="home-hero">
+  <p class="hero-tagline">Crafting Clarity • Forging Solutions • Secured with Integrity</p>
+  <h1 class="hero-title">M.R. TechForge</h1>
+</div>
+
 # Crafting Clarity. Forging Solutions. Secured with Integrity.
 
 Welcome to **M.R. TechForge** — where technology meets clarity, integrity, and purpose.  
