@@ -1,11 +1,11 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v3.0 Clean Hover Build)
-   Desktop: Hover dropdown
-   Mobile: Tap to open
+   M.R. TECHFORGE — NAVIGATION (v3.0 Clean Rebuild)
+   Desktop nav • Mobile hamburger • Services dropdown
+   Fully corrected mobile behavior + typography fixes
    ===================================================== */
 
 /* -----------------------------------------------------
-   HEADER
+   HEADER WRAPPER
 ------------------------------------------------------ */
 .forge-header {
   position: sticky;
@@ -16,8 +16,8 @@
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
   backdrop-filter: blur(6px);
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
 
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
@@ -34,6 +34,7 @@
 /* -----------------------------------------------------
    LOGO + TITLE
 ------------------------------------------------------ */
+
 .logo-link {
   display: flex;
   align-items: center;
@@ -54,11 +55,6 @@
 }
 
 .forge-title {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
   background: linear-gradient(
     90deg,
     #F5B841,
@@ -70,12 +66,19 @@
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   animation: forgeTitleSpectrum 6s linear infinite;
+
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
 }
 
 /* -----------------------------------------------------
-   DESKTOP NAV
+   DESKTOP NAVIGATION
 ------------------------------------------------------ */
+
 .forge-nav {
   display: flex;
   gap: 1.4rem;
@@ -83,11 +86,15 @@
 }
 
 .forge-nav a {
-  color: var(--forge-subtext);
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
+
+  color: var(--forge-subtext);
+  font-weight: 600;
+
+  text-transform: uppercase;
+  text-decoration: none;
   transition: 0.25s ease;
 }
 
@@ -96,8 +103,9 @@
 }
 
 /* -----------------------------------------------------
-   HAMBURGER (MOBILE)
+   HAMBURGER — MOBILE
 ------------------------------------------------------ */
+
 .nav-toggle {
   display: none;
 }
@@ -105,6 +113,7 @@
 .nav-toggle-label {
   display: none;
   cursor: pointer;
+
   width: 32px;
   height: 24px;
   position: relative;
@@ -114,8 +123,8 @@
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-  content: "";
   position: absolute;
+  content: "";
   height: 3px;
   width: 100%;
   background: var(--forge-hotmetal);
@@ -127,6 +136,7 @@
 .nav-toggle-label span::before { top: -9px; }
 .nav-toggle-label span::after { top: 9px; }
 
+/* X transition */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
@@ -140,9 +150,11 @@
 }
 
 /* -----------------------------------------------------
-   MOBILE NAVIGATION
+   MOBILE NAV
 ------------------------------------------------------ */
+
 @media (max-width: 760px) {
+
   .nav-toggle-label {
     display: block;
   }
@@ -152,16 +164,16 @@
     top: 100%;
     left: 0;
 
+    flex-direction: column;
+    width: 100%;
+
     background: #050810;
     border-top: 1px solid rgba(10,109,255,0.25);
 
-    width: 100%;
-    flex-direction: column;
-
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease-in-out;
 
+    transition: max-height 0.35s ease-in-out;
     animation: mobileSlideDown 0.35s ease-out;
   }
 
@@ -173,8 +185,8 @@
   .forge-nav a {
     width: 100%;
     padding: 0.75rem 0;
-    font-size: 1.15rem;
     text-align: center;
+    font-size: 1.15rem;
   }
 }
 
@@ -184,43 +196,50 @@
 }
 
 /* -----------------------------------------------------
-   SERVICES DROPDOWN — SHARED
+   SERVICES DROPDOWN — UNIVERSAL
 ------------------------------------------------------ */
+
 .nav-item.dropdown {
   position: relative;
   display: flex;
   align-items: center;
+  gap: 0.25rem;
 }
 
-/* Unified trigger */
-.dropdown-toggle-all {
-  background: none;
-  border: none;
-  color: var(--forge-subtext);
+/* Match font of other nav items */
+.dropdown-parent-text {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0;
-  transition: 0.25s ease;
-}
 
-.dropdown-toggle-all:hover {
-  color: var(--forge-hotmetal);
+  color: var(--forge-subtext);
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
+  color: var(--forge-subtext);
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
+.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+  color: var(--forge-hotmetal);
+}
+
 /* -----------------------------------------------------
-   DESKTOP (Hover to open)
+   DESKTOP DROPDOWN
 ------------------------------------------------------ */
+
 @media (min-width: 761px) {
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem 0.35rem;
+  }
+
   .dropdown-content {
     display: none;
     position: absolute;
@@ -228,70 +247,67 @@
     left: 0;
 
     min-width: 260px;
+    padding: 0.5rem 0;
 
     background: rgba(5,8,16,0.98);
     border: 1px solid rgba(10,109,255,0.25);
     border-radius: 8px;
-    padding: 0.5rem 0;
 
     opacity: 0;
     transform: translateY(6px);
-    transition: 0.25s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 
     z-index: 9999;
   }
 
-  /* Hover opens menu */
   .nav-item.dropdown:hover .dropdown-content {
     display: block;
     opacity: 1;
     transform: translateY(0);
+
     box-shadow:
       0 0 12px rgba(10,109,255,0.45),
       0 0 4px rgba(10,109,255,0.65) inset;
   }
 
-  /* Hover arrow animation */
-  .nav-item.dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
-  }
-
   .dropdown-content a {
     display: block;
     padding: 0.55rem 1rem;
-    color: var(--forge-subtext);
+    font-family: "Titillium Web", sans-serif;
   }
 
-  .dropdown-content a:hover {
-    color: var(--forge-hotmetal);
-    background: rgba(10,109,255,0.12);
-  }
-
-  /* hierarchy alignment */
+  /* Levels */
   .dropdown-content a[data-child="true"] {
     margin-left: 0.75rem;
   }
-
   .dropdown-content a[data-grandchild="true"] {
     margin-left: 1.6rem;
   }
 }
 
 /* -----------------------------------------------------
-   MOBILE DROPDOWN (tap to expand)
+   MOBILE DROPDOWN — FIXED
 ------------------------------------------------------ */
+
 @media (max-width: 760px) {
+
+  /* tapping parent OR arrow works */
+  .dropdown-parent-text,
+  .dropdown-toggle {
+    cursor: pointer;
+  }
 
   .dropdown-content {
     display: none;
     position: static !important;
+
     padding-left: 2rem;
     margin-top: 0.35rem;
   }
 
-  .dropdown-toggle-all:focus + .dropdown-content {
-    display: block;
+  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content,
+  .dropdown-toggle:focus + .dropdown-content {
+    display: block !important;
   }
 
   .dropdown-content a[data-child="true"] {
@@ -303,7 +319,9 @@
   }
 }
 
-/* Highlighted overview */
+/* -----------------------------------------------------
+   OVERVIEW ITEM
+------------------------------------------------------ */
 .dropdown-overview {
   font-weight: 700;
   color: var(--forge-hotmetal) !important;
