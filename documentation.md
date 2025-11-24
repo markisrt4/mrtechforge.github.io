@@ -1,75 +1,121 @@
-## 🧩 Example Projects & Real-World Rewrites
+---
+title: Documentation & Product Testing
+layout: default
+permalink: /documentation/
+---
 
-Each example is based on real-world manuals that needed clarity, structure, or more accurate technical language.
+<div class="doc-hero">
+  <h1 class="doc-title">Documentation & Product Testing</h1>
+  <p class="doc-tagline">
+    Forging clarity between engineers, products, and people.
+  </p>
+</div>
 
-<div class="forge-example-cards">
+---
 
-  <!-- CARD 1 -->
-  <div class="forge-example-card">
-    <div class="card-header">
-      <h3>📘 Example 1 — Product Assembly Instructions</h3>
-    </div>
+## 🔧 What We Do
 
-    <div class="card-inner">
-      <blockquote class="bad-text">
-        <strong>Original Translation:</strong><br>
-        "Please fix screw until tight feeling coming, not too much or broken happiness will happen.
-        Use tool but not force like angry."
-      </blockquote>
+Clarity is the difference between frustration and confidence.  
+We help bridge the gap between the people who *build* technology and the people who *use* it — through professional documentation, usability testing, and clear communication.
 
-      <blockquote class="forge-fixed">
-        <strong>Rewritten for Clarity:</strong><br>
-        "Tighten the screw until snug—do not overtighten, as this may damage the part.
-        Use a screwdriver with steady pressure; there’s no need to force it."
-      </blockquote>
+Our work includes:
 
-      <p class="result">
-        ✔ Clear, user-focused instructions with concise, confidence-building language.
-      </p>
-    </div>
-  </div>
+- **Documentation Overhaul**  
+  We rewrite confusing manuals, instructions, procedures, and workflows into clear, accurate, user-friendly guides.
 
-  <!-- CARD 2 -->
-  <div class="forge-example-card">
-    <div class="card-header">
-      <h3>🔋 Example 2 — Power & Safety Information</h3>
-    </div>
+- **Usability & Product Testing**  
+  We test devices and systems like real users do — identifying where documentation fails to match real behavior.
 
-    <div class="card-inner">
-      <blockquote class="bad-text">
-        <strong>Original Translation:</strong><br>
-        "Use adaptor suitable voltage or product will smoke and death will come shortly.
-        Please to avoid shorting joy and sadness."
-      </blockquote>
+- **Technical Validation**  
+  We ensure specifications, diagrams, and processes are consistent and technically correct.
 
-      <blockquote class="forge-fixed">
-        <strong>Rewritten for Clarity:</strong><br>
-        "Use only the power adapter specified for this product’s voltage range.
-        Using the wrong adapter may cause damage or overheating.
-        Keep connectors and cables dry to prevent short circuits."
-      </blockquote>
+- **Deliverables That Actually Help**  
+  Annotated PDFs, corrected manuals, rewritten help guides, and test findings — all designed to reduce frustration and build trust.
 
-      <p class="result">
-        ✔ Factual, safety-focused guidance that prevents user confusion or product damage.
-      </p>
-    </div>
-  </div>
+---
 
-  <!-- CARD 3 — CTA -->
-  <div class="forge-example-card">
-    <div class="card-header">
-      <h3>🧾 Want to See More?</h3>
-    </div>
+## 🧠 Why It Matters
 
-    <div class="card-inner">
-      <p>
-        We love transforming confusing instructions into clear, confident documentation.
-        If you have a product manual that could use some polish, reach out—we’ll show you
-        what a professional rewrite looks like.
-      </p>
+Good documentation is *part of the product*, not an afterthought.
 
-      <p><a href="/contact.html">Contact us to discuss your project →</a></p>
-    </div>
-  </div>
+With a background in **engineering, embedded systems, and technical communication**, we help organizations deliver documentation that makes users confident, not confused.
+
+Clear communication leads to:
+- Higher user satisfaction  
+- Fewer support requests  
+- Better onboarding  
+- Stronger perception of product quality
+
+---
+
+## 🧾 Professional Writing Example
+
+A published example of Mark’s technical writing:
+
+**[Deterministic & Modular Architecture for Embedded Vehicle Systems — NDIA (2023)](https://www.mobilityengineeringtech.com/component/content/article/50043-deterministic-and-modular-architecture-for-embedded-vehicle-systems)**
+
+> Demonstrates Mark’s experience with modular embedded design, deterministic networking, and standards-based architectures — the same skills applied to every documentation project.
+
+---
+
+# 📚 Example Rewrites (Showing Before & After)
+
+<div class="examples-section">
+
+<div class="example-card">
+  <h3>📘 Example 1 — Product Assembly Instructions</h3>
+
+  <blockquote>
+    <strong>Original Translation:</strong><br>
+    "Please fix screw until tight feeling coming, not too much or broken happiness will happen.
+    Use tool but not force like angry."
+  </blockquote>
+
+  <blockquote class="forge-fixed">
+    <strong>Rewritten for Clarity:</strong><br>
+    "Tighten the screw until snug—do not overtighten, as this may damage the part.
+    Use a screwdriver with steady pressure; excessive force is not required."
+  </blockquote>
+
+  <p class="result">
+    Result: Removed emotional language and replaced with concise, professional assembly guidance.
+  </p>
+</div>
+
+<div class="example-card">
+  <h3>🔋 Example 2 — Power & Safety Information</h3>
+
+  <blockquote>
+    <strong>Original Translation:</strong><br>
+    "Use adaptor suitable voltage or product will smoke and death will come shortly.
+    Please to avoid shorting joy and sadness."
+  </blockquote>
+
+  <blockquote class="forge-fixed">
+    <strong>Rewritten for Clarity:</strong><br>
+    "Use only the power adapter specified for this product’s voltage range.
+    Using the wrong adapter may cause damage or overheating.
+    Keep connectors dry to prevent short circuits."
+  </blockquote>
+
+  <p class="result">
+    Result: Replaced alarming or unclear language with precise safety guidance users can trust.
+  </p>
+</div>
+
+<div class="example-card">
+  <h3>🧾 Want to See More?</h3>
+  <p>We love transforming confusing instructions into clear, confidence-building documentation.</p>
+  <p><a href="/contact.html">Contact us to discuss your project →</a></p>
+</div>
 
 </div>
+
+---
+
+# ⚙️ Forge Clarity. Build Trust.
+
+Every product deserves documentation that reflects its quality.  
+We ensure your product speaks clearly — and your users feel confident from the first interaction.
+
+[**Get in Touch →**](/contact.html)
