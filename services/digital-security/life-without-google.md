@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: "💔 Life Without Google"
 permalink: /services/digital-security/life-without-google/
 ---
@@ -8,24 +8,22 @@ permalink: /services/digital-security/life-without-google/
 ### *A Practical, Slightly Dramatic Guide to Breaking Up With Big G*
 
 Congratulations, brave traveler.  
-You’ve arrived at the **Digital Security & Best Practices** section —  
-and today we’re talking about the one breakup everyone thinks about  
-but few ever actually go through:
+You’ve reached the **Digital Security & Best Practices** section —  
+and today we’re talking about the breakup everyone jokes about…  
+but deep down, *knows they should actually consider*:
 
 **Leaving Google.**
 
-Look, using Google isn’t a moral failure.  
-But giving one company your email, your contacts, your schedule, your photos,  
-your location history, your search history, your browser, your documents,  
-and your phone…  
+Look, using Google isn’t a sin.  
+But giving one company your email, contacts, search history, location,  
+documents, photos, browser, identity, cloud storage, and phone?
 
-Yeah.  
-That’s not a relationship.  
-That’s *codependence*.
+That's not convenience.  
+That’s *surveillance dependency*.
 
-This guide isn’t about paranoia.  
-It’s about **digital hygiene**, **choice**, and **taking back control**  
-without throwing your Android phone into a lake.
+This guide isn’t about fear.  
+It’s about **choice**, **control**, and a healthier digital life.  
+You don’t need to throw your Android phone into a lake (tempting, though).
 
 Let’s begin.
 
@@ -33,103 +31,104 @@ Let’s begin.
 
 # 🧭 Why Break Up At All?
 
-Google’s services are powerful, convenient, and free —  
-but the cost isn’t money.  
-It’s data.
+Google isn't “free.”  
+You just pay with **your life in metadata form**.
 
-Every service you use feeds into a massive profile that predicts:
+Here’s what really happens when you stay in the Big G ecosystem:
 
-- what you’ll click  
-- what you’ll buy  
-- what you’ll watch  
-- where you go  
-- what you believe  
-- even what mood you’re in  
+### **1️⃣ Your behavior is endlessly profiled**  
+Google logs:
+- every search  
+- every YouTube video  
+- every tap, scroll, swipe  
+- every location  
+- how long you stay there  
+- every contact you communicate with  
+- what you buy  
+- what you *might* buy  
 
-This isn’t tinfoil hat stuff —  
-it’s literally their business model.
+### **2️⃣ Google predicts your decisions before *you* make them**  
+They infer:
+- political leaning  
+- religious tendencies  
+- relationship status  
+- stress levels  
+- mental health fluctuations  
+- future buying patterns  
 
-Breaking up doesn’t mean disappearing.  
-It means **reducing the precision of that profile**  
-and choosing tools that respect your privacy.
+### **3️⃣ Your phone becomes a 24/7 sensor package**  
+Android continually collects:
+- Wi-Fi networks around you  
+- Bluetooth devices near you  
+- accelerometer + motion data  
+- app usage patterns  
+- clipboard metadata  
+- passive microphone noise signatures  
 
----
+### **4️⃣ Data is retained for years**  
+Even if you “delete” it:
+- logs persist  
+- backups exist  
+- anonymized profiles can be reconstructed  
 
-# 🔧 What This Guide Covers
+### **5️⃣ One account controls your entire life**  
+If Google locks you out, everything goes with it:
+- email  
+- photos  
+- contacts  
+- calendar  
+- 2FA  
+- files  
+- documents  
+- synced passwords  
 
-- How to reduce reliance on Google services  
-- How to transition to privacy-respecting alternatives  
-- Practical tools that work on Android *without breaking anything*  
-- How to move your contacts, messages, and files  
-- A living comparison table of alternatives you can update anytime  
-
-This is a **gentle off-ramp**, not a leap into the void.
-
----
-
-# 📦 Step 1: Replace the Worst Offenders
-
-Here are the top Google services people swap out first —  
-and what you can use instead.
-
-- **Email:** Proton Mail or PrivateEmail  
-- **Search:** DuckDuckGo or Brave Search  
-- **Maps:** Organic Maps / Magic Earth  
-- **Browser:** Firefox or Brave  
-- **Photos:** Immich (self-hosted) or Simple Gallery Pro  
-- **Drive:** Nextcloud or Proton Drive  
-- **Keyboard:** AnySoftKeyboard / FlorisBoard  
-
-This alone dramatically reduces data collection.
-
----
-
-# ☎️ Step 2: Contacts, Messages & Identity Stuff
-
-These are usually the messy parts, so here’s the clean version:
-
-### **Contacts**
-Use:
-- **DAVx⁵ + Mailbox.org / FastMail / Nextcloud**, or  
-- **Proton Contacts** (if you're all-in on Proton)
-
-Export from Google → import → sync with DAVx⁵.  
-Done.
-
-### **Messages**
-Google Messages = RCS = Google servers.
-
-Most privacy-conscious users split things:
-
-- **Signal** for real conversations  
-- **Simple SMS / Textra** for legacy SMS  
-
-It’s the perfect balance of privacy and practicality.
+A single automated flag can ruin your day… or your business.
 
 ---
 
-# 🗂️ Step 3: The Big Comparison Table  
+# 🔧 The Breakup Roadmap  
+### *Organized by difficulty. All tables are mobile friendly.*
 
+---
 
-| Google Service | What It Does (Really) | Privacy-Respecting Alternative | Why It’s Better | Notes |
-|----------------|------------------------|-------------------------------|------------------|-------|
-| Gmail | Central hub of your digital identity and metadata | Proton Mail | Encrypted, private, no tracking | Smooth app experience |
-| Google Drive | Cloud storage tied to your Google account | Nextcloud / Proton Drive | Encrypted or self-hosted | Great family/business option |
-| Google Photos | Facial recognition & metadata retention | Immich (self-hosted) | Private, offline, unlimited | Needs a Pi or server |
-| Google Maps | Tracks every location you visit | Organic Maps / Magic Earth | Offline, private | OSM-based navigation |
-| Chrome | Tracks browsing behavior & syncs it | Firefox / Brave | Private, customizable | Use Firefox with extensions |
-| Google Messages | RCS routed through Google’s servers | Signal + Simple SMS | Secure, private | Use both side-by-side |
-| Google Contacts | Cloud-managed identity mapping | DAVx⁵ + Nextcloud/Mailbox.org | Private, encrypted | Great on Android |
-| Google Calendar | Behavioral analysis for scheduling | Proton Calendar | Encrypted | Works across devices |
-| Gboard | Keylogging metadata | AnySoftKeyboard / FlorisBoard | Open-source | Lightweight & safe |
+# 🟩 **Easy Mode — Quick Wins**  
+### *Fast swaps with instant privacy benefits.*
 
+| Google Service | Alternative | Why It’s Better | Notes |
+|---|---|---|---|
+| Google Search | DuckDuckGo / Brave Search | No profiling | One-tap switch |
+| Chrome | Firefox / Brave | Stops browser tracking | Import bookmarks easily |
+| Gboard | AnySoftKeyboard / FlorisBoard | No telemetry | Open-source |
+| Google Maps | Organic Maps / Magic Earth | Offline + private | OSM navigation |
 
+---
+
+# 🟨 **Medium Mode — Lifestyle Changes**  
+### *Still comfortable, but you’ll notice the difference.*
+
+| Google Service | Alternative | Why It’s Better | Notes |
+|---|---|---|---|
+| Gmail | Proton Mail / PrivateEmail | Encrypted, private | Smooth on Android |
+| Google Contacts | DAVx⁵ + Mailbox.org / FastMail | No cross-profiling | Easy import/export |
+| Google Calendar | Proton Calendar | Encrypted | Multi-device |
+| Google Messages | Signal + Simple SMS | Private + practical | Use both |
+
+---
+
+# 🟥 **Hard Mode — Full Independence**  
+### *Own your data. No more corporate overlords.*
+
+| Google Service | Alternative | Why It’s Better | Notes |
+|---|---|---|---|
+| Google Drive | Nextcloud / Proton Drive | Self-hosted or encrypted | Great long-term |
+| Google Photos | Immich | Fully private | Needs a server/Pi |
+| Android Sync Services | Nextcloud + DAVx⁵ | Total autonomy | Advanced users |
 
 ---
 
 <div class="notice--info">
   <strong>📘 Quick Note</strong><br>
-  These resources are intentionally high-level and meant as overviews only.  
-  For personalized digital-security guidance, hands-on training, or access to full seminar material, 
+  These resources are intentionally high-level.  
+  For personalized digital-security consultations or hands-on migration help,  
   please reach out through the Contact page.
 </div>

@@ -1,0 +1,92 @@
+/* ===============================================
+   FORGE TABLE STYLING — Mobile Friendly v1.0
+   =============================================== */
+
+table.forge-table,
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  background: rgba(10, 12, 18, 0.75);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.15);
+}
+
+/* Header row */
+table thead tr {
+  background: rgba(10,109,255,0.15);
+  border-bottom: 1px solid rgba(10,109,255,0.35);
+}
+
+table thead th {
+  padding: 0.8rem;
+  text-align: left;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.8px;
+  font-size: 0.9rem;
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 9px rgba(var(--forge-hotmetal-rgb), 0.55);
+}
+
+/* Table body */
+table tbody td {
+  padding: 0.8rem 0.9rem;
+  color: var(--forge-text);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.95rem;
+}
+
+table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Hover shimmer */
+table tbody tr:hover td {
+  background: rgba(10,109,255,0.12);
+}
+
+/* ----------------------------
+   MOBILE FRIENDLY MODE
+---------------------------- */
+@media (max-width: 760px) {
+  table,
+  table thead,
+  table tbody,
+  table th,
+  table td,
+  table tr {
+    display: block;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(10,109,255,0.25);
+    border-radius: 10px;
+    padding: 0.8rem;
+    background: rgba(5,8,16,0.85);
+  }
+
+  table tbody td {
+    border: none;
+    position: relative;
+    padding-left: 45%;
+    min-height: 2rem;
+  }
+
+  /* Create labels for mobile rows */
+  table tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.8rem;
+    top: 0.5rem;
+    font-weight: 600;
+    color: var(--forge-subtext);
+  }
+}
