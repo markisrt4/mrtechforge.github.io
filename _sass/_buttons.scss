@@ -1,143 +1,87 @@
 /* ==========================================================
-   M.R. TECHFORGE — FORGE BUTTON SET (v3.0 Hybrid Sweep)
-   Metallic Gradient • Hybrid Sweep Glow • Lift • Ripple
+   M.R. TECHFORGE — CLASSIC FORGE BUTTONS (v2.0 Revival)
+   Large • Rounded • Gradient • Glow • Animated Hover Sweep
    ========================================================== */
 
-/* Base button wrapper */
+/* Base button */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
 
-  padding: 0.75rem 1.6rem;
-  min-width: 190px;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
 
-  font-weight: 650;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.1px;
+  letter-spacing: 1px;
 
-  border-radius: 14px;
-  cursor: pointer;
   text-decoration: none;
+  cursor: pointer;
 
   position: relative;
   overflow: hidden;
 
-  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ==========================================================
-   FORGE GRADIENT BUTTON (Default)
-========================================================== */
+/* -------------------------------------------
+   THE CLASSIC FORGE GLOW BUTTON
+-------------------------------------------- */
 .btn-forge {
   background: linear-gradient(
-    135deg,
-    #0a0e15 0%,
-    #0f1d3a 35%,
-    var(--forge-accent-dark) 70%,
-    var(--forge-accent) 100%
-  );
-
-  color: white;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
-
-  box-shadow:
-    0 0 12px rgba(var(--forge-accent-rgb), 0.35),
-    inset 0 0 6px rgba(var(--forge-accent-rgb), 0.25);
-}
-
-/* Lift on hover */
-.btn-forge:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 6px 20px rgba(var(--forge-accent-rgb), 0.45),
-    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.35);
-}
-
-/* ==========================================================
-   HYBRID FORGE SWEEP (Blue → Gold → Blue)
-========================================================== */
-.btn-forge::before {
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -60%;
-
-  width: 220%;
-  height: 200%;
-  transform: rotate(25deg);
-  opacity: 0;
-
-  background: linear-gradient(
     90deg,
-    transparent 0%,
-    rgba(var(--forge-accent-rgb), 0.4) 30%,
-    rgba(var(--forge-hotmetal-rgb), 0.7) 50%,   /* molten gold */
-    rgba(var(--forge-accent-rgb), 0.4) 70%,
-    transparent 100%
+    var(--forge-hotmetal-dark),
+    var(--forge-hotmetal),
+    var(--forge-accent),
+    var(--forge-accent-dark)
   );
+  background-size: 300%;
+  color: #fff;
 
-  transition: opacity 0.35s ease, transform 0.45s ease;
-  pointer-events: none;
+  box-shadow:
+    0 0 14px rgba(var(--forge-accent-rgb), 0.55),
+    0 0 4px rgba(var(--forge-hotmetal-rgb), 0.45) inset;
 }
 
-/* On hover: the sweep moves across */
-.btn-forge:hover::before {
-  opacity: 1;
-  transform: translateX(55%) rotate(25deg);
+.btn-forge:hover {
+  transform: translateY(-3px);
+  background-position: 100% 0;
+
+  box-shadow:
+    0 0 22px rgba(var(--forge-accent-rgb), 0.9),
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.75) inset;
 }
 
-/* ==========================================================
-   RIPPLE EFFECT (optional, enabled by adding .btn-ripple)
-========================================================== */
+/* -------------------------------------------
+   ICON SUPPORT
+-------------------------------------------- */
+.btn i,
+.btn svg {
+  margin-right: 0.45rem;
+  font-size: 1.1rem;
+}
 
-.btn-ripple::after {
+/* -------------------------------------------
+   RIPPLE EFFECT (subtle)
+-------------------------------------------- */
+.btn::after {
   content: "";
   position: absolute;
   width: 1px;
   height: 1px;
 
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255,255,255,0.45);
   border-radius: 50%;
   opacity: 0;
 
   transform: scale(1);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.55s ease, opacity 0.55s ease;
 }
 
-.btn-ripple:active::after {
+.btn:active::after {
   opacity: 1;
-  transform: scale(75);
-}
-
-/* ==========================================================
-   ALT VARIANTS (if needed later)
-========================================================== */
-
-/* Outline */
-.btn-outline {
-  color: var(--forge-accent);
-  border: 2px solid var(--forge-accent);
-  background: rgba(5, 5, 5, 0.35);
-  border-radius: 12px;
-}
-
-.btn-outline:hover {
-  color: var(--forge-hotmetal);
-  border-color: var(--forge-hotmetal);
-  box-shadow: 0 0 18px rgba(var(--forge-hotmetal-rgb), 0.45);
-}
-
-/* Raised */
-.btn-raised {
-  background: #0b0e16;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-}
-
-.btn-raised:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.65);
+  transform: scale(85);
 }
