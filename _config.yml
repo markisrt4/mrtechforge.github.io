@@ -28,7 +28,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "Mark Gregory Russell"
+      author: "Mark G. Russell"
 
 # SEO settings
 seo:
