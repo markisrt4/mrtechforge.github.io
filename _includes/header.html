@@ -6,12 +6,14 @@
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
            class="forge-logo">
-      <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Hamburger toggle -->
+    <!-- Animated Title — separate from link to prevent blur -->
+    <h1 class="forge-title">M.R. TechForge</h1>
+
+    <!-- Mobile Toggle -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle Menu">
       <span></span>
     </label>
 
@@ -21,20 +23,16 @@
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES DROPDOWN -->
+      <!-- SERVICES DROPDOWN (Classic Model) -->
       <div class="nav-item dropdown">
 
-        <!-- Parent link -->
-        <a href="/services/" class="dropdown-parent-text">
+        <!-- Unified trigger (no separate arrow button) -->
+        <button class="dropdown-toggle-all" aria-expanded="false">
           Services
-        </a>
-
-        <!-- Arrow -->
-        <button class="dropdown-toggle" aria-label="Open Services menu">
           <span class="dropdown-arrow">▼</span>
         </button>
 
-        <!-- Dropdown items -->
+        <!-- Dropdown Menu -->
         <div class="dropdown-content">
           <a href="/services/" class="dropdown-overview">Services Overview</a>
 
@@ -43,7 +41,7 @@
           </a>
 
           <a href="/services/digital-security/life-without-google/"
-            data-grandchild="true">
+             data-grandchild="true">
             Life Without Google
           </a>
         </div>
