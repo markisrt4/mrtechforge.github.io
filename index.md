@@ -9,7 +9,9 @@ class: home
 
   <!-- HERO -->
   <section class="home-hero">
-    <div class="hero-tagline">Faith • Integrity • Technology</div>
+    <p class="hero-tagline">
+  Practical, relationship-focused tech help for homes, churches, and small businesses.
+</p>
 
     <div class="hero-stamp">M.R. TechForge</div>
 
