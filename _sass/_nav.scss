@@ -1,13 +1,12 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v4.0 Clean Rebuild)
-   Header • Animated title • Desktop nav • Mobile nav
-   Services dropdown fixed for mobile + desktop
+   M.R. TECHFORGE — NAVIGATION (v4.0 Reset)
+   Header + logo + animated title
+   Desktop nav, mobile hamburger, Services dropdown
    ===================================================== */
 
 /* -----------------------------------------------------
    HEADER WRAPPER
 ------------------------------------------------------ */
-
 .forge-header {
   position: sticky;
   top: 0;
@@ -33,7 +32,7 @@
 }
 
 /* -----------------------------------------------------
-   LOGO + ANIMATED TITLE
+   LOGO + ANIMATED WORDMARK
 ------------------------------------------------------ */
 
 .logo-link {
@@ -55,27 +54,31 @@
   filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
 }
 
-/* Animated “M.R. TechForge” text in header */
+/* Glowing animated “M.R. TechForge” in header */
 .forge-title {
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-  letter-spacing: 1px;
-
   background: linear-gradient(
     90deg,
-    #f5b841 0%,
-    #f7d372 20%,
-    #0a6dff 50%,
-    #153d77 80%,
-    #f5b841 100%
+    #F5B841,
+    #F5B841,
+    #0A6DFF,
+    #153D77,
+    #F5B841
   );
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation: forgeTitleSpectrum 6s linear infinite,
-             forgeTitleGlow 4s ease-in-out infinite;
+  animation: forgeTitleSpectrum 6s linear infinite;
+
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+
+  /* extra glow so it “pops” */
+  text-shadow:
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6),
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.5);
 }
 
 /* -----------------------------------------------------
@@ -92,17 +95,18 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: 600;
 
   color: var(--forge-subtext);
+  font-weight: 600;
+
+  text-transform: uppercase;
   text-decoration: none;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .forge-nav a:hover {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
 }
 
 /* -----------------------------------------------------
@@ -110,7 +114,10 @@
 ------------------------------------------------------ */
 
 .nav-toggle {
-  display: none;
+  /* make sure the checkbox is *never* visible or clickable */
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav-toggle-label {
@@ -135,14 +142,11 @@
   transition: all 0.3s ease;
 }
 
-.nav-toggle-label span {
-  top: 50%;
-  transform: translateY(-50%);
-}
+.nav-toggle-label span { top: 50%; transform: translateY(-50%); }
 .nav-toggle-label span::before { top: -9px; }
-.nav-toggle-label span::after  { top: 9px; }
+.nav-toggle-label span::after { top: 9px; }
 
-/* “X” transition */
+/* X transition */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
@@ -170,32 +174,40 @@
     top: 100%;
     left: 0;
 
-    width: 100%;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
 
     background: #050810;
     border-top: 1px solid rgba(10,109,255,0.25);
 
     max-height: 0;
     overflow: hidden;
-    gap: 0;
 
     transition: max-height 0.35s ease-in-out;
-    animation: mobileSlideDown 0.35s ease-out;
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 650px;
+    max-height: 600px;
     padding: 1rem 0;
   }
 
   .forge-nav a {
     width: 100%;
+    padding: 0.75rem 0;
     text-align: center;
-    padding: 0.85rem 0;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
+
+  /* keep the Services item lined up like the others */
+  .nav-item.dropdown {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@keyframes mobileSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* -----------------------------------------------------
@@ -209,6 +221,7 @@
   gap: 0.25rem;
 }
 
+/* Match font of other nav items */
 .dropdown-parent-text {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
@@ -231,11 +244,10 @@
 }
 
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN
+   DESKTOP DROPDOWN (hover)
 ------------------------------------------------------ */
 
 @media (min-width: 761px) {
-
   .dropdown-toggle {
     background: none;
     border: none;
@@ -278,81 +290,61 @@
     font-family: "Titillium Web", sans-serif;
   }
 
+  /* Levels */
   .dropdown-content a[data-child="true"] {
     margin-left: 0.75rem;
   }
-
   .dropdown-content a[data-grandchild="true"] {
     margin-left: 1.6rem;
   }
 }
 
 /* -----------------------------------------------------
-   MOBILE DROPDOWN
+   MOBILE DROPDOWN — SIMPLE (always expanded)
 ------------------------------------------------------ */
 
 @media (max-width: 760px) {
 
-  .nav-item.dropdown {
-    width: 100%;
-    justify-content: center;
-    margin-top: 0.3rem;
-  }
-
-  .dropdown-parent-text,
+  /* don’t use a tap-to-open arrow on mobile; just show children */
   .dropdown-toggle {
-    cursor: pointer;
-  }
-
-  .dropdown-toggle {
-    background: none;
-    border: none;
-    padding: 0 0.35rem;
+    display: none;
   }
 
   .dropdown-content {
-    display: none;
-    position: static !important;
-
-    width: 100%;
-    padding-left: 1.8rem;
-    margin-top: 0.35rem;
-  }
-
-  /* When either the “Services” text OR the arrow gets focus */
-  .dropdown-parent-text:focus + .dropdown-toggle + .dropdown-content,
-  .dropdown-toggle:focus + .dropdown-content {
     display: block !important;
+    position: static !important;
+    padding-left: 0;
+    margin-top: 0.25rem;
+    text-align: center;
   }
 
   .dropdown-content a {
-    text-align: left;
-    padding: 0.55rem 0;
+    display: block;
+    padding: 0.25rem 0;
     font-size: 1rem;
   }
 
   .dropdown-content a[data-child="true"] {
-    margin-left: 0.8rem;
+    margin-left: 0;
   }
 
   .dropdown-content a[data-grandchild="true"] {
-    margin-left: 1.6rem;
+    margin-left: 0;
+    opacity: 0.9;
   }
 }
 
 /* -----------------------------------------------------
    OVERVIEW ITEM
 ------------------------------------------------------ */
-
 .dropdown-overview {
   font-weight: 700;
   color: var(--forge-hotmetal) !important;
 }
 
 /* -----------------------------------------------------
-   ANIMATIONS
+   HEADER ANIMATIONS
 ------------------------------------------------------ */
-
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
@@ -362,15 +354,4 @@
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-@keyframes forgeTitleGlow {
-  0%   { text-shadow: 0 0 10px rgba(245,184,65,0.4); }
-  50%  { text-shadow: 0 0 22px rgba(245,184,65,0.9); }
-  100% { text-shadow: 0 0 10px rgba(245,184,65,0.4); }
-}
-
-@keyframes mobileSlideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
