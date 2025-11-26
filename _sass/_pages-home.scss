@@ -1,6 +1,187 @@
 /* ==========================================================
-   MOBILE-PERFECT HERO TITLE — M.R. TECHFORGE
-   Clean, readable, controlled typography
+   M.R. TECHFORGE — HOMEPAGE (v3.0 Cinematic)
+   Fingerprint • Embers • Watermark • Glow • Gradient Text
+   ========================================================== */
+
+.home {
+  margin-top: 1rem;
+  animation: fadeInHome 0.6s ease-out;
+}
+
+
+
+/* ==========================================================
+   HERO CONTAINER WITH BACKGROUND EFFECTS
+   ========================================================== */
+
+.home-hero {
+  position: relative;
+  max-width: 900px;
+  margin: 1rem auto 3rem;
+  text-align: center;
+  padding: 3rem 1.8rem;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(10,10,12,0.6),
+    rgba(0,0,0,0.95)
+  );
+  border-radius: 14px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.28);
+  box-shadow:
+    0 0 20px rgba(var(--forge-accent-rgb), 0.15),
+    0 0 34px rgba(0,0,0,0.7) inset;
+}
+
+
+
+/* ==========================================================
+   FINGERPRINT BACKGROUND (SVG recommended)
+   ========================================================== */
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-image: url('/assets/images/fingerprint.svg');
+  background-size: 420px;
+  background-repeat: no-repeat;
+  background-position: center 8%;
+  opacity: 0.12;
+
+  animation: fingerprintRotate 40s linear infinite;
+}
+
+@keyframes fingerprintRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+/* ==========================================================
+   ANVIL WATERMARK
+   ========================================================== */
+
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+
+  background-image: url('/assets/images/anvil-watermark.png');
+  background-repeat: no-repeat;
+  background-size: 300px;
+  background-position: center 58%;
+  opacity: 0.06;
+
+  animation: watermarkPulse 18s ease-in-out infinite;
+}
+
+@keyframes watermarkPulse {
+  0%   { opacity: 0.04; transform: scale(1); }
+  50%  { opacity: 0.11; transform: scale(1.04); }
+  100% { opacity: 0.04; transform: scale(1); }
+}
+
+
+
+/* ==========================================================
+   EMBER DRIFT (SUBTLE)
+   ========================================================== */
+
+.ember-layer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ember {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--forge-hotmetal);
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(1px);
+  animation: emberFloat 6s linear infinite;
+}
+
+@keyframes emberFloat {
+  0%   { transform: translateY(20px) translateX(0); opacity: 0; }
+  30%  { opacity: 0.35; }
+  100% { transform: translateY(-60px) translateX(15px); opacity: 0; }
+}
+
+/* Random ember placement */
+.ember:nth-child(1){left:20%;top:65%;animation-delay:1s}
+.ember:nth-child(2){left:45%;top:75%;animation-delay:2s}
+.ember:nth-child(3){left:60%;top:82%;animation-delay:3s}
+.ember:nth-child(4){left:30%;top:70%;animation-delay:4s}
+.ember:nth-child(5){left:75%;top:60%;animation-delay:1.5s}
+.ember:nth-child(6){left:15%;top:78%;animation-delay:0.5s}
+.ember:nth-child(7){left:55%;top:68%;animation-delay:2.8s}
+.ember:nth-child(8){left:65%;top:72%;animation-delay:3.4s}
+.ember:nth-child(9){left:40%;top:80%;animation-delay:4.6s}
+.ember:nth-child(10){left:85%;top:67%;animation-delay:1.3s}
+.ember:nth-child(11){left:10%;top:88%;animation-delay:2.2s}
+.ember:nth-child(12){left:50%;top:90%;animation-delay:0.8s}
+
+
+
+/* ==========================================================
+   TEXT GRADIENT (BLUE → STEEL → GOLD)
+   ========================================================== */
+
+.hero-subtitle,
+.hero-tagline {
+  background: linear-gradient(
+    to bottom,
+    var(--forge-accent) 0%,
+    var(--forge-text) 70%,
+    var(--forge-hotmetal-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+/* ==========================================================
+   LAVA GLOW HERO STAMP
+   ========================================================== */
+
+.hero-stamp {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+
+  color: rgba(var(--forge-hotmetal-rgb), 0.28);
+
+  text-shadow:
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.9),
+    0 0 28px rgba(var(--forge-hotmetal-rgb), 0.55),
+    0 0 40px rgba(var(--forge-hotmetal-rgb), 0.45);
+
+  animation: heroStampPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroStampPulse {
+  0%   { opacity: 0.28; }
+  50%  { opacity: 0.38; }
+  100% { opacity: 0.28; }
+}
+
+
+
+/* ==========================================================
+   HERO TITLE (perfect, controlled)
    ========================================================== */
 
 .hero-title {
@@ -11,15 +192,12 @@
   font-family: "Orbitron", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
-  text-align: center;
 
-  /* Forge lava glow */
   background: linear-gradient(
     180deg,
     var(--forge-hotmetal) 0%,
     rgba(var(--forge-hotmetal-rgb), 0.6) 90%
   );
-  background-size: 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -30,61 +208,65 @@
   margin-bottom: 1.2rem;
 }
 
-/* perfect line-level styling */
 .hero-title span {
-  display: block;
-  width: 100%;
+  white-space: nowrap;
 }
 
+
+
 /* ==========================================================
-   MOBILE OPTIMIZATION
+   MOBILE TUNING
    ========================================================== */
 
 @media (max-width: 760px) {
 
   .hero-title {
-    font-size: 1.65rem;       /* smaller title */
-    letter-spacing: 0.4px;    /* tighter spacing */
+    font-size: 1.65rem;
+    letter-spacing: 0.4px;
     line-height: 1.25;
-    gap: 0.25rem;
     max-width: 88%;
     margin-left: auto;
     margin-right: auto;
 
-    /* reduce glow intensity for clarity */
     text-shadow:
       0 0 6px rgba(var(--forge-hotmetal-rgb), 0.28),
       0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18);
   }
 
-  .hero-title span {
-    white-space: nowrap;      /* never split words */
-  }
-
   .hero-stamp {
     font-size: 1.8rem;
     letter-spacing: 0.14em;
-    text-shadow:
-      0 0 8px rgba(var(--forge-hotmetal-rgb), 0.38),
-      0 0 14px rgba(var(--forge-hotmetal-rgb), 0.18);
-  }
-
-  .hero-subtitle {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 90%;
   }
 }
 
-/* smaller phones — additional polishing */
 @media (max-width: 420px) {
-  .hero-title {
-    font-size: 1.45rem;
-    gap: 0.18rem;
-    letter-spacing: 0.2px;
-  }
-
-  .hero-stamp {
-    font-size: 1.55rem;
-  }
+  .hero-title { font-size: 1.45rem; }
+  .hero-stamp { font-size: 1.55rem; }
 }
+
+
+
+/* ==========================================================
+   SECTION DIVIDER
+   ========================================================== */
+
+.forge-divider {
+  width: 100%;
+  height: 2px;
+  margin: 2.8rem 0 2.2rem;
+  background: linear-gradient(
+    to right,
+    rgba(var(--forge-accent-rgb), 0) 0%,
+    rgba(var(--forge-accent-rgb), 0.45) 50%,
+    rgba(var(--forge-accent-rgb), 0) 100%
+  );
+  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.25);
+}
+
+
+
+/* ==========================================================
+   OTHER SECTIONS — (your previous styles unchanged)
+   ========================================================== */
+
+/* (You keep your pillar grid, audience grid, how-steps, etc.) */
