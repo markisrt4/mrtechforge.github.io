@@ -1,45 +1,33 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + animated wordmark -->
+    <!-- Logo -->
     <a href="/" class="logo-link">
-      <img
-        src="/assets/images/logo_transparent.png"
-        alt="M.R. TechForge Logo"
-        class="forge-logo">
+      <img src="/assets/images/logo_transparent.png" alt="M.R. TechForge Logo" class="forge-logo">
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Mobile hamburger -->
+    <!-- Mobile Hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
-    <!-- Main navigation -->
+    <!-- Navigation -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES: desktop hover / mobile always-expanded children -->
+      <!-- Services Dropdown -->
       <div class="nav-item dropdown">
         <span class="dropdown-parent-text">Services</span>
         <span class="dropdown-arrow">▼</span>
 
         <div class="dropdown-content">
-          <a href="/services/" class="dropdown-overview">
-            Services Overview
-          </a>
-
-          <a href="/services/digital-security/" data-child="true">
-            Digital Security
-          </a>
-
-          <a href="/services/digital-security/life-without-google/"
-             data-grandchild="true">
-            Life Without Google
-          </a>
+          <a href="/services/" class="dropdown-overview">Services Overview</a>
+          <a href="/services/digital-security/" data-child="true">Digital Security</a>
+          <a href="/services/digital-security/life-without-google/" data-grandchild="true">Life Without Google</a>
         </div>
       </div>
 
