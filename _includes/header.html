@@ -1,40 +1,46 @@
 <header class="forge-header">
   <div class="header-inner">
 
+    <!-- Logo + animated wordmark -->
     <a href="/" class="logo-link">
-      <img src="/assets/images/logo_transparent.png" class="forge-logo" alt="M.R. TechForge Logo">
+      <img
+        src="/assets/images/logo_transparent.png"
+        alt="M.R. TechForge Logo"
+        class="forge-logo">
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Hamburger -->
+    <!-- Mobile hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
-    <!-- Navigation -->
+    <!-- Main navigation -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- Dropdown -->
+      <!-- SERVICES: desktop hover / mobile always-expanded children -->
       <div class="nav-item dropdown">
-
-        <!-- Trigger always works -->
-        <div class="dropdown-trigger">
-          <span class="dropdown-parent-text">Services</span>
-          <span class="dropdown-arrow">▼</span>
-        </div>
+        <span class="dropdown-parent-text">Services</span>
+        <span class="dropdown-arrow">▼</span>
 
         <div class="dropdown-content">
-          <a href="/services/" class="dropdown-overview">Services Overview</a>
-          <a href="/services/digital-security/" data-child="true">Digital Security</a>
-          <a href="/services/digital-security/life-without-google/" data-grandchild="true">
+          <a href="/services/" class="dropdown-overview">
+            Services Overview
+          </a>
+
+          <a href="/services/digital-security/" data-child="true">
+            Digital Security
+          </a>
+
+          <a href="/services/digital-security/life-without-google/"
+             data-grandchild="true">
             Life Without Google
           </a>
         </div>
-
       </div>
 
       <a href="/documentation/">Documentation</a>
@@ -42,5 +48,6 @@
       <a href="/contact.html">Contact</a>
 
     </nav>
+
   </div>
 </header>
