@@ -1,233 +1,136 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOMEPAGE (v6.0)
-   No blur • Clean hero • Steel gradient text • Mobile safe
+   M.R. TECHFORGE — HERO (BLUR-PROOF VERSION)
+   Unique isolation class: .forge-hero-vaporized
    ========================================================== */
 
-/* Root wrapper */
-.home {
-  margin-top: 1.2rem;
-  animation: fadeInHome 0.6s ease-out;
-  position: relative;
-  z-index: 1;
+/* Kill ALL blur + ALL shadows inside hero */
+.forge-hero-vaporized,
+.forge-hero-vaporized * {
+  filter: none !important;
+  text-shadow: none !important;
 }
 
-/* ==========================================================
-   HERO CONTAINER
-   ========================================================== */
-
-.home-hero {
+/* Container */
+.forge-hero-vaporized {
+  position: relative;
   max-width: 900px;
-  margin: 0 auto 2.8rem;
+  margin: 1.5rem auto 3rem;
+  padding: 2rem 1.2rem;
   text-align: center;
-  padding: 2rem 1.5rem;
-  position: relative;
+  overflow: hidden;
 }
 
-/* ==========================================================
-   BACKGROUND LAYERS (fingerprint + anvil)
-   ========================================================== */
-
-.home-hero::before {
-  /* fingerprint ring behind everything */
+/* Fingerprint background */
+.forge-hero-vaporized::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background-image: url('/assets/images/fingerprint.svg');
-  background-size: 74%;
+  background-size: 70%;
   background-repeat: no-repeat;
-  background-position: center 10%;
-
-  opacity: 0.12;       /* subtle */
+  background-position: center 6%;
+  opacity: 0.12;
   pointer-events: none;
 }
 
-.home-hero::after {
-  /* ember drift / anvil watermark if present */
+/* Ember/anvil layer */
+.forge-hero-vaporized::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 40%;
-
   background-image: url('/assets/images/forge-anvil-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
-
-  opacity: 0.18;        /* subtle glow */
+  opacity: 0.18;
   animation: emberGlow 6s ease-in-out infinite alternate;
-
   pointer-events: none;
 }
 
-/* ==========================================================
-   TEXT STYLES — NO BLUR, CLEAN FADES
-   ========================================================== */
-
-/* tagline above stamp */
-.hero-tagline {
+/* Tagline with subtle BLUE → SILVER gradient */
+.forge-hero-vaporized .hero-tagline {
   font-size: 1.15rem;
-  color: var(--forge-subtext);
-  margin-bottom: 1.2rem;
   line-height: 1.6;
+
+  background: linear-gradient(
+    180deg,
+    var(--forge-accent) 0%,
+    #c0c7d1 95%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0.92;
 }
 
-/* M.R. TechForge stamp */
-.hero-stamp {
+/* Stamp */
+.forge-hero-vaporized .hero-stamp {
   font-family: "Orbitron", sans-serif;
   font-size: clamp(2.2rem, 5vw, 3rem);
-  text-transform: uppercase;
   letter-spacing: 0.18em;
-
   color: rgba(var(--forge-hotmetal-rgb), 0.28);
+}
 
-  /* glow but NOT blur */
-  text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.45),
-    0 0 16px rgba(var(--forge-hotmetal-rgb), 0.35);
+/* Title */
+.forge-hero-vaporized .hero-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  color: var(--forge-hotmetal);
+  word-break: keep-all;
+  overflow-wrap: normal;
 
   margin-bottom: 1.4rem;
 }
 
-/* CRAFTING PRACTICAL TECH SOLUTIONS… */
-.hero-title {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  text-transform: uppercase;
-
-  /* prevent broken word wrapping */
-  word-break: keep-all;
-  overflow-wrap: normal;
-
-  letter-spacing: 0.11em;
-  line-height: 1.3;
-
-  /* BLUE → STEEL FADE */
-  background: linear-gradient(
-    180deg,
-    var(--forge-accent) 0%,
-    #7a8ba0 90%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: none !important;
-  filter: none !important;
-
-  margin-bottom: 1.6rem;
-}
-
-.hero-subtitle {
+/* Subtitle */
+.forge-hero-vaporized .hero-subtitle {
   max-width: 760px;
-  margin: 0.5rem auto 1.8rem;
-  font-size: 1.05rem;
+  margin: 1.2rem auto 1.6rem;
   color: var(--forge-text);
   line-height: 1.7;
 }
 
-/* keyword chips */
-.hero-tags {
+/* Tags */
+.forge-hero-vaporized .hero-tags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-bottom: 1.6rem;
 }
 
-.hero-tag {
-  padding: 0.3rem 0.85rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-
+.forge-hero-vaporized .hero-tag {
   background: rgba(var(--forge-accent-rgb), 0.1);
   border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
   color: var(--forge-subtext);
-  letter-spacing: 0.7px;
 }
 
-/* ==========================================================
-   BUTTONS — USE EXISTING .btn & .btn-forge
-   ========================================================== */
-
-.hero-actions {
+/* Buttons (your global classes handle styling) */
+.forge-hero-vaporized .hero-actions {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  margin-top: 1.4rem;
 }
 
-.hero-actions .btn {
-  min-width: 180px;
-}
-
-/* footnote */
-.hero-footnote {
-  font-size: 0.9rem;
+/* Footnote */
+.forge-hero-vaporized .hero-footnote {
+  margin-top: 0.8rem;
   color: var(--forge-subtext);
-  opacity: 0.9;
+  font-size: 0.9rem;
 }
 
-/* ==========================================================
-   OTHER HOMEPAGE SECTIONS (unchanged)
-   ========================================================== */
-
-.home-pillars,
-.home-audience,
-.home-how,
-.home-integrity {
-  max-width: 950px;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
-
-/* etc… the rest of your page sections remain as-is */
-/* (No blur, no style overrides needed here) */
-
-/* ==========================================================
-   ANIMATIONS
-   ========================================================== */
-
-@keyframes fadeInHome {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Ember anim */
 @keyframes emberGlow {
-  0% { opacity: 0.14; }
+  0%   { opacity: 0.14; }
   100% { opacity: 0.22; }
-}
-
-/* ==========================================================
-   MOBILE RESPONSIVE FIXES
-   ========================================================== */
-
-@media (max-width: 900px) {
-  .hero-title {
-    font-size: 2.1rem;
-  }
-
-  .hero-stamp {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-tagline {
-    font-size: 1rem;
-  }
-
-  .hero-title {
-    font-size: 1.9rem;
-    letter-spacing: 0.09em;
-  }
 }
