@@ -1,41 +1,71 @@
 <footer class="forge-footer">
   <div class="footer-inner">
 
+    <!-- Forge Terminal -->
     <div class="forge-terminal">
-      <pre><code>$ forge secure home_network --firewall<br># Secure foundations make everything stronger.</code></pre><br>
-      <pre><code>$ run integrity_check --daily && sync<br># Building trust, one command at a time.</code></pre>
+      <pre><code>$ forge secure home_network --firewall
+# Secure foundations make everything stronger.</code></pre>
+
+      <pre><code>$ run integrity_check --daily && sync
+# Building trust, one command at a time.</code></pre>
     </div>
 
+    <!-- Tagline -->
     <p class="tagline">
       &copy; {{ site.time | date: "%Y" }} {{ site.title }}
-      <span>— Crafting Clarity. Forging Solutions. Secured with Integrity.</span>
+      <span>— Forging Relationships • Building Solutions • Guided by Integrity</span>
     </p>
 
+    <!-- Social Icons -->
     <div class="footer-social">
-      <a href="https://github.com/markisrt4" aria-label="GitHub" class="social-icon github" target="_blank" rel="noopener">
+      <a href="https://github.com/markisrt4"
+         aria-label="GitHub"
+         class="social-icon github"
+         target="_blank" rel="noopener">
         <i class="fab fa-github"></i>
-      </a>&nbsp;&nbsp;
-      <a href="https://www.linkedin.com/in/mark-russell-26278456"  aria-label="LinkedIn" class="social-icon linkedin" target="_blank" rel="noopener">
+      </a>
+
+      <a href="https://www.linkedin.com/in/mark-russell-26278456"
+         aria-label="LinkedIn"
+         class="social-icon linkedin"
+         target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
-      </a>&nbsp;&nbsp;
-      <a href="https://www.youtube.com/@mrtechforge" aria-label="YouTube" class="social-icon youtube" target="_blank" rel="noopener">
+      </a>
+
+      <a href="https://www.youtube.com/@mrtechforge"
+         aria-label="YouTube"
+         class="social-icon youtube"
+         target="_blank" rel="noopener">
         <i class="fab fa-youtube"></i>
-      </a>&nbsp;&nbsp;
-      <a href="https://www.facebook.com/profile.php?id=61582641067637" aria-label="Facebook" class="social-icon facebook" target="_blank">
-         <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61582641067637"
+         aria-label="Facebook"
+         class="social-icon facebook"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook"></i>
       </a>
     </div>
 
+    <!-- Footer Links -->
     <div class="footer-links">
-  <a href="/privacy.html">Privacy</a> |
-  <a href="/documentation/">Documentation</a> |
-  <a href="/contact.html">Contact</a>
-</div>
+      <a href="/privacy.html">Privacy</a> |
+      <a href="/documentation/">Documentation</a> |
+      <a href="/contact.html">Contact</a>
+    </div>
 
+    <!-- Glow underline -->
     <div class="footer-glow"></div>
 
-    
-
   </div>
-</footer>
 
+  <!-- Mobile Dropdown Script -->
+  <script>
+    document.querySelectorAll(".dropdown-trigger").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.parentElement.classList.toggle("dropdown-open");
+      });
+    });
+  </script>
+
+</footer>
