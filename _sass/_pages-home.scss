@@ -1,388 +1,93 @@
-/* ==========================================================
-   M.R. TechForge — Homepage Layout & Hero (Forge Vapor v2)
-   Scoped to .home so other pages stay clean.
-   ========================================================== */
+/* =========================================================
+   HOMEPAGE — CLEAN + MOBILE-STABLE
+   Fix watermark, glow, spacing, and mobile behavior
+   ========================================================= */
 
-.home {
-  margin-top: 0.5rem;
-  animation: fadeInHome 0.6s ease-out;
-}
-
-/* ----------------------------------------------------------
-   Shared helpers for this page
----------------------------------------------------------- */
-
-/* Thin glowing separator between sections */
-.forge-section-spacer {
-  width: 100%;
-  height: 2px;
-  margin: 3rem auto;
-
-  background: radial-gradient(
-    circle,
-    rgba(var(--forge-hotmetal-rgb), 0.4) 0%,
-    rgba(var(--forge-hotmetal-rgb), 0) 70%
-  );
-
-  box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.35);
-}
-
-/* Subtle “forge steel → white” gradient text */
-.forge-text-gradient {
-  background: linear-gradient(
-    to bottom,
-    rgba(185, 195, 210, 0.82) 0%,
-    #f8fafc 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Softer variant for long paragraphs / bullet lists */
-.forge-text-gradient-soft {
-  background: linear-gradient(
-    to bottom,
-    rgba(195, 205, 220, 0.75) 0%,
-    #f3f5fb 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ----------------------------------------------------------
-   HERO: Forge Vapor frame + anvil watermark + embers
----------------------------------------------------------- */
-
-.forge-hero-vaporized {
+/* Wrapper for hero section */
+.home-hero {
   position: relative;
-  padding: 2.8rem 1.8rem 3.6rem;
-  border-radius: 12px;
+  padding: 4rem 1.2rem 3rem;
   text-align: center;
-  overflow: hidden;
 
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.20),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.10);
+  /* Keep consistent dark background (mobile safe) */
+  background: radial-gradient(circle at 50% 10%, #101014 0%, #05070d 100%);
 }
 
-/* Anvil watermark */
-.forge-hero-vaporized::before {
-  content: "";
+/* ------------------------------------------
+   WATERMARK — Mobile compatible rework
+------------------------------------------ */
+
+.home-watermark {
   position: absolute;
-  inset: 0;
-
-  background-image: url("/assets/images/anvil-watermark.png");
-  background-position: center 15%;
-  background-size: 420px;
-  background-repeat: no-repeat;
-
-  opacity: 0.06;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.08;
   pointer-events: none;
+
+  /* Force display on mobile */
+  z-index: 0;
+
+  /* watermark image */
+  background-image: url("/assets/images/logo_transparent.png");
+  background-repeat: no-repeat;
+  background-size: 340px;
+  width: 340px;
+  height: 340px;
+
+  /* blur is safe — backdrop-filter is NOT */
+  filter: blur(2px);
 }
 
-/* Ember drift from the top */
-.forge-hero-vaporized::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at 30% 0%,
-    rgba(var(--forge-hotmetal-rgb), 0.22),
-    transparent 60%
-  );
-
-  opacity: 0.45;
-  animation: emberDrift 14s ease-in-out infinite alternate;
-}
-
-/* Ember animation */
-@keyframes emberDrift {
-  0% {
-    transform: translateY(-8px);
-    opacity: 0.25;
-  }
-  100% {
-    transform: translateY(8px);
-    opacity: 0.45;
-  }
-}
-
-/* ----------------------------------------------------------
-   Hero typography
----------------------------------------------------------- */
-
-.hero-tagline {
-  font-size: 1.2rem;
-  margin-bottom: 1.6rem;
-  line-height: 1.6;
-  font-weight: 500;
-}
-
-/* “M.R. TechForge” stamp — reduced glow so it’s crisp */
-.hero-stamp {
-  margin: 1.2rem 0 1.8rem;
-
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(2.3rem, 5vw, 3.4rem);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-
-  color: rgba(var(--forge-hotmetal-rgb), 0.55);
-
-  text-shadow:
-    0 0 6px rgba(var(--forge-hotmetal-rgb), 0.45),
-    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.25);
-
-  animation: heroStampPulse 6s ease-in-out infinite;
-}
-
-/* Main hero title */
-.hero-title {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(2.2rem, 6vw, 3.4rem);
-  margin-bottom: 1.6rem;
-
-  text-transform: uppercase;
-  line-height: 1.25;
-  letter-spacing: 1.4px;
-
-  background: linear-gradient(
-    180deg,
-    var(--forge-hotmetal) 0%,
-    rgba(var(--forge-hotmetal-rgb), 0.55) 90%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* smaller, sharper glow */
-  text-shadow:
-    0 0 6px rgba(var(--forge-hotmetal-rgb), 0.35),
-    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18);
-}
-
-.hero-subtitle {
-  max-width: 760px;
-  margin: 0 auto 1.8rem;
-  font-size: 1.06rem;
-  line-height: 1.7;
-}
-
-/* small chips under hero */
-.hero-tags {
-  margin: 1.8rem auto 2.2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  justify-content: center;
-}
-
-.hero-tag {
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-
-  font-size: 0.85rem;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  background: rgba(var(--forge-accent-rgb), 0.08);
-  color: var(--forge-subtext);
-}
-
-/* CTA buttons row (re-uses .btn & .btn-forge from buttons.scss) */
-.hero-actions {
-  margin-top: 0.8rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.hero-footnote {
-  margin-top: 1.2rem;
-  font-size: 0.95rem;
-}
-
-/* stamp animation */
-@keyframes heroStampPulse {
-  0%   { opacity: 0.22; }
-  50%  { opacity: 0.34; }
-  100% { opacity: 0.22; }
-}
-
-/* Ensure hero foreground stays clickable */
-.forge-hero-vaporized > * {
+/* ------------------------------------------
+   HERO CONTENT ABOVE THE WATERMARK
+------------------------------------------ */
+.home-hero-content {
   position: relative;
   z-index: 10;
 }
 
-.forge-hero-vaporized::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* ------------------------------------------
+   GLOWING TITLE (reuse header style)
+------------------------------------------ */
 
-  background: radial-gradient(
-    circle at 30% 0%,
-    rgba(var(--forge-hotmetal-rgb), 0.22),
-    transparent 60%
+.home-forge-title {
+  background: linear-gradient(
+    90deg,
+    #F5B841,
+    #F5B841,
+    #0A6DFF,
+    #153D77,
+    #F5B841
   );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: forgeTitleSpectrumHome 7s linear infinite;
 
-  opacity: 0.45;
-  animation: emberDrift 14s ease-in-out infinite alternate;
-
-  /* IMPORTANT: let clicks pass through to the buttons */
-  pointer-events: none;
-}
-/* ----------------------------------------------------------
-   Below the hero — sections
----------------------------------------------------------- */
-
-.home-pillars,
-.home-audience,
-.home-products,
-.home-how,
-.home-integrity {
-  max-width: 950px;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
-
-.home-pillars h2,
-.home-audience h2,
-.home-products h2,
-.home-how h2,
-.home-integrity h2 {
-  margin-bottom: 1.4rem;
-  color: var(--forge-hotmetal);
-}
-
-/* Pillars */
-.pillar-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.pillar-card {
-  background: rgba(15, 15, 22, 0.92);
-  border-radius: 12px;
-  padding: 1.5rem 1.2rem;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-  box-shadow:
-    0 0 14px rgba(var(--forge-accent-rgb), 0.12),
-    inset 0 0 10px rgba(var(--forge-accent-rgb), 0.08);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.pillar-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 0 20px rgba(var(--forge-accent-rgb), 0.22),
-    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.12);
-}
-
-/* Audience section */
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  text-align: left;
-}
-
-/* How it works */
-.how-steps {
-  list-style: none;
-  margin: 1.6rem 0 0;
-  padding: 0;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
-}
-
-.how-steps li {
-  background: rgba(10, 10, 18, 0.9);
-  border-radius: 12px;
-  padding: 1.3rem 1.1rem;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.3);
-  text-align: left;
-}
-
-.step-label {
-  display: inline-block;
   font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  margin-bottom: 0.6rem;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.87rem;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+
+  font-size: clamp(1.6rem, 6vw, 3rem);
 }
 
-/* Integrity callout */
-.home-integrity {
-  border-radius: 14px;
-  padding: 1.8rem;
-
-  border: 1px solid rgba(var(--forge-hotmetal-rgb), 0.45);
-  background: radial-gradient(
-    circle at top,
-    rgba(var(--forge-hotmetal-rgb), 0.22),
-    rgba(5, 5, 5, 0.95)
-  );
-
-  box-shadow:
-    0 0 26px rgba(var(--forge-hotmetal-rgb), 0.28),
-    inset 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.18);
+/* Same animation as header, different name */
+@keyframes forgeTitleSpectrumHome {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* ----------------------------------------------------------
-   Responsive tweaks
----------------------------------------------------------- */
-
-@media (max-width: 900px) {
-  .pillar-grid,
-  .audience-grid,
-  .how-steps {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .forge-hero-vaporized {
-    padding: 2.2rem 1.2rem 3rem;
-  }
-
-  .hero-stamp {
-    font-size: 2.1rem;
-    letter-spacing: 0.16em;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.25;
-  }
-
-  .hero-tagline {
-    font-size: 1rem;
-  }
-}
-
-/* ----------------------------------------------------------
-   Page fade-in
----------------------------------------------------------- */
-
-@keyframes fadeInHome {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ------------------------------------------
+   MAIN TAGLINE
+------------------------------------------ */
+.home-tagline {
+  max-width: 800px;
+  margin: 0 auto 1.6rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--forge-text);
 }
