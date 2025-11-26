@@ -1,57 +1,88 @@
-/* =========================================================
-   HOMEPAGE — CLEAN + MOBILE-STABLE
-   Fix watermark, glow, spacing, and mobile behavior
-   ========================================================= */
+/* ==========================================================
+   M.R. TechForge — Homepage Layout & Hero (Forge Vapor v3)
+   FIXED: watermark, mobile text, glow, background bleed
+   ========================================================== */
 
-/* Wrapper for hero section */
-.home-hero {
+.home {
+  margin-top: 0.5rem;
+  animation: fadeInHome 0.6s ease-out;
+}
+
+/* ----------------------------------------------------------
+   HERO CONTAINER
+---------------------------------------------------------- */
+
+.forge-hero-vaporized {
   position: relative;
-  padding: 4rem 1.2rem 3rem;
+  padding: 2.8rem 1.8rem 3.6rem;
+  border-radius: 14px;
   text-align: center;
+  overflow: hidden;
 
-  /* Keep consistent dark background (mobile safe) */
-  background: radial-gradient(circle at 50% 10%, #101014 0%, #05070d 100%);
+  /* FIX: stronger opaque background to prevent logo bleed */
+  background: rgba(5, 5, 10, 0.92);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
+  box-shadow:
+    0 0 22px rgba(var(--forge-accent-rgb), 0.20),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.10);
 }
 
-/* ------------------------------------------
-   WATERMARK — Mobile compatible rework
------------------------------------------- */
+/* ----------------------------------------------------------
+   ANVIL WATERMARK (RESTORED)
+---------------------------------------------------------- */
 
-.home-watermark {
+.forge-hero-vaporized::before {
+  content: "";
   position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.08;
-  pointer-events: none;
+  inset: 0;
 
-  /* Force display on mobile */
-  z-index: 0;
-
-  /* watermark image */
-  background-image: url("/assets/images/logo_transparent.png");
+  background-image: url("/assets/images/anvil-watermark.png");
+  background-size: 420px;
   background-repeat: no-repeat;
-  background-size: 340px;
-  width: 340px;
-  height: 340px;
+  background-position: center 20%;
 
-  /* blur is safe — backdrop-filter is NOT */
-  filter: blur(2px);
+  opacity: 0.09;
+  pointer-events: none;
 }
 
-/* ------------------------------------------
-   HERO CONTENT ABOVE THE WATERMARK
------------------------------------------- */
-.home-hero-content {
-  position: relative;
-  z-index: 10;
+/* Ember glow */
+.forge-hero-vaporized::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 30% 0%,
+    rgba(var(--forge-hotmetal-rgb), 0.25),
+    transparent 60%
+  );
+
+  opacity: 0.4;
+  animation: emberDrift 14s ease-in-out infinite alternate;
 }
 
-/* ------------------------------------------
-   GLOWING TITLE (reuse header style)
------------------------------------------- */
+@keyframes emberDrift {
+  0%   { transform: translateY(-6px); opacity: 0.3; }
+  100% { transform: translateY(6px);  opacity: 0.5; }
+}
 
-.home-forge-title {
+/* ----------------------------------------------------------
+   HERO TYPOGRAPHY
+---------------------------------------------------------- */
+
+.hero-tagline {
+  font-size: 1.2rem;
+  margin-bottom: 1.6rem;
+  line-height: 1.6;
+}
+
+/* NEW: Hero Stamp now uses header glowing effect */
+.hero-stamp {
+  margin: 1.2rem 0 1.8rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+
   background: linear-gradient(
     90deg,
     #F5B841,
@@ -63,31 +94,117 @@
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: forgeTitleSpectrumHome 7s linear infinite;
+  animation: forgeTitleSpectrum 6s linear infinite;
 
-  font-family: "Orbitron", sans-serif;
-  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 2rem;
-
-  font-size: clamp(1.6rem, 6vw, 3rem);
+  letter-spacing: 0.20em;
 }
 
-/* Same animation as header, different name */
-@keyframes forgeTitleSpectrumHome {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+@keyframes forgeTitleSpectrum {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ------------------------------------------
-   MAIN TAGLINE
------------------------------------------- */
-.home-tagline {
-  max-width: 800px;
-  margin: 0 auto 1.6rem;
-  font-size: 1.15rem;
-  line-height: 1.55;
-  color: var(--forge-text);
+/* Main hero glowing title */
+.hero-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  margin-bottom: 1.6rem;
+  line-height: 1.25;
+
+  background: linear-gradient(
+    180deg,
+    var(--forge-hotmetal),
+    rgba(var(--forge-hotmetal-rgb), 0.6)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 6px rgba(var(--forge-hotmetal-rgb), 0.45),
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.22);
+
+  /* FIX: prevent word-breaking mid-word */
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
+
+/* Subtitle */
+.hero-subtitle {
+  max-width: 780px;
+  margin: 0 auto 1.8rem;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+/* Tags */
+.hero-tags {
+  margin: 1.8rem auto 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.hero-tag {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  background: rgba(var(--forge-accent-rgb), 0.08);
+  color: var(--forge-subtext);
+  font-size: 0.85rem;
+}
+
+/* Button Row */
+.hero-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ----------------------------------------------------------
+   MOBILE FIXES
+---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .forge-hero-vaporized {
+    padding: 2.2rem 1.2rem 3rem;
+  }
+
+  .hero-stamp {
+    font-size: 1.8rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    line-height: 1.35;
+    padding: 0 0.5rem; /* Prevent squeezed text */
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    padding: 0 0.4rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   SECTIONS BELOW HERO
+---------------------------------------------------------- */
+
+.forge-section-spacer {
+  width: 100%;
+  height: 2px;
+  margin: 3rem auto;
+  background: radial-gradient(
+    circle,
+    rgba(var(--forge-hotmetal-rgb), 0.4),
+    rgba(var(--forge-hotmetal-rgb), 0)
+  );
+}
+
+/* Pillars, audience, products, steps, integrity — unchanged */
