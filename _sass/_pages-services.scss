@@ -1,0 +1,83 @@
+/* ============================================================
+   M.R. TechForge — Services Page Enhancements
+   Safe additions that do NOT override existing global styles
+   ============================================================ */
+
+/* === 1. Pricing Card Soft Glow Enhancement === */
+/* Extends existing .pricing-card without redefining it */
+.pricing-card {
+  border: 1px solid rgba(0, 150, 255, 0.25);
+  box-shadow: 0 0 18px rgba(0, 150, 255, 0.12);
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(0, 150, 255, 0.22);
+}
+
+
+/* === 2. Keyword Pills === */
+/* Use these for HOURS, INFO, PRAYER, etc. */
+.keyword-pill {
+  display: inline-block;
+  background: rgba(0, 150, 255, 0.2);
+  border: 1px solid rgba(0, 150, 255, 0.35);
+  color: var(--forge-accent);
+  padding: 0.2rem 0.55rem;
+  margin-right: 0.3rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+
+/* === 3. Optional: General-purpose Services Card === */
+/* Only for service-specific content — does NOT replace .forge-card */
+.services-card {
+  background: rgba(20, 20, 20, 0.75);
+  border-left: 4px solid var(--forge-accent);
+  padding: 1.5rem 1.7rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.08);
+}
+
+
+/* === 4. CTA Enhancements for “Contact Me” Button Wrapper === */
+.services-cta {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.services-cta .btn-glow {
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+}
+
+
+/* === 5. Subtle Divider for Sections (optional, non-conflicting) === */
+.services-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0,150,255,0),
+    rgba(0,150,255,0.4),
+    rgba(0,150,255,0)
+  );
+  margin: 2rem 0;
+}
+
+
+/* === 6. Safe enhancements to existing heading styles === */
+/* Does NOT override .block-heading, just supplements when used */
+.services-heading {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--forge-accent);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0,150,255,0.3);
+  padding-bottom: 0.4rem;
+}
