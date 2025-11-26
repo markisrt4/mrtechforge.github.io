@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v6.0 Clean + Synced)
+   M.R. TECHFORGE — NAVIGATION (v6.1 Clean + Synced)
    Header, animated title, desktop + mobile nav,
    Services dropdown with child indicators
    ===================================================== */
@@ -296,7 +296,7 @@
   .nav-item.dropdown > .dropdown-parent-text,
   .nav-item.dropdown > .dropdown-arrow {
     font-size: 1.1rem;
-    padding: 0.55rem 0;
+    padding: 0.40rem 0;   /* <— slightly tighter vertical spacing */
     text-align: center;
   }
 
