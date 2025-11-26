@@ -46,8 +46,13 @@ class: home
 
   </section>
 
+
+  <!-- DIVIDER -->
+  <div class="forge-divider"></div>
+
+
   <!-- WHAT WE STAND FOR -->
-  <section class="home-pillars">
+  <section class="home-pillars alt-section">
     <h2>What We Stand For</h2>
 
     <div class="pillar-grid">
@@ -67,6 +72,11 @@ class: home
       </div>
     </div>
   </section>
+
+
+  <!-- DIVIDER -->
+  <div class="forge-divider"></div>
+
 
   <!-- WHO I HELP -->
   <section class="home-audience">
@@ -93,8 +103,13 @@ class: home
     </div>
   </section>
 
+
+  <!-- DIVIDER -->
+  <div class="forge-divider"></div>
+
+
   <!-- WHAT’S COMING SOON -->
-  <section class="home-products">
+  <section class="home-products alt-section">
     <h2>What’s Coming Soon</h2>
 
     <p>
@@ -109,9 +124,14 @@ class: home
     </ul>
 
     <p>
-      These are optional add-ons — not required — but helpful tools if you want a polished, secure technology foundation.
+      These optional add-ons help build a polished, secure technology foundation tailored to you.
     </p>
   </section>
+
+
+  <!-- DIVIDER -->
+  <div class="forge-divider"></div>
+
 
   <!-- HOW IT WORKS -->
   <section class="home-how">
@@ -135,15 +155,20 @@ class: home
     </ul>
   </section>
 
+
+  <!-- DIVIDER -->
+  <div class="forge-divider"></div>
+
+
   <!-- INTEGRITY SECTION -->
-  <section class="home-integrity">
+  <section class="home-integrity alt-section">
     <h2>Faith • Integrity • Craftsmanship</h2>
 
     <p>
       Every project is guided by a commitment to honest work, transparency,  
-      and service rooted in faith-driven integrity.  
-      Whether it’s a consultation or a full setup, you receive trustworthy help  
-      backed by strong values and a desire to do right by people.
+      and service rooted in faith-driven integrity. Whether it’s a consultation  
+      or a full setup, you receive trustworthy help backed by strong values  
+      and a desire to do right by people.
     </p>
   </section>
 
