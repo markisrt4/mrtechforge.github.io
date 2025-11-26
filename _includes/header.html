@@ -1,38 +1,38 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + wordmark -->
+    <!-- Logo -->
     <a href="/" class="logo-link">
-      <img
-        src="/assets/images/logo_transparent.png"
-        alt="M.R. TechForge Logo"
-        class="forge-logo">
+      <img src="/assets/images/logo_transparent.png"
+           alt="M.R. TechForge Logo"
+           class="forge-logo">
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Mobile hamburger -->
+    <!-- Mobile Hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
-    <!-- Main navigation -->
+    <!-- Navigation -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES DROPDOWN -->
+      <!-- SERVICES (Desktop hover / Mobile expanded) -->
       <div class="nav-item dropdown">
 
-        <!-- Parent row: label + arrow kept together -->
+        <!-- Parent label -->
         <div class="dropdown-parent">
-  <span class="dropdown-parent-text">Services</span>
-  <span class="dropdown-arrow">▼</span>
-</div>
+          <span class="dropdown-parent-text">Services</span>
+          <span class="dropdown-arrow">▼</span>
+        </div>
 
-        <!-- Children (always visible on mobile, hover on desktop) -->
+        <!-- Dropdown menu -->
         <div class="dropdown-content">
+
           <a href="/services/" class="dropdown-overview">
             Services Overview
           </a>
@@ -41,10 +41,10 @@
             Digital Security
           </a>
 
-          <a href="/services/digital-security/life-without-google/"
-             data-grandchild="true">
+          <a href="/services/digital-security/life-without-google/" data-grandchild="true">
             Life Without Google
           </a>
+
         </div>
       </div>
 
@@ -53,5 +53,6 @@
       <a href="/contact.html">Contact</a>
 
     </nav>
+
   </div>
 </header>
