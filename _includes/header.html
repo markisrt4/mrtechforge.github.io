@@ -9,9 +9,9 @@
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Main Mobile Toggle -->
+    <!-- Mobile Hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
@@ -21,29 +21,21 @@
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES DROPDOWN -->
+      <!-- SERVICES (Desktop hover / Mobile tap) -->
       <div class="nav-item dropdown">
 
-        <!-- Hidden mobile-only toggle -->
-        <input type="checkbox"
-               id="mobile-services-toggle"
-               class="mobile-dropdown-toggle">
-
-        <!-- Parent label -->
-        <label for="mobile-services-toggle"
-               class="dropdown-parent-text">
-          Services
-        </label>
-
-        <!-- Arrow (also toggles) -->
-        <label for="mobile-services-toggle"
-               class="dropdown-toggle">
+        <!-- Parent clickable text (no checkbox!) -->
+        <button class="dropdown-trigger">
+          <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
-        </label>
+        </button>
 
-        <!-- Dropdown -->
+        <!-- Dropdown menu -->
         <div class="dropdown-content">
-          <a href="/services/" class="dropdown-overview">Services Overview</a>
+
+          <a href="/services/" class="dropdown-overview">
+            Services Overview
+          </a>
 
           <a href="/services/digital-security/" data-child="true">
             Digital Security
@@ -53,8 +45,8 @@
              data-grandchild="true">
             Life Without Google
           </a>
-        </div>
 
+        </div>
       </div>
 
       <a href="/documentation/">Documentation</a>
