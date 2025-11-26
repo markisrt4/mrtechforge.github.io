@@ -67,9 +67,10 @@ h1, h2, h3 {
 /* ------------------------------
    BODY TEXT
 ------------------------------ */
-p, li {
+p,
+li {
   color: var(--forge-text);
-  text-shadow: 0 0 5px rgba(var(--forge-accent-rgb), 0.18);
+  text-shadow: none; // crisp text everywhere
 }
 
 /* ------------------------------
