@@ -4,18 +4,12 @@ title: Phone, Voice & Messaging Services
 permalink: /services/phone-voice-messaging/
 ---
 
-<section class="forge-section">
-
 # Phone, Voice & Messaging Services
 ### Clear, reliable communication tools — built with integrity.
 
 Modern communication shouldn’t feel overwhelming. Whether you’re running a business, serving a ministry, operating a library, or protecting your privacy, M.R. TechForge provides simple, dependable tools tailored to you.
 
-</section>
-
-<hr class="services-divider">
-
-<section class="forge-section">
+<div class="services-divider"></div>
 
 ## <span class="block-heading">Why These Services Matter</span>
 
@@ -23,16 +17,17 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 Most people don’t need a giant enterprise phone system — they need something **simple, clear, and effective**:
 
 - A clean number that isn’t your personal cell  
-- A helpful “press 1…” phone menu  
+- A helpful “press 1…” menu  
 - A text line that answers common questions instantly  
 - A safer number for login codes  
-- Optional delivery into secure apps like Signal  
-- Tools that save time and reduce stress
+- Optional secure routing into Signal  
+- Tools that save time and reduce stress  
 
-M.R. TechForge creates communication systems that are dependable, easy to understand, and designed around real-world needs.
+M.R. TechForge builds communication systems that are dependable and easy to understand.
 </div>
 
-</section>
+<div class="services-divider"></div>
+
 
 <hr class="services-divider">
 
