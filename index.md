@@ -8,7 +8,7 @@ class: home
 <div class="home">
 
   <!-- HERO -->
-  <section class="home-hero">
+  <section class="forge-hero-vaporized">
 
     <p class="hero-tagline">
       Practical, relationship-focused tech consulting for homes, churches, customized tech gadgets, and small businesses.
