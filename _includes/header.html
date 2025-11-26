@@ -1,7 +1,7 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo -->
+    <!-- LOGO + TITLE -->
     <a href="/" class="logo-link">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
@@ -9,9 +9,9 @@
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Mobile Hamburger -->
+    <!-- MOBILE HAMBURGER -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
@@ -21,21 +21,24 @@
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES MENU -->
+      <!-- ===========================
+           SERVICES DROPDOWN (Unified)
+           =========================== -->
       <div class="nav-item dropdown">
 
-        <!-- Mobile-only toggle -->
+        <!-- Hidden checkbox controls mobile expansion -->
         <input type="checkbox"
                id="services-toggle"
                class="services-toggle">
 
-        <!-- Parent row -->
-        <label for="services-toggle" class="dropdown-parent">
+        <!-- Parent clickable label -->
+        <label for="services-toggle"
+               class="dropdown-parent">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
         </label>
 
-        <!-- Desktop hover container / Mobile collapsible container -->
+        <!-- Dropdown children -->
         <div class="dropdown-content">
 
           <a href="/services/" class="dropdown-overview">
@@ -50,10 +53,11 @@
              data-grandchild="true">
             Life Without Google
           </a>
-        </div>
 
+        </div>
       </div>
 
+      <!-- Other top-level pages -->
       <a href="/documentation/">Documentation</a>
       <a href="/faq/">FAQ</a>
       <a href="/contact.html">Contact</a>
