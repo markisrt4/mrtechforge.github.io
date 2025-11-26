@@ -1,7 +1,7 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + Wordmark -->
+    <!-- Logo + Title -->
     <a href="/" class="logo-link">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
@@ -9,31 +9,31 @@
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Mobile Hamburger -->
+    <!-- Mobile Hamburger Toggle -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle"
-           class="nav-toggle-label"
-           aria-label="Toggle navigation">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav class="forge-nav">
 
+      <!-- TOP LEVEL LINKS -->
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
       <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Parent trigger (desktop + mobile) -->
-        <button class="dropdown-toggle dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+        <!-- Desktop: button trigger 
+             Mobile: treated as normal stacked parent -->
+        <button class="dropdown-trigger" aria-expanded="false">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
         </button>
 
-        <!-- Dropdown menu -->
-        <div class="dropdown-content" aria-label="Services submenu">
+        <!-- DROPDOWN MENU -->
+        <div class="dropdown-content">
 
           <a href="/services/" class="dropdown-overview">
             Services Overview
@@ -51,6 +51,7 @@
         </div>
       </div>
 
+      <!-- OTHER LINKS -->
       <a href="/documentation/">Documentation</a>
       <a href="/faq/">FAQ</a>
       <a href="/contact.html">Contact</a>
