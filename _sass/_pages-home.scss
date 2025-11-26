@@ -1,69 +1,347 @@
-/* ------------------------------------------------------
-   FIX #1 — Hero Company Name (M.R. TechForge) visibility
-------------------------------------------------------- */
-.hero-stamp {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+/* ==========================================================
+   M.R. TECHFORGE — HOMEPAGE LAYOUT + HERO (vFinal)
+   Ember Glow • No Blur • Subtle Gradients • Clean Sections
+   ========================================================== */
 
-  color: rgba(var(--forge-hotmetal-rgb), 0.28);
-  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.45);
-
-  opacity: 0.75; /* FIXED */
-  margin-bottom: 1.3rem;
-
-  /* Prevent compression issues on mobile */
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+.home {
+  margin-top: 0.5rem;
+  animation: fadeInHome 0.6s ease-out;
 }
 
 
-/* ------------------------------------------------------
-   FIX #2 — Ember glow watermark always loads correctly
-------------------------------------------------------- */
-.forge-hero-vaporized {
-  position: relative;
-  padding: 3rem 1.5rem;
-  text-align: center;
+/* ----------------------------------------------------------
+   SECTION SPACER — glowing ember line between sections
+----------------------------------------------------------- */
 
-  background: #000;
-
-  /* New fail-proof background path */
-  background-image: url("/assets/images/forge-anvil-watermark.png");
-  background-repeat: no-repeat;
-  background-position: center 65%;
-  background-size: 420px;
-
-  /* Subtle embers */
-  box-shadow: 0 0 45px rgba(245, 184, 65, 0.15) inset,
-              0 0 80px rgba(245, 184, 65, 0.08);
+.forge-section-spacer {
+  width: 100%;
+  height: 2px;
+  margin: 3rem auto;
+  background: radial-gradient(
+    circle,
+    rgba(245,184,65,0.4) 0%,
+    rgba(245,184,65,0.0) 70%
+  );
+  box-shadow: 0 0 12px rgba(245,184,65,0.35);
 }
 
 
-/* ------------------------------------------------------
-   FIX #3 — Subtle blue → steel gradient text
-------------------------------------------------------- */
+/* ----------------------------------------------------------
+   SUBTLE TEXT GRADIENT (blue → steel)
+----------------------------------------------------------- */
+
 .forge-text-gradient {
   background: linear-gradient(
-    180deg,
-    rgba(10, 109, 255, 0.55) 0%,
-    rgba(180, 200, 220, 0.45) 60%,
-    rgba(200, 210, 230, 0.85) 100%
+    to bottom,
+    rgba(10,109,255,0.65),
+    rgba(160,172,190,0.65)
   );
   -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  display: inline-block;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Apply to headings in sections */
-.home-audience li,
-.home-pillars p,
-.home-products p {
-  @extend .forge-text-gradient;
+
+/* ==========================================================
+   HERO WRAPPER (fingerprint watermark + embers)
+========================================================== */
+
+.forge-hero-vaporized {
+  position: relative;
+  padding: 2.8rem 1.8rem 3.6rem;
+  border-radius: 12px;
+  text-align: center;
+  overflow: hidden;
+
+  background: rgba(0,0,0,0.65);
+
+  border: 1px solid rgba(10,109,255,0.18);
+  box-shadow:
+    0 0 22px rgba(10,109,255,0.20),
+    inset 0 0 18px rgba(10,109,255,0.10);
+}
+
+
+/* WATERMARK (your image) */
+.forge-hero-vaporized::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url('/assets/images/anvil-watermark.png');
+  background-position: center 15%;
+  background-size: 420px;
+  background-repeat: no-repeat;
+
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+
+/* EMBER DRIFT LAYER */
+.forge-hero-vaporized::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 30% 0%,
+    rgba(245,184,65,0.22),
+    transparent 60%
+  );
+
+  opacity: 0.45;
+  animation: emberDrift 14s ease-in-out infinite alternate;
+}
+
+@keyframes emberDrift {
+  0% { transform: translateY(-8px); opacity: 0.25; }
+  100% { transform: translateY(8px); opacity: 0.45; }
+}
+
+
+/* ----------------------------------------------------------
+   HERO CONTENT
+----------------------------------------------------------- */
+
+.hero-tagline {
+  font-size: 1.2rem;
+  margin-bottom: 1.6rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.hero-stamp {
+  margin: 1.2rem 0 1.8rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(245,184,65,0.22);
+  text-shadow:
+    0 0 10px rgba(245,184,65,0.55),
+    0 0 18px rgba(245,184,65,0.35);
+
+  animation: heroStampPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroStampPulse {
+  0% { opacity: 0.22; }
+  50% { opacity: 0.34; }
+  100% { opacity: 0.22; }
+}
+
+
+.hero-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  margin-bottom: 1.6rem;
+
+  text-transform: uppercase;
+  line-height: 1.25;
+  letter-spacing: 1.4px;
+
+  background: linear-gradient(
+    180deg,
+    #f5b841 0%,
+    rgba(245,184,65,0.55) 90%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 14px rgba(245,184,65,0.35),
+    0 0 24px rgba(245,184,65,0.20);
+}
+
+
+.hero-subtitle {
+  max-width: 760px;
+  margin: 0 auto 1.8rem;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+
+/* TAG CHIPS */
+.hero-tags {
+  margin: 1.8rem auto 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.hero-tag {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.7px;
+  border: 1px solid rgba(10,109,255,0.35);
+  background: rgba(10,109,255,0.08);
+  color: var(--forge-subtext);
+}
+
+
+/* BUTTONS in hero */
+.hero-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero-footnote {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+}
+
+
+/* ==========================================================
+   PILLARS, AUDIENCE, PRODUCTS, HOW, INTEGRITY
+========================================================== */
+
+.home-pillars,
+.home-audience,
+.home-products,
+.home-how,
+.home-integrity {
+  max-width: 950px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+
+/* Section emphasis headers */
+.home-pillars h2,
+.home-audience h2,
+.home-products h2,
+.home-how h2,
+.home-integrity h2 {
+  margin-bottom: 1.4rem;
+  color: var(--forge-hotmetal);
+}
+
+
+/* PILLARS GRID */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pillar-card {
+  background: rgba(15,15,22,0.92);
+  border-radius: 12px;
+  padding: 1.5rem 1.2rem;
+  border: 1px solid rgba(10,109,255,0.25);
+
+  box-shadow:
+    0 0 14px rgba(10,109,255,0.12),
+    inset 0 0 10px rgba(10,109,255,0.08);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 20px rgba(10,109,255,0.22),
+    inset 0 0 14px rgba(10,109,255,0.12);
+}
+
+
+/* AUDIENCE GRID */
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  text-align: left;
+}
+
+
+/* HOW STEPS */
+.how-steps {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.how-steps li {
+  background: rgba(10,10,18,0.9);
+  border-radius: 12px;
+  padding: 1.3rem 1.1rem;
+  border: 1px solid rgba(10,109,255,0.3);
+  text-align: left;
+}
+
+.step-label {
+  display: inline-block;
+  font-family: "Orbitron", sans-serif;
+  color: var(--forge-hotmetal);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  font-size: 0.87rem;
+}
+
+
+/* INTEGRITY BOX */
+.home-integrity {
+  border-radius: 14px;
+  padding: 1.8rem;
+  border: 1px solid rgba(245,184,65,0.45);
+
+  background: radial-gradient(
+    circle at top,
+    rgba(245,184,65,0.22),
+    rgba(5,5,5,0.95)
+  );
+
+  box-shadow:
+    0 0 26px rgba(245,184,65,0.28),
+    inset 0 0 14px rgba(245,184,65,0.18);
+}
+
+
+/* ==========================================================
+   RESPONSIVE FIXES
+========================================================== */
+
+@media (max-width: 900px) {
+  .pillar-grid,
+  .audience-grid,
+  .how-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-stamp {
+    font-size: 2.1rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+}
+
+
+/* ==========================================================
+   FADE IN
+========================================================== */
+
+@keyframes fadeInHome {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
