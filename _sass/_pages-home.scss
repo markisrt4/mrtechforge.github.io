@@ -134,3 +134,83 @@
   0%   { opacity: 0.14; }
   100% { opacity: 0.22; }
 }
+
+/* ==========================================================
+   SECTION SPACING & VISUAL SEPARATION
+   ========================================================== */
+
+section {
+  margin: 4rem auto;
+  padding-top: 2.2rem;
+  padding-bottom: 2.2rem;
+}
+
+/* ------------------------------
+   Section Title Accent
+------------------------------- */
+
+section h2 {
+  position: relative;
+  padding-bottom: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 150px;
+  height: 3px;
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    rgba(var(--forge-accent-rgb), 0) 0%,
+    rgba(var(--forge-accent-rgb), 0.45) 50%,
+    rgba(var(--forge-accent-rgb), 0) 100%
+  );
+
+  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.35);
+}
+
+/* ------------------------------
+   Divider Between Sections
+------------------------------- */
+
+.forge-divider {
+  height: 2px;
+  width: 100%;
+  max-width: 900px;
+
+  margin: 3.4rem auto;
+
+  background: linear-gradient(
+    to right,
+    rgba(var(--forge-accent-rgb), 0) 0%,
+    rgba(var(--forge-accent-rgb), 0.45) 50%,
+    rgba(var(--forge-accent-rgb), 0) 100%
+  );
+
+  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.35);
+}
+
+/* ------------------------------
+   Alternating Section Texture
+------------------------------- */
+
+.alt-section {
+  background: radial-gradient(
+      circle at top,
+      rgba(10, 109, 255, 0.06),
+      rgba(0,0,0,0.92)
+    );
+  border-radius: 14px;
+  padding: 2.3rem 1.7rem;
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.12);
+}
+
+/* Optional: slight parallax feel */
+.alt-section {
+  transform: translateZ(0);
+}
