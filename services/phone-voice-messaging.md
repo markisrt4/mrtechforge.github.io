@@ -4,237 +4,218 @@ title: Phone, Voice & Messaging Services
 permalink: /services/phone-voice-messaging/
 ---
 
-# Phone, Voice & Messaging Services  
+<section class="forge-section">
+
+# Phone, Voice & Messaging Services
 ### Clear, reliable communication tools — built with integrity.
 
-Modern communication shouldn’t feel overwhelming. Whether you’re running a business, serving a ministry, managing a library, or simply protecting your personal privacy, M.R. TechForge provides simple, dependable phone and messaging solutions that fit the way *you* work.
+Modern communication shouldn’t feel overwhelming. Whether you’re running a business, serving a ministry, operating a library, or protecting your privacy, M.R. TechForge provides simple, dependable tools tailored to you.
 
-No confusing telecom jargon.  
-No complicated hardware.  
-No bloated subscription platforms.  
+</section>
 
-Just practical tools that make communication easier.
+<hr class="services-divider">
 
----
+<section class="forge-section">
 
-## Why These Services Matter
+## <span class="block-heading">Why These Services Matter</span>
 
-Most organizations — and most people — don’t need a massive phone system. They need something **simple, clear, and effective**:
+<div class="forge-card">
+Most people don’t need a giant enterprise phone system — they need something **simple, clear, and effective**:
 
 - A clean number that isn’t your personal cell  
 - A helpful “press 1…” phone menu  
-- A text line that instantly answers common questions  
+- A text line that answers common questions instantly  
 - A safer number for login codes  
-- Tools that protect your privacy and time  
-- Optional routing into secure apps like Signal for sensitive information  
+- Optional delivery into secure apps like Signal  
+- Tools that save time and reduce stress
 
-M.R. TechForge builds communication systems that are easy, dependable, and tailored around your real-world needs.
+M.R. TechForge creates communication systems that are dependable, easy to understand, and designed around real-world needs.
+</div>
 
----
+</section>
 
-# Services Offered
+<hr class="services-divider">
 
-## Business Phone Lines  
-A professional phone number that keeps your personal life separate while giving customers a reliable way to reach you.
+# <span class="block-heading">Services Offered</span>
 
-**Features:**  
-- Call forwarding to your phone  
-- Voicemail delivered to email  
-- Optional business-hours vs after-hours behavior  
-- Spam filtering  
-- You keep full ownership via a reputable phone number provider  
+<section class="forge-section forge-grid grid-2">
 
----
+<div class="service-card">
+<h3>Business Phone Lines</h3>
+<p>A professional phone number that keeps your personal life separate.</p>
+<ul>
+<li>Call forwarding</li>
+<li>Voicemail to email</li>
+<li>Business-hours behavior</li>
+<li>You own your number</li>
+</ul>
+</div>
 
-## Phone Menus (“Press 1 for…”)  
-A friendly, simple phone menu that helps callers reach the right person or information.
+<div class="service-card">
+<h3>Phone Menus (“Press 1 for…”)</h3>
+<p>A friendly phone menu that guides callers quickly and clearly.</p>
+<ul>
+<li>Custom greeting</li>
+<li>Routing to staff or info</li>
+<li>Optional voicemail boxes</li>
+<li>After-hours logic</li>
+</ul>
+</div>
 
-**Great for:**  
-- Small businesses  
-- Home-based services  
-- Churches  
-- Libraries  
-- Contractors  
-- Ministries  
+<div class="service-card">
+<h3>Auto-Reply Text Lines</h3>
+<p>Instant answers when someone texts a keyword.</p>
+<ul>
+<li><span class="keyword-pill">HOURS</span> → operating hours</li>
+<li><span class="keyword-pill">INFO</span> → website link</li>
+<li><span class="keyword-pill">MENU</span> → service list</li>
+<li><span class="keyword-pill">PRAYER</span> → prayer request link</li>
+</ul>
+</div>
 
-**Features:**  
-- Professional greeting  
-- Route callers to staff or information  
-- Provide hours, directions, or announcements  
-- Optional voicemail boxes  
-- Optional after-hours logic  
+<div class="service-card">
+<h3>Church & Ministry Tools</h3>
+<p>Faith-friendly communication tools designed for outreach and support.</p>
+<ul>
+<li>Prayer request lines</li>
+<li>Visitor info systems</li>
+<li>Pastor/staff routing</li>
+<li>Optional Signal integration</li>
+</ul>
+</div>
 
----
+<div class="service-card">
+<h3>Library Communication Tools</h3>
+<p>Improve patron service while reducing staff workload.</p>
+<ul>
+<li><span class="keyword-pill">HOURS</span> → today's hours</li>
+<li><span class="keyword-pill">EVENTS</span> → weekly programs</li>
+<li>Hold pickup notifications</li>
+<li>“Press 1…” routing for departments</li>
+</ul>
+</div>
 
-## Auto-Reply Text Lines  
-Instant answers when someone texts a keyword — a huge time-saver.
+<div class="service-card">
+<h3>Secure 2FA & Login Numbers</h3>
+<p>A private number used only for login codes.</p>
+<ul>
+<li>Keeps your real number private</li>
+<li>Secure email forwarding</li>
+<li>Optional encrypted delivery</li>
+</ul>
+</div>
 
-**Examples:**  
-- `Text HOURS` → operating hours  
-- `Text INFO` → website link  
-- `Text MENU` → service or food menu  
-- `Text EVENTS` → upcoming programs (great for libraries)  
-- `Text PRAYER` → prayer request link  
+<div class="service-card">
+<h3>Privacy Shield Numbers</h3>
+<p>Two-way calling and texting without exposing your real number.</p>
+<ul>
+<li>Masked communication</li>
+<li>Professional caller-ID</li>
+<li>Optional Signal routing</li>
+</ul>
+</div>
 
-Perfect for organizations that repeat the same info daily.
+<div class="service-card">
+<h3>Alerts & Notifications</h3>
+<p>Automated messaging for businesses, libraries, and ministries.</p>
+<ul>
+<li>Order ready notices</li>
+<li>Appointment reminders</li>
+<li>Event reminders</li>
+<li>Form → SMS delivery</li>
+</ul>
+</div>
 
----
+</section>
 
-## Church & Ministry Communication  
-Faith-focused tools designed with ministry and community service in mind.
+<hr class="services-divider">
 
-**Features:**  
-- Prayer request phone/text lines  
-- Visitor info text system  
-- Routing to pastors and leaders  
-- Voicemail-to-leadership  
-- Optional ministry keywords (INFO, SERVICE, PRAYER)  
-- Optional encrypted routing into Signal for sensitive needs  
+# <span class="block-heading">Pricing</span>
 
----
+<section class="forge-section forge-grid grid-2">
 
-## **Library Communication Tools (NEW)**  
-Libraries rely heavily on phone calls — and often have limited staff.  
-Automated, friendly tools can save time and reduce noise.
+<div class="pricing-card">
+<h3>Business Line</h3>
+<p class="price">$149 setup + $25/mo</p>
+<ul>
+<li>Greeting + forwarding</li>
+<li>Voicemail to email</li>
+<li>Business-hours logic</li>
+</ul>
+</div>
 
-### Perfect For:
-- Public libraries  
-- School libraries  
-- Community resource centers  
+<div class="pricing-card">
+<h3>Church & Ministry Line</h3>
+<p class="price">$149 setup + $20/mo</p>
+<ul>
+<li>Prayer + visitor routing</li>
+<li>Service-time responses</li>
+<li>Voicemail-to-leadership</li>
+</ul>
+</div>
 
-### Tools Include:
-- `Text HOURS` → today’s hours  
-- `Text EVENTS` → weekly programs  
-- `Text RENEW` → renewal instructions  
-- Automated hold pickup notifications  
-- “Press 1…” routing: Circulation, Youth Services, Reference  
-- After-hours announcements  
-- Staff voicemail routing  
-- Alerts for weather closures or emergency notices  
-- Optional privacy-number solutions for outreach librarians  
+<div class="pricing-card">
+<h3>Library Package</h3>
+<p class="price">$149 setup + $25/mo</p>
+<ul>
+<li>Hours + events texting</li>
+<li>Simple phone menu</li>
+<li>Alerts + reminders</li>
+</ul>
+</div>
 
-These automations help library teams stay focused while offering better patron service.
+<div class="pricing-card">
+<h3>Press-1 Phone Menu</h3>
+<p class="price">$199 setup + $30/mo</p>
+<ul>
+<li>Custom phone tree</li>
+<li>Routing to staff or info</li>
+<li>After-hours logic</li>
+</ul>
+</div>
 
----
+<div class="pricing-card">
+<h3>Auto-Reply Text Line</h3>
+<p class="price">$99 setup + $15/mo</p>
+<ul>
+<li>Up to 3 keywords</li>
+<li>Instant replies</li>
+</ul>
+</div>
 
-## Secure 2FA & Login Numbers  
-A private number used **only** for login codes and authentication.
+<div class="pricing-card">
+<h3>Secure 2FA Number</h3>
+<p class="price">$79 setup + $10/mo</p>
+<ul>
+<li>Login-only number</li>
+<li>Secure forwarding</li>
+</ul>
+</div>
 
-**Benefits:**  
-- Keeps your real phone number private  
-- Codes forward to secure email  
-- Option for encrypted delivery through Signal  
-- Works alongside TOTP apps  
-- Ideal for families and security-conscious users  
+<div class="pricing-card">
+<h3>Privacy Shield Number</h3>
+<p class="price">$149 setup + $20/mo</p>
+<ul>
+<li>Masked communication</li>
+<li>Optional Signal routing</li>
+</ul>
+</div>
 
----
+</section>
 
-## Privacy Shield Numbers  
-Two-way calling and texting without revealing your real phone number.
+<hr class="services-divider">
 
-**Ideal for:**  
-- Pastors  
-- Real estate  
-- Online listings  
-- Parents  
-- Outreach workers  
-- Safety and privacy  
+# <span class="block-heading">How It Works</span>
 
-**Features:**  
-- Masked communication  
-- Professional caller-ID  
-- Optional secure routing into Signal  
+<div class="forge-card">
+1. **We talk** about how people contact you today.  
+2. **You choose a phone number provider** you control.  
+3. **I build your system** — menus, routing, alerts, privacy tools.  
+4. **We test it together** until it behaves exactly right.  
+5. **Ongoing support** keeps your system working as your needs grow.
+</div>
 
----
-
-## Alert & Notification Lines  
-Automated messaging for businesses, libraries, and ministries.
-
-**Examples:**  
-- “Your order is ready” alerts  
-- Appointment reminders  
-- Event reminders  
-- Internal staff notifications  
-- Website form → SMS delivery  
-
----
-
-# Pricing
-
-You maintain your phone number through a **reputable phone number provider** (typically only a few dollars per month).  
-M.R. TechForge handles the configuration, automation, routing, and ongoing support.
-
-### **Business Line Package**  
-**$149 setup + $25/month**  
-- Greeting + forwarding  
-- Voicemail-to-email  
-- Business-hours routing  
-
----
-
-### **Church & Ministry Line**  
-**$149 setup + $20/month**  
-- Prayer & visitor routing  
-- Service-time auto-responses  
-- Voicemail-to-leadership  
-- Optional ministry keywords  
-
----
-
-### **Library Communication Package**  
-**$149 setup + $25/month**  
-- Hours & event info by text  
-- Simple phone menu for departments  
-- Alerts & notifications  
-- Optional renewal info system  
-- Staff routing or voicemail  
-
----
-
-### **Phone Menu (“Press 1…”)**  
-**$199 setup + $30/month**  
-- Full phone menu design  
-- Routing to staff or information  
-- Optional after-hours behavior  
-
----
-
-### **Auto-Reply Text Line**  
-**$99 setup + $15/month**  
-- Up to 3 keyword-based replies  
-- Instant text responses  
-
----
-
-### **Secure 2FA Number**  
-**$79 setup + $10/month**  
-- Login-only number  
-- Secure code forwarding  
-- Optional encrypted delivery  
-
----
-
-### **Privacy Shield Number**  
-**$149 setup + $20/month**  
-- Two-way masked communication  
-- Optional Signal routing  
-
----
-
-# How It Works
-
-1. **We discuss your needs** and how people contact you today.  
-2. **You choose a reputable phone number provider** that you control.  
-3. **M.R. TechForge builds your system** — menus, routing, auto-replies, alerts, privacy tools.  
-4. **We test it together** until everything works perfectly.  
-5. **Ongoing support** ensures your communication grows with your organization.
-
----
-
-# Ready to simplify your communication?
-
-Whether you're serving a community, running a business, or safeguarding your personal life, I’d be honored to help you build a clean, reliable communication system.
-
-<div style="margin-top: 1.5rem;">
+<div class="services-cta">
   <a href="/contact/" class="btn-glow">Contact M.R. TechForge</a>
 </div>
+
