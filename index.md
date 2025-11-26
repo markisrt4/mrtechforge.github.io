@@ -10,37 +10,21 @@ class: home
   <!-- HERO -->
   <section class="home-hero">
 
-    <!-- Subtle embers -->
-    <div class="ember-layer">
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-      <div class="ember"></div>
-    </div>
-
     <p class="hero-tagline">
-      Practical, relationship-focused tech consulting for homes, churches, libraries, and small businesses.
+      Practical, relationship-focused tech consulting for homes, churches, customized tech gadgets, and small businesses.
     </p>
 
-    <div class="hero-stamp">M.R. TECHFORGE</div>
+    <div class="hero-stamp">M.R. TechForge</div>
 
     <h1 class="hero-title">
-      <span>Crafting Practical</span>
-      <span>Tech Solutions</span>
-      <span>With Integrity & Skill</span>
+      Crafting Practical Tech Solutions  
+      <span class="hero-title-break"><br></span>
+      With Integrity & Skill
     </h1>
 
     <p class="hero-subtitle">
-      Clear, reliable, and relationship-driven technology help for your home, small business, church,
-      or community. Built on hands-on experience, a passion for Linux, and a commitment to integrity.
+      Clear, reliable, and relationship-driven technology help for your home, small business, church, or community.  
+      Built on hands-on experience, a passion for Linux, and a commitment to doing things the right way.
     </p>
 
     <div class="hero-tags">
@@ -52,8 +36,8 @@ class: home
     </div>
 
     <div class="hero-actions">
-      <a href="/services/" class="btn-glow hero-btn">Our Services</a>
-      <a href="/contact/" class="btn-outline hero-btn">Get in Touch</a>
+      <a href="/services/" class="btn btn-forge">Our Services</a>
+      <a href="/contact.html" class="btn">Get in Touch</a>
     </div>
 
     <div class="hero-footnote">
@@ -61,10 +45,6 @@ class: home
     </div>
 
   </section>
-
-
-  <div class="forge-divider"></div>
-
 
   <!-- WHAT WE STAND FOR -->
   <section class="home-pillars">
@@ -78,7 +58,7 @@ class: home
 
       <div class="pillar-card">
         <h3>Reliability</h3>
-        Dependable setups built to last, not quick hacks or shortcuts.
+        Dependable setups built to last — not quick hacks or shortcuts.
       </div>
 
       <div class="pillar-card">
@@ -88,22 +68,17 @@ class: home
     </div>
   </section>
 
-
-  <div class="forge-divider"></div>
-
-
   <!-- WHO I HELP -->
   <section class="home-audience">
     <h2>Who I Help</h2>
 
     <div class="audience-grid">
-
       <div>
         <ul>
           <li>Families needing safer, cleaner digital setups</li>
           <li>Small businesses seeking dependable tech guidance</li>
           <li>Churches wanting trustworthy network or communication help</li>
-          <li>Libraries needing clearer phone menus, text info lines, or routing</li>
+          <li>Customized tech gadgets needing integration, automation, or secure routing</li>
         </ul>
       </div>
 
@@ -115,46 +90,60 @@ class: home
           <li>Those ready to build better digital habits</li>
         </ul>
       </div>
-
     </div>
   </section>
 
-
-  <div class="forge-divider"></div>
-
-
-  <!-- WHAT'S COMING SOON -->
+  <!-- WHAT’S COMING SOON -->
   <section class="home-products">
     <h2>What’s Coming Soon</h2>
 
     <p>
-      M.R. TechForge is developing a handful of lightweight, user-friendly tools that make everyday digital life easier.
+      M.R. TechForge is actively developing a handful of lightweight, user-friendly tools designed  
+      to make everyday digital life easier — practical, privacy-respecting, and built with care.
     </p>
 
     <ul>
-      <li><strong>ForgeDrive:</strong> a clean, organized USB toolkit with helpful utilities & documentation.</li>
-      <li><strong>Forge Tags:</strong> simple NFC cards for quick access to your digital info.</li>
-      <li><strong>ForgeSBC:</strong> a Raspberry-Pi–based home hub for ad-blocking, secure remote access, and file syncing.</li>
+      <li><strong>ForgeDrive:</strong> an organized USB toolkit with useful utilities & documentation</li>
+      <li><strong>Forge Tags:</strong> simple NFC cards for quick access to your digital info</li>
+      <li><strong>ForgeSBC:</strong> a Raspberry-Pi home hub for ad-blocking, secure access, & syncing</li>
     </ul>
 
     <p>
-      Optional add-ons — not required — but helpful for a polished, secure digital foundation.
+      These are optional add-ons — not required — but helpful tools if you want a polished, secure technology foundation.
     </p>
-
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="home-how">
+    <h2>How It Works</h2>
 
-  <div class="forge-divider"></div>
+    <ul class="how-steps">
+      <li>
+        <span class="step-label">1. Connect</span>
+        We discuss your needs, problems, and goals — in plain English.
+      </li>
 
+      <li>
+        <span class="step-label">2. Plan</span>
+        You receive clear, practical options without overwhelming complexity.
+      </li>
 
-  <!-- INTEGRITY -->
+      <li>
+        <span class="step-label">3. Build</span>
+        We implement clean, dependable solutions designed for long-term success.
+      </li>
+    </ul>
+  </section>
+
+  <!-- INTEGRITY SECTION -->
   <section class="home-integrity">
     <h2>Faith • Integrity • Craftsmanship</h2>
 
     <p>
-      Every project is guided by a commitment to do right by people — through honesty, transparency,
-      and work that reflects strong values. Whether it’s a consultation or a full setup, you receive
-      trustworthy help rooted in faith-driven integrity.
+      Every project is guided by a commitment to honest work, transparency,  
+      and service rooted in faith-driven integrity.  
+      Whether it’s a consultation or a full setup, you receive trustworthy help  
+      backed by strong values and a desire to do right by people.
     </p>
   </section>
 
