@@ -1,29 +1,56 @@
-/* ==========================================================
-   CONTACT PAGE — TERMINAL BOX (v1.0)
-   ========================================================== */
+/* =========================================================
+   CONTACT PAGE — SAFE, SCOPED VERSION
+   Only applies inside .contact-page container
+   ========================================================= */
 
-.forge-terminal {
-  background: #000;
-  border: 1px solid rgba(var(--forge-accent-rgb),0.25);
+.contact-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.2rem;
+}
+
+.contact-page h1 {
+  text-align: center;
+  color: var(--forge-hotmetal);
+  margin-bottom: 1.2rem;
+}
+
+.contact-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1rem 0;
+}
+
+.contact-page label {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--forge-subtext);
+}
+
+.contact-page input,
+.contact-page textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
 
-  padding: 1rem;
-  margin: 2rem 0;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  background: rgba(20,20,25,0.9);
+  color: var(--forge-text);
+  font-family: "Titillium Web", sans-serif;
 
-  font-family: "Ubuntu Mono", monospace;
-  color: #00ffc8;
-
-  box-shadow: 0 0 15px rgba(0,255,200,0.2);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.forge-terminal pre {
-  margin: 0;
-  white-space: pre-wrap;
-  animation: terminalPulse 3.25s ease-in-out infinite alternate;
+.contact-page input:focus,
+.contact-page textarea:focus {
+  border-color: var(--forge-accent);
+  box-shadow: 0 0 8px rgba(var(--forge-accent-rgb), 0.45);
+  outline: none;
 }
 
-@keyframes terminalPulse {
-  0%   { opacity: 0.7; }
-  50%  { opacity: 1; text-shadow: 0 0 8px rgba(0,255,200,0.6); }
-  100% { opacity: 0.7; }
+/* This ensures button.scss (your forged buttons) stay untouched */
+.contact-page button {
+  align-self: flex-start;
 }
