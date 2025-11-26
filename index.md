@@ -16,7 +16,7 @@ class: home
     </p>
 
     <!-- BRAND STAMP -->
-    <div class="hero-stamp forge-text-gradient">
+    <div class="hero-stamp">
       M.R. TechForge
     </div>
 
