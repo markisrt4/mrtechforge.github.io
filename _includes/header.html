@@ -1,36 +1,41 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- Logo + Title -->
+    <!-- Logo + wordmark -->
     <a href="/" class="logo-link">
-      <img src="/assets/images/logo_transparent.png"
-           alt="M.R. TechForge Logo"
-           class="forge-logo">
+      <img
+        src="/assets/images/logo_transparent.png"
+        alt="M.R. TechForge Logo"
+        class="forge-logo">
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- Mobile Hamburger -->
+    <!-- Mobile hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
       <span></span>
     </label>
 
-    <!-- Primary Navigation -->
+    <!-- Main navigation -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- Services (desktop: hover dropdown, mobile: always-expanded children) -->
+      <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Parent label + arrow (styled in _nav.scss) -->
-        <span class="dropdown-parent-text">Services</span>
-        <span class="dropdown-arrow">▼</span>
+        <!-- Parent row: label + arrow kept together -->
+        <button class="dropdown-parent" type="button">
+          <span class="dropdown-parent-text">Services</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
 
-        <!-- Dropdown menu -->
+        <!-- Children (always visible on mobile, hover on desktop) -->
         <div class="dropdown-content">
-          <a href="/services/" class="dropdown-overview">Services Overview</a>
+          <a href="/services/" class="dropdown-overview">
+            Services Overview
+          </a>
 
           <a href="/services/digital-security/" data-child="true">
             Digital Security
