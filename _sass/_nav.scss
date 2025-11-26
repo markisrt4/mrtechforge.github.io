@@ -1,6 +1,9 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v7.0 Stable)
-   Desktop + Mobile + Dropdown (bug-free)
+   M.R. TECHFORGE — NAVIGATION (v7.0 Final Stable)
+   • Desktop hover dropdown  
+   • Mobile collapsible Services toggle  
+   • Tight spacing  
+   • Child indicators › and »  
    ===================================================== */
 
 /* -----------------------------------------------------
@@ -16,7 +19,11 @@
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
 
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
+  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
 .header-inner {
@@ -44,7 +51,7 @@
   height: 65px;
   width: auto;
   filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .forge-logo:hover {
@@ -53,23 +60,21 @@
 }
 
 .forge-title {
-  background: linear-gradient(
-    90deg,
-    #F5B841,
-    #F5B841,
-    #0A6DFF,
-    #153D77,
-    #F5B841
-  );
+  background: linear-gradient(90deg, #F5B841, #F5B841, #0A6DFF, #153D77, #F5B841);
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   animation: forgeTitleSpectrum 6s linear infinite;
 
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
+
+  text-shadow:
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.5),
+    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
 }
 
 /* -----------------------------------------------------
@@ -90,15 +95,16 @@
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.25s ease;
+  transition: 0.25s ease;
 }
 
 .forge-nav a:hover {
   color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
 }
 
 /* -----------------------------------------------------
-   HAMBURGER (MOBILE)
+   HAMBURGER
 ------------------------------------------------------ */
 
 .nav-toggle {
@@ -124,6 +130,7 @@
   height: 3px;
   width: 100%;
   background: var(--forge-hotmetal);
+  border-radius: 2px;
   transition: all 0.3s ease;
 }
 
@@ -140,22 +147,19 @@
   top: 9px;
 }
 
+/* X-animation */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
-
 .nav-toggle:checked + .nav-toggle-label span::before {
-  transform: rotate(45deg);
-  top: 0;
+  transform: rotate(45deg); top: 0;
 }
-
 .nav-toggle:checked + .nav-toggle-label span::after {
-  transform: rotate(-45deg);
-  top: 0;
+  transform: rotate(-45deg); top: 0;
 }
 
 /* -----------------------------------------------------
-   DROPDOWN — BASE
+   SERVICES DROPDOWN (BASE)
 ------------------------------------------------------ */
 
 .nav-item.dropdown {
@@ -165,51 +169,57 @@
   gap: 0.25rem;
 }
 
-/* Parent label */
-.dropdown-parent {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  cursor: pointer;
-}
-
 .dropdown-parent-text {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  text-transform: uppercase;
   color: var(--forge-subtext);
+  text-transform: uppercase;
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
   color: var(--forge-subtext);
-  transition: transform 0.25s ease;
+  transition: 0.25s ease;
 }
 
-/* HIDE CHILDREN BY DEFAULT */
-.dropdown-content {
-  display: none;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  position: absolute;
+.dropdown-content a[data-child="true"]::before {
+  content: "›";
+  color: var(--forge-hotmetal);
+  font-size: 1rem;
+}
+
+.dropdown-content a[data-grandchild="true"]::before {
+  content: "»";
+  color: var(--forge-accent);
+  font-size: 1rem;
+}
+
+.dropdown-overview {
+  font-weight: 700;
+  color: var(--forge-hotmetal) !important;
 }
 
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN (HOVER)
+   DESKTOP DROPDOWN
 ------------------------------------------------------ */
-
 @media (min-width: 761px) {
-
   .dropdown-content {
+    display: none;
+    position: absolute;
     top: 100%;
     left: 0;
+
     min-width: 260px;
     padding: 0.5rem 0;
     background: rgba(5, 8, 16, 0.98);
+    border: 1px solid rgba(10, 109, 255, 0.25);
     border-radius: 8px;
-    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition: 0.25s ease;
+    z-index: 9999;
   }
 
   .nav-item.dropdown:hover .dropdown-content {
@@ -222,8 +232,7 @@
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.6rem 1rem;
-    color: var(--forge-text);
+    padding: 0.55rem 1rem;
     font-family: "Titillium Web", sans-serif;
   }
 
@@ -234,14 +243,12 @@
 }
 
 /* -----------------------------------------------------
-   MOBILE MENU — CHILDREN EXPANDED UNDER PARENT
+   MOBILE DROPDOWN (FIXED)
 ------------------------------------------------------ */
 
 @media (max-width: 760px) {
 
-  .nav-toggle-label {
-    display: block;
-  }
+  .nav-toggle-label { display: block; }
 
   .forge-nav {
     position: absolute;
@@ -258,34 +265,51 @@
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 660px;
-    padding: 0.5rem 0 1rem;
+    max-height: 640px;
+    padding: 0.6rem 0 1rem;
   }
 
-  /* Top-level items */
   .forge-nav > a,
   .dropdown-parent {
+    padding: 0.55rem 0;
     font-size: 1.1rem;
-    padding: 0.45rem 0;
     text-align: center;
     width: 100%;
     justify-content: center;
   }
 
-  /* Children shown under parent */
+  /* mobile toggle checkbox */
+  .services-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .dropdown-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    cursor: pointer;
+  }
+
+  /* hide children by default */
   .dropdown-content {
-    display: block !important;
-    position: static !important;
+    display: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: 0.25s ease;
+  }
 
-    opacity: 1 !important;
-    transform: none !important;
-
-    text-align: center;
-    padding: 0.3rem 0;
+  /* show children when toggled */
+  .services-toggle:checked ~ .dropdown-parent + .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .dropdown-content a {
-    padding: 0.22rem 0;
+    padding: 0.3rem 0;
     font-size: 1rem;
     justify-content: center;
   }
@@ -295,8 +319,13 @@
    ANIMATIONS
 ------------------------------------------------------ */
 
+@keyframes forgeHeaderGlow {
+  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
+  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
+}
+
 @keyframes forgeTitleSpectrum {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
