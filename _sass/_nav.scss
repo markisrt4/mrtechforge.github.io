@@ -1,7 +1,6 @@
 /* =====================================================
    M.R. TECHFORGE — NAVIGATION (v7.0 Stable)
-   Fixed hierarchy • Clean mobile • Matching HTML
-   Desktop hover + mobile always-expanded children
+   Desktop + Mobile + Dropdown (bug-free)
    ===================================================== */
 
 /* -----------------------------------------------------
@@ -17,11 +16,7 @@
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
 
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
-  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
 .header-inner {
@@ -35,7 +30,7 @@
 }
 
 /* -----------------------------------------------------
-   LOGO + ANIMATED WORDMARK
+   LOGO + WORDMARK
 ------------------------------------------------------ */
 
 .logo-link {
@@ -75,10 +70,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
-
-  text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.50),
-    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
 }
 
 /* -----------------------------------------------------
@@ -99,16 +90,15 @@
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 .forge-nav a:hover {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
 }
 
 /* -----------------------------------------------------
-   HAMBURGER TOGGLE (MOBILE)
+   HAMBURGER (MOBILE)
 ------------------------------------------------------ */
 
 .nav-toggle {
@@ -134,7 +124,6 @@
   height: 3px;
   width: 100%;
   background: var(--forge-hotmetal);
-  border-radius: 2px;
   transition: all 0.3s ease;
 }
 
@@ -143,24 +132,30 @@
   transform: translateY(-50%);
 }
 
-.nav-toggle-label span::before { top: -9px; }
-.nav-toggle-label span::after  { top: 9px; }
+.nav-toggle-label span::before {
+  top: -9px;
+}
 
-/* X animation */
+.nav-toggle-label span::after {
+  top: 9px;
+}
+
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
+
 .nav-toggle:checked + .nav-toggle-label span::before {
   transform: rotate(45deg);
   top: 0;
 }
+
 .nav-toggle:checked + .nav-toggle-label span::after {
   transform: rotate(-45deg);
   top: 0;
 }
 
 /* -----------------------------------------------------
-   SERVICES DROPDOWN — BASE
+   DROPDOWN — BASE
 ------------------------------------------------------ */
 
 .nav-item.dropdown {
@@ -170,102 +165,83 @@
   gap: 0.25rem;
 }
 
-/* Shared text styles */
+/* Parent label */
+.dropdown-parent {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
 .dropdown-parent-text {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   color: var(--forge-subtext);
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
   color: var(--forge-subtext);
-  transition: transform 0.25s ease, color 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
-/* Child indicators */
-.dropdown-content a[data-child="true"]::before {
-  content: "›";
-  color: var(--forge-hotmetal);
-  font-size: 1rem;
-}
-
-.dropdown-content a[data-grandchild="true"]::before {
-  content: "»";
-  color: var(--forge-accent);
-  font-size: 1rem;
-}
-
-.dropdown-overview {
-  font-weight: 700;
-  color: var(--forge-hotmetal) !important;
+/* HIDE CHILDREN BY DEFAULT */
+.dropdown-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  position: absolute;
 }
 
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN (hover)
+   DESKTOP DROPDOWN (HOVER)
 ------------------------------------------------------ */
 
 @media (min-width: 761px) {
-  .dropdown-parent {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
 
   .dropdown-content {
-    display: none;
-    position: absolute;
     top: 100%;
     left: 0;
-
     min-width: 260px;
     padding: 0.5rem 0;
     background: rgba(5, 8, 16, 0.98);
-    border: 1px solid rgba(10, 109, 255, 0.25);
     border-radius: 8px;
-
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 9999;
+    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
   }
 
   .nav-item.dropdown:hover .dropdown-content {
     display: block;
     opacity: 1;
     transform: translateY(0);
-    box-shadow:
-      0 0 12px rgba(10, 109, 255, 0.45),
-      0 0 4px rgba(10, 109, 255, 0.65) inset;
-  }
-
-  .nav-item.dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
   }
 
   .dropdown-content a {
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.55rem 1rem;
-    font-family: "Titillium Web", sans-serif;
+    padding: 0.6rem 1rem;
     color: var(--forge-text);
-    text-decoration: none;
+    font-family: "Titillium Web", sans-serif;
+  }
+
+  .nav-item.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--forge-hotmetal);
   }
 }
 
 /* -----------------------------------------------------
-   MOBILE MENU — CLEAN, ALWAYS-EXPANDED CHILDREN
+   MOBILE MENU — CHILDREN EXPANDED UNDER PARENT
 ------------------------------------------------------ */
 
 @media (max-width: 760px) {
 
-  .nav-toggle-label { display: block; }
+  .nav-toggle-label {
+    display: block;
+  }
 
   .forge-nav {
     position: absolute;
@@ -273,9 +249,8 @@
     left: 0;
     width: 100%;
     flex-direction: column;
-
     background: #050810;
-    border-top: 1px solid rgba(10,109,255,0.25);
+    border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
 
     max-height: 0;
     overflow: hidden;
@@ -283,42 +258,36 @@
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 650px;
-    padding: 0.4rem 0;
+    max-height: 660px;
+    padding: 0.5rem 0 1rem;
   }
 
-  /* Top-level links */
-  .forge-nav > a {
-    padding: 0.45rem 0;
-    font-size: 1.1rem;
-    text-align: center;
-  }
-
-  /* Services parent row */
+  /* Top-level items */
+  .forge-nav > a,
   .dropdown-parent {
-    width: 100%;
-    padding: 0.45rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 0.35rem;
     font-size: 1.1rem;
-    cursor: pointer;
+    padding: 0.45rem 0;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
   }
 
-  /* Children */
+  /* Children shown under parent */
   .dropdown-content {
     display: block !important;
     position: static !important;
-    padding-top: 0.2rem;
+
+    opacity: 1 !important;
+    transform: none !important;
+
     text-align: center;
+    padding: 0.3rem 0;
   }
 
   .dropdown-content a {
-    padding: 0.18rem 0;
+    padding: 0.22rem 0;
     font-size: 1rem;
-    display: flex;
     justify-content: center;
-    gap: 0.35rem;
   }
 }
 
@@ -326,13 +295,8 @@
    ANIMATIONS
 ------------------------------------------------------ */
 
-@keyframes forgeHeaderGlow {
-  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
-  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
-}
-
 @keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
