@@ -1,5 +1,5 @@
 /* =========================================================
-   TRUE CRT TERMINAL BLOCK — Old School ANSI Style
+   TYPEWRITER TERMINAL — Realistic CRT typing effect
    ========================================================= */
 
 .crt-terminal {
@@ -9,67 +9,68 @@
   margin: 2rem 0;
   font-family: "Fira Mono", monospace;
   font-size: 0.95rem;
-  color: #33ff66; /* default green */
+  color: #33ff66;
   line-height: 1.55;
   position: relative;
   overflow: hidden;
-
-  /* Soft CRT glow */
   box-shadow:
     0 0 18px rgba(0, 255, 80, 0.25),
     inset 0 0 6px rgba(0, 255, 80, 0.08);
 }
 
-/* Horizontal scanlines */
+/* CRT scanlines */
 .crt-terminal::before {
   content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 2px,
-      transparent 4px
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 2px,
+    transparent 4px
   );
   pointer-events: none;
   opacity: 0.15;
 }
 
-/* Subtle CRT vignette */
+/* Vignette */
 .crt-terminal::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     circle at center,
-    transparent 60%,
-    rgba(0, 0, 0, 0.55) 100%
+    transparent 62%,
+    rgba(0, 0, 0, 0.6) 100%
   );
   pointer-events: none;
 }
 
-/* Prompt text */
-.crt-prompt {
-  color: #ffcc66;
-  font-weight: bold;
-}
+/* Prompt Colors */
+.crt-prompt { color: #ffcc66; font-weight: bold; }
+.crt-output { color: #66c2ff; }
 
-/* Terminal output text */
-.crt-output {
-  color: #66c2ff;
-}
-
-/* Fake cursor */
+/* Cursor */
 .crt-cursor {
   display: inline-block;
   width: 10px;
-  height: 1.1rem;
+  height: 1rem;
   background: #33ff66;
-  animation: crtBlink 0.8s infinite;
   margin-left: 4px;
+  animation: crtBlink 0.8s infinite;
 }
-
 @keyframes crtBlink {
   50% { opacity: 0; }
+}
+
+/* Typewriter container */
+.typewriter-line {
+  white-space: pre-wrap;
+  display: block;
+}
+
+/* Optional dimmed text before animation begins */
+.typewriter-line[data-typing="false"] {
+  opacity: 0.4;
 }
