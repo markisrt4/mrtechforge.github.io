@@ -1,15 +1,15 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v7.0 Final Stable)
-   • Desktop hover dropdown  
-   • Mobile collapsible Services toggle  
-   • Tight spacing  
-   • Child indicators › and »  
+   M.R. TECHFORGE — NAVIGATION (v7.1 Stable Release)
+   • Animated glowing title
+   • Desktop hover dropdown
+   • Mobile slide-down menu
+   • Child pages hidden by default on mobile
+   • Proper spacing + indicators › »
    ===================================================== */
 
 /* -----------------------------------------------------
    HEADER WRAPPER
 ------------------------------------------------------ */
-
 .forge-header {
   position: sticky;
   top: 0;
@@ -37,9 +37,8 @@
 }
 
 /* -----------------------------------------------------
-   LOGO + WORDMARK
+   LOGO + ANIMATED WORDMARK
 ------------------------------------------------------ */
-
 .logo-link {
   display: flex;
   align-items: center;
@@ -64,7 +63,6 @@
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: forgeTitleSpectrum 6s linear infinite;
 
   font-family: "Orbitron", sans-serif;
@@ -73,14 +71,13 @@
   font-size: clamp(1.4rem, 2.2vw, 2rem);
 
   text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.5),
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.50),
     0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
 }
 
 /* -----------------------------------------------------
    DESKTOP NAVIGATION
 ------------------------------------------------------ */
-
 .forge-nav {
   display: flex;
   gap: 1.4rem;
@@ -95,7 +92,7 @@
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  transition: 0.25s ease;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .forge-nav a:hover {
@@ -104,9 +101,8 @@
 }
 
 /* -----------------------------------------------------
-   HAMBURGER
+   MOBILE HAMBURGER
 ------------------------------------------------------ */
-
 .nav-toggle {
   position: absolute;
   opacity: 0;
@@ -131,7 +127,7 @@
   width: 100%;
   background: var(--forge-hotmetal);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .nav-toggle-label span {
@@ -147,21 +143,24 @@
   top: 9px;
 }
 
-/* X-animation */
+/* X animation */
 .nav-toggle:checked + .nav-toggle-label span {
   background: transparent;
 }
+
 .nav-toggle:checked + .nav-toggle-label span::before {
-  transform: rotate(45deg); top: 0;
+  transform: rotate(45deg);
+  top: 0;
 }
+
 .nav-toggle:checked + .nav-toggle-label span::after {
-  transform: rotate(-45deg); top: 0;
+  transform: rotate(-45deg);
+  top: 0;
 }
 
 /* -----------------------------------------------------
-   SERVICES DROPDOWN (BASE)
+   DROPDOWN — SHARED BASE
 ------------------------------------------------------ */
-
 .nav-item.dropdown {
   position: relative;
   display: flex;
@@ -173,8 +172,9 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--forge-subtext);
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--forge-subtext);
 }
 
 .dropdown-arrow {
@@ -183,6 +183,7 @@
   transition: 0.25s ease;
 }
 
+/* Child indicators */
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   color: var(--forge-hotmetal);
@@ -201,7 +202,7 @@
 }
 
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN
+   DESKTOP DROPDOWN BEHAVIOR
 ------------------------------------------------------ */
 @media (min-width: 761px) {
   .dropdown-content {
@@ -209,13 +210,11 @@
     position: absolute;
     top: 100%;
     left: 0;
-
     min-width: 260px;
     padding: 0.5rem 0;
     background: rgba(5, 8, 16, 0.98);
-    border: 1px solid rgba(10, 109, 255, 0.25);
+    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
     border-radius: 8px;
-
     opacity: 0;
     transform: translateY(6px);
     transition: 0.25s ease;
@@ -226,6 +225,15 @@
     display: block;
     opacity: 1;
     transform: translateY(0);
+
+    box-shadow:
+      0 0 12px rgba(10, 109, 255, 0.45),
+      0 0 4px rgba(10, 109, 255, 0.65) inset;
+  }
+
+  .nav-item.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--forge-hotmetal);
   }
 
   .dropdown-content a {
@@ -234,91 +242,97 @@
     gap: 0.35rem;
     padding: 0.55rem 1rem;
     font-family: "Titillium Web", sans-serif;
-  }
-
-  .nav-item.dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
+    color: var(--forge-text);
   }
 }
 
 /* -----------------------------------------------------
-   MOBILE DROPDOWN (FIXED)
+   MOBILE NAVIGATION — v7.1 FIXED
 ------------------------------------------------------ */
-
 @media (max-width: 760px) {
 
-  .nav-toggle-label { display: block; }
+  .nav-toggle-label {
+    display: block;
+  }
 
   .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    flex-direction: column;
     background: #050810;
     border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+    flex-direction: column;
 
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
   }
 
   .nav-toggle:checked ~ .forge-nav {
-    max-height: 640px;
-    padding: 0.6rem 0 1rem;
+    max-height: 650px;
+    padding: 0.4rem 0 0.6rem;
   }
 
+  /* tighter spacing for top-level items */
   .forge-nav > a,
   .dropdown-parent {
-    padding: 0.55rem 0;
-    font-size: 1.1rem;
+    padding: 0.35rem 0;
+    font-size: 1.05rem;
     text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .nav-item.dropdown {
     width: 100%;
     justify-content: center;
   }
 
-  /* mobile toggle checkbox */
+  /* hide services children by default */
+  .dropdown-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: 0.25s ease;
+    text-align: center;
+  }
+
   .services-toggle {
     position: absolute;
     opacity: 0;
     pointer-events: none;
   }
 
-  .dropdown-parent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    cursor: pointer;
-  }
-
-  /* hide children by default */
-  .dropdown-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: 0.25s ease;
-  }
-
-  /* show children when toggled */
-  .services-toggle:checked ~ .dropdown-parent + .dropdown-content {
+  /* reveal children directly below the word “Services” */
+  .services-toggle:checked + .dropdown-parent + .dropdown-content {
     display: block;
     opacity: 1;
     transform: translateY(0);
   }
 
   .dropdown-content a {
-    padding: 0.3rem 0;
-    font-size: 1rem;
+    padding: 0.22rem 0;
+    font-size: 0.95rem;
+    display: flex;
     justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .dropdown-content a[data-child="true"]::before {
+    font-size: 1rem;
+  }
+
+  .dropdown-content a[data-grandchild="true"]::before {
+    font-size: 0.95rem;
   }
 }
 
 /* -----------------------------------------------------
    ANIMATIONS
 ------------------------------------------------------ */
-
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
