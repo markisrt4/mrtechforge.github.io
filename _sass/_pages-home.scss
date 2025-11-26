@@ -1,6 +1,6 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOMEPAGE LAYOUT + HERO (vFinal)
-   Ember Glow • No Blur • Subtle Gradients • Clean Sections
+   M.R. TechForge — Homepage Layout & Hero (Forge Vapor v2)
+   Scoped to .home so other pages stay clean.
    ========================================================== */
 
 .home {
@@ -8,42 +8,50 @@
   animation: fadeInHome 0.6s ease-out;
 }
 
-
 /* ----------------------------------------------------------
-   SECTION SPACER — glowing ember line between sections
------------------------------------------------------------ */
+   Shared helpers for this page
+---------------------------------------------------------- */
 
+/* Thin glowing separator between sections */
 .forge-section-spacer {
   width: 100%;
   height: 2px;
   margin: 3rem auto;
+
   background: radial-gradient(
     circle,
-    rgba(245,184,65,0.4) 0%,
-    rgba(245,184,65,0.0) 70%
+    rgba(var(--forge-hotmetal-rgb), 0.4) 0%,
+    rgba(var(--forge-hotmetal-rgb), 0) 70%
   );
-  box-shadow: 0 0 12px rgba(245,184,65,0.35);
+
+  box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.35);
 }
 
-
-/* ----------------------------------------------------------
-   SUBTLE TEXT GRADIENT (blue → steel)
------------------------------------------------------------ */
-
+/* Subtle “forge steel → white” gradient text */
 .forge-text-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(140, 160, 180, 0.9),
-    rgba(230, 230, 240, 1)
+    rgba(185, 195, 210, 0.82) 0%,
+    #f8fafc 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* Softer variant for long paragraphs / bullet lists */
+.forge-text-gradient-soft {
+  background: linear-gradient(
+    to bottom,
+    rgba(195, 205, 220, 0.75) 0%,
+    #f3f5fb 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-/* ==========================================================
-   HERO WRAPPER (fingerprint watermark + embers)
-========================================================== */
+/* ----------------------------------------------------------
+   HERO: Forge Vapor frame + anvil watermark + embers
+---------------------------------------------------------- */
 
 .forge-hero-vaporized {
   position: relative;
@@ -52,22 +60,20 @@
   text-align: center;
   overflow: hidden;
 
-  background: rgba(0,0,0,0.65);
-
-  border: 1px solid rgba(10,109,255,0.18);
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   box-shadow:
-    0 0 22px rgba(10,109,255,0.20),
-    inset 0 0 18px rgba(10,109,255,0.10);
+    0 0 22px rgba(var(--forge-accent-rgb), 0.20),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.10);
 }
 
-
-/* WATERMARK (your image) */
+/* Anvil watermark */
 .forge-hero-vaporized::before {
   content: "";
   position: absolute;
   inset: 0;
 
-  background-image: url('/assets/images/anvil-watermark.png');
+  background-image: url("/assets/images/anvil-watermark.png");
   background-position: center 15%;
   background-size: 420px;
   background-repeat: no-repeat;
@@ -76,8 +82,7 @@
   pointer-events: none;
 }
 
-
-/* EMBER DRIFT LAYER */
+/* Ember drift from the top */
 .forge-hero-vaporized::after {
   content: "";
   position: absolute;
@@ -85,7 +90,7 @@
 
   background: radial-gradient(
     circle at 30% 0%,
-    rgba(245,184,65,0.22),
+    rgba(var(--forge-hotmetal-rgb), 0.22),
     transparent 60%
   );
 
@@ -93,15 +98,21 @@
   animation: emberDrift 14s ease-in-out infinite alternate;
 }
 
+/* Ember animation */
 @keyframes emberDrift {
-  0% { transform: translateY(-8px); opacity: 0.25; }
-  100% { transform: translateY(8px); opacity: 0.45; }
+  0% {
+    transform: translateY(-8px);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(8px);
+    opacity: 0.45;
+  }
 }
 
-
 /* ----------------------------------------------------------
-   HERO CONTENT
------------------------------------------------------------ */
+   Hero typography
+---------------------------------------------------------- */
 
 .hero-tagline {
   font-size: 1.2rem;
@@ -110,28 +121,25 @@
   font-weight: 500;
 }
 
+/* “M.R. TechForge” stamp — reduced glow so it’s crisp */
 .hero-stamp {
   margin: 1.2rem 0 1.8rem;
+
   font-family: "Orbitron", sans-serif;
   font-size: clamp(2.3rem, 5vw, 3.4rem);
   letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color: rgba(245,184,65,0.22);
+  color: rgba(var(--forge-hotmetal-rgb), 0.55);
+
   text-shadow:
-    0 0 10px rgba(245,184,65,0.55),
-    0 0 18px rgba(245,184,65,0.35);
+    0 0 6px rgba(var(--forge-hotmetal-rgb), 0.45),
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.25);
 
   animation: heroStampPulse 6s ease-in-out infinite;
 }
 
-@keyframes heroStampPulse {
-  0% { opacity: 0.22; }
-  50% { opacity: 0.34; }
-  100% { opacity: 0.22; }
-}
-
-
+/* Main hero title */
 .hero-title {
   font-family: "Orbitron", sans-serif;
   font-size: clamp(2.2rem, 6vw, 3.4rem);
@@ -143,17 +151,17 @@
 
   background: linear-gradient(
     180deg,
-    #f5b841 0%,
-    rgba(245,184,65,0.55) 90%
+    var(--forge-hotmetal) 0%,
+    rgba(var(--forge-hotmetal-rgb), 0.55) 90%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
+  /* smaller, sharper glow */
   text-shadow:
-    0 0 14px rgba(245,184,65,0.35),
-    0 0 24px rgba(245,184,65,0.20);
+    0 0 6px rgba(var(--forge-hotmetal-rgb), 0.35),
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18);
 }
-
 
 .hero-subtitle {
   max-width: 760px;
@@ -162,8 +170,7 @@
   line-height: 1.7;
 }
 
-
-/* TAG CHIPS */
+/* small chips under hero */
 .hero-tags {
   margin: 1.8rem auto 2.2rem;
   display: flex;
@@ -175,15 +182,17 @@
 .hero-tag {
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
+
   font-size: 0.85rem;
   letter-spacing: 0.7px;
-  border: 1px solid rgba(10,109,255,0.35);
-  background: rgba(10,109,255,0.08);
+  text-transform: uppercase;
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  background: rgba(var(--forge-accent-rgb), 0.08);
   color: var(--forge-subtext);
 }
 
-
-/* BUTTONS in hero */
+/* CTA buttons row (re-uses .btn & .btn-forge from buttons.scss) */
 .hero-actions {
   margin-top: 0.8rem;
   display: flex;
@@ -197,10 +206,16 @@
   font-size: 0.95rem;
 }
 
+/* stamp animation */
+@keyframes heroStampPulse {
+  0%   { opacity: 0.22; }
+  50%  { opacity: 0.34; }
+  100% { opacity: 0.22; }
+}
 
-/* ==========================================================
-   PILLARS, AUDIENCE, PRODUCTS, HOW, INTEGRITY
-========================================================== */
+/* ----------------------------------------------------------
+   Below the hero — sections
+---------------------------------------------------------- */
 
 .home-pillars,
 .home-audience,
@@ -212,8 +227,6 @@
   text-align: center;
 }
 
-
-/* Section emphasis headers */
 .home-pillars h2,
 .home-audience h2,
 .home-products h2,
@@ -223,8 +236,7 @@
   color: var(--forge-hotmetal);
 }
 
-
-/* PILLARS GRID */
+/* Pillars */
 .pillar-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -232,14 +244,14 @@
 }
 
 .pillar-card {
-  background: rgba(15,15,22,0.92);
+  background: rgba(15, 15, 22, 0.92);
   border-radius: 12px;
   padding: 1.5rem 1.2rem;
-  border: 1px solid rgba(10,109,255,0.25);
 
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
   box-shadow:
-    0 0 14px rgba(10,109,255,0.12),
-    inset 0 0 10px rgba(10,109,255,0.08);
+    0 0 14px rgba(var(--forge-accent-rgb), 0.12),
+    inset 0 0 10px rgba(var(--forge-accent-rgb), 0.08);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -247,12 +259,11 @@
 .pillar-card:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 0 20px rgba(10,109,255,0.22),
-    inset 0 0 14px rgba(10,109,255,0.12);
+    0 0 20px rgba(var(--forge-accent-rgb), 0.22),
+    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.12);
 }
 
-
-/* AUDIENCE GRID */
+/* Audience section */
 .audience-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -260,8 +271,7 @@
   text-align: left;
 }
 
-
-/* HOW STEPS */
+/* How it works */
 .how-steps {
   list-style: none;
   margin: 1.6rem 0 0;
@@ -273,10 +283,11 @@
 }
 
 .how-steps li {
-  background: rgba(10,10,18,0.9);
+  background: rgba(10, 10, 18, 0.9);
   border-radius: 12px;
   padding: 1.3rem 1.1rem;
-  border: 1px solid rgba(10,109,255,0.3);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.3);
   text-align: left;
 }
 
@@ -289,28 +300,26 @@
   font-size: 0.87rem;
 }
 
-
-/* INTEGRITY BOX */
+/* Integrity callout */
 .home-integrity {
   border-radius: 14px;
   padding: 1.8rem;
-  border: 1px solid rgba(245,184,65,0.45);
 
+  border: 1px solid rgba(var(--forge-hotmetal-rgb), 0.45);
   background: radial-gradient(
     circle at top,
-    rgba(245,184,65,0.22),
-    rgba(5,5,5,0.95)
+    rgba(var(--forge-hotmetal-rgb), 0.22),
+    rgba(5, 5, 5, 0.95)
   );
 
   box-shadow:
-    0 0 26px rgba(245,184,65,0.28),
-    inset 0 0 14px rgba(245,184,65,0.18);
+    0 0 26px rgba(var(--forge-hotmetal-rgb), 0.28),
+    inset 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.18);
 }
 
-
-/* ==========================================================
-   RESPONSIVE FIXES
-========================================================== */
+/* ----------------------------------------------------------
+   Responsive tweaks
+---------------------------------------------------------- */
 
 @media (max-width: 900px) {
   .pillar-grid,
@@ -321,6 +330,10 @@
 }
 
 @media (max-width: 600px) {
+  .forge-hero-vaporized {
+    padding: 2.2rem 1.2rem 3rem;
+  }
+
   .hero-stamp {
     font-size: 2.1rem;
     letter-spacing: 0.16em;
@@ -336,12 +349,17 @@
   }
 }
 
-
-/* ==========================================================
-   FADE IN
-========================================================== */
+/* ----------------------------------------------------------
+   Page fade-in
+---------------------------------------------------------- */
 
 @keyframes fadeInHome {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
