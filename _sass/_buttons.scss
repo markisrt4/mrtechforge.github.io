@@ -1,19 +1,18 @@
 /* ==========================================================
-   M.R. TECHFORGE — CLASSIC FORGE BUTTONS (v2.0 Revival)
+   M.R. TECHFORGE — CLASSIC FORGE BUTTONS (v2.1 Polished)
    Large • Rounded • Gradient • Glow • Animated Hover Sweep
    ========================================================== */
 
-/* Base button */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0.85rem 1.75rem;
+  padding: 1rem 2rem;
   border-radius: 999px;
 
   font-family: "Orbitron", sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -23,13 +22,13 @@
 
   position: relative;
   overflow: hidden;
+  z-index: 5;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  pointer-events: auto;
 }
 
-/* -------------------------------------------
-   THE CLASSIC FORGE GLOW BUTTON
--------------------------------------------- */
+/* Forge Glow */
 .btn-forge {
   background: linear-gradient(
     90deg,
@@ -38,12 +37,13 @@
     var(--forge-accent),
     var(--forge-accent-dark)
   );
-  background-size: 300%;
-  color: #fff;
+
+  background-size: 260%;
+  color: white;
 
   box-shadow:
-    0 0 14px rgba(var(--forge-accent-rgb), 0.55),
-    0 0 4px rgba(var(--forge-hotmetal-rgb), 0.45) inset;
+    0 0 14px rgba(var(--forge-accent-rgb), 0.45),
+    inset 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45);
 }
 
 .btn-forge:hover {
@@ -51,22 +51,18 @@
   background-position: 100% 0;
 
   box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.9),
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.75) inset;
+    0 0 26px rgba(var(--forge-accent-rgb), 0.88),
+    inset 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.75);
 }
 
-/* -------------------------------------------
-   ICON SUPPORT
--------------------------------------------- */
+/* Optional icon support */
 .btn i,
 .btn svg {
   margin-right: 0.45rem;
   font-size: 1.1rem;
 }
 
-/* -------------------------------------------
-   RIPPLE EFFECT (subtle)
--------------------------------------------- */
+/* Ripple effect */
 .btn::after {
   content: "";
   position: absolute;
