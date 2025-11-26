@@ -20,8 +20,9 @@ class: home
   <div class="hero-stamp">M.R. TECHFORGE</div>
 
   <h1 class="hero-title">
-    Crafting Practical Tech Solutions  
-    With Integrity & Skill
+  <span>Crafting Practical</span>
+  <span>Tech Solutions</span>
+  <span>With Integrity & Skill</span>
   </h1>
 
   <p class="hero-subtitle">
