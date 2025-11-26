@@ -11,26 +11,31 @@
 
     <!-- Mobile Hamburger -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+    <label for="nav-toggle" class="nav-toggle-label">
       <span></span>
     </label>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav class="forge-nav">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES (Desktop hover / Mobile expanded) -->
+      <!-- SERVICES MENU -->
       <div class="nav-item dropdown">
 
-        <!-- Parent label -->
-        <div class="dropdown-parent">
+        <!-- Mobile-only toggle -->
+        <input type="checkbox"
+               id="services-toggle"
+               class="services-toggle">
+
+        <!-- Parent row -->
+        <label for="services-toggle" class="dropdown-parent">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
-        </div>
+        </label>
 
-        <!-- Dropdown menu -->
+        <!-- Desktop hover container / Mobile collapsible container -->
         <div class="dropdown-content">
 
           <a href="/services/" class="dropdown-overview">
@@ -41,11 +46,12 @@
             Digital Security
           </a>
 
-          <a href="/services/digital-security/life-without-google/" data-grandchild="true">
+          <a href="/services/digital-security/life-without-google/"
+             data-grandchild="true">
             Life Without Google
           </a>
-
         </div>
+
       </div>
 
       <a href="/documentation/">Documentation</a>
