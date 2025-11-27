@@ -9,8 +9,8 @@
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- MOBILE HAMBURGER -->
-    <button id="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation">
+    <!-- MOBILE HAMBURGER BUTTON -->
+    <button class="nav-toggle-btn" aria-label="Toggle navigation">
       <span></span>
     </button>
 
@@ -23,15 +23,17 @@
       <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Parent clickable label (JS will toggle submenu) -->
-        <button class="dropdown-parent">
+        <!-- Parent clickable button for desktop & mobile -->
+        <button class="dropdown-parent" type="button">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
         </button>
 
-        <!-- Dropdown children -->
         <div class="dropdown-content">
-          <a href="/services/" class="dropdown-overview">Services Overview</a>
+
+          <a href="/services/" class="dropdown-overview">
+            Services Overview
+          </a>
 
           <a href="/services/digital-security/" data-child="true">
             Digital Security
@@ -41,6 +43,7 @@
              data-grandchild="true">
             Life Without Google
           </a>
+
         </div>
       </div>
 
