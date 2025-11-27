@@ -1,129 +1,113 @@
-/* =========================================================
-   CONTACT PAGE — UPGRADED FORGE EDITION (v3.0)
-   Scoped to .contact-page only
-========================================================= */
+/* CONTACT PAGE — EXPANDED TERMINAL EDITION */
 
 .contact-page {
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
-/* ---------------------------------------------------------
-   INTRO CARD
---------------------------------------------------------- */
-.intro-card {
+/* ---------------------------------------
+   TITLES + INTRO
+---------------------------------------- */
+.page-intro h1 {
   text-align: center;
-  padding: 2rem 1.4rem;
-  margin-bottom: 2rem;
-  border-left: 3px solid var(--forge-hotmetal);
-}
-
-.intro-card .tagline {
-  margin-top: 0.4rem;
-  color: var(--forge-subtext);
-  letter-spacing: 0.5px;
-}
-
-/* ---------------------------------------------------------
-   GENERIC FORGE CARDS
---------------------------------------------------------- */
-.forge-card {
-  background: linear-gradient(180deg, #0a0c10 0%, #050608 100%);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.28);
-  padding: 1.4rem 1.2rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-
-  box-shadow:
-    0 0 12px rgba(10, 109, 255, 0.12),
-    0 0 6px rgba(var(--forge-accent-rgb), 0.15) inset;
-}
-
-.forge-card h2 {
   font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
   color: var(--forge-hotmetal);
   margin-bottom: 0.8rem;
 }
 
-/* ---------------------------------------------------------
+.page-intro .tagline {
+  text-align: center;
+  color: var(--forge-subtext);
+  margin-bottom: 1.6rem;
+}
+
+/* ---------------------------------------
    TERMINAL BLOCKS
---------------------------------------------------------- */
+---------------------------------------- */
 .forge-terminal {
-  background: #000;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.3);
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1.8rem 0;
+  background: rgba(5, 8, 15, 0.9);
+  border-radius: 14px;
+  padding: 1rem 1.3rem;
+  margin: 1.4rem 0;
+  font-family: "JetBrains Mono", monospace;
+  color: #0aff0a;
+  position: relative;
+  overflow: hidden;
 
   box-shadow:
-    0 0 14px rgba(10, 109, 255, 0.25),
-    0 0 6px rgba(10, 109, 255, 0.18) inset;
+    0 0 22px rgba(var(--forge-accent-rgb), 0.3),
+    inset 0 0 18px rgba(0, 80, 180, 0.35);
 }
 
 .forge-terminal pre {
-  font-family: "Courier New", monospace;
-  color: var(--forge-accent);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  margin: 0;
   white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.45rem;
+  position: relative;
 }
 
-/* Boot sequence terminal RGB flicker */
-.boot-seq pre {
-  animation: terminalFlicker 2.4s linear;
-}
-
-@keyframes terminalFlicker {
-  0% { opacity: 0; }
-  10% { opacity: 0.4; }
-  25% { opacity: 1; }
-  35% { opacity: 0.7; }
-  50% { opacity: 1; }
-  70% { opacity: 0.85; }
-  100% { opacity: 1; }
-}
-
-/* Email terminal */
-.email-terminal {
-  margin-top: 1rem;
-}
-
-/* ---------------------------------------------------------
-   CONTACT LIST
---------------------------------------------------------- */
-.contact-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 1rem 0;
-}
-
-.contact-list li {
-  padding: 0.35rem 0;
-  font-size: 1rem;
-  color: var(--forge-text);
-}
-
-.contact-list a {
+.forge-terminal pre::after {
+  content: "▉";
+  animation: cursorBlink 1s steps(1) infinite;
+  margin-left: 6px;
   color: var(--forge-accent);
-  text-decoration: none;
 }
 
-.contact-list a:hover {
-  text-shadow: 0 0 8px rgba(var(--forge-accent-rgb), 0.55);
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%     { opacity: 0; }
 }
 
-/* ---------------------------------------------------------
-   COPY BUTTON
---------------------------------------------------------- */
+/* ---------------------------------------
+   TERMINAL MAP GRID
+---------------------------------------- */
+.terminal-map {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  line-height: 1.3rem;
+  padding-top: 0.6rem;
+  color: #14d7ff;
+  opacity: 0.95;
+}
+
+.terminal-map .coord {
+  color: var(--forge-hotmetal);
+  font-weight: bold;
+}
+
+.terminal-map .marker {
+  color: #00ffea;
+  text-shadow: 0 0 8px #00f2ff;
+}
+
+/* ---------------------------------------
+   CARDS
+---------------------------------------- */
+.forge-card {
+  background: rgba(10, 12, 18, 0.78);
+  border-radius: 16px;
+  padding: 1.6rem;
+  margin: 1.5rem 0;
+
+  box-shadow:
+    0 0 30px rgba(var(--forge-accent-rgb), 0.35),
+    inset 0 0 20px rgba(var(--forge-accent-rgb), 0.2);
+}
+
+.forge-card h2 {
+  color: var(--forge-hotmetal);
+  font-family: "Orbitron", sans-serif;
+  margin-bottom: 0.9rem;
+}
+
+/* contact list */
+.contact-list li {
+  margin-bottom: 0.6rem;
+}
+
+/* button for copying */
 #copy-template {
   margin-bottom: 1rem;
-}
-
-/* ---------------------------------------------------------
-   END TERMINAL
---------------------------------------------------------- */
-.end-terminal pre {
-  color: var(--forge-hotmetal);
 }
