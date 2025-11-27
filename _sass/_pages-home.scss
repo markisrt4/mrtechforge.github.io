@@ -28,7 +28,7 @@
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  font-size: clamp(1.6rem, 3.7vw, 2.35rem);
 
   background: linear-gradient(
     90deg,
@@ -54,13 +54,13 @@
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: clamp(2.1rem, 6vw, 3.6rem);
+  font-size: clamp(1.75rem,5vw, 3rem);
   line-height: 1.2;
   margin: 1.8rem auto 1.4rem;
   color: var(--forge-hotmetal);
   text-shadow: 0 0 18px rgba(245, 184, 65, 0.55);
   letter-spacing: 0.08em;
-  max-width: 18ch;
+  max-width: 28ch;
 
   word-wrap: normal;
   overflow-wrap: normal;
