@@ -1,76 +1,53 @@
 /* =========================================================
-   TYPEWRITER TERMINAL — Realistic CRT typing effect
+   HYBRID TERMINAL — Gold Prompt • Green Cmd • Cyan Output
+   Reusable for footer + contact page
    ========================================================= */
 
-.crt-terminal {
-  background: #030303;
-  border: 2px solid #1a1a1a;
+.forge-terminal {
+  background: rgba(5, 5, 8, 0.75);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
   padding: 1.2rem 1.4rem;
-  margin: 2rem 0;
-  font-family: "Fira Mono", monospace;
-  font-size: 0.95rem;
-  color: #33ff66;
-  line-height: 1.55;
-  position: relative;
-  overflow: hidden;
+  border-radius: 12px;
+  margin: 2rem auto 1rem;
+  max-width: 950px;
+
   box-shadow:
-    0 0 18px rgba(0, 255, 80, 0.25),
-    inset 0 0 6px rgba(0, 255, 80, 0.08);
+    0 0 22px rgba(var(--forge-accent-rgb), 0.18),
+    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
+
+  font-family: "Fira Mono", monospace;
+  overflow-x: auto;
 }
 
-/* CRT scanlines */
-.crt-terminal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04) 0px,
-    rgba(255, 255, 255, 0.04) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-  opacity: 0.15;
+/* Prompt: gold */
+.term-prompt {
+  color: var(--forge-hotmetal);
+  font-weight: 700;
 }
 
-/* Vignette */
-.crt-terminal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    transparent 62%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
-  pointer-events: none;
+/* Commands: green */
+.term-cmd {
+  color: #00ff55;
 }
 
-/* Prompt Colors */
-.crt-prompt { color: #ffcc66; font-weight: bold; }
-.crt-output { color: #66c2ff; }
+/* Outputs: cyan */
+.term-output {
+  color: var(--forge-accent);
+  opacity: 0.85;
+}
 
-/* Cursor */
-.crt-cursor {
+/* Typewriter cursor */
+.cursor {
   display: inline-block;
-  width: 10px;
-  height: 1rem;
-  background: #33ff66;
-  margin-left: 4px;
-  animation: crtBlink 0.8s infinite;
+  width: 7px;
+  height: 1.1rem;
+  background: #00ff55;
+  margin-left: 3px;
+  animation: blinkCursor 0.8s steps(2) infinite;
 }
-@keyframes crtBlink {
+
+@keyframes blinkCursor {
+  0% { opacity: 1; }
   50% { opacity: 0; }
-}
-
-/* Typewriter container */
-.typewriter-line {
-  white-space: pre-wrap;
-  display: block;
-}
-
-/* Optional dimmed text before animation begins */
-.typewriter-line[data-typing="false"] {
-  opacity: 0.4;
+  100% { opacity: 1; }
 }
