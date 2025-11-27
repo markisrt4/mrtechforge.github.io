@@ -1,32 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const terminals = document.querySelectorAll(".forge-terminal");
-
-  terminals.forEach(term => {
-    let block = term.querySelector("code, pre");
-    if (!block) return;
-
-    const text = block.innerText;
-    block.innerText = "";
+  /* ===========================
+       TYPEWRITER EFFECT
+  ============================ */
+  document.querySelectorAll(".forge-terminal code").forEach(codeBlock => {
+    const original = codeBlock.textContent;
+    codeBlock.textContent = "";
 
     let i = 0;
     const speed = 14;
 
     function type() {
-      if (i < text.length) {
-        block.innerText += text[i];
+      if (i < original.length) {
+        codeBlock.textContent += original.charAt(i);
         i++;
-        setTimeout(type, speed);
+        requestAnimationFrame(type);
       }
     }
+
     type();
   });
 
-  // CRT Mode buttons
-  document.querySelectorAll("[data-style]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const style = btn.dataset.style;
-      document.querySelectorAll(".forge-terminal").forEach(t => {
-        t.dataset.style = style;
+
+  /* ===========================
+       MODE BUTTONS
+  ============================ */
+  document.querySelectorAll(".terminal-modes").forEach(group => {
+    const buttons = group.querySelectorAll("button");
+    const terminal = group.nextElementSibling;
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // update active visual state
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // switch terminal style
+        terminal.dataset.style = btn.dataset.style;
       });
     });
   });
