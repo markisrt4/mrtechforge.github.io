@@ -378,3 +378,161 @@
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* =========================================================
+   SOUTHEAST MICHIGAN BLUEPRINT CARD
+   ========================================================= */
+
+.mi-region-card {
+  max-width: 900px;
+  margin: 2.2rem auto 2.4rem;
+  padding: 1.8rem 1.4rem 2.2rem;
+  border-radius: 26px;
+
+  background:
+    radial-gradient(circle at top, rgba(10, 109, 255, 0.22) 0, rgba(5, 8, 16, 0.95) 52%, #000 100%);
+  box-shadow:
+    0 0 26px rgba(0, 184, 212, 0.32),
+    inset 0 0 22px rgba(0, 184, 212, 0.24);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
+}
+
+.mi-region-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.mi-map-shell {
+  position: relative;
+  width: min(260px, 80vw);
+  aspect-ratio: 3 / 4;
+  border-radius: 999px;
+
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.06) 0, transparent 45%),
+    repeating-linear-gradient(
+      to right,
+      rgba(10, 109, 255, 0.15) 0,
+      rgba(10, 109, 255, 0.15) 1px,
+      transparent 1px,
+      transparent 10px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(10, 109, 255, 0.15) 0,
+      rgba(10, 109, 255, 0.15) 1px,
+      transparent 1px,
+      transparent 10px
+    ),
+    radial-gradient(circle at bottom, rgba(0, 0, 0, 0.6) 0, #000 65%);
+  box-shadow:
+    0 0 22px rgba(0, 184, 212, 0.45),
+    0 0 60px rgba(0, 0, 0, 0.9) inset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mi-map-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mi-outline {
+  fill: rgba(0, 0, 0, 0.7);
+  stroke: rgba(10, 177, 255, 0.95);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px rgba(10, 177, 255, 0.7));
+}
+
+.mi-upper {
+  opacity: 0.7;
+  stroke-width: 2;
+}
+
+.mi-blip {
+  fill: var(--forge-hotmetal);
+  filter: drop-shadow(0 0 10px rgba(var(--forge-hotmetal-rgb), 0.9));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: miBlipPulse 2.2s ease-out infinite;
+}
+
+.mi-region-copy {
+  max-width: 480px;
+  text-align: center;
+}
+
+.mi-region-copy h2 {
+  color: var(--forge-hotmetal);
+  font-size: clamp(1.5rem, 4.1vw, 2.1rem);
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
+}
+
+.mi-region-copy p {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+}
+
+.mi-region-list {
+  margin: 0.6rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.mi-region-list li {
+  font-size: 0.98rem;
+  color: var(--forge-subtext);
+}
+
+.mi-region-note {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Layout for larger screens */
+@media (min-width: 720px) {
+  .mi-region-inner {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .mi-map-shell {
+    margin-right: 1.4rem;
+  }
+}
+
+/* Blip pulse */
+@keyframes miBlipPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.45;
+  }
+  35% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+}
+
+/* =========================================================
+   SMALL TWEAK: TERMINAL STYLE BUTTONS SIZE
+   ========================================================= */
+
+.terminal-style-switch button,
+.terminal-style-switch .style-btn {
+  font-size: 0.9rem;
+  padding: 0.32rem 1.05rem;
+}
