@@ -1,44 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  /* =============================
-     MOBILE MENU (hamburger toggle)
-     ============================= */
-  const menuBtn = document.querySelector("#nav-toggle");
   const nav = document.querySelector(".forge-nav");
-
-  menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("open");
-    nav.classList.toggle("open");
-  });
-
-  /* =============================
-     ACCORDION SUBMENU (Services)
-     ============================= */
+  const toggleBtn = document.querySelector(".nav-toggle-btn");
   const dropdownParents = document.querySelectorAll(".dropdown-parent");
 
-  dropdownParents.forEach(parent => {
-    parent.addEventListener("click", () => {
+  /* ---------------------------------------------
+     MOBILE HAMBURGER TOGGLE
+  --------------------------------------------- */
+  if (toggleBtn && nav) {
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      toggleBtn.classList.toggle("open", isOpen);
+    });
+  }
 
+  /* ---------------------------------------------
+     MOBILE ACCORDION — SERVICES SUBMENU
+  --------------------------------------------- */
+  dropdownParents.forEach((parent) => {
+    parent.addEventListener("click", (e) => {
+      // Desktop shouldn't toggle accordion
+      if (window.innerWidth > 760) return;
+
+      e.preventDefault();
       const content = parent.nextElementSibling;
 
-      // Close all open submenus except this one
-      document.querySelectorAll(".dropdown-content.open").forEach(openMenu => {
-        if (openMenu !== content) {
-          openMenu.style.maxHeight = null;
-          openMenu.classList.remove("open");
-          openMenu.previousElementSibling.classList.remove("active");
-        }
-      });
-
       parent.classList.toggle("active");
-      content.classList.toggle("open");
 
-      if (content.classList.contains("open")) {
-        content.style.maxHeight = content.scrollHeight + "px";
-      } else {
+      if (content.style.maxHeight) {
         content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
       }
     });
   });
 
+  /* ---------------------------------------------
+     RESET MOBILE STATE ON DESKTOP RESIZE
+  --------------------------------------------- */
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) {
+      nav.classList.remove("open");
+      toggleBtn?.classList.remove("open");
+
+      dropdownParents.forEach((parent) => parent.classList.remove("active"));
+      document
+        .querySelectorAll(".dropdown-content")
+        .forEach((c) => (c.style.maxHeight = null));
+    }
+  });
 });
