@@ -14,14 +14,17 @@
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:image" content="{{ site.url }}/assets/images/og-card.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
   <meta name="twitter:description" content="{{ site.description }}">
-  <meta name="twitter:image" content="{{ site.url }}/assets/images/og-card.jpg">
 
+<!-- Open Graph / Social Preview -->
+<meta property="og:image" content="{{ '/assets/images/og-banner.png' | absolute_url }}">
+<meta name="twitter:image" content="{{ '/assets/images/og-banner.png' | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
   <!-- Primary Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css?v=11262025_1325' | relative_url }}">
 
