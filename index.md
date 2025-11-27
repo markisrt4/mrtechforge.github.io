@@ -26,7 +26,7 @@ class: home
       With Integrity & Skill
     </h1>
 
-    <p class="hero-subtitle forge-text-gradient">
+    <p class="hero-subtitle forge-text-gradient-soft">
       Clear, reliable, and relationship-driven technology help for your home, small business, church, or community.  
       Built on hands-on experience, a love for Linux, and a commitment to integrity.
     </p>
@@ -46,7 +46,7 @@ class: home
       <a href="/contact.html" class="btn btn-forge">Get in Touch</a>
     </div>
 
-    <div class="hero-footnote forge-text-gradient">
+    <div class="hero-footnote forge-text-gradient-soft">
       Forging relationships — and solutions — that last.
     </div>
   </section>
@@ -56,7 +56,7 @@ class: home
 
 
   <!-- WHAT WE STAND FOR -->
-  <section class="home-section-card">
+  <section class="home-section-card home-pillars">
     <h2>What We Stand For</h2>
 
     <div class="pillar-grid">
@@ -90,7 +90,7 @@ class: home
 
 
   <!-- WHO I HELP -->
-  <section class="home-section-card">
+  <section class="home-section-card home-audience">
     <h2>Who I Help</h2>
 
     <div class="audience-grid">
@@ -119,7 +119,7 @@ class: home
 
 
   <!-- WHAT’S COMING SOON -->
-  <section class="home-section-card">
+  <section class="home-section-card home-products">
     <h2>What’s Coming Soon</h2>
 
     <p class="forge-text-gradient-soft">
@@ -127,7 +127,7 @@ class: home
     </p>
 
     <ul>
-      <li class="forge-text-gradient-soft"><strong>ForgeDrive:</strong> A clean, organized USB toolkit with utilities & documentation</li>
+      <li class="forge-text-gradient-soft"><strong>ForgeDrive:</strong> A clean, organized USB toolkit with utilities &amp; documentation</li>
       <li class="forge-text-gradient-soft"><strong>Forge Tags:</strong> Simple NFC cards for easy, secure information sharing</li>
       <li class="forge-text-gradient-soft"><strong>ForgeSBC:</strong> A Raspberry-Pi powered home hub for ad-blocking, secure access, and syncing</li>
     </ul>
@@ -142,32 +142,30 @@ class: home
 
 
   <!-- HOW IT WORKS -->
-  <section class="home-section-card">
+  <section class="home-section-card home-how">
     <h2>How It Works</h2>
 
     <ul class="how-steps">
-
       <li class="mini-card">
-        <span class="step-label">1. Connect</span>
-        <span class="forge-text-gradient-soft">
+        <span class="step-number">1. Connect</span>
+        <span class="step-text forge-text-gradient-soft">
           We talk through your needs, challenges, and goals — in plain English.
         </span>
       </li>
 
       <li class="mini-card">
-        <span class="step-label">2. Plan</span>
-        <span class="forge-text-gradient-soft">
+        <span class="step-number">2. Plan</span>
+        <span class="step-text forge-text-gradient-soft">
           You get clear, practical options instead of overwhelming complexity.
         </span>
       </li>
 
       <li class="mini-card">
-        <span class="step-label">3. Build</span>
-        <span class="forge-text-gradient-soft">
+        <span class="step-number">3. Build</span>
+        <span class="step-text forge-text-gradient-soft">
           Clean, dependable solutions designed for long-term stability.
         </span>
       </li>
-
     </ul>
   </section>
 
@@ -176,7 +174,7 @@ class: home
 
 
   <!-- INTEGRITY -->
-  <section class="home-section-card">
+  <section class="home-section-card home-integrity">
     <h2>Faith • Integrity • Craftsmanship</h2>
 
     <p class="forge-text-gradient-soft">
