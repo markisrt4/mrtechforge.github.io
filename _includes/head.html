@@ -2,18 +2,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Titles -->
   <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/images/og-card.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/images/og-card.jpg">
 
   <!-- Primary Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css?v=11262025_1325' | relative_url }}">
 
   <!-- Font: Orbitron -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Option 1: Rajdhani
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500&display=swap" rel="stylesheet">
-   -->
 
   <!-- Option 2: Titillium Web -->
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
@@ -23,13 +36,15 @@
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
-<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
-<link rel="icon" type="image/png" sizes="256x256" href="/favicon-256.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256.png">
 
+  <!-- JS -->
   <script src="{{ '/assets/js/forge.js' | relative_url }}" defer></script>
 
+  <!-- Injects standardized SEO tags -->
   {% seo %}
 </head>
