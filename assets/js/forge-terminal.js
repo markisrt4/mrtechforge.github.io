@@ -1,18 +1,22 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const terminals = document.querySelectorAll(".forge-terminal");
-  terminals.forEach((term, index) => {
+
+  terminals.forEach((term) => {
     const blocks = term.querySelectorAll("code");
     let delay = 0;
-    blocks.forEach(block => {
-      const text = block.innerText;
+
+    blocks.forEach((block) => {
+      const original = block.innerText;
       block.innerText = "";
-      [...text].forEach((char, i) => {
+
+      [...original].forEach((char, i) => {
         setTimeout(() => {
           block.innerText += char;
-        }, delay + i * 18);
+        }, delay + i * 16);
       });
-      delay += text.length * 18 + 300; // pause before next block
+
+      delay += original.length * 16 + 250;
     });
   });
 });
