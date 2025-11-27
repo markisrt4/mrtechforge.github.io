@@ -1,40 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.getElementById("mobileNav");
-  const openBtn = document.getElementById("navToggle");
-  const closeBtn = document.getElementById("navClose");
 
-  // OPEN NAV
-  openBtn?.addEventListener("click", () => {
-    nav.classList.add("open");
+  /* =============================
+     MOBILE MENU (hamburger toggle)
+     ============================= */
+  const menuBtn = document.querySelector("#nav-toggle");
+  const nav = document.querySelector(".forge-nav");
+
+  menuBtn.addEventListener("click", () => {
+    menuBtn.classList.toggle("open");
+    nav.classList.toggle("open");
   });
 
-  // CLOSE NAV
-  closeBtn?.addEventListener("click", () => {
-    nav.classList.remove("open");
-  });
+  /* =============================
+     ACCORDION SUBMENU (Services)
+     ============================= */
+  const dropdownParents = document.querySelectorAll(".dropdown-parent");
 
-  // Accordion parents
-  document.querySelectorAll(".nav-parent").forEach((btn) => {
-    const target = document.getElementById(btn.dataset.target);
+  dropdownParents.forEach(parent => {
+    parent.addEventListener("click", () => {
 
-    btn.addEventListener("click", () => {
-      const isOpen = target.classList.contains("open");
+      const content = parent.nextElementSibling;
 
-      // Close all other open menus
-      document.querySelectorAll(".mobile-submenu").forEach((m) => {
-        if (m !== target) {
-          m.classList.remove("open");
-        }
-      });
-      document.querySelectorAll(".nav-parent").forEach((p) => {
-        if (p !== btn) {
-          p.classList.remove("open");
+      // Close all open submenus except this one
+      document.querySelectorAll(".dropdown-content.open").forEach(openMenu => {
+        if (openMenu !== content) {
+          openMenu.style.maxHeight = null;
+          openMenu.classList.remove("open");
+          openMenu.previousElementSibling.classList.remove("active");
         }
       });
 
-      // Toggle this one
-      btn.classList.toggle("open");
-      target.classList.toggle("open");
+      parent.classList.toggle("active");
+      content.classList.toggle("open");
+
+      if (content.classList.contains("open")) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = null;
+      }
     });
   });
+
 });
