@@ -38,6 +38,7 @@ seo:
   title: "M.R. TechForge"
   description: "Crafting Clarity. Forging Solutions. Secured with Integrity."
   url: "https://mrtechforge.com"
+  image: /assets/images/og-banner.png
 
 # Exclude from build
 exclude:
