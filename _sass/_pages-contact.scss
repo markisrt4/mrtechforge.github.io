@@ -1,89 +1,380 @@
 /* =========================================================
-   CONTACT PAGE — TERMINALS + CARDS
-========================================================= */
+   CONTACT PAGE — TERMINAL COMMAND CENTER
+   Scoped to .contact-page so it doesn't leak
+   ========================================================= */
 
-.forge-terminal-block {
-  margin: 2.5rem auto;
-  max-width: 820px;
-  width: 94%;
+.contact-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.6rem 1.2rem 3rem;
 }
 
-.terminal-modes {
-  display: flex;
-  gap: 0.6rem;
-  margin-bottom: 0.8rem;
+/* Intro */
+.contact-page .page-intro {
+  text-align: center;
+  margin-bottom: 1.8rem;
 }
 
-.terminal-modes button {
-  padding: 0.35rem 0.9rem;
-  border-radius: 8px;
-  background: rgba(5, 10, 20, 0.7);
-  color: var(--forge-text);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  cursor: pointer;
-  font-family: "Orbitron";
-  font-size: 0.85rem;
+.contact-page .page-intro h1 {
+  color: var(--forge-hotmetal);
+  margin-bottom: 0.6rem;
+}
+
+.contact-page .page-intro .tagline {
+  color: var(--forge-subtext);
+}
+
+/* Shared cards & terminals – wider, no bleed */
+.contact-page .forge-card,
+.contact-page .forge-terminal {
+  max-width: 860px;
+  margin: 0 auto 2.4rem;
+  padding: 1.8rem 1.6rem;
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+/* Cards */
+.contact-page .forge-card {
+  background: radial-gradient(circle at top left,
+    rgba(10, 109, 255, 0.18),
+    rgba(4, 8, 18, 0.96)
+  );
+  box-shadow:
+    0 0 24px rgba(var(--forge-accent-rgb), 0.25),
+    inset 0 0 22px rgba(0, 0, 0, 0.85);
+}
+
+.contact-page .forge-card h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: 0.25s ease;
-}
-
-.terminal-modes button.active {
-  background: rgba(245, 184, 65, 0.15);
-  border-color: var(--forge-hotmetal);
   color: var(--forge-hotmetal);
-  box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
+  margin-bottom: 0.9rem;
 }
 
-.forge-terminal {
-  padding: 1.4rem;
-  border-radius: 16px;
-  background: #000;
-  color: #27f3ff;
-  font-family: "Courier New", monospace;
-  line-height: 1.55;
+.contact-page .forge-card p {
+  margin-bottom: 0.9rem;
+}
+
+.contact-page .contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+}
+
+.contact-page .contact-list li {
+  margin-bottom: 0.4rem;
+}
+
+.contact-page blockquote {
+  margin: 0.4rem 0 0;
+  font-style: italic;
+  color: var(--forge-subtext);
+}
+
+/* =========================================================
+   MICHIGAN GRID GLOBE
+   ========================================================= */
+
+.mi-globe-wrap {
+  max-width: 860px;
+  margin: 0 auto 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.mi-globe {
   position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(0, 153, 255, 0.35);
-  box-shadow: 0 0 24px rgba(0, 153, 255, 0.35),
-              inset 0 0 28px rgba(0, 153, 255, 0.25);
+  box-shadow:
+    0 0 28px rgba(var(--forge-accent-rgb), 0.65),
+    0 0 60px rgba(0, 0, 0, 0.9);
+  transform-style: preserve-3d;
+  animation: miGlobeSpin 18s linear infinite;
 }
 
-/* GRID */
-.forge-terminal[data-style="grid"] {
-  background-image:
-    linear-gradient(rgba(0,150,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,150,255,0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
+.mi-globe-sphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.35), transparent 45%),
+    radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.9), #02040a 80%),
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 149, 255, 0.45) 0,
+      rgba(0, 149, 255, 0.45) 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 149, 255, 0.45) 0,
+      rgba(0, 149, 255, 0.45) 1px,
+      transparent 1px,
+      transparent 8px
+    );
 }
 
-/* SCANLINE */
-.forge-terminal[data-style="scanline"] {
-  background-image:
-    linear-gradient(rgba(0,255,255,0.06) 3px, transparent 3px);
-  background-size: 100% 6px;
+/* orbit rings */
+.mi-globe-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 149, 255, 0.55);
+  box-shadow: 0 0 10px rgba(0, 149, 255, 0.6);
 }
 
-/* RADAR */
-.forge-terminal[data-style="radar"]::before {
+.mi-globe-ring.lat {
+  inset: 50% -10%;
+  transform: rotateX(78deg);
+}
+
+.mi-globe-ring.lon {
+  inset: -8% 50%;
+  transform: rotateY(70deg);
+}
+
+/* SE Michigan pin (approximate, stylistic) */
+.mi-globe-pin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--forge-hotmetal);
+  box-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.9),
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.9);
+  /* ~North America right-ish */
+  top: 42%;
+  right: 26%;
+  animation: miPinPulse 1.8s ease-in-out infinite;
+}
+
+.mi-globe-label {
+  position: absolute;
+  left: 50%;
+  bottom: -2.2rem;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--forge-subtext);
+}
+
+/* =========================================================
+   TERMINAL MODE BAR (ONE SET OF BUTTONS)
+   ========================================================= */
+
+.terminal-mode-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: nowrap;
+}
+
+.terminal-mode-bar .mode-btn {
+  min-width: 96px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.5);
+  background: rgba(3, 8, 16, 0.95);
+  color: var(--forge-text);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.terminal-mode-bar .mode-btn:hover {
+  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.7);
+}
+
+.terminal-mode-bar .mode-btn.active {
+  color: var(--forge-hotmetal);
+  border-color: rgba(var(--forge-hotmetal-rgb), 0.85);
+  box-shadow:
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.9),
+    0 0 4px rgba(var(--forge-hotmetal-rgb), 1) inset;
+}
+
+/* =========================================================
+   CRT TERMINAL BLOCKS
+   ========================================================= */
+
+.contact-page .forge-terminal {
+  position: relative;
+  font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #00ffd5;
+  background: radial-gradient(circle at top left, #063249, #020409 70%, #000 100%);
+  box-shadow:
+    0 0 30px rgba(var(--forge-accent-rgb), 0.55),
+    inset 0 0 30px rgba(0, 0, 0, 0.95);
+  overflow: hidden;
+
+  transform: perspective(1200px) rotateX(2deg);
+}
+
+/* curvature overlay */
+.contact-page .forge-terminal::before {
   content: "";
   position: absolute;
-  left: -40%;
-  top: -40%;
-  width: 180%;
-  height: 180%;
-  background: radial-gradient(circle, rgba(0,255,0,0.12), transparent 60%);
-  animation: radarSweep 4s linear infinite;
+  inset: 0;
+  background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.15), transparent 60%);
+  mix-blend-mode: soft-light;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* inner border glow */
+.contact-page .forge-terminal::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.4);
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.7);
+  pointer-events: none;
+}
+
+.contact-page .forge-terminal code {
+  position: relative;
+  display: block;
+  white-space: pre-wrap;
+  z-index: 2;
+}
+
+/* blinking cursor at end */
+.contact-page .forge-terminal code::after {
+  content: "▌";
+  margin-left: 4px;
+  display: inline-block;
+  animation: crtCursorBlink 0.9s steps(2, start) infinite;
+}
+
+/* === styles per mode (applied via JS as .crt-scanline, .crt-grid, .crt-radar) === */
+
+/* scanline */
+.contact-page .forge-terminal.crt-scanline {
+  background-image:
+    repeating-linear-gradient(to bottom,
+      rgba(0, 255, 170, 0.25) 0,
+      rgba(0, 255, 170, 0.25) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(circle at top, #032320, #020306 75%);
+}
+
+/* grid */
+.contact-page .forge-terminal.crt-grid {
+  background-image:
+    radial-gradient(circle at top, #021a33, #010208 70%),
+    linear-gradient(to right,
+      rgba(0, 135, 255, 0.45) 1px,
+      transparent 1px),
+    linear-gradient(to bottom,
+      rgba(0, 135, 255, 0.45) 1px,
+      transparent 1px);
+  background-size: auto, 22px 22px, 22px 22px;
+}
+
+/* radar */
+.contact-page .forge-terminal.crt-radar {
+  background-image: radial-gradient(circle, #00120f 0%, #000 70%);
+}
+
+.contact-page .forge-terminal.crt-radar::before {
+  background:
+    radial-gradient(circle at center,
+      rgba(0, 255, 170, 0.18),
+      transparent 60%);
+}
+
+/* radar sweep */
+.contact-page .forge-terminal.crt-radar .radar-sweep {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 170, 0.35);
+  box-shadow: 0 0 16px rgba(0, 255, 170, 0.7);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.contact-page .forge-terminal.crt-radar .radar-sweep::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 255, 170, 0.45),
+    transparent 55%
+  );
+  animation: radarSweep 3.5s linear infinite;
+}
+
+/* keep copy-template button aligned */
+.contact-page #copy-template {
+  margin-top: 0.6rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .contact-page {
+    padding-inline: 0.7rem;
+  }
+
+  .contact-page .forge-card,
+  .contact-page .forge-terminal {
+    max-width: 100%;
+    padding-inline: 1.1rem;
+  }
+
+  .mi-globe {
+    width: 150px;
+    height: 150px;
+  }
+
+  .terminal-mode-bar .mode-btn {
+    min-width: 0;
+    padding-inline: 0.55rem;
+    font-size: 0.76rem;
+  }
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes crtCursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes miGlobeSpin {
+  0% { transform: rotateY(0deg); }
+  60% { transform: rotateY(360deg); }
+  100% { transform: rotateY(360deg); } /* pause after lock */
+}
+
+@keyframes miPinPulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  50%  { transform: scale(1.4); opacity: 1;   }
+  100% { transform: scale(1);   opacity: 0.5; }
 }
 
 @keyframes radarSweep {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* WIDE CARDS */
-.forge-card.wide {
-  max-width: 820px;
-  width: 94%;
-  margin: 2.4rem auto;
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
