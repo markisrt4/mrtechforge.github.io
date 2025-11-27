@@ -1,9 +1,8 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v8.0 Stable Release)
+   M.R. TECHFORGE — NAVIGATION (v8.1 Stable Release)
    • Desktop hover dropdown
-   • Mobile: JS-driven hamburger + accordion
-   • Perfect spacing + indicators
-   • Smoother animations + glow
+   • Mobile JS-driven hamburger + accordion
+   • Tight spacing, clean stacking, no layout glitches
    ===================================================== */
 
 
@@ -125,7 +124,6 @@
   transition: 0.25s ease;
 }
 
-/* Child indicators */
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   color: var(--forge-hotmetal);
@@ -149,7 +147,7 @@
 ------------------------------------------------------ */
 @media (min-width: 761px) {
   .dropdown-parent {
-    pointer-events: none; /* parent label not clickable on desktop */
+    pointer-events: none;
   }
 
   .dropdown-content {
@@ -195,7 +193,7 @@
 
 
 /* -----------------------------------------------------
-   MOBILE NAVIGATION — JS Accordion Edition
+   MOBILE NAVIGATION — v8.1 (TIGHT + CLEAN STACKING)
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
@@ -236,21 +234,22 @@
     top: 9px;
   }
 
-  /* X transition */
   .nav-toggle-btn.open span {
     background: transparent;
   }
+
   .nav-toggle-btn.open span::before {
     transform: rotate(45deg);
     top: 0;
   }
+
   .nav-toggle-btn.open span::after {
     transform: rotate(-45deg);
     top: 0;
   }
 
 
-  /* MOBILE NAV CONTAINER */
+  /* MOBILE NAV WRAPPER */
   .forge-nav {
     position: absolute;
     top: 100%;
@@ -272,12 +271,13 @@
   }
 
 
-  /* TOP-LEVEL ITEMS */
+  /* TOP LEVEL ITEMS — tightened spacing */
   .forge-nav > a,
   .dropdown-parent {
-    padding: 0.55rem 0;
+    padding: 0.35rem 0;         /* tighter */
     width: 100%;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    line-height: 1.2;
 
     color: var(--forge-subtext);
     text-align: center;
@@ -302,26 +302,44 @@
   }
 
 
-  /* ACCORDION SUBMENU */
+  /* SUBMENU — STACK BELOW, NOT RIGHT */
   .dropdown-content {
-    width: 100%;
+    position: static !important;     /* <-- FIX */
+    left: auto !important;
+    top: auto !important;
+
+    width: 100% !important;
+    max-width: 100%;
+
     overflow: hidden;
     max-height: 0;
+    padding: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    transform: none !important;
+    text-align: center;
 
     transition: max-height 0.3s ease;
-    text-align: center;
-    padding: 0;
+  }
+
+  .dropdown-content.open {
+    max-height: 500px;
   }
 
   .dropdown-content a {
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: 0.35rem;
 
     font-size: 0.95rem;
-    padding: 0.45rem 0;
-
+    padding: 0.35rem 0;
     color: var(--forge-text);
+
     background: rgba(0, 0, 0, 0.35);
   }
 }
