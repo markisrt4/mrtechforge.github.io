@@ -1,173 +1,125 @@
-/* =========================================================
-   HOMEPAGE — FULL REBUILD WITH CLEAN STRUCTURE
-   Blue→black section wrappers + dark interior cards + soft
-   steel paragraph gradients + restored hero watermark
-   ========================================================= */
+/* ================================================
+   Home Page — Clean, Structured Forge Layout
+   ================================================ */
 
-/* GLOBAL SOFT TEXT GRADIENT */
-.forge-text-gradient-soft {
-  background: linear-gradient(to bottom, #c6d2de, #7f8a94);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* HERO SECTION ------------------------------------------- */
-
+/* ----- HERO AREA ----- */
 .forge-hero-vaporized {
-  position: relative;
-  padding: 3rem 1.2rem 4rem;
   text-align: center;
-  overflow: hidden;
+  padding: 3rem 1rem;
 }
 
-/* Restore anvil-only watermark */
-.forge-hero-vaporized::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('/assets/img/anvil-watermark.png') center 40%/70% no-repeat;
-  opacity: 0.08;
-  filter: blur(2px);
-  pointer-events: none;
-}
-
-/* HERO TEXT STYLES */
 .hero-stamp {
-  margin-top: 1.5rem;
-  font-size: 1.9rem;
-  letter-spacing: 2px;
+  font-size: 2.1rem;
+  margin: 1rem 0;
+  color: var(--forge-accent);
+  animation: forgeGlow 5s ease-in-out infinite;
+  text-shadow:
+    0 0 8px rgba(0, 184, 212, 0.6),
+    0 0 18px rgba(245, 184, 65, 0.5);
 }
 
-.hero-title {
-  margin-top: 2rem;
-  font-size: clamp(2rem, 6vw, 3.6rem);
-  line-height: 1.2;
-  text-transform: uppercase;
+@keyframes forgeGlow {
+  0% { text-shadow: 0 0 6px var(--forge-accent); }
+  50% { text-shadow: 0 0 20px var(--forge-hotmetal); }
+  100% { text-shadow: 0 0 6px var(--forge-accent); }
 }
 
+.hero-tagline,
 .hero-subtitle {
-  margin-top: 2rem;
   font-size: 1.2rem;
-  line-height: 1.7;
-  padding: 0 1rem;
+  line-height: 1.6;
+  background: linear-gradient(to bottom, #9aa5b1, #d0d0d0);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
 }
 
-.hero-actions {
-  margin-top: 2.4rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-}
-
-/* =========================================================
-   SECTION WRAPPER CARDS (BIG ROUND CARDS)
-   ========================================================= */
-
-.home section {
+/* ----- SECTION WRAPPERS (blue fade shells) ----- */
+.section-shell {
+  margin: 0 auto;
+  padding: 2.2rem 1.2rem;
+  max-width: 900px;
+  border-radius: 22px;
   background: linear-gradient(
     to bottom,
-    rgba(0, 122, 255, 0.14),
-    rgba(0, 0, 0, 0.85)
+    rgba(0, 70, 140, 0.4),
+    rgba(0, 0, 0, 0.7)
   );
-  border: 1px solid rgba(0, 122, 255, 0.35);
   box-shadow:
-    0 0 40px rgba(0, 122, 255, 0.25),
-    inset 0 0 30px rgba(0, 122, 255, 0.12);
-
-  padding: 2.5rem 1.6rem;
-  border-radius: 26px;
-  margin: 3rem auto;
-  width: 92%;
-  max-width: 900px;
+    0 0 25px rgba(0, 120, 255, 0.25),
+    inset 0 0 12px rgba(0, 120, 255, 0.15);
 }
 
-/* =========================================================
-   INNER CARDS FOR PILLARS & AUDIENCE
-   ========================================================= */
-
-.pillar-grid {
-  display: grid;
-  gap: 1.8rem;
+/* ----- TITLES ----- */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.4);
 }
 
-.pillar-card {
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 22px;
-  padding: 1.6rem;
-  border: 1px solid rgba(0, 122, 255, 0.25);
-  box-shadow:
-    0 0 20px rgba(0, 122, 255, 0.20),
-    inset 0 0 15px rgba(0, 122, 255, 0.12);
-}
-
-.pillar-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.8rem;
-}
-
-/* =========================================================
-   AUDIENCE CARDS
-   ========================================================= */
-
-.audience-grid {
-  display: grid;
+/* ----- INNER BLACK CARDS ----- */
+.card-group {
+  display: flex;
+  flex-direction: column;
   gap: 1.4rem;
 }
 
-.audience-grid ul li {
-  margin-bottom: 0.8rem;
-  font-size: 1.05rem;
-}
-
-/* =========================================================
-   HOW IT WORKS
-   ========================================================= */
-
-.how-steps {
-  list-style: none;
-  padding: 0;
-}
-
-.how-steps li {
-  margin-bottom: 2rem;
-}
-
-.step-label {
-  display: block;
-  font-size: 1.3rem;
-  margin-bottom: 0.3rem;
-  color: var(--forge-hotmetal);
-}
-
-/* =========================================================
-   TERMINAL STYLE PREVIEW (FOR FUTURE BLOCK)
-   ========================================================= */
-
-.forge-terminal-sim {
-  background: rgba(0, 0, 0, 0.6);
-  font-family: "Fira Mono", monospace;
+.inner-card {
+  background: rgba(0, 0, 0, 0.55);
   border-radius: 14px;
-  padding: 1.4rem;
-  margin-top: 2rem;
-  border: 1px solid rgba(0, 122, 255, 0.25);
+  padding: 1.4rem 1.2rem;
+  border: 1px solid rgba(0, 120, 255, 0.25);
   box-shadow:
-    0 0 18px rgba(0, 122, 255, 0.28),
-    inset 0 0 12px rgba(0, 122, 255, 0.12);
+    0 0 12px rgba(0, 120, 255, 0.18),
+    inset 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
-.forge-terminal-sim span.prompt {
-  color: #00ff66;
+.inner-card p {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  background: linear-gradient(to bottom, #bcc3cc, #e2e2e2);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ----- LISTS ----- */
+.inner-card ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.inner-card li {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  background: linear-gradient(to bottom, #bcc3cc, #e2e2e2);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ----- STEPS ----- */
+.step-label {
   font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--forge-hotmetal);
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.forge-terminal-sim .cursor {
-  display: inline-block;
-  width: 8px;
-  height: 1.1rem;
-  background: #00ff66;
-  animation: blink 1s infinite;
-}
+/* ----- MOBILE FIXES ----- */
+@media (max-width: 480px) {
+  .section-shell {
+    padding: 1.7rem 0.9rem;
+    max-width: 92%;
+  }
 
-@keyframes blink {
-  50% { opacity: 0; }
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .inner-card p,
+  .inner-card li {
+    font-size: 1.05rem;
+  }
 }
