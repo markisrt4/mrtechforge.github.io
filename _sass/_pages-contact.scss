@@ -1,113 +1,160 @@
-/* CONTACT PAGE — EXPANDED TERMINAL EDITION */
+/* =========================================================
+   CONTACT PAGE — NEW STYLES (v2.0)
+   ========================================================= */
 
-.contact-page {
-  max-width: 860px;
+.contact-wrapper {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.4rem;
 }
 
-/* ---------------------------------------
-   TITLES + INTRO
----------------------------------------- */
-.page-intro h1 {
-  text-align: center;
-  font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  margin-bottom: 0.8rem;
-}
 
-.page-intro .tagline {
-  text-align: center;
-  color: var(--forge-subtext);
-  margin-bottom: 1.6rem;
-}
+/* ------------------------------
+   TERMINAL BLOCK — ENHANCED
+------------------------------- */
 
-/* ---------------------------------------
-   TERMINAL BLOCKS
----------------------------------------- */
-.forge-terminal {
-  background: rgba(5, 8, 15, 0.9);
-  border-radius: 14px;
-  padding: 1rem 1.3rem;
-  margin: 1.4rem 0;
-  font-family: "JetBrains Mono", monospace;
-  color: #0aff0a;
+.forge-terminal.enhanced-terminal {
   position: relative;
-  overflow: hidden;
-
-  box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.3),
-    inset 0 0 18px rgba(0, 80, 180, 0.35);
-}
-
-.forge-terminal pre {
-  margin: 0;
-  white-space: pre-wrap;
-  font-size: 0.95rem;
-  line-height: 1.45rem;
-  position: relative;
-}
-
-.forge-terminal pre::after {
-  content: "▉";
-  animation: cursorBlink 1s steps(1) infinite;
-  margin-left: 6px;
-  color: var(--forge-accent);
-}
-
-@keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50%     { opacity: 0; }
-}
-
-/* ---------------------------------------
-   TERMINAL MAP GRID
----------------------------------------- */
-.terminal-map {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.85rem;
-  line-height: 1.3rem;
-  padding-top: 0.6rem;
-  color: #14d7ff;
-  opacity: 0.95;
-}
-
-.terminal-map .coord {
-  color: var(--forge-hotmetal);
-  font-weight: bold;
-}
-
-.terminal-map .marker {
-  color: #00ffea;
-  text-shadow: 0 0 8px #00f2ff;
-}
-
-/* ---------------------------------------
-   CARDS
----------------------------------------- */
-.forge-card {
-  background: rgba(10, 12, 18, 0.78);
+  padding: 1.4rem 1.6rem;
+  margin: 2rem auto;
   border-radius: 16px;
-  padding: 1.6rem;
-  margin: 1.5rem 0;
-
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
   box-shadow:
-    0 0 30px rgba(var(--forge-accent-rgb), 0.35),
-    inset 0 0 20px rgba(var(--forge-accent-rgb), 0.2);
+    0 0 24px rgba(var(--forge-accent-rgb), 0.45),
+    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.25);
+  overflow: hidden;
 }
 
-.forge-card h2 {
+/* text */
+.forge-terminal code {
+  color: #00ffcc;
+  font-family: "Fira Mono", monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  display: block;
+}
+
+/* CURSOR */
+.forge-terminal code::after {
+  content: "█";
+  color: #00ffcc;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* ------------------------------
+   MODE PANEL (FLOATING BUTTONS)
+------------------------------- */
+.terminal-mode-panel {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.mode-btn {
+  background: rgba(10, 10, 14, 0.85);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.4);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  color: var(--forge-text);
+  cursor: pointer;
+}
+
+.mode-btn.active {
   color: var(--forge-hotmetal);
-  font-family: "Orbitron", sans-serif;
-  margin-bottom: 0.9rem;
+  border-color: var(--forge-hotmetal);
 }
 
-/* contact list */
-.contact-list li {
-  margin-bottom: 0.6rem;
+
+/* ------------------------------
+   SCANLINE OVERLAY
+------------------------------- */
+.enhanced-terminal.scanline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 2px,
+    transparent 3px,
+    transparent 4px
+  );
+  pointer-events: none;
 }
 
-/* button for copying */
-#copy-template {
+
+/* ------------------------------
+   GRID MODE (Light hex grid)
+------------------------------- */
+.enhanced-terminal.grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 184, 212, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 184, 212, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+
+/* ------------------------------
+   RADAR MODE
+------------------------------- */
+.enhanced-terminal.radar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--forge-accent-rgb), 0.18) 0%,
+    transparent 70%
+  );
+  animation: radarSweep 2.8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* ------------------------------
+   CARDS
+------------------------------- */
+
+.contact-card {
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 18px;
+  background: rgba(10, 14, 22, 0.85);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.25);
+}
+
+.contact-card h2 {
+  color: var(--forge-hotmetal);
+  text-align: center;
   margin-bottom: 1rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin: 0.5rem 0;
 }
