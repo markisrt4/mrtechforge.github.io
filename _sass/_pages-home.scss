@@ -1,346 +1,206 @@
-/* ==========================================================
-   M.R. TechForge — Homepage Layout & Hero (v5)
-   - Glowing "M.R. TechForge" stamp
-   - Hero title tuned for mobile
-   - Blue→black section cards
-   - Inner black mini-cards for steps
-   ========================================================== */
+/* ===== Home Page Styles (Refined) ===== */
 
-.home {
-  margin-top: 0.5rem;
-  animation: fadeInHome 0.6s ease-out;
-}
-
-/* ==========================================================
-   SHARED GRADIENT TEXT
-========================================================== */
-
-.forge-text-gradient {
-  background: linear-gradient(
-    to bottom,
-    rgba(185, 195, 210, 0.85),
-    #f8fafc
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.forge-text-gradient-soft {
-  background: linear-gradient(
-    to bottom,
-    rgba(180, 190, 205, 0.75),
-    #e7eaf0
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ==========================================================
-   LARGE SECTION CARDS — forge-blue → black
-========================================================== */
-
-.home-section-card {
-  padding: 2rem 1.6rem;
-  border-radius: 14px;
-  max-width: 950px;
-  margin: 0 auto 3rem;
-
-  background: linear-gradient(
-    180deg,
-    rgba(var(--forge-accent-rgb), 0.35) 0%,
-    rgba(5, 5, 10, 0.92) 70%,
-    rgba(0, 0, 0, 1.0) 100%
-  );
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.30);
-
-  box-shadow:
-    0 0 20px rgba(var(--forge-accent-rgb), 0.25),
-    inset 0 0 12px rgba(var(--forge-accent-rgb), 0.15);
-
-  text-align: center;
-}
-
-.home-section-card h2 {
-  color: var(--forge-hotmetal);
-  margin-bottom: 1.6rem;
-}
-
-/* Make body text left-aligned for readability,
-   while headings remain centered */
-.home-section-card > p,
-.home-section-card ul,
-.home-section-card li {
-  text-align: left;
-}
-
-/* ==========================================================
-   HERO SECTION
-========================================================== */
+/* --- HERO SECTION --- */
 
 .forge-hero-vaporized {
-  position: relative;
-  padding: 2.6rem 1.4rem 3.4rem;
-  border-radius: 12px;
+  padding: 4rem 1rem 3rem;
   text-align: center;
-  overflow: hidden;
-
-  background: rgba(0, 0, 0, 0.72);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-
-  box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.20),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.10);
+  position: relative;
+  z-index: 1;
 }
 
-/* Anvil watermark only */
-.forge-hero-vaporized::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("/assets/images/anvil-watermark.png");
-  background-position: center 15%;
-  background-size: 420px;
-  background-repeat: no-repeat;
-
-  opacity: 0.06;
-  pointer-events: none;
+.forge-hero-vaporized .hero-tagline {
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.5;
 }
 
-/* Ember glow */
-.forge-hero-vaporized::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 30% 0%,
-    rgba(var(--forge-hotmetal-rgb), 0.22),
-    transparent 60%
-  );
-  opacity: 0.45;
-  animation: emberDrift 14s ease-in-out infinite alternate;
-  pointer-events: none;
+.forge-hero-vaporized .hero-stamp {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem auto 2rem;
+  color: var(--forge-accent);
+  text-shadow: 0 0 18px rgba(0, 184, 212, 0.45);
 }
 
-/* Hero tagline & subtitle spacing */
-.hero-tagline {
-  margin-bottom: 1.2rem;
+/* --- Main yellow glow title --- */
+.hero-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.15;
+  margin: 2rem auto 1.5rem;
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 14px rgba(245, 184, 65, 0.45);
+  letter-spacing: 1px;
+  max-width: 90%;
 }
 
 .hero-subtitle {
-  margin-top: 1.4rem;
+  max-width: 700px;
+  margin: 1.5rem auto 2.5rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
 }
 
-/* Glowing stamp using same spectrum as header */
-.hero-stamp {
-  margin: 1.2rem 0 1.8rem;
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(2.0rem, 5vw, 3.2rem);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-
-  background: linear-gradient(
-    90deg,
-    #F5B841,
-    #F5B841,
-    #0A6DFF,
-    #153D77,
-    #F5B841
-  );
-  background-size: 300%;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  animation: forgeTitleSpectrum 6s linear infinite;
-
-  text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.5),
-    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
-}
-
-/* Big yellow hero title */
-.hero-title {
-  margin: 0 auto 1.6rem;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.8);
-  line-height: 1.18;
-  max-width: 18ch;
-}
-
-/* On very small phones shrink so a whole word fits */
-@media (max-width: 480px) {
-  .forge-hero-vaporized {
-    padding-inline: 1rem;
-  }
-
-  .hero-stamp {
-    font-size: 1.8rem;
-    letter-spacing: 0.18em;
-  }
-
-  .hero-title {
-    font-size: 1.7rem;
-    max-width: 16ch;
-  }
-}
-
-/* Tag bubbles */
+/* --- Tag bubbles --- */
 .hero-tags {
-  margin: 1.8rem auto 2.2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
   justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
 }
 
 .hero-tag {
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 184, 212, 0.4);
   font-size: 0.85rem;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.3);
-  background: rgba(var(--forge-accent-rgb), 0.08);
-  color: var(--forge-subtext);
+  letter-spacing: 0.5px;
 }
 
-/* Hero buttons */
 .hero-actions {
+  margin: 2rem 0 1.5rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   gap: 1rem;
-  margin: 1.8rem 0 1.4rem;
 }
 
 .hero-footnote {
-  font-size: 0.95rem;
-  margin-top: 0.8rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  opacity: 0.85;
 }
 
-/* ==========================================================
-   PILLAR GRID ("What We Stand For")
-========================================================== */
 
-.pillar-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
+
+/* ===== SECTION SPACER ===== */
+.forge-section-spacer {
+  height: 3.5rem;
 }
 
-.pillar-card {
-  background: rgba(10, 10, 18, 0.9);
-  border-radius: 12px;
-  padding: 1.4rem 1.1rem;
 
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.30);
+
+/* ===== LARGE SECTION CARDS (Option A Subtle Gradient) ===== */
+
+.home-pillars,
+.home-audience,
+.home-products,
+.home-how,
+.home-integrity {
+  margin: 0 auto 3.5rem;
+  padding: 2.5rem 1.4rem;
+
+  border-radius: 22px;
+  max-width: 850px;
+
+  /* Option A Gradient */
+  background: linear-gradient(
+    180deg,
+    rgba(20, 35, 55, 0.35) 0%,
+    rgba(10, 15, 25, 0.85) 65%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
   box-shadow:
-    0 0 14px rgba(var(--forge-accent-rgb), 0.22),
-    inset 0 0 10px rgba(var(--forge-accent-rgb), 0.16);
-
-  text-align: left;
+    0 0 25px rgba(0, 184, 212, 0.25),
+    inset 0 0 25px rgba(0, 184, 212, 0.25);
 }
 
-/* ==========================================================
-   AUDIENCE GRID ("Who I Help")
-========================================================== */
 
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.4rem;
+/* ----- HEADERS INSIDE CARDS ----- */
+.home-pillars h2,
+.home-audience h2,
+.home-products h2,
+.home-how h2,
+.home-integrity h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--forge-hotmetal);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.45);
 }
 
-.audience-grid ul {
+
+/* ===== SUB CARDS (small dark cards for Connect / Plan / Build) ===== */
+
+.how-steps li {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 2rem;
 }
 
-.audience-grid li + li {
-  margin-top: 0.5rem;
+.how-steps li > .step-label {
+  display: none; /* remove numbered bullets on left */
 }
 
-/* ==========================================================
-   HOW IT WORKS
-========================================================== */
+.how-steps li span.forge-text-gradient {
+  display: block;
+}
 
-.how-steps {
-  list-style: none;      /* remove bullet dots */
-  margin: 0;
-  padding: 0;
+/* mini black cards */
+.how-steps li {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 1.2rem 1.4rem;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 184, 212, 0.4);
+  box-shadow: inset 0 0 14px rgba(0, 184, 212, 0.15);
+}
+
+
+
+/* ===== PARAGRAPH TEXT ===== */
+
+.home-pillars p,
+.home-audience li,
+.home-products p,
+.home-products li,
+.home-how li,
+.home-integrity p {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  max-width: 750px;
+  margin: 0.6rem auto;
+}
+
+
+
+/* ===== AUDIENCE GRID ===== */
+.audience-grid {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-/* Inner mini-cards inside the big blue card */
-.mini-card {
-  background: rgba(10, 10, 18, 0.95);
-  padding: 1.3rem 1.1rem;
-  border-radius: 12px;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  text-align: left;
-
-  box-shadow:
-    0 0 12px rgba(var(--forge-accent-rgb), 0.18),
-    inset 0 0 10px rgba(var(--forge-accent-rgb), 0.12);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.audience-grid ul {
+  padding-left: 0;
 }
 
-.mini-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 0 20px rgba(var(--forge-accent-rgb), 0.25),
-    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
+.audience-grid li {
+  list-style: none;
+  margin-bottom: 0.85rem;
 }
 
-.step-label {
-  display: inline-block;
-  font-weight: 600;
-  color: var(--forge-hotmetal);
-  margin-bottom: 0.25rem;
-}
 
-/* ==========================================================
-   RESPONSIVE TWEAKS
-========================================================== */
 
-@media (max-width: 900px) {
-  .pillar-grid,
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 700px) {
+  .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
   .audience-grid {
-    grid-template-columns: 1fr;
+    flex-direction: row;
+    justify-content: space-between;
   }
-}
 
-@media (max-width: 768px) {
-  .home-section-card {
-    margin: 0 1.1rem 2.4rem;
-    padding-inline: 1.4rem;
+  .audience-grid > div {
+    width: 48%;
   }
-}
 
-/* Fade-in + hero animations */
-
-@keyframes fadeInHome {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes emberDrift {
-  0%   { transform: translateY(-8px); opacity: 0.25; }
-  100% { transform: translateY(8px); opacity: 0.45; }
+  .how-steps li {
+    padding: 1.4rem 1.8rem;
+  }
 }
