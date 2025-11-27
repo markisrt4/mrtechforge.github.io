@@ -4,53 +4,59 @@ layout: page
 permalink: /contact.html
 ---
 
-<div class="page-intro">
-  <h1>Signal Beacon: <span class="forge-highlight">Contact M.R. TechForge</span></h1>
-  <p class="tagline">Forged connections start with a simple “hello.”</p>
-</div>
+<div class="contact-page">
 
-<section class="forge-terminal">
-  <pre>
-> INITIALIZING CONNECTION...
-> STATUS: 🔵 ACTIVE  
-> IDENTITY VERIFIED: M.R. TECHFORGE
+  <div class="page-intro forge-card intro-card">
+    <h1>Signal Beacon: <span class="forge-highlight">Contact M.R. TechForge</span></h1>
+    <p class="tagline">Forged connections start with a simple “hello.”</p>
+  </div>
+
+  <!-- TERMINAL BOOT BLOCK -->
+  <section class="forge-terminal boot-seq">
+<pre>
+> BOOTING TECHFORGE LINK...
+> STATUS: 🔵 ONLINE
+> HANDSHAKE COMPLETE
 > AWAITING USER INPUT...
-  </pre>
-</section>
+</pre>
+  </section>
 
-<section class="forge-card">
-  <h2>Open a Channel</h2>
-  <p>We like things straightforward — no forms, no robots.  
-  Just send a message, and you’ll reach a real person who actually reads it.</p>
+  <!-- CONTACT METHODS -->
+  <section class="forge-card contact-methods">
+    <h2>Open a Channel</h2>
+    <p>We like things straightforward — no forms, no robots.  
+    Just send a message, and you’ll reach a real person who actually reads it.</p>
 
-  <ul class="contact-list">
-    <li>📧 <strong>Email:</strong> <a href="mailto:mark@mrtechforge.com">mark@mrtechforge.com</a></li>
-    <li>🐙 <strong>GitHub:</strong> <a href="https://github.com/markisrt4" target="_blank">github.com/markisrt4</a></li>
-    <li>▶️ <strong>YouTube:</strong> <a href="https://youtube.com/@mrtechforge" target="_blank">youtube.com/@mrtechforge</a></li>
-    <li>   <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61582641067637" target="_blank">facebook.com/@mrtechforge</a></li>
-  </ul>
+    <ul class="contact-list">
+      <li>📧 <strong>Email:</strong> <a href="mailto:mark@mrtechforge.com">mark@mrtechforge.com</a></li>
+      <li>🐙 <strong>GitHub:</strong> <a href="https://github.com/markisrt4" target="_blank">github.com/markisrt4</a></li>
+      <li>▶️ <strong>YouTube:</strong> <a href="https://youtube.com/@mrtechforge" target="_blank">youtube.com/@mrtechforge</a></li>
+      <li><strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61582641067637" target="_blank">facebook.com/@mrtechforge</a></li>
+    </ul>
 
-  <blockquote>“Every connection is an opportunity to build, teach, or secure something that matters.”</blockquote>
-</section>
+    <blockquote>“Every connection is an opportunity to build, teach, or secure something that matters.”</blockquote>
+  </section>
 
-<section class="forge-card">
-  <h2>Typical Inquiries</h2>
-  <ul>
-    <li>🔐 Digital Security Consultations</li>
-    <li>🧰 Home & Online Tech Setup</li>
-    <li>💡 Coding 101 for Students</li>
-    <li>📝 Documentation & Editing via <em>TopTier Edits</em></li>
-  </ul>
-  <p>Drop a line describing what you need help with, and we’ll figure out the best next step together.</p>
-</section>
+  <!-- TYPICAL INQUIRIES -->
+  <section class="forge-card inquiries">
+    <h2>Typical Inquiries</h2>
+    <ul>
+      <li>🔐 Digital Security Consultations</li>
+      <li>🧰 Home & Online Tech Setup</li>
+      <li>💡 Coding 101 for Students</li>
+      <li>📝 Documentation & Editing via <em>TopTier Edits</em></li>
+    </ul>
+    <p>Drop a line describing what you need help with, and we’ll figure out the best next step together.</p>
+  </section>
 
-<section class="forge-card">
-  <h2>Suggested Email Template</h2>
-  <p>If you’re not sure what to say, here’s a quick format you can copy and adjust.</p>
+  <!-- EMAIL TEMPLATE -->
+  <section class="forge-card email-template-card">
+    <h2>Suggested Email Template</h2>
+    <p>If you're not sure what to say, here’s a quick format you can copy and adjust.</p>
 
-  <button id="copy-template" class="btn-glow">Copy Template</button>
+    <button id="copy-template" class="btn-glow">Copy Template</button>
 
-  <div class="forge-terminal" id="email-template">
+    <div class="forge-terminal email-terminal" id="email-template">
 <pre>
 To: mark@mrtechforge.com
 Subject: TechForge Inquiry – [Your Topic Here]
@@ -69,14 +75,16 @@ Additional details:
 Looking forward to connecting,
 [Your Name]
 </pre>
-  </div>
-</section>
+    </div>
+  </section>
 
-
-<section class="forge-terminal">
-  <pre>
-> SIGNAL RECEIVED.  
-> CONNECTION SECURE.  
+  <!-- FOOTER TERMINAL BLOCK -->
+  <section class="forge-terminal end-terminal">
+<pre>
+> SIGNAL RECEIVED.
+> CONNECTION SECURE.
 > TRANSMISSION STANDING BY...
-  </pre>
-</section>
+</pre>
+  </section>
+
+</div>
