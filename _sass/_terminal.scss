@@ -1,53 +1,68 @@
-/* =========================================================
-   HYBRID TERMINAL — Gold Prompt • Green Cmd • Cyan Output
-   Reusable for footer + contact page
-   ========================================================= */
+/* ===== TERMINAL BOOT SEQUENCE (Option A) ===== */
 
-.forge-terminal {
-  background: rgba(5, 5, 8, 0.75);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-  padding: 1.2rem 1.4rem;
-  border-radius: 12px;
-  margin: 2rem auto 1rem;
-  max-width: 950px;
-
-  box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.18),
-    inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-
-  font-family: "Fira Mono", monospace;
-  overflow-x: auto;
+.terminal-boot {
+  font-family: "Roboto Mono", monospace;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid #0a3d62;
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.25),
+              inset 0 0 40px rgba(0, 80, 160, 0.25);
+  border-radius: 16px;
+  padding: 1.6rem;
+  margin: 2.2rem auto;
+  width: 92%;
+  max-width: 900px;
+  color: #4da6ff;
+  letter-spacing: 0.03em;
+  line-height: 1.55;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Prompt: gold */
-.term-prompt {
-  color: var(--forge-hotmetal);
-  font-weight: 700;
+/* Lines that will appear one by one */
+.terminal-line {
+  opacity: 0;
+  white-space: pre-wrap;
+  margin-bottom: 0.75rem;
 }
 
-/* Commands: green */
-.term-cmd {
-  color: #00ff55;
-}
-
-/* Outputs: cyan */
-.term-output {
-  color: var(--forge-accent);
-  opacity: 0.85;
-}
-
-/* Typewriter cursor */
-.cursor {
+/* Blinking block cursor */
+.terminal-cursor {
   display: inline-block;
-  width: 7px;
-  height: 1.1rem;
-  background: #00ff55;
-  margin-left: 3px;
-  animation: blinkCursor 0.8s steps(2) infinite;
+  width: 12px;
+  height: 20px;
+  background: #4da6ff;
+  animation: blink-cursor 0.8s steps(1) infinite;
+  vertical-align: bottom;
+  margin-left: 4px;
 }
 
-@keyframes blinkCursor {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes blink-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Typewriter animation — characters added progressively */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Mobile tuning */
+@media (max-width: 600px) {
+  .terminal-boot {
+    padding: 1.2rem;
+    line-height: 1.45;
+    border-radius: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .terminal-cursor {
+    width: 10px;
+    height: 18px;
+  }
 }
