@@ -4,6 +4,8 @@ description: "Crafting Clarity. Forging Solutions. Secured with Integrity."
 url: "https://mrtechforge.com"       # Replace with your domain
 baseurl: ""                          # Leave empty if at root of domain
 lang: "en-US"
+permalink: pretty
+collections_dir: _collections
 
 # Theme
 theme: minima
