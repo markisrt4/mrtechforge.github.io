@@ -1,23 +1,44 @@
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const terminals = document.querySelectorAll(".forge-terminal");
+document.addEventListener("DOMContentLoaded", () => {
 
-  terminals.forEach((term) => {
-    const blocks = term.querySelectorAll("code");
-    let delay = 0;
+  /* ------------------------------------
+     TYPEWRITER SEQUENCER
+  ------------------------------------ */
+  const terminals = document.querySelectorAll(".forge-terminal code");
 
-    blocks.forEach((block) => {
-      const original = block.innerText;
-      block.innerText = "";
+  terminals.forEach((block) => {
+    const text = block.innerText.trimEnd();
+    block.innerText = "";
 
-      [...original].forEach((char, i) => {
-        setTimeout(() => {
-          block.innerText += char;
-        }, delay + i * 16);
-      });
-
-      delay += original.length * 16 + 250;
+    [...text].forEach((char, i) => {
+      setTimeout(() => {
+        block.innerText += char;
+      }, i * 15);
     });
   });
+
+
+  /* ------------------------------------
+     MODE SWITCHING (Grid / Radar / Scan)
+  ------------------------------------ */
+  const modeButtons = document.querySelectorAll(".mode-btn");
+
+  modeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const mode = btn.dataset.mode;
+      const terminal = btn.closest(".enhanced-terminal");
+
+      // Clear all modes
+      terminal.classList.remove("grid", "radar", "scanline");
+
+      // Apply new mode
+      if (mode === "grid") terminal.classList.add("grid");
+      if (mode === "radar") terminal.classList.add("radar");
+      if (mode === "scan") terminal.classList.add("scanline");
+
+      // Button highlighting
+      modeButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
 });
-</script>
