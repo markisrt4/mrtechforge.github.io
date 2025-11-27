@@ -4,14 +4,13 @@ title: "Home"
 permalink: /
 class: home
 ---
-
 <div class="home">
 
   <!-- HERO WRAPPER -->
   <section class="forge-hero-vaporized">
 
     <p class="hero-tagline forge-text-gradient">
-      Practical, relationship-focused tech consulting for homes, churches, customized tech gadgets, and small businesses.
+      Practical, relationship-focused tech consulting for homes, churches, libraries, and small businesses.
     </p>
 
     <!-- BRAND STAMP -->
@@ -27,7 +26,7 @@ class: home
     </h1>
 
     <p class="hero-subtitle forge-text-gradient-soft">
-      Clear, reliable, and relationship-driven technology help for your home, small business, church, or community.  
+      Clear, reliable, and relationship-driven technology help for your home, small business, church, library, or community.  
       Built on hands-on experience, a love for Linux, and a commitment to integrity.
     </p>
 
