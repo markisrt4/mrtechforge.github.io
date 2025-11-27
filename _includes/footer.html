@@ -1,64 +1,28 @@
-<footer class="forge-footer">
-  <div class="footer-inner">
+<footer class="site-footer">
+  
+  <!-- Terminal Boot Sequence -->
+  <div class="terminal-boot"></div>
+  <script src="/assets/js/terminal.js"></script>
 
-    <!-- Terminal Block (reusable) -->
-    <div class="forge-terminal hybrid-terminal">
-      <pre class="terminal-line">
-        <code><span class="term-prompt">root@mrtechforge.com</span>:~# <span class="term-cmd typewriter" data-text="forge secure home_network --firewall"></span></code>
-      </pre>
-      <pre><code class="term-output"># Secure foundations make everything stronger.</code></pre>
-
-      <pre class="terminal-line">
-        <code><span class="term-prompt">root@mrtechforge.com</span>:~# <span class="term-cmd typewriter" data-text="run integrity_check --daily && sync"></span></code>
-      </pre>
-      <pre><code class="term-output"># Building trust, one command at a time.</code></pre>
-    </div>
-
-    <!-- Tagline -->
-    <p class="tagline">
-      &copy; {{ site.time | date: "%Y" }} {{ site.title }}
-      <span>— Forging Relationships • Building Solutions • Guided by Integrity</span>
+  <div class="footer-bottom">
+    <p>
+      © 2025 M.R. TechForge — Forging Relationships • Building Solutions • Guided by Integrity
     </p>
 
-    <!-- Social Icons -->
-    <div class="footer-social">
-      <a href="https://github.com/markisrt4" aria-label="GitHub" target="_blank">
+    <div class="footer-icons">
+      <a href="https://github.com/mrtechforge" target="_blank" aria-label="GitHub">
         <i class="fab fa-github"></i>
       </a>
-      <a href="https://www.linkedin.com/in/mark-russell-26278456" aria-label="LinkedIn" target="_blank">
-        <i class="fab fa-linkedin-in"></i>
+      <a href="#" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://www.youtube.com/@mrtechforge" aria-label="YouTube" target="_blank">
+      <a href="#" target="_blank" aria-label="YouTube">
         <i class="fab fa-youtube"></i>
       </a>
-      <a href="https://www.facebook.com/profile.php?id=61582641067637" aria-label="Facebook" target="_blank">
+      <a href="#" target="_blank" aria-label="Facebook">
         <i class="fab fa-facebook"></i>
       </a>
     </div>
-
-    <div class="footer-links">
-      <a href="/privacy.html">Privacy</a> |
-      <a href="/documentation/">Documentation</a> |
-      <a href="/contact.html">Contact</a>
-    </div>
-
   </div>
-
-  <!-- Typewriter Script -->
-  <script>
-    document.querySelectorAll(".typewriter").forEach(el => {
-      const text = el.dataset.text;
-      let i = 0;
-
-      function type() {
-        if (i <= text.length) {
-          el.innerHTML = text.substring(0, i) + '<span class="cursor"></span>';
-          i++;
-          setTimeout(type, 60);
-        }
-      }
-      type();
-    });
-  </script>
 
 </footer>
