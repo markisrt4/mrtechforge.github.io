@@ -1,17 +1,17 @@
 <footer class="forge-footer">
   <div class="footer-inner">
 
-    <!-- Forge Terminal Hybrid -->
-    <div class="forge-terminal">
-      <div class="terminal-line">
-        forge secure home_network --firewall
-      </div>
+    <!-- Terminal Block (reusable) -->
+    <div class="forge-terminal hybrid-terminal">
+      <pre class="terminal-line">
+        <code><span class="term-prompt">root@mrtechforge.com</span>:~# <span class="term-cmd typewriter" data-text="forge secure home_network --firewall"></span></code>
+      </pre>
+      <pre><code class="term-output"># Secure foundations make everything stronger.</code></pre>
 
-      <div class="terminal-line">
-        run integrity_check --daily && sync
-      </div>
-
-      <span class="terminal-cursor"></span>
+      <pre class="terminal-line">
+        <code><span class="term-prompt">root@mrtechforge.com</span>:~# <span class="term-cmd typewriter" data-text="run integrity_check --daily && sync"></span></code>
+      </pre>
+      <pre><code class="term-output"># Building trust, one command at a time.</code></pre>
     </div>
 
     <!-- Tagline -->
@@ -22,44 +22,43 @@
 
     <!-- Social Icons -->
     <div class="footer-social">
-      <a href="https://github.com/markisrt4"
-         aria-label="GitHub"
-         class="social-icon github"
-         target="_blank" rel="noopener">
+      <a href="https://github.com/markisrt4" aria-label="GitHub" target="_blank">
         <i class="fab fa-github"></i>
       </a>
-
-      <a href="https://www.linkedin.com/in/mark-russell-26278456"
-         aria-label="LinkedIn"
-         class="social-icon linkedin"
-         target="_blank" rel="noopener">
+      <a href="https://www.linkedin.com/in/mark-russell-26278456" aria-label="LinkedIn" target="_blank">
         <i class="fab fa-linkedin-in"></i>
       </a>
-
-      <a href="https://www.youtube.com/@mrtechforge"
-         aria-label="YouTube"
-         class="social-icon youtube"
-         target="_blank" rel="noopener">
+      <a href="https://www.youtube.com/@mrtechforge" aria-label="YouTube" target="_blank">
         <i class="fab fa-youtube"></i>
       </a>
-
-      <a href="https://www.facebook.com/profile.php?id=61582641067637"
-         aria-label="Facebook"
-         class="social-icon facebook"
-         target="_blank" rel="noopener">
+      <a href="https://www.facebook.com/profile.php?id=61582641067637" aria-label="Facebook" target="_blank">
         <i class="fab fa-facebook"></i>
       </a>
     </div>
 
-    <!-- Footer Links -->
     <div class="footer-links">
       <a href="/privacy.html">Privacy</a> |
       <a href="/documentation/">Documentation</a> |
       <a href="/contact.html">Contact</a>
     </div>
 
-    <!-- Glow underline -->
-    <div class="footer-glow"></div>
-
   </div>
+
+  <!-- Typewriter Script -->
+  <script>
+    document.querySelectorAll(".typewriter").forEach(el => {
+      const text = el.dataset.text;
+      let i = 0;
+
+      function type() {
+        if (i <= text.length) {
+          el.innerHTML = text.substring(0, i) + '<span class="cursor"></span>';
+          i++;
+          setTimeout(type, 60);
+        }
+      }
+      type();
+    });
+  </script>
+
 </footer>
