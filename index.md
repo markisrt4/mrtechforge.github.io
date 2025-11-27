@@ -7,15 +7,14 @@ class: home
 
 <div class="home">
 
-  <!-- HERO SECTION -->
-  <section class="forge-hero-vaporized">
+  <!-- HERO TOP -->
+  <section class="home-hero">
 
-    <p class="hero-tagline">
-      Practical, relationship-focused tech consulting for homes, churches,
-      customized tech gadgets, and small businesses.
+    <p class="hero-tagline forge-softfade">
+      Practical, relationship-focused tech consulting for homes, churches, customized tech gadgets, and small businesses.
     </p>
 
-    <div class="hero-stamp">M.R. TechForge</div>
+    <h2 class="hero-brand glow-brand">M.R. TechForge</h2>
 
     <h1 class="hero-title">
       Crafting Practical<br>
@@ -23,12 +22,12 @@ class: home
       With Integrity & Skill
     </h1>
 
-    <p class="hero-subtitle">
-      Clear, reliable, and relationship-driven technology help for your home,
-      small business, church, or community — built on hands-on experience,
-      a love for Linux, and a commitment to integrity.
+    <p class="hero-subtitle forge-softfade">
+      Clear, reliable, and relationship-driven technology help for your home, small business, church, or community.
+      Built on hands-on experience, a love for Linux, and a commitment to integrity.
     </p>
 
+    <!-- TAGS -->
     <div class="hero-tags">
       <span class="hero-tag">Linux</span>
       <span class="hero-tag">Digital Security</span>
@@ -37,131 +36,150 @@ class: home
       <span class="hero-tag">Customized Tech Gadgets</span>
     </div>
 
+    <!-- CTA BUTTONS -->
     <div class="hero-actions">
       <a href="/services/" class="btn btn-forge">Our Services</a>
       <a href="/contact.html" class="btn btn-forge">Get in Touch</a>
     </div>
 
-    <div class="hero-footnote">
+    <div class="hero-footnote forge-softfade">
       Forging relationships — and solutions — that last.
     </div>
 
   </section>
 
-  <div class="forge-section-spacer"></div>
 
   <!-- WHAT WE STAND FOR -->
-  <section class="section-shell">
-    <h2 class="section-title">WHAT WE STAND FOR</h2>
+  <section class="home-section">
+    <div class="section-header-card">
+      <h2>What We Stand For</h2>
+    </div>
 
-    <div class="card-group">
-
-      <div class="inner-card">
-        <h3>CLARITY</h3>
-        <p>No confusing jargon. Clear explanations and real guidance.</p>
+    <div class="mini-card-grid">
+      <div class="mini-card">
+        <h3>Clarity</h3>
+        <p class="forge-softfade">
+          No confusing jargon. Clear explanations and real guidance.
+        </p>
       </div>
 
-      <div class="inner-card">
-        <h3>RELIABILITY</h3>
-        <p>Dependable setups built to last — not quick hacks or shortcuts.</p>
+      <div class="mini-card">
+        <h3>Reliability</h3>
+        <p class="forge-softfade">
+          Dependable setups built to last — not quick hacks or shortcuts.
+        </p>
       </div>
 
-      <div class="inner-card">
-        <h3>INTEGRITY</h3>
-        <p>Faith-driven values. Honest recommendations. Work done the right way.</p>
+      <div class="mini-card">
+        <h3>Integrity</h3>
+        <p class="forge-softfade">
+          Faith-driven values. Honest recommendations. Work done the right way.
+        </p>
       </div>
-
     </div>
   </section>
 
-  <div class="forge-section-spacer"></div>
 
   <!-- WHO I HELP -->
-  <section class="section-shell">
-    <h2 class="section-title">WHO I HELP</h2>
+  <section class="home-section">
+    <div class="section-header-card">
+      <h2>Who I Help</h2>
+    </div>
 
-    <div class="card-group">
-
-      <div class="inner-card">
+    <div class="mini-card-grid">
+      <div class="mini-card">
         <ul>
-          <li>Families needing safer, cleaner digital setups</li>
-          <li>Small businesses seeking dependable tech guidance</li>
-          <li>Churches wanting trustworthy network or communication help</li>
-          <li>Gadgets needing integration, automation, or secure routing</li>
+          <li class="forge-softfade">Families needing safer, cleaner digital setups</li>
+          <li class="forge-softfade">Small businesses seeking dependable tech guidance</li>
+          <li class="forge-softfade">Churches wanting trustworthy network or communication help</li>
+          <li class="forge-softfade">Customized tech gadgets needing integration, automation, or secure routing</li>
         </ul>
       </div>
 
-      <div class="inner-card">
+      <div class="mini-card">
         <ul>
-          <li>Professionals needing privacy-focused solutions</li>
-          <li>Anyone overwhelmed by “big tech” systems and noise</li>
-          <li>People wanting simpler, more organized home tech</li>
-          <li>Those wanting better digital habits</li>
+          <li class="forge-softfade">Professionals needing privacy-focused technical solutions</li>
+          <li class="forge-softfade">Anyone overwhelmed by “big tech” systems and noise</li>
+          <li class="forge-softfade">People wanting simpler, more organized home tech</li>
+          <li class="forge-softfade">Those ready to build better digital habits</li>
         </ul>
       </div>
-
     </div>
   </section>
 
-  <div class="forge-section-spacer"></div>
 
-  <!-- WHAT'S COMING SOON -->
-  <section class="section-shell">
-    <h2 class="section-title">WHAT’S COMING SOON</h2>
+  <!-- WHAT’S COMING SOON -->
+  <section class="home-section">
+    <div class="section-header-card">
+      <h2>What’s Coming Soon</h2>
+    </div>
 
-    <div class="inner-card">
-      <ul>
-        <li><strong>ForgeDrive:</strong> A clean, organized USB toolkit with utilities and documentation</li>
-        <li><strong>Forge Tags:</strong> Simple NFC cards for easy, secure information sharing</li>
-        <li><strong>ForgeSBC:</strong> A Raspberry-Pi powered home hub for ad-blocking, secure access, and syncing</li>
-      </ul>
+    <div class="mini-card-grid">
+      <div class="mini-card">
+        <p class="forge-softfade">
+          M.R. TechForge is actively developing lightweight, user-friendly tools designed
+          to make digital life safer, calmer, and easier.
+        </p>
 
-      <p>
-        These tools are optional add-ons — helpful if you want a polished, secure foundation for your devices.
-      </p>
+        <ul>
+          <li class="forge-softfade"><strong>ForgeDrive:</strong> A clean, organized USB toolkit</li>
+          <li class="forge-softfade"><strong>Forge Tags:</strong> Simple NFC cards for secure sharing</li>
+          <li class="forge-softfade"><strong>ForgeSBC:</strong> Pi-powered privacy & networking hub</li>
+        </ul>
+
+        <p class="forge-softfade">
+          These tools are optional add-ons — helpful if you want a polished, secure foundation for your devices.
+        </p>
+      </div>
     </div>
   </section>
 
-  <div class="forge-section-spacer"></div>
 
   <!-- HOW IT WORKS -->
-  <section class="section-shell">
-    <h2 class="section-title">HOW IT WORKS</h2>
+  <section class="home-section">
+    <div class="section-header-card">
+      <h2>How It Works</h2>
+    </div>
 
-    <div class="card-group">
-
-      <div class="inner-card">
-        <span class="step-label">1. Connect</span>
-        <p>We talk through your needs, challenges, and goals — in plain English.</p>
+    <div class="mini-card-grid">
+      <div class="mini-card">
+        <h3>1. Connect</h3>
+        <p class="forge-softfade">
+          We talk through your needs, challenges, and goals — in plain English.
+        </p>
       </div>
 
-      <div class="inner-card">
-        <span class="step-label">2. Plan</span>
-        <p>You get clear, practical options instead of overwhelming complexity.</p>
+      <div class="mini-card">
+        <h3>2. Plan</h3>
+        <p class="forge-softfade">
+          You get clear, practical options instead of overwhelming complexity.
+        </p>
       </div>
 
-      <div class="inner-card">
-        <span class="step-label">3. Build</span>
-        <p>Clean, dependable solutions designed for long-term stability.</p>
+      <div class="mini-card">
+        <h3>3. Build</h3>
+        <p class="forge-softfade">
+          Clean, dependable solutions designed for long-term stability.
+        </p>
       </div>
-
     </div>
   </section>
 
-  <div class="forge-section-spacer"></div>
 
   <!-- INTEGRITY SECTION -->
-  <section class="section-shell">
-    <h2 class="section-title">FAITH • INTEGRITY • CRAFTSMANSHIP</h2>
-
-    <div class="inner-card">
-      <p>
-        Every project is guided by values — honesty, transparency, and a commitment
-        to treating people right. Whether it's a consultation or a full setup,
-        you get dependable help rooted in faith-driven integrity.
-      </p>
+  <section class="home-section">
+    <div class="section-header-card">
+      <h2>Faith • Integrity • Craftsmanship</h2>
     </div>
 
+    <div class="mini-card-grid">
+      <div class="mini-card">
+        <p class="forge-softfade">
+          Every project is guided by honesty, transparency, and a commitment to treating people right.
+          Whether it’s a consultation or a full setup, you get dependable help rooted in faith-driven integrity.
+        </p>
+      </div>
+    </div>
   </section>
 
 </div>
