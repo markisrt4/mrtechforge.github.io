@@ -1,125 +1,137 @@
-/* ================================================
-   Home Page — Clean, Structured Forge Layout
-   ================================================ */
+/* =======================
+   HOME PAGE — HYBRID B-CARDS
+   ======================= */
 
-/* ----- HERO AREA ----- */
-.forge-hero-vaporized {
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* -----------------------
+   HERO SECTION
+   ----------------------- */
+
+.home-hero {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
-.hero-stamp {
-  font-size: 2.1rem;
-  margin: 1rem 0;
-  color: var(--forge-accent);
-  animation: forgeGlow 5s ease-in-out infinite;
-  text-shadow:
-    0 0 8px rgba(0, 184, 212, 0.6),
-    0 0 18px rgba(245, 184, 65, 0.5);
-}
-
-@keyframes forgeGlow {
-  0% { text-shadow: 0 0 6px var(--forge-accent); }
-  50% { text-shadow: 0 0 20px var(--forge-hotmetal); }
-  100% { text-shadow: 0 0 6px var(--forge-accent); }
-}
-
-.hero-tagline,
-.hero-subtitle {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  background: linear-gradient(to bottom, #9aa5b1, #d0d0d0);
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 1.5rem;
-}
-
-/* ----- SECTION WRAPPERS (blue fade shells) ----- */
-.section-shell {
-  margin: 0 auto;
-  padding: 2.2rem 1.2rem;
-  max-width: 900px;
-  border-radius: 22px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 70, 140, 0.4),
-    rgba(0, 0, 0, 0.7)
-  );
-  box-shadow:
-    0 0 25px rgba(0, 120, 255, 0.25),
-    inset 0 0 12px rgba(0, 120, 255, 0.15);
-}
-
-/* ----- TITLES ----- */
-.section-title {
-  text-align: center;
+.hero-brand {
   font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.4);
+  margin: 1.2rem 0;
+  font-weight: 700;
 }
 
-/* ----- INNER BLACK CARDS ----- */
-.card-group {
+.glow-brand {
+  color: var(--forge-accent);
+  text-shadow: 0 0 18px rgba(0, 184, 212, 0.9);
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 1.5rem auto;
+  max-width: 90%;
+  text-transform: uppercase;
+  text-shadow: 0 0 22px rgba(255, 204, 0, 0.4);
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.hero-tag {
+  background: rgba(0,0,0,0.45);
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(0,184,212,0.3);
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.hero-footnote {
+  margin-top: 1.7rem;
+  font-size: 1rem;
+}
+
+/* -----------------------
+   HYBRID SECTION STRUCTURE
+   ----------------------- */
+
+.section-header-card {
+  background: linear-gradient(180deg, #003366 0%, #000 100%);
+  border-radius: 22px;
+  padding: 1.8rem 1rem;
+  text-align: center;
+  margin: 0 auto 1rem;
+  width: 92%;
+  max-width: 650px;
+  box-shadow: 0 0 28px rgba(0, 128, 255, 0.35);
+}
+
+.section-header-card h2 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* SMALL MINI CARDS */
+.mini-card-grid {
+  width: 92%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
 }
 
-.inner-card {
+.mini-card {
   background: rgba(0, 0, 0, 0.55);
-  border-radius: 14px;
-  padding: 1.4rem 1.2rem;
-  border: 1px solid rgba(0, 120, 255, 0.25);
-  box-shadow:
-    0 0 12px rgba(0, 120, 255, 0.18),
-    inset 0 0 8px rgba(0, 0, 0, 0.6);
+  padding: 1.5rem 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(0, 128, 255, 0.22);
 }
 
-.inner-card p {
-  font-size: 1.15rem;
-  line-height: 1.55;
-  background: linear-gradient(to bottom, #bcc3cc, #e2e2e2);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* ----- LISTS ----- */
-.inner-card ul {
-  padding-left: 1.2rem;
-  margin: 0;
-}
-
-.inner-card li {
-  margin-bottom: 0.7rem;
-  font-size: 1.1rem;
-  background: linear-gradient(to bottom, #bcc3cc, #e2e2e2);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* ----- STEPS ----- */
-.step-label {
-  font-weight: bold;
-  font-size: 1.3rem;
+.mini-card h3 {
   color: var(--forge-hotmetal);
-  display: block;
-  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
 }
 
-/* ----- MOBILE FIXES ----- */
-@media (max-width: 480px) {
-  .section-shell {
-    padding: 1.7rem 0.9rem;
-    max-width: 92%;
+.forge-softfade {
+  background: linear-gradient(180deg, #b8c0cc 0%, #8c97a2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.55;
+}
+
+/* MOBILE TWEAKS */
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 1.75rem;
   }
 
-  .section-title {
-    font-size: 1.7rem;
+  .hero-brand {
+    font-size: 1.6rem;
   }
 
-  .inner-card p,
-  .inner-card li {
-    font-size: 1.05rem;
+  .section-header-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .mini-card h3 {
+    font-size: 1.2rem;
   }
 }
