@@ -1,61 +1,71 @@
-/* ===== TERMINAL BOOT SEQUENCE (Option A) ===== */
+/* =========================================================
+   FORGE TERMINAL — SHARED ACROSS FOOTER + CONTACT PAGE
+   Typewriter, mono font, green glow, isolated styles
+   ========================================================= */
 
-.terminal-boot {
-  font-family: "Roboto Mono", monospace;
-  background: rgba(0, 0, 0, 0.15);
-  border: 1px solid #0a3d62;
-  box-shadow: 0 0 25px rgba(0, 150, 255, 0.25),
-              inset 0 0 40px rgba(0, 80, 160, 0.25);
-  border-radius: 16px;
-  padding: 1.6rem;
-  margin: 2.2rem auto;
-  width: 92%;
+.forge-terminal {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin: 1.5rem auto;
   max-width: 900px;
-  color: #4da6ff;
-  letter-spacing: 0.03em;
-  line-height: 1.55;
+
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.35),
+    inset 0 0 12px rgba(var(--forge-accent-rgb), 0.15);
+
+  font-family: "Fira Mono", monospace;
+  overflow-x: auto;
   position: relative;
-  overflow: hidden;
 }
 
-/* Lines that appear one-by-one */
-.terminal-line {
-  opacity: 0;
+/* Terminal green text */
+.forge-terminal pre,
+.forge-terminal code {
+  color: #00ff66;
+  background: transparent !important;
+  font-size: 0.95rem;
   white-space: pre-wrap;
-  margin-bottom: 0.75rem;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
 }
 
-/* Blinking block cursor */
-.terminal-cursor {
+/* ---------------------------------------------------------
+   TYPEWRITER MODE (applies only when .typewriter-block used)
+--------------------------------------------------------- */
+.typewriter-block code {
   display: inline-block;
-  width: 12px;
-  height: 20px;
-  background: #4da6ff;
-  animation: blink-cursor 0.8s steps(1) infinite;
-  vertical-align: bottom;
-  margin-left: 4px;
+  position: relative;
+  padding-right: 0.6rem;
 }
 
-@keyframes blink-cursor {
+.typewriter-block code::after {
+  content: "█"; /* Fake block cursor */
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #00ff66;
+  animation: blinkCursor 0.9s steps(1) infinite;
+  opacity: 1;
+}
+
+@keyframes blinkCursor {
+  0% { opacity: 1; }
   50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* Typewriter animation foundational */
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-/* Mobile smoothing */
+/* Mobile scaling */
 @media (max-width: 600px) {
-  .terminal-boot {
-    padding: 1.2rem;
-    line-height: 1.45;
-    border-radius: 14px;
-    letter-spacing: 0.02em;
+  .forge-terminal {
+    padding: 0.85rem 1rem;
   }
-  .terminal-cursor {
-    width: 10px;
-    height: 18px;
+
+  .forge-terminal code {
+    font-size: 0.88rem;
   }
 }
