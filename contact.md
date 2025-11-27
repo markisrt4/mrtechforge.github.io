@@ -9,16 +9,31 @@ permalink: /contact.html
   <p class="tagline">Forged connections start with a simple “hello.”</p>
 </div>
 
-<section class="forge-terminal crt" data-style="scanline">
-<code>
+<!-- ===========================
+     TERMINAL BLOCK 1
+=========================== -->
+<section class="forge-terminal-block">
+  <div class="terminal-modes">
+    <button data-style="scanline" class="active">Scanline</button>
+    <button data-style="grid">Grid</button>
+    <button data-style="radar">Radar</button>
+  </div>
+
+  <section class="forge-terminal crt" data-style="scanline">
+    <code>
 > INITIALIZING CONNECTION...
 > STATUS: 🔵 ACTIVE  
 > IDENTITY VERIFIED: M.R. TECHFORGE
 > AWAITING USER INPUT...
-</code>
+    </code>
+  </section>
 </section>
 
-<section class="forge-card">
+
+<!-- ===========================
+     CARD: OPEN A CHANNEL
+=========================== -->
+<section class="forge-card wide">
   <h2>Open a Channel</h2>
   <p>We like things straightforward — no forms, no robots.  
   Just send a message, and you’ll reach a real person who actually reads it.</p>
@@ -33,15 +48,30 @@ permalink: /contact.html
   <blockquote>“Every connection is an opportunity to build, teach, or secure something that matters.”</blockquote>
 </section>
 
-<section class="forge-card">
+
+<!-- ===========================
+     CARD: EMAIL TEMPLATE COPY
+=========================== -->
+<section class="forge-card wide">
   <h2>Suggested Email Template</h2>
   <p>If you’re not sure what to say, here’s a quick format you can copy and adjust.</p>
 
   <button id="copy-template" class="btn-glow">Copy Template</button>
 </section>
 
-<section class="forge-terminal crt" id="email-template" data-style="grid">
-<code>
+
+<!-- ===========================
+     TERMINAL BLOCK 2 (Email Template)
+=========================== -->
+<section class="forge-terminal-block">
+  <div class="terminal-modes">
+    <button data-style="grid" class="active">Grid</button>
+    <button data-style="scanline">Scanline</button>
+    <button data-style="radar">Radar</button>
+  </div>
+
+  <section class="forge-terminal crt" id="email-template" data-style="grid">
+    <code>
 To: mark@mrtechforge.com
 Subject: TechForge Inquiry – [Your Topic Here]
 
@@ -58,13 +88,26 @@ Additional details:
 
 Looking forward to connecting,
 [Your Name]
-</code>
+    </code>
+  </section>
 </section>
 
-<section class="forge-terminal crt" data-style="radar">
-<code>
+
+<!-- ===========================
+     TERMINAL BLOCK 3 (Footer)
+=========================== -->
+<section class="forge-terminal-block">
+  <div class="terminal-modes">
+    <button data-style="radar" class="active">Radar</button>
+    <button data-style="grid">Grid</button>
+    <button data-style="scanline">Scanline</button>
+  </div>
+
+  <section class="forge-terminal crt" data-style="radar">
+    <code>
 > SIGNAL RECEIVED.  
 > CONNECTION SECURE.  
 > TRANSMISSION STANDING BY...
-</code>
+    </code>
+  </section>
 </section>
