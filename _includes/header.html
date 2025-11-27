@@ -10,10 +10,9 @@
     </a>
 
     <!-- MOBILE HAMBURGER -->
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+    <button id="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation">
       <span></span>
-    </label>
+    </button>
 
     <!-- NAVIGATION -->
     <nav class="forge-nav">
@@ -21,29 +20,18 @@
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- ===========================
-           SERVICES DROPDOWN (Unified)
-           =========================== -->
+      <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Hidden checkbox controls mobile expansion -->
-        <input type="checkbox"
-               id="services-toggle"
-               class="services-toggle">
-
-        <!-- Parent clickable label -->
-        <label for="services-toggle"
-               class="dropdown-parent">
+        <!-- Parent clickable label (JS will toggle submenu) -->
+        <button class="dropdown-parent">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
-        </label>
+        </button>
 
         <!-- Dropdown children -->
         <div class="dropdown-content">
-
-          <a href="/services/" class="dropdown-overview">
-            Services Overview
-          </a>
+          <a href="/services/" class="dropdown-overview">Services Overview</a>
 
           <a href="/services/digital-security/" data-child="true">
             Digital Security
@@ -53,11 +41,9 @@
              data-grandchild="true">
             Life Without Google
           </a>
-
         </div>
       </div>
 
-      <!-- Other top-level pages -->
       <a href="/documentation/">Documentation</a>
       <a href="/faq/">FAQ</a>
       <a href="/contact.html">Contact</a>
