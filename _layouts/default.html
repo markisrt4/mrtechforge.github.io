@@ -1,10 +1,28 @@
 <!doctype html>
 <html lang="{{ site.lang | default: 'en' }}">
+
   {% include head.html %}
+
   <body>
+
     {% include header.html %}
-    <main>{{ content }}</main>
+
+    <main>
+      {{ content }}
+    </main>
+
     {% include footer.html %}
-    <script src="{{ site.baseurl }}/assets/js/forge-terminal.js"></script>
+
+    <!-- ===========================
+         GLOBAL JAVASCRIPT LOADING
+         (Always at bottom, never inline)
+       =========================== -->
+
+    <!-- Navigation toggle script -->
+    <script src="/assets/js/nav.js"></script>
+
+    <!-- Forge Terminal typewriter script -->
+    <script src="/assets/js/forge-terminal.js"></script>
+
   </body>
 </html>
