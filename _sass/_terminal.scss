@@ -18,7 +18,7 @@
   overflow: hidden;
 }
 
-/* Lines that will appear one by one */
+/* Lines that appear one-by-one */
 .terminal-line {
   opacity: 0;
   white-space: pre-wrap;
@@ -37,22 +37,16 @@
 }
 
 @keyframes blink-cursor {
-  50% {
-    opacity: 0;
-  }
+  50% { opacity: 0; }
 }
 
-/* Typewriter animation — characters added progressively */
+/* Typewriter animation foundational */
 @keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
-/* Mobile tuning */
+/* Mobile smoothing */
 @media (max-width: 600px) {
   .terminal-boot {
     padding: 1.2rem;
@@ -60,7 +54,6 @@
     border-radius: 14px;
     letter-spacing: 0.02em;
   }
-
   .terminal-cursor {
     width: 10px;
     height: 18px;
