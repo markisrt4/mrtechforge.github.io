@@ -1,71 +1,91 @@
 /* =========================================================
-   FORGE TERMINAL — SHARED ACROSS FOOTER + CONTACT PAGE
-   Typewriter, mono font, green glow, isolated styles
+   M.R. TECHFORGE — LINUX HYBRID TERMINAL THEME
+   CRT glow • scanlines • typewriter cursor
+   Shared across footer + contact page + anywhere else
    ========================================================= */
 
+/* ---------- Root Hybrid Colors ---------- */
+:root {
+  --term-prompt: #00ff66;      /* Green */
+  --term-command: #4db8ff;     /* Blue */
+  --term-comment: #ffea70;     /* Yellow */
+  --term-cursor: #4db8ff;      /* Cyan-ish cursor */
+}
+
+/* ---------- Terminal Container ---------- */
 .forge-terminal {
   background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+  border: 1px solid rgba(77, 184, 255, 0.25); /* blue glow */
   padding: 1rem 1.2rem;
   border-radius: 10px;
-  margin: 1.5rem auto;
+  margin: 2rem auto;
   max-width: 900px;
 
   box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.35),
-    inset 0 0 12px rgba(var(--forge-accent-rgb), 0.15);
+    0 0 18px rgba(77, 184, 255, 0.35),
+    inset 0 0 12px rgba(77, 184, 255, 0.15);
 
   font-family: "Fira Mono", monospace;
   overflow-x: auto;
   position: relative;
 }
 
-/* Terminal green text */
+/* ---------- Optional Scanlines ---------- */
+.forge-terminal::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.15;
+}
+
+/* ---------- Base Code Styling ---------- */
 .forge-terminal pre,
 .forge-terminal code {
-  color: #00ff66;
   background: transparent !important;
-  font-size: 0.95rem;
   white-space: pre-wrap;
+  font-size: 0.95rem;
   line-height: 1.55;
   margin: 0;
   padding: 0;
-  border: none;
-  box-shadow: none;
+  color: var(--term-command);
+  display: block;
 }
 
-/* ---------------------------------------------------------
-   TYPEWRITER MODE (applies only when .typewriter-block used)
---------------------------------------------------------- */
-.typewriter-block code {
+/* ---------- Hybrid Syntax Classes ---------- */
+.term-prompt {
+  color: var(--term-prompt);
+  font-weight: 600;
+}
+
+.term-command {
+  color: var(--term-command);
+}
+
+.term-comment {
+  color: var(--term-comment);
+  font-style: italic;
+}
+
+/* ---------- Typewriter Cursor ---------- */
+.cursor {
   display: inline-block;
-  position: relative;
-  padding-right: 0.6rem;
+  width: 0.7ch;
+  height: 1.1em;
+  margin-left: 4px;
+  background: var(--term-cursor);
+  animation: blink 0.9s infinite;
+  vertical-align: middle;
 }
 
-.typewriter-block code::after {
-  content: "█"; /* Fake block cursor */
-  position: absolute;
-  right: 0;
-  top: 0;
-  color: #00ff66;
-  animation: blinkCursor 0.9s steps(1) infinite;
-  opacity: 1;
-}
-
-@keyframes blinkCursor {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Mobile scaling */
-@media (max-width: 600px) {
-  .forge-terminal {
-    padding: 0.85rem 1rem;
-  }
-
-  .forge-terminal code {
-    font-size: 0.88rem;
-  }
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
