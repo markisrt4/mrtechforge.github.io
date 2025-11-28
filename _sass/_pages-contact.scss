@@ -4,10 +4,9 @@
    ========================================================= */
 
 .forge-contact-page {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1.2rem 3.5rem;
-  box-sizing: border-box;
 }
 
 /* --- Intro Heading --- */
@@ -20,27 +19,15 @@
 .forge-contact-page .page-intro h1 {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  word-spacing: 0.16em;
-  font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  letter-spacing: 0.12em;
+  font-size: clamp(1.8rem, 4.2vw, 2.6rem);
   margin: 0 0 0.75rem;
   color: var(--forge-hotmetal);
-  line-height: 1.25;
-}
-
-.forge-contact-page .page-intro .intro-label {
-  display: block;
-  font-size: 0.85em;
-  opacity: 0.9;
-}
-
-.forge-contact-page .page-intro .intro-main {
-  display: block;
-  font-size: 1em;
 }
 
 .forge-contact-page .page-intro .forge-highlight {
-  color: var(--forge-hotmetal);
+  display: block;
+  font-size: 0.95em;
 }
 
 .forge-contact-page .page-intro .tagline {
@@ -50,23 +37,14 @@
   margin: 0 auto;
 }
 
-/* Prevent crazy wrapping on tiny screens */
-@media (max-width: 520px) {
-  .forge-contact-page .page-intro h1 {
-    font-size: 1.6rem;
-    letter-spacing: 0.05em;
-    word-spacing: 0.12em;
-  }
-}
-
 /* =========================================================
-   TERMINAL MODES (BUTTONS)
+   TERMINAL MODE BUTTONS
    ========================================================= */
 
 .forge-terminal-modes {
-  margin: 1.5rem auto 1rem;
+  margin: 1.5rem auto 1.2rem;
   text-align: center;
-  max-width: 900px;
+  max-width: 980px;
 }
 
 .forge-terminal-modes .modes-heading {
@@ -82,14 +60,14 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  gap: 0.6rem;
 }
 
 .terminal-mode-btn {
   min-width: 6.2rem;
-  padding: 0.42rem 1rem;
+  padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.55);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.5);
   background: rgba(3, 10, 24, 0.95);
   color: var(--forge-text);
   font-family: "Orbitron", sans-serif;
@@ -101,39 +79,34 @@
     background 0.2s ease,
     box-shadow 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.15s ease;
-}
-
-.terminal-mode-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.45);
+    border-color 0.2s ease;
 }
 
 .terminal-mode-btn.is-active {
   background: radial-gradient(circle at 30% 20%, var(--forge-hotmetal), #c2881e);
   color: #000;
   border-color: var(--forge-hotmetal);
-  box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.8);
+  box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.7);
 }
 
 /* =========================================================
-   TERMINAL PANELS
+   TERMINAL PANELS (CONTACT-ONLY)
    ========================================================= */
 
 .forge-terminal-panel {
   position: relative;
   margin: 1.6rem auto 2.4rem;
-  padding: 1.6rem 1.4rem;
+  padding: 1.6rem 1.3rem;
   border-radius: 24px;
-  max-width: 900px;
-  width: min(100%, 900px);
-  box-sizing: border-box;
+
+  max-width: 980px;
+  width: min(100%, 980px);
 
   background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
   box-shadow:
-    0 0 14px rgba(0, 184, 212, 0.25),
-    0 0 26px rgba(0, 184, 212, 0.16) inset;
+    0 0 14px rgba(0, 184, 212, 0.18),
+    0 0 26px rgba(0, 184, 212, 0.14) inset;
+
   overflow: hidden;
 }
 
@@ -143,10 +116,10 @@
   border-radius: 18px;
 
   background: rgba(0, 0, 0, 0.92);
-  border: 1px solid rgba(0, 184, 212, 0.55);
+  border: 1px solid rgba(0, 184, 212, 0.5);
   box-shadow:
-    0 0 18px rgba(0, 184, 212, 0.45),
-    0 0 26px rgba(0, 20, 60, 0.85) inset;
+    0 0 16px rgba(0, 184, 212, 0.35),
+    0 0 24px rgba(0, 20, 60, 0.85) inset;
 
   overflow-x: auto;
 }
@@ -154,30 +127,37 @@
 .forge-terminal-screen code {
   display: block;
   white-space: pre-wrap;
-  font-family: "Courier New", monospace;
-  font-size: 0.92rem;
+  font-family: "Fira Mono", "Courier New", monospace;
+  font-size: 0.94rem;
   line-height: 1.6;
   color: #26e0ff;
 }
 
-/* --- CRT overlay base --- */
-
+/* CRT overlay base */
 .forge-terminal-screen::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  opacity: 0.5;
+  opacity: 0.45;
   mix-blend-mode: screen;
 }
 
-/* =========================================================
-   CRT MODE VARIANTS
-   ========================================================= */
-
-/* Scanline (default) */
+/* --- Scanline (default) --- */
 .forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.16),
+      rgba(0, 255, 255, 0.16) 1px,
+      transparent 3px,
+      transparent 4px
+    );
+}
+
+/* --- Grid --- */
+.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
   background-image:
     repeating-linear-gradient(
       to bottom,
@@ -185,29 +165,17 @@
       rgba(0, 255, 255, 0.18) 1px,
       transparent 3px,
       transparent 4px
-    );
-}
-
-/* Grid */
-.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0, 255, 255, 0.2),
-      rgba(0, 255, 255, 0.2) 1px,
-      transparent 4px,
-      transparent 6px
     ),
     repeating-linear-gradient(
       to right,
-      rgba(0, 255, 255, 0.2),
-      rgba(0, 255, 255, 0.2) 1px,
-      transparent 4px,
-      transparent 6px
+      rgba(0, 255, 255, 0.18),
+      rgba(0, 255, 255, 0.18) 1px,
+      transparent 3px,
+      transparent 4px
     );
 }
 
-/* Radar (slight green tint + radial glow) */
+/* --- Radar (green tint + radial) --- */
 .forge-terminal-panel.crt-radar .forge-terminal-screen {
   background: radial-gradient(circle at 20% 15%, #003322 0%, #000 70%);
 }
@@ -218,37 +186,56 @@
 
 .forge-terminal-panel.crt-radar .forge-terminal-screen::before {
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(0, 255, 128, 0.35), transparent 60%),
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 128, 0.3), transparent 60%),
     repeating-linear-gradient(
       to bottom,
-      rgba(0, 255, 128, 0.18),
-      rgba(0, 255, 128, 0.18) 1px,
+      rgba(0, 255, 128, 0.2),
+      rgba(0, 255, 128, 0.2) 1px,
       transparent 3px,
       transparent 4px
     );
 }
 
-/* Clean mode (almost no overlay) */
+/* --- Clean mode --- */
 .forge-terminal-panel.crt-clean .forge-terminal-screen::before {
-  opacity: 0.1;
+  opacity: 0.08;
   background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 65%);
 }
 
 /* =========================================================
-   GENERIC FORGE CARDS (for this page only)
+   TYPEWRITER CURSOR (shares global .cursor)
+   ========================================================= */
+
+.forge-terminal-screen .cursor {
+  display: inline-block;
+  width: 0.7ch;
+  height: 1.1em;
+  margin-left: 4px;
+  background: var(--term-cursor, #4db8ff);
+  animation: blink 0.9s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* =========================================================
+   CARDS (CONTACT PAGE)
    ========================================================= */
 
 .forge-contact-page .forge-card {
-  margin: 1.8rem auto 2.4rem;
+  margin: 1.8rem auto 2.6rem;
   padding: 2rem 1.6rem;
   border-radius: 24px;
-  max-width: 900px;
-  width: min(100%, 900px);
-  box-sizing: border-box;
+
+  max-width: 980px;
+  width: min(100%, 980px);
 
   background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
   box-shadow:
-    0 0 20px rgba(10, 109, 255, 0.22),
+    0 0 18px rgba(10, 109, 255, 0.22),
     0 0 32px rgba(0, 0, 0, 0.8) inset;
 }
 
@@ -305,13 +292,13 @@
   margin: 2.2rem auto 0;
   padding: 2rem 1.6rem 2.4rem;
   border-radius: 26px;
-  max-width: 900px;
-  width: min(100%, 900px);
-  box-sizing: border-box;
+
+  max-width: 980px;
+  width: min(100%, 980px);
 
   background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
   box-shadow:
-    0 0 22px rgba(0, 184, 212, 0.28),
+    0 0 20px rgba(0, 184, 212, 0.22),
     0 0 40px rgba(0, 0, 0, 0.85) inset;
 
   text-align: center;
@@ -333,23 +320,22 @@
   aspect-ratio: 1 / 1;
   border-radius: 24px;
   padding: 0.4rem;
-  box-sizing: border-box;
 
   background:
-    radial-gradient(circle at center, rgba(0, 184, 212, 0.26), transparent 70%),
+    radial-gradient(circle at center, rgba(0, 184, 212, 0.23), transparent 72%),
     radial-gradient(circle at top, #04101e 0%, #010308 65%, #000 100%);
   box-shadow:
-    0 0 18px rgba(0, 184, 212, 0.45),
-    0 0 30px rgba(0, 184, 212, 0.25) inset;
+    0 0 18px rgba(0, 184, 212, 0.42),
+    0 0 30px rgba(0, 184, 212, 0.2) inset;
 }
 
-/* Blueprint grid on the map */
+/* Blueprint grid overlay */
 .forge-location-map::before {
   content: "";
   position: absolute;
-  inset: 8%;
-  border-radius: 20px;
-  opacity: 0.32;
+  inset: 9%;
+  border-radius: 18px;
+  opacity: 0.34;
   mix-blend-mode: screen;
   background-image:
     repeating-linear-gradient(
@@ -378,14 +364,14 @@
 .mi-outline {
   fill: none;
   stroke: #35c7ff;
-  stroke-width: 2;
+  stroke-width: 2.2;
   stroke-linejoin: round;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 7px rgba(0, 184, 212, 0.8));
+  filter: drop-shadow(0 0 7px rgba(0, 184, 212, 0.9));
 }
 
 .mi-outline.mi-up {
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 /* Metro Detroit dot + pulse */
@@ -404,7 +390,10 @@
   margin: 0 auto;
 }
 
-/* Pulse animation */
+/* =========================================================
+   LOCATION HOVER EFFECT
+   ========================================================= */
+
 @keyframes miPulse {
   0% {
     transform: scale(1);
@@ -420,12 +409,11 @@
   }
 }
 
-/* Slight 3D tilt on hover for larger screens */
 @media (min-width: 780px) {
   .forge-location-map:hover {
-    transform: perspective(800px) rotateX(8deg);
+    transform: perspective(800px) rotateX(7deg);
     box-shadow:
-      0 0 26px rgba(0, 184, 212, 0.5),
+      0 0 22px rgba(0, 184, 212, 0.5),
       0 30px 60px rgba(0, 0, 0, 0.7);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
