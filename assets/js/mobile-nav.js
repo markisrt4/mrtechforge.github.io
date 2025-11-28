@@ -1,6 +1,6 @@
 // =====================================================
-//  M.R. TECHFORGE — MOBILE NAVIGATION (v12.1 FINAL)
-//  SVG burger + hammer FX + stacked Services submenu
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v12.3)
+//  Adds idle forge animations (pulse + sparks)
 // =====================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,24 +9,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const serviceParent = document.querySelector(".dropdown-parent");
   const serviceMenu = document.querySelector(".dropdown-content");
 
-  if (!burgerBtn || !nav) {
-    return;
-  }
+  if (!burgerBtn || !nav) return;
 
-  // Toggle mobile nav
+  // ---------------------------------------------------
+  // MAIN BURGER TOGGLE
+  // ---------------------------------------------------
   burgerBtn.addEventListener("click", () => {
     burgerBtn.classList.toggle("open");
     nav.classList.toggle("open");
   });
 
-  // Services accordion on mobile only
+  // ---------------------------------------------------
+  // SERVICES ACCORDION (mobile only)
+  // ---------------------------------------------------
   if (serviceParent && serviceMenu) {
     serviceParent.addEventListener("click", () => {
-      if (window.innerWidth > 760) {
-        return; // desktop uses hover
-      }
+      if (window.innerWidth > 760) return;
       serviceParent.classList.toggle("active");
       serviceMenu.classList.toggle("open");
     });
   }
+
+  // ---------------------------------------------------
+  // IDLE ANIMATION ENGINE
+  // ---------------------------------------------------
+  function triggerIdleAnimation() {
+    if (burgerBtn.classList.contains("open")) {
+      return setTimeout(triggerIdleAnimation, 4000);
+    }
+
+    // pick a random idle effect
+    const effects = ["idle-pulse", "idle-flicker", "idle-spark"];
+    const effect = effects[Math.floor(Math.random() * effects.length)];
+
+    burgerBtn.classList.add(effect);
+
+    // remove the effect after animation finishes
+    setTimeout(() => burgerBtn.classList.remove(effect), 1600);
+
+    // schedule next random idle
+    const delay = 3000 + Math.random() * 4000; // 3–7 seconds
+    setTimeout(triggerIdleAnimation, delay);
+  }
+
+  // start idle loop
+  setTimeout(triggerIdleAnimation, 3500);
 });
