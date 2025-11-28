@@ -1,49 +1,337 @@
 /* =====================================================
-   PATCH: Normalize burger patty + prevent X clipping
+   M.R. TECHFORGE — NAVIGATION (v10.0 Final)
+   Desktop hover + Mobile hamburger
+   Perfect alignment. Zero overflow. Zero drift.
    ===================================================== */
 
+
+/* -----------------------------------------------------
+   HEADER WRAPPER
+------------------------------------------------------ */
+.forge-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(10, 10, 12, 0.92);
+  border-bottom: 2px solid var(--forge-accent-dark);
+
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
+  animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+
+/* -----------------------------------------------------
+   LOGO + WORDMARK
+------------------------------------------------------ */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.forge-logo {
+  height: 65px;
+  width: auto;
+  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
+  transition: 0.3s ease;
+}
+
+.forge-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
+}
+
+.forge-title {
+  background: linear-gradient(90deg, #F5B841, #F5B841, #0A6DFF, #153D77, #F5B841);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: forgeTitleSpectrum 6s linear infinite;
+
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+
+  text-shadow:
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.50),
+    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
+}
+
+
+/* -----------------------------------------------------
+   BASE NAV
+------------------------------------------------------ */
+.forge-nav {
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+}
+
+.forge-nav a {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: var(--forge-subtext);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.forge-nav a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
+}
+
+
+/* -----------------------------------------------------
+   DROPDOWN BASE
+------------------------------------------------------ */
+.nav-item.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-parent {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dropdown-parent-text {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--forge-subtext);
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  color: var(--forge-subtext);
+  transition: 0.25s ease;
+}
+
+
+/* -----------------------------------------------------
+   DESKTOP DROPDOWN
+------------------------------------------------------ */
+@media (min-width: 761px) {
+  .nav-toggle-btn {
+    display: none;
+  }
+
+  .dropdown-parent {
+    pointer-events: none;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 260px;
+    padding: 0.5rem 0;
+    background: rgba(5, 8, 16, 0.98);
+    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+    border-radius: 8px;
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition: 0.25s ease;
+    z-index: 9999;
+  }
+
+  .nav-item.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+
+    box-shadow:
+      0 0 12px rgba(10, 109, 255, 0.45),
+      0 0 4px rgba(10, 109, 255, 0.65) inset;
+  }
+
+  .dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 1rem;
+    font-family: "Titillium Web", sans-serif;
+    color: var(--forge-text);
+  }
+
+  .nav-item.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--forge-hotmetal);
+  }
+}
+
+
+/* -----------------------------------------------------
+   MOBILE NAVIGATION (v10 — stable)
+------------------------------------------------------ */
 @media (max-width: 760px) {
 
-  /* 1. Normalize the center patty thickness */
-  .nav-toggle-btn span {
-    height: 2.5px !important;      /* match buns */
+  /* HAMBURGER BUTTON */
+  .nav-toggle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 36px;
+    height: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3000;
   }
 
-  .nav-toggle-btn span::before,
-  .nav-toggle-btn span::after {
-    height: 2.5px !important;      /* same thickness = uniform burger */
+  .forge-burger {
+    width: 34px;
+    height: 28px;
   }
 
-  /* OPTIONAL: If you want the top/bottom slightly smaller:
-  .nav-toggle-btn span::before,
-  .nav-toggle-btn span::after {
-    height: 2px !important;
-  }
-  */
-
-  /* 2. Fix X clipping on rotate */
-  .forge-header {
-    overflow: visible !important;   /* allow rotation */
+  .forge-burger .bar {
+    fill: #F5B841;
+    transition: 0.35s ease;
+    filter: drop-shadow(0 0 6px rgba(245, 184, 65, 0.8));
   }
 
-  .header-inner {
-    padding-right: 3.4rem !important; /* ensure burger doesn’t hit screen edge */
+  /* X transform */
+  .nav-toggle-btn.open .bar-top {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .nav-toggle-btn.open .bar-middle {
+    opacity: 0;
+  }
+  .nav-toggle-btn.open .bar-bottom {
+    transform: translateY(-9px) rotate(-45deg);
   }
 
-  /* 3. Ensure the rotated X doesn’t extend weirdly */
-  .nav-toggle-btn span,
-  .nav-toggle-btn span::before,
-  .nav-toggle-btn span::after {
-    transform-origin: center center !important;
+  /* cool-down color */
+  .nav-toggle-btn.open .bar {
+    fill: #3ca2ff;
+    filter: drop-shadow(0 0 8px rgba(60, 162, 255, 0.9));
   }
 
-  /* 4. Tighten vertical spacing (reduces tall middle appearance) */
-  .nav-toggle-btn span::before {
-    top: -7px !important;
+
+  /* MOBILE NAV WRAPPER */
+  .forge-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background: #050810;
+    border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+
+    max-height: 0;
+    transition: max-height 0.35s ease-in-out;
   }
 
-  .nav-toggle-btn span::after {
-    top: 7px !important;
+  .forge-nav.open {
+    max-height: 650px;
+    padding: 0.4rem 0 0.6rem;
   }
 
+
+  /* TOP LEVEL ITEMS */
+  .forge-nav > a,
+  .dropdown-parent {
+    width: 100%;
+    padding: 0.35rem 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1rem;
+    text-align: center;
+    color: var(--forge-subtext);
+  }
+
+  .dropdown-parent.active {
+    color: var(--forge-hotmetal);
+  }
+
+  /* SERVICES block full-width */
+  .nav-item.dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* SUBMENU — STACKED, CENTERED */
+  .dropdown-content {
+    width: 100% !important;
+    max-width: 100%;
+    position: static !important;
+    text-align: center;
+    padding: 0;
+
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .dropdown-content.open {
+    max-height: 500px;
+  }
+
+  .dropdown-content a {
+    width: 100%;
+    padding: 0.45rem 0;
+    color: var(--forge-text);
+  }
+}
+
+
+/* -----------------------------------------------------
+   ANIMATIONS
+------------------------------------------------------ */
+@keyframes forgeHeaderGlow {
+  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
+  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
+}
+
+@keyframes forgeTitleSpectrum {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
