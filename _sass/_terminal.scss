@@ -1,38 +1,40 @@
 /* =========================================================
-   M.R. TECHFORGE — LINUX HYBRID TERMINAL THEME
-   CRT glow • scanlines • typewriter cursor
-   Shared across footer + contact page + anywhere else
+   M.R. TECHFORGE — HYBRID TERMINAL THEME
+   Linux look + CRT / Radar modes
    ========================================================= */
 
 /* ---------- Root Hybrid Colors ---------- */
 :root {
-  --term-prompt: #00ff66;      /* Green */
-  --term-command: #4db8ff;     /* Blue */
-  --term-comment: #ffea70;     /* Yellow */
-  --term-cursor: #4db8ff;      /* Cyan-ish cursor */
+  --term-prompt: #00ff66;      
+  --term-command: #4db8ff;
+  --term-comment: #ffea70;
+  --term-cursor: #4db8ff;
+
+  --crt-glow: rgba(77,184,255,0.45);
+  --crt-bg: rgba(0,0,0,0.55);
 }
 
-/* ---------- Terminal Container ---------- */
+/* =========================================================
+   LEGACY TERMINAL (Used on footer + old pages)
+   ========================================================= */
+
 .forge-terminal {
   background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(77, 184, 255, 0.25); /* blue glow */
+  border: 1px solid rgba(77, 184, 255, 0.25);
   padding: 1rem 1.2rem;
   border-radius: 10px;
   margin: 2rem auto;
   max-width: 900px;
-
   box-shadow:
     0 0 18px rgba(77, 184, 255, 0.35),
     inset 0 0 12px rgba(77, 184, 255, 0.15);
-
   font-family: "Fira Mono", monospace;
   overflow-x: auto;
   position: relative;
 }
 
-/* ---------- Optional Scanlines ---------- */
+/* Scanlines */
 .forge-terminal::before {
-  pointer-events: none;
   content: "";
   position: absolute;
   inset: 0;
@@ -44,9 +46,9 @@
     transparent 4px
   );
   opacity: 0.15;
+  pointer-events: none;
 }
 
-/* ---------- Base Code Styling ---------- */
 .forge-terminal pre,
 .forge-terminal code {
   background: transparent !important;
@@ -59,22 +61,11 @@
   display: block;
 }
 
-/* ---------- Hybrid Syntax Classes ---------- */
-.term-prompt {
-  color: var(--term-prompt);
-  font-weight: 600;
-}
+.term-prompt { color: var(--term-prompt); font-weight: 600; }
+.term-command { color: var(--term-command); }
+.term-comment { color: var(--term-comment); font-style: italic; }
 
-.term-command {
-  color: var(--term-command);
-}
-
-.term-comment {
-  color: var(--term-comment);
-  font-style: italic;
-}
-
-/* ---------- Typewriter Cursor ---------- */
+/* Cursor */
 .cursor {
   display: inline-block;
   width: 0.7ch;
@@ -84,8 +75,137 @@
   animation: blink 0.9s infinite;
   vertical-align: middle;
 }
-
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
+}
+
+/* =========================================================
+   NEW TERMINAL SYSTEM (Contact Page)
+   ========================================================= */
+
+/* Panel Container */
+.forge-terminal-panel {
+  background: var(--crt-bg);
+  border-radius: 14px;
+  padding: 1.4rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  border: 1px solid rgba(77,184,255,0.25);
+
+  box-shadow:
+    0 0 24px rgba(77,184,255,0.25),
+    inset 0 0 16px rgba(77,184,255,0.18);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Internal screen wrapper */
+.forge-terminal-screen {
+  font-family: "Fira Mono", monospace;
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--term-command);
+  white-space: pre-wrap;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   DISPLAY MODE: SCANLINE (default)
+   ========================================================= */
+.crt-scanline {
+  position: relative;
+}
+.crt-scanline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 3px,
+    transparent 4px
+  );
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* =========================================================
+   DISPLAY MODE: GRID (Blueprint wireframe)
+   ========================================================= */
+.crt-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(80,140,255,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(80,140,255,0.15) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* =========================================================
+   DISPLAY MODE: RADAR (Gentle sweep)
+   ========================================================= */
+.crt-radar {
+  position: relative;
+  overflow: hidden;
+}
+.crt-radar::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,255,150,0.12) 0%,
+    rgba(0,255,120,0.06) 45%,
+    transparent 70%
+  );
+  animation: radarSweep 6s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   DISPLAY MODE: CLEAN
+   ========================================================= */
+.crt-clean::before,
+.crt-clean::after {
+  content: none !important;
+}
+
+/* =========================================================
+   Terminal Mode Buttons
+   ========================================================= */
+.terminal-mode-btn {
+  background: rgba(10,20,35,0.55);
+  border: 1px solid rgba(77,184,255,0.4);
+  color: var(--forge-text);
+  font-family: "Orbitron", sans-serif;
+  padding: 0.45rem 1.2rem;
+  border-radius: 8px;
+  margin: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+.terminal-mode-btn:hover {
+  border-color: var(--forge-hotmetal);
+  color: var(--forge-hotmetal);
+  box-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.45);
+}
+.terminal-mode-btn.is-active {
+  background: var(--forge-hotmetal);
+  color: #000;
+  box-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb),0.65);
 }
