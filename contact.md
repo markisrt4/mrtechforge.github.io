@@ -7,7 +7,6 @@ class: contact
 
 <div class="forge-contact-page">
 
-  <!-- INTRO -->
   <div class="page-intro">
     <h1>
       Signal Beacon:
@@ -18,42 +17,50 @@ class: contact
     </p>
   </div>
 
-  <!-- DISPLAY MODE BUTTONS -->
+  <!-- DISPLAY MODES (one global set) -->
   <section class="forge-terminal-modes">
     <h2 class="modes-heading">Display Modes</h2>
     <div class="modes-buttons">
-      <button class="terminal-mode-btn is-active" data-mode="scanline">Scanline</button>
-      <button class="terminal-mode-btn" data-mode="grid">Grid</button>
-      <button class="terminal-mode-btn" data-mode="radar">Radar</button>
-      <button class="terminal-mode-btn" data-mode="clean">Clean</button>
+      <button class="terminal-mode-btn is-active" data-mode="scanline">
+        Scanline
+      </button>
+      <button class="terminal-mode-btn" data-mode="grid">
+        Grid
+      </button>
+      <button class="terminal-mode-btn" data-mode="radar">
+        Radar
+      </button>
+      <button class="terminal-mode-btn" data-mode="clean">
+        Clean
+      </button>
     </div>
   </section>
 
   <!-- TERMINAL: HANDSHAKE -->
-  <section class="forge-terminal-panel crt-scanline" data-terminal>
-    <div class="forge-terminal-screen">
-      <code>
+  <section class="forge-terminal crt-scanline" data-terminal>
+    <code>
+root@mrtechforge:~$ forge connect --handshake
+
 > INITIALIZING CONNECTION...
-> STATUS: 🔵 ACTIVE
+> STATUS: 🔵  ACTIVE
 > IDENTITY VERIFIED: M.R. TECHFORGE
 > AWAITING USER INPUT...
-      </code>
-    </div>
+    </code>
   </section>
 
   <!-- CARD: OPEN A CHANNEL -->
   <section class="forge-card">
     <h2>Open a Channel</h2>
     <p>
-      We keep things straightforward — no forms, no robots.
-      Just send a message and you'll reach a real person who actually reads it.
+      We like things straightforward — no forms, no robots.
+      Just send a message, and you’ll reach a real person who actually reads it.
     </p>
 
     <ul class="contact-list">
       <li>📧 <strong>Email:</strong> <a href="mailto:mark@mrtechforge.com">mark@mrtechforge.com</a></li>
-      <li>🐙 <strong>GitHub:</strong> <a href="https://github.com/markisrt4" target="_blank">github.com/markisrt4</a></li>
-      <li>▶️ <strong>YouTube:</strong> <a href="https://youtube.com/@mrtechforge" target="_blank">youtube.com/@mrtechforge</a></li>
-      <li>📘 <strong>Facebook:</strong> <a href="https://facebook.com/profile.php?id=61582641067637" target="_blank">facebook.com/@mrtechforge</a></li>
+      <li>🐙 <strong>GitHub:</strong> <a href="https://github.com/markisrt4" target="_blank" rel="noopener">github.com/markisrt4</a></li>
+      <li>▶️ <strong>YouTube:</strong> <a href="https://youtube.com/@mrtechforge" target="_blank" rel="noopener">youtube.com/@mrtechforge</a></li>
+      <li>📘 <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61582641067637" target="_blank" rel="noopener">facebook.com/@mrtechforge</a></li>
     </ul>
 
     <blockquote>
@@ -61,17 +68,19 @@ class: contact
     </blockquote>
   </section>
 
-  <!-- CARD: TEMPLATE -->
+  <!-- CARD: SUGGESTED EMAIL TEMPLATE -->
   <section class="forge-card">
     <h2>Suggested Email Template</h2>
-    <p>If you're not sure what to say, here's a helpful starter.</p>
+    <p>
+      If you’re not sure what to say, here’s a quick format you can copy and adjust.
+    </p>
+
     <button id="copy-template" class="btn-glow">Copy Template</button>
   </section>
 
-  <!-- TERMINAL: TEMPLATE BODY -->
-  <section class="forge-terminal-panel crt-grid" id="email-template-panel" data-terminal>
-    <div class="forge-terminal-screen">
-      <code id="email-template-code">
+  <!-- TERMINAL: EMAIL TEMPLATE BODY -->
+  <section class="forge-terminal crt-grid" data-terminal>
+    <code id="email-template-code">
 To: mark@mrtechforge.com
 Subject: TechForge Inquiry – [Your Topic Here]
 
@@ -88,57 +97,43 @@ Additional details:
 
 Looking forward to connecting,
 [Your Name]
-      </code>
-    </div>
+    </code>
   </section>
 
   <!-- TERMINAL: OUTRO -->
-  <section class="forge-terminal-panel crt-clean" data-terminal>
-    <div class="forge-terminal-screen">
-      <code>
+  <section class="forge-terminal crt-radar" data-terminal>
+    <code>
+root@mrtechforge:~$ forge status --connection
+
 > SIGNAL RECEIVED.
 > CONNECTION SECURE.
 > TRANSMISSION STANDING BY...
-      </code>
-    </div>
+    </code>
   </section>
 
-  <!-- LOCATION / MICHIGAN -->
+  <!-- LOCATION / BLUEPRINT COMPASS CARD -->
   <section class="forge-location-card">
     <h2>Proudly Serving Southeast Michigan</h2>
 
     <div class="forge-location-map">
-      <svg viewBox="0 0 300 300" aria-hidden="true">
-        <!-- Lower Peninsula (accurate silhouette) -->
-        <path class="mi-outline" d="
-          M190 50
-          C150 45 120 60 105 80
-          C92 100 88 130 95 160
-          C102 190 125 220 160 235
-          C195 250 235 240 255 210
-          C275 180 270 140 250 110
-          C230 80 210 60 190 50 Z
-        " />
+      <div class="compass-ring">
+        <div class="compass-north">N</div>
+        <div class="compass-east">E</div>
+        <div class="compass-south">S</div>
+        <div class="compass-west">W</div>
 
-        <!-- Upper Peninsula -->
-        <path class="mi-outline mi-up" d="
-          M60 80
-          C90 65 140 60 170 70
-          C180 75 190 85 195 95
-          C180 98 160 102 140 105
-          C120 108 90 108 75 104
-          C65 100 58 90 60 80 Z
-        " />
+        <div class="compass-needle"></div>
+        <div class="compass-center"></div>
 
-        <!-- Metro Detroit pulse -->
-        <circle class="mi-pulse-dot" cx="235" cy="190" r="6" />
-      </svg>
+        <div class="region-highlight">
+          <span class="region-label">Metro Detroit • SE Michigan</span>
+        </div>
+      </div>
     </div>
 
     <p class="forge-location-text">
-      Based in northern Macomb County — proudly serving Southeast Michigan
-      and the greater Metro Detroit area with practical, relationship-first
-      technology support rooted in integrity.
+      Based in northern Macomb County — proudly serving Southeast Michigan and the broader
+      Metro Detroit area with practical, relationship-focused tech support and integrity.
     </p>
   </section>
 
