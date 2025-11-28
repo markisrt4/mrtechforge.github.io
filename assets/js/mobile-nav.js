@@ -1,75 +1,67 @@
-/* ============================================================
-   M.R. TECHFORGE — Navigation JS (v11.2 FINAL)
-   - Smooth mobile hamburger
-   - Hammer + sparks animation
-   - Dropdown accordions (mobile only)
-   - Zero drift, zero double-toggle issues
-   ============================================================ */
+// ==========================================================
+// M.R. TECHFORGE — NAVIGATION JS (Forge Ultra v12 MAX)
+// • Mobile hamburger toggle
+// • Services submenu toggle
+// • Hammer + spark + header pulse triggers
+// ==========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+    const header        = document.querySelector(".forge-header");
+    const hamburger     = document.querySelector(".forge-hamburger");
+    const mobileMenu    = document.querySelector(".forge-mobile-menu");
+    const servicesToggle = document.querySelector(".services-toggle");
+    const servicesSubmenu = document.querySelector(".services-submenu");
 
-  /* -----------------------------------------------
-     ELEMENTS
-  ----------------------------------------------- */
-  const navToggleBtn = document.querySelector(".nav-toggle-btn");
-  const forgeNav = document.querySelector(".forge-nav");
-  const dropdownParents = document.querySelectorAll(".dropdown-parent");
-
-  if (!navToggleBtn || !forgeNav) return;
-
-  /* -----------------------------------------------
-     HAMBURGER TOGGLE
-  ----------------------------------------------- */
-  navToggleBtn.addEventListener("click", () => {
-    const isOpen = navToggleBtn.classList.toggle("open");
-    forgeNav.classList.toggle("open", isOpen);
-
-    // Smooth opening: allows max-height transition
-    if (isOpen) {
-      forgeNav.style.maxHeight = forgeNav.scrollHeight + "px";
-    } else {
-      forgeNav.style.maxHeight = "0px";
+    if (!hamburger || !mobileMenu || !header) {
+        return; // bail if critical pieces missing
     }
-  });
 
-  /* -------------------------------------------------
-     MOBILE-ONLY DROPDOWN BEHAVIOR (Services)
-     Prevents desktop hover logic from interfering
-  ------------------------------------------------- */
-  const enableMobileDropdowns = () => {
-    // Only operate if screen width ≤ 760px
-    if (window.innerWidth > 760) return;
+    // ---------------------------
+    // Mobile Menu Toggle
+    // ---------------------------
+    hamburger.addEventListener("click", () => {
+        const isOpening = !mobileMenu.classList.contains("open");
 
-    dropdownParents.forEach((parent) => {
-      const dropdownContainer = parent.closest(".nav-item.dropdown");
-      const dropdownContent = dropdownContainer.querySelector(".dropdown-content");
+        hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
 
-      parent.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        // Trigger forge "burst" + hammer swing when opening
+        if (isOpening) {
+            header.classList.add("is-forging");
 
-        const isExpanded = dropdownContent.classList.toggle("open");
-        parent.classList.toggle("active", isExpanded);
+            // retrigger header pulse animation cleanly
+            header.classList.remove("forge-pulse");
+            // force reflow so animation restarts
+            void header.offsetWidth;
+            header.classList.add("forge-pulse");
 
-        // Stretch smoothly
-        dropdownContent.style.maxHeight = isExpanded
-          ? dropdownContent.scrollHeight + "px"
-          : "0px";
-      });
+            // Remove hammer + burst class after animation
+            setTimeout(() => {
+                header.classList.remove("is-forging");
+                header.classList.remove("forge-pulse");
+            }, 750);
+        }
     });
-  };
 
-  enableMobileDropdowns();
+    // ---------------------------
+    // Services Dropdown (Mobile)
+    // ---------------------------
+    if (servicesToggle && servicesSubmenu) {
+        servicesToggle.addEventListener("click", (e) => {
+            // on desktop we mostly use hover; keep click for mobile
+            if (window.innerWidth < 850) {
+                e.preventDefault();
+                servicesToggle.classList.toggle("open");
+                servicesSubmenu.classList.toggle("open");
+            }
+        });
 
-  /* -------------------------------------------------
-     Recalculate dropdown sizes on resize
-  ------------------------------------------------- */
-  window.addEventListener("resize", () => {
-    // Close nav completely when switching to desktop mode
-    if (window.innerWidth > 760) {
-      forgeNav.classList.remove("open");
-      navToggleBtn.classList.remove("open");
-      forgeNav.style.maxHeight = "";
+        // Optional: close submenu when viewport resized to desktop
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 850) {
+                servicesToggle.classList.remove("open");
+                servicesSubmenu.classList.remove("open");
+            }
+        });
     }
-  });
 });
