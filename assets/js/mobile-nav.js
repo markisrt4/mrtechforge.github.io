@@ -1,61 +1,57 @@
-// ==========================================================
-// M.R. TECHFORGE — NAVIGATION JS (Forge Ultra v12 MAX)
-// CSS Hammer Edition
-// ==========================================================
+// =====================================================
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v12.3)
+//  Adds idle forge animations (pulse + sparks)
+// =====================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  const burgerBtn = document.querySelector(".nav-toggle-btn");
+  const nav = document.querySelector(".forge-nav");
+  const serviceParent = document.querySelector(".dropdown-parent");
+  const serviceMenu = document.querySelector(".dropdown-content");
 
-    const header = document.querySelector(".forge-header");
-    const hamburger = document.querySelector(".forge-hamburger");
-    const mobileMenu = document.querySelector(".forge-mobile-menu");
+  if (!burgerBtn || !nav) return;
 
-    const servicesToggle = document.querySelector(".services-toggle");
-    const servicesSubmenu = document.querySelector(".services-submenu");
+  // ---------------------------------------------------
+  // MAIN BURGER TOGGLE
+  // ---------------------------------------------------
+  burgerBtn.addEventListener("click", () => {
+    burgerBtn.classList.toggle("open");
+    nav.classList.toggle("open");
+  });
 
-    // --------------------------
-    // HAMBURGER + MOBILE MENU
-    // --------------------------
-    hamburger.addEventListener("click", () => {
-
-        const opening = !mobileMenu.classList.contains("open");
-
-        hamburger.classList.toggle("open");
-        mobileMenu.classList.toggle("open");
-
-        if (opening) {
-            header.classList.add("is-forging");
-
-            // pulse restart
-            header.classList.remove("forge-pulse");
-            void header.offsetWidth;
-            header.classList.add("forge-pulse");
-
-            // cleanup
-            setTimeout(() => {
-                header.classList.remove("is-forging");
-                header.classList.remove("forge-pulse");
-            }, 750);
-        }
+  // ---------------------------------------------------
+  // SERVICES ACCORDION (mobile only)
+  // ---------------------------------------------------
+  if (serviceParent && serviceMenu) {
+    serviceParent.addEventListener("click", () => {
+      if (window.innerWidth > 760) return;
+      serviceParent.classList.toggle("active");
+      serviceMenu.classList.toggle("open");
     });
+  }
 
-    // --------------------------
-    // SERVICES DROPDOWN (MOBILE)
-    // --------------------------
-    if (servicesToggle) {
-        servicesToggle.addEventListener("click", (e) => {
-            if (window.innerWidth < 850) {
-                e.preventDefault();
-                servicesToggle.classList.toggle("open");
-                servicesSubmenu.classList.toggle("open");
-            }
-        });
-
-        // Auto-close on desktop switch
-        window.addEventListener("resize", () => {
-            if (window.innerWidth >= 850) {
-                servicesToggle.classList.remove("open");
-                servicesSubmenu.classList.remove("open");
-            }
-        });
+  // ---------------------------------------------------
+  // IDLE ANIMATION ENGINE
+  // ---------------------------------------------------
+  function triggerIdleAnimation() {
+    if (burgerBtn.classList.contains("open")) {
+      return setTimeout(triggerIdleAnimation, 4000);
     }
+
+    // pick a random idle effect
+    const effects = ["idle-pulse", "idle-flicker", "idle-spark"];
+    const effect = effects[Math.floor(Math.random() * effects.length)];
+
+    burgerBtn.classList.add(effect);
+
+    // remove the effect after animation finishes
+    setTimeout(() => burgerBtn.classList.remove(effect), 1600);
+
+    // schedule next random idle
+    const delay = 3000 + Math.random() * 4000; // 3–7 seconds
+    setTimeout(triggerIdleAnimation, delay);
+  }
+
+  // start idle loop
+  setTimeout(triggerIdleAnimation, 3500);
 });
