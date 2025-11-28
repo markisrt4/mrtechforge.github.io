@@ -1,8 +1,8 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v9.3 Final)
-   • Fully stable mobile/desktop
-   • Hamburger fixed to viewport
-   • Zero sliding / zero overflow
+   M.R. TECHFORGE — NAVIGATION (v10 Stable Build)
+   • Desktop hover dropdown
+   • Mobile hamburger + stacked submenu
+   • ZERO width hacks, ZERO overflow glitches
    ===================================================== */
 
 
@@ -13,34 +13,30 @@
 .forge-header {
   position: sticky;
   top: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1000;
 
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
+
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
-
-  overflow: hidden; /* critical */
 }
 
 .header-inner {
-  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.6rem 1rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  position: relative;
 }
 
 
 /* -----------------------------------------------------
    LOGO + WORDMARK
 ------------------------------------------------------ */
-
 .logo-link {
   display: flex;
   align-items: center;
@@ -79,9 +75,8 @@
 
 
 /* -----------------------------------------------------
-   DESKTOP NAV
+   DESKTOP NAVIGATION
 ------------------------------------------------------ */
-
 .forge-nav {
   display: flex;
   gap: 1.4rem;
@@ -106,9 +101,8 @@
 
 
 /* -----------------------------------------------------
-   DROPDOWNS (DESKTOP)
+   DROPDOWN BASE
 ------------------------------------------------------ */
-
 .nav-item.dropdown {
   position: relative;
   display: flex;
@@ -120,6 +114,9 @@
   background: transparent;
   border: none;
   padding: 0;
+  margin: 0;
+  cursor: pointer;
+
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -143,11 +140,13 @@
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   color: var(--forge-hotmetal);
+  font-size: 1rem;
 }
 
 .dropdown-content a[data-grandchild="true"]::before {
   content: "»";
   color: var(--forge-accent);
+  font-size: 1rem;
 }
 
 .dropdown-overview {
@@ -155,12 +154,15 @@
   color: var(--forge-hotmetal) !important;
 }
 
+
+/* -----------------------------------------------------
+   DESKTOP DROPDOWN BEHAVIOR
+------------------------------------------------------ */
 @media (min-width: 761px) {
+
   .nav-toggle-btn { display: none; }
 
-  .dropdown-parent {
-    pointer-events: none;
-  }
+  .dropdown-parent { pointer-events: none; }
 
   .dropdown-content {
     display: none;
@@ -173,7 +175,6 @@
     background: rgba(5, 8, 16, 0.98);
     border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
     border-radius: 8px;
-
     opacity: 0;
     transform: translateY(6px);
     transition: 0.25s ease;
@@ -196,6 +197,7 @@
 
   .dropdown-content a {
     display: flex;
+    align-items: center;
     gap: 0.35rem;
     padding: 0.55rem 1rem;
     font-family: "Titillium Web", sans-serif;
@@ -205,23 +207,23 @@
 
 
 /* -----------------------------------------------------
-   MOBILE NAV (v9.3)
-   Hamburger fixed to viewport — zero sliding
+   MOBILE NAVIGATION (v10)
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
-  /* FIXED HAMBURGER — VIEWPORT LOCKED */
+  /* HAMBURGER */
   .nav-toggle-btn {
-    position: fixed !important;
-    top: 18px;
-    right: 18px;
+    display: block;
     width: 32px;
     height: 24px;
-
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 5000;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3000;
   }
 
   .nav-toggle-btn span,
@@ -236,16 +238,26 @@
     transition: 0.3s ease;
   }
 
-  .nav-toggle-btn span { top: 50%; transform: translateY(-50%); }
+  .nav-toggle-btn span {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   .nav-toggle-btn span::before { top: -9px; }
   .nav-toggle-btn span::after { top: 9px; }
 
   .nav-toggle-btn.open span { background: transparent; }
-  .nav-toggle-btn.open span::before { transform: rotate(45deg); top: 0; }
-  .nav-toggle-btn.open span::after  { transform: rotate(-45deg); top: 0; }
+  .nav-toggle-btn.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  .nav-toggle-btn.open span::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
 
 
-  /* MOBILE NAV DROPS DOWN */
+  /* NAV WRAPPER */
   .forge-nav {
     position: absolute;
     top: 100%;
@@ -255,44 +267,68 @@
     background: #050810;
     border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
     flex-direction: column;
-    overflow: hidden;
+    align-items: center;
 
+    overflow: hidden;
     max-height: 0;
     transition: max-height 0.35s ease-in-out;
-    text-align: center;
   }
 
   .forge-nav.open {
     max-height: 650px;
-    padding: 0.6rem 0 0.8rem;
+    padding: 0.4rem 0 0.6rem;
   }
 
 
-  /* TOP LEVEL */
+  /* TOP-LEVEL ITEMS */
   .forge-nav > a,
-  .dropdown-parent {
-    padding: 0.45rem 0;
+  .forge-nav .dropdown-parent {
+    padding: 0.35rem 0;
     width: 100%;
-    justify-content: center;
+    font-size: 1rem;
     color: var(--forge-subtext);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
   }
 
-  .dropdown-parent.active { color: var(--forge-hotmetal); }
-  .dropdown-parent.active .dropdown-arrow {
+  .forge-nav .dropdown-parent.active {
+    color: var(--forge-hotmetal);
+  }
+
+  .forge-nav .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
     color: var(--forge-hotmetal);
   }
 
 
   /* SUBMENU */
+  .nav-item.dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .dropdown-content {
     position: static !important;
-    width: 100%;
-    max-width: 100%;
-    max-height: 0;
+    width: 100% !important;
+    max-width: 100% !important;
 
     overflow: hidden;
+    max-height: 0;
+    padding: 0;
+
     background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
     transition: max-height 0.3s ease;
   }
 
@@ -303,56 +339,18 @@
   .dropdown-content a {
     width: 100%;
     padding: 0.45rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
     color: var(--forge-text);
-  }
-
-  /* Give header room so logo doesn't overlap burger */
-  .header-inner {
-    padding-right: 3.5rem;
+    background: rgba(0, 0, 0, 0.35);
   }
 }
 
-/* ============================================
-   FINAL BURGER SIZE LOCK
-   ============================================ */
-@media (max-width: 760px) {
-
-  .nav-toggle-btn {
-    width: 32px !important;
-    height: 24px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-
-    position: absolute !important;
-    top: 50% !important;
-    right: 1rem !important;
-    transform: translateY(-50%) !important;
-    
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    z-index: 3000 !important;
-  }
-
-  .nav-toggle-btn span,
-  .nav-toggle-btn span::before,
-  .nav-toggle-btn span::after {
-    height: 3px !important;
-    width: 100% !important;
-  }
-
-  /* Prevent header-inner from shifting */
-  .header-inner {
-    padding-right: 3.2rem !important;
-    overflow: visible !important;
-  }
-}
 
 /* -----------------------------------------------------
    ANIMATIONS
 ------------------------------------------------------ */
-
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
