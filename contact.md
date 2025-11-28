@@ -7,6 +7,9 @@ class: contact
 
 <div class="forge-contact-page">
 
+  <!-- ============================
+       INTRO HEADER
+  ============================ -->
   <div class="page-intro">
     <h1>
       Signal Beacon:
@@ -17,38 +20,36 @@ class: contact
     </p>
   </div>
 
-  <!-- DISPLAY MODES (one global set) -->
+  <!-- ============================
+       DISPLAY MODES — GLOBAL (one set)
+  ============================ -->
   <section class="forge-terminal-modes">
     <h2 class="modes-heading">Display Modes</h2>
     <div class="modes-buttons">
-      <button class="terminal-mode-btn is-active" data-mode="scanline">
-        Scanline
-      </button>
-      <button class="terminal-mode-btn" data-mode="grid">
-        Grid
-      </button>
-      <button class="terminal-mode-btn" data-mode="radar">
-        Radar
-      </button>
-      <button class="terminal-mode-btn" data-mode="clean">
-        Clean
-      </button>
+      <button class="terminal-mode-btn is-active" data-mode="scanline">Scanline</button>
+      <button class="terminal-mode-btn" data-mode="grid">Grid</button>
+      <button class="terminal-mode-btn" data-mode="radar">Radar</button>
+      <button class="terminal-mode-btn" data-mode="clean">Clean</button>
     </div>
   </section>
 
-  <!-- TERMINAL: HANDSHAKE -->
-  <section class="forge-terminal crt-scanline" data-terminal>
-    <code>
-root@mrtechforge:~$ forge connect --handshake
-
-> INITIALIZING CONNECTION...
-> STATUS: 🔵  ACTIVE
-> IDENTITY VERIFIED: M.R. TECHFORGE
-> AWAITING USER INPUT...
-    </code>
+  <!-- ============================
+       TERMINAL: HANDSHAKE PANEL
+  ============================ -->
+  <section class="forge-terminal-panel crt-scanline" data-terminal>
+    <div class="forge-terminal-screen">
+      <code>
+&gt; INITIALIZING CONNECTION...
+&gt; STATUS: 🔵  ACTIVE
+&gt; IDENTITY VERIFIED: M.R. TECHFORGE
+&gt; AWAITING USER INPUT...
+      </code>
+    </div>
   </section>
 
-  <!-- CARD: OPEN A CHANNEL -->
+  <!-- ============================
+       CARD: OPEN A CHANNEL
+  ============================ -->
   <section class="forge-card">
     <h2>Open a Channel</h2>
     <p>
@@ -68,19 +69,22 @@ root@mrtechforge:~$ forge connect --handshake
     </blockquote>
   </section>
 
-  <!-- CARD: SUGGESTED EMAIL TEMPLATE -->
+  <!-- ============================
+       CARD: SUGGESTED EMAIL TEMPLATE
+  ============================ -->
   <section class="forge-card">
     <h2>Suggested Email Template</h2>
-    <p>
-      If you’re not sure what to say, here’s a quick format you can copy and adjust.
-    </p>
+    <p>If you’re not sure what to say, here’s a quick format you can copy and adjust.</p>
 
     <button id="copy-template" class="btn-glow">Copy Template</button>
   </section>
 
-  <!-- TERMINAL: EMAIL TEMPLATE BODY -->
-  <section class="forge-terminal crt-grid" data-terminal>
-    <code id="email-template-code">
+  <!-- ============================
+       TERMINAL: EMAIL TEMPLATE BODY
+  ============================ -->
+  <section class="forge-terminal-panel crt-grid" id="email-template-panel" data-terminal>
+    <div class="forge-terminal-screen">
+      <code id="email-template-code">
 To: mark@mrtechforge.com
 Subject: TechForge Inquiry – [Your Topic Here]
 
@@ -97,43 +101,43 @@ Additional details:
 
 Looking forward to connecting,
 [Your Name]
-    </code>
+      </code>
+    </div>
   </section>
 
-  <!-- TERMINAL: OUTRO -->
-  <section class="forge-terminal crt-radar" data-terminal>
-    <code>
-root@mrtechforge:~$ forge status --connection
-
-> SIGNAL RECEIVED.
-> CONNECTION SECURE.
-> TRANSMISSION STANDING BY...
-    </code>
+  <!-- ============================
+       TERMINAL: OUTRO
+  ============================ -->
+  <section class="forge-terminal-panel crt-radar" data-terminal>
+    <div class="forge-terminal-screen">
+      <code>
+&gt; SIGNAL RECEIVED.
+&gt; CONNECTION SECURE.
+&gt; TRANSMISSION STANDING BY...
+      </code>
+    </div>
   </section>
 
-  <!-- LOCATION / BLUEPRINT COMPASS CARD -->
+  <!-- ============================
+       LOCATION CARD — SIMPLE BLUEPRINT
+  ============================ -->
   <section class="forge-location-card">
     <h2>Proudly Serving Southeast Michigan</h2>
 
-    <div class="forge-location-map">
-      <div class="compass-ring">
-        <div class="compass-north">N</div>
-        <div class="compass-east">E</div>
-        <div class="compass-south">S</div>
-        <div class="compass-west">W</div>
+    <div class="forge-location-plate">
+      <div class="plate-line"><span>REGION:</span> Southeast Michigan</div>
+      <div class="plate-line"><span>SECTOR:</span> Metro Detroit</div>
+      <div class="plate-line indent">Macomb County</div>
+      <div class="plate-line indent">Oakland County</div>
 
-        <div class="compass-needle"></div>
-        <div class="compass-center"></div>
+      <div class="plate-line"><span>HQ COORD:</span> 42.70° N</div>
+      <div class="plate-line indent">82.92° W</div>
 
-        <div class="region-highlight">
-          <span class="region-label">Metro Detroit • SE Michigan</span>
-        </div>
-      </div>
+      <div class="plate-line"><span>GRID REF:</span> SE-MI-R7X-221</div>
     </div>
 
     <p class="forge-location-text">
-      Based in northern Macomb County — proudly serving Southeast Michigan and the broader
-      Metro Detroit area with practical, relationship-focused tech support and integrity.
+      Based in northern Macomb County — proudly serving Southeast Michigan and the greater Metro Detroit region with practical, relationship-focused technical support and integrity.
     </p>
   </section>
 
