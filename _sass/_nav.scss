@@ -1,6 +1,8 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v12.1 FINAL)
-   Desktop hover + Mobile SVG hamburger + hammer FX
+   M.R. TECHFORGE — NAVIGATION (v11.1)
+   • Desktop hover dropdown
+   • Mobile SVG hamburger + stacked submenu
+   • Hammer + sparks on open
    ===================================================== */
 
 
@@ -15,8 +17,8 @@
 
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
 
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
@@ -73,7 +75,7 @@
 
 
 /* -----------------------------------------------------
-   BASE NAV (DESKTOP)
+   BASE NAV
 ------------------------------------------------------ */
 .forge-nav {
   display: flex;
@@ -133,6 +135,7 @@
   transition: 0.25s ease;
 }
 
+/* child indicators */
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   color: var(--forge-hotmetal);
@@ -188,7 +191,12 @@
 
     box-shadow:
       0 0 12px rgba(10, 109, 255, 0.45),
-      inset 0 0 4px rgba(10, 109, 255, 0.65);
+      0 0 4px rgba(10, 109, 255, 0.65) inset;
+  }
+
+  .nav-item.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--forge-hotmetal);
   }
 
   .dropdown-content a {
@@ -199,23 +207,22 @@
     font-family: "Titillium Web", sans-serif;
     color: var(--forge-text);
   }
-
-  .nav-item.dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
-  }
 }
 
 
 /* -----------------------------------------------------
-   MOBILE NAV — SVG BURGER + STACKED MENU
+   MOBILE NAVIGATION (≤ 760px)
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
   /* HAMBURGER BUTTON */
   .nav-toggle-btn {
-    width: 42px;
-    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 34px;
+    height: 28px;
     background: none;
     border: none;
     cursor: pointer;
@@ -226,25 +233,27 @@
     transform: translateY(-50%);
     z-index: 3000;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* allow hammer & sparks outside the box */
+    overflow: visible;
   }
 
   .forge-burger {
-    width: 34px;
-    height: 26px;
+    width: 28px;
+    height: 22px;
   }
 
   .forge-burger .bar {
-    fill: #F5B841; /* hotmetal orange */
-    transition: 0.35s ease;
-    filter: drop-shadow(0 0 8px rgba(245, 184, 65, 0.8));
-    transform-box: fill-box;
-    transform-origin: center;
+    fill: #F5B841;
+    transition: 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(245, 184, 65, 0.9));
   }
 
-  /* X transforms */
+  /* idle pulse / flicker */
+  .nav-toggle-btn:not(.open) .bar {
+    animation: burgerIdlePulse 3.8s ease-in-out infinite;
+  }
+
+  /* X transform */
   .nav-toggle-btn.open .bar-top {
     transform: translateY(8px) rotate(45deg);
   }
@@ -259,8 +268,9 @@
 
   .nav-toggle-btn.open .bar {
     fill: #3ca2ff;
-    filter: drop-shadow(0 0 10px rgba(60, 162, 255, 0.9));
+    filter: drop-shadow(0 0 8px rgba(60, 162, 255, 0.95));
   }
+
 
   /* MOBILE NAV WRAPPER */
   .forge-nav {
@@ -285,19 +295,26 @@
     padding: 0.4rem 0 0.6rem;
   }
 
-  /* TOP-LEVEL ITEMS */
+
+  /* TOP LEVEL ITEMS */
   .forge-nav > a,
   .forge-nav .dropdown-parent {
     width: 100%;
-    padding: 0.45rem 0;
+    padding: 0.38rem 0;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.4rem;
 
     font-size: 1rem;
+    line-height: 1.2;
     text-align: center;
+
     color: var(--forge-subtext);
+    background: transparent;
+    border: none;
+    cursor: pointer;
   }
 
   .forge-nav .dropdown-parent.active {
@@ -309,145 +326,139 @@
     color: var(--forge-hotmetal);
   }
 
+  /* SERVICES block full-width + stacked children */
   .forge-nav .nav-item.dropdown {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
   }
 
-  /* SUBMENU — STACKED, CENTERED */
-  .forge-nav .dropdown-content {
-    position: static !important;
+  .forge-nav .nav-item.dropdown .dropdown-parent {
+    justify-content: center;
+  }
+
+  .forge-nav .nav-item.dropdown .dropdown-content {
     width: 100% !important;
     max-width: 100%;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
 
-    padding: 0;
     margin: 0;
-    text-align: center;
+    padding: 0;
 
     background: rgba(0, 0, 0, 0.35);
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    transform: none !important;
+    text-align: center;
+
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease;
   }
 
-  .forge-nav .dropdown-content.open {
+  .forge-nav .nav-item.dropdown .dropdown-content.open {
     max-height: 500px;
   }
 
-  .forge-nav .dropdown-content a {
+  .forge-nav .nav-item.dropdown .dropdown-content a {
     width: 100%;
     padding: 0.45rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+
     font-size: 0.95rem;
     color: var(--forge-text);
+    background: rgba(0, 0, 0, 0.35);
   }
 }
 
 
-/* -----------------------------------------------------
-   HAMMER + SPARKS (FUN FX)
------------------------------------------------------- */
-.nav-toggle-btn {
-  position: relative;
-  overflow: visible;
-}
-
-.nav-toggle-btn::after {
-  content: "🔨";
-  position: absolute;
-  right: -34px;
-  top: -8px;
-  font-size: 26px;
-  opacity: 0;
-  transform-origin: bottom right;
-}
-
-.nav-toggle-btn::before {
-  content: "✨";
-  position: absolute;
-  right: -6px;
-  top: 6px;
-  opacity: 0;
-  font-size: 16px;
-}
-
-/* Trigger when menu opens */
-.nav-toggle-btn.open::after {
-  animation: hammerSwing 0.65s ease-out forwards;
-}
-
-.nav-toggle-btn.open::before {
-  animation: sparksBurst 0.45s ease-out forwards;
-}
-
-/* =====================================================
-   IDLE BURGER ANIMATIONS — subtle forge pulse
-   ===================================================== */
-
-/* Pulse glow */
-@keyframes burgerIdlePulse {
-  0%   { transform: scale(1); filter: drop-shadow(0 0 6px rgba(245,184,65,0.5)); }
-  50%  { transform: scale(1.06); filter: drop-shadow(0 0 10px rgba(245,184,65,0.9)); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(245,184,65,0.5)); }
-}
-
-/* Tiny flicker */
-@keyframes burgerFlicker {
-  0%, 100% { opacity: 1; }
-  45%      { opacity: 0.75; }
-  55%      { opacity: 0.9; }
-}
-
-/* Random spark burst */
-@keyframes idleSparkBurst {
-  0%   { opacity: 0; transform: translateY(0) scale(0.3); }
-  30%  { opacity: 1; transform: translateY(-5px) scale(1.1); }
-  100% { opacity: 0; transform: translateY(-10px) scale(0.4); }
-}
-
-/* Spark element */
-.nav-toggle-btn::before {
-  content: "✨";
-  position: absolute;
-  right: -4px;
-  top: 6px;
-  opacity: 0;
-  font-size: 14px;
-  pointer-events: none;
-}
-
-/* Idle spark trigger class */
-.nav-toggle-btn.idle-spark::before {
-  animation: idleSparkBurst 0.6s ease-out forwards;
-}
-
-/* Idle pulse trigger */
-.nav-toggle-btn.idle-pulse .forge-burger .bar {
-  animation: burgerIdlePulse 1.6s ease-out;
-}
-
-/* Idle flicker trigger */
-.nav-toggle-btn.idle-flicker .forge-burger .bar {
-  animation: burgerFlicker 0.25s linear;
-}
-
-/* -----------------------------------------------------
-   ANIMATIONS
------------------------------------------------------- */
+/* ============================================================
+   🔨 Hammer + Sparks Animation for Burger (mobile)
+============================================================ */
 @keyframes hammerSwing {
-  0%   { opacity: 0; transform: rotate(-60deg); }
-  30%  { opacity: 1; transform: rotate(-15deg); }
-  50%  { transform: rotate(0deg); }
-  70%  { transform: rotate(-12deg); }
-  100% { opacity: 0; transform: rotate(-60deg); }
+  0%   { transform: rotate(-60deg) translateY(-10px); opacity: 0; }
+  20%  { transform: rotate(-30deg) translateY(0); opacity: 1; }
+  40%  { transform: rotate(-10deg) translateY(2px); }
+  55%  { transform: rotate(-20deg) translateY(0); }
+  70%  { transform: rotate(-8deg); }
+  100% { transform: rotate(-60deg) translateY(-10px); opacity: 0; }
 }
 
 @keyframes sparksBurst {
   0%   { opacity: 0; transform: translateY(0) scale(0.5); }
-  30%  { opacity: 1; transform: translateY(-6px) scale(1.2); }
-  100% { opacity: 0; transform: translateY(-10px) scale(0.6); }
+  30%  { opacity: 1; transform: translateY(-6px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-12px) scale(0.4); }
 }
 
+/* idle flicker / pulse of burger bars */
+@keyframes burgerIdlePulse {
+  0%, 80% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(245, 184, 65, 0.8));
+  }
+  85% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(245, 184, 65, 0.3));
+  }
+  90% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(245, 184, 65, 0.9));
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+/* attach hammer + sparks to the button itself (mobile only) */
+@media (max-width: 760px) {
+  .nav-toggle-btn {
+    position: relative;
+  }
+
+  /* hammer */
+  .nav-toggle-btn::after {
+    content: "🔨";
+    position: absolute;
+    right: -30px;
+    top: -10px;
+    font-size: 24px;
+    opacity: 0;
+    transform-origin: right center;
+    pointer-events: none;
+  }
+
+  /* sparks */
+  .nav-toggle-btn::before {
+    content: "✨";
+    position: absolute;
+    right: -6px;
+    top: 8px;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-toggle-btn.open::after {
+    animation: hammerSwing 0.7s ease-out forwards;
+  }
+
+  .nav-toggle-btn.open::before {
+    animation: sparksBurst 0.4s ease-out forwards;
+  }
+}
+
+
+/* -----------------------------------------------------
+   HEADER GLOW + TITLE ANIMATIONS
+------------------------------------------------------ */
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
@@ -457,90 +468,4 @@
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* ============================================================
-   M.R. TECHFORGE — Safe Smooth Transitions Patch (v10.0-S)
-   Pure polish. No layout changes. No JS changes.
-   ============================================================ */
-
-/* -----------------------------------------
-   Shared Transition Defaults
------------------------------------------ */
-.forge-header,
-.forge-nav a,
-.dropdown-parent,
-.dropdown-content,
-.nav-toggle-btn,
-.nav-toggle-btn .bar,
-.forge-burger .bar,
-.dropdown-arrow {
-  transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease,
-    opacity 0.25s ease,
-    filter 0.25s ease,
-    text-shadow 0.25s ease,
-    transform 0.35s ease;
-}
-
-/* -----------------------------------------
-   Desktop dropdown fade + soften
------------------------------------------ */
-@media (min-width: 761px) {
-  .dropdown-content {
-    transition:
-      opacity 0.35s ease,
-      transform 0.35s ease;
-  }
-
-  .nav-item.dropdown:hover .dropdown-content {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* -----------------------------------------
-   Mobile menu slide-down smoothing
------------------------------------------ */
-@media (max-width: 760px) {
-  .forge-nav {
-    transition:
-      max-height 0.45s ease-in-out,
-      padding 0.35s ease;
-  }
-}
-
-/* -----------------------------------------
-   Burger bar smoothness
------------------------------------------ */
-.forge-burger .bar {
-  transition:
-    transform 0.35s ease,
-    opacity 0.25s ease,
-    fill 0.35s ease,
-    filter 0.35s ease;
-}
-
-/* -----------------------------------------
-   Hammer + sparks smoothing
------------------------------------------ */
-.nav-toggle-btn::after,
-.nav-toggle-btn::before {
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-/* -----------------------------------------
-   Idle "breathing" glow — subtle, safe
------------------------------------------ */
-@keyframes forgeIdlePulse {
-  0%   { filter: drop-shadow(0 0 4px rgba(245,184,65,0.45)); }
-  50%  { filter: drop-shadow(0 0 9px rgba(245,184,65,0.85)); }
-  100% { filter: drop-shadow(0 0 4px rgba(245,184,65,0.45)); }
-}
-
-.nav-toggle-btn .bar {
-  animation: forgeIdlePulse 3.8s ease-in-out infinite;
-  animation-delay: 0.3s;
 }
