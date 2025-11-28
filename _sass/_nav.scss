@@ -1,7 +1,7 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v10.0 Final)
+   M.R. TECHFORGE — NAVIGATION (v11.0 Hammer-Stable)
    Desktop hover + Mobile hamburger
-   Perfect alignment. Zero overflow. Zero drift.
+   Perfect alignment • Zero drift • Hammer-safe
    ===================================================== */
 
 
@@ -14,10 +14,10 @@
   width: 100%;
   z-index: 1000;
 
-  background: rgba(10, 10, 12, 0.92);
+  background: rgba(10,10,12,0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
 
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb),0.25);
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
 }
 
@@ -46,18 +46,17 @@
 
 .forge-logo {
   height: 65px;
-  width: auto;
-  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
+  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb),.45));
   transition: 0.3s ease;
 }
 
 .forge-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
+  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb),.85));
 }
 
 .forge-title {
-  background: linear-gradient(90deg, #F5B841, #F5B841, #0A6DFF, #153D77, #F5B841);
+  background: linear-gradient(90deg,#F5B841,#F5B841,#0A6DFF,#153D77,#F5B841);
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -66,11 +65,10 @@
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-
+  font-size: clamp(1.4rem,2.2vw,2rem);
   text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.50),
-    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
+    0 0 10px rgba(var(--forge-hotmetal-rgb),.50),
+    0 0 20px rgba(var(--forge-hotmetal-rgb),.35);
 }
 
 
@@ -85,18 +83,20 @@
 
 .forge-nav a {
   font-family: "Orbitron", sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  color: var(--forge-subtext);
+  font-size: .9rem;
   font-weight: 600;
+  letter-spacing: .5px;
   text-transform: uppercase;
+
+  color: var(--forge-subtext);
   text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+
+  transition: color .25s ease, text-shadow .25s ease;
 }
 
 .forge-nav a:hover {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),.6);
 }
 
 
@@ -110,29 +110,28 @@
 }
 
 .dropdown-parent {
-  background: transparent;
+  background: none;
   border: none;
   padding: 0;
   cursor: pointer;
 
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: .25rem;
 }
 
 .dropdown-parent-text {
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.9rem;
+  font-family: "Orbitron";
+  font-size: .9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   color: var(--forge-subtext);
 }
 
 .dropdown-arrow {
-  font-size: 0.8rem;
+  font-size: .8rem;
   color: var(--forge-subtext);
-  transition: 0.25s ease;
+  transition: .25s ease;
 }
 
 
@@ -140,29 +139,25 @@
    DESKTOP DROPDOWN
 ------------------------------------------------------ */
 @media (min-width: 761px) {
-  .nav-toggle-btn {
-    display: none;
-  }
+  .nav-toggle-btn { display: none; }
 
-  .dropdown-parent {
-    pointer-events: none;
-  }
+  .dropdown-parent { pointer-events: none; }
 
   .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 100%; left: 0;
 
     min-width: 260px;
-    padding: 0.5rem 0;
-    background: rgba(5, 8, 16, 0.98);
-    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+    padding: .5rem 0;
+
+    background: rgba(5,8,16,.98);
+    border: 1px solid rgba(var(--forge-accent-rgb),.25);
     border-radius: 8px;
 
     opacity: 0;
     transform: translateY(6px);
-    transition: 0.25s ease;
+    transition: .25s ease;
     z-index: 9999;
   }
 
@@ -172,16 +167,16 @@
     transform: translateY(0);
 
     box-shadow:
-      0 0 12px rgba(10, 109, 255, 0.45),
-      0 0 4px rgba(10, 109, 255, 0.65) inset;
+      0 0 12px rgba(10,109,255,.45),
+      0 0 4px rgba(10,109,255,.65) inset;
   }
 
   .dropdown-content a {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.55rem 1rem;
-    font-family: "Titillium Web", sans-serif;
+    gap: .35rem;
+    padding: .55rem 1rem;
+    font-family: "Titillium Web";
     color: var(--forge-text);
   }
 
@@ -193,18 +188,17 @@
 
 
 /* -----------------------------------------------------
-   MOBILE NAVIGATION (v10 — stable)
+   MOBILE NAVIGATION (v11)
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
-  /* HAMBURGER BUTTON */
-  .nav-toggle-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* ---------- PERFECT CSS HAMBURGER ---------- */
 
+  .nav-toggle-btn {
+    display: block;
     width: 36px;
     height: 28px;
+
     background: none;
     border: none;
     cursor: pointer;
@@ -213,101 +207,106 @@
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
+
     z-index: 3000;
+    overflow: visible;
   }
 
-  .forge-burger {
-    width: 34px;
-    height: 28px;
+  .nav-toggle-btn span,
+  .nav-toggle-btn span::before,
+  .nav-toggle-btn span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+    background: var(--forge-hotmetal);
+    border-radius: 2px;
+
+    transform-origin: center;
+    transition: transform .3s ease, opacity .3s ease, top .3s ease;
   }
 
-  .forge-burger .bar {
-    fill: #F5B841;
-    transition: 0.35s ease;
-    filter: drop-shadow(0 0 6px rgba(245, 184, 65, 0.8));
+  /* Middle */
+  .nav-toggle-btn span {
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  /* X transform */
-  .nav-toggle-btn.open .bar-top {
-    transform: translateY(9px) rotate(45deg);
-  }
-  .nav-toggle-btn.open .bar-middle {
-    opacity: 0;
-  }
-  .nav-toggle-btn.open .bar-bottom {
-    transform: translateY(-9px) rotate(-45deg);
+  /* Top */
+  .nav-toggle-btn span::before {
+    top: -10px;
   }
 
-  /* cool-down color */
-  .nav-toggle-btn.open .bar {
-    fill: #3ca2ff;
-    filter: drop-shadow(0 0 8px rgba(60, 162, 255, 0.9));
+  /* Bottom */
+  .nav-toggle-btn span::after {
+    top: 10px;
   }
 
+  /* X pose */
+  .nav-toggle-btn.open span {
+    background: transparent;
+  }
+  .nav-toggle-btn.open span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  .nav-toggle-btn.open span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
 
-  /* MOBILE NAV WRAPPER */
+  /* ---------- MOBILE MENU ---------- */
   .forge-nav {
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 100%; left: 0;
     width: 100%;
 
     background: #050810;
-    border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+    border-top: 1px solid rgba(var(--forge-accent-rgb),.25);
 
     flex-direction: column;
     align-items: center;
     overflow: hidden;
 
     max-height: 0;
-    transition: max-height 0.35s ease-in-out;
+    transition: max-height .35s ease-in-out;
   }
 
   .forge-nav.open {
     max-height: 650px;
-    padding: 0.4rem 0 0.6rem;
+    padding: .4rem 0 .6rem;
   }
 
-
-  /* TOP LEVEL ITEMS */
   .forge-nav > a,
   .dropdown-parent {
     width: 100%;
-    padding: 0.35rem 0;
+    padding: .35rem 0;
+
+    font-size: 1rem;
+    color: var(--forge-subtext);
 
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    font-size: 1rem;
-    text-align: center;
-    color: var(--forge-subtext);
   }
 
-  .dropdown-parent.active {
-    color: var(--forge-hotmetal);
-  }
-
-  /* SERVICES block full-width */
   .nav-item.dropdown {
     width: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  /* SUBMENU — STACKED, CENTERED */
   .dropdown-content {
-    width: 100% !important;
-    max-width: 100%;
-    position: static !important;
-    text-align: center;
+    width: 100%;
+    position: static;
     padding: 0;
 
-    overflow: hidden;
     max-height: 0;
-    transition: max-height 0.3s ease;
+    overflow: hidden;
+    transition: max-height .3s ease;
 
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0,0,0,.35);
   }
 
   .dropdown-content.open {
@@ -316,15 +315,17 @@
 
   .dropdown-content a {
     width: 100%;
-    padding: 0.45rem 0;
+    padding: .45rem 0;
+    text-align: center;
     color: var(--forge-text);
   }
+
 }
 
-/* ============================================================
-   🔨 M.R. TechForge — Hammer Smash Animation for Burger
-   ============================================================ */
 
+/* -----------------------------------------------------
+   🔨 HAMMER & SPARKS (compatible with v11 menu)
+------------------------------------------------------ */
 @keyframes hammerSwing {
   0%   { transform: rotate(-60deg) translateY(-10px); opacity: 0; }
   20%  { transform: rotate(-30deg) translateY(0); opacity: 1; }
@@ -335,17 +336,11 @@
 }
 
 @keyframes sparksBurst {
-  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  0%   { opacity: 0; transform: translateY(0) scale(.5); }
   30%  { opacity: 1; transform: translateY(-6px) scale(1.1); }
-  100% { opacity: 0; transform: translateY(-12px) scale(0.4); }
+  100% { opacity: 0; transform: translateY(-12px) scale(.4); }
 }
 
-.nav-toggle-btn {
-  position: relative;
-  overflow: visible; /* so the hammer isn't clipped */
-}
-
-/* ----- HAMMER GRAPHIC (CSS pseudo-element) ----- */
 .nav-toggle-btn::after {
   content: "🔨";
   position: absolute;
@@ -353,11 +348,9 @@
   top: -6px;
   font-size: 26px;
   opacity: 0;
-  transform-origin: right center;
   pointer-events: none;
 }
 
-/* ----- SPARK PARTICLES ----- */
 .nav-toggle-btn::before {
   content: "✨";
   position: absolute;
@@ -368,21 +361,21 @@
   pointer-events: none;
 }
 
-/* ----- TRIGGER HAMMER & SPARKS WHEN OPENING ----- */
 .nav-toggle-btn.open::after {
-  animation: hammerSwing 0.7s ease-out forwards;
+  animation: hammerSwing .7s ease-out forwards;
 }
 
 .nav-toggle-btn.open::before {
-  animation: sparksBurst 0.4s ease-out forwards;
+  animation: sparksBurst .4s ease-out forwards;
 }
+
 
 /* -----------------------------------------------------
    ANIMATIONS
 ------------------------------------------------------ */
 @keyframes forgeHeaderGlow {
-  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
-  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
+  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), .18); }
+  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), .32); }
 }
 
 @keyframes forgeTitleSpectrum {
