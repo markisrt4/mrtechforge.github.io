@@ -1,57 +1,51 @@
-// =====================================================
-//  M.R. TECHFORGE — MOBILE NAVIGATION (v12.3)
-//  Adds idle forge animations (pulse + sparks)
-// =====================================================
-
+// assets/js/mobile-nav.js
 document.addEventListener("DOMContentLoaded", () => {
-  const burgerBtn = document.querySelector(".nav-toggle-btn");
+  const burger = document.querySelector(".nav-toggle-btn");
   const nav = document.querySelector(".forge-nav");
-  const serviceParent = document.querySelector(".dropdown-parent");
-  const serviceMenu = document.querySelector(".dropdown-content");
+  const dropdownParent = document.querySelector(".dropdown-parent");
+  const dropdownContent = document.querySelector(".dropdown-content");
 
-  if (!burgerBtn || !nav) return;
+  if (!burger || !nav) {
+    return;
+  }
 
-  // ---------------------------------------------------
-  // MAIN BURGER TOGGLE
-  // ---------------------------------------------------
-  burgerBtn.addEventListener("click", () => {
-    burgerBtn.classList.toggle("open");
-    nav.classList.toggle("open");
+  // Toggle main mobile nav
+  burger.addEventListener("click", () => {
+    const nowOpen = !burger.classList.contains("open");
+
+    burger.classList.toggle("open", nowOpen);
+    nav.classList.toggle("open", nowOpen);
+
+    // If closing the nav, also close the Services submenu
+    if (!nowOpen && dropdownContent && dropdownParent) {
+      dropdownContent.classList.remove("open");
+      dropdownParent.classList.remove("active");
+    }
   });
 
-  // ---------------------------------------------------
-  // SERVICES ACCORDION (mobile only)
-  // ---------------------------------------------------
-  if (serviceParent && serviceMenu) {
-    serviceParent.addEventListener("click", () => {
-      if (window.innerWidth > 760) return;
-      serviceParent.classList.toggle("active");
-      serviceMenu.classList.toggle("open");
+  // Mobile-only toggle for Services submenu
+  if (dropdownParent && dropdownContent) {
+    dropdownParent.addEventListener("click", (evt) => {
+      // Only intercept click on mobile
+      if (window.matchMedia("(max-width: 760px)").matches) {
+        evt.preventDefault();
+
+        const isOpen = dropdownContent.classList.contains("open");
+        dropdownContent.classList.toggle("open", !isOpen);
+        dropdownParent.classList.toggle("active", !isOpen);
+      }
     });
   }
 
-  // ---------------------------------------------------
-  // IDLE ANIMATION ENGINE
-  // ---------------------------------------------------
-  function triggerIdleAnimation() {
-    if (burgerBtn.classList.contains("open")) {
-      return setTimeout(triggerIdleAnimation, 4000);
+  // On resize back to desktop, reset all mobile state
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) {
+      burger.classList.remove("open");
+      nav.classList.remove("open");
+      if (dropdownContent && dropdownParent) {
+        dropdownContent.classList.remove("open");
+        dropdownParent.classList.remove("active");
+      }
     }
-
-    // pick a random idle effect
-    const effects = ["idle-pulse", "idle-flicker", "idle-spark"];
-    const effect = effects[Math.floor(Math.random() * effects.length)];
-
-    burgerBtn.classList.add(effect);
-
-    // remove the effect after animation finishes
-    setTimeout(() => burgerBtn.classList.remove(effect), 1600);
-
-    // schedule next random idle
-    const delay = 3000 + Math.random() * 4000; // 3–7 seconds
-    setTimeout(triggerIdleAnimation, delay);
-  }
-
-  // start idle loop
-  setTimeout(triggerIdleAnimation, 3500);
+  });
 });
