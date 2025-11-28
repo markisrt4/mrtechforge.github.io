@@ -1,8 +1,9 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v11.1)
-   • Desktop hover dropdown
-   • Mobile SVG hamburger + stacked submenu
-   • Hammer + sparks on open
+   M.R. TECHFORGE — NAVIGATION (v11.2 Stable)
+   • Correct burger bar spacing
+   • Perfect X alignment
+   • Hammer + sparks intact
+   • Idle flicker intact
    ===================================================== */
 
 
@@ -135,7 +136,7 @@
   transition: 0.25s ease;
 }
 
-/* child indicators */
+/* Child indicators */
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   color: var(--forge-hotmetal);
@@ -232,30 +233,31 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 3000;
-
-    /* allow hammer & sparks outside the box */
-    overflow: visible;
+    overflow: visible; /* allow hammer/sparks */
   }
 
+  /* *** FIXED BURGER SIZE *** */
   .forge-burger {
-    width: 28px;
-    height: 22px;
+    width: 36px;   /* matches SVG viewBox */
+    height: 26px;  /* matches SVG viewBox */
   }
 
   .forge-burger .bar {
     fill: #F5B841;
     transition: 0.3s ease;
+    transform-origin: center;
     filter: drop-shadow(0 0 5px rgba(245, 184, 65, 0.9));
   }
 
-  /* idle pulse / flicker */
+  /* idle flicker */
   .nav-toggle-btn:not(.open) .bar {
     animation: burgerIdlePulse 3.8s ease-in-out infinite;
   }
 
-  /* X transform */
+
+  /* PERFECT X SHAPE — ADJUSTED SPACING */
   .nav-toggle-btn.open .bar-top {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(4px) rotate(45deg);
   }
 
   .nav-toggle-btn.open .bar-middle {
@@ -263,9 +265,10 @@
   }
 
   .nav-toggle-btn.open .bar-bottom {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-4px) rotate(-45deg);
   }
 
+  /* blue color when X */
   .nav-toggle-btn.open .bar {
     fill: #3ca2ff;
     filter: drop-shadow(0 0 8px rgba(60, 162, 255, 0.95));
@@ -305,16 +308,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.4rem;
 
     font-size: 1rem;
-    line-height: 1.2;
-    text-align: center;
-
     color: var(--forge-subtext);
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    text-align: center;
   }
 
   .forge-nav .dropdown-parent.active {
@@ -326,62 +323,42 @@
     color: var(--forge-hotmetal);
   }
 
-  /* SERVICES block full-width + stacked children */
+
+  /* SUBMENU */
   .forge-nav .nav-item.dropdown {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-  }
-
-  .forge-nav .nav-item.dropdown .dropdown-parent {
-    justify-content: center;
   }
 
   .forge-nav .nav-item.dropdown .dropdown-content {
-    width: 100% !important;
+    width: 100%;
     max-width: 100%;
-    position: static !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-
+    position: static;
     margin: 0;
     padding: 0;
 
     background: rgba(0, 0, 0, 0.35);
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-
-    transform: none !important;
-    text-align: center;
-
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease;
   }
 
-  .forge-nav .nav-item.dropdown .dropdown-content.open {
+  .forge-nav .dropdown-content.open {
     max-height: 500px;
   }
 
-  .forge-nav .nav-item.dropdown .dropdown-content a {
+  .forge-nav .dropdown-content a {
     width: 100%;
     padding: 0.45rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 0.35rem;
-
     font-size: 0.95rem;
     color: var(--forge-text);
-    background: rgba(0, 0, 0, 0.35);
   }
 }
 
 
 /* ============================================================
-   🔨 Hammer + Sparks Animation for Burger (mobile)
+   🔨 Hammer + Sparks
 ============================================================ */
 @keyframes hammerSwing {
   0%   { transform: rotate(-60deg) translateY(-10px); opacity: 0; }
@@ -398,32 +375,14 @@
   100% { opacity: 0; transform: translateY(-12px) scale(0.4); }
 }
 
-/* idle flicker / pulse of burger bars */
 @keyframes burgerIdlePulse {
-  0%, 80% {
-    opacity: 1;
-    filter: drop-shadow(0 0 5px rgba(245, 184, 65, 0.8));
-  }
-  85% {
-    opacity: 0.4;
-    filter: drop-shadow(0 0 2px rgba(245, 184, 65, 0.3));
-  }
-  90% {
-    opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(245, 184, 65, 0.9));
-  }
-  100% {
-    opacity: 0.9;
-  }
+  0%, 80% { opacity: 1; }
+  85%     { opacity: 0.4; }
+  90%     { opacity: 1; }
+  100%    { opacity: 0.9; }
 }
 
-/* attach hammer + sparks to the button itself (mobile only) */
 @media (max-width: 760px) {
-  .nav-toggle-btn {
-    position: relative;
-  }
-
-  /* hammer */
   .nav-toggle-btn::after {
     content: "🔨";
     position: absolute;
@@ -431,11 +390,9 @@
     top: -10px;
     font-size: 24px;
     opacity: 0;
-    transform-origin: right center;
     pointer-events: none;
   }
 
-  /* sparks */
   .nav-toggle-btn::before {
     content: "✨";
     position: absolute;
