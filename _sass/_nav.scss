@@ -1,7 +1,8 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v9.2)
-   • Desktop hover dropdown
-   • Mobile hamburger + stacked submenu
+   M.R. TECHFORGE — NAVIGATION (v9.3 Final)
+   • Fully stable mobile/desktop
+   • Hamburger fixed to viewport
+   • Zero sliding / zero overflow
    ===================================================== */
 
 
@@ -9,40 +10,37 @@
    HEADER WRAPPER
 ------------------------------------------------------ */
 
-.forge-header,
-.header-inner {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  overflow: hidden;
-}
-
 .forge-header {
   position: sticky;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 1000;
 
   background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
-
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
+
+  overflow: hidden; /* critical */
 }
 
 .header-inner {
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.6rem 1rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
 }
 
 
 /* -----------------------------------------------------
    LOGO + WORDMARK
 ------------------------------------------------------ */
+
 .logo-link {
   display: flex;
   align-items: center;
@@ -81,8 +79,9 @@
 
 
 /* -----------------------------------------------------
-   BASE NAV
+   DESKTOP NAV
 ------------------------------------------------------ */
+
 .forge-nav {
   display: flex;
   gap: 1.4rem;
@@ -107,8 +106,9 @@
 
 
 /* -----------------------------------------------------
-   DROPDOWN BASE
+   DROPDOWNS (DESKTOP)
 ------------------------------------------------------ */
+
 .nav-item.dropdown {
   position: relative;
   display: flex;
@@ -120,9 +120,6 @@
   background: transparent;
   border: none;
   padding: 0;
-  margin: 0;
-  cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -146,13 +143,11 @@
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   color: var(--forge-hotmetal);
-  font-size: 1rem;
 }
 
 .dropdown-content a[data-grandchild="true"]::before {
   content: "»";
   color: var(--forge-accent);
-  font-size: 1rem;
 }
 
 .dropdown-overview {
@@ -160,14 +155,8 @@
   color: var(--forge-hotmetal) !important;
 }
 
-
-/* -----------------------------------------------------
-   DESKTOP DROPDOWN BEHAVIOR
------------------------------------------------------- */
 @media (min-width: 761px) {
-  .nav-toggle-btn {
-    display: none;
-  }
+  .nav-toggle-btn { display: none; }
 
   .dropdown-parent {
     pointer-events: none;
@@ -184,6 +173,7 @@
     background: rgba(5, 8, 16, 0.98);
     border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
     border-radius: 8px;
+
     opacity: 0;
     transform: translateY(6px);
     transition: 0.25s ease;
@@ -194,7 +184,6 @@
     display: block;
     opacity: 1;
     transform: translateY(0);
-
     box-shadow:
       0 0 12px rgba(10, 109, 255, 0.45),
       0 0 4px rgba(10, 109, 255, 0.65) inset;
@@ -207,7 +196,6 @@
 
   .dropdown-content a {
     display: flex;
-    align-items: center;
     gap: 0.35rem;
     padding: 0.55rem 1rem;
     font-family: "Titillium Web", sans-serif;
@@ -217,21 +205,23 @@
 
 
 /* -----------------------------------------------------
-   MOBILE NAVIGATION — v9.2
-   (More specific selectors to crush conflicts)
+   MOBILE NAV (v9.3)
+   Hamburger fixed to viewport — zero sliding
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
-  /* HAMBURGER BUTTON */
+  /* FIXED HAMBURGER — VIEWPORT LOCKED */
   .nav-toggle-btn {
-    display: block;
+    position: fixed !important;
+    top: 18px;
+    right: 18px;
     width: 32px;
     height: 24px;
+
     background: transparent;
     border: none;
     cursor: pointer;
-    position: relative;
-    z-index: 2000;
+    z-index: 5000;
   }
 
   .nav-toggle-btn span,
@@ -246,35 +236,17 @@
     transition: 0.3s ease;
   }
 
-  .nav-toggle-btn span {
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  .nav-toggle-btn span { top: 50%; transform: translateY(-50%); }
+  .nav-toggle-btn span::before { top: -9px; }
+  .nav-toggle-btn span::after { top: 9px; }
 
-  .nav-toggle-btn span::before {
-    top: -9px;
-  }
+  .nav-toggle-btn.open span { background: transparent; }
+  .nav-toggle-btn.open span::before { transform: rotate(45deg); top: 0; }
+  .nav-toggle-btn.open span::after  { transform: rotate(-45deg); top: 0; }
 
-  .nav-toggle-btn span::after {
-    top: 9px;
-  }
 
-  .nav-toggle-btn.open span {
-    background: transparent;
-  }
-
-  .nav-toggle-btn.open span::before {
-    transform: rotate(45deg);
-    top: 0;
-  }
-
-  .nav-toggle-btn.open span::after {
-    transform: rotate(-45deg);
-    top: 0;
-  }
-
-  /* MOBILE NAV WRAPPER */
-  .forge-header .forge-nav {
+  /* MOBILE NAV DROPS DOWN */
+  .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
@@ -283,120 +255,60 @@
     background: #050810;
     border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
     flex-direction: column;
-    align-items: center;
     overflow: hidden;
 
     max-height: 0;
     transition: max-height 0.35s ease-in-out;
-  }
-
-  .forge-header .forge-nav.open {
-    max-height: 650px;
-    padding: 0.4rem 0 0.6rem;
-  }
-
-  /* TOP-LEVEL ITEMS */
-  .forge-header .forge-nav > a,
-  .forge-header .forge-nav .dropdown-parent {
-    padding: 0.35rem 0;
-    width: 100%;
-    font-size: 1rem;
-    line-height: 1.2;
-
-    color: var(--forge-subtext);
     text-align: center;
+  }
 
-    display: flex;
+  .forge-nav.open {
+    max-height: 650px;
+    padding: 0.6rem 0 0.8rem;
+  }
+
+
+  /* TOP LEVEL */
+  .forge-nav > a,
+  .dropdown-parent {
+    padding: 0.45rem 0;
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
-
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    color: var(--forge-subtext);
   }
 
-  .forge-header .forge-nav .dropdown-parent.active {
-    color: var(--forge-hotmetal);
-  }
-
-  .forge-header .forge-nav .dropdown-parent.active .dropdown-arrow {
+  .dropdown-parent.active { color: var(--forge-hotmetal); }
+  .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
     color: var(--forge-hotmetal);
   }
 
-  /* Ensure the Services block uses full width and stacks */
-  .forge-header .forge-nav .nav-item.dropdown {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .forge-header .forge-nav .nav-item.dropdown .dropdown-parent {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* SUBMENU: FULL-WIDTH, STACKED, CENTERED */
-  .forge-header .forge-nav .nav-item.dropdown .dropdown-content {
+  /* SUBMENU */
+  .dropdown-content {
     position: static !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0;
-    padding: 0;
-
-    background: rgba(0, 0, 0, 0.35);
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-
-    transform: none !important;
-    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    max-height: 0;
 
     overflow: hidden;
-    max-height: 0;
+    background: rgba(0, 0, 0, 0.35);
     transition: max-height 0.3s ease;
   }
 
-  .forge-header .forge-nav .nav-item.dropdown .dropdown-content.open {
+  .dropdown-content.open {
     max-height: 500px;
   }
 
-  .forge-header .forge-nav .nav-item.dropdown .dropdown-content a {
+  .dropdown-content a {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 0.35rem;
-
-    font-size: 0.95rem;
     padding: 0.45rem 0;
     color: var(--forge-text);
-
-    background: rgba(0, 0, 0, 0.35);
   }
 
-/* LOCK HAMBURGER TO THE RIGHT, ALWAYS */
-  .forge-header {
-    position: relative;
-  }
-
-  .nav-toggle-btn {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3000; /* always above */
-  }
-
-  /* Ensure logo doesn't collide with it */
+  /* Give header room so logo doesn't overlap burger */
   .header-inner {
-    position: relative;
-    padding-right: 3.2rem; /* make room for burger */
+    padding-right: 3.5rem;
   }
 }
 
@@ -404,6 +316,7 @@
 /* -----------------------------------------------------
    ANIMATIONS
 ------------------------------------------------------ */
+
 @keyframes forgeHeaderGlow {
   0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
   100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
