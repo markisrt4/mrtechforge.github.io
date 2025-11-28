@@ -221,8 +221,8 @@
     justify-content: center;
     align-items: center;
 
-    width: 34px;
-    height: 28px;
+    width: 36px;
+    height: 32px;
     background: none;
     border: none;
     cursor: pointer;
@@ -255,7 +255,7 @@
 
   /* X transform */
   .nav-toggle-btn.open .bar-top {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
   }
 
   .nav-toggle-btn.open .bar-middle {
@@ -263,7 +263,7 @@
   }
 
   .nav-toggle-btn.open .bar-bottom {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .nav-toggle-btn.open .bar {
