@@ -3,6 +3,15 @@
    Clean • Stable • Mobile-safe • Desktop-perfect
    ===================================================== */
 
+/* Hide desktop nav completely on mobile */
+@media (max-width: 760px) {
+  .forge-nav {
+    display: none !important;
+  }
+  .forge-nav.open {
+    display: flex !important;
+  }
+}
 
 /* -----------------------------------------------------
    HEADER WRAPPER
