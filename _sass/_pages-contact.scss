@@ -1,278 +1,400 @@
 /* =========================================================
-   CONTACT PAGE — Full Styling (Blueprint + CRT Effects)
+   CONTACT PAGE — FORGE STYLE
+   Scoped to .forge-contact-page
    ========================================================= */
 
-.contact-container {
-  max-width: 900px;
+.forge-contact-page {
+  max-width: 960px;
   margin: 0 auto;
-  padding: 1.2rem;
+  padding: 2rem 1.2rem 3.5rem;
 }
 
+/* --- Intro Heading --- */
 
-/* ------------------------------
-   PAGE INTRO
------------------------------- */
-.page-intro {
+.forge-contact-page .page-intro {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
-.page-intro h1 {
+.forge-contact-page .page-intro h1 {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(1.8rem, 4.2vw, 2.6rem);
+  margin: 0 0 0.75rem;
   color: var(--forge-hotmetal);
-  margin-bottom: 0.5rem;
 }
 
-.page-intro .tagline {
+.forge-contact-page .page-intro .forge-highlight {
+  display: block;
+  font-size: 0.95em;
+}
+
+.forge-contact-page .page-intro .tagline {
   color: var(--forge-subtext);
-  font-size: 1.1rem;
-  opacity: 0.85;
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto;
 }
-
-
 
 /* =========================================================
-   FORGE CARDS
+   TERMINAL MODES (BUTTONS)
    ========================================================= */
-.forge-card {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.18),
-              inset 0 0 12px rgba(var(--forge-accent-rgb), 0.18);
 
-  border-radius: 18px;
-  padding: 1.8rem 1.4rem;
-  margin: 2.2rem 0;
-
+.forge-terminal-modes {
+  margin: 1.5rem auto 1rem;
+  text-align: center;
   max-width: 900px;
 }
 
-.forge-card h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.5);
-}
-
-.forge-card p,
-.forge-card li,
-.forge-card blockquote {
-  line-height: 1.55;
-  font-size: 1.05rem;
-}
-
-.forge-card blockquote {
-  border-left: 3px solid var(--forge-hotmetal);
-  padding-left: 0.8rem;
-  margin-top: 1.2rem;
-  color: var(--forge-hotmetal);
-  opacity: 0.85;
-}
-
-
-
-/* =========================================================
-   TERMINAL BLOCKS (CRT EFFECTS)
-   ========================================================= */
-.forge-terminal {
-  background: rgba(5, 5, 6, 0.7);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-  box-shadow:
-    0 0 14px rgba(var(--forge-accent-rgb), 0.28),
-    inset 0 0 10px rgba(var(--forge-accent-rgb), 0.25);
-
-  padding: 1.4rem 1rem;
-  border-radius: 12px;
-  margin: 2.2rem 0;
-
-  position: relative;
-  overflow: hidden;
-}
-
-.forge-terminal code {
-  display: block;
-  font-family: "Fira Mono", monospace;
-  white-space: pre-wrap;
-  color: #00ff55;
+.forge-terminal-modes .modes-heading {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-
-
-/* ------------------------------
-   CRT EFFECTS
------------------------------- */
-
-/* SCANLINE MODE */
-.crt[data-style="scanline"]::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 255, 120, 0.12) 0px,
-    rgba(0, 255, 120, 0.12) 2px,
-    rgba(0, 0, 0, 0.1) 3px
-  );
-
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-/* GRID MODE */
-.crt[data-style="grid"]::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 255, 150, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 150, 0.15) 1px, transparent 1px);
-  background-size: 20px 20px;
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
-/* RADAR MODE */
-.crt[data-style="radar"]::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  background: radial-gradient(circle, rgba(0, 255, 120, 0.25), transparent 60%);
-  animation: radarSweep 3s linear infinite;
-  transform-origin: center;
-  pointer-events: none;
-}
-
-@keyframes radarSweep {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* CLEAN MODE — nothing */
-
-
-
-/* =========================================================
-   CRT MODE SWITCHER
-   ========================================================= */
-.crt-controls {
-  margin: 2rem 0 2.5rem;
-  text-align: center;
-}
-
-.crt-controls h3 {
   color: var(--forge-hotmetal);
   margin-bottom: 0.6rem;
 }
 
-.crt-buttons {
+.modes-buttons {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
   flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
-.crt-btn {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.4);
+.terminal-mode-btn {
+  min-width: 6.2rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.5);
+  background: rgba(3, 10, 24, 0.95);
   color: var(--forge-text);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: 0.25s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.crt-btn:hover {
-  background: rgba(var(--forge-accent-rgb), 0.25);
+.terminal-mode-btn.is-active {
+  background: radial-gradient(circle at 30% 20%, var(--forge-hotmetal), #c2881e);
+  color: #000;
+  border-color: var(--forge-hotmetal);
+  box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.8);
 }
-
-
 
 /* =========================================================
-   MICHIGAN BLUEPRINT SECTION
+   TERMINAL PANELS
    ========================================================= */
 
-.mi-blueprint {
-  margin: 3rem 0;
-  padding: 2rem 1rem;
+.forge-terminal-panel {
+  position: relative;
+  margin: 1.6rem auto 2.6rem;
+  padding: 1.8rem 1.4rem;
+  border-radius: 26px;
+  max-width: 900px;
+  width: min(100%, 900px);
 
-  background: radial-gradient(circle at center,
-    rgba(10, 25, 45, 0.35),
-    rgba(0, 0, 0, 0.85)
-  );
-
-  border-radius: 18px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-
+  background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
   box-shadow:
-    0 0 20px rgba(var(--forge-accent-rgb), 0.2),
-    inset 0 0 20px rgba(var(--forge-accent-rgb), 0.25);
+    0 0 25px rgba(0, 184, 212, 0.2),
+    0 0 40px rgba(0, 184, 212, 0.15) inset;
+  overflow: hidden;
+}
+
+.forge-terminal-screen {
+  position: relative;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 184, 212, 0.55);
+  box-shadow:
+    0 0 25px rgba(0, 184, 212, 0.5),
+    0 0 40px rgba(0, 20, 60, 0.9) inset;
+
+  overflow-x: auto;
+}
+
+.forge-terminal-screen code {
+  display: block;
+  white-space: pre-wrap;
+  font-family: "Courier New", monospace;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #26e0ff;
+}
+
+/* --- CRT overlay base --- */
+
+.forge-terminal-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+
+/* =========================================================
+   CRT MODE VARIANTS
+   ========================================================= */
+
+/* Scanline (default) */
+.forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.15),
+      rgba(0, 255, 255, 0.15) 1px,
+      transparent 2px,
+      transparent 3px
+    );
+}
+
+/* Grid */
+.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.17),
+      rgba(0, 255, 255, 0.17) 1px,
+      transparent 3px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 255, 255, 0.17),
+      rgba(0, 255, 255, 0.17) 1px,
+      transparent 3px,
+      transparent 4px
+    );
+}
+
+/* Radar (slight green tint + radial glow) */
+.forge-terminal-panel.crt-radar .forge-terminal-screen {
+  background: radial-gradient(circle at 20% 15%, #003322 0%, #000 70%);
+}
+
+.forge-terminal-panel.crt-radar .forge-terminal-screen code {
+  color: #4efc8b;
+}
+
+.forge-terminal-panel.crt-radar .forge-terminal-screen::before {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 128, 0.3), transparent 60%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 128, 0.18),
+      rgba(0, 255, 128, 0.18) 1px,
+      transparent 3px,
+      transparent 4px
+    );
+}
+
+/* Clean mode (almost no overlay) */
+.forge-terminal-panel.crt-clean .forge-terminal-screen::before {
+  opacity: 0.08;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 65%);
+}
+
+/* =========================================================
+   GENERIC FORGE CARDS (for this page)
+   ========================================================= */
+
+.forge-contact-page .forge-card {
+  margin: 1.8rem auto 2.6rem;
+  padding: 2rem 1.6rem;
+  border-radius: 26px;
+  max-width: 900px;
+  width: min(100%, 900px);
+
+  background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
+  box-shadow:
+    0 0 25px rgba(10, 109, 255, 0.22),
+    0 0 40px rgba(0, 0, 0, 0.8) inset;
+}
+
+.forge-contact-page .forge-card h2 {
+  text-align: left;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(1.1rem, 3.2vw, 1.5rem);
+  margin: 0 0 0.9rem;
+  color: var(--forge-hotmetal);
+}
+
+.forge-contact-page .forge-card p,
+.forge-contact-page .forge-card li,
+.forge-contact-page .forge-card blockquote {
+  font-family: "Titillium Web", sans-serif;
+  color: var(--forge-text);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.forge-contact-page .forge-card p {
+  margin-bottom: 0.9rem;
+}
+
+.forge-contact-page .forge-card ul.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.forge-contact-page .forge-card ul.contact-list li {
+  margin-bottom: 0.4rem;
+}
+
+.forge-contact-page .forge-card a {
+  color: var(--forge-accent);
+}
+
+.forge-contact-page .forge-card blockquote {
+  margin: 0.8rem 0 0;
+  padding-left: 0.8rem;
+  border-left: 2px solid rgba(var(--forge-hotmetal-rgb), 0.65);
+  font-style: italic;
+  color: var(--forge-subtext);
+}
+
+/* =========================================================
+   LOCATION / MICHIGAN CARD
+   ========================================================= */
+
+.forge-location-card {
+  margin: 2.2rem auto 0;
+  padding: 2rem 1.6rem 2.4rem;
+  border-radius: 28px;
+  max-width: 900px;
+  width: min(100%, 900px);
+
+  background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
+  box-shadow:
+    0 0 28px rgba(0, 184, 212, 0.28),
+    0 0 50px rgba(0, 0, 0, 0.85) inset;
 
   text-align: center;
 }
 
-.mi-title {
+.forge-location-card h2 {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
   color: var(--forge-hotmetal);
-  font-size: 1.8rem;
-  text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.45);
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
 }
 
-.mi-subtitle {
-  color: var(--forge-subtext);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  line-height: 1.55;
+.forge-location-map {
+  position: relative;
+  margin: 0 auto 1.4rem;
+  width: min(100%, 420px);
+  aspect-ratio: 1 / 1;
+  border-radius: 26px;
+  padding: 0.4rem;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 184, 212, 0.26), transparent 70%),
+    radial-gradient(circle at top, #04101e 0%, #010308 65%, #000 100%);
+  box-shadow:
+    0 0 18px rgba(0, 184, 212, 0.45),
+    0 0 34px rgba(0, 184, 212, 0.25) inset;
 }
 
-.mi-wrapper {
+/* Blueprint grid on the map */
+.forge-location-map::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 20px;
+  opacity: 0.32;
+  mix-blend-mode: screen;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 180, 255, 0.45),
+      rgba(0, 180, 255, 0.45) 1px,
+      transparent 11px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 180, 255, 0.45),
+      rgba(0, 180, 255, 0.45) 1px,
+      transparent 11px,
+      transparent 12px
+    );
+}
+
+.forge-location-map svg {
   position: relative;
   width: 100%;
-  max-width: 420px;
-  margin: 0 auto 1.6rem;
+  height: 100%;
 }
 
-.mi-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 180, 255, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 180, 255, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.35;
-  border-radius: 8px;
-}
-
-.mi-map-svg {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
-}
-
+/* Michigan outline */
 .mi-outline {
-  fill: rgba(0, 0, 0, 0.5);
-  stroke: #00aaff;
-  stroke-width: 3;
+  fill: none;
+  stroke: #35c7ff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 7px rgba(0, 184, 212, 0.8));
 }
 
-.mi-blip {
-  fill: #00ffaa;
-  filter: drop-shadow(0 0 8px #00ffaa);
-  animation: pulseBlip 1.5s ease-in-out infinite;
+.mi-outline.mi-up {
+  opacity: 0.7;
 }
 
-@keyframes pulseBlip {
-  0% { r: 6; opacity: 0.8; }
-  50% { r: 10; opacity: 1; }
-  100% { r: 6; opacity: 0.8; }
+/* Metro Detroit dot + pulse */
+.mi-pulse-dot {
+  fill: #00ffb3;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 179, 0.9));
+  animation: miPulse 3.4s ease-out infinite;
 }
 
-.mi-footnote {
-  margin-top: 1rem;
-  opacity: 0.85;
+.forge-location-text {
+  font-family: "Titillium Web", sans-serif;
   color: var(--forge-text);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   MISC
+   ========================================================= */
+
+@keyframes miPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Slight 3D tilt on hover for larger screens */
+@media (min-width: 780px) {
+  .forge-location-map:hover {
+    transform: perspective(800px) rotateX(8deg);
+    box-shadow:
+      0 0 26px rgba(0, 184, 212, 0.5),
+      0 30px 60px rgba(0, 0, 0, 0.7);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
 }
