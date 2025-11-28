@@ -1,60 +1,63 @@
-/* =========================================================
-   M.R. TECHFORGE — CONTACT PAGE EFFECTS
-   (CRT Modes + Typewriter Terminal)
-   ========================================================= */
-
+// Contact Page Effects: Terminal Modes + Copy Button
 document.addEventListener("DOMContentLoaded", () => {
+  const modeButtons = document.querySelectorAll(".terminal-mode-btn");
+  const terminals = document.querySelectorAll(".forge-terminal-panel");
+  const copyBtn = document.getElementById("copy-template");
+  const emailCode = document.getElementById("email-template-code");
 
-  /* -----------------------------------------
-     TYPEWRITER EFFECT FOR ALL TERMINALS
-  ----------------------------------------- */
-  const terminals = document.querySelectorAll(".forge-terminal code");
-
-  terminals.forEach((block, index) => {
-    const text = block.innerText;
-    block.innerText = "";
-
-    let delay = 0;
-    [...text].forEach((char, i) => {
-      setTimeout(() => {
-        block.innerText += char;
-      }, index * 300 + i * 18);
-    });
-  });
-
-
-  /* -----------------------------------------
-     CRT MODE SWITCHER
-  ----------------------------------------- */
-  const buttons = document.querySelectorAll(".crt-btn");
-
-  buttons.forEach(btn => {
+  // -------------------------------
+  // TERMINAL DISPLAY MODE SWITCHER
+  // -------------------------------
+  modeButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const mode = btn.dataset.mode;
-      const crtBlocks = document.querySelectorAll(".forge-terminal.crt");
+      const mode = btn.dataset.mode || "scanline";
 
-      crtBlocks.forEach(block => {
-        if (mode === "clean") {
-          block.removeAttribute("data-style");
-        } else {
-          block.setAttribute("data-style", mode);
+      // Set active button
+      modeButtons.forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+
+      // Apply mode to all terminal panels
+      terminals.forEach((panel) => {
+        panel.classList.remove("crt-scanline", "crt-grid", "crt-radar", "crt-clean");
+
+        switch (mode) {
+          case "grid":
+            panel.classList.add("crt-grid");
+            break;
+          case "radar":
+            panel.classList.add("crt-radar");
+            break;
+          case "clean":
+            panel.classList.add("crt-clean");
+            break;
+          default:
+            panel.classList.add("crt-scanline");
         }
       });
     });
   });
 
+  // -------------------------------
+  // COPY TEMPLATE BUTTON
+  // -------------------------------
+  if (copyBtn && emailCode) {
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(emailCode.innerText.trim());
 
-  /* -----------------------------------------
-     COPY EMAIL TEMPLATE
-  ----------------------------------------- */
-  const copyBtn = document.querySelector("#copy-template");
-  const emailTemplate = document.querySelector("#email-template code");
+        const original = copyBtn.textContent;
+        copyBtn.textContent = "Copied!";
+        copyBtn.disabled = true;
 
-  if (copyBtn) {
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(emailTemplate.innerText);
-      copyBtn.innerText = "Copied!";
-      setTimeout(() => (copyBtn.innerText = "Copy Template"), 1500);
+        setTimeout(() => {
+          copyBtn.textContent = original;
+          copyBtn.disabled = false;
+        }, 2000);
+      } catch (err) {
+        console.error("Clipboard failure:", err);
+        copyBtn.textContent = "Error";
+        setTimeout(() => (copyBtn.textContent = "Copy Template"), 2000);
+      }
     });
   }
 });
