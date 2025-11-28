@@ -3,9 +3,11 @@
    ========================================================= */
 
 .forge-contact-page {
-  max-width: 960px;
-  margin: 0 auto;
   padding: 2rem 1.2rem 3.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 900px;
 }
 
 /* =========================================================
@@ -20,13 +22,14 @@
 .forge-contact-page .page-intro h1 {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: clamp(1.8rem, 4.2vw, 2.6rem);
+  letter-spacing: 0.08em;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
   margin: 0 0 0.75rem;
   color: var(--forge-hotmetal);
   white-space: nowrap;
   overflow-wrap: normal;
-  word-break: keep-all;
+  word-break: break-word;
+  text-align: center;
 }
 
 @media (max-width: 420px) {
@@ -111,8 +114,8 @@
 
   background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
   box-shadow:
-    0 0 12px rgba(0, 184, 212, 0.18),
-    0 0 20px rgba(0, 184, 212, 0.12) inset;
+    0 0 6px rgba(0, 184, 212, 0.18),
+    0 0 10px rgba(0, 184, 212, 0.12) inset;
   overflow: hidden;
 }
 
