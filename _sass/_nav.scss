@@ -458,3 +458,89 @@
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ============================================================
+   M.R. TECHFORGE — Safe Smooth Transitions Patch (v10.0-S)
+   Pure polish. No layout changes. No JS changes.
+   ============================================================ */
+
+/* -----------------------------------------
+   Shared Transition Defaults
+----------------------------------------- */
+.forge-header,
+.forge-nav a,
+.dropdown-parent,
+.dropdown-content,
+.nav-toggle-btn,
+.nav-toggle-btn .bar,
+.forge-burger .bar,
+.dropdown-arrow {
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease,
+    filter 0.25s ease,
+    text-shadow 0.25s ease,
+    transform 0.35s ease;
+}
+
+/* -----------------------------------------
+   Desktop dropdown fade + soften
+----------------------------------------- */
+@media (min-width: 761px) {
+  .dropdown-content {
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .nav-item.dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -----------------------------------------
+   Mobile menu slide-down smoothing
+----------------------------------------- */
+@media (max-width: 760px) {
+  .forge-nav {
+    transition:
+      max-height 0.45s ease-in-out,
+      padding 0.35s ease;
+  }
+}
+
+/* -----------------------------------------
+   Burger bar smoothness
+----------------------------------------- */
+.forge-burger .bar {
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease,
+    fill 0.35s ease,
+    filter 0.35s ease;
+}
+
+/* -----------------------------------------
+   Hammer + sparks smoothing
+----------------------------------------- */
+.nav-toggle-btn::after,
+.nav-toggle-btn::before {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* -----------------------------------------
+   Idle "breathing" glow — subtle, safe
+----------------------------------------- */
+@keyframes forgeIdlePulse {
+  0%   { filter: drop-shadow(0 0 4px rgba(245,184,65,0.45)); }
+  50%  { filter: drop-shadow(0 0 9px rgba(245,184,65,0.85)); }
+  100% { filter: drop-shadow(0 0 4px rgba(245,184,65,0.45)); }
+}
+
+.nav-toggle-btn .bar {
+  animation: forgeIdlePulse 3.8s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
