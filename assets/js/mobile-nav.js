@@ -1,51 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.querySelector(".nav-toggle-btn");
   const nav = document.querySelector(".forge-nav");
-  const toggleBtn = document.querySelector(".nav-toggle-btn");
-  const dropdownParents = document.querySelectorAll(".dropdown-parent");
+  const dropdownParent = document.querySelector(".dropdown-parent");
+  const dropdownContent = document.querySelector(".dropdown-content");
 
-  /* ---------------------------------------------
-     MOBILE HAMBURGER TOGGLE
-  --------------------------------------------- */
-  if (toggleBtn && nav) {
-    toggleBtn.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("open");
-      toggleBtn.classList.toggle("open", isOpen);
-    });
-  }
-
-  /* ---------------------------------------------
-     MOBILE ACCORDION — SERVICES SUBMENU
-  --------------------------------------------- */
-  dropdownParents.forEach((parent) => {
-    parent.addEventListener("click", (e) => {
-      // Desktop shouldn't toggle accordion
-      if (window.innerWidth > 760) return;
-
-      e.preventDefault();
-      const content = parent.nextElementSibling;
-
-      parent.classList.toggle("active");
-
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
+  /* BURGER TOGGLE */
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("open");
+    nav.classList.toggle("open");
   });
 
-  /* ---------------------------------------------
-     RESET MOBILE STATE ON DESKTOP RESIZE
-  --------------------------------------------- */
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 760) {
-      nav.classList.remove("open");
-      toggleBtn?.classList.remove("open");
-
-      dropdownParents.forEach((parent) => parent.classList.remove("active"));
-      document
-        .querySelectorAll(".dropdown-content")
-        .forEach((c) => (c.style.maxHeight = null));
-    }
+  /* MOBILE SUBMENU TOGGLE */
+  dropdownParent.addEventListener("click", (e) => {
+    if (window.innerWidth > 760) return; // desktop hover handles it
+    dropdownContent.classList.toggle("open");
+    dropdownParent.classList.toggle("active");
   });
 });
