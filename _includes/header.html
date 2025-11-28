@@ -1,7 +1,7 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- LOGO + TITLE -->
+    <!-- LOGO + WORDMARK -->
     <a href="/" class="logo-link">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
@@ -20,31 +20,32 @@
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <!-- SERVICES DROPDOWN -->
+      <!-- SERVICES (FIXED STRUCTURE) -->
       <div class="nav-item dropdown">
 
-        <!-- Parent clickable button for desktop & mobile -->
         <button class="dropdown-parent" type="button">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
+
+          <!-- Submenu now correctly nested INSIDE -->
+          <div class="dropdown-content">
+
+            <a href="/services/" class="dropdown-overview">
+              Services Overview
+            </a>
+
+            <a href="/services/digital-security/" data-child="true">
+              Digital Security
+            </a>
+
+            <a href="/services/digital-security/life-without-google/"
+               data-grandchild="true">
+              Life Without Google
+            </a>
+
+          </div>
         </button>
 
-        <div class="dropdown-content">
-
-          <a href="/services/" class="dropdown-overview">
-            Services Overview
-          </a>
-
-          <a href="/services/digital-security/" data-child="true">
-            Digital Security
-          </a>
-
-          <a href="/services/digital-security/life-without-google/"
-             data-grandchild="true">
-            Life Without Google
-          </a>
-
-        </div>
       </div>
 
       <a href="/documentation/">Documentation</a>
