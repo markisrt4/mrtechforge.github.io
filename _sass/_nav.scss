@@ -371,6 +371,25 @@
 
     background: rgba(0, 0, 0, 0.35);
   }
+
+/* LOCK HAMBURGER TO THE RIGHT, ALWAYS */
+  .forge-header {
+    position: relative;
+  }
+
+  .nav-toggle-btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3000; /* always above */
+  }
+
+  /* Ensure logo doesn't collide with it */
+  .header-inner {
+    position: relative;
+    padding-right: 3.2rem; /* make room for burger */
+  }
 }
 
 
