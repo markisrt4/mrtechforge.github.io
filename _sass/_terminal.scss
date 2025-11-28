@@ -1,155 +1,190 @@
 /* =========================================================
-   TERMINAL SYSTEM — CRT, TYPEWRITER, SCANLINE, GRID, RADAR
-   Applies to .forge-terminal-panel only
+   M.R. TECHFORGE — LINUX HYBRID TERMINAL THEME
+   Shared across footer + contact page + anywhere else
+   CRT-style overlays via modifier classes
    ========================================================= */
 
-/* ---------- Root Terminal Colors ---------- */
+/* ---------- Root Hybrid Colors ---------- */
 :root {
-  --term-color: #26e0ff;
-  --term-radar: #4efc8b;
-  --term-grid: #22d6ff;
-  --cursor-color: #4db8ff;
+  --term-prompt: #00ff66;      /* prompt green */
+  --term-command: #4db8ff;     /* main cyan/blue */
+  --term-comment: #ffea70;     /* soft yellow comments */
+  --term-cursor: #4db8ff;      /* blinking cursor */
 }
 
-/* =========================================================
-   BASE TERMINAL PANEL
-   ========================================================= */
-
-.forge-terminal-panel {
-  position: relative;
-  margin: 2rem auto;
-  padding: 1.8rem 1.4rem;
-  border-radius: 26px;
+/* ---------- Base Terminal Container ---------- */
+.forge-terminal {
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(77, 184, 255, 0.45);
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  margin: 1.8rem auto;
   max-width: 900px;
   width: min(100%, 900px);
 
-  background: radial-gradient(circle at top, #071629 0%, #020407 65%, #000 100%);
   box-shadow:
-    0 0 25px rgba(0, 184, 212, 0.25),
-    0 0 40px rgba(0, 184, 212, 0.15) inset;
-}
+    0 0 10px rgba(77, 184, 255, 0.25),
+    inset 0 0 8px rgba(77, 184, 255, 0.16);
 
-.forge-terminal-screen {
-  position: relative;
-  padding: 1rem 1.1rem;
-  border-radius: 18px;
-
-  background: rgba(0, 0, 0, 0.92);
-  border: 1px solid rgba(0, 184, 212, 0.55);
-  box-shadow:
-    0 0 25px rgba(0, 184, 212, 0.5),
-    0 0 40px rgba(0, 20, 60, 0.9) inset;
-
+  font-family: "Fira Mono", monospace;
   overflow-x: auto;
+  position: relative;
 }
 
-.forge-terminal-screen code {
-  display: block;
+/* Smaller glow for footer variant if needed */
+.footer-inner .forge-terminal {
+  margin-top: 1.4rem;
+  margin-bottom: 1.2rem;
+  box-shadow:
+    0 0 7px rgba(77, 184, 255, 0.22),
+    inset 0 0 6px rgba(77, 184, 255, 0.14);
+}
+
+/* ---------- Base Code Styling ---------- */
+.forge-terminal pre,
+.forge-terminal code {
+  background: transparent !important;
   white-space: pre-wrap;
-  font-family: "Courier New", monospace;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--term-color);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0;
+  color: var(--term-command);
+  display: block;
+}
+
+/* ---------- Hybrid Syntax Classes (optional) ---------- */
+.term-prompt {
+  color: var(--term-prompt);
+  font-weight: 600;
+}
+
+.term-command {
+  color: var(--term-command);
+}
+
+.term-comment {
+  color: var(--term-comment);
+  font-style: italic;
+}
+
+/* ---------- Typewriter Cursor ---------- */
+.cursor {
+  display: inline-block;
+  width: 0.7ch;
+  height: 1.1em;
+  margin-left: 4px;
+  background: var(--term-cursor);
+  animation: forgeCursorBlink 0.9s infinite;
+  vertical-align: middle;
+}
+
+@keyframes forgeCursorBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
 /* =========================================================
-   CRT OVERLAY (ALL MODES USE THIS)
+   CRT OVERLAY MODES (applied via classes)
+   .crt-scanline / .crt-grid / .crt-radar / .crt-clean
    ========================================================= */
 
-.forge-terminal-screen::before {
+.forge-terminal::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
+  opacity: 0;          /* off by default, enabled by specific modes */
   mix-blend-mode: screen;
-  opacity: 0.45;
 }
 
-/* =========================================================
-   MODE: SCANLINE (DEFAULT)
-   ========================================================= */
-
-.forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
+/* --- Scanline (default) --- */
+.forge-terminal.crt-scanline::before {
+  opacity: 0.4;
   background-image:
     repeating-linear-gradient(
       to bottom,
-      rgba(0, 255, 255, 0.15),
-      rgba(0, 255, 255, 0.15) 1px,
+      rgba(0, 255, 255, 0.18),
+      rgba(0, 255, 255, 0.18) 1px,
       transparent 2px,
       transparent 4px
     );
 }
 
-/* =========================================================
-   MODE: GRID
-   ========================================================= */
-
-.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
+/* --- Grid --- */
+.forge-terminal.crt-grid::before {
+  opacity: 0.5;
   background-image:
     repeating-linear-gradient(
       to bottom,
-      rgba(34, 214, 255, 0.2) 0px,
-      rgba(34, 214, 255, 0.2) 1px,
+      rgba(0, 255, 255, 0.18),
+      rgba(0, 255, 255, 0.18) 1px,
       transparent 3px,
       transparent 4px
     ),
     repeating-linear-gradient(
       to right,
-      rgba(34, 214, 255, 0.2) 0px,
-      rgba(34, 214, 255, 0.2) 1px,
+      rgba(0, 255, 255, 0.18),
+      rgba(0, 255, 255, 0.18) 1px,
       transparent 3px,
       transparent 4px
     );
 }
 
-/* =========================================================
-   MODE: RADAR
-   ========================================================= */
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen {
-  background: radial-gradient(circle at 20% 15%, #003322 0%, #000 75%);
+/* --- Radar (slight green tint) --- */
+.forge-terminal.crt-radar {
+  background: radial-gradient(circle at 20% 15%, #022918 0%, #000 70%);
+  border-color: rgba(0, 255, 153, 0.7);
+  box-shadow:
+    0 0 10px rgba(0, 255, 153, 0.3),
+    inset 0 0 8px rgba(0, 255, 153, 0.24);
 }
 
-.forge-terminal-panel.crt-radar .forge-terminal-screen code {
-  color: var(--term-radar);
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen::before {
+.forge-terminal.crt-radar::before {
+  opacity: 0.55;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(0, 255, 128, 0.3), transparent 60%),
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 128, 0.35), transparent 60%),
     repeating-linear-gradient(
       to bottom,
-      rgba(0, 255, 128, 0.18) 0px,
-      rgba(0, 255, 128, 0.18) 1px,
+      rgba(0, 255, 128, 0.2),
+      rgba(0, 255, 128, 0.2) 1px,
       transparent 3px,
       transparent 4px
     );
 }
 
-/* =========================================================
-   MODE: CLEAN
-   ========================================================= */
+.forge-terminal.crt-radar pre,
+.forge-terminal.crt-radar code {
+  color: #4efc8b;
+}
 
-.forge-terminal-panel.crt-clean .forge-terminal-screen::before {
-  background: none;
-  opacity: 0.05;
+/* --- Clean (minimal overlay) --- */
+.forge-terminal.crt-clean {
+  background: radial-gradient(circle at top, #050915 0%, #000 70%);
+  border-color: rgba(77, 184, 255, 0.55);
+  box-shadow:
+    0 0 8px rgba(77, 184, 255, 0.25),
+    inset 0 0 6px rgba(77, 184, 255, 0.18);
+}
+
+.forge-terminal.crt-clean::before {
+  opacity: 0.12;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 70%);
 }
 
 /* =========================================================
-   TYPEWRITER CURSOR (INVISIBLE UNTIL JS ACTIVATES IT)
+   RESPONSIVE TWEAKS
    ========================================================= */
 
-.typing-cursor {
-  display: inline-block;
-  width: 0.6ch;
-  height: 1.1em;
-  margin-left: 4px;
-  background: var(--cursor-color);
-  animation: cursorBlink 0.8s infinite;
-}
+@media (max-width: 640px) {
+  .forge-terminal {
+    padding: 0.85rem 0.9rem;
+    margin: 1.4rem auto;
+  }
 
-@keyframes cursorBlink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
+  .forge-terminal pre,
+  .forge-terminal code {
+    font-size: 0.9rem;
+  }
 }
