@@ -312,6 +312,42 @@
   }
 }
 
+/* ============================================
+   FINAL BURGER SIZE LOCK
+   ============================================ */
+@media (max-width: 760px) {
+
+  .nav-toggle-btn {
+    width: 32px !important;
+    height: 24px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    position: absolute !important;
+    top: 50% !important;
+    right: 1rem !important;
+    transform: translateY(-50%) !important;
+    
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    z-index: 3000 !important;
+  }
+
+  .nav-toggle-btn span,
+  .nav-toggle-btn span::before,
+  .nav-toggle-btn span::after {
+    height: 3px !important;
+    width: 100% !important;
+  }
+
+  /* Prevent header-inner from shifting */
+  .header-inner {
+    padding-right: 3.2rem !important;
+    overflow: visible !important;
+  }
+}
 
 /* -----------------------------------------------------
    ANIMATIONS
