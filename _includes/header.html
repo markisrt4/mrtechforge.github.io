@@ -1,50 +1,63 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- LOGO + TITLE -->
-    <a href="{{ '/' | relative_url }}" class="logo-link">
-      <img src="{{ '/assets/images/logo_transparent.png' | relative_url }}"
+    <!-- LOGO + WORDMARK -->
+    <a href="/" class="logo-link">
+      <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
            class="forge-logo">
       <h1 class="forge-title">M.R. TechForge</h1>
     </a>
 
-    <!-- HAMBURGER -->
+    <!-- MOBILE HAMBURGER BUTTON -->
     <button class="nav-toggle-btn" aria-label="Toggle navigation">
-      <span></span>
+      <svg class="forge-burger" viewBox="0 0 40 28" width="34" height="28">
+        <g class="bars">
+          <rect class="bar bar-top"    x="2" y="3"  width="36" height="3" rx="2" />
+          <rect class="bar bar-middle" x="2" y="12" width="36" height="3" rx="2" />
+          <rect class="bar bar-bottom" x="2" y="21" width="36" height="3" rx="2" />
+        </g>
+        <g class="forge-spark">
+          <circle cx="20" cy="14" r="1.5" />
+        </g>
+      </svg>
     </button>
 
     <!-- NAVIGATION -->
     <nav class="forge-nav">
 
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
 
       <!-- SERVICES DROPDOWN -->
       <div class="nav-item dropdown">
 
-        <!-- Parent — clickable on mobile, label-only on desktop -->
         <button class="dropdown-parent" type="button">
           <span class="dropdown-parent-text">Services</span>
           <span class="dropdown-arrow">▼</span>
         </button>
 
         <div class="dropdown-content">
-          <a href="{{ '/services/' | relative_url }}" class="dropdown-overview">Services Overview</a>
 
-          <a href="{{ '/services/digital-security/' | relative_url }}" data-child="true">
+          <a href="/services/" class="dropdown-overview">
+            Services Overview
+          </a>
+
+          <a href="/services/digital-security/" data-child="true">
             Digital Security
           </a>
 
-          <a href="{{ '/services/digital-security/life-without-google/' | relative_url }}" data-grandchild="true">
+          <a href="/services/digital-security/life-without-google/"
+             data-grandchild="true">
             Life Without Google
           </a>
+
         </div>
       </div>
 
-      <a href="{{ '/documentation/' | relative_url }}">Documentation</a>
-      <a href="{{ '/faq/' | relative_url }}">FAQ</a>
-      <a href="{{ '/contact.html' | relative_url }}">Contact</a>
+      <a href="/documentation/">Documentation</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact.html">Contact</a>
 
     </nav>
 
