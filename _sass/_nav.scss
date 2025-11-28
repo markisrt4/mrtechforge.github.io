@@ -1,32 +1,46 @@
-/* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v11.2 Stable)
-   • Correct burger bar spacing
-   • Perfect X alignment
-   • Hammer + sparks intact
-   • Idle flicker intact
-   ===================================================== */
+/* ============================================================
+   M.R. TECHFORGE — NAVIGATION (Forge Ultra v12 MAX)
+   • Full header glow + pulse
+   • Hammer swing + spark burst on menu open
+   • Mobile hamburger + dropdown
+   • Desktop hover dropdown
+   • Uses existing Forge CSS vars
+   ============================================================ */
 
 
-/* -----------------------------------------------------
+/* ------------------------------------------------------------
    HEADER WRAPPER
------------------------------------------------------- */
+------------------------------------------------------------ */
 .forge-header {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
 
-  background: rgba(10, 10, 12, 0.92);
+  background: radial-gradient(circle at top left,
+    rgba(10, 109, 255, 0.15),
+    rgba(0, 0, 0, 0.96) 45%);
   border-bottom: 2px solid var(--forge-accent-dark);
 
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
+  box-shadow:
+    0 0 25px rgba(var(--forge-accent-rgb), 0.35),
+    0 0 4px rgba(0, 0, 0, 0.9);
+
+  backdrop-filter: blur(8px);
+
   animation: forgeHeaderGlow 12s ease-in-out infinite alternate;
+}
+
+/* Extra rippled burst when toggling menu */
+.forge-header.forge-pulse {
+  animation: forgeHeaderGlow 12s ease-in-out infinite alternate,
+             forgeHeaderBurst 0.7s ease-out;
 }
 
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 1rem;
 
   display: flex;
   align-items: center;
@@ -35,394 +49,418 @@
 }
 
 
-/* -----------------------------------------------------
-   LOGO + WORDMARK
------------------------------------------------------- */
-.logo-link {
+/* ------------------------------------------------------------
+   LOGO / BRAND CLUSTER (Hammer + text)
+------------------------------------------------------------ */
+.forge-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
-  text-decoration: none;
+  gap: 0.6rem;
 }
 
-.forge-logo {
-  height: 65px;
-  width: auto;
-  filter: drop-shadow(0 0 12px rgba(var(--forge-accent-rgb), 0.45));
-  transition: 0.3s ease;
-}
-
-.forge-logo:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
-}
-
-.forge-title {
-  background: linear-gradient(90deg, #F5B841, #F5B841, #0A6DFF, #153D77, #F5B841);
-  background-size: 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: forgeTitleSpectrum 6s linear infinite;
-
-  font-family: "Orbitron", sans-serif;
+.forge-logo-text {
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-
+  font-size: 1.05rem;
+  color: var(--forge-text);
   text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.50),
-    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
+    0 0 6px rgba(var(--forge-accent-rgb), 0.7),
+    0 0 14px rgba(var(--forge-accent-rgb), 0.5);
 }
 
-
-/* -----------------------------------------------------
-   BASE NAV
------------------------------------------------------- */
-.forge-nav {
-  display: flex;
-  gap: 1.4rem;
-  align-items: center;
-}
-
-.forge-nav a {
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  color: var(--forge-subtext);
-  font-weight: 600;
+/* Optional smaller tagline line */
+.forge-logo-sub {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  color: var(--forge-subtext);
 }
 
-.forge-nav a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
-}
-
-
-/* -----------------------------------------------------
-   DROPDOWN BASE
------------------------------------------------------- */
-.nav-item.dropdown {
+/* Hammer icon – works whether it's <img> or <svg> */
+.forge-hammer {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  transform-origin: 30% 80%;
+  filter: drop-shadow(0 0 10px rgba(var(--forge-accent-rgb), 0.6));
+  transition: transform 0.25s ease-out, filter 0.25s ease-out;
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
-.dropdown-parent {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+/* Hammer swing when header is "forging" */
+.forge-header.is-forging .forge-hammer {
+  animation: forgeHammerSwing 0.55s ease-out;
+}
 
+/* Sparks via pseudo-elements */
+.forge-hammer::before,
+.forge-hammer::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.forge-hammer::before {
+  width: 40px;
+  height: 40px;
+  left: 55%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle, rgba(245, 184, 65, 0.85) 0%, transparent 60%);
+  filter: blur(1px);
+}
+
+.forge-hammer::after {
+  width: 70px;
+  height: 70px;
+  left: 60%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle, rgba(245, 184, 65, 0.75) 0%, transparent 55%),
+    radial-gradient(circle, rgba(255, 198, 90, 0.9) 0%, transparent 40%);
+  mix-blend-mode: screen;
+}
+
+/* Spark burst active during forging */
+.forge-header.is-forging .forge-hammer::before,
+.forge-header.is-forging .forge-hammer::after {
+  animation: forgeSparkBurst 0.55s ease-out;
+}
+
+
+/* ------------------------------------------------------------
+   NAVIGATION – MOBILE FIRST
+------------------------------------------------------------ */
+
+.forge-hamburger {
+  width: 34px;
+  height: 26px;
+  position: relative;
+  cursor: pointer;
+  z-index: 2001;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.forge-hamburger span {
+  width: 100%;
+  height: 4px;
+  background: var(--forge-text);
+  border-radius: 4px;
+  display: block;
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+  box-shadow:
+    0 0 6px rgba(var(--forge-accent-rgb), 0.7),
+    0 0 12px rgba(var(--forge-accent-rgb), 0.45);
+}
+
+/* X animation */
+.forge-hamburger.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.forge-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.forge-hamburger.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Hamburger subtle hover glow */
+.forge-hamburger:hover span {
+  background: var(--forge-hotmetal-light);
+  box-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.85),
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.5);
+}
+
+/* Mobile menu container */
+.forge-mobile-menu {
+  display: none;
+  flex-direction: column;
+
+  width: 100%;
+  padding: 0.75rem 0 1rem;
+
+  background: rgba(3, 3, 5, 0.98);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  text-align: center;
+  gap: 0.3rem;
+
+  transform-origin: top;
+  transform: scaleY(0.8);
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.25s ease-out;
+}
+
+.forge-mobile-menu.open {
+  display: flex;
+  opacity: 1;
+  transform: scaleY(1);
+  pointer-events: auto;
+}
+
+.forge-mobile-menu a {
+  padding: 0.35rem 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: var(--forge-text);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Item underline pulse */
+.forge-mobile-menu a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.1rem;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--forge-hotmetal),
+    var(--forge-accent)
+  );
+  transform: translateX(-50%);
+  transition: width 0.28s ease-out;
+}
+
+.forge-mobile-menu a:active::after,
+.forge-mobile-menu a:focus-visible::after {
+  width: 55%;
+}
+
+
+/* ------------------------------------------------------------
+   SERVICES DROPDOWN (MOBILE)
+------------------------------------------------------------ */
+
+.services-toggle {
+  position: relative;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
 }
 
-.dropdown-parent-text {
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--forge-subtext);
+.services-toggle::after {
+  content: "▼";
+  font-size: 0.75rem;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
 }
 
-.dropdown-arrow {
-  font-size: 0.8rem;
-  color: var(--forge-subtext);
-  transition: 0.25s ease;
+.services-toggle.open::after {
+  transform: rotate(180deg);
 }
 
-/* Child indicators */
-.dropdown-content a[data-child="true"]::before {
-  content: "›";
-  color: var(--forge-hotmetal);
-  font-size: 1rem;
+.services-submenu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
 }
 
-.dropdown-content a[data-grandchild="true"]::before {
-  content: "»";
-  color: var(--forge-accent);
-  font-size: 1rem;
+.services-submenu.open {
+  display: flex;
 }
 
-.dropdown-overview {
-  font-weight: 700;
-  color: var(--forge-hotmetal) !important;
+.services-submenu a {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 
-/* -----------------------------------------------------
-   DESKTOP DROPDOWN
------------------------------------------------------- */
-@media (min-width: 761px) {
-  .nav-toggle-btn {
+/* ------------------------------------------------------------
+   DESKTOP NAV
+------------------------------------------------------------ */
+@media (min-width: 850px) {
+  .forge-hamburger {
     display: none;
   }
 
-  .dropdown-parent {
-    pointer-events: none;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-
-    min-width: 260px;
-    padding: 0.5rem 0;
-    background: rgba(5, 8, 16, 0.98);
-    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-    border-radius: 8px;
-
-    opacity: 0;
-    transform: translateY(6px);
-    transition: 0.25s ease;
-    z-index: 9999;
-  }
-
-  .nav-item.dropdown:hover .dropdown-content {
-    display: block;
+  .forge-mobile-menu {
+    display: flex !important;
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    pointer-events: auto;
 
-    box-shadow:
-      0 0 12px rgba(10, 109, 255, 0.45),
-      0 0 4px rgba(10, 109, 255, 0.65) inset;
-  }
-
-  .nav-item.dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
-  }
-
-  .dropdown-content a {
-    display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.55rem 1rem;
-    font-family: "Titillium Web", sans-serif;
-    color: var(--forge-text);
-  }
-}
+    justify-content: flex-end;
+    gap: 2.25rem;
 
-
-/* -----------------------------------------------------
-   MOBILE NAVIGATION (≤ 760px)
------------------------------------------------------- */
-@media (max-width: 760px) {
-
-  /* HAMBURGER BUTTON */
-  .nav-toggle-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 36px;
-    height: 32px;
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3000;
-    overflow: visible; /* allow hammer/sparks */
-  }
-
-  /* *** FIXED BURGER SIZE *** */
-  .forge-burger {
-    width: 36px;   /* matches SVG viewBox */
-    height: 26px;  /* matches SVG viewBox */
-  }
-
-  .forge-burger .bar {
-    fill: #F5B841;
-    transition: 0.3s ease;
-    transform-origin: center;
-    filter: drop-shadow(0 0 5px rgba(245, 184, 65, 0.9));
-  }
-
-  /* idle flicker */
-  .nav-toggle-btn:not(.open) .bar {
-    animation: burgerIdlePulse 3.8s ease-in-out infinite;
-  }
-
-
-  /* PERFECT X SHAPE — ADJUSTED SPACING */
-  .nav-toggle-btn.open .bar-top {
-    transform: translateY(4px) rotate(45deg);
-  }
-
-  .nav-toggle-btn.open .bar-middle {
-    opacity: 0;
-  }
-
-  .nav-toggle-btn.open .bar-bottom {
-    transform: translateY(-4px) rotate(-45deg);
-  }
-
-  /* blue color when X */
-  .nav-toggle-btn.open .bar {
-    fill: #3ca2ff;
-    filter: drop-shadow(0 0 8px rgba(60, 162, 255, 0.95));
-  }
-
-
-  /* MOBILE NAV WRAPPER */
-  .forge-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-
-    background: #050810;
-    border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-
-    max-height: 0;
-    transition: max-height 0.35s ease-in-out;
-  }
-
-  .forge-nav.open {
-    max-height: 650px;
-    padding: 0.4rem 0 0.6rem;
-  }
-
-
-  /* TOP LEVEL ITEMS */
-  .forge-nav > a,
-  .forge-nav .dropdown-parent {
-    width: 100%;
-    padding: 0.38rem 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 1rem;
-    color: var(--forge-subtext);
-    text-align: center;
-  }
-
-  .forge-nav .dropdown-parent.active {
-    color: var(--forge-hotmetal);
-  }
-
-  .forge-nav .dropdown-parent.active .dropdown-arrow {
-    transform: rotate(180deg);
-    color: var(--forge-hotmetal);
-  }
-
-
-  /* SUBMENU */
-  .forge-nav .nav-item.dropdown {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .forge-nav .nav-item.dropdown .dropdown-content {
-    width: 100%;
-    max-width: 100%;
-    position: static;
-    margin: 0;
+    background: transparent;
+    border-top: none;
     padding: 0;
-
-    background: rgba(0, 0, 0, 0.35);
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
+    width: auto;
   }
 
-  .forge-nav .dropdown-content.open {
-    max-height: 500px;
+  .forge-mobile-menu a {
+    font-size: 0.98rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    padding: 0.15rem 0;
   }
 
-  .forge-nav .dropdown-content a {
-    width: 100%;
-    padding: 0.45rem 0;
-    font-size: 0.95rem;
-    color: var(--forge-text);
+  .forge-mobile-menu a::after {
+    bottom: -0.15rem;
   }
-}
 
+  .forge-mobile-menu a:hover::after {
+    width: 70%;
+  }
 
-/* ============================================================
-   🔨 Hammer + Sparks
-============================================================ */
-@keyframes hammerSwing {
-  0%   { transform: rotate(-60deg) translateY(-10px); opacity: 0; }
-  20%  { transform: rotate(-30deg) translateY(0); opacity: 1; }
-  40%  { transform: rotate(-10deg) translateY(2px); }
-  55%  { transform: rotate(-20deg) translateY(0); }
-  70%  { transform: rotate(-8deg); }
-  100% { transform: rotate(-60deg) translateY(-10px); opacity: 0; }
-}
+  /* Desktop dropdown for Services */
+  .services-wrapper {
+    position: relative;
+  }
 
-@keyframes sparksBurst {
-  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
-  30%  { opacity: 1; transform: translateY(-6px) scale(1.1); }
-  100% { opacity: 0; transform: translateY(-12px) scale(0.4); }
-}
-
-@keyframes burgerIdlePulse {
-  0%, 80% { opacity: 1; }
-  85%     { opacity: 0.4; }
-  90%     { opacity: 1; }
-  100%    { opacity: 0.9; }
-}
-
-@media (max-width: 760px) {
-  .nav-toggle-btn::after {
-    content: "🔨";
+  .services-submenu {
     position: absolute;
-    right: -30px;
-    top: -10px;
-    font-size: 24px;
+    top: 140%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: radial-gradient(circle at top,
+      rgba(10, 109, 255, 0.22),
+      rgba(0, 0, 0, 0.98) 55%);
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 0 18px rgba(var(--forge-accent-rgb), 0.45),
+      0 0 3px rgba(0, 0, 0, 0.9);
+    min-width: 210px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
     opacity: 0;
     pointer-events: none;
+    transition:
+      opacity 0.2s ease-out,
+      transform 0.2s ease-out;
+    z-index: 1500;
   }
 
-  .nav-toggle-btn::before {
-    content: "✨";
-    position: absolute;
-    right: -6px;
-    top: 8px;
-    font-size: 14px;
-    opacity: 0;
-    pointer-events: none;
+  .services-submenu a {
+    font-size: 0.92rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    text-align: left;
   }
 
-  .nav-toggle-btn.open::after {
-    animation: hammerSwing 0.7s ease-out forwards;
+  .services-wrapper:hover .services-submenu,
+  .services-submenu:hover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
   }
 
-  .nav-toggle-btn.open::before {
-    animation: sparksBurst 0.4s ease-out forwards;
+  .services-toggle.open::after {
+    /* On desktop we mostly rely on hover; leave arrow neutral */
+    transform: none;
   }
 }
 
 
-/* -----------------------------------------------------
-   HEADER GLOW + TITLE ANIMATIONS
------------------------------------------------------- */
+/* ------------------------------------------------------------
+   KEYFRAMES
+------------------------------------------------------------ */
+
+/* Slow ambient glow of header */
 @keyframes forgeHeaderGlow {
-  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
-  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
+  0% {
+    box-shadow:
+      0 0 14px rgba(var(--forge-accent-rgb), 0.28),
+      0 0 3px rgba(0, 0, 0, 0.95);
+    border-bottom-color: var(--forge-accent-dark);
+  }
+  50% {
+    box-shadow:
+      0 0 24px rgba(var(--forge-accent-rgb), 0.45),
+      0 0 6px rgba(0, 0, 0, 0.9);
+    border-bottom-color: var(--forge-accent);
+  }
+  100% {
+    box-shadow:
+      0 0 34px rgba(var(--forge-accent-rgb), 0.7),
+      0 0 8px rgba(0, 0, 0, 0.85);
+    border-bottom-color: var(--forge-hotmetal);
+  }
 }
 
-@keyframes forgeTitleSpectrum {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Quick burst when menu opens */
+@keyframes forgeHeaderBurst {
+  0% {
+    box-shadow:
+      0 0 30px rgba(var(--forge-hotmetal-rgb), 0.5),
+      0 0 8px rgba(0, 0, 0, 0.9);
+  }
+  70% {
+    box-shadow:
+      0 0 42px rgba(var(--forge-hotmetal-rgb), 0.9),
+      0 0 10px rgba(0, 0, 0, 0.95);
+  }
+  100% {
+    box-shadow:
+      0 0 26px rgba(var(--forge-accent-rgb), 0.6),
+      0 0 5px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Hammer swing arc */
+@keyframes forgeHammerSwing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-18deg);
+  }
+  55% {
+    transform: rotate(12deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Spark burst expansion + fade */
+@keyframes forgeSparkBurst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(-52%, -54%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-55%, -58%) scale(1.4);
+  }
 }
