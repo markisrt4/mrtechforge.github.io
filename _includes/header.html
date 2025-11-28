@@ -1,51 +1,41 @@
 <header class="forge-header">
   <div class="header-inner">
 
-    <!-- LOGO + WORDMARK -->
-    <a href="/" class="logo-link">
+    <!-- BRAND / LOGO CLUSTER -->
+    <a href="/" class="forge-brand">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
-           class="forge-logo">
-      <h1 class="forge-title">M.R. TechForge</h1>
+           class="forge-hammer">
+
+      <div class="forge-logo-text">
+        M.R. TECHFORGE
+        <span class="forge-logo-sub">Forged with Integrity</span>
+      </div>
     </a>
 
-    <!-- MOBILE HAMBURGER BUTTON -->
-    <button class="nav-toggle-btn" aria-label="Toggle navigation">
-      <svg class="forge-burger" width="36" height="26" viewBox="0 0 36 26">
-        <rect class="bar bar-top"    x="3" y="3"  width="30" height="3" rx="1.5" />
-        <rect class="bar bar-middle" x="3" y="11" width="30" height="3" rx="1.5" />
-        <rect class="bar bar-bottom" x="3" y="19" width="30" height="3" rx="1.5" />
-      </svg>
-    </button>
+    <!-- MOBILE HAMBURGER -->
+    <div class="forge-hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    <!-- NAVIGATION -->
-    <nav class="forge-nav">
+    <!-- NAVIGATION MENU -->
+    <nav class="forge-mobile-menu">
 
       <a href="/">Home</a>
       <a href="/about/">About</a>
 
-      <div class="nav-item dropdown">
+      <!-- SERVICES DROPDOWN -->
+      <div class="services-wrapper">
+        <a href="#" class="services-toggle">Services</a>
 
-        <button class="dropdown-parent" type="button">
-          <span class="dropdown-parent-text">Services</span>
-          <span class="dropdown-arrow">▼</span>
-        </button>
-
-        <div class="dropdown-content">
-
-          <a href="/services/" class="dropdown-overview">
-            Services Overview
-          </a>
-
-          <a href="/services/digital-security/" data-child="true">
-            Digital Security
-          </a>
-
-          <a href="/services/digital-security/life-without-google/"
-             data-grandchild="true">
+        <div class="services-submenu">
+          <a href="/services/">Services Overview</a>
+          <a href="/services/digital-security/">Digital Security</a>
+          <a href="/services/digital-security/life-without-google/">
             Life Without Google
           </a>
-
         </div>
       </div>
 
