@@ -7,17 +7,18 @@ class: contact
 
 <div class="forge-contact-page">
 
+  <!-- INTRO -->
   <div class="page-intro">
     <h1>
-      Signal Beacon:
-      <span class="forge-highlight">Contact M.R. TechForge</span>
+      <span class="intro-label">Signal Beacon:</span>
+      <span class="forge-highlight intro-main">Contact M.R. TechForge</span>
     </h1>
     <p class="tagline">
       Forged connections start with a simple “hello.”
     </p>
   </div>
 
-  <!-- DISPLAY MODES (one global set) -->
+  <!-- DISPLAY MODES (GLOBAL) -->
   <section class="forge-terminal-modes">
     <h2 class="modes-heading">Display Modes</h2>
     <div class="modes-buttons">
@@ -68,7 +69,7 @@ class: contact
     </blockquote>
   </section>
 
-  <!-- CARD: SUGGESTED EMAIL TEMPLATE -->
+  <!-- CARD: SUGGESTED EMAIL TEMPLATE (BUTTON ONLY) -->
   <section class="forge-card">
     <h2>Suggested Email Template</h2>
     <p>
@@ -79,7 +80,7 @@ class: contact
   </section>
 
   <!-- TERMINAL: EMAIL TEMPLATE BODY -->
-  <section class="forge-terminal-panel crt-grid" id="email-template-panel" data-terminal>
+  <section class="forge-terminal-panel crt-scanline" id="email-template-panel" data-terminal>
     <div class="forge-terminal-screen">
       <code id="email-template-code">
 To: mark@mrtechforge.com
@@ -103,7 +104,7 @@ Looking forward to connecting,
   </section>
 
   <!-- TERMINAL: OUTRO -->
-  <section class="forge-terminal-panel crt-radar" data-terminal>
+  <section class="forge-terminal-panel crt-scanline" data-terminal>
     <div class="forge-terminal-screen">
       <code>
 &gt; SIGNAL RECEIVED.
@@ -119,38 +120,40 @@ Looking forward to connecting,
 
     <div class="forge-location-map">
       <svg viewBox="0 0 260 260" aria-hidden="true">
-        <!-- Blueprint grid background is handled by CSS; this is just outlines -->
-
-        <!-- Lower Peninsula (simple but recognisable “mitten”) -->
+        <!-- Lower Peninsula (simplified but recognisable mitten) -->
         <path
           class="mi-outline"
           d="
-            M 145 70
-            C 130 65, 120 65, 108 72
-            C 96 78, 88 90, 84 106
-            C 80 122, 82 140, 88 158
-            C 94 176, 104 190, 118 200
-            C 132 210, 150 214, 166 210
-            C 182 206, 194 196, 202 182
-            C 210 168, 214 150, 212 134
-            C 210 118, 202 104, 192 94
-            C 182 84, 168 74, 145 70
-            Z" />
+            M 155 55
+            C 138 50, 122 52, 110 60
+            C 98 68, 90 81, 86 96
+            C 82 112, 82 130, 86 147
+            C 90 165, 98 180, 112 192
+            C 126 205, 145 212, 162 210
+            C 179 208, 193 199, 203 186
+            C 213 172, 218 155, 217 138
+            C 216 121, 209 105, 198 93
+            C 188 82, 173 72, 155 67
+            Z
+          "
+        />
 
-        <!-- Upper Peninsula (faint, off to the NW) -->
+        <!-- Upper Peninsula (small, off to NW) -->
         <path
           class="mi-outline mi-up"
           d="
-            M 70 60
-            C 90 50, 115 48, 135 52
-            C 145 54, 152 58, 158 64
-            C 152 66, 146 68, 138 70
-            C 124 74, 104 78, 88 78
-            C 80 78, 74 76, 70 72
-            Z" />
+            M 70 65
+            C 88 58, 108 56, 128 58
+            C 137 59, 146 62, 152 66
+            C 144 69, 135 72, 124 74
+            C 108 77, 90 79, 78 78
+            C 73 78, 70 76, 67 74
+            Z
+          "
+        />
 
-        <!-- Metro Detroit / Macomb dot -->
-        <circle class="mi-pulse-dot" cx="190" cy="168" r="5" />
+        <!-- Metro Detroit / Macomb-ish pulse dot -->
+        <circle class="mi-pulse-dot" cx="190" cy="170" r="5" />
       </svg>
     </div>
 
