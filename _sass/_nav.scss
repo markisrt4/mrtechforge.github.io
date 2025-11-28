@@ -380,6 +380,56 @@
   animation: sparksBurst 0.45s ease-out forwards;
 }
 
+/* =====================================================
+   IDLE BURGER ANIMATIONS — subtle forge pulse
+   ===================================================== */
+
+/* Pulse glow */
+@keyframes burgerIdlePulse {
+  0%   { transform: scale(1); filter: drop-shadow(0 0 6px rgba(245,184,65,0.5)); }
+  50%  { transform: scale(1.06); filter: drop-shadow(0 0 10px rgba(245,184,65,0.9)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(245,184,65,0.5)); }
+}
+
+/* Tiny flicker */
+@keyframes burgerFlicker {
+  0%, 100% { opacity: 1; }
+  45%      { opacity: 0.75; }
+  55%      { opacity: 0.9; }
+}
+
+/* Random spark burst */
+@keyframes idleSparkBurst {
+  0%   { opacity: 0; transform: translateY(0) scale(0.3); }
+  30%  { opacity: 1; transform: translateY(-5px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-10px) scale(0.4); }
+}
+
+/* Spark element */
+.nav-toggle-btn::before {
+  content: "✨";
+  position: absolute;
+  right: -4px;
+  top: 6px;
+  opacity: 0;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* Idle spark trigger class */
+.nav-toggle-btn.idle-spark::before {
+  animation: idleSparkBurst 0.6s ease-out forwards;
+}
+
+/* Idle pulse trigger */
+.nav-toggle-btn.idle-pulse .forge-burger .bar {
+  animation: burgerIdlePulse 1.6s ease-out;
+}
+
+/* Idle flicker trigger */
+.nav-toggle-btn.idle-flicker .forge-burger .bar {
+  animation: burgerFlicker 0.25s linear;
+}
 
 /* -----------------------------------------------------
    ANIMATIONS
