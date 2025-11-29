@@ -1,40 +1,64 @@
+// =====================================================
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.0 SAFE)
+//  Multi-dropdown accordion + idle animations
+// =====================================================
+
 document.addEventListener("DOMContentLoaded", () => {
   const burgerBtn = document.querySelector(".nav-toggle-btn");
   const nav = document.querySelector(".forge-nav");
+  const dropdownParents = document.querySelectorAll(".dropdown-parent");
 
   if (!burgerBtn || !nav) return;
 
   // ---------------------------------------------------
-  // MAIN BURGER TOGGLE
+  // BURGER TOGGLE
   // ---------------------------------------------------
   burgerBtn.addEventListener("click", () => {
     burgerBtn.classList.toggle("open");
     nav.classList.toggle("open");
+
+    // Close ALL open dropdowns when closing the menu
+    if (!nav.classList.contains("open")) {
+      dropdownParents.forEach(parent => {
+        parent.classList.remove("active");
+
+        const submenu = parent.nextElementSibling;
+        if (submenu && submenu.classList.contains("dropdown-content")) {
+          submenu.classList.remove("open");
+        }
+      });
+    }
   });
 
   // ---------------------------------------------------
-  // MOBILE ACCORDION — supports unlimited dropdowns
+  // MULTI-DROPDOWN ACCORDION (MOBILE ONLY)
   // ---------------------------------------------------
-  const parents = document.querySelectorAll(".dropdown-parent");
+  dropdownParents.forEach(parent => {
+    const submenu = parent.nextElementSibling;
+    if (!submenu) return;
 
-  parents.forEach((parent) => {
     parent.addEventListener("click", () => {
-      if (window.innerWidth > 760) return;
+      if (window.innerWidth > 760) return; // desktop behavior not touched
 
-      const submenu = parent.nextElementSibling.nextElementSibling; // mobile-submenu
+      const isOpen = submenu.classList.contains("open");
 
-      // Close all other submenus
-      document.querySelectorAll(".mobile-submenu").forEach((menu) => {
-        if (menu !== submenu) menu.classList.remove("open");
+      // Close all other dropdowns first
+      dropdownParents.forEach(otherParent => {
+        const otherSub = otherParent.nextElementSibling;
+        if (otherSub && otherSub !== submenu) {
+          otherParent.classList.remove("active");
+          otherSub.classList.remove("open");
+        }
       });
 
-      // Toggle current
-      submenu.classList.toggle("open");
+      // Toggle the clicked one
+      parent.classList.toggle("active", !isOpen);
+      submenu.classList.toggle("open", !isOpen);
     });
   });
 
   // ---------------------------------------------------
-  //  IDLE HAMMER / SPARK ANIMATIONS (unchanged)
+  // IDLE ANIMATION ENGINE (unchanged)
   // ---------------------------------------------------
   function triggerIdleAnimation() {
     if (burgerBtn.classList.contains("open")) {
@@ -45,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const effect = effects[Math.floor(Math.random() * effects.length)];
 
     burgerBtn.classList.add(effect);
+
     setTimeout(() => burgerBtn.classList.remove(effect), 1600);
 
     const delay = 3000 + Math.random() * 4000;
