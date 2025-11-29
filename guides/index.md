@@ -5,7 +5,7 @@ permalink: /guides/
 ---
 
 <div class="doc-hero">
-  <h1 class="doc-title">Forge Guides</h1>
+  <h1 class="doc-title">MRTF Guides</h1>
   <p class="doc-tagline">Clear, practical guides to help you build a safer, smarter digital life.</p>
 </div>
 
@@ -38,31 +38,7 @@ They are **actionable guides** that align with the TechForge mission:
     <a href="/guides/start-here/" class="btn-glow">Start Your Journey</a>
   </div>
 
-  <!-- Future categories go here -->
-  <!--
-  <div class="forge-card">
-    <h3>💻 Linux & Open Tech</h3>
-    <p>Beginner-friendly guides to Linux, open-source tools, and privacy-respecting software.</p>
-    <a href="/guides/linux/" class="btn-glow">Learn Linux</a>
-  </div>
-  -->
-
 </div>
 
 ---
-
-### 🛡️ Digital Security
-
-Guides that focus on protecting data, accounts, devices, and online identity.
-
-<div class="forge-card">
-  <h3>Featured Guides</h3>
-
-  - [💔 Life Without Google](./digital-security/life-without-google/)
-
-</div>
-
----
-
-If you’d like a guide on a topic not listed here, feel free to reach out through the [Contact page](/contact/).  
-TechForge builds this resource **with** the community — not just for it.
+If you'd like to request a guide that isn’t listed here, feel free to reach out through the <a href="/contact/">Contact page</a>.
