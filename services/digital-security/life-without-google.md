@@ -4,7 +4,9 @@ title: "💔 Life Without Google"
 permalink: /services/digital-security/life-without-google/
 ---
 
-# 💔 Life Without Google  
+<a id="google-breakup-intro"></a>
+
+# 💔 Life Without Google
 
 ## ⚠️ Why Break Up With Google?
 
@@ -132,6 +134,8 @@ but you should have the power to choose when and how you use it.
 This guide gives you that power.
 
 ---
+
+<a id="google-replacement-guide"></a>
 
 # 🛠️ The Ultimate Google Replacement Guide
 
