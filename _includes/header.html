@@ -23,7 +23,6 @@
 
       {% for item in site.data.navigation.main %}
         {% if item.children %}
-          <!-- DROPDOWN PARENT (e.g., Guides) -->
           <div class="nav-item dropdown">
 
             <button class="dropdown-parent" type="button">
@@ -31,10 +30,9 @@
               <span class="dropdown-arrow">▼</span>
             </button>
 
-            <div class="dropdown-content">
-
+            <!-- DESKTOP DROPDOWN -->
+            <div class="dropdown-content desktop-only">
               {% if item.url %}
-                <!-- Overview link for the parent section -->
                 <a href="{{ item.url }}" class="dropdown-overview">
                   {{ item.title }} Overview
                 </a>
@@ -44,20 +42,22 @@
                 <a href="{{ child.url }}" data-child="true">
                   {{ child.title }}
                 </a>
-
-                {% if child.children %}
-                  {% for grandchild in child.children %}
-                    <a href="{{ grandchild.url }}" data-grandchild="true">
-                      {{ grandchild.title }}
-                    </a>
-                  {% endfor %}
-                {% endif %}
-
               {% endfor %}
             </div>
+
+            <!-- MOBILE ACCORDION SUBMENU -->
+            <ul class="mobile-submenu">
+              {% if item.url %}
+                <li><a href="{{ item.url }}">{{ item.title }} Overview</a></li>
+              {% endif %}
+
+              {% for child in item.children %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+
           </div>
         {% else %}
-          <!-- SIMPLE TOP-LEVEL LINK -->
           <a href="{{ item.url }}">{{ item.title }}</a>
         {% endif %}
       {% endfor %}
