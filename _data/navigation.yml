@@ -1,0 +1,30 @@
+main:
+  - title: "Home"
+    url: "/"
+
+  - title: "About"
+    url: "/about/"
+
+  - title: "Services"
+    url: "/services/"
+
+  - title: "Guides"
+    url: "/guides/"
+    children:
+      - title: "Digital Security"
+        url: "/guides/digital-security/"
+        children:
+          - title: "Why Break Up With Google?"
+            url: "/guides/digital-security/life-without-google/#google-breakup-intro"
+
+          - title: "Google Replacement Guide"
+            url: "/guides/digital-security/life-without-google/#google-replacement-guide"
+
+  - title: "Documentation"
+    url: "/documentation/"
+
+  - title: "FAQ"
+    url: "/faq/"
+
+  - title: "Contact"
+    url: "/contact.html"
