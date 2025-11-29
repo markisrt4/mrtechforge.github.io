@@ -14,8 +14,11 @@ main:
       - title: "Digital Security"
         url: "/guides/digital-security/"
         children:
-          - title: "Life Without Google"
-            url: "/guides/digital-security/life-without-google/"
+          - title: "Why Break Up With Google?"
+            url: "/guides/digital-security/life-without-google/#google-breakup-intro"
+
+          - title: "Google Replacement Guide"
+            url: "/guides/digital-security/life-without-google/#google-replacement-guide"
 
   - title: "Documentation"
     url: "/documentation/"
