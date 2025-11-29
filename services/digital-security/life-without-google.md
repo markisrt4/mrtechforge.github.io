@@ -137,7 +137,7 @@ This guide gives you that power.
 
 <a id="google-replacement-guide"></a>
 
-# 🛠️ The Ultimate Google Replacement Guide
+## 🛠️ The Ultimate Google Replacement Guide
 
 Welcome to the **Google Replacement Guide** – a curated list of tools and services that help you reduce (or remove) your dependence on Google.
 
@@ -157,7 +157,7 @@ Use this as a reference, or as part of a full **“Google break-up” migration 
 
 ---
 
-## 🟢 Easy Tools <a class="anchor" href="#easy-tools">🔗</a>
+### 🟢 Easy Tools <a class="anchor" href="#easy-tools">🔗</a>
 
 <hr style="border:0;height:3px;background:#22c55e;margin:0 0 1.5rem 0;">
 
@@ -290,7 +290,7 @@ These are **drop-in replacements** that most people can start using immediately 
 
 ---
 
-## 🟡 Medium Tools <a class="anchor" href="#medium-tools">🔗</a>
+### 🟡 Medium Tools <a class="anchor" href="#medium-tools">🔗</a>
 
 <hr style="border:0;height:3px;background:#eab308;margin:0 0 1.5rem 0;">
 
@@ -401,7 +401,7 @@ These tools may require **more configuration**, **account changes**, or **migrat
 
 ---
 
-## 🔴 Hard Tools <a class="anchor" href="#hard-tools">🔗</a>
+### 🔴 Hard Tools <a class="anchor" href="#hard-tools">🔗</a>
 
 <hr style="border:0;height:3px;background:#ef4444;margin:0 0 1.5rem 0;">
 
