@@ -1,26 +1,143 @@
 /* ==========================================================
-   M.R. TECHFORGE — CARDS (v1.0)
-   Hover-lift service/document cards
+   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v2.0)
+   Reusable Cards • Complexity Cards • Glow • Mobile-Ready
    ========================================================== */
 
+/* ----------------------------------------------------------
+   BASE CARD (default “forge-card” used across site)
+---------------------------------------------------------- */
 .forge-card {
-  background: rgba(20,20,20,0.75);
-  border: 1px solid rgba(var(--forge-accent-rgb),0.2);
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.20);
   border-radius: 12px;
   padding: 1.6rem 1.3rem;
   margin: 2rem 0;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb),0.08);
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.08);
 }
 
 .forge-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb),0.18);
+  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.18);
 }
 
 .forge-card h3 {
   margin-top: 0;
   color: var(--forge-accent);
-  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb),0.5);
+  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.5);
+}
+
+
+/* ----------------------------------------------------------
+   COMPLEXITY CARDS (Green = Easy • Yellow = Medium • Red = Hard)
+   Used for the Life Without Google page
+---------------------------------------------------------- */
+.forge-complexity-card {
+  background: linear-gradient(180deg, rgba(25,25,25,0.92), rgba(10,10,10,0.90));
+  border-radius: 14px;
+  padding: 1.4rem 1.3rem;
+  margin: 2.2rem 0;
+
+  border-left: 7px solid var(--forge-accent);
+  box-shadow: 0 0 22px rgba(0,0,0,0.35);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.forge-complexity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(var(--forge-accent-rgb), 0.16);
+}
+
+/* Complexity colors */
+.forge-easy {
+  border-left-color: #22c55e; /* GREEN */
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.25);
+}
+
+.forge-medium {
+  border-left-color: #eab308; /* YELLOW */
+  box-shadow: 0 0 18px rgba(234, 179, 8, 0.25);
+}
+
+.forge-hard {
+  border-left-color: #ef4444; /* RED */
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.25);
+}
+
+/* Card internal title */
+.forge-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--forge-text);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.4);
+}
+
+
+/* ----------------------------------------------------------
+   ACCORDION COMPONENT (Used for Tool Sections)
+---------------------------------------------------------- */
+
+.forge-accordion {
+  margin-top: 1.4rem;
+}
+
+.forge-accordion button {
+  width: 100%;
+  background: rgba(0,0,0,0.35);
+  color: var(--forge-text);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all 0.3s ease;
+}
+
+.forge-accordion button:hover {
+  background: rgba(var(--forge-accent-rgb), 0.12);
+}
+
+/* icon */
+.forge-accordion button .arrow {
+  transition: transform 0.25s ease;
+}
+
+.forge-accordion button.active .arrow {
+  transform: rotate(90deg);
+}
+
+/* accordion body */
+.forge-accordion .panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  padding-left: 0.2rem;
+}
+
+.forge-accordion .panel.open {
+  padding-top: 0.9rem;
+  max-height: 800px;
+}
+
+@media (max-width: 760px) {
+  .forge-card,
+  .forge-complexity-card {
+    padding: 1.1rem 1rem;
+  }
+
+  .forge-card-title {
+    font-size: 1.15rem;
+  }
 }
