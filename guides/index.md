@@ -24,7 +24,30 @@ They are **actionable guides** that align with the TechForge mission:
 
 ## 📚 Guide Categories
 
-Below are the categories currently available. More will be added as the library grows.
+<div class="forge-card-grid">
+
+  <div class="forge-card">
+    <h3>🛡️ Digital Security</h3>
+    <p>Guides focused on privacy, data protection, and practical ways to reduce your digital footprint.</p>
+    <a href="/guides/digital-security/" class="btn-glow">Explore Digital Security</a>
+  </div>
+
+  <div class="forge-card">
+    <h3>🚀 Start Here</h3>
+    <p>A beginner-friendly roadmap for anyone wanting to modernize and secure their digital life without confusion.</p>
+    <a href="/guides/start-here/" class="btn-glow">Start Your Journey</a>
+  </div>
+
+  <!-- Future categories go here -->
+  <!--
+  <div class="forge-card">
+    <h3>💻 Linux & Open Tech</h3>
+    <p>Beginner-friendly guides to Linux, open-source tools, and privacy-respecting software.</p>
+    <a href="/guides/linux/" class="btn-glow">Learn Linux</a>
+  </div>
+  -->
+
+</div>
 
 ---
 
