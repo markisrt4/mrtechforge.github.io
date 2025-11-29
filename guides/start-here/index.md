@@ -23,7 +23,7 @@ So this guide is your starting point — a clear, human-readable roadmap for any
 - smarter habits  
 - and peace of mind  
 
-Whether you're a beginner or someone returning after years in the Google ecosystem, this guide gives you the foundations.
+Whether you’re a beginner or someone returning after years in the Google ecosystem, this guide gives you the foundations.
 
 ---
 
@@ -115,10 +115,10 @@ Whether you're a beginner or someone returning after years in the Google ecosyst
 
 # 🧭 What’s Next?
 
-You can continue your journey by exploring:
+You can continue your journey with:
 
 - [💔 Life Without Google](../digital-security/life-without-google/)  
 - [Digital Security Guides](../digital-security/)  
-- Or visit the [main Guides page](/guides/) to pick your next topic.
+- Or visit the [main Guides page](/guides/) to explore more topics.
 
-If you want help creating a personalized digital security plan, reach out through the [Contact page](/contact/).
+If you'd like help creating a personalized digital security plan, reach out through the <a href="/contact/">Contact page</a>.
