@@ -1,6 +1,6 @@
 /* ==========================================================
-   PAGES — DOCUMENTATION (FINAL CLEAN BUILD v3.0)
-   Unified Example Cards • Glow • Animation • Forge Styling
+   PAGES — DOCUMENTATION (v3.5 CLEAN)
+   Page-Specific Styling Only • Cards Moved to _cards.scss
    ========================================================== */
 
 /* Section container */
@@ -9,43 +9,7 @@
   animation: fadeIn 0.8s ease-in;
 }
 
-/* ==========================================================
-   EXAMPLE CARD
-   ========================================================== */
-.example-card {
-  background: linear-gradient(180deg, rgba(25,25,25,0.9), rgba(10,10,10,0.95));
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
-  border-left: 4px solid var(--forge-accent);
-  border-radius: 12px;
-
-  padding: 1.6rem 1.3rem;
-  margin: 2rem 0;
-
-  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.10);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.example-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-/* ==========================================================
-   HEADINGS
-   ========================================================== */
-.example-card h3 {
-  color: var(--forge-accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 0;
-  margin-bottom: 0.6rem;
-
-  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.5);
-}
-
-/* ==========================================================
-   BLOCKQUOTES
-   ========================================================== */
+/* Blockquotes (Documentation-only formatting) */
 .example-card blockquote {
   border-left: 4px solid var(--forge-hotmetal);
   background: rgba(0,0,0,0.35);
@@ -56,7 +20,6 @@
   margin: 0.8rem 0;
 }
 
-/* rewritten, “fixed” block */
 .example-card blockquote.forge-fixed {
   border-left-color: var(--forge-accent);
   background: rgba(var(--forge-accent-rgb), 0.08);
@@ -64,7 +27,7 @@
   font-style: normal;
 }
 
-/* result line */
+/* Result line */
 .example-card .result {
   margin-top: 0.8rem;
   color: var(--forge-subtext);
@@ -72,54 +35,13 @@
   font-style: italic;
 }
 
-/* ==========================================================
-   LINKS
-   ========================================================== */
-.examples-section a {
-  color: var(--forge-accent);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.examples-section a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.6);
-}
-
-/* ==========================================================
-   ANIMATION
-   ========================================================== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ==========================================================
-   MOBILE
-   ========================================================== */
-@media (max-width: 760px) {
-  .example-card {
-    padding: 1.2rem 1rem;
-  }
-  .example-card h3 {
-    font-size: 1.05rem;
-  }
-  .example-card blockquote {
-    font-size: 0.9rem;
-  }
-}
-
-/* ==========================================================
-   DOCUMENTATION HERO (Top Banner)
-   ========================================================== */
-
+/* Documentation Hero */
 .doc-hero {
   text-align: center;
   margin: 1rem auto 2.8rem;
   padding-bottom: 1.2rem;
-
   border-bottom: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+  animation: docHeroFade 0.6s ease-out;
 }
 
 .doc-title {
@@ -139,9 +61,10 @@
   text-shadow: 0 0 8px rgba(var(--forge-accent-rgb), 0.35);
 }
 
-/* subtle fade-in */
-.doc-hero {
-  animation: docHeroFade 0.6s ease-out;
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes docHeroFade {
