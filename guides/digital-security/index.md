@@ -11,7 +11,7 @@ permalink: /guides/digital-security/
 
 The **Digital Security Guides** collection provides you with actionable steps, real-world strategies, and Forge-grade clarity to help you take control of your online presence.
 
-Whether you’re trying to:
+Whether you're trying to:
 
 - reduce tracking  
 - secure your accounts  
@@ -23,19 +23,22 @@ Whether you’re trying to:
 
 ---
 
-## 📘 Available Guides
+## 📘 Digital Security Guides
 
-Below are the guides currently available in this category:
+<div class="forge-card-grid">
 
-<div class="forge-card">
-  <h3>💔 Life Without Google</h3>
-  Break free from Google’s data ecosystem and regain control of your digital identity.
+  <div class="forge-card">
+    <h3>💔 Life Without Google</h3>
+    <p>Break free from Google's data ecosystem and regain control of your digital identity.</p>
 
-  - [Why Break Up With Google?](./life-without-google/#google-breakup-intro)  
-  - [Replacement Guide](./life-without-google/#google-replacement-guide)  
-  - [Complete Guide](./life-without-google/)
+    <ul style="margin-left: 1rem;">
+      <li><a href="./life-without-google/#google-breakup-intro">Why Break Up With Google?</a></li>
+      <li><a href="./life-without-google/#google-replacement-guide">Replacement Guide</a></li>
+      <li><a href="./life-without-google/">Full Guide</a></li>
+    </ul>
+  </div>
+
 </div>
 
 ---
-
-More Digital Security guides will be added regularly. If there’s something you’d like to see covered, send a message through the [Contact page](/contact/).
+More guides coming soon. If there's something you'd like covered, send a message through the <a href="/contact/">Contact page</a>.
