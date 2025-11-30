@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v12.5 STABLE)
+   M.R. TECHFORGE — NAVIGATION (v12.6 STABLE)
    Desktop hover + Mobile accordion + hammer FX
    ===================================================== */
 
@@ -244,13 +244,15 @@
   }
 
   .nav-toggle-btn.open .bar-top {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
   }
+
   .nav-toggle-btn.open .bar-middle {
     opacity: 0;
   }
+
   .nav-toggle-btn.open .bar-bottom {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .nav-toggle-btn.open .bar {
@@ -272,13 +274,14 @@
     flex-direction: column;
     align-items: center;
 
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease-in-out;
+    /* Hidden by default on mobile */
+    display: none;
+    padding: 0;
   }
 
   .forge-nav.open {
-    max-height: 750px;
+    /* Shown when JS adds .open */
+    display: flex;
     padding: 0.4rem 0 0.6rem;
   }
 
@@ -308,7 +311,7 @@
   }
 
 
-  /* Make dropdown parent + submenu stack instead of sitting side-by-side */
+  /* Make dropdown parent + submenu stack instead of side-by-side */
   .nav-item.dropdown {
     flex-direction: column;
     align-items: stretch;
