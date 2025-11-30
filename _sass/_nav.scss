@@ -79,8 +79,8 @@
 ------------------------------------------------------ */
 .forge-nav {
   display: flex;
-  gap: 1.4rem;
   align-items: center;
+  gap: 1.4rem;
 }
 
 .forge-nav a {
@@ -120,7 +120,6 @@
 .dropdown-parent {
   background: transparent;
   border: none;
-  padding: 0;
   cursor: pointer;
 
   display: inline-flex;
@@ -128,7 +127,8 @@
   gap: 0.25rem;
 }
 
-.dropdown-parent-text {
+.dropdown-parent-text,
+.dropdown-arrow {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
@@ -225,9 +225,16 @@
     font-family: "Titillium Web", sans-serif;
   }
 
-  .nav-item.dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
+  .dropdown-content a[data-child="true"]::before {
+    content: "›";
     color: var(--forge-hotmetal);
+    margin-right: 0.35rem;
+  }
+
+  .dropdown-content a[data-grandchild="true"]::before {
+    content: "»";
+    color: var(--forge-accent);
+    margin-right: 0.35rem;
   }
 }
 
@@ -241,18 +248,18 @@
      MOBILE BURGER BUTTON
   --------------------------------------------------- */
   .nav-toggle-btn {
-    width: 42px;
-    height: 34px;
-    background: none;
-    border: none;
-    cursor: pointer;
-
     position: absolute;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 3000;
+    background: none;
+    border: none;
+    cursor: pointer;
 
+    width: 42px;
+    height: 34px;
+
+    z-index: 3000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -448,13 +455,17 @@
   overflow: visible;
 }
 
+
+/* =====================================================
+   HAMMER FX
+====================================================== */
 .nav-toggle-btn::after {
   content: "🔨";
   position: absolute;
   right: -34px;
   top: -8px;
-  font-size: 26px;
   opacity: 0;
+  font-size: 26px;
   transform-origin: bottom right;
 }
 
@@ -492,6 +503,9 @@
 100%{opacity:0; transform:translateY(-10px) scale(0.6);}
 }
 
+/* =====================================================
+   HEADER + TITLE GLOW ANIMATIONS
+====================================================== */
 @keyframes forgeHeaderGlow {
   0%{box-shadow:0 0 12px rgba(var(--forge-hotmetal-rgb),0.18);}
 100%{box-shadow:0 0 22px rgba(var(--forge-hotmetal-rgb),0.32);}

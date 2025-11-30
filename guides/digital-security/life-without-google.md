@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "💔 Life Without Google"
-permalink: /services/digital-security/life-without-google/
+permalink: /guides/digital-security/life-without-google/
 ---
 
 <a id="google-breakup-intro"></a>
