@@ -1,57 +1,88 @@
 // =====================================================
-//  M.R. TECHFORGE — MOBILE NAVIGATION (v12.3)
-//  Adds idle forge animations (pulse + sparks)
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v14.0)
+//  Desktop hover + Mobile accordion + idle animations
 // =====================================================
 
 document.addEventListener("DOMContentLoaded", () => {
   const burgerBtn = document.querySelector(".nav-toggle-btn");
   const nav = document.querySelector(".forge-nav");
-  const serviceParent = document.querySelector(".dropdown-parent");
-  const serviceMenu = document.querySelector(".dropdown-content");
+  const dropdownParents = document.querySelectorAll(".dropdown-parent");
 
   if (!burgerBtn || !nav) return;
 
+  // Helper: get the mobile submenu for a dropdown parent
+  function getMobileSubmenu(parent) {
+    const navItem = parent.closest(".nav-item");
+    return navItem ? navItem.querySelector(".mobile-submenu") : null;
+  }
+
   // ---------------------------------------------------
-  // MAIN BURGER TOGGLE
+  // BURGER TOGGLE
   // ---------------------------------------------------
   burgerBtn.addEventListener("click", () => {
-    burgerBtn.classList.toggle("open");
-    nav.classList.toggle("open");
+    const willOpen = !nav.classList.contains("open");
+
+    burgerBtn.classList.toggle("open", willOpen);
+    nav.classList.toggle("open", willOpen);
+
+    // When closing, collapse all mobile submenus
+    if (!willOpen) {
+      dropdownParents.forEach(parent => {
+        parent.classList.remove("active");
+        const submenu = getMobileSubmenu(parent);
+        if (submenu) submenu.classList.remove("open");
+      });
+    }
   });
 
   // ---------------------------------------------------
-  // SERVICES ACCORDION (mobile only)
+  // MOBILE DROPDOWN ACCORDION
   // ---------------------------------------------------
-  if (serviceParent && serviceMenu) {
-    serviceParent.addEventListener("click", () => {
+  dropdownParents.forEach(parent => {
+    const submenu = getMobileSubmenu(parent);
+    if (!submenu) return;
+
+    parent.addEventListener("click", () => {
+      // Desktop uses CSS hover; ignore clicks there
       if (window.innerWidth > 760) return;
-      serviceParent.classList.toggle("active");
-      serviceMenu.classList.toggle("open");
+
+      const isOpen = submenu.classList.contains("open");
+
+      // Close all other dropdowns
+      dropdownParents.forEach(otherParent => {
+        if (otherParent === parent) return;
+        const otherSub = getMobileSubmenu(otherParent);
+        if (otherSub) {
+          otherParent.classList.remove("active");
+          otherSub.classList.remove("open");
+        }
+      });
+
+      // Toggle this one
+      parent.classList.toggle("active", !isOpen);
+      submenu.classList.toggle("open", !isOpen);
     });
-  }
+  });
 
   // ---------------------------------------------------
   // IDLE ANIMATION ENGINE
   // ---------------------------------------------------
   function triggerIdleAnimation() {
-    if (burgerBtn.classList.contains("open")) {
-      return setTimeout(triggerIdleAnimation, 4000);
+    // Don't idle-animate while menu is open
+    if (!burgerBtn || burgerBtn.classList.contains("open")) {
+      setTimeout(triggerIdleAnimation, 4000);
+      return;
     }
 
-    // pick a random idle effect
     const effects = ["idle-pulse", "idle-flicker", "idle-spark"];
     const effect = effects[Math.floor(Math.random() * effects.length)];
 
     burgerBtn.classList.add(effect);
-
-    // remove the effect after animation finishes
     setTimeout(() => burgerBtn.classList.remove(effect), 1600);
 
-    // schedule next random idle
-    const delay = 3000 + Math.random() * 4000; // 3–7 seconds
+    const delay = 3000 + Math.random() * 4000;
     setTimeout(triggerIdleAnimation, delay);
   }
 
-  // start idle loop
   setTimeout(triggerIdleAnimation, 3500);
 });
