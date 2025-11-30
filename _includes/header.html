@@ -1,68 +1,66 @@
-<header class="forge-header">
-  <div class="header-inner">
+<nav class="forge-nav">
+  {% for item in site.data.navigation.main %}
+    {% if item.children %}
+      <div class="nav-item dropdown">
 
-    <!-- LOGO + WORDMARK -->
-    <a href="/" class="logo-link">
-      <img src="/assets/images/logo_transparent.png"
-           alt="M.R. TechForge Logo"
-           class="forge-logo">
-      <h1 class="forge-title">M.R. TechForge</h1>
-    </a>
+        <!-- TOP-LEVEL BUTTON -->
+        <button class="dropdown-parent" type="button">
+          <span class="dropdown-parent-text">{{ item.title }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
 
-    <!-- MOBILE HAMBURGER BUTTON -->
-    <button class="nav-toggle-btn" aria-label="Toggle navigation">
-      <svg class="forge-burger" width="36" height="26" viewBox="0 0 36 26">
-        <rect class="bar bar-top"    x="3" y="3"  width="30" height="3" rx="1.5" />
-        <rect class="bar bar-middle" x="3" y="11" width="30" height="3" rx="1.5" />
-        <rect class="bar bar-bottom" x="3" y="19" width="30" height="3" rx="1.5" />
-      </svg>
-    </button>
+        <!-- DESKTOP DROPDOWN -->
+        <div class="dropdown-content desktop-only">
 
-    <!-- NAVIGATION -->
-    <nav class="forge-nav">
+          {% if item.url %}
+            <a href="{{ item.url }}" class="dropdown-overview">
+              {{ item.title }} Overview
+            </a>
+          {% endif %}
 
-      {% for item in site.data.navigation.main %}
-        {% if item.children %}
-          <div class="nav-item dropdown">
+          {% for child in item.children %}
 
-            <button class="dropdown-parent" type="button">
-              <span class="dropdown-parent-text">{{ item.title }}</span>
-              <span class="dropdown-arrow">▼</span>
-            </button>
+            <a href="{{ child.url }}" data-child="true">
+              {{ child.title }}
+            </a>
 
-            <!-- DESKTOP DROPDOWN -->
-            <div class="dropdown-content desktop-only">
-              {% if item.url %}
-                <a href="{{ item.url }}" class="dropdown-overview">
-                  {{ item.title }} Overview
-                </a>
-              {% endif %}
-
-              {% for child in item.children %}
-                <a href="{{ child.url }}" data-child="true">
-                  {{ child.title }}
+            {% if child.children %}
+              {% for grand in child.children %}
+                <a href="{{ grand.url }}" data-grandchild="true">
+                  {{ grand.title }}
                 </a>
               {% endfor %}
-            </div>
+            {% endif %}
 
-            <!-- MOBILE ACCORDION SUBMENU -->
-            <ul class="mobile-submenu">
-              {% if item.url %}
-                <li><a href="{{ item.url }}">{{ item.title }} Overview</a></li>
-              {% endif %}
+          {% endfor %}
+        </div>
 
-              {% for child in item.children %}
-                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+        <!-- MOBILE ACCORDION SUBMENU -->
+        <ul class="mobile-submenu">
+
+          {% if item.url %}
+            <li><a href="{{ item.url }}">{{ item.title }} Overview</a></li>
+          {% endif %}
+
+          {% for child in item.children %}
+            <li class="mobile-child">
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            </li>
+
+            {% if child.children %}
+              {% for grand in child.children %}
+                <li class="mobile-grandchild">
+                  <a href="{{ grand.url }}">{{ grand.title }}</a>
+                </li>
               {% endfor %}
-            </ul>
+            {% endif %}
 
-          </div>
-        {% else %}
-          <a href="{{ item.url }}">{{ item.title }}</a>
-        {% endif %}
-      {% endfor %}
+          {% endfor %}
+        </ul>
 
-    </nav>
-
-  </div>
-</header>
+      </div>
+    {% else %}
+      <a href="{{ item.url }}">{{ item.title }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>
