@@ -1,5 +1,5 @@
 // =====================================================
-//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.0 SAFE)
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.1 SAFE)
 //  Multi-dropdown accordion + idle animations
 // =====================================================
 
@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownParents = document.querySelectorAll(".dropdown-parent");
 
   if (!burgerBtn || !nav) return;
+
+  // Helper: always get the *mobile* submenu for a parent
+  function getMobileSubmenu(parent) {
+    const navItem = parent.closest(".nav-item");
+    if (!navItem) return null;
+    return navItem.querySelector(".mobile-submenu");
+  }
 
   // ---------------------------------------------------
   // BURGER TOGGLE
@@ -21,9 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!nav.classList.contains("open")) {
       dropdownParents.forEach(parent => {
         parent.classList.remove("active");
-
-        const submenu = parent.nextElementSibling;
-        if (submenu && submenu.classList.contains("dropdown-content")) {
+        const submenu = getMobileSubmenu(parent);
+        if (submenu) {
           submenu.classList.remove("open");
         }
       });
@@ -34,17 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // MULTI-DROPDOWN ACCORDION (MOBILE ONLY)
   // ---------------------------------------------------
   dropdownParents.forEach(parent => {
-    const submenu = parent.nextElementSibling;
+    const submenu = getMobileSubmenu(parent);
     if (!submenu) return;
 
     parent.addEventListener("click", () => {
-      if (window.innerWidth > 760) return; // desktop behavior not touched
+      // Do nothing on desktop; hover CSS handles that
+      if (window.innerWidth > 760) return;
 
       const isOpen = submenu.classList.contains("open");
 
       // Close all other dropdowns first
       dropdownParents.forEach(otherParent => {
-        const otherSub = otherParent.nextElementSibling;
+        const otherSub = getMobileSubmenu(otherParent);
         if (otherSub && otherSub !== submenu) {
           otherParent.classList.remove("active");
           otherSub.classList.remove("open");
