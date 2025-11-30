@@ -1,6 +1,7 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v12.6 STABLE)
+   M.R. TECHFORGE — NAVIGATION (v13.0)
    Desktop hover + Mobile accordion + hammer FX
+   + Active states + Breadcrumbs
    ===================================================== */
 
 
@@ -97,6 +98,25 @@
   text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6);
 }
 
+/* Active link highlighting (top-level + dropdowns) */
+.forge-nav a.is-active {
+  color: var(--forge-hotmetal);
+  text-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.75),
+    0 0 16px rgba(var(--forge-hotmetal-rgb), 0.55);
+}
+
+.dropdown-parent.is-active-parent .dropdown-parent-text {
+  color: var(--forge-hotmetal);
+  text-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.75),
+    0 0 16px rgba(var(--forge-hotmetal-rgb), 0.55);
+}
+
+.dropdown-parent.is-active-parent .dropdown-arrow {
+  color: var(--forge-hotmetal);
+}
+
 
 /* -----------------------------------------------------
    DROPDOWN BASE
@@ -133,21 +153,32 @@
   transition: 0.25s ease;
 }
 
+.dropdown-overview {
+  font-weight: 700;
+  color: var(--forge-hotmetal) !important;
+}
+
+/* Desktop child / grandchild arrows + indent */
+.dropdown-content a[data-child="true"] {
+  padding-left: 1.2rem;
+}
+
 .dropdown-content a[data-child="true"]::before {
   content: "›";
+  margin-right: 0.4rem;
   color: var(--forge-hotmetal);
   font-size: 1rem;
 }
 
-.dropdown-content a[data-grandchild="true"]::before {
-  content: "»";
-  color: var(--forge-accent);
-  font-size: 1rem;
+.dropdown-content a[data-grandchild="true"] {
+  padding-left: 2.0rem;
 }
 
-.dropdown-overview {
-  font-weight: 700;
-  color: var(--forge-hotmetal) !important;
+.dropdown-content a[data-grandchild="true"]::before {
+  content: "»";
+  margin-right: 0.4rem;
+  color: var(--forge-accent);
+  font-size: 1rem;
 }
 
 
@@ -349,6 +380,69 @@
     color: var(--forge-text);
     text-decoration: none;
   }
+
+  /* Mobile child indentation */
+  .mobile-submenu .mobile-child a {
+    padding-left: 1.2rem !important;
+  }
+
+  /* Mobile grandchild indentation + marker */
+  .mobile-submenu .mobile-grandchild a {
+    padding-left: 2.1rem !important;
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  .mobile-submenu .mobile-grandchild a::before {
+    content: "››";
+    margin-right: 0.4rem;
+    color: var(--forge-accent);
+  }
+
+  /* Active links in mobile submenu */
+  .mobile-submenu a.is-active {
+    color: var(--forge-hotmetal);
+    text-shadow:
+      0 0 8px rgba(var(--forge-hotmetal-rgb), 0.75),
+      0 0 16px rgba(var(--forge-hotmetal-rgb), 0.55);
+  }
+}
+
+
+/* -----------------------------------------------------
+   BREADCRUMBS
+------------------------------------------------------ */
+.forge-breadcrumbs {
+  max-width: 1100px;
+  margin: 0.35rem auto 0.6rem;
+  padding: 0 1rem 0.2rem;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.85rem;
+  color: var(--forge-subtext);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.forge-breadcrumbs a {
+  color: var(--forge-subtext);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.forge-breadcrumbs a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
+}
+
+.forge-breadcrumbs-separator {
+  opacity: 0.55;
+}
+
+.forge-breadcrumbs-current {
+  color: var(--forge-text);
+  font-weight: 600;
 }
 
 
