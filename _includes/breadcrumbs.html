@@ -1,27 +1,19 @@
 {% assign current_url = page.url | default: "/" %}
 
-{% comment %}
-  Determine up to two levels of nav context:
-  - top_item (e.g., Guides)
-  - child_item (e.g., Digital Security)
-  We ignore grandchild anchors for breadcrumbs and treat the page
-  as belonging to the closest matching child.
-{% endcomment %}
-
 {% assign top_item = nil %}
 {% assign child_item = nil %}
 
 {% for item in site.data.navigation.main %}
-  {% assign item_url_clean = item.url | default: "/" | split: "#" | first %}
+  {% assign item_clean = item.url | default:"/" | split:"#": | first %}
 
-  {% if current_url == item_url_clean or current_url contains item_url_clean %}
+  {% if current_url == item_clean or current_url contains item_clean %}
     {% assign top_item = item %}
   {% endif %}
 
   {% if item.children %}
     {% for child in item.children %}
-      {% assign child_url_clean = child.url | split: "#" | first %}
-      {% if current_url == child_url_clean or current_url contains child_url_clean %}
+      {% assign child_clean = child.url | split:"#": | first %}
+      {% if current_url == child_clean or current_url contains child_clean %}
         {% assign top_item = item %}
         {% assign child_item = child %}
       {% endif %}
@@ -30,26 +22,17 @@
 {% endfor %}
 
 {% unless current_url == "/" %}
-  <nav class="forge-breadcrumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a>
+<nav class="forge-breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a>
 
-    {% if top_item and top_item.url and top_item.url != "/" %}
-      <span class="forge-breadcrumbs-separator">/</span>
-      <a href="{{ top_item.url }}">{{ top_item.title }}</a>
-    {% endif %}
+  {% if top_item and top_item.url != "/" %}
+    <span class="forge-breadcrumbs-separator">/</span>
+    <a href="{{ top_item.url }}">{{ top_item.title }}</a>
+  {% endif %}
 
-    {% if child_item %}
-      <span class="forge-breadcrumbs-separator">/</span>
-      <span class="forge-breadcrumbs-current">
-        {{ child_item.title }}
-      </span>
-    {% else %}
-      {% if page.title and (top_item == nil or top_item.url == "/") %}
-        <span class="forge-breadcrumbs-separator">/</span>
-        <span class="forge-breadcrumbs-current">
-          {{ page.title }}
-        </span>
-      {% endif %}
-    {% endif %}
-  </nav>
+  {% if child_item %}
+    <span class="forge-breadcrumbs-separator">/</span>
+    <span class="forge-breadcrumbs-current">{{ child_item.title }}</span>
+  {% endif %}
+</nav>
 {% endunless %}
