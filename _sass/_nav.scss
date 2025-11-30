@@ -308,6 +308,13 @@
   }
 
 
+  /* Make dropdown parent + submenu stack instead of sitting side-by-side */
+  .nav-item.dropdown {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
   /* DESKTOP DROPDOWN HIDDEN ON MOBILE */
   .dropdown-content {
     display: none !important;
