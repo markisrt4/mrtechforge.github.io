@@ -1,5 +1,5 @@
 // =====================================================
-//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.3 CLEAN)
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.4 CLEAN)
 //  Desktop hover + mobile accordion + idle animations
 // =====================================================
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------
-  // BURGER TOGGLE (just toggles .open on nav + button)
+  // BURGER TOGGLE (toggling .open on nav + button)
   // ---------------------------------------------------
   burgerBtn.addEventListener("click", () => {
     burgerBtn.classList.toggle("open");
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!submenu) return;
 
     parent.addEventListener("click", () => {
-      // On desktop, let CSS hover handle dropdowns
+      // Desktop uses CSS hover; don't interfere
       if (window.innerWidth > 760) return;
 
       const isOpen = submenu.classList.contains("open");
