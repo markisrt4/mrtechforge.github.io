@@ -1,66 +1,135 @@
-<nav class="forge-nav">
-  {% for item in site.data.navigation.main %}
-    {% if item.children %}
-      <div class="nav-item dropdown">
+<header class="forge-header">
+  <div class="header-inner">
 
-        <!-- TOP-LEVEL BUTTON -->
-        <button class="dropdown-parent" type="button">
-          <span class="dropdown-parent-text">{{ item.title }}</span>
-          <span class="dropdown-arrow">▼</span>
-        </button>
+    <!-- LOGO + WORDMARK -->
+    <a href="/" class="logo-link">
+      <img src="/assets/images/logo_transparent.png"
+           alt="M.R. TechForge Logo"
+           class="forge-logo">
+      <h1 class="forge-title">M.R. TechForge</h1>
+    </a>
 
-        <!-- DESKTOP DROPDOWN -->
-        <div class="dropdown-content desktop-only">
+    <!-- MOBILE HAMBURGER BUTTON -->
+    <button class="nav-toggle-btn" aria-label="Toggle navigation">
+      <svg class="forge-burger" width="36" height="26" viewBox="0 0 36 26">
+        <rect class="bar bar-top"    x="3" y="3"  width="30" height="3" rx="1.5" />
+        <rect class="bar bar-middle" x="3" y="11" width="30" height="3" rx="1.5" />
+        <rect class="bar bar-bottom" x="3" y="19" width="30" height="3" rx="1.5" />
+      </svg>
+    </button>
 
-          {% if item.url %}
-            <a href="{{ item.url }}" class="dropdown-overview">
-              {{ item.title }} Overview
-            </a>
-          {% endif %}
+    <!-- NAVIGATION -->
+    {% assign current_url = page.url | default: "/" %}
 
-          {% for child in item.children %}
+    <nav class="forge-nav">
+      {% for item in site.data.navigation.main %}
+        {% assign item_url_clean = item.url | default: "/" | split: "#" | first %}
+        {% assign item_is_active =
+          current_url == item_url_clean or
+          current_url != "/" and current_url contains item_url_clean
+        %}
 
-            <a href="{{ child.url }}" data-child="true">
-              {{ child.title }}
-            </a>
+        {% if item.children %}
+          <div class="nav-item dropdown">
 
-            {% if child.children %}
-              {% for grand in child.children %}
-                <a href="{{ grand.url }}" data-grandchild="true">
-                  {{ grand.title }}
+            <!-- TOP-LEVEL BUTTON -->
+            <button
+              class="dropdown-parent{% if item_is_active %} is-active-parent{% endif %}"
+              type="button">
+              <span class="dropdown-parent-text">{{ item.title }}</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+
+            <!-- DESKTOP DROPDOWN -->
+            <div class="dropdown-content desktop-only">
+              {% if item.url %}
+                <a href="{{ item.url }}" class="dropdown-overview{% if item_is_active %} is-active{% endif %}">
+                  {{ item.title }} Overview
                 </a>
+              {% endif %}
+
+              {% for child in item.children %}
+                {% assign child_url_clean = child.url | split: "#" | first %}
+                {% assign child_is_active =
+                  current_url == child_url_clean or
+                  current_url contains child_url_clean
+                %}
+
+                <a href="{{ child.url }}"
+                   data-child="true"
+                   class="{% if child_is_active %}is-active{% endif %}">
+                  {{ child.title }}
+                </a>
+
+                {% if child.children %}
+                  {% for grand in child.children %}
+                    {% assign grand_url_clean = grand.url | split: "#" | first %}
+                    {% assign grand_is_active =
+                      current_url == grand_url_clean or
+                      current_url contains grand_url_clean
+                    %}
+
+                    <a href="{{ grand.url }}"
+                       data-grandchild="true"
+                       class="{% if grand_is_active %}is-active{% endif %}">
+                      {{ grand.title }}
+                    </a>
+                  {% endfor %}
+                {% endif %}
+
               {% endfor %}
-            {% endif %}
+            </div>
 
-          {% endfor %}
-        </div>
-
-        <!-- MOBILE ACCORDION SUBMENU -->
-        <ul class="mobile-submenu">
-
-          {% if item.url %}
-            <li><a href="{{ item.url }}">{{ item.title }} Overview</a></li>
-          {% endif %}
-
-          {% for child in item.children %}
-            <li class="mobile-child">
-              <a href="{{ child.url }}">{{ child.title }}</a>
-            </li>
-
-            {% if child.children %}
-              {% for grand in child.children %}
-                <li class="mobile-grandchild">
-                  <a href="{{ grand.url }}">{{ grand.title }}</a>
+            <!-- MOBILE ACCORDION SUBMENU -->
+            <ul class="mobile-submenu">
+              {% if item.url %}
+                <li>
+                  <a href="{{ item.url }}" class="{% if item_is_active %}is-active{% endif %}">
+                    {{ item.title }} Overview
+                  </a>
                 </li>
+              {% endif %}
+
+              {% for child in item.children %}
+                {% assign child_url_clean = child.url | split: "#" | first %}
+                {% assign child_is_active =
+                  current_url == child_url_clean or
+                  current_url contains child_url_clean
+                %}
+
+                <li class="mobile-child">
+                  <a href="{{ child.url }}" class="{% if child_is_active %}is-active{% endif %}">
+                    {{ child.title }}
+                  </a>
+                </li>
+
+                {% if child.children %}
+                  {% for grand in child.children %}
+                    {% assign grand_url_clean = grand.url | split: "#" | first %}
+                    {% assign grand_is_active =
+                      current_url == grand_url_clean or
+                      current_url contains grand_url_clean
+                    %}
+
+                    <li class="mobile-grandchild">
+                      <a href="{{ grand.url }}" class="{% if grand_is_active %}is-active{% endif %}">
+                        {{ grand.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
               {% endfor %}
-            {% endif %}
+            </ul>
 
-          {% endfor %}
-        </ul>
+          </div>
+        {% else %}
+          <a href="{{ item.url }}"
+             class="{% if item_is_active %}is-active{% endif %}">
+            {{ item.title }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </nav>
 
-      </div>
-    {% else %}
-      <a href="{{ item.url }}">{{ item.title }}</a>
-    {% endif %}
-  {% endfor %}
-</nav>
+  </div>
+</header>
