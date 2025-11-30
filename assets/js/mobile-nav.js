@@ -1,5 +1,5 @@
 // =====================================================
-//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.1 SAFE)
+//  M.R. TECHFORGE — MOBILE NAVIGATION (v13.2 SAFE)
 //  Multi-dropdown accordion + idle animations
 // =====================================================
 
@@ -21,11 +21,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // BURGER TOGGLE
   // ---------------------------------------------------
   burgerBtn.addEventListener("click", () => {
-    burgerBtn.classList.toggle("open");
-    nav.classList.toggle("open");
+    const isOpening = !nav.classList.contains("open");
 
-    // Close ALL open dropdowns when closing the menu
-    if (!nav.classList.contains("open")) {
+    burgerBtn.classList.toggle("open", isOpening);
+    nav.classList.toggle("open", isOpening);
+
+    // Explicitly control height on mobile so it MUST appear
+    if (window.innerWidth <= 760) {
+      if (isOpening) {
+        // scrollHeight = full height needed for all children
+        nav.style.maxHeight = nav.scrollHeight + "px";
+      } else {
+        nav.style.maxHeight = "0px";
+      }
+    } else {
+      // Let desktop CSS handle things
+      nav.style.maxHeight = "";
+    }
+
+    // Close ALL dropdowns when closing the menu
+    if (!isOpening) {
       dropdownParents.forEach(parent => {
         parent.classList.remove("active");
         const submenu = getMobileSubmenu(parent);
@@ -44,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!submenu) return;
 
     parent.addEventListener("click", () => {
-      // Do nothing on desktop; hover CSS handles that
+      // Desktop uses hover; don’t interfere
       if (window.innerWidth > 760) return;
 
       const isOpen = submenu.classList.contains("open");
@@ -61,6 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // Toggle the clicked one
       parent.classList.toggle("active", !isOpen);
       submenu.classList.toggle("open", !isOpen);
+
+      // Adjust nav height to fit new content
+      if (nav.classList.contains("open")) {
+        nav.style.maxHeight = nav.scrollHeight + "px";
+      }
     });
   });
 
