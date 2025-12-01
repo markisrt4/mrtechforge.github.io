@@ -22,7 +22,7 @@
   margin: 1.8rem auto;
   max-width: 900px;
   width: 100%;
-  box-sizing: border-box;   /* ✅ prevents horizontal overflow */
+  box-sizing: border-box;   /* important for mobile */
 
   box-shadow:
     0 0 10px rgba(77, 184, 255, 0.25),
