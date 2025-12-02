@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.0 FINAL)
+   M.R. TECHFORGE — NAVIGATION (v14.1 GRADIENT LINKS)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -75,7 +75,7 @@
 
 
 /* -----------------------------------------------------
-   BASE NAV + ACTIVE STATES
+   BASE NAV + GRADIENT LINK STATES
 ------------------------------------------------------ */
 .forge-nav {
   display: flex;
@@ -87,24 +87,34 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--forge-subtext);
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: text-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Gradient applied globally to nav links + dropdown headers */
+.forge-nav a,
+.dropdown-parent-text,
+.dropdown-arrow {
+  background: linear-gradient(90deg, var(--forge-accent), #4DC3FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
 }
 
 .forge-nav a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb),0.9);
 }
 
 .forge-nav a.is-active,
 .dropdown-parent.is-active-parent .dropdown-parent-text {
-  color: var(--forge-hotmetal);
+  transform: translateY(-1px);
   text-shadow:
-    0 0 8px rgba(var(--forge-hotmetal-rgb),0.75),
-    0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
+    0 0 12px rgba(var(--forge-accent-rgb),0.95),
+    0 0 18px rgba(var(--forge-hotmetal-rgb),0.6);
 }
 
 
@@ -134,12 +144,10 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: var(--forge-subtext);
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
-  color: var(--forge-subtext);
   transition: 0.25s ease;
 }
 
@@ -149,7 +157,7 @@
 }
 
 
-/* Child / grandchild arrows + indentation (DESKTOP) */
+/* Child / grandchild arrows */
 .dropdown-content a[data-child="true"],
 .dropdown-content a[data-grandchild="true"] {
   position: relative;
@@ -244,9 +252,6 @@
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
-  /* ---------------------------------------------------
-     MOBILE BURGER BUTTON
-  --------------------------------------------------- */
   .nav-toggle-btn {
     position: absolute;
     right: 1rem;
@@ -284,34 +289,27 @@
   }
 
 
-  /* ---------------------------------------------------
-     MOBILE NAV WRAPPER
-  --------------------------------------------------- */
   .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-
     background: #050810;
     border-top: 1px solid rgba(var(--forge-accent-rgb),0.25);
-
     flex-direction: column;
     align-items: center;
 
-    display: none;      /* hidden by default */
+    display: none;
     padding: 0;
   }
 
   .forge-nav.open {
-    display: flex;       /* visible when toggled */
+    display: flex;
     padding: 0.4rem 0 0.6rem;
   }
 
 
-  /* ---------------------------------------------------
-     TOP-LEVEL MOBILE BUTTONS
-  --------------------------------------------------- */
+  /* top-level items (gradient already applied globally) */
   .forge-nav > a,
   .forge-nav .dropdown-parent {
     width: 100%;
@@ -319,17 +317,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--forge-subtext);
     text-align: center;
     font-size: 1rem;
   }
 
   .dropdown-parent.active {
-    color: var(--forge-hotmetal);
+    text-shadow:
+      0 0 10px rgba(var(--forge-accent-rgb),0.9),
+      0 0 16px rgba(var(--forge-hotmetal-rgb),0.6);
   }
+
   .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
-    color: var(--forge-hotmetal);
+    text-shadow:
+      0 0 10px rgba(var(--forge-accent-rgb),0.9),
+      0 0 16px rgba(var(--forge-hotmetal-rgb),0.6);
   }
 
   .nav-item.dropdown {
@@ -340,14 +342,11 @@
   .dropdown-content { display: none !important; }
 
 
-  /* ---------------------------------------------------
-     MOBILE SUBMENU (Accordion)
-  --------------------------------------------------- */
+  /* Mobile submenu */
   .mobile-submenu {
     width: 100%;
     background: rgba(0,0,0,0.35);
     overflow: hidden;
-
     max-height: 0;
     transition: max-height 0.28s ease;
     padding: 0;
@@ -359,22 +358,21 @@
     max-height: 600px;
   }
 
-  /* Base link — left aligned so indentation works */
   .mobile-submenu li a {
     display: block;
     width: 100%;
     padding: 0.55rem 1.1rem;
-    text-align: left; /* ❗ important */
+    text-align: left;
     font-size: 0.95rem;
     color: var(--forge-text);
     text-decoration: none;
     position: relative;
   }
 
-  /* CHILD — one arrow, small indent */
   .mobile-submenu .mobile-child a {
     padding-left: 1.6rem !important;
   }
+
   .mobile-submenu .mobile-child a::before {
     content: "›";
     position: absolute;
@@ -384,12 +382,12 @@
     color: var(--forge-hotmetal);
   }
 
-  /* GRANDCHILD — double arrow, deeper indent */
   .mobile-submenu .mobile-grandchild a {
     padding-left: 2.2rem !important;
     font-size: 0.9rem;
     opacity: 0.9;
   }
+
   .mobile-submenu .mobile-grandchild a::before {
     content: "››";
     position: absolute;
@@ -399,7 +397,6 @@
     color: var(--forge-accent);
   }
 
-  /* Active highlighting in mobile submenu */
   .mobile-submenu a.is-active {
     color: var(--forge-hotmetal);
     text-shadow:
@@ -448,17 +445,13 @@
 
 
 /* -----------------------------------------------------
-   HAMMER + SPARKS FX
+   HAMMER FX
 ------------------------------------------------------ */
 .nav-toggle-btn {
   position: relative;
   overflow: visible;
 }
 
-
-/* =====================================================
-   HAMMER FX
-====================================================== */
 .nav-toggle-btn::after {
   content: "🔨";
   position: absolute;
@@ -481,6 +474,7 @@
 .nav-toggle-btn.open::after {
   animation: hammerSwing 0.65s ease-out forwards;
 }
+
 .nav-toggle-btn.open::before {
   animation: sparksBurst 0.45s ease-out forwards;
 }
@@ -494,7 +488,7 @@
   30%{ opacity:1; transform:rotate(-15deg);}
   50%{ transform:rotate(0deg);}
   70%{ transform:rotate(-12deg);}
- 100%{ opacity:0; transform:rotate(-60deg);}
+100%{ opacity:0; transform:rotate(-60deg);}
 }
 
 @keyframes sparksBurst {
@@ -503,9 +497,6 @@
 100%{opacity:0; transform:translateY(-10px) scale(0.6);}
 }
 
-/* =====================================================
-   HEADER + TITLE GLOW ANIMATIONS
-====================================================== */
 @keyframes forgeHeaderGlow {
   0%{box-shadow:0 0 12px rgba(var(--forge-hotmetal-rgb),0.18);}
 100%{box-shadow:0 0 22px rgba(var(--forge-hotmetal-rgb),0.32);}
