@@ -1,0 +1,20 @@
+<div class="product-card">
+  <img src="{{ site.baseurl }}{{ include.item.image }}" alt="{{ include.item.name }}">
+  <h3>{{ include.item.name }}</h3>
+  <p>{{ include.item.description }}</p>
+
+  {% if include.item.price and include.item.price > 0 %}
+    <span class="price">${{ include.item.price | round: 2 }}</span>
+    <button class="btn-glow add-to-cart"
+      data-name="{{ include.item.name }}"
+      data-price="{{ include.item.price }}">
+      Add to Cart
+    </button>
+  {% else %}
+    <span class="price price-contact">Service · Contact for quote</span>
+    <a class="btn-glow"
+       href="{{ '/contact/?topic=' | append: include.item.name | relative_url }}">
+      Contact M.R. TechForge
+    </a>
+  {% endif %}
+</div>
