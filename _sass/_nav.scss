@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.2 MOBILE GRADIENT)
+   M.R. TECHFORGE — NAVIGATION (v14.3 MOBILE GRADIENT FIX)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -75,7 +75,7 @@
 
 
 /* -----------------------------------------------------
-   DESKTOP NAV (NO GRADIENT)
+   DESKTOP NAV (UNCHANGED)
 ------------------------------------------------------ */
 .forge-nav {
   display: flex;
@@ -87,7 +87,7 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--forge-subtext);   /* DESKTOP = normal */
+  color: var(--forge-subtext);
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
@@ -133,7 +133,7 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: var(--forge-subtext);    /* DESKTOP NORMAL */
+  color: var(--forge-subtext);
 }
 
 .dropdown-arrow {
@@ -148,39 +148,8 @@
 }
 
 
-/* Child / grandchild arrows */
-.dropdown-content a[data-child="true"],
-.dropdown-content a[data-grandchild="true"] {
-  position: relative;
-}
-
-.dropdown-content a[data-child="true"] {
-  padding-left: 1.6rem;
-}
-.dropdown-content a[data-child="true"]::before {
-  content: "›";
-  position: absolute;
-  left: 0.9rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--forge-hotmetal);
-}
-
-.dropdown-content a[data-grandchild="true"] {
-  padding-left: 2.2rem;
-}
-.dropdown-content a[data-grandchild="true"]::before {
-  content: "»";
-  position: absolute;
-  left: 1.1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--forge-accent);
-}
-
-
 /* -----------------------------------------------------
-   DESKTOP DROPDOWN
+   DESKTOP DROPDOWN MENU
 ------------------------------------------------------ */
 @media (min-width: 761px) {
 
@@ -226,14 +195,14 @@
 }
 
 
-/* -----------------------------------------------------
-   MOBILE NAV — ACCORDION
-   WITH VERTICAL 3-STOP GRADIENT
------------------------------------------------------- */
+/* =====================================================
+   MOBILE NAV — 3-STOP VERTICAL GRADIENT TEXT
+   (BACKGROUND FIXED)
+===================================================== */
 @media (max-width: 760px) {
 
   /* ---------------------------------------------------
-     MOBILE BURGER BUTTON
+     MOBILE BURGER
   --------------------------------------------------- */
   .nav-toggle-btn {
     position: absolute;
@@ -259,7 +228,6 @@
     fill: #F5B841;
     transition: 0.35s ease;
     filter: drop-shadow(0 0 8px rgba(245,184,65,0.8));
-    transform-origin: center;
   }
 
   .nav-toggle-btn.open .bar-top    { transform: translateY(6px) rotate(45deg); }
@@ -271,8 +239,9 @@
     filter: drop-shadow(0 0 10px rgba(60,162,255,0.9));
   }
 
+
   /* ---------------------------------------------------
-     MOBILE NAV WRAPPER W/ GRADIENT TEXT MASKING
+     MOBILE NAV WRAPPER (BACKGROUND RESTORED)
   --------------------------------------------------- */
   .forge-nav {
     position: absolute;
@@ -280,7 +249,7 @@
     left: 0;
     width: 100%;
 
-    background: #050810;
+    background: #050810;  /* FIXED background */
     border-top: 1px solid rgba(var(--forge-accent-rgb),0.25);
 
     flex-direction: column;
@@ -288,16 +257,6 @@
 
     display: none;
     padding: 0;
-
-    /* VERTICAL 3-STOP BLUE GRADIENT (TEXT MASK) */
-    background-image: linear-gradient(
-      to bottom,
-      #0A6DFF 0%,     /* deep forge blue */
-      #3FAEFF 50%,    /* mid electric blue */
-      #83D4FF 100%    /* icy blue */
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
   }
 
   .forge-nav.open {
@@ -307,41 +266,38 @@
 
 
   /* ---------------------------------------------------
-     TOP-LEVEL MOBILE ITEMS — TRANSPARENT TEXT
+     MOBILE TOP-LEVEL LINKS — GRADIENT TEXT ONLY
   --------------------------------------------------- */
   .forge-nav > a,
-  .forge-nav .dropdown-parent {
+  .forge-nav .dropdown-parent-text,
+  .forge-nav .dropdown-arrow {
+    background-image: linear-gradient(
+      to bottom,
+      #0A6DFF 0%,
+      #3FAEFF 50%,
+      #83D4FF 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
     width: 100%;
     padding: 0.6rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1rem;
-
-    /* TEXT TAKES COLOR FROM PARENT'S GRADIENT */
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  .dropdown-parent-text,
-  .dropdown-arrow {
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  .dropdown-parent.active {
-    text-shadow:
-      0 0 10px rgba(10,109,255,0.8),
-      0 0 16px rgba(10,109,255,0.5);
   }
 
   .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
   }
 
+
   /* ---------------------------------------------------
-     MOBILE SUBMENU
+     MOBILE SUBMENU (NORMAL TEXT)
   --------------------------------------------------- */
   .mobile-submenu {
     width: 100%;
@@ -359,19 +315,17 @@
     max-height: 600px;
   }
 
-  /* Child link text color = normal (not gradient) */
   .mobile-submenu li a {
     display: block;
     width: 100%;
     padding: 0.55rem 1.1rem;
     text-align: left;
     font-size: 0.95rem;
-    color: var(--forge-text);
+    color: var(--forge-text); /* NOT gradient */
     text-decoration: none;
     position: relative;
   }
 
-  /* CHILD */
   .mobile-submenu .mobile-child a {
     padding-left: 1.6rem !important;
   }
@@ -384,7 +338,6 @@
     color: var(--forge-hotmetal);
   }
 
-  /* GRANDCHILD */
   .mobile-submenu .mobile-grandchild a {
     padding-left: 2.2rem !important;
     font-size: 0.9rem;
@@ -436,10 +389,6 @@
   text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb),0.7);
 }
 
-.forge-breadcrumbs-separator {
-  opacity: 0.55;
-}
-
 .forge-breadcrumbs-current {
   color: var(--forge-text);
   font-weight: 600;
@@ -447,7 +396,7 @@
 
 
 /* -----------------------------------------------------
-   HAMMER + SPARKS FX
+   HAMMER FX + SPARKS
 ------------------------------------------------------ */
 .nav-toggle-btn {
   position: relative;
@@ -508,26 +457,3 @@
  50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
-
-@keyframes burgerIdlePulse {
-  0%{transform:scale(1);}
- 50%{transform:scale(1.06);}
-100%{transform:scale(1);}
-}
-
-@keyframes burgerFlicker {
-  0%,100%{opacity:1;}
- 45%{opacity:0.75;}
- 55%{opacity:0.9;}
-}
-
-@keyframes idleSparkBurst {
-  0%{opacity:0;}
- 30%{opacity:1;}
-100%{opacity:0;}
-}
-
-.nav-toggle-btn::before { pointer-events:none; }
-.nav-toggle-btn.idle-spark::before { animation: idleSparkBurst 0.6s ease-out forwards; }
-.nav-toggle-btn.idle-pulse .forge-burger .bar { animation: burgerIdlePulse 1.6s ease-out; }
-.nav-toggle-btn.idle-flicker .forge-burger .bar { animation: burgerFlicker 0.25s linear; }
