@@ -43,7 +43,7 @@ One company becomes the single holder of your **entire digital identity**, often
 
 ## 📍 2. Location Tracking Is Built In
 
-Google has been caught storing location data **even when “Location History” was off**.  
+Google has been caught storing location data **even when "Location History" was off**.  
 Your phone becomes a timeline of your:
 
 - Home  
@@ -141,7 +141,7 @@ This guide gives you that power.
 
 Welcome to the **Google Replacement Guide** – a curated list of tools and services that help you reduce (or remove) your dependence on Google.
 
-- ✅ Focused on **privacy**, **control**, and **open-source**  
+- ✅ Focused on **privacy**, **control**, and **open‑source where possible**  
 - 🚫 No Apple or Microsoft recommendations  
 - 🧭 Organized by **complexity level**  
 - 🛡️ Built for real families, individuals, and small businesses  
@@ -162,111 +162,94 @@ Use this as your **personal roadmap**.
 
 <div class="forge-complexity-card forge-easy">
 
-  <div class="forge-card-title">🟢 Easy Tools</div>
+<div class="forge-card-title">🟢 Easy Tools</div>
 
-  <p>These are <strong>drop-in replacements</strong> that most people can start using immediately with minimal setup.</p>
+These are **drop‑in replacements** that most people can start using immediately with minimal setup.
 
-  <div class="forge-accordion">
+<div class="forge-accordion">
 
-    <h3>
-      <button>🔍 Search &amp; Browsing <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Search &amp; Chrome</p>
-      <ul>
-        <li>🔍 <strong>DuckDuckGo</strong> – <a href="https://duckduckgo.com" target="_blank" rel="noopener">duckduckgo.com</a><br><em>Private search with no profile-based ad targeting.</em></li>
-        <li>🧭 <strong>Brave Search</strong> – <a href="https://search.brave.com" target="_blank" rel="noopener">search.brave.com</a><br><em>Independent search index with strong privacy defaults.</em></li>
-        <li>🌐 <strong>Brave Browser</strong> – <a href="https://brave.com" target="_blank" rel="noopener">brave.com</a><br><em>Chrome-like browser without Google sync or tracking.</em></li>
-        <li>🦊 <strong>Firefox</strong> – <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener">mozilla.org/firefox</a><br><em>Open-source browser with powerful privacy add-ons.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🔍 Search & Browsing <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Search, Chrome search bar</p>
+<ul>
+  <li>🔍 <a href="https://duckduckgo.com">DuckDuckGo</a> – Private search with no profile‑based ad targeting.</li>
+  <li>🧭 <a href="https://search.brave.com">Brave Search</a> – Good results with built‑in tracker blocking.</li>
+  <li>🌐 <a href="https://www.startpage.com">Startpage</a> – Google results proxied through a privacy layer.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>📧 Email <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Gmail</p>
-      <ul>
-        <li>✉️ <strong>Proton Mail</strong> – <a href="https://proton.me/mail" target="_blank" rel="noopener">proton.me/mail</a><br><em>End‑to‑end encrypted email based in Switzerland.</em></li>
-        <li>📬 <strong>Mailbox.org</strong> – <a href="https://mailbox.org" target="_blank" rel="noopener">mailbox.org</a><br><em>Business‑friendly email with strong privacy policies.</em></li>
-        <li>🔐 <strong>Tutanota</strong> – <a href="https://tutanota.com" target="_blank" rel="noopener">tutanota.com</a><br><em>Secure email with built‑in encryption and calendar.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📧 Email <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Gmail</p>
+<ul>
+  <li>✉️ <a href="https://proton.me/mail">Proton Mail</a> – End‑to‑end encrypted email based in Switzerland.</li>
+  <li>📬 <a href="https://mailbox.org">Mailbox.org</a> – Privacy‑focused email with strong business features.</li>
+  <li>🔐 <a href="https://tutanota.com">Tutanota</a> – Encrypted email with zero‑knowledge calendar support.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>📆 Calendar &amp; Contacts <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Calendar &amp; Google Contacts</p>
-      <ul>
-        <li>📅 <strong>Proton Calendar</strong> – <a href="https://proton.me/calendar" target="_blank" rel="noopener">proton.me/calendar</a><br><em>Encrypted events that aren’t scanned for marketing.</em></li>
-        <li>👤 <strong>Proton Contacts</strong> – <a href="https://proton.me/contacts" target="_blank" rel="noopener">proton.me/contacts</a><br><em>Encrypted contact book that stays in your control.</em></li>
-        <li>📆 <strong>Tutanota Calendar</strong> – <a href="https://tutanota.com" target="_blank" rel="noopener">tutanota.com</a><br><em>Secure calendar integrated with Tutanota email.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📆 Calendar & Contacts <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Calendar, Google Contacts</p>
+<ul>
+  <li>📅 <a href="https://proton.me/calendar">Proton Calendar</a> – Encrypted calendar for personal and family schedules.</li>
+  <li>👥 <a href="https://proton.me/contacts">Proton Contacts</a> – Secure contact storage tied into Proton Mail.</li>
+  <li>📇 Any email provider that supports CardDAV/CalDAV – Lets you sync contacts and calendars without Google.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🔑 Passwords &amp; 2FA <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Password Manager &amp; Google Authenticator</p>
-      <ul>
-        <li>🗝️ <strong>Bitwarden</strong> – <a href="https://bitwarden.com" target="_blank" rel="noopener">bitwarden.com</a><br><em>Open‑source password manager that syncs across devices.</em></li>
-        <li>🗝️ <strong>Proton Pass</strong> – <a href="https://proton.me/pass" target="_blank" rel="noopener">proton.me/pass</a><br><em>Password manager with built‑in alias email support.</em></li>
-        <li>🔐 <strong>Aegis</strong> (Android) – <a href="https://github.com/beemdevelopment/Aegis" target="_blank" rel="noopener">github.com/beemdevelopment/Aegis</a><br><em>Offline 2FA app for storing TOTP codes securely.</em></li>
-        <li>🔐 <strong>Proton Pass 2FA</strong> – <a href="https://proton.me/pass" target="_blank" rel="noopener">proton.me/pass</a><br><em>Integrated TOTP/2FA support inside Proton Pass.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🔑 Passwords & 2FA <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Passwords saved in Chrome, Google Password Manager, Google Authenticator</p>
+<ul>
+  <li>🗝️ <a href="https://bitwarden.com">Bitwarden</a> – Open‑source password manager with apps for all platforms.</li>
+  <li>🗝️ <a href="https://proton.me/pass">Proton Pass</a> – Passwords + secure notes + built‑in 2FA/TOTP codes.</li>
+  <li>🔐 <a href="https://github.com/beemdevelopment/Aegis">Aegis</a> – Encrypted 2FA (TOTP) app for Android with local backups.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>💬 Messaging &amp; SMS <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Messages, Google Chat, Google Voice (personal use)</p>
-      <ul>
-        <li>💬 <strong>Signal</strong> – <a href="https://signal.org" target="_blank" rel="noopener">signal.org</a><br><em>Private, end‑to‑end encrypted messaging and calls.</em></li>
-        <li>📱 <strong>Simple SMS</strong> – <a href="https://github.com/SimpleMobileTools/Simple-SMS-Messenger" target="_blank" rel="noopener">github.com/SimpleMobileTools/Simple-SMS-Messenger</a><br><em>Clean, local‑only SMS app with no cloud account.</em></li>
-        <li>💬 <strong>QKSMS</strong> – <a href="https://github.com/moezbhatti/qksms" target="_blank" rel="noopener">github.com/moezbhatti/qksms</a><br><em>Open‑source SMS app with a modern UI.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">💬 Messaging & SMS <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Messages, Google Chat, basic SMS apps</p>
+<ul>
+  <li>💬 <a href="https://signal.org">Signal</a> – Private, end‑to‑end encrypted messaging and calling.</li>
+  <li>📱 <a href="https://github.com/SimpleMobileTools/Simple-SMS-Messenger">Simple SMS</a> – Clean, offline SMS app with no tracking.</li>
+  <li>💬 <a href="https://github.com/moezbhatti/qksms">QKSMS</a> – Open‑source SMS app with a modern interface.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>▶️ YouTube Alternatives <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> YouTube app &amp; website (for viewing)</p>
-      <ul>
-        <li>📺 <strong>NewPipe</strong> (Android) – <a href="https://newpipe.net" target="_blank" rel="noopener">newpipe.net</a><br><em>Lightweight YouTube front‑end with no Google login.</em></li>
-        <li>📺 <strong>Piped</strong> – <a href="https://piped.video" target="_blank" rel="noopener">piped.video</a><br><em>Web front‑end that plays YouTube without Google tracking.</em></li>
-        <li>📺 <strong>Greyjay</strong> – <a href="https://github.com/greyjayapp" target="_blank" rel="noopener">github.com/greyjayapp</a><br><em>Unified app for YouTube and other video platforms.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">▶️ YouTube Alternatives <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> YouTube app, YouTube in browser</p>
+<ul>
+  <li>📺 <a href="https://newpipe.net">NewPipe</a> – Lightweight Android client that plays YouTube without Google libraries.</li>
+  <li>📺 <a href="https://piped.video">Piped</a> – Web front‑end for YouTube that strips tracking and ads.</li>
+  <li>📺 <a href="https://github.com/greyjayapp/greyjay">Greyjay</a> – Unified media app that can pull from YouTube and other sources.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🌍 Maps &amp; Navigation <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Maps</p>
-      <ul>
-        <li>🗺️ <strong>Magic Earth</strong> – <a href="https://www.magicearth.com" target="_blank" rel="noopener">magicearth.com</a><br><em>Turn‑by‑turn navigation using OpenStreetMap data.</em></li>
-        <li>🗺️ <strong>Organic Maps</strong> – <a href="https://organicmaps.app" target="_blank" rel="noopener">organicmaps.app</a><br><em>Offline, privacy‑friendly maps for travel.</em></li>
-        <li>🧭 <strong>HERE WeGo</strong> – <a href="https://wego.here.com" target="_blank" rel="noopener">wego.here.com</a><br><em>Reliable navigation with good offline support.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🌍 Maps & Navigation <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Maps</p>
+<ul>
+  <li>🗺️ <a href="https://www.magicearth.com">Magic Earth</a> – Turn‑by‑turn navigation using OpenStreetMap data, no tracking.</li>
+  <li>🗺️ <a href="https://organicmaps.app">Organic Maps</a> – Offline‑friendly maps focused on privacy and battery life.</li>
+  <li>🧭 <a href="https://wego.here.com">HERE WeGo</a> – Solid, mainstream navigation app that works well in cars and offline.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>📁 Files &amp; Cloud Storage <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Drive &amp; Files</p>
-      <ul>
-        <li>📁 <strong>Material Files</strong> (Android) – <a href="https://github.com/zhanghai/MaterialFiles" target="_blank" rel="noopener">github.com/zhanghai/MaterialFiles</a><br><em>Local file manager with no cloud tie‑in.</em></li>
-        <li>☁️ <strong>Proton Drive</strong> – <a href="https://proton.me/drive" target="_blank" rel="noopener">proton.me/drive</a><br><em>End‑to‑end encrypted cloud storage.</em></li>
-        <li>☁️ <strong>Sync.com</strong> – <a href="https://www.sync.com" target="_blank" rel="noopener">sync.com</a><br><em>Encrypted cloud drive with simple sharing options.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📁 Files & Cloud <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Drive, file storage in Google account</p>
+<ul>
+  <li>📁 <a href="https://github.com/zhanghai/MaterialFiles">Material Files</a> – Local file manager that doesn’t phone home.</li>
+  <li>☁️ <a href="https://proton.me/drive">Proton Drive</a> – Encrypted cloud storage for important personal files.</li>
+  <li>☁️ <a href="https://www.sync.com">Sync.com</a> – Zero‑knowledge cloud storage with simple sharing features.</li>
+</ul>
+</div>
 
-  </div> <!-- END accordion -->
+</div> <!-- END .forge-accordion -->
+
 </div> <!-- END Easy card -->
 
 ---
@@ -275,66 +258,60 @@ Use this as your **personal roadmap**.
 
 <div class="forge-complexity-card forge-medium">
 
-  <div class="forge-card-title">🟡 Medium Tools</div>
+<div class="forge-card-title">🟡 Medium Tools</div>
 
-  <p>Tools that require <strong>some setup</strong> or <strong>migration steps</strong>, but are still very manageable for most people.</p>
+Tools that require **some setup** or **migration steps**, but are still very manageable.
 
-  <div class="forge-accordion">
+<div class="forge-accordion">
 
-    <h3>
-      <button>📸 Photo Platforms <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Photos</p>
-      <ul>
-        <li>🖼️ <strong>Immich</strong> – <a href="https://immich.app" target="_blank" rel="noopener">immich.app</a><br><em>Self‑hosted photo backup with mobile apps.</em></li>
-        <li>🖼️ <strong>PhotoPrism</strong> – <a href="https://photoprism.app" target="_blank" rel="noopener">photoprism.app</a><br><em>AI‑powered photo library you run yourself.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📸 Photo Platforms <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Photos</p>
+<ul>
+  <li>🖼️ <a href="https://immich.app">Immich</a> – Self‑hostable, mobile‑friendly photo backup with face recognition.</li>
+  <li>🖼️ <a href="https://photoprism.app">PhotoPrism</a> – Powerful photo library with search, tags, and AI‑driven organization.</li>
+  <li>🖼️ Local NAS (Synology, TrueNAS, etc.) – Store photos under your own roof instead of in a third‑party cloud.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🔁 Sync <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Drive sync &amp; Android backup</p>
-      <ul>
-        <li>🔁 <strong>Syncthing</strong> – <a href="https://syncthing.net" target="_blank" rel="noopener">syncthing.net</a><br><em>Peer‑to‑peer file sync between your own devices.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🔁 Sync <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Drive sync, Android "backup to Google"</p>
+<ul>
+  <li>🔁 <a href="https://syncthing.net">Syncthing</a> – Peer‑to‑peer file sync between your own devices, no central server.</li>
+  <li>🧮 <a href="https://rclone.org">rclone</a> – Command‑line tool to sync data between clouds and local storage.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>📝 Notes <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Keep &amp; simple Docs notes</p>
-      <ul>
-        <li>🗒️ <strong>Joplin</strong> – <a href="https://joplinapp.org" target="_blank" rel="noopener">joplinapp.org</a><br><em>Markdown‑friendly notes with end‑to‑end encryption.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📝 Notes <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Keep, simple Docs notes</p>
+<ul>
+  <li>🗒️ <a href="https://joplinapp.org">Joplin</a> – Encrypted notes with sync across desktop and mobile.</li>
+  <li>📓 <a href="https://logseq.com">Logseq</a> or <a href="https://obsidian.md">Obsidian</a> – Local‑first knowledge base tools that store notes as plain files.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>📱 Phone Alternatives &amp; Numbers <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Voice</p>
-      <ul>
-        <li>📱 <strong>MySudo</strong> – <a href="https://mysudo.com" target="_blank" rel="noopener">mysudo.com</a><br><em>Multiple private phone numbers and email identities.</em></li>
-        <li>📱 <strong>JMP.chat</strong> – <a href="https://jmp.chat" target="_blank" rel="noopener">jmp.chat</a><br><em>XMPP‑based phone number you can use with chat apps.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📱 Phone Numbers & VoIP <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Voice</p>
+<ul>
+  <li>📱 <a href="https://mysudo.com">MySudo</a> – Multiple private phone numbers and email aliases in one app.</li>
+  <li>📱 <a href="https://jmp.chat">JMP.chat</a> – Phone‑number‑to‑XMPP bridge that lets you use calls and SMS through a chat app.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🏠 Smart Home <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Home, Nest, and cloud‑only automations</p>
-      <ul>
-        <li>🏡 <strong>Home Assistant</strong> – <a href="https://www.home-assistant.io" target="_blank" rel="noopener">home-assistant.io</a><br><em>Local‑first smart‑home hub that keeps data in your house.</em></li>
-        <li>🧱 <strong>Hubitat</strong> – <a href="https://hubitat.com" target="_blank" rel="noopener">hubitat.com</a><br><em>Smart‑home automation that runs locally, not in the cloud.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🏠 Smart Home <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Home, Nest ecosystem</p>
+<ul>
+  <li>🏡 <a href="https://www.home-assistant.io">Home Assistant</a> – Local‑first smart home hub with deep device support.</li>
+  <li>🧱 <a href="https://hubitat.com">Hubitat</a> – Hub that keeps automation logic and data in your house.</li>
+</ul>
+</div>
 
-  </div> <!-- END accordion -->
+</div> <!-- END .forge-accordion -->
+
 </div> <!-- END Medium card -->
 
 ---
@@ -343,68 +320,61 @@ Use this as your **personal roadmap**.
 
 <div class="forge-complexity-card forge-hard">
 
-  <div class="forge-card-title">🔴 Hard Tools</div>
+<div class="forge-card-title">🔴 Hard Tools</div>
 
-  <p>For users who want <strong>maximum privacy</strong>, <strong>self‑hosting</strong>, and <strong>complete control</strong>. These take more effort but offer the most independence.</p>
+For users who want **maximum privacy**, **self‑hosting**, and **complete control**.
 
-  <div class="forge-accordion">
+<div class="forge-accordion">
 
-    <h3>
-      <button>☁️ Self‑Hosted Cloud <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Drive, Docs, Sheets, and more</p>
-      <ul>
-        <li>☁️ <strong>Nextcloud</strong> – <a href="https://nextcloud.com" target="_blank" rel="noopener">nextcloud.com</a><br><em>Your own private cloud for files, calendars, contacts, and collaboration.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">☁️ Self‑Hosted Cloud <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Drive, Docs, Sheets, Calendar (in one big account)</p>
+<ul>
+  <li>☁️ <a href="https://nextcloud.com">Nextcloud</a> – All‑in‑one private cloud with files, calendar, contacts, tasks, and more.</li>
+  <li>📂 Self‑hosted file servers (TrueNAS, Unraid, etc.) – Raw storage under your direct control.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🤖 Android Without Google <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Stock Android with Google Play Services</p>
-      <ul>
-        <li>🧬 <strong>GrapheneOS</strong> – <a href="https://grapheneos.org" target="_blank" rel="noopener">grapheneos.org</a><br><em>Hardened Android for select Pixel phones, with sandboxed Google apps if needed.</em></li>
-        <li>🧩 <strong>microG</strong> – <a href="https://microg.org" target="_blank" rel="noopener">microg.org</a><br><em>Drop‑in replacement for Google Play Services on some custom ROMs.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🤖 Android Without Google <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Stock Android with Google Play Services</p>
+<ul>
+  <li>🧬 <a href="https://grapheneos.org">GrapheneOS</a> – Security‑focused Android variant for selected Pixel devices.</li>
+  <li>🧩 <a href="https://microg.org">microG</a> – Open‑source re‑implementation of Google Play Services for apps that expect it.</li>
+  <li>📦 <a href="https://f-droid.org">F‑Droid</a> – App store for open‑source Android software.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>📸 Self‑Hosted Photos (Advanced) <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Photos with full self‑hosting</p>
-      <ul>
-        <li>🖼️ <strong>Immich</strong> – <a href="https://immich.app" target="_blank" rel="noopener">immich.app</a><br><em>Family‑friendly, mobile‑first self‑hosted photo solution.</em></li>
-        <li>🖼️ <strong>PhotoPrism</strong> – <a href="https://photoprism.app" target="_blank" rel="noopener">photoprism.app</a><br><em>Powerful AI‑searchable photo library on your own server.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">📸 Self‑Hosted Photos <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google Photos as your only photo home</p>
+<ul>
+  <li>🖼️ <a href="https://immich.app">Immich</a> – Designed specifically as a modern Google Photos alternative.</li>
+  <li>🖼️ <a href="https://photoprism.app">PhotoPrism</a> – Great for large archives and serious photo organization.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🧮 Backup &amp; Sync Utilities <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Google Drive sync, Google One backup</p>
-      <ul>
-        <li>🔁 <strong>Syncthing</strong> – <a href="https://syncthing.net" target="_blank" rel="noopener">syncthing.net</a><br><em>Continuous sync between devices with no central server.</em></li>
-        <li>🧮 <strong>Rclone</strong> – <a href="https://rclone.org" target="_blank" rel="noopener">rclone.org</a><br><em>Power tool for syncing and encrypting data across many cloud providers.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🧮 Backup & Advanced Sync <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Google account "device backup", Drive desktop sync</p>
+<ul>
+  <li>🔁 <a href="https://syncthing.net">Syncthing</a> – Continuous, encrypted syncing between your own machines.</li>
+  <li>🧮 <a href="https://rclone.org">rclone</a> – Scriptable backups between many different cloud providers.</li>
+</ul>
+</div>
 
-    <h3>
-      <button>🏭 Backend Platforms &amp; App Infrastructure <span class="arrow">▶</span></button>
-    </h3>
-    <div class="panel">
-      <p><strong>Replaces:</strong> Firebase, some Google Cloud services</p>
-      <ul>
-        <li>🧱 <strong>Supabase</strong> – <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a><br><em>Open‑source alternative to Firebase with Postgres underneath.</em></li>
-        <li>🧱 <strong>Appwrite</strong> – <a href="https://appwrite.io" target="_blank" rel="noopener">appwrite.io</a><br><em>Self‑hosted backend for authentication, storage, and more.</em></li>
-        <li>🧱 <strong>PocketBase</strong> – <a href="https://pocketbase.io" target="_blank" rel="noopener">pocketbase.io</a><br><em>Lightweight backend you can run on a tiny server or even a laptop.</em></li>
-      </ul>
-    </div>
+<button class="accordion-btn">🏭 Backend Platforms <span class="arrow">▶</span></button>
+<div class="panel">
+<p><strong>Replaces:</strong> Firebase, Firestore, some Google Cloud developer services</p>
+<ul>
+  <li>🧱 <a href="https://supabase.com">Supabase</a> – Postgres‑based Firebase alternative with authentication and storage.</li>
+  <li>🧱 <a href="https://appwrite.io">Appwrite</a> – Self‑hostable backend for web and mobile apps.</li>
+  <li>🧱 <a href="https://pocketbase.io">PocketBase</a> – Lightweight backend that can run on a tiny server or even a Raspberry Pi.</li>
+</ul>
+</div>
 
-  </div> <!-- END accordion -->
+</div> <!-- END .forge-accordion -->
+
 </div> <!-- END Hard card -->
 
 ---
