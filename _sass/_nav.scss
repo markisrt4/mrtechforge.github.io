@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.0 + mobile color steps)
+   M.R. TECHFORGE — NAVIGATION (v14.1)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -105,6 +105,11 @@
   text-shadow:
     0 0 8px rgba(var(--forge-hotmetal-rgb),0.75),
     0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
+}
+
+/* Hide mobile-only submenu by default (desktop) */
+.mobile-submenu {
+  display: none;
 }
 
 
@@ -344,6 +349,7 @@
      MOBILE SUBMENU (Accordion)
   --------------------------------------------------- */
   .mobile-submenu {
+    display: block;   /* only visible on mobile, still collapsed via max-height */
     width: 100%;
     background: rgba(0,0,0,0.35);
     overflow: hidden;
@@ -412,41 +418,34 @@
      (Top links darker blue → bottom lighter)
   --------------------------------------------------- */
 
-  /* Base color tweak (still used if we add/remove items) */
+  /* Base color for all top-level buttons */
   .forge-nav > a,
   .forge-nav .dropdown-parent {
     color: #3FAEFF;
   }
 
   /* First two items — deepest Forge blue */
-  .forge-nav > :nth-child(1) > a,
-  .forge-nav > :nth-child(1) .dropdown-parent-text,
-  .forge-nav > :nth-child(2) > a,
-  .forge-nav > :nth-child(2) .dropdown-parent-text {
+  .forge-nav > :nth-child(1),
+  .forge-nav > :nth-child(2) {
     color: #0A6DFF;
   }
 
   /* Middle items — mid electric blue */
-  .forge-nav > :nth-child(3) > a,
-  .forge-nav > :nth-child(3) .dropdown-parent-text,
-  .forge-nav > :nth-child(4) > a,
-  .forge-nav > :nth-child(4) .dropdown-parent-text {
+  .forge-nav > :nth-child(3),
+  .forge-nav > :nth-child(4) {
     color: #3FAEFF;
   }
 
   /* Last items — lighter icy blue */
-  .forge-nav > :nth-child(5) > a,
-  .forge-nav > :nth-child(5) .dropdown-parent-text,
-  .forge-nav > :nth-child(6) > a,
-  .forge-nav > :nth-child(6) .dropdown-parent-text,
-  .forge-nav > :nth-child(7) > a,
-  .forge-nav > :nth-child(7) .dropdown-parent-text {
+  .forge-nav > :nth-child(5),
+  .forge-nav > :nth-child(6),
+  .forge-nav > :nth-child(7) {
     color: #83D4FF;
   }
 
   /* Active states still override with hotmetal */
   .forge-nav a.is-active,
-  .dropdown-parent.active .dropdown-parent-text {
+  .dropdown-parent.active {
     color: var(--forge-hotmetal);
   }
 }
