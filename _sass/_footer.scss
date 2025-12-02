@@ -1,39 +1,100 @@
 /* =========================================================
-   FOOTER LAYOUT — Centered + Clean
+   M.R. TechForge — Modern Footer
    ========================================================= */
 
 .forge-footer {
   margin-top: 4rem;
-  padding: 2.4rem 1rem;
-  text-align: center;
+  padding: 2.8rem 1rem 2rem;
+  background: radial-gradient(circle at top, #050915 0%, #02040a 70%);
+  border-top: 1px solid rgba(var(--forge-accent-rgb), 0.35);
 }
 
 .footer-inner {
-  max-width: 980px;
+  max-width: 1100px;
   margin: 0 auto;
+  text-align: center;
+  color: var(--forge-text);
 }
 
+/* Terminal Block */
+.footer-terminal {
+  margin-bottom: 1.8rem;
+  box-shadow:
+    0 0 7px rgba(77, 184, 255, 0.25),
+    inset 0 0 6px rgba(77, 184, 255, 0.18);
+}
+
+/* Tagline */
+.footer-tagline {
+  font-size: 1rem;
+  color: var(--forge-text);
+  margin: 0.8rem 0 1.4rem;
+  opacity: 0.88;
+}
+
+/* Social Icons */
 .footer-social {
-  margin: 1.2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .footer-social a {
   color: var(--forge-subtext);
-  font-size: 1.4rem;
-  margin: 0 0.4rem;
-  transition: color 0.25s ease;
+  font-size: 1.45rem;
+  transition: 0.25s ease;
 }
 
 .footer-social a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.55);
+  color: var(--forge-accent);
+  text-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.85);
+  transform: translateY(-2px);
 }
 
+/* Footer Links */
 .footer-links {
-  margin-top: 0.8rem;
-  color: var(--forge-subtext);
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
 .footer-links a {
   color: var(--forge-accent);
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.7);
+}
+
+.footer-links .divider {
+  color: var(--forge-subtext);
+  opacity: 0.45;
+}
+
+/* Copyright */
+.footer-copy {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .footer-social {
+    gap: 0.8rem;
+  }
+
+  .footer-links {
+    gap: 0.35rem;
+  }
+
+  .footer-terminal {
+    padding: 0.9rem !important;
+  }
 }
