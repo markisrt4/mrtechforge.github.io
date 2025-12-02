@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.1 GRADIENT LINKS)
+   M.R. TECHFORGE — NAVIGATION (v14.2 MOBILE GRADIENT)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -75,7 +75,7 @@
 
 
 /* -----------------------------------------------------
-   BASE NAV + GRADIENT LINK STATES
+   DESKTOP NAV (NO GRADIENT)
 ------------------------------------------------------ */
 .forge-nav {
   display: flex;
@@ -87,34 +87,24 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+  color: var(--forge-subtext);   /* DESKTOP = normal */
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
-  transition: text-shadow 0.25s ease, transform 0.25s ease;
-}
-
-/* Gradient applied globally to nav links + dropdown headers */
-.forge-nav a,
-.dropdown-parent-text,
-.dropdown-arrow {
-  background: linear-gradient(90deg, var(--forge-accent), #4DC3FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  text-shadow: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .forge-nav a:hover {
-  transform: translateY(-1px);
-  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb),0.9);
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6);
 }
 
 .forge-nav a.is-active,
 .dropdown-parent.is-active-parent .dropdown-parent-text {
-  transform: translateY(-1px);
+  color: var(--forge-hotmetal);
   text-shadow:
-    0 0 12px rgba(var(--forge-accent-rgb),0.95),
-    0 0 18px rgba(var(--forge-hotmetal-rgb),0.6);
+    0 0 8px rgba(var(--forge-hotmetal-rgb),0.75),
+    0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
 }
 
 
@@ -131,7 +121,6 @@
   background: transparent;
   border: none;
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -144,10 +133,12 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  color: var(--forge-subtext);    /* DESKTOP NORMAL */
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
+  color: var(--forge-subtext);
   transition: 0.25s ease;
 }
 
@@ -232,26 +223,18 @@
     color: var(--forge-text);
     font-family: "Titillium Web", sans-serif;
   }
-
-  .dropdown-content a[data-child="true"]::before {
-    content: "›";
-    color: var(--forge-hotmetal);
-    margin-right: 0.35rem;
-  }
-
-  .dropdown-content a[data-grandchild="true"]::before {
-    content: "»";
-    color: var(--forge-accent);
-    margin-right: 0.35rem;
-  }
 }
 
 
 /* -----------------------------------------------------
    MOBILE NAV — ACCORDION
+   WITH VERTICAL 3-STOP GRADIENT
 ------------------------------------------------------ */
 @media (max-width: 760px) {
 
+  /* ---------------------------------------------------
+     MOBILE BURGER BUTTON
+  --------------------------------------------------- */
   .nav-toggle-btn {
     position: absolute;
     right: 1rem;
@@ -288,19 +271,33 @@
     filter: drop-shadow(0 0 10px rgba(60,162,255,0.9));
   }
 
-
+  /* ---------------------------------------------------
+     MOBILE NAV WRAPPER W/ GRADIENT TEXT MASKING
+  --------------------------------------------------- */
   .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
+
     background: #050810;
     border-top: 1px solid rgba(var(--forge-accent-rgb),0.25);
+
     flex-direction: column;
     align-items: center;
 
     display: none;
     padding: 0;
+
+    /* VERTICAL 3-STOP BLUE GRADIENT (TEXT MASK) */
+    background-image: linear-gradient(
+      to bottom,
+      #0A6DFF 0%,     /* deep forge blue */
+      #3FAEFF 50%,    /* mid electric blue */
+      #83D4FF 100%    /* icy blue */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .forge-nav.open {
@@ -309,7 +306,9 @@
   }
 
 
-  /* top-level items (gradient already applied globally) */
+  /* ---------------------------------------------------
+     TOP-LEVEL MOBILE ITEMS — TRANSPARENT TEXT
+  --------------------------------------------------- */
   .forge-nav > a,
   .forge-nav .dropdown-parent {
     width: 100%;
@@ -319,34 +318,36 @@
     align-items: center;
     text-align: center;
     font-size: 1rem;
+
+    /* TEXT TAKES COLOR FROM PARENT'S GRADIENT */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .dropdown-parent-text,
+  .dropdown-arrow {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .dropdown-parent.active {
     text-shadow:
-      0 0 10px rgba(var(--forge-accent-rgb),0.9),
-      0 0 16px rgba(var(--forge-hotmetal-rgb),0.6);
+      0 0 10px rgba(10,109,255,0.8),
+      0 0 16px rgba(10,109,255,0.5);
   }
 
   .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
-    text-shadow:
-      0 0 10px rgba(var(--forge-accent-rgb),0.9),
-      0 0 16px rgba(var(--forge-hotmetal-rgb),0.6);
   }
 
-  .nav-item.dropdown {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .dropdown-content { display: none !important; }
-
-
-  /* Mobile submenu */
+  /* ---------------------------------------------------
+     MOBILE SUBMENU
+  --------------------------------------------------- */
   .mobile-submenu {
     width: 100%;
     background: rgba(0,0,0,0.35);
     overflow: hidden;
+
     max-height: 0;
     transition: max-height 0.28s ease;
     padding: 0;
@@ -358,6 +359,7 @@
     max-height: 600px;
   }
 
+  /* Child link text color = normal (not gradient) */
   .mobile-submenu li a {
     display: block;
     width: 100%;
@@ -369,10 +371,10 @@
     position: relative;
   }
 
+  /* CHILD */
   .mobile-submenu .mobile-child a {
     padding-left: 1.6rem !important;
   }
-
   .mobile-submenu .mobile-child a::before {
     content: "›";
     position: absolute;
@@ -382,12 +384,12 @@
     color: var(--forge-hotmetal);
   }
 
+  /* GRANDCHILD */
   .mobile-submenu .mobile-grandchild a {
     padding-left: 2.2rem !important;
     font-size: 0.9rem;
     opacity: 0.9;
   }
-
   .mobile-submenu .mobile-grandchild a::before {
     content: "››";
     position: absolute;
@@ -445,7 +447,7 @@
 
 
 /* -----------------------------------------------------
-   HAMMER FX
+   HAMMER + SPARKS FX
 ------------------------------------------------------ */
 .nav-toggle-btn {
   position: relative;
@@ -474,7 +476,6 @@
 .nav-toggle-btn.open::after {
   animation: hammerSwing 0.65s ease-out forwards;
 }
-
 .nav-toggle-btn.open::before {
   animation: sparksBurst 0.45s ease-out forwards;
 }
