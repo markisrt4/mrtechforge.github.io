@@ -162,82 +162,114 @@ Use this as your **personal roadmap**.
 
 <div class="forge-complexity-card forge-easy">
 
-<div class="forge-card-title">🟢 Easy Tools</div>
+  <div class="forge-card-title">🟢 Easy Tools</div>
 
-These are **drop-in replacements** that most people can start using immediately with minimal setup.
+  <p>These are <strong>drop-in replacements</strong> that most people can start using immediately with minimal setup.</p>
 
-<div class="forge-accordion">
+  <div class="forge-accordion">
 
----
+    <div class="accordion-group">
+      <button type="button">
+        🔍 Search &amp; Browsing <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🔍 <a href="https://duckduckgo.com" target="_blank" rel="noopener">DuckDuckGo</a></li>
+          <li>🧭 <a href="https://search.brave.com" target="_blank" rel="noopener">Brave Search</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>🔍 Search & Browsing <span class="arrow">▶</span></button>
-<div class="panel">
-- 🔍 [DuckDuckGo](https://duckduckgo.com)  
-- 🧭 [Brave Search](https://search.brave.com)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        📧 Email <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>✉️ <a href="https://proton.me/mail" target="_blank" rel="noopener">Proton Mail</a></li>
+          <li>📬 <a href="https://mailbox.org" target="_blank" rel="noopener">Mailbox.org</a></li>
+          <li>🔐 <a href="https://tutanota.com" target="_blank" rel="noopener">Tutanota</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        📆 Calendar &amp; Contacts <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>📅 <a href="https://proton.me/calendar" target="_blank" rel="noopener">Proton Calendar</a></li>
+          <li>👤 <a href="https://proton.me/contacts" target="_blank" rel="noopener">Proton Contacts</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>📧 Email <span class="arrow">▶</span></button>
-<div class="panel">
-- ✉️ [Proton Mail](https://proton.me/mail)  
-- 📬 [Mailbox.org](https://mailbox.org)  
-- 🔐 [Tutanota](https://tutanota.com)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        🔑 Passwords &amp; 2FA <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🗝️ <a href="https://bitwarden.com" target="_blank" rel="noopener">Bitwarden</a></li>
+          <li>🗝️ <a href="https://proton.me/pass" target="_blank" rel="noopener">Proton Pass</a></li>
+          <li>🔐 <a href="https://github.com/beemdevelopment/Aegis" target="_blank" rel="noopener">Aegis</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        💬 Messaging &amp; SMS <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>💬 <a href="https://signal.org" target="_blank" rel="noopener">Signal</a></li>
+          <li>📱 <a href="https://github.com/SimpleMobileTools/Simple-SMS-Messenger" target="_blank" rel="noopener">Simple SMS</a></li>
+          <li>💬 <a href="https://github.com/moezbhatti/qksms" target="_blank" rel="noopener">QKSMS</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>📆 Calendar & Contacts <span class="arrow">▶</span></button>
-<div class="panel">
-- 📅 [Proton Calendar](https://proton.me/calendar)  
-- 👤 [Proton Contacts](https://proton.me/contacts)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        ▶️ YouTube Alternatives <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>📺 <a href="https://newpipe.net" target="_blank" rel="noopener">NewPipe</a></li>
+          <li>📺 <a href="https://piped.video" target="_blank" rel="noopener">Piped</a></li>
+          <li>📺 <a href="https://github.com/greyjayapp" target="_blank" rel="noopener">Greyjay</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        🌍 Maps &amp; Navigation <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🗺️ <a href="https://www.magicearth.com" target="_blank" rel="noopener">Magic Earth</a></li>
+          <li>🗺️ <a href="https://organicmaps.app" target="_blank" rel="noopener">Organic Maps</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>🔑 Passwords & 2FA <span class="arrow">▶</span></button>
-<div class="panel">
-- 🗝️ [Bitwarden](https://bitwarden.com)  
-- 🗝️ [Proton Pass](https://proton.me/pass)  
-- 🔐 [Aegis](https://github.com/beemdevelopment/Aegis)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        📁 Files &amp; Cloud <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>📁 <a href="https://github.com/zhanghai/MaterialFiles" target="_blank" rel="noopener">Material Files</a></li>
+          <li>☁️ <a href="https://proton.me/drive" target="_blank" rel="noopener">Proton Drive</a></li>
+          <li>☁️ <a href="https://www.sync.com" target="_blank" rel="noopener">Sync.com</a></li>
+        </ul>
+      </div>
+    </div>
 
----
-
-### <button>💬 Messaging & SMS <span class="arrow">▶</span></button>
-<div class="panel">
-- 💬 [Signal](https://signal.org)  
-- 📱 [Simple SMS](https://github.com/SimpleMobileTools/Simple-SMS-Messenger)  
-- 💬 [QKSMS](https://github.com/moezbhatti/qksms)
-</div>
-
----
-
-### <button>▶️ YouTube Alternatives <span class="arrow">▶</span></button>
-<div class="panel">
-- 📺 [NewPipe](https://newpipe.net)  
-- 📺 [Piped](https://piped.video)  
-- 📺 [Greyjay](https://github.com/greyjayapp)
-</div>
-
----
-
-### <button>🌍 Maps & Navigation <span class="arrow">▶</span></button>
-<div class="panel">
-- 🗺️ [Magic Earth](https://www.magicearth.com)  
-- 🗺️ [Organic Maps](https://organicmaps.app)
-</div>
-
----
-
-### <button>📁 Files & Cloud <span class="arrow">▶</span></button>
-<div class="panel">
-- 📁 [Material Files](https://github.com/zhanghai/MaterialFiles)  
-- ☁️ [Proton Drive](https://proton.me/drive)  
-- ☁️ [Sync.com](https://www.sync.com)
-</div>
-
-</div> <!-- END accordion -->
+  </div> <!-- END accordion -->
 </div> <!-- END card -->
 
 ---
@@ -246,51 +278,71 @@ These are **drop-in replacements** that most people can start using immediately 
 
 <div class="forge-complexity-card forge-medium">
 
-<div class="forge-card-title">🟡 Medium Tools</div>
+  <div class="forge-card-title">🟡 Medium Tools</div>
 
-Tools that require **some setup** or **migration steps**, but are still very manageable.
+  <p>Tools that require <strong>some setup</strong> or <strong>migration steps</strong>, but are still very manageable.</p>
 
-<div class="forge-accordion">
+  <div class="forge-accordion">
 
----
+    <div class="accordion-group">
+      <button type="button">
+        📸 Photo Platforms <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🖼️ <a href="https://immich.app" target="_blank" rel="noopener">Immich</a></li>
+          <li>🖼️ <a href="https://photoprism.app" target="_blank" rel="noopener">PhotoPrism</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>📸 Photo Platforms <span class="arrow">▶</span></button>
-<div class="panel">
-- 🖼️ [Immich](https://immich.app)  
-- 🖼️ [PhotoPrism](https://photoprism.app)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        🔁 Sync <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🔁 <a href="https://syncthing.net" target="_blank" rel="noopener">Syncthing</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        📝 Notes <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🗒️ <a href="https://joplinapp.org" target="_blank" rel="noopener">Joplin</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>🔁 Sync <span class="arrow">▶</span></button>
-<div class="panel">
-- 🔁 [Syncthing](https://syncthing.net)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        📱 Phone Alternatives <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>📱 <a href="https://mysudo.com" target="_blank" rel="noopener">MySudo</a></li>
+          <li>📱 <a href="https://jmp.chat" target="_blank" rel="noopener">JMP.chat</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        🏠 Smart Home <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🏡 <a href="https://www.home-assistant.io" target="_blank" rel="noopener">Home Assistant</a></li>
+          <li>🧱 <a href="https://hubitat.com" target="_blank" rel="noopener">Hubitat</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>📝 Notes <span class="arrow">▶</span></button>
-<div class="panel">
-- 🗒️ [Joplin](https://joplinapp.org)
-</div>
-
----
-
-### <button>📱 Phone Alternatives <span class="arrow">▶</span></button>
-<div class="panel">
-- 📱 [MySudo](https://mysudo.com)  
-- 📱 [JMP.chat](https://jmp.chat)
-</div>
-
----
-
-### <button>🏠 Smart Home <span class="arrow">▶</span></button>
-<div class="panel">
-- 🏡 [Home Assistant](https://www.home-assistant.io)  
-- 🧱 [Hubitat](https://hubitat.com)
-</div>
-
-</div> <!-- END accordion -->
+  </div> <!-- END accordion -->
 </div> <!-- END card -->
 
 ---
@@ -299,53 +351,73 @@ Tools that require **some setup** or **migration steps**, but are still very man
 
 <div class="forge-complexity-card forge-hard">
 
-<div class="forge-card-title">🔴 Hard Tools</div>
+  <div class="forge-card-title">🔴 Hard Tools</div>
 
-For users who want **maximum privacy**, **self-hosting**, and **complete control**.
+  <p>For users who want <strong>maximum privacy</strong>, <strong>self-hosting</strong>, and <strong>complete control</strong>.</p>
 
-<div class="forge-accordion">
+  <div class="forge-accordion">
 
----
+    <div class="accordion-group">
+      <button type="button">
+        ☁️ Self-Hosted Cloud <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>☁️ <a href="https://nextcloud.com" target="_blank" rel="noopener">Nextcloud</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>☁️ Self-Hosted Cloud <span class="arrow">▶</span></button>
-<div class="panel">
-- ☁️ [Nextcloud](https://nextcloud.com)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        🤖 Android Without Google <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🧬 <a href="https://grapheneos.org" target="_blank" rel="noopener">GrapheneOS</a></li>
+          <li>🧩 <a href="https://microg.org" target="_blank" rel="noopener">microG</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        📸 Self-Hosted Photos <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🖼️ <a href="https://immich.app" target="_blank" rel="noopener">Immich</a></li>
+          <li>🖼️ <a href="https://photoprism.app" target="_blank" rel="noopener">PhotoPrism</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>🤖 Android Without Google <span class="arrow">▶</span></button>
-<div class="panel">
-- 🧬 [GrapheneOS](https://grapheneos.org)  
-- 🧩 [microG](https://microg.org)
-</div>
+    <div class="accordion-group">
+      <button type="button">
+        🧮 Backup &amp; Sync Utilities <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🔁 <a href="https://syncthing.net" target="_blank" rel="noopener">Syncthing</a></li>
+          <li>🧮 <a href="https://rclone.org" target="_blank" rel="noopener">Rclone</a></li>
+        </ul>
+      </div>
+    </div>
 
----
+    <div class="accordion-group">
+      <button type="button">
+        🏭 Backend Platforms <span class="arrow">▶</span>
+      </button>
+      <div class="panel">
+        <ul>
+          <li>🧱 <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a></li>
+          <li>🧱 <a href="https://appwrite.io" target="_blank" rel="noopener">Appwrite</a></li>
+          <li>🧱 <a href="https://pocketbase.io" target="_blank" rel="noopener">PocketBase</a></li>
+        </ul>
+      </div>
+    </div>
 
-### <button>📸 Self-Hosted Photos <span class="arrow">▶</span></button>
-<div class="panel">
-- 🖼️ [Immich](https://immich.app)  
-- 🖼️ [PhotoPrism](https://photoprism.app)
-</div>
-
----
-
-### <button>🧮 Backup & Sync Utilities <span class="arrow">▶</span></button>
-<div class="panel">
-- 🔁 [Syncthing](https://syncthing.net)  
-- 🧮 [Rclone](https://rclone.org)
-</div>
-
----
-
-### <button>🏭 Backend Platforms <span class="arrow">▶</span></button>
-<div class="panel">
-- 🧱 [Supabase](https://supabase.com)  
-- 🧱 [Appwrite](https://appwrite.io)  
-- 🧱 [PocketBase](https://pocketbase.io)
-</div>
-
-</div> <!-- END accordion -->
+  </div> <!-- END accordion -->
 </div> <!-- END card -->
 
 ---
