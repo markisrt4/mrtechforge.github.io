@@ -1,13 +1,13 @@
 /* =========================================================
-   CONTACT PAGE — FORGE STYLE (FULL + FIXED)
+   CONTACT PAGE — FORGE STYLE (CENTERED + TIGHTENED)
    ========================================================= */
 
 .forge-contact-page {
-  padding: 2rem 1.2rem 3.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 2.4rem 1.4rem 3.2rem;
+  margin: 0 auto;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;            /* align with site content width */
+  box-sizing: border-box;
 }
 
 /* =========================================================
@@ -16,7 +16,7 @@
 
 .forge-contact-page .page-intro {
   text-align: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 .forge-contact-page .page-intro h1 {
@@ -27,7 +27,6 @@
   margin: 0 0 0.75rem;
   color: var(--forge-hotmetal);
 
-  /* FIX: Prevent breaks like “TechForg e” */
   white-space: normal !important;
   word-break: keep-all !important;
   overflow-wrap: break-word !important;
@@ -58,11 +57,10 @@
    ========================================================= */
 
 .forge-terminal-modes {
-  margin: 1.5rem auto 1rem;
+  margin: 1.6rem auto 1.2rem;
   text-align: center;
   max-width: 900px;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  box-sizing: border-box;
 }
 
 .forge-terminal-modes .modes-heading {
@@ -105,16 +103,17 @@
 }
 
 /* =========================================================
-   TERMINAL PANELS — Reduced glow, centered, no overflow
+   TERMINAL PANELS — centered, no overflow
    ========================================================= */
 
 .forge-terminal-panel {
   position: relative;
-  margin: 1.6rem auto 2.6rem;
+  margin: 1.6rem auto 2.4rem;
   padding: 1.5rem 1.3rem;
   border-radius: 22px;
   max-width: 900px;
-  width: min(100%, 900px);
+  width: 100%;
+  box-sizing: border-box;
 
   background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
   box-shadow:
@@ -122,11 +121,7 @@
     0 0 10px rgba(0, 184, 212, 0.12) inset;
 
   overflow: hidden;
-
-  /* FIX: Prevent right-shift caused by flex inheritance */
   display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 
 .forge-terminal-screen {
@@ -140,9 +135,9 @@
     0 0 15px rgba(0, 184, 212, 0.35),
     0 0 20px rgba(0, 20, 60, 0.7) inset;
 
-  /* FIX: No more overflow */
   overflow-x: auto !important;
   max-width: 100% !important;
+  box-sizing: border-box;
 }
 
 .forge-terminal-screen code {
@@ -231,15 +226,16 @@
 }
 
 /* =========================================================
-   FORGE CARDS — centered, wider, no right drift
+   FORGE CARDS — centered, unified width
    ========================================================= */
 
 .forge-contact-page .forge-card {
   margin: 2rem auto !important;
   padding: 2rem 1.6rem;
   border-radius: 22px;
-  max-width: 960px;
-  width: min(100%, 960px);
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
 
   background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
   box-shadow:
@@ -252,15 +248,16 @@
 }
 
 /* =========================================================
-   LOCATION COORDINATE PLATE — No SVG, clean blueprint
+   LOCATION COORDINATE PLATE — clean blueprint
    ========================================================= */
 
 .forge-location-card {
   margin: 2.2rem auto 0 !important;
   padding: 2rem 1.6rem 2.4rem;
   border-radius: 24px;
-  max-width: 960px;
-  width: min(100%, 960px);
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
 
   background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
@@ -300,9 +297,8 @@
     inset 0 0 18px rgba(0, 50, 80, 0.9);
 
   color: #cfefff;
-
-  /* FIX: prevent right shift */
   display: block !important;
+  box-sizing: border-box;
 }
 
 .forge-location-plate .plate-line {
@@ -329,4 +325,36 @@
   line-height: 1.7;
   max-width: 640px;
   margin: 0 auto;
+}
+
+/* =========================================================
+   RESPONSIVE TWEAKS
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .forge-contact-page {
+    padding: 2rem 1.1rem 2.7rem;
+  }
+
+  .forge-contact-page .forge-card {
+    padding: 1.6rem 1.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .forge-contact-page {
+    padding: 1.8rem 1rem 2.4rem;
+  }
+
+  .forge-contact-page .forge-card {
+    text-align: center; /* friendlier on small screens */
+  }
+
+  .forge-location-plate .plate-line {
+    gap: 0.4rem;
+  }
+
+  .plate-line.indent {
+    padding-left: 96px;
+  }
 }
