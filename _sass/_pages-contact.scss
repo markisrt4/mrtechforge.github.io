@@ -1,24 +1,12 @@
 /* =========================================================
-   CONTACT PAGE — FORGE STYLE (CENTERED + WIDER)
+   CONTACT PAGE — FORGE STYLE (v2.0 WIDE + CENTERED)
    ========================================================= */
 
 .forge-contact-page {
-  padding: 2.4rem 1.4rem 3.2rem;
+  padding: 2.4rem 1.2rem 3rem;
   margin: 0 auto;
   width: 100%;
-  max-width: 1120px;            /* align with main site content */
-  box-sizing: border-box;
-}
-
-/* One shared lane width for all big blocks */
-.forge-terminal-modes,
-.forge-terminal-panel,
-.forge-contact-page .forge-card,
-.forge-location-card {
-  width: min(100%, 1040px);     /* wider than before, less “skinny” */
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
+  max-width: 1240px;     /* wider lane on desktop */
 }
 
 /* =========================================================
@@ -27,28 +15,20 @@
 
 .forge-contact-page .page-intro {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
 .forge-contact-page .page-intro h1 {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
   margin: 0 0 0.75rem;
   color: var(--forge-hotmetal);
 
-  white-space: normal !important;
-  word-break: keep-all !important;
-  overflow-wrap: break-word !important;
-  max-width: 100%;
-}
-
-@media (max-width: 420px) {
-  .forge-contact-page .page-intro h1 {
-    font-size: 1.6rem;
-    letter-spacing: 0.08em;
-  }
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .forge-contact-page .page-intro .forge-highlight {
@@ -59,8 +39,8 @@
 .forge-contact-page .page-intro .tagline {
   color: var(--forge-subtext);
   font-size: 1.05rem;
-  max-width: 620px;
-  margin: 0 auto;
+  max-width: 640px;
+  margin: 0.25rem auto 0;
 }
 
 /* =========================================================
@@ -70,6 +50,8 @@
 .forge-terminal-modes {
   margin: 1.6rem auto 1.2rem;
   text-align: center;
+  max-width: 1120px;
+  width: min(100%, 1120px);
 }
 
 .forge-terminal-modes .modes-heading {
@@ -90,7 +72,7 @@
 
 .terminal-mode-btn {
   min-width: 6.2rem;
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(var(--forge-accent-rgb), 0.5);
   background: rgba(3, 10, 24, 0.95);
@@ -100,8 +82,17 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.18s ease;
+}
+
+.terminal-mode-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.45);
 }
 
 .terminal-mode-btn.is-active {
@@ -112,14 +103,16 @@
 }
 
 /* =========================================================
-   TERMINAL PANELS — CENTERED + WIDER
+   TERMINAL PANELS — centered, wide, no overflow
    ========================================================= */
 
 .forge-terminal-panel {
   position: relative;
-  margin: 1.6rem auto 2.4rem;
-  padding: 1.7rem 1.6rem;
+  margin: 1.8rem auto 2.4rem;
+  padding: 1.5rem 1.4rem;
   border-radius: 22px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
 
   background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
   box-shadow:
@@ -127,12 +120,11 @@
     0 0 10px rgba(0, 184, 212, 0.12) inset;
 
   overflow: hidden;
-  display: block !important;
 }
 
 .forge-terminal-screen {
   position: relative;
-  padding: 1.1rem 1.3rem;
+  padding: 1rem 1.2rem;
   border-radius: 18px;
 
   background: rgba(0, 0, 0, 0.9);
@@ -141,9 +133,8 @@
     0 0 15px rgba(0, 184, 212, 0.35),
     0 0 20px rgba(0, 20, 60, 0.7) inset;
 
-  overflow-x: auto !important;
-  max-width: 100% !important;
-  box-sizing: border-box;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .forge-terminal-screen code {
@@ -153,10 +144,10 @@
   font-size: 0.94rem;
   line-height: 1.6;
   color: #26e0ff;
+  text-align: left;
 }
 
-/* CRT BASE OVERLAY */
-
+/* CRT overlay base */
 .forge-terminal-screen::before {
   content: "";
   position: absolute;
@@ -166,7 +157,7 @@
   mix-blend-mode: screen;
 }
 
-/* CRT MODES */
+/* CRT MODES -------------------------------------------- */
 
 .forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
   background-image:
@@ -233,73 +224,69 @@
 }
 
 /* =========================================================
-   FORGE CARDS — CENTERED + WIDER
+   FORGE CARDS — override for contact page
    ========================================================= */
 
 .forge-contact-page .forge-card {
-  margin: 2rem auto !important;
-  padding: 2rem 1.9rem;
+  margin: 2rem auto;
+  padding: 2rem 1.8rem;
   border-radius: 22px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
 
   background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
   box-shadow:
     0 0 14px rgba(10, 109, 255, 0.22),
     inset 0 0 22px rgba(0, 0, 0, 0.6);
 
-  display: block !important;
-  float: none !important;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
   text-align: left;
 }
 
-/* Contact list + button */
+.forge-contact-page .forge-card h2 {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.15rem;
+  color: var(--forge-hotmetal);
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+}
+
+.forge-contact-page .forge-card p {
+  margin-bottom: 0.9rem;
+}
 
 .forge-contact-page .contact-list {
   list-style: none;
-  padding: 0;
-  margin: 1.1rem 0 0;
+  padding-left: 0;
+  margin: 0.6rem 0 1.1rem;
 }
 
 .forge-contact-page .contact-list li {
-  margin-bottom: 0.5rem;
+  margin: 0.25rem 0;
 }
 
 .forge-contact-page .contact-list a {
   color: var(--forge-accent);
 }
 
-.forge-contact-page .btn-glow {
-  margin-top: 0.75rem;
-  padding: 0.55rem 1.4rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--forge-accent-rgb),0.6);
-  background: radial-gradient(circle at 30% 20%, #0A6DFF, #021631);
-  color: var(--forge-text);
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  cursor: pointer;
-  box-shadow:
-    0 0 12px rgba(10, 109, 255, 0.6),
-    0 0 20px rgba(1, 8, 30, 0.9);
-}
-
 /* =========================================================
-   LOCATION COORDINATE PLATE
+   LOCATION CARD — wide blueprint panel
    ========================================================= */
 
 .forge-location-card {
-  margin: 2.2rem auto 0 !important;
-  padding: 2rem 1.9rem 2.4rem;
+  margin: 2.4rem auto 0;
+  padding: 2.1rem 1.8rem 2.5rem;
   border-radius: 24px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
   text-align: center;
 
   background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
   box-shadow:
     0 0 18px rgba(0, 184, 212, 0.26),
     inset 0 0 34px rgba(0, 0, 0, 0.8);
-
-  display: block !important;
 }
 
 .forge-location-card h2 {
@@ -311,9 +298,10 @@
   margin-bottom: 1.4rem;
 }
 
+/* Blueprint plate */
 .forge-location-plate {
   width: min(100%, 460px);
-  margin: 0 auto 1.4rem !important;
+  margin: 0 auto 1.4rem;
   padding: 1.2rem 1.1rem;
 
   font-family: "Fira Mono", monospace;
@@ -329,8 +317,6 @@
     inset 0 0 18px rgba(0, 50, 80, 0.9);
 
   color: #cfefff;
-  display: block !important;
-  box-sizing: border-box;
 }
 
 .forge-location-plate .plate-line {
@@ -341,13 +327,13 @@
 
 .forge-location-plate .plate-line span {
   color: #78e8ff;
-  min-width: 110px;
+  min-width: 120px;
   text-align: right;
   letter-spacing: 0.05em;
 }
 
 .plate-line.indent {
-  padding-left: 110px;
+  padding-left: 120px;
 }
 
 .forge-location-text {
@@ -355,7 +341,7 @@
   color: var(--forge-text);
   font-size: 1.02rem;
   line-height: 1.7;
-  max-width: 640px;
+  max-width: 660px;
   margin: 0 auto;
 }
 
@@ -363,40 +349,43 @@
    RESPONSIVE TWEAKS
    ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .forge-contact-page {
-    padding: 2rem 1.1rem 2.7rem;
+    padding-top: 2rem;
   }
 
-  .forge-terminal-panel,
   .forge-contact-page .forge-card,
+  .forge-terminal-panel,
+  .forge-terminal-modes,
   .forge-location-card {
-    padding-left: 1.4rem;
-    padding-right: 1.4rem;
+    border-radius: 18px;
   }
 }
 
 @media (max-width: 640px) {
   .forge-contact-page {
-    padding: 1.8rem 1rem 2.4rem;
+    padding: 1.6rem 0.6rem 2.1rem; /* less side padding = wider feel */
   }
 
-  .forge-terminal-panel,
-  .forge-contact-page .forge-card,
-  .forge-location-card {
-    padding-left: 1.1rem;
-    padding-right: 1.1rem;
+  .forge-contact-page .page-intro h1 {
+    font-size: 1.7rem;
+  }
+
+  .forge-terminal-panel {
+    margin: 1.4rem auto 2rem;
+    padding: 1.2rem 1.1rem;
+  }
+
+  .forge-terminal-screen {
+    padding: 0.9rem 0.9rem;
   }
 
   .forge-contact-page .forge-card {
-    text-align: center; /* nicer on small screens */
+    padding: 1.5rem 1.2rem;
+    margin: 1.6rem auto;
   }
 
-  .forge-location-plate .plate-line {
-    gap: 0.4rem;
-  }
-
-  .plate-line.indent {
-    padding-left: 96px;
+  .forge-location-card {
+    padding: 1.8rem 1.2rem 2.1rem;
   }
 }
