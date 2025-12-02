@@ -1,16 +1,25 @@
+# ========================================================
+# M.R. TechForge — Jekyll Config
+# Optimized for Netlify + pretty URLs + plugins
+# ========================================================
+
 # Site settings
 title: "M.R. TechForge"
-description: "Crafting Clarity. Forging Solutions. Secured with Integrity." 
-url: "https://mrtechforge.com"       # Replace with your domain
-baseurl: ""                          # Leave empty if at root of domain
+description: "Crafting Clarity. Forging Solutions. Secured with Integrity."
+url: "https://mrtechforge.com"
+baseurl: ""                 # Root of domain
 lang: "en-US"
-permalink: pretty
+timezone: "America/Detroit"
+
+# URL behavior
+permalink: pretty           # /post-title/ instead of .html
 collections_dir: _collections
 
-# Theme
+# Theme (keep minima if you're still using its layouts;
+# remove this line if you've fully switched to custom layouts)
 theme: minima
 
-# Plugins
+# Plugins (these are all GitHub/Netlify-safe)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
@@ -24,15 +33,14 @@ paginate_path: "/page:num/"
 
 # Defaults
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
       author: "Mark G. Russell"
 
-# SEO settings
+# SEO / social (jekyll-seo-tag reads these)
 seo:
   type: "website"
   title: "M.R. TechForge"
@@ -40,19 +48,32 @@ seo:
   url: "https://mrtechforge.com"
   image: /assets/images/og-banner.png
 
-# Exclude from build
+# Markdown + formatting
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Sass/SCSS (if you're using .scss in /assets or /_sass)
+sass:
+  style: compressed       # Minify CSS in production
+  sass_dir: _sass
+
+# Build behavior
+incremental: false         # Better for Netlify; avoids weird cache issues
+
+# Exclude from site output (still available to Netlify build)
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
+  - README.md
+  - netlify.toml
+  - package.json
+  - package-lock.json
+  - yarn.lock
 
-# Include these (optional)
+# Explicit includes (if you keep content outside standard Jekyll dirs)
 include:
   - _pages
   - _posts
-
-# Build settings
-markdown: kramdown
-kramdown:
-  input: GFM
