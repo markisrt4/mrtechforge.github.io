@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.1)
+   M.R. TECHFORGE — NAVIGATION (v14.1 STABLE)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -24,7 +24,7 @@
 }
 
 .header-inner {
-  max-width: 1100px;
+  max-width: 1200px;           /* was 1100 — more room for links */
   margin: 0 auto;
   padding: 0.6rem 1rem;
 
@@ -107,9 +107,16 @@
     0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
 }
 
-/* Hide mobile-only submenu by default (desktop) */
-.mobile-submenu {
-  display: none;
+/* Slightly tighter nav on mid-width desktops */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .forge-nav {
+    gap: 1rem;
+  }
+  .forge-nav a,
+  .dropdown-parent-text,
+  .dropdown-arrow {
+    font-size: 0.82rem;
+  }
 }
 
 
@@ -349,7 +356,6 @@
      MOBILE SUBMENU (Accordion)
   --------------------------------------------------- */
   .mobile-submenu {
-    display: block;   /* only visible on mobile, still collapsed via max-height */
     width: 100%;
     background: rgba(0,0,0,0.35);
     overflow: hidden;
@@ -370,7 +376,7 @@
     display: block;
     width: 100%;
     padding: 0.55rem 1.1rem;
-    text-align: left; /* ❗ important */
+    text-align: left;
     font-size: 0.95rem;
     color: var(--forge-text);
     text-decoration: none;
@@ -411,42 +417,6 @@
     text-shadow:
       0 0 8px rgba(var(--forge-hotmetal-rgb),0.75),
       0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
-  }
-
-  /* ---------------------------------------------------
-     MOBILE "VERTICAL GRADIENT" COLOR STEPS
-     (Top links darker blue → bottom lighter)
-  --------------------------------------------------- */
-
-  /* Base color for all top-level buttons */
-  .forge-nav > a,
-  .forge-nav .dropdown-parent {
-    color: #3FAEFF;
-  }
-
-  /* First two items — deepest Forge blue */
-  .forge-nav > :nth-child(1),
-  .forge-nav > :nth-child(2) {
-    color: #0A6DFF;
-  }
-
-  /* Middle items — mid electric blue */
-  .forge-nav > :nth-child(3),
-  .forge-nav > :nth-child(4) {
-    color: #3FAEFF;
-  }
-
-  /* Last items — lighter icy blue */
-  .forge-nav > :nth-child(5),
-  .forge-nav > :nth-child(6),
-  .forge-nav > :nth-child(7) {
-    color: #83D4FF;
-  }
-
-  /* Active states still override with hotmetal */
-  .forge-nav a.is-active,
-  .dropdown-parent.active {
-    color: var(--forge-hotmetal);
   }
 }
 
