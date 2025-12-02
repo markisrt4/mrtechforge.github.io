@@ -2,6 +2,7 @@
 layout: default
 title: "💔 Life Without Google"
 permalink: /guides/digital-security/life-without-google/
+class: lifewithoutgoogle
 ---
 
 <a id="google-breakup-intro"></a>
