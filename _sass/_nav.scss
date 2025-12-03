@@ -1,19 +1,10 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.4 STABLE)
+   M.R. TECHFORGE — NAVIGATION (v14.2 STABLE)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
    Hammer FX + Idle animations
    ===================================================== */
-
-
-/* -----------------------------------------------------
-   GLOBAL SAFETY: mobile submenu hidden by default
-   (Prevents child links from showing on desktop)
------------------------------------------------------- */
-.mobile-submenu {
-  display: none;
-}
 
 
 /* -----------------------------------------------------
@@ -33,7 +24,7 @@
 }
 
 .header-inner {
-  max-width: 1200px; /* more room for links */
+  max-width: 1200px;           /* was 1100 — more room for links */
   margin: 0 auto;
   padding: 0.6rem 1rem;
 
@@ -86,32 +77,29 @@
 /* -----------------------------------------------------
    BASE NAV + ACTIVE STATES
 ------------------------------------------------------ */
-.forge-header .forge-nav {
+.forge-nav {
   display: flex;
   align-items: center;
   gap: 1.4rem;
 }
 
-/* Stronger specificity so global a / a:visited don’t override */
-.forge-header .forge-nav a,
-.forge-header .forge-nav a:visited {
+.forge-nav a {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--forge-subtext); /* cool blue / steel */
+  color: var(--forge-subtext);
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.25s ease, text-shadow 0.25s ease;
-  text-shadow: none;
 }
 
-.forge-header .forge-nav a:hover {
+.forge-nav a:hover {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6);
 }
 
-.forge-header .forge-nav a.is-active,
+.forge-nav a.is-active,
 .dropdown-parent.is-active-parent .dropdown-parent-text {
   color: var(--forge-hotmetal);
   text-shadow:
@@ -119,17 +107,40 @@
     0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
 }
 
-/* Slightly tighter nav on mid-width desktops */
+/* Slightly tighter nav on mid-width desktops + allow wrapping */
 @media (min-width: 761px) and (max-width: 1100px) {
-  .forge-header .forge-nav {
+  .forge-nav {
     gap: 1rem;
+    flex-wrap: wrap;          /* allow a second line instead of clipping */
+    justify-content: flex-end;
+    row-gap: 0.2rem;
   }
-
-  .forge-header .forge-nav a,
+  .forge-nav a,
   .dropdown-parent-text,
   .dropdown-arrow {
     font-size: 0.82rem;
   }
+}
+
+/* Strong nav color override to prevent global link styles from turning
+   everything hotmetal by default. Keeps base blue, hover/active gold. */
+.forge-header .forge-nav a,
+.forge-header .forge-nav a:visited {
+  color: var(--forge-subtext) !important;
+  text-shadow: none !important;
+}
+
+.forge-header .forge-nav a:hover {
+  color: var(--forge-hotmetal) !important;
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6) !important;
+}
+
+.forge-header .forge-nav a.is-active,
+.forge-header .dropdown-parent.is-active-parent .dropdown-parent-text {
+  color: var(--forge-hotmetal) !important;
+  text-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb),0.75) !important,
+    0 0 16px rgba(var(--forge-hotmetal-rgb),0.55) !important;
 }
 
 
@@ -210,18 +221,9 @@
 ------------------------------------------------------ */
 @media (min-width: 761px) {
 
-  .nav-toggle-btn {
-    display: none;
-  }
+  .nav-toggle-btn { display: none; }
 
-  /* mobile accordion list should NEVER appear on desktop */
-  .mobile-submenu {
-    display: none !important;
-  }
-
-  .dropdown-parent {
-    pointer-events: none; /* hover-only on desktop */
-  }
+  .dropdown-parent { pointer-events: none; }
 
   .dropdown-content {
     display: none;
@@ -258,6 +260,18 @@
     color: var(--forge-text);
     font-family: "Titillium Web", sans-serif;
   }
+
+  .dropdown-content a[data-child="true"]::before {
+    content: "›";
+    color: var(--forge-hotmetal);
+    margin-right: 0.35rem;
+  }
+
+  .dropdown-content a[data-grandchild="true"]::before {
+    content: "»";
+    color: var(--forge-accent);
+    margin-right: 0.35rem;
+  }
 }
 
 
@@ -287,10 +301,7 @@
     align-items: center;
   }
 
-  .forge-burger {
-    width: 34px;
-    height: 26px;
-  }
+  .forge-burger { width: 34px; height: 26px; }
 
   .forge-burger .bar {
     fill: #F5B841;
@@ -312,7 +323,7 @@
   /* ---------------------------------------------------
      MOBILE NAV WRAPPER
   --------------------------------------------------- */
-  .forge-header .forge-nav {
+  .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
@@ -328,7 +339,7 @@
     padding: 0;
   }
 
-  .forge-header .forge-nav.open {
+  .forge-nav.open {
     display: flex;       /* visible when toggled */
     padding: 0.4rem 0 0.6rem;
   }
@@ -337,8 +348,8 @@
   /* ---------------------------------------------------
      TOP-LEVEL MOBILE BUTTONS
   --------------------------------------------------- */
-  .forge-header .forge-nav > a,
-  .forge-header .forge-nav .dropdown-parent {
+  .forge-nav > a,
+  .forge-nav .dropdown-parent {
     width: 100%;
     padding: 0.6rem 0;
     display: flex;
@@ -349,14 +360,9 @@
     font-size: 1rem;
   }
 
-  .dropdown-parent {
-    cursor: pointer;
-  }
-
   .dropdown-parent.active {
     color: var(--forge-hotmetal);
   }
-
   .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
     color: var(--forge-hotmetal);
@@ -367,10 +373,7 @@
     width: 100%;
   }
 
-  /* hide desktop dropdown container in mobile */
-  .dropdown-content {
-    display: none !important;
-  }
+  .dropdown-content { display: none !important; }
 
 
   /* ---------------------------------------------------
@@ -386,7 +389,6 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    display: block; /* visible in DOM, collapsed via max-height */
   }
 
   .mobile-submenu.open {
@@ -524,7 +526,7 @@
   30%{ opacity:1; transform:rotate(-15deg);}
   50%{ transform:rotate(0deg);}
   70%{ transform:rotate(-12deg);}
- 100%{ opacity:0; transform:rotate(-60deg);}
+100%{ opacity:0; transform:rotate(-60deg);}
 }
 
 @keyframes sparksBurst {
