@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.2 STABLE)
+   M.R. TECHFORGE — NAVIGATION (v14.3 STABLE, BLUE NAV)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -87,7 +87,7 @@
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--forge-subtext);
+  color: var(--forge-accent);          /* BLUE base */
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
@@ -95,16 +95,16 @@
 }
 
 .forge-nav a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6);
+  color: var(--forge-accent);          /* still blue, but glowing */
+  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb),0.9);
 }
 
 .forge-nav a.is-active,
 .dropdown-parent.is-active-parent .dropdown-parent-text {
-  color: var(--forge-hotmetal);
+  color: #e6f3ff;                      /* bright blue/near-white */
   text-shadow:
-    0 0 8px rgba(var(--forge-hotmetal-rgb),0.75),
-    0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
+    0 0 10px rgba(var(--forge-accent-rgb),0.95),
+    0 0 18px rgba(var(--forge-accent-rgb),0.65);
 }
 
 /* Slightly tighter nav on mid-width desktops + allow wrapping */
@@ -123,24 +123,24 @@
 }
 
 /* Strong nav color override to prevent global link styles from turning
-   everything hotmetal by default. Keeps base blue, hover/active gold. */
+   everything hotmetal by default. Keeps base blue, hover/active blue. */
 .forge-header .forge-nav a,
 .forge-header .forge-nav a:visited {
-  color: var(--forge-subtext) !important;
+  color: var(--forge-accent) !important;
   text-shadow: none !important;
 }
 
 .forge-header .forge-nav a:hover {
-  color: var(--forge-hotmetal) !important;
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6) !important;
+  color: var(--forge-accent) !important;
+  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb),0.9) !important;
 }
 
 .forge-header .forge-nav a.is-active,
 .forge-header .dropdown-parent.is-active-parent .dropdown-parent-text {
-  color: var(--forge-hotmetal) !important;
+  color: #e6f3ff !important;
   text-shadow:
-    0 0 8px rgba(var(--forge-hotmetal-rgb),0.75) !important,
-    0 0 16px rgba(var(--forge-hotmetal-rgb),0.55) !important;
+    0 0 10px rgba(var(--forge-accent-rgb),0.95) !important,
+    0 0 18px rgba(var(--forge-accent-rgb),0.65) !important;
 }
 
 
@@ -170,18 +170,18 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: var(--forge-subtext);
+  color: var(--forge-accent);  /* blue label + arrow */
 }
 
 .dropdown-arrow {
   font-size: 0.8rem;
-  color: var(--forge-subtext);
+  color: var(--forge-accent);
   transition: 0.25s ease;
 }
 
 .dropdown-overview {
   font-weight: 700;
-  color: var(--forge-hotmetal) !important;
+  color: var(--forge-accent) !important;   /* no more orange */
 }
 
 
@@ -200,7 +200,7 @@
   left: 0.9rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--forge-hotmetal);
+  color: var(--forge-accent);          /* blue child marker */
 }
 
 .dropdown-content a[data-grandchild="true"] {
@@ -212,7 +212,7 @@
   left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--forge-accent);
+  color: var(--forge-accent);          /* blue grandchild marker */
 }
 
 
@@ -263,7 +263,7 @@
 
   .dropdown-content a[data-child="true"]::before {
     content: "›";
-    color: var(--forge-hotmetal);
+    color: var(--forge-accent);
     margin-right: 0.35rem;
   }
 
@@ -355,17 +355,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--forge-subtext);
+    color: var(--forge-accent);
     text-align: center;
     font-size: 1rem;
   }
 
   .dropdown-parent.active {
-    color: var(--forge-hotmetal);
+    color: #e6f3ff;                    /* bright blue for open section */
   }
   .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
-    color: var(--forge-hotmetal);
+    color: #e6f3ff;
   }
 
   .nav-item.dropdown {
@@ -417,7 +417,7 @@
     left: 1.1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--forge-hotmetal);
+    color: var(--forge-accent);
   }
 
   /* GRANDCHILD — double arrow, deeper indent */
@@ -437,10 +437,10 @@
 
   /* Active highlighting in mobile submenu */
   .mobile-submenu a.is-active {
-    color: var(--forge-hotmetal);
+    color: #e6f3ff;
     text-shadow:
-      0 0 8px rgba(var(--forge-hotmetal-rgb),0.75),
-      0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
+      0 0 10px rgba(var(--forge-accent-rgb),0.95),
+      0 0 18px rgba(var(--forge-accent-rgb),0.65);
   }
 }
 
@@ -469,8 +469,8 @@
 }
 
 .forge-breadcrumbs a:hover {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb),0.7);
+  color: var(--forge-accent);
+  text-shadow: 0 0 8px rgba(var(--forge-accent-rgb),0.7);
 }
 
 .forge-breadcrumbs-separator {
