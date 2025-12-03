@@ -4,11 +4,11 @@ title: Phone, Voice & Messaging Services
 permalink: /services/phone-voice-messaging/
 ---
 
-## MRTF Phone, Voice & Messaging Services
+## Phone, Voice & Messaging Services
 ### Clear, reliable communication tools — built with integrity.
 
 <div class="service-product-tag">
-  MRTF Line Voice &amp; Messaging · Services
+  MRTF Line Voice &amp; Messaging · An MRTF Service
 </div>
 
 Modern communication shouldn’t feel overwhelming. Whether you’re running a business, serving a ministry, operating a library, or protecting your privacy, M.R. TechForge provides simple, dependable tools tailored to you.
@@ -48,6 +48,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 
 <section class="forge-section forge-grid grid-2">
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>1. Business Phone Lines</h3>
 <p>A professional phone number that keeps your personal life separate.</p>
@@ -61,7 +62,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-business-line">See Business Line pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>2. Phone Menus (“Press 1 for…”)</h3>
 <p>A friendly phone menu that guides callers quickly and clearly.</p>
@@ -75,7 +78,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-press-1">See Press-1 Phone Menu pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>3. Auto-Reply Text Lines</h3>
 <p>Instant answers when someone texts a keyword.</p>
@@ -89,7 +94,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-auto-reply">See Auto-Reply Text Line pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>4. Church &amp; Ministry Tools</h3>
 <p>Faith-friendly communication tools designed for outreach and support.</p>
@@ -107,7 +114,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-church-ministry">See Church &amp; Ministry Line pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>5. Library Communication Tools</h3>
 <p>Improve patron service while reducing staff workload.</p>
@@ -121,7 +130,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-library">See Library Package pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>6. Secure 2FA &amp; Login Numbers</h3>
 <p>A private number used only for login codes.</p>
@@ -134,7 +145,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-2fa">See Secure 2FA pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>7. Privacy Shield Numbers</h3>
 <p>Two-way calling and texting without exposing your real number.</p>
@@ -150,7 +163,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
   <a href="#pricing-privacy-shield">See Privacy Shield pricing ↓</a>
 </p>
 </div>
+</div>
 
+<div class="service-offer-card">
 <div class="service-card">
 <h3>8. Alerts &amp; Notifications</h3>
 <p>Automated messaging for businesses, libraries, and ministries.</p>
@@ -163,6 +178,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 <p class="service-pricing-link">
   <a href="#pricing-auto-reply">See base Alerts/Text pricing ↓</a>
 </p>
+</div>
 </div>
 
 </section>
@@ -261,4 +277,10 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 
 <div class="services-cta">
   <a href="/contact/" class="btn-glow">Contact M.R. TechForge</a>
+</div>
+
+<div class="services-cta">
+  <a href="/services/forgeline-consultation/" class="btn-glow">
+    Start ForgeLine Consultation
+  </a>
 </div>
