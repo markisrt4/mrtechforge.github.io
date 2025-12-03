@@ -1,213 +1,424 @@
-/* =====================================================
-   CONTACT PAGE — UPDATED CLEAN BUILD (v7.1)
-   Fixes:
-   - Terminal inner padding + no clipping
-   - Consistent mobile alignment
-   - “Proudly Serving” block centered + tightened
-   - General spacing and responsiveness tuned
-   ===================================================== */
+/* =========================================================
+   CONTACT PAGE — TERMINAL COMMS DECK (v3.0)
+   Wide centered layout • CRT panels • Neon cards
+   ========================================================= */
 
-/* -----------------------------------------------------
-   PAGE WRAPPER
------------------------------------------------------- */
 .forge-contact-page {
-  width: 100%;
-  max-width: 1200px;
+  padding: 2.4rem 0.8rem 3rem;
   margin: 0 auto;
-  padding: 1rem 1.2rem 4rem;
-  box-sizing: border-box;
+  width: 100%;
+  max-width: 1240px;
 }
 
-/* -----------------------------------------------------
-   THEME TOGGLE BUTTONS
------------------------------------------------------- */
-.theme-toggle-row {
+/* =========================================================
+   INTRO HEADER
+   ========================================================= */
+
+.forge-contact-page .page-intro {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.forge-contact-page .page-intro h1 {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+  margin: 0 0 0.75rem;
+  color: var(--forge-hotmetal);
+
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.forge-contact-page .page-intro .forge-highlight {
+  display: block;
+  font-size: 0.95em;
+}
+
+.forge-contact-page .page-intro .tagline {
+  color: var(--forge-subtext);
+  font-size: 1.05rem;
+  max-width: 640px;
+  margin: 0.25rem auto 0;
+}
+
+/* =========================================================
+   DISPLAY MODES BUTTON PANEL
+   ========================================================= */
+
+.forge-terminal-modes {
+  margin: 1.6rem auto 1.2rem;
+  text-align: center;
+  max-width: 1120px;
+  width: min(100%, 1120px);
+}
+
+.forge-terminal-modes .modes-heading {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+  color: var(--forge-hotmetal);
+  margin-bottom: 0.6rem;
+}
+
+.modes-buttons {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.6rem;
-  justify-content: center;
-  margin: 1.4rem auto 2rem;
 }
 
-.theme-toggle-btn {
+.terminal-mode-btn {
+  min-width: 6.2rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.5);
+  background: rgba(3, 10, 24, 0.95);
+  color: var(--forge-text);
   font-family: "Orbitron", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.65rem 1.4rem;
-  border-radius: 40px;
-  border: 2px solid var(--forge-accent);
-  background: rgba(5, 12, 22, 0.6);
-  color: var(--forge-accent);
   cursor: pointer;
-  transition: 0.25s ease;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.18s ease;
 }
 
-.theme-toggle-btn.active {
+.terminal-mode-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.45);
+}
+
+.terminal-mode-btn.is-active {
+  background: radial-gradient(circle at 30% 20%, var(--forge-hotmetal), #c2881e);
   color: #000;
-  background: var(--forge-hotmetal);
   border-color: var(--forge-hotmetal);
-  box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.7);
+  box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.8);
 }
 
-/* -----------------------------------------------------
-   TERMINAL WRAPPERS (SCANLINE / GRID / RADAR / CLEAN)
------------------------------------------------------- */
-.forge-terminal-wrapper {
-  margin: 2rem auto 3rem;
+/* =========================================================
+   TERMINAL PANELS — wide, centered, CRT overlays
+   ========================================================= */
+
+.forge-terminal-panel {
+  position: relative;
+  margin: 1.8rem auto 2.4rem;
+  padding: 1.6rem 1.4rem;
+  border-radius: 22px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
+
+  background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
+  box-shadow:
+    0 0 6px rgba(0, 184, 212, 0.18),
+    0 0 10px rgba(0, 184, 212, 0.12) inset;
+
+  overflow: hidden;
 }
 
-/* -------------------------
-   Terminal Frame
-------------------------- */
 .forge-terminal-screen {
   position: relative;
+  padding: 1.05rem 1.25rem;  /* inner text padding, safe on both sides */
+  border-radius: 18px;
+
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(0, 184, 212, 0.45);
-  border-radius: 18px;
-
-  /* FIXED PADDING — NO CLIPPING */
-  padding: 1.15rem 1.55rem 1.2rem 1.35rem;
-  box-sizing: border-box;
-
   box-shadow:
     0 0 15px rgba(0, 184, 212, 0.35),
-    inset 0 0 20px rgba(0, 60, 120, 0.55);
+    0 0 20px rgba(0, 20, 60, 0.7) inset;
 
-  overflow-x: auto;
-  max-width: 100%;
+  overflow: hidden;
 }
 
-.forge-terminal-screen code,
-.forge-terminal-screen pre {
+.forge-terminal-screen code {
+  display: block;
   white-space: pre-wrap;
-  word-break: break-word;
-  font-family: "Share Tech Mono", monospace;
-  font-size: 1.02rem;
-  color: var(--forge-accent-light);
+  font-family: "Courier New", monospace;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #26e0ff;
+  text-align: left;
 }
 
-/* -----------------------------------------------------
-   SECTION: "OPEN A CHANNEL"
------------------------------------------------------- */
-.forge-contact-section {
-  margin: 2.6rem auto 3.2rem;
-  padding: 2rem 1.4rem;
-  border-radius: 18px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.3);
-  background: rgba(5, 12, 22, 0.45);
-  box-shadow: 0 0 25px rgba(0, 20, 40, 0.55) inset;
+/* CRT overlay base */
+.forge-terminal-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: screen;
 }
 
-.forge-contact-section h2 {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  text-transform: uppercase;
+/* CRT MODES -------------------------------------------- */
 
-  margin-bottom: 1.2rem;
-  text-align: center;
-
-  color: var(--forge-hotmetal);
-  letter-spacing: 1px;
+.forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.15),
+      rgba(0, 255, 255, 0.15) 1px,
+      transparent 2px,
+      transparent 3px
+    );
 }
 
-.forge-contact-section p {
-  font-size: 1.05rem;
-  color: var(--forge-text);
-  line-height: 1.55;
-  text-align: center;
-  max-width: 650px;
-  margin: 0.4rem auto 1.2rem;
+.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.17),
+      rgba(0, 255, 255, 0.17) 1px,
+      transparent 3px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 255, 255, 0.17),
+      rgba(0, 255, 255, 0.17) 1px,
+      transparent 3px,
+      transparent 4px
+    );
 }
 
-/* Email copy button */
-.copy-template-btn {
-  display: inline-block;
-  margin: 1.2rem auto 1.6rem;
-  padding: 0.6rem 1rem;
-  background: var(--forge-panel);
-  border: 1px solid var(--forge-accent-dark);
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--forge-text);
-  transition: 0.25s ease;
+.forge-terminal-panel.crt-radar .forge-terminal-screen {
+  background: radial-gradient(circle at 20% 15%, #002b1d 0%, #000 70%);
 }
 
-.copy-template-btn:hover {
-  background: var(--forge-accent);
-  color: #000;
+.forge-terminal-panel.crt-radar .forge-terminal-screen code {
+  color: #80ffb5;
 }
 
-/* -----------------------------------------------------
-   EMAIL TEMPLATE TERMINAL
------------------------------------------------------- */
-.email-template-terminal {
-  margin-top: 1.2rem;
+.forge-terminal-panel.crt-radar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 255, 128, 0.9) 0deg,
+    rgba(0, 255, 128, 0) 50deg,
+    rgba(0, 255, 128, 0) 360deg
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0.28;
+  animation: radarSweep 4s linear infinite;
 }
 
-/* -----------------------------------------------------
-   "PROUDLY SERVING" SECTION
------------------------------------------------------- */
-.forge-service-region {
-  margin: 3rem auto 3.8rem;
-  padding: 2rem 1.4rem;
-  border-radius: 18px;
-  background: rgba(4, 10, 18, 0.5);
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.forge-terminal-panel.crt-clean .forge-terminal-screen::before {
+  opacity: 0.08;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.2), transparent 65%);
+}
+
+/* =========================================================
+   CONTACT CARDS — neon panels
+   ========================================================= */
+
+.forge-contact-page .forge-card {
+  margin: 2rem auto;
+  padding: 2rem 1.8rem;
+  border-radius: 22px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
+
+  background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
+  box-shadow:
+    0 0 14px rgba(10, 109, 255, 0.22),
+    inset 0 0 22px rgba(0, 0, 0, 0.6);
+
   border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-
-  /* CENTER EVERYTHING CLEANLY */
-  text-align: center;
+  text-align: left;
 }
 
-.forge-service-region-title {
+.forge-contact-page .forge-card h2 {
   font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.6rem, 5vw, 2.4rem);
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.15rem;
   color: var(--forge-hotmetal);
-  letter-spacing: 1px;
-  margin-bottom: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 0.9rem;
 }
 
-.forge-service-region .region-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  font-family: "Share Tech Mono", monospace;
-  font-size: 1.1rem;
-  color: var(--forge-accent-light);
+.forge-contact-page .forge-card p {
+  margin-bottom: 0.9rem;
 }
 
-.region-grid .label {
+.forge-contact-page .contact-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.6rem 0 1.1rem;
+}
+
+.forge-contact-page .contact-list li {
+  margin: 0.25rem 0;
+}
+
+.forge-contact-page .contact-list a {
   color: var(--forge-accent);
-  margin-right: 0.3rem;
 }
 
-/* -----------------------------------------------------
-   CONTACT INFO BLOCK
------------------------------------------------------- */
-.forge-contact-info {
-  margin: 2.4rem auto 3rem;
+/* Glowy CTA button for "Copy Template" */
+.forge-contact-page .btn-glow {
+  display: inline-block;
+  margin-top: 0.3rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.65);
+  background: radial-gradient(circle at 30% 20%, #0a6dff 0%, #021022 70%);
+
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #f8f9ff;
+
+  cursor: pointer;
+  box-shadow:
+    0 0 12px rgba(10,109,255,0.75),
+    0 0 22px rgba(10,109,255,0.55);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.forge-contact-page .btn-glow:hover {
+  transform: translateY(-1px);
+  background: radial-gradient(circle at 30% 20%, #f5b841 0%, #381b03 70%);
+  box-shadow:
+    0 0 16px rgba(245,184,65,0.9),
+    0 0 26px rgba(245,184,65,0.7);
+}
+
+/* =========================================================
+   LOCATION CARD — blueprint block
+   ========================================================= */
+
+.forge-location-card {
+  margin: 2.4rem auto 0;
+  padding: 2.1rem 1.8rem 2.5rem;
+  border-radius: 24px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
   text-align: center;
-  font-size: 1.1rem;
+
+  background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
+  box-shadow:
+    0 0 18px rgba(0, 184, 212, 0.26),
+    inset 0 0 34px rgba(0, 0, 0, 0.8);
 }
 
-.forge-contact-info a {
-  color: var(--forge-accent-light);
-  text-decoration: none;
-}
-
-.forge-contact-info a:hover {
+.forge-location-card h2 {
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
   color: var(--forge-hotmetal);
+  margin-bottom: 1.4rem;
 }
 
-/* -----------------------------------------------------
-   RESPONSIVE TUNING
------------------------------------------------------- */
-@media (max-width: 480px) {
-  .forge-terminal-screen {
-    padding: 1rem 1.25rem 1rem 1.2rem; /* slightly tighter for XS phones */
+/* Blueprint plate */
+.forge-location-plate {
+  width: min(100%, 460px);
+  margin: 0 auto 1.4rem;
+  padding: 1.2rem 1.1rem;
+
+  font-family: "Fira Mono", monospace;
+  font-size: 0.92rem;
+  line-height: 1.6;
+
+  border: 2px solid rgba(0, 200, 255, 0.55);
+  border-radius: 12px;
+
+  background: radial-gradient(circle at center, #04101e, #000);
+  box-shadow:
+    0 0 14px rgba(0, 200, 255, 0.35),
+    inset 0 0 18px rgba(0, 50, 80, 0.9);
+
+  color: #cfefff;
+}
+
+.forge-location-plate .plate-line {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.18rem 0;
+}
+
+.forge-location-plate .plate-line span {
+  color: #78e8ff;
+  min-width: 120px;
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+.plate-line.indent {
+  padding-left: 120px;
+}
+
+.forge-location-text {
+  font-family: "Titillium Web", sans-serif;
+  color: var(--forge-text);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   RESPONSIVE TWEAKS
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .forge-contact-page {
+    padding-top: 2rem;
   }
 
-  .forge-service-region-title {
-    font-size: 1.55rem;
+  .forge-contact-page .forge-card,
+  .forge-terminal-panel,
+  .forge-terminal-modes,
+  .forge-location-card {
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .forge-contact-page {
+    padding: 1.6rem 0.6rem 2.1rem;
+  }
+
+  .forge-contact-page .page-intro h1 {
+    font-size: 1.7rem;
+  }
+
+  .forge-terminal-panel {
+    margin: 1.4rem auto 2rem;
+    padding: 1.2rem 1.1rem;
+  }
+
+  .forge-terminal-screen {
+    padding: 0.95rem 1.05rem;  /* slightly tighter but still safe */
+  }
+
+  .forge-contact-page .forge-card {
+    padding: 1.5rem 1.2rem;
+    margin: 1.6rem auto;
+  }
+
+  .forge-location-card {
+    padding: 1.8rem 1.2rem 2.1rem;
   }
 }
