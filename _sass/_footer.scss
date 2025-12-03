@@ -1,7 +1,6 @@
 /* =========================================================
-   M.R. TechForge — Footer v5.0 (Optimized)
-   Clean desktop layout • Tight vertical spacing •
-   Centered mobile layout
+   M.R. TechForge — Footer v4.1
+   Clean desktop layout • Tight spacing • Mobile-friendly
    ========================================================= */
 
 .forge-footer {
@@ -104,10 +103,10 @@
 .footer-contact-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 1.5rem;
   align-items: center;
   justify-content: space-between;
-  margin: 0.7rem 0 0.4rem;
+  margin: 0.8rem 0 0.4rem;
   border-top: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   padding-top: 0.6rem;
 }
@@ -147,7 +146,7 @@
   display: inline-flex;
   justify-content: center;
   gap: 0.6rem;
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
 }
 
 .footer-social a,
@@ -213,15 +212,12 @@
 ---------------------------------------------------------- */
 
 .footer-terminal-wrapper {
-  margin: 0.6rem 0 0.4rem;
+  margin: 0.5rem 0 0.5rem;
 }
 
 .footer-terminal {
   margin: 0 auto;
   max-width: 900px;
-
-  /* keep your CRT glow, just ensure padding isn’t huge */
-  padding: 0.6rem 0.9rem;
   box-shadow:
     0 0 7px rgba(77, 184, 255, 0.24),
     inset 0 0 6px rgba(77, 184, 255, 0.16);
@@ -266,8 +262,13 @@
   }
 }
 
-/* Mobile: stack + center, and tighten vertical spacing */
+/* Mobile: stack + center, kill flex-basis height */
 @media (max-width: 640px) {
+
+  .forge-footer {
+    margin-top: 2.2rem;
+    padding-top: 1.6rem;
+  }
 
   .footer-inner {
     padding: 0 1.1rem;
@@ -275,9 +276,8 @@
 
   .footer-top {
     flex-direction: column;
-    gap: 1.1rem;
-    margin-bottom: 0.9rem;
-    text-align: center;
+    gap: 1.4rem;
+    margin-bottom: 1rem;
   }
 
   .footer-brand,
@@ -288,23 +288,24 @@
 
   .footer-columns {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
     align-items: center;
-    justify-content: center;
   }
 
+  /* stack contact + social with no giant vertical space */
   .footer-contact-social {
     flex-direction: column;
     align-items: center;
     text-align: center;
-
-    gap: 0.6rem;
-    margin-top: 0.5rem;
+    gap: 0.6rem;          /* tighter vertical spacing */
+    margin-top: 0.6rem;
     padding-top: 0.5rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
+    flex: 0 0 auto;       /* remove 260px flex-basis height */
+    width: 100%;
     text-align: center;
   }
 
@@ -312,18 +313,7 @@
     margin-top: 0.25rem;
   }
 
-  /* Tighten the terminal spacing specifically on mobile */
-  .footer-terminal-wrapper {
-    margin-top: 0.4rem !important;
-    margin-bottom: 0.4rem !important;
-  }
-
   .footer-terminal {
-    padding: 0.45rem 0.7rem !important;
-  }
-
-  .footer-bottom {
-    margin-top: 0.4rem;
-    padding-top: 0.4rem;
+    padding: 0.75rem 0.9rem !important;
   }
 }
