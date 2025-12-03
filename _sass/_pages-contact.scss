@@ -434,3 +434,12 @@
     padding: 1.8rem 1.2rem 2.1rem;
   }
 }
+
+/* --- Hard alignment reset for the contact page terminal --- */
+.forge-contact-page .forge-terminal-panel,
+.forge-contact-page .forge-terminal,
+.forge-contact-page .forge-terminal-screen pre {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  transform: none !important;
+}
