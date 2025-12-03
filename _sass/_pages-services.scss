@@ -16,6 +16,12 @@
   box-shadow: 0 0 28px rgba(0, 150, 255, 0.22);
 }
 
+/* price text: electric blue + slight indent */
+.pricing-card .price {
+  padding-left: 0.4rem;
+  color: var(--forge-accent, #00b8d4);
+  font-weight: 700;
+}
 
 /* === 2. Keyword Pills === */
 /* Use these for HOURS, INFO, PRAYER, etc. */
@@ -31,7 +37,6 @@
   font-weight: 600;
 }
 
-
 /* === 3. Optional: General-purpose Services Card === */
 /* Only for service-specific content — does NOT replace .forge-card */
 .services-card {
@@ -42,7 +47,6 @@
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 150, 255, 0.08);
 }
-
 
 /* === 4. CTA Enhancements for “Contact Me” Button Wrapper === */
 .services-cta {
@@ -55,7 +59,6 @@
   padding: 0.9rem 2rem;
   font-size: 1.1rem;
 }
-
 
 /* === 5. Subtle Divider for Sections (optional, non-conflicting) === */
 .services-divider {
@@ -70,7 +73,6 @@
   margin: 2rem 0;
 }
 
-
 /* === 6. Safe enhancements to existing heading styles === */
 /* Does NOT override .block-heading, just supplements when used */
 .services-heading {
@@ -80,4 +82,65 @@
   font-weight: 700;
   border-bottom: 1px solid rgba(0,150,255,0.3);
   padding-bottom: 0.4rem;
+}
+
+/* === 7. Product tag chip (e.g. ForgeLine Voice & Messaging) === */
+.service-product-tag {
+  display: inline-block;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forge-accent);
+  border: 1px solid rgba(0,150,255,0.6);
+  box-shadow: 0 0 14px rgba(0,150,255,0.45);
+}
+
+/* === 8. Service → Pricing helper links === */
+.service-pricing-link {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.service-pricing-link a {
+  color: var(--forge-accent, #00b8d4);
+  text-decoration: none;
+}
+
+.service-pricing-link a:hover {
+  text-decoration: underline;
+}
+
+/* === 9. Phone Services feature cards (Why / How It Works) === */
+.phone-services-card {
+  background: radial-gradient(
+      circle at top left,
+      rgba(0,150,255,0.22),
+      rgba(0,0,0,0.94)
+  );
+  border-radius: 14px;
+  border: 1px solid rgba(0,150,255,0.45);
+  box-shadow: 0 0 24px rgba(0,150,255,0.25);
+}
+
+.phone-services-card p:first-child {
+  margin-top: 0;
+}
+
+.phone-services-card ul,
+.phone-services-card ol {
+  margin-left: 1.2rem;
+}
+
+/* Ordered list styling inside How It Works */
+.how-it-works-steps {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.how-it-works-steps li {
+  margin-bottom: 0.45rem;
 }
