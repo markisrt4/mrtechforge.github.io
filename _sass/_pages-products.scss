@@ -1,11 +1,12 @@
 /* ============================================================
-   M.R. TechForge — Products & Cart Styles
-   Scoped to .forge-products so globals stay intact
+   M.R. TechForge — Products & Cart Styles (v2)
+   Strongly centers products layout; safe + scoped
    ============================================================ */
 
-/* === 1. Products Wrapper / Layout === */
+/* --- Wrapper: keep products area centered and roomy --- */
 
 .forge-products {
+  display: block;
   max-width: 1100px;
   margin: 2rem auto 4rem;
   padding: 1.5rem 1rem 5rem;
@@ -13,8 +14,7 @@
   color: var(--forge-gray, #cfd8dc);
 }
 
-/* Page title override so it doesn’t break like
-   PRODUC / TS & / SERVIC / ES on mobile */
+/* Page title override so it doesn’t split words or get weird */
 .forge-products .page-title {
   margin: 0 0 0.75rem;
   color: var(--forge-accent, #00b8d4);
@@ -22,7 +22,7 @@
   letter-spacing: 0.12em;
   text-align: center;
 
-  /* undo some aggressive global heading behavior */
+  /* undo global heading glow padding/wrapping */
   padding-left: 0;
   padding-right: 0;
   overflow-wrap: normal;
@@ -43,7 +43,7 @@
   line-height: 1.7;
 }
 
-/* Section headers (e.g. “NFC Tags & Automations”) */
+/* --- Section headers (e.g. "NFC Tags & Automations") --- */
 
 .product-section {
   margin-bottom: 2.5rem;
@@ -72,8 +72,6 @@
   text-decoration: underline;
 }
 
-/* On wider screens, put title + “View all” on one line */
-
 @media (min-width: 640px) {
   .product-section-header {
     flex-direction: row;
@@ -83,36 +81,45 @@
 }
 
 
-/* === 2. Product Grid & Cards === */
+/* ============================================================
+   GRID & CARD LAYOUT
+   (These are the bits that fix the “right aligned” look)
+   ============================================================ */
 
-/* Mobile: single column, nice and wide, centered */
-
+/* Mobile: single column, grid is centered in its container */
 .product-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
-  justify-items: stretch;
   padding: 1rem 0;
+
+  /* these two lines make sure the whole grid
+     sits centered even if a parent sets justify-content */
+  justify-content: center;
+  align-content: start;
 }
 
-/* Larger: auto-fit into multiple columns */
-
+/* Larger screens: multiple columns but still centered */
 @media (min-width: 640px) {
   .product-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    justify-items: center;
+    justify-content: center;
   }
 }
 
+/* Each card: width-limited and centered in its grid cell */
 .product-card {
   background: #1a1a1a;
   border-radius: 14px;
   padding: 1.2rem 1.3rem;
   box-shadow: 0 0 10px rgba(0, 184, 212, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin: 0 auto;
+
   width: 100%;
   max-width: 420px;
+
+  /* THIS is key: center the card inside the grid cell */
+  justify-self: center;
   text-align: left;
 }
 
@@ -132,7 +139,7 @@
 .product-card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.1rem;
-  text-transform: none; /* keep names readable, not shouting */
+  text-transform: none; // don’t shout, easier to read
   letter-spacing: 0.05em;
 }
 
@@ -142,7 +149,6 @@
 }
 
 /* Price + buttons */
-
 .price {
   display: block;
   color: var(--forge-hotmetal, #ffa000);
@@ -155,8 +161,7 @@
   font-style: italic;
 }
 
-/* Shared button style reused from rest of site */
-
+/* Shared glowing button style */
 .btn-glow {
   background: linear-gradient(90deg, #007ea7, #00b8d4);
   color: #fff;
@@ -168,14 +173,15 @@
   box-shadow: 0 0 8px rgba(0, 184, 212, 0.4);
   transition: all 0.3s ease-in-out;
 }
-
 .btn-glow:hover {
   background: linear-gradient(90deg, #00b8d4, #00acc1);
   box-shadow: 0 0 15px rgba(0, 184, 212, 0.8);
 }
 
 
-/* === 3. Cart Drawer Styles === */
+/* ============================================================
+   CART DRAWER
+   ============================================================ */
 
 .cart {
   position: fixed;
