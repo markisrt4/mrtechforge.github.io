@@ -1,17 +1,20 @@
 /* ==========================================================
-   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v2.0)
+   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v2.1)
    Reusable Cards • Complexity Cards • Glow • Mobile-Ready
    ========================================================== */
 
 /* ----------------------------------------------------------
    BASE CARD (default “forge-card” used across site)
 ---------------------------------------------------------- */
+
 .forge-card {
   background: rgba(20, 20, 20, 0.75);
   border: 1px solid rgba(var(--forge-accent-rgb), 0.20);
   border-radius: 12px;
   padding: 1.6rem 1.3rem;
   margin: 2rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.08);
@@ -22,17 +25,21 @@
   box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.18);
 }
 
+.forge-card h2,
 .forge-card h3 {
   margin-top: 0;
+}
+
+.forge-card h3 {
   color: var(--forge-accent);
   text-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.5);
 }
-
 
 /* ----------------------------------------------------------
    COMPLEXITY CARDS (Green = Easy • Yellow = Medium • Red = Hard)
    Used for the Life Without Google page
 ---------------------------------------------------------- */
+
 .forge-complexity-card {
   background: linear-gradient(180deg, rgba(25,25,25,0.92), rgba(10,10,10,0.90));
   border-radius: 14px;
@@ -75,7 +82,6 @@
   letter-spacing: 0.5px;
   text-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.4);
 }
-
 
 /* ----------------------------------------------------------
    ACCORDION COMPONENT (Used for Tool Sections)
@@ -131,6 +137,10 @@
   max-height: 800px;
 }
 
+/* ----------------------------------------------------------
+   RESPONSIVE CARD TWEAKS
+---------------------------------------------------------- */
+
 @media (max-width: 760px) {
   .forge-card,
   .forge-complexity-card {
@@ -144,7 +154,7 @@
 
 /* ==========================================================
    CARD GRID LAYOUT (Landing Pages)
-   ========================================================== */
+========================================================== */
 
 .forge-card-grid {
   display: grid;
