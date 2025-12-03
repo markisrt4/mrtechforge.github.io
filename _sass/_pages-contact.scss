@@ -1,17 +1,13 @@
 /* =========================================================
-   CONTACT PAGE — FORGE STYLE (v3.0)
-   Wide layout • Centered cards • CRT terminals
-   ========================================================= */
-
-/* =========================================================
-   PAGE WRAPPER
+   CONTACT PAGE — FORGE STYLE (v3.0 WIDE + CENTERED)
+   Wide lane • Matching card/terminal widths • Glow button
    ========================================================= */
 
 .forge-contact-page {
   padding: 2.4rem 1.2rem 3rem;
   margin: 0 auto;
   width: 100%;
-  max-width: 1240px; /* wider lane than default pages */
+  max-width: 1240px; /* page lane */
 }
 
 /* =========================================================
@@ -55,6 +51,7 @@
 .forge-terminal-modes {
   margin: 1.6rem auto 1.2rem;
   text-align: center;
+
   max-width: 1120px;
   width: min(100%, 1120px);
 }
@@ -108,14 +105,15 @@
 }
 
 /* =========================================================
-   TERMINAL PANELS — centered + WIDE
+   TERMINAL PANELS — aligned with cards
    ========================================================= */
 
 .forge-terminal-panel {
   position: relative;
-  margin: 1.8rem auto 2.4rem;
-  padding: 1.5rem 1.4rem;
+  margin: 1.8rem auto 2.2rem;
+  padding: 1.6rem 1.8rem;
   border-radius: 22px;
+
   max-width: 1120px;
   width: min(100%, 1120px);
 
@@ -129,7 +127,7 @@
 
 .forge-terminal-screen {
   position: relative;
-  padding: 1rem 1.2rem;
+  padding: 1.2rem 1.8rem; /* matches card inner feel */
   border-radius: 18px;
 
   background: rgba(0, 0, 0, 0.9);
@@ -162,7 +160,7 @@
   mix-blend-mode: screen;
 }
 
-/* ---------- CRT MODES (contact-page specific) ----------- */
+/* CRT MODES -------------------------------------------- */
 
 .forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
   background-image:
@@ -229,11 +227,11 @@
 }
 
 /* =========================================================
-   FORGE CARDS — contact-page overrides
+   FORGE CARDS — aligned with terminals
    ========================================================= */
 
 .forge-contact-page .forge-card {
-  margin: 2rem auto;
+  margin: 1.8rem auto;
   padding: 2rem 1.8rem;
   border-radius: 22px;
   max-width: 1120px;
@@ -274,6 +272,44 @@
 
 .forge-contact-page .contact-list a {
   color: var(--forge-accent);
+}
+
+/* =========================================================
+   GLOW BUTTON (Copy Template)
+   ========================================================= */
+
+.forge-contact-page .btn-glow {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.5rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.7);
+  background: radial-gradient(circle at 30% 20%, #12345f 0%, #050810 70%);
+  color: var(--forge-text);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 10px rgba(var(--forge-accent-rgb), 0.7),
+    0 0 18px rgba(var(--forge-accent-rgb), 0.3);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.forge-contact-page .btn-glow:hover {
+  transform: translateY(-1px);
+  border-color: var(--forge-hotmetal);
+  color: #fff;
+  box-shadow:
+    0 0 14px rgba(var(--forge-hotmetal-rgb), 0.9),
+    0 0 26px rgba(var(--forge-accent-rgb), 0.4);
 }
 
 /* =========================================================
@@ -377,17 +413,21 @@
   }
 
   .forge-terminal-panel {
-    margin: 1.4rem auto 2rem;
-    padding: 1.2rem 1.1rem;
+    margin: 1.4rem auto 1.9rem;
+    padding: 1.3rem 1.1rem;
   }
 
   .forge-terminal-screen {
-    padding: 0.9rem 0.9rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .forge-terminal-screen code {
+    font-size: 0.9rem;
   }
 
   .forge-contact-page .forge-card {
     padding: 1.5rem 1.2rem;
-    margin: 1.6rem auto;
+    margin: 1.5rem auto;
   }
 
   .forge-location-card {
