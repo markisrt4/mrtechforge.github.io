@@ -33,9 +33,11 @@ body {
    MAIN CONTENT WRAPPER
 ------------------------------ */
 main {
-  max-width: 950px;
+  width: 100%;
+  max-width: 1200px;         /* A healthy modern layout width */
   margin: 2rem auto;
-  padding: 1.2rem;
+  padding: 0 1rem;           /* responsive side padding */
+  box-sizing: border-box;
 }
 
 /* ------------------------------
