@@ -4,7 +4,7 @@ title: Phone, Voice & Messaging Services
 permalink: /services/phone-voice-messaging/
 ---
 
-## Phone, Voice & Messaging Services
+# Phone, Voice & Messaging Services
 ### Clear, reliable communication tools — built with integrity.
 
 <div class="service-product-tag">
@@ -48,7 +48,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 
 <section class="forge-section forge-grid grid-2">
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--business">
 <div class="service-card">
 <h3>1. Business Phone Lines</h3>
 <p>A professional phone number that keeps your personal life separate.</p>
@@ -64,7 +64,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--menu">
 <div class="service-card">
 <h3>2. Phone Menus (“Press 1 for…”)</h3>
 <p>A friendly phone menu that guides callers quickly and clearly.</p>
@@ -80,7 +80,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--autoreply">
 <div class="service-card">
 <h3>3. Auto-Reply Text Lines</h3>
 <p>Instant answers when someone texts a keyword.</p>
@@ -96,7 +96,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--ministry">
 <div class="service-card">
 <h3>4. Church &amp; Ministry Tools</h3>
 <p>Faith-friendly communication tools designed for outreach and support.</p>
@@ -116,7 +116,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--library">
 <div class="service-card">
 <h3>5. Library Communication Tools</h3>
 <p>Improve patron service while reducing staff workload.</p>
@@ -132,7 +132,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--2fa">
 <div class="service-card">
 <h3>6. Secure 2FA &amp; Login Numbers</h3>
 <p>A private number used only for login codes.</p>
@@ -147,7 +147,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--privacy">
 <div class="service-card">
 <h3>7. Privacy Shield Numbers</h3>
 <p>Two-way calling and texting without exposing your real number.</p>
@@ -165,7 +165,7 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 </div>
 </div>
 
-<div class="service-offer-card">
+<div class="service-offer-card service-offer-card--alerts">
 <div class="service-card">
 <h3>8. Alerts &amp; Notifications</h3>
 <p>Automated messaging for businesses, libraries, and ministries.</p>
@@ -281,6 +281,9 @@ Modern communication shouldn’t feel overwhelming. Whether you’re running a b
 
 <div class="services-cta">
   <a href="/services/forgeline-consultation/" class="btn-glow">
-    Start ForgeLine Consultation
+    Start MRTF Line Consultation
   </a>
+  <p style="margin-top:0.4rem;font-size:0.85rem;opacity:0.8;">
+    Typical response time: within 1–2 business days.
+  </p>
 </div>
