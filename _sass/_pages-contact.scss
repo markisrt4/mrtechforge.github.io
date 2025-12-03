@@ -1,21 +1,20 @@
 /* =========================================================
-   CONTACT PAGE — FORGE STYLE (v2.1 WIDE + CENTERED + SCOPED)
+   CONTACT PAGE — FORGE STYLE (v3.0 • wide, centered)
    ========================================================= */
 
-/* ---------------------------------------------------------
-   PAGE WRAPPER
----------------------------------------------------------- */
+/* Outer wrapper – lives inside <main> */
 
 .forge-contact-page {
-  padding: 2.4rem 1.2rem 3rem;
-  margin: 0 auto;
   width: 100%;
-  max-width: 1240px;     /* wider lane on desktop */
+  max-width: 1120px;
+  margin: 2.4rem auto 3.2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    INTRO HEADER
----------------------------------------------------------- */
+   ========================================================= */
 
 .forge-contact-page .page-intro {
   text-align: center;
@@ -26,7 +25,7 @@
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
   margin: 0 0 0.75rem;
   color: var(--forge-hotmetal);
 
@@ -47,18 +46,17 @@
   margin: 0.25rem auto 0;
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    DISPLAY MODES BUTTON PANEL
----------------------------------------------------------- */
+   ========================================================= */
 
 .forge-contact-page .forge-terminal-modes {
   margin: 1.6rem auto 1.2rem;
   text-align: center;
-  max-width: 1120px;
-  width: min(100%, 1120px);
+  max-width: 100%;
 }
 
-.forge-contact-page .modes-heading {
+.forge-terminal-modes .modes-heading {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -67,14 +65,14 @@
   margin-bottom: 0.6rem;
 }
 
-.forge-contact-page .modes-buttons {
+.modes-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
 
-.forge-contact-page .terminal-mode-btn {
+.terminal-mode-btn {
   min-width: 6.2rem;
   padding: 0.45rem 1rem;
   border-radius: 999px;
@@ -94,29 +92,29 @@
     transform 0.18s ease;
 }
 
-.forge-contact-page .terminal-mode-btn:hover {
+.terminal-mode-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.45);
 }
 
-.forge-contact-page .terminal-mode-btn.is-active {
+.terminal-mode-btn.is-active {
   background: radial-gradient(circle at 30% 20%, var(--forge-hotmetal), #c2881e);
   color: #000;
   border-color: var(--forge-hotmetal);
   box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.8);
 }
 
-/* ---------------------------------------------------------
-   TERMINAL PANELS — centered, wide, no overflow
----------------------------------------------------------- */
+/* =========================================================
+   TERMINAL PANELS — wide, centered
+   ========================================================= */
 
 .forge-contact-page .forge-terminal-panel {
   position: relative;
   margin: 1.8rem auto 2.4rem;
   padding: 1.5rem 1.4rem;
   border-radius: 22px;
-  max-width: 1120px;
-  width: min(100%, 1120px);
+  width: 100%;
+  box-sizing: border-box;
 
   background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
   box-shadow:
@@ -126,7 +124,7 @@
   overflow: hidden;
 }
 
-.forge-contact-page .forge-terminal-screen {
+.forge-terminal-screen {
   position: relative;
   padding: 1rem 1.2rem;
   border-radius: 18px;
@@ -141,7 +139,7 @@
   max-width: 100%;
 }
 
-.forge-contact-page .forge-terminal-screen code {
+.forge-terminal-screen code {
   display: block;
   white-space: pre-wrap;
   font-family: "Courier New", monospace;
@@ -152,7 +150,8 @@
 }
 
 /* CRT overlay base */
-.forge-contact-page .forge-terminal-screen::before {
+
+.forge-terminal-screen::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -161,11 +160,9 @@
   mix-blend-mode: screen;
 }
 
-/* CRT MODES -------------------------------------------- */
+/* CRT MODES */
 
-.forge-contact-page
-.forge-terminal-panel.crt-scanline
-.forge-terminal-screen::before {
+.forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
   background-image:
     repeating-linear-gradient(
       to bottom,
@@ -176,9 +173,7 @@
     );
 }
 
-.forge-contact-page
-.forge-terminal-panel.crt-grid
-.forge-terminal-screen::before {
+.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
   background-image:
     repeating-linear-gradient(
       to bottom,
@@ -196,19 +191,15 @@
     );
 }
 
-.forge-contact-page
-.forge-terminal-panel.crt-radar
-.forge-terminal-screen {
+.forge-terminal-panel.crt-radar .forge-terminal-screen {
   background: radial-gradient(circle at 20% 15%, #002b1d 0%, #000 70%);
 }
 
-.forge-contact-page
-.forge-terminal-panel.crt-radar
-.forge-terminal-screen code {
+.forge-terminal-panel.crt-radar .forge-terminal-screen code {
   color: #80ffb5;
 }
 
-.forge-contact-page .forge-terminal-panel.crt-radar::after {
+.forge-terminal-panel.crt-radar::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -230,23 +221,21 @@
   to   { transform: rotate(360deg); }
 }
 
-.forge-contact-page
-.forge-terminal-panel.crt-clean
-.forge-terminal-screen::before {
+.forge-terminal-panel.crt-clean .forge-terminal-screen::before {
   opacity: 0.08;
   background: radial-gradient(circle at top, rgba(255,255,255,0.2), transparent 65%);
 }
 
-/* ---------------------------------------------------------
-   FORGE CARDS — contact-page override
----------------------------------------------------------- */
+/* =========================================================
+   FORGE CARDS — contact-specific look
+   ========================================================= */
 
 .forge-contact-page .forge-card {
   margin: 2rem auto;
   padding: 2rem 1.8rem;
   border-radius: 22px;
-  max-width: 1120px;
-  width: min(100%, 1120px);
+  width: 100%;
+  box-sizing: border-box;
 
   background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
   box-shadow:
@@ -285,16 +274,16 @@
   color: var(--forge-accent);
 }
 
-/* ---------------------------------------------------------
-   LOCATION CARD — blueprint panel
----------------------------------------------------------- */
+/* =========================================================
+   LOCATION CARD — wide blueprint panel
+   ========================================================= */
 
-.forge-contact-page .forge-location-card {
+.forge-location-card {
   margin: 2.4rem auto 0;
   padding: 2.1rem 1.8rem 2.5rem;
   border-radius: 24px;
-  max-width: 1120px;
-  width: min(100%, 1120px);
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
 
   background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
@@ -303,7 +292,7 @@
     inset 0 0 34px rgba(0, 0, 0, 0.8);
 }
 
-.forge-contact-page .forge-location-card h2 {
+.forge-location-card h2 {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.13em;
@@ -313,7 +302,8 @@
 }
 
 /* Blueprint plate */
-.forge-contact-page .forge-location-plate {
+
+.forge-location-plate {
   width: min(100%, 460px);
   margin: 0 auto 1.4rem;
   padding: 1.2rem 1.1rem;
@@ -333,24 +323,24 @@
   color: #cfefff;
 }
 
-.forge-contact-page .forge-location-plate .plate-line {
+.forge-location-plate .plate-line {
   display: flex;
   gap: 0.7rem;
   padding: 0.18rem 0;
 }
 
-.forge-contact-page .forge-location-plate .plate-line span {
+.forge-location-plate .plate-line span {
   color: #78e8ff;
   min-width: 120px;
   text-align: right;
   letter-spacing: 0.05em;
 }
 
-.forge-contact-page .plate-line.indent {
+.plate-line.indent {
   padding-left: 120px;
 }
 
-.forge-contact-page .forge-location-text {
+.forge-location-text {
   font-family: "Titillium Web", sans-serif;
   color: var(--forge-text);
   font-size: 1.02rem;
@@ -359,15 +349,11 @@
   margin: 0 auto;
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    RESPONSIVE TWEAKS
----------------------------------------------------------- */
+   ========================================================= */
 
 @media (max-width: 900px) {
-  .forge-contact-page {
-    padding-top: 2rem;
-  }
-
   .forge-contact-page .forge-card,
   .forge-contact-page .forge-terminal-panel,
   .forge-contact-page .forge-terminal-modes,
@@ -378,7 +364,8 @@
 
 @media (max-width: 640px) {
   .forge-contact-page {
-    padding: 1.6rem 0.6rem 2.1rem; /* less side padding = wider feel */
+    margin: 2rem auto 2.4rem;
+    padding: 0 0.6rem;
   }
 
   .forge-contact-page .page-intro h1 {
@@ -390,7 +377,7 @@
     padding: 1.2rem 1.1rem;
   }
 
-  .forge-contact-page .forge-terminal-screen {
+  .forge-terminal-screen {
     padding: 0.9rem 0.9rem;
   }
 
@@ -402,20 +389,4 @@
   .forge-contact-page .forge-location-card {
     padding: 1.8rem 1.2rem 2.1rem;
   }
-}
-
-/* ---------------------------------------------------------
-   HARD OVERRIDES — keep everything centered regardless
-   of global .forge-card changes
----------------------------------------------------------- */
-
-.forge-contact-page .forge-card,
-.forge-contact-page .forge-terminal-panel,
-.forge-contact-page .forge-location-card {
-  max-width: 1120px !important;
-  width: min(100%, 1120px) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
-  float: none !important;
 }
