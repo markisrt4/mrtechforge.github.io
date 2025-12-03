@@ -1,12 +1,17 @@
 /* =========================================================
-   CONTACT PAGE — FORGE STYLE (v2.2 WIDE + CENTERED)
+   CONTACT PAGE — FORGE STYLE (v3.0)
+   Wide layout • Centered cards • CRT terminals
+   ========================================================= */
+
+/* =========================================================
+   PAGE WRAPPER
    ========================================================= */
 
 .forge-contact-page {
-  padding: 2.4rem 0.75rem 3rem;  /* narrower side padding = wider feel */
+  padding: 2.4rem 1.2rem 3rem;
   margin: 0 auto;
   width: 100%;
-  max-width: 1240px;             /* wider lane on desktop */
+  max-width: 1240px; /* wider lane than default pages */
 }
 
 /* =========================================================
@@ -103,7 +108,7 @@
 }
 
 /* =========================================================
-   TERMINAL PANELS — centered, wide, no overflow
+   TERMINAL PANELS — centered + WIDE
    ========================================================= */
 
 .forge-terminal-panel {
@@ -157,7 +162,7 @@
   mix-blend-mode: screen;
 }
 
-/* CRT MODES -------------------------------------------- */
+/* ---------- CRT MODES (contact-page specific) ----------- */
 
 .forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
   background-image:
@@ -224,7 +229,7 @@
 }
 
 /* =========================================================
-   FORGE CARDS — override for contact page
+   FORGE CARDS — contact-page overrides
    ========================================================= */
 
 .forge-contact-page .forge-card {
@@ -352,8 +357,6 @@
 @media (max-width: 900px) {
   .forge-contact-page {
     padding-top: 2rem;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
   }
 
   .forge-contact-page .forge-card,
@@ -366,8 +369,7 @@
 
 @media (max-width: 640px) {
   .forge-contact-page {
-    /* minimal side padding so cards look almost full-width */
-    padding: 1.4rem 0.35rem 2rem;
+    padding: 1.6rem 0.6rem 2.1rem; /* less side padding = wider feel */
   }
 
   .forge-contact-page .page-intro h1 {
