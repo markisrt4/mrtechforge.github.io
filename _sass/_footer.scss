@@ -103,12 +103,12 @@
 .footer-contact-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem; /* was 1.5rem – tighter */
+  gap: 1rem; /* was 1.5rem – slightly tighter overall */
   align-items: center;
   justify-content: space-between;
-  margin: 0.6rem 0 0.3rem;
+  margin: 0.8rem 0 0.4rem;
   border-top: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  padding-top: 0.5rem;
+  padding-top: 0.6rem;
 }
 
 .footer-contact-block {
@@ -124,7 +124,7 @@
 }
 
 .footer-contact + .footer-contact {
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
 }
 
 .footer-contact-label {
@@ -146,7 +146,7 @@
   display: inline-flex;
   justify-content: center;
   gap: 0.6rem;
-  margin-top: 0.15rem; /* slightly tighter */
+  margin-top: 0.25rem;
 }
 
 .footer-social a,
@@ -159,7 +159,7 @@
   height: 2.2rem;
   border-radius: 999px;
 
-  color: var(--forge-accent); /* blue icons */
+  color: var(--forge-accent);
   background: radial-gradient(circle at 30% 20%, #163a70 0%, #050711 70%);
   box-shadow:
     0 0 6px rgba(var(--forge-accent-rgb), 0.55),
@@ -212,7 +212,7 @@
 ---------------------------------------------------------- */
 
 .footer-terminal-wrapper {
-  margin: 0.4rem 0 0.5rem;
+  margin: 0.5rem 0 0.5rem;
 }
 
 .footer-terminal {
@@ -255,19 +255,14 @@
    Responsive tweaks
 ---------------------------------------------------------- */
 
-/* Tablet & down: center columns more */
+/* Tablet & down: soften layout slightly */
 @media (max-width: 900px) {
   .footer-columns {
-    justify-content: center; /* instead of flex-start/end */
-    text-align: center;
-  }
-
-  .footer-column {
-    min-width: 160px;
+    justify-content: flex-start;
   }
 }
 
-/* Mobile: stack + center */
+/* Mobile: stack + center, TIGHTER SPACING */
 @media (max-width: 640px) {
 
   .footer-inner {
@@ -276,10 +271,8 @@
 
   .footer-top {
     flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 0.9rem;
-    align-items: center;
-    text-align: center;
+    gap: 1.4rem;
+    margin-bottom: 1rem;
   }
 
   .footer-brand,
@@ -290,30 +283,29 @@
 
   .footer-columns {
     flex-direction: column;
-    gap: 0.7rem;
+    gap: 1rem;
     align-items: center;
-  }
-
-  .footer-columns ul {
-    text-align: center;
   }
 
   .footer-contact-social {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.5rem;          /* much smaller vertical gap */
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
+
+    /* Tighter vertical spacing between Location + Connect */
+    gap: 0.4rem;           /* was inherited 1rem (and earlier 1.5rem) */
+    margin: 0.5rem 0 0.3rem;
+    padding-top: 0.35rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
     text-align: center;
+    margin: 0; /* prevent any stray margins from stacking */
   }
 
   .footer-social {
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
   }
 
   .footer-terminal {
