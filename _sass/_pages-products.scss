@@ -1,9 +1,9 @@
 /* ============================================================
-   M.R. TechForge — Products & Cart Styles (v2)
-   Strongly centers products layout; safe + scoped
+   M.R. TechForge — Products & Cart Styles (MRTF Brand)
+   Scoped to .forge-products so globals stay intact
    ============================================================ */
 
-/* --- Wrapper: keep products area centered and roomy --- */
+/* --- 1. Products Wrapper / Layout --- */
 
 .forge-products {
   display: block;
@@ -14,7 +14,7 @@
   color: var(--forge-gray, #cfd8dc);
 }
 
-/* Page title override so it doesn’t split words or get weird */
+/* Page title override so it doesn’t split words weirdly */
 .forge-products .page-title {
   margin: 0 0 0.75rem;
   color: var(--forge-accent, #00b8d4);
@@ -22,7 +22,7 @@
   letter-spacing: 0.12em;
   text-align: center;
 
-  /* undo global heading glow padding/wrapping */
+  /* undo some global heading padding/wrapping just here */
   padding-left: 0;
   padding-right: 0;
   overflow-wrap: normal;
@@ -43,7 +43,8 @@
   line-height: 1.7;
 }
 
-/* --- Section headers (e.g. "NFC Tags & Automations") --- */
+
+/* --- 2. Section Headers (e.g. “Shop by Category”) --- */
 
 .product-section {
   margin-bottom: 2.5rem;
@@ -82,24 +83,22 @@
 
 
 /* ============================================================
-   GRID & CARD LAYOUT
-   (These are the bits that fix the “right aligned” look)
+   3. GRID & CARD LAYOUT
+   (Fixes the “right aligned” feel on mobile)
    ============================================================ */
 
-/* Mobile: single column, grid is centered in its container */
+/* Mobile: single column, grid centered in container */
 .product-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   padding: 1rem 0;
 
-  /* these two lines make sure the whole grid
-     sits centered even if a parent sets justify-content */
   justify-content: center;
   align-content: start;
 }
 
-/* Larger screens: multiple columns but still centered */
+/* Larger: multiple columns, still centered */
 @media (min-width: 640px) {
   .product-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -117,8 +116,6 @@
 
   width: 100%;
   max-width: 420px;
-
-  /* THIS is key: center the card inside the grid cell */
   justify-self: center;
   text-align: left;
 }
@@ -139,7 +136,7 @@
 .product-card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.1rem;
-  text-transform: none; // don’t shout, easier to read
+  text-transform: none; // don’t shout product names
   letter-spacing: 0.05em;
 }
 
@@ -148,7 +145,16 @@
   margin: 0 0 0.5rem;
 }
 
-/* Price + buttons */
+.product-card ul {
+  margin: 0 0 0.7rem 1.1rem;
+  padding: 0;
+  font-size: 0.92rem;
+  list-style: disc;
+}
+
+
+/* --- 4. Price & Status Badges --- */
+
 .price {
   display: block;
   color: var(--forge-hotmetal, #ffa000);
@@ -161,26 +167,73 @@
   font-style: italic;
 }
 
-/* Shared glowing button style */
-.btn-glow {
-  background: linear-gradient(90deg, #007ea7, #00b8d4);
+
+/* ============================================================
+   5. Full-Width Forged-Glow Buttons (MRTF Palette)
+   ============================================================ */
+
+.forge-products .btn-glow {
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  /* Blue → cyan → orange molten sweep */
+  background: linear-gradient(
+    135deg,
+    #007ea7,
+    #00b8d4,
+    #00acc1,
+    #ffa000,
+    #007ea7
+  );
+  background-size: 350% 350%;
+  animation: forge-glow 8s ease-in-out infinite;
+
   color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 0 8px rgba(0, 184, 212, 0.4);
-  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(0, 184, 212, 0.5);
+  border-radius: 10px;
+
+  padding: 0.8rem 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 0 10px rgba(0, 184, 212, 0.4),
+    0 0 20px rgba(0, 184, 212, 0.3),
+    inset 0 0 10px rgba(0, 100, 140, 0.4);
+
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
 }
-.btn-glow:hover {
-  background: linear-gradient(90deg, #00b8d4, #00acc1);
-  box-shadow: 0 0 15px rgba(0, 184, 212, 0.8);
+
+.forge-products .btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 16px rgba(0, 184, 212, 0.75),
+    0 0 30px rgba(255, 160, 0, 0.55),
+    inset 0 0 12px rgba(0, 100, 140, 0.5);
+}
+
+.forge-products .btn-glow:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* MRTF-brand molten motion */
+@keyframes forge-glow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
 /* ============================================================
-   CART DRAWER
+   6. Cart Drawer
    ============================================================ */
 
 .cart {
@@ -226,59 +279,4 @@
 
 .checkout-btn {
   width: 100%;
-}
-
-/* Full-width forged-lava buttons just for the products area */
-.forge-products .btn-glow {
-  display: block;
-  width: 100%;
-  text-align: center;
-
-  background: linear-gradient(
-    135deg,
-    #ff6a00,
-    #ff3b3b,
-    #ffd54f,
-    #ff6a00
-  );
-  background-size: 260% 260%;
-  color: #fff;
-  border: 1px solid rgba(255, 140, 0, 0.7);
-  border-radius: 8px;
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-
-  box-shadow:
-    0 0 10px rgba(255, 120, 0, 0.6),
-    0 0 25px rgba(0, 184, 212, 0.35);
-  transition: transform 0.15s ease-out, box-shadow 0.2s ease-out;
-  animation: forge-lava 6s ease-in-out infinite;
-}
-
-.forge-products .btn-glow:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 16px rgba(255, 160, 0, 0.9),
-    0 0 30px rgba(0, 184, 212, 0.55);
-}
-
-/* Subtle press state on tap */
-.forge-products .btn-glow:active {
-  transform: translateY(1px) scale(0.99);
-}
-
-/* Lava-like gradient motion */
-@keyframes forge-lava {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
