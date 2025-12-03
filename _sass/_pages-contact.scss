@@ -435,11 +435,48 @@
   }
 }
 
-/* --- Hard alignment reset for the contact page terminal --- */
+
+/* =========================================================
+   CONTACT PAGE – HARD ALIGNMENT GUARDRAILS
+   Keep things centered even if other files change later
+   ========================================================= */
+
+/* Make sure the whole page lane is centered & wide */
+.forge-contact-page {
+  max-width: 1120px;
+  margin: 2rem auto 3rem;
+}
+
+/* Ensure cards + terminals are centered and full-lane */
+.forge-contact-page .forge-card,
 .forge-contact-page .forge-terminal-panel,
-.forge-contact-page .forge-terminal,
-.forge-contact-page .forge-terminal-screen pre {
+.forge-contact-page .forge-location-card {
+  max-width: 1120px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Kill any stray left padding / margin / transforms
+   that might leak in from global or terminal SCSS */
+.forge-contact-page .forge-terminal-panel,
+.forge-contact-page .forge-terminal-screen,
+.forge-contact-page .forge-terminal-screen pre,
+.forge-contact-page .forge-terminal-screen code {
   margin-left: 0 !important;
   padding-left: 0 !important;
   transform: none !important;
+}
+
+/* Mobile: keep the “wide but not edge-to-edge” feel */
+@media (max-width: 640px) {
+  .forge-contact-page {
+    padding: 1.6rem 0.6rem 2.1rem;
+  }
+
+  .forge-contact-page .forge-card,
+  .forge-contact-page .forge-terminal-panel,
+  .forge-contact-page .forge-location-card {
+    border-radius: 18px;
+  }
 }
