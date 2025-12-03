@@ -1,129 +1,166 @@
+# ======================================================
+# M.R. TechForge — Product & Service Catalog
+# Used by /products/ and product category pages
+# ======================================================
+
+# -------------------------
+# PRIVATE CLOUD / VPN
+# -------------------------
+
+- name: MRTF Private Cloud Node
+  description: >
+    A managed, on-prem private cloud and VPN entrypoint for your small business.
+    Your data lives on a secure mini-server inside your office, with encrypted
+    remote access and nightly backups to a separate, Windows-readable drive.
+  price: 0
+  image: /assets/images/private_cloud_node.png
+  category: private-cloud
+  short_features:
+    - "Your data stays on hardware you own, inside your building"
+    - "Secure WireGuard-based VPN access"
+    - "Nightly backups to USB or a network target"
+    - "Fully managed by M.R. TechForge (MRTF)"
+
+
+# -------------------------
+# NFC TAGS & AUTOMATIONS
+# -------------------------
+
 - name: Wi-Fi Toggle NFC Tag
   description: Tap to instantly enable or disable Wi-Fi on your device.
   price: 6
   image: /assets/images/nfc_wifi_tag.png
+  category: nfc
 
 - name: VPN Connect NFC Tag
   description: Tap to connect your device to your private WireGuard VPN.
   price: 8
   image: /assets/images/nfc_vpn_tag.png
-
-# ===============================
-# M.R. TechForge NFC Product Line
-# ===============================
+  category: nfc
 
 - name: Home Mode NFC Tag
   description: >
     Tap to instantly enable or disable your home connectivity — toggling Wi-Fi,
-    Bluetooth, and optional Do Not Disturb in one go. Perfect for transitioning
-    between home and travel modes. Works natively with Android or via Shortcuts
-    automation on iPhone.
+    Bluetooth, and optional Do Not Disturb in one go. Works with Android and iPhone.
   price: 7
   image: /assets/images/nfc_home_mode_tag.png
+  category: nfc
   short_features:
-    - "Toggle Wi-Fi and Bluetooth together with one tap"
-    - "Supports Android (true toggle) and iPhone Shortcuts"
-    - "Optional DND or playlist automation"
-    - "Ideal for home entryways or desks"
+    - "Toggle Wi-Fi + Bluetooth together"
+    - "Optional Do Not Disturb"
+    - "Android native toggle / iPhone Shortcuts"
+    - "Perfect for desks or entryways"
 
 - name: Guest Wi-Fi NFC Tag
   description: >
-    Simplify guest access to your Wi-Fi network. A quick tap automatically connects
-    Android users and opens Wi-Fi settings or a QR code for iPhone users.
-    Great for homes, small offices, or AirBnB setups.
+    Instantly share guest Wi-Fi. Android auto-connects; iPhone opens a QR code.
+    Ideal for homes, offices, or AirBnB setups.
   price: 6
   image: /assets/images/nfc_guest_wifi_tag.png
+  category: nfc
   short_features:
-    - "One-tap guest Wi-Fi access"
+    - "One-tap Wi-Fi access"
     - "Android auto-connect / iPhone QR fallback"
-    - "Securely stores your Wi-Fi SSID & password"
-    - "Includes setup card and adhesive mount"
+    - "Securely stores your SSID + password"
+    - "Includes setup card"
 
 - name: SOS Emergency NFC Tag
   description: >
-    A single tap prepares or sends your prewritten emergency text — optionally
-    including your GPS location link. Keep one on your keychain, backpack,
-    or near your bedside for quick access.
+    A single tap sends or prepares your emergency text — optionally with GPS
+    location. Keep one on a keychain or bedside.
   price: 8
   image: /assets/images/nfc_sos_tag.png
+  category: nfc
   short_features:
-    - "Tap to send a prewritten SOS text message"
-    - "Optionally include GPS location link"
-    - "Android: direct SMS intent / iPhone: Shortcut automation"
-    - "Bright red coin-style tag with emergency label"
+    - "Tap to trigger emergency text"
+    - "Optional GPS link"
+    - "Android: direct SMS intent / iPhone: Shortcut"
+    - "Bright red emergency design"
 
 - name: Car Mode NFC Tag
   description: >
-    Instantly launch navigation, turn on Bluetooth, and activate Do Not Disturb
-    when entering your vehicle. Configure with your favorite mapping or music app
-    for a seamless drive start routine.
+    Launch navigation, toggle Bluetooth, and enable Do Not Disturb as soon as
+    you enter your car. Fully configurable.
   price: 7
   image: /assets/images/nfc_car_mode_tag.png
+  category: nfc
   short_features:
-    - "Enables Car Mode or Navigation on tap"
-    - "Turns on Bluetooth and DND automatically"
-    - "Works with Android (Tasker/NFC Tools) and iPhone Shortcuts"
-    - "Mount near dash or center console"
+    - "Launch maps or playlists"
+    - "Turns on Bluetooth + DND"
+    - "Android Tasker / iPhone Shortcuts"
+    - "Mount near dash"
 
 - name: NFC Business Card
   description: >
-    Replace paper business cards with a reusable digital one. Share your contact
-    info, website, or portfolio instantly with a tap — no apps required.
+    A reusable, tap-to-share digital business card. Send contact info instantly
+    without printing new cards.
   price: 9
   image: /assets/images/nfc_business_card.png
+  category: nfc
   short_features:
     - "Stores full vCard or URL"
-    - "Tap to share instantly with Android or iPhone"
+    - "Android & iPhone compatible"
     - "Reusable — rewrite anytime"
-    - "Optional custom printing available"
+    - "Optional custom design"
 
 - name: Serenity (Bedtime) NFC Tag
   description: >
-    A simple tap transitions your phone into a quiet nighttime state — enabling
-    Do Not Disturb, lowering brightness, and silencing notifications. Perfect for
-    bedrooms or nightstands.
+    A tap transitions your device into nighttime mode: Sleep, DND, or quiet time.
+    Ideal for nightstands.
   price: 6
   image: /assets/images/nfc_serenity_tag.png
+  category: nfc
   short_features:
-    - "Enables Sleep / DND mode with one tap"
-    - "Android: NFC Tools or Tasker automation"
-    - "iPhone: Shortcuts ‘Sleep Focus’ trigger"
-    - "Optional ‘Wake Up’ tag available as companion"
+    - "Enables Sleep / DND mode"
+    - "Android: NFC Tools or Tasker"
+    - "iPhone: Sleep Focus"
+    - "Optional ‘Wake’ companion tag"
 
 - name: Car Finder NFC Tag
   description: >
-    Never lose your parked car again. Tap before you walk away to drop a location
-    pin and save your spot in Google or Apple Maps. Works with both Android and iPhone.
+    Tap before walking away to drop a pin and save your parking location.
+    Works on Android and iPhone.
   price: 7
   image: /assets/images/nfc_car_finder_tag.png
+  category: nfc
   short_features:
-    - "Tap to mark your current parking location"
-    - "Opens Google/Apple Maps with a dropped pin"
-    - "Android: direct geo: link / iPhone: Shortcut automation"
-    - "Durable adhesive tag for dashboards or keychains"
+    - "Tap to mark parking spot"
+    - "Opens Google/Apple Maps"
+    - "Android geo: link / iPhone Shortcut"
+    - "Durable adhesive tag"
+
+
+# -------------------------
+# TECH GADGETS & HARDWARE
+# -------------------------
 
 - name: ForgeSecure USB
   description: Pre-loaded USB with privacy and digital security tools.
   price: 12
   image: /assets/images/forge_usb.png
-
-- name: Remote Support Session
-  description: One-hour secure remote support for troubleshooting or guidance.
-  price: 45
-  image: /assets/images/remote_support.png
+  category: gadgets
 
 - name: MRTF Ultimate Drive
   description: >
-    A pre-loaded multi-boot USB toolkit assembled and tested by M.R. TechForge.
-    The MRTF Ultimate Drive includes a curated set of open-source operating systems
-    and trusted recovery utilities for diagnostics, system repair, cloning, forensics,
-    and privacy-focused troubleshooting. Built on Ventoy for easy drag-and-drop updates,
-    and assembled on reliable name-brand USB media.
+    A pre-loaded multi-boot USB toolkit for diagnostics, repair, forensics,
+    cloning, and recovery. Built on Ventoy.
   price: 40
   image: /assets/images/mrtf_ultimate_drive_generic.png
+  category: gadgets
   short_features:
-    - "Boot into multiple Linux & recovery systems (BIOS & UEFI)"
-    - "Includes Kali Linux for advanced troubleshooting & pentest tooling"
-    - "Pre-loaded rescue & anti-virus tools for offline scanning and repair"
-    - "Disk cloning, partitioning, memory & hardware diagnostics"
-    - "Easy updates via Ventoy; optional update pack available"
+    - "Multi-boot Linux & recovery tools"
+    - "Kali for advanced troubleshooting"
+    - "Rescue & anti-virus utilities"
+    - "Disk cloning & hardware diagnostics"
+    - "Easy Ventoy drag-and-drop updates"
+
+
+# -------------------------
+# VIRTUAL SERVICES
+# -------------------------
+
+- name: Remote Support Session
+  description: One-hour secure remote support for troubleshooting or personalized guidance.
+  price: 45
+  image: /assets/images/remote_support.png
+  category: virtual
