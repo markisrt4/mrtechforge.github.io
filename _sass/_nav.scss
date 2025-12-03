@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.1 STABLE)
+   M.R. TECHFORGE — NAVIGATION (v14.2 STABLE)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -107,16 +107,40 @@
     0 0 16px rgba(var(--forge-hotmetal-rgb),0.55);
 }
 
-/* Slightly tighter nav on mid-width desktops */
+/* Slightly tighter nav on mid-width desktops + allow wrapping */
 @media (min-width: 761px) and (max-width: 1100px) {
   .forge-nav {
     gap: 1rem;
+    flex-wrap: wrap;          /* allow a second line instead of clipping */
+    justify-content: flex-end;
+    row-gap: 0.2rem;
   }
   .forge-nav a,
   .dropdown-parent-text,
   .dropdown-arrow {
     font-size: 0.82rem;
   }
+}
+
+/* Strong nav color override to prevent global link styles from turning
+   everything hotmetal by default. Keeps base blue, hover/active gold. */
+.forge-header .forge-nav a,
+.forge-header .forge-nav a:visited {
+  color: var(--forge-subtext) !important;
+  text-shadow: none !important;
+}
+
+.forge-header .forge-nav a:hover {
+  color: var(--forge-hotmetal) !important;
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6) !important;
+}
+
+.forge-header .forge-nav a.is-active,
+.forge-header .dropdown-parent.is-active-parent .dropdown-parent-text {
+  color: var(--forge-hotmetal) !important;
+  text-shadow:
+    0 0 8px rgba(var(--forge-hotmetal-rgb),0.75) !important,
+    0 0 16px rgba(var(--forge-hotmetal-rgb),0.55) !important;
 }
 
 
