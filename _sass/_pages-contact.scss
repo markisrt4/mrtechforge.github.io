@@ -1,12 +1,12 @@
 /* =========================================================
-   CONTACT PAGE — FORGE STYLE (v3.0 RESET + WIDER)
+   CONTACT PAGE — FORGE STYLE (v2.2 WIDE + CENTERED)
    ========================================================= */
 
 .forge-contact-page {
-  padding: 2.4rem 1rem 3rem;
+  padding: 2.4rem 0.75rem 3rem;  /* narrower side padding = wider feel */
   margin: 0 auto;
   width: 100%;
-  max-width: 1240px;     /* wider lane on desktop */
+  max-width: 1240px;             /* wider lane on desktop */
 }
 
 /* =========================================================
@@ -352,6 +352,8 @@
 @media (max-width: 900px) {
   .forge-contact-page {
     padding-top: 2rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
   }
 
   .forge-contact-page .forge-card,
@@ -364,15 +366,8 @@
 
 @media (max-width: 640px) {
   .forge-contact-page {
-    /* less side padding = visually wider cards */
-    padding: 1.6rem 0.4rem 2.1rem;
-  }
-
-  .forge-terminal-panel,
-  .forge-contact-page .forge-card,
-  .forge-terminal-modes,
-  .forge-location-card {
-    width: 100%;      /* hug the viewport more on phones */
+    /* minimal side padding so cards look almost full-width */
+    padding: 1.4rem 0.35rem 2rem;
   }
 
   .forge-contact-page .page-intro h1 {
