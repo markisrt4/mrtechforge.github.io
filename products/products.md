@@ -36,7 +36,6 @@ permalink: /products/
           <li>Fully managed by M.R. TechForge</li>
         </ul>
 
-        <span class="price price-contact">Service · Contact for quote</span>
         <a class="btn-glow"
            href="{{ '/services/private-cloud/' | relative_url }}">
           Learn more about private cloud
@@ -57,7 +56,6 @@ permalink: /products/
           <li>Safer numbers for login codes or privacy-sensitive calls</li>
         </ul>
 
-        <span class="price price-contact">Service · Contact for quote</span>
         <a class="btn-glow"
            href="{{ '/services/phone-voice-messaging/' | relative_url }}">
           Learn more about phone &amp; messaging
@@ -75,25 +73,6 @@ permalink: /products/
     </div>
 
     <div class="product-grid">
-      <!-- Private Cloud & VPN category -->
-      <div class="product-card">
-        <h3>Private Cloud &amp; VPN</h3>
-        <p>
-          On-prem mini-servers and secure VPN entrypoints for small businesses
-          that want control over their data without becoming their own IT department.
-        </p>
-        <ul>
-          <li>Store files on hardware you own, not “somewhere in the cloud”</li>
-          <li>Remote access for staff over an encrypted VPN tunnel</li>
-          <li>Backup plans that are actually usable on bad days</li>
-        </ul>
-
-        <a class="btn-glow"
-           href="{{ '/products/private-cloud/' | relative_url }}">
-          Explore private cloud &amp; VPN
-        </a>
-      </div>
-
       <!-- NFC Tags & Automations category -->
       <div class="product-card">
         <h3>NFC Tags &amp; Automations</h3>
