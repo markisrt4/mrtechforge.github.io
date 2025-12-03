@@ -1,10 +1,19 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v14.1 STABLE)
+   M.R. TECHFORGE — NAVIGATION (v14.4 STABLE)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
    Hammer FX + Idle animations
    ===================================================== */
+
+
+/* -----------------------------------------------------
+   GLOBAL SAFETY: mobile submenu hidden by default
+   (Prevents child links from showing on desktop)
+------------------------------------------------------ */
+.mobile-submenu {
+  display: none;
+}
 
 
 /* -----------------------------------------------------
@@ -24,7 +33,7 @@
 }
 
 .header-inner {
-  max-width: 1200px;           /* was 1100 — more room for links */
+  max-width: 1200px; /* more room for links */
   margin: 0 auto;
   padding: 0.6rem 1rem;
 
@@ -77,29 +86,32 @@
 /* -----------------------------------------------------
    BASE NAV + ACTIVE STATES
 ------------------------------------------------------ */
-.forge-nav {
+.forge-header .forge-nav {
   display: flex;
   align-items: center;
   gap: 1.4rem;
 }
 
-.forge-nav a {
+/* Stronger specificity so global a / a:visited don’t override */
+.forge-header .forge-nav a,
+.forge-header .forge-nav a:visited {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--forge-subtext);
+  color: var(--forge-subtext); /* cool blue / steel */
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.25s ease, text-shadow 0.25s ease;
+  text-shadow: none;
 }
 
-.forge-nav a:hover {
+.forge-header .forge-nav a:hover {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb),0.6);
 }
 
-.forge-nav a.is-active,
+.forge-header .forge-nav a.is-active,
 .dropdown-parent.is-active-parent .dropdown-parent-text {
   color: var(--forge-hotmetal);
   text-shadow:
@@ -109,10 +121,11 @@
 
 /* Slightly tighter nav on mid-width desktops */
 @media (min-width: 761px) and (max-width: 1100px) {
-  .forge-nav {
+  .forge-header .forge-nav {
     gap: 1rem;
   }
-  .forge-nav a,
+
+  .forge-header .forge-nav a,
   .dropdown-parent-text,
   .dropdown-arrow {
     font-size: 0.82rem;
@@ -197,9 +210,18 @@
 ------------------------------------------------------ */
 @media (min-width: 761px) {
 
-  .nav-toggle-btn { display: none; }
+  .nav-toggle-btn {
+    display: none;
+  }
 
-  .dropdown-parent { pointer-events: none; }
+  /* mobile accordion list should NEVER appear on desktop */
+  .mobile-submenu {
+    display: none !important;
+  }
+
+  .dropdown-parent {
+    pointer-events: none; /* hover-only on desktop */
+  }
 
   .dropdown-content {
     display: none;
@@ -236,18 +258,6 @@
     color: var(--forge-text);
     font-family: "Titillium Web", sans-serif;
   }
-
-  .dropdown-content a[data-child="true"]::before {
-    content: "›";
-    color: var(--forge-hotmetal);
-    margin-right: 0.35rem;
-  }
-
-  .dropdown-content a[data-grandchild="true"]::before {
-    content: "»";
-    color: var(--forge-accent);
-    margin-right: 0.35rem;
-  }
 }
 
 
@@ -277,7 +287,10 @@
     align-items: center;
   }
 
-  .forge-burger { width: 34px; height: 26px; }
+  .forge-burger {
+    width: 34px;
+    height: 26px;
+  }
 
   .forge-burger .bar {
     fill: #F5B841;
@@ -299,7 +312,7 @@
   /* ---------------------------------------------------
      MOBILE NAV WRAPPER
   --------------------------------------------------- */
-  .forge-nav {
+  .forge-header .forge-nav {
     position: absolute;
     top: 100%;
     left: 0;
@@ -315,7 +328,7 @@
     padding: 0;
   }
 
-  .forge-nav.open {
+  .forge-header .forge-nav.open {
     display: flex;       /* visible when toggled */
     padding: 0.4rem 0 0.6rem;
   }
@@ -324,8 +337,8 @@
   /* ---------------------------------------------------
      TOP-LEVEL MOBILE BUTTONS
   --------------------------------------------------- */
-  .forge-nav > a,
-  .forge-nav .dropdown-parent {
+  .forge-header .forge-nav > a,
+  .forge-header .forge-nav .dropdown-parent {
     width: 100%;
     padding: 0.6rem 0;
     display: flex;
@@ -336,9 +349,14 @@
     font-size: 1rem;
   }
 
+  .dropdown-parent {
+    cursor: pointer;
+  }
+
   .dropdown-parent.active {
     color: var(--forge-hotmetal);
   }
+
   .dropdown-parent.active .dropdown-arrow {
     transform: rotate(180deg);
     color: var(--forge-hotmetal);
@@ -349,7 +367,10 @@
     width: 100%;
   }
 
-  .dropdown-content { display: none !important; }
+  /* hide desktop dropdown container in mobile */
+  .dropdown-content {
+    display: none !important;
+  }
 
 
   /* ---------------------------------------------------
@@ -365,6 +386,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    display: block; /* visible in DOM, collapsed via max-height */
   }
 
   .mobile-submenu.open {
@@ -502,7 +524,7 @@
   30%{ opacity:1; transform:rotate(-15deg);}
   50%{ transform:rotate(0deg);}
   70%{ transform:rotate(-12deg);}
-100%{ opacity:0; transform:rotate(-60deg);}
+ 100%{ opacity:0; transform:rotate(-60deg);}
 }
 
 @keyframes sparksBurst {
