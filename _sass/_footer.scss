@@ -1,5 +1,5 @@
 /* =========================================================
-   M.R. TechForge — Footer v4.0
+   M.R. TechForge — Footer v4.1
    Clean desktop layout • Tight spacing • Mobile-friendly
    ========================================================= */
 
@@ -262,8 +262,13 @@
   }
 }
 
-/* Mobile: stack + center */
+/* Mobile: stack + center, kill flex-basis height */
 @media (max-width: 640px) {
+
+  .forge-footer {
+    margin-top: 2.2rem;
+    padding-top: 1.6rem;
+  }
 
   .footer-inner {
     padding: 0 1.1rem;
@@ -287,19 +292,25 @@
     align-items: center;
   }
 
+  /* stack contact + social with no giant vertical space */
   .footer-contact-social {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 0.6rem;          /* tighter vertical spacing */
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
+    flex: 0 0 auto;       /* remove 260px flex-basis height */
+    width: 100%;
     text-align: center;
   }
 
   .footer-social {
-    margin-top: 0.35rem;
+    margin-top: 0.25rem;
   }
 
   .footer-terminal {
