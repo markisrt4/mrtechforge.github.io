@@ -458,6 +458,32 @@
   }
 }
 
+/* =====================================================
+   DESKTOP NAV COLOR RESET (forces blue links on desktop)
+   ===================================================== */
+@media (min-width: 761px) {
+  .forge-header .forge-nav a,
+  .forge-header .dropdown-parent-text,
+  .forge-header .dropdown-arrow {
+    color: var(--forge-accent) !important; /* Electric blue */
+    text-shadow: none !important;
+  }
+
+  .forge-header .forge-nav a:hover,
+  .forge-header .dropdown-parent:hover .dropdown-parent-text {
+    color: var(--forge-hotmetal) !important; /* Orange/gold hover */
+    text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.6) !important;
+  }
+
+  .forge-header .forge-nav a.is-active,
+  .forge-header .dropdown-parent.is-active-parent .dropdown-parent-text {
+    color: var(--forge-hotmetal) !important;
+    text-shadow:
+      0 0 8px rgba(var(--forge-hotmetal-rgb), 0.75) !important,
+      0 0 16px rgba(var(--forge-hotmetal-rgb), 0.55) !important;
+  }
+}
+
 /* -----------------------------------------------------
    BREADCRUMBS
 ------------------------------------------------------ */
