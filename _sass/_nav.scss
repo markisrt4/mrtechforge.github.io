@@ -1,5 +1,5 @@
 /* =====================================================
-   M.R. TECHFORGE — NAVIGATION (v15.0)
+   M.R. TECHFORGE — NAVIGATION (v14.3)
    Desktop hover + Mobile accordion
    Multi-level children + grandchildren
    Active states + Breadcrumbs
@@ -16,7 +16,7 @@
   width: 100%;
   z-index: 1000;
 
-  background: rgba(10,10,12,0.92);
+  background: rgba(10, 10, 12, 0.92);
   border-bottom: 2px solid var(--forge-accent-dark);
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.25);
 
@@ -57,16 +57,8 @@
   filter: drop-shadow(0 0 22px rgba(var(--forge-hotmetal-rgb), 0.85));
 }
 
-/* Blue + orange animated spectrum */
 .forge-title {
-  background: linear-gradient(
-    90deg,
-    #0A6DFF,
-    #4DB8FF,
-    #F5B841,
-    #FF8A2B,
-    #0A6DFF
-  );
+  background: linear-gradient(90deg, #F5B841, #F5B841, #0A6DFF, #153D77, #F5B841);
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -77,8 +69,8 @@
   text-transform: uppercase;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
   text-shadow:
-    0 0 10px rgba(13, 110, 253, 0.65),
-    0 0 18px rgba(245, 184, 65, 0.55);
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.50),
+    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.35);
 }
 
 
@@ -91,32 +83,35 @@
   gap: 1.4rem;
 }
 
-/* Base desktop link style = blue */
 .forge-nav a {
   font-family: "Orbitron", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--forge-accent);    /* BLUE */
   font-weight: 600;
-  text-decoration: none;
   text-transform: uppercase;
+  text-decoration: none;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
-/* Electric blue hover / active glow */
-.forge-nav a:hover {
+/* Default: cool blue for links in header */
+.forge-header .forge-nav a,
+.forge-header .forge-nav a:visited {
   color: var(--forge-accent);
-  text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.9),
-    0 0 20px rgba(var(--forge-accent-rgb), 0.65);
+  text-shadow: 0 0 8px rgba(var(--forge-accent-rgb), 0.65);
 }
 
-.forge-nav a.is-active,
-.dropdown-parent.is-active-parent .dropdown-parent-text {
-  color: var(--forge-accent);
+/* Hover / active: hotmetal gold */
+.forge-header .forge-nav a:hover {
+  color: var(--forge-hotmetal) !important;
+  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.7) !important;
+}
+
+.forge-header .forge-nav a.is-active,
+.forge-header .dropdown-parent.is-active-parent .dropdown-parent-text {
+  color: var(--forge-hotmetal) !important;
   text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.95),
-    0 0 22px rgba(var(--forge-accent-rgb), 0.75);
+    0 0 8px rgba(var(--forge-hotmetal-rgb), 0.9) !important,
+    0 0 16px rgba(var(--forge-hotmetal-rgb), 0.65) !important;
 }
 
 /* Slightly tighter nav on mid-width desktops + allow wrapping */
@@ -135,32 +130,22 @@
   }
 }
 
-/* Override global link/visited styles only inside header */
-.forge-header .forge-nav a,
-.forge-header .forge-nav a:visited {
-  color: var(--forge-accent) !important; /* stay BLUE always */
-  text-shadow: none !important;
-}
-
-.forge-header .forge-nav a:hover {
-  color: var(--forge-accent) !important;
-  text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.9) !important,
-    0 0 20px rgba(var(--forge-accent-rgb), 0.65) !important;
-}
-
-.forge-header .forge-nav a.is-active,
-.forge-header .dropdown-parent.is-active-parent .dropdown-parent-text {
-  color: var(--forge-accent) !important;
-  text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.95) !important,
-    0 0 22px rgba(var(--forge-accent-rgb), 0.8) !important;
-}
-
 
 /* -----------------------------------------------------
-   DROPDOWN BASE (DESKTOP)
+   DROPDOWN BASE
 ------------------------------------------------------ */
+
+/* IMPORTANT: hide dropdown panels by default so
+   children NEVER show inline in the header. */
+.dropdown-content {
+  display: none;
+}
+
+/* extra safety in case .desktop-only had its own display rule */
+.forge-header .dropdown-content.desktop-only {
+  display: none;
+}
+
 .nav-item.dropdown {
   position: relative;
   display: flex;
@@ -184,7 +169,7 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: var(--forge-accent); /* blue label + arrow */
+  color: var(--forge-accent);
 }
 
 .dropdown-arrow {
@@ -192,13 +177,12 @@
   transition: 0.25s ease;
 }
 
-/* Overview link inside dropdown */
 .dropdown-overview {
   font-weight: 700;
-  color: var(--forge-accent) !important;
+  color: var(--forge-hotmetal) !important;
 }
 
-/* Child / grandchild indentation (DESKTOP) */
+/* Child / grandchild arrows + indentation (desktop dropdown panel) */
 .dropdown-content a[data-child="true"],
 .dropdown-content a[data-grandchild="true"] {
   position: relative;
@@ -207,25 +191,27 @@
 .dropdown-content a[data-child="true"] {
   padding-left: 1.6rem;
 }
+
 .dropdown-content a[data-child="true"]::before {
   content: "›";
   position: absolute;
   left: 0.9rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--forge-hotmetal);  /* orange arrow */
+  color: var(--forge-hotmetal);
 }
 
 .dropdown-content a[data-grandchild="true"] {
   padding-left: 2.2rem;
 }
+
 .dropdown-content a[data-grandchild="true"]::before {
   content: "»";
   position: absolute;
   left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--forge-accent);    /* blue arrow */
+  color: var(--forge-accent);
 }
 
 
@@ -234,26 +220,32 @@
 ------------------------------------------------------ */
 @media (min-width: 761px) {
 
-  .nav-toggle-btn { display: none; }
+  .nav-toggle-btn {
+    display: none;
+  }
 
-  .dropdown-parent { pointer-events: none; }
+  .dropdown-parent {
+    pointer-events: none;
+  }
 
   .dropdown-content {
-    display: none;
     position: absolute;
     top: 100%;
     left: 0;
 
     min-width: 260px;
     padding: 0.5rem 0;
-    background: rgba(5,8,16,0.98);
-    border: 1px solid rgba(var(--forge-accent-rgb),0.25);
+    background: rgba(5, 8, 16, 0.98);
+    border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
     border-radius: 8px;
 
     opacity: 0;
     transform: translateY(6px);
     transition: 0.25s ease;
     z-index: 9999;
+
+    /* still hidden until hover */
+    display: none;
   }
 
   .nav-item.dropdown:hover .dropdown-content {
@@ -261,8 +253,8 @@
     opacity: 1;
     transform: translateY(0);
     box-shadow:
-      0 0 12px rgba(10,109,255,0.45),
-      inset 0 0 4px rgba(10,109,255,0.65);
+      0 0 12px rgba(10, 109, 255, 0.45),
+      inset 0 0 4px rgba(10, 109, 255, 0.65);
   }
 
   .dropdown-content a {
@@ -302,13 +294,15 @@
     align-items: center;
   }
 
-  .forge-burger { width: 34px; height: 26px; }
+  .forge-burger {
+    width: 34px;
+    height: 26px;
+  }
 
-  /* Default = orange, open = blue */
   .forge-burger .bar {
-    fill: #F5B841; /* orange */
+    fill: #F5B841;
     transition: 0.35s ease;
-    filter: drop-shadow(0 0 8px rgba(245,184,65,0.8));
+    filter: drop-shadow(0 0 8px rgba(245, 184, 65, 0.8));
     transform-origin: center;
   }
 
@@ -317,8 +311,8 @@
   .nav-toggle-btn.open .bar-bottom { transform: translateY(-6px) rotate(-45deg); }
 
   .nav-toggle-btn.open .bar {
-    fill: #3ca2ff; /* electric blue when open */
-    filter: drop-shadow(0 0 10px rgba(60,162,255,0.9));
+    fill: #3ca2ff;
+    filter: drop-shadow(0 0 10px rgba(60, 162, 255, 0.9));
   }
 
 
@@ -332,7 +326,7 @@
     width: 100%;
 
     background: #050810;
-    border-top: 1px solid rgba(var(--forge-accent-rgb),0.25);
+    border-top: 1px solid rgba(var(--forge-accent-rgb), 0.25);
 
     flex-direction: column;
     align-items: center;
@@ -357,16 +351,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--forge-accent);  /* BLUE links on mobile */
+    color: var(--forge-hotmetal);
     text-align: center;
     font-size: 1rem;
+    text-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.7);
   }
 
   .dropdown-parent.active {
     color: var(--forge-accent);
-    text-shadow:
-      0 0 10px rgba(var(--forge-accent-rgb), 0.9),
-      0 0 20px rgba(var(--forge-accent-rgb), 0.65);
   }
 
   .dropdown-parent.active .dropdown-arrow {
@@ -379,7 +371,11 @@
     width: 100%;
   }
 
-  .dropdown-content { display: none !important; }
+  /* On mobile we *never* use .dropdown-content;
+     everything goes through .mobile-submenu */
+  .dropdown-content {
+    display: none !important;
+  }
 
 
   /* ---------------------------------------------------
@@ -387,7 +383,7 @@
   --------------------------------------------------- */
   .mobile-submenu {
     width: 100%;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
     overflow: hidden;
 
     max-height: 0;
@@ -417,13 +413,14 @@
   .mobile-submenu .mobile-child a {
     padding-left: 1.6rem !important;
   }
+
   .mobile-submenu .mobile-child a::before {
     content: "›";
     position: absolute;
     left: 1.1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--forge-hotmetal);  /* orange arrow */
+    color: var(--forge-hotmetal);
   }
 
   /* GRANDCHILD — double arrow, deeper indent */
@@ -432,24 +429,34 @@
     font-size: 0.9rem;
     opacity: 0.9;
   }
+
   .mobile-submenu .mobile-grandchild a::before {
     content: "››";
     position: absolute;
     left: 1.3rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--forge-accent);    /* blue arrow */
+    color: var(--forge-accent);
   }
 
   /* Active highlighting in mobile submenu */
   .mobile-submenu a.is-active {
-    color: var(--forge-accent);
+    color: var(--forge-hotmetal);
     text-shadow:
-      0 0 10px rgba(var(--forge-accent-rgb),0.9),
-      0 0 20px rgba(var(--forge-accent-rgb),0.65);
+      0 0 8px rgba(var(--forge-hotmetal-rgb), 0.75),
+      0 0 16px rgba(var(--forge-hotmetal-rgb), 0.55);
   }
 }
 
+/* =====================================================
+   DESKTOP: hide the mobile accordion list completely
+   (those bullet children that are showing on the right)
+   ===================================================== */
+@media (min-width: 761px) {
+  .mobile-submenu {
+    display: none !important;
+  }
+}
 
 /* -----------------------------------------------------
    BREADCRUMBS
@@ -475,8 +482,8 @@
 }
 
 .forge-breadcrumbs a:hover {
-  color: var(--forge-accent);
-  text-shadow: 0 0 8px rgba(var(--forge-accent-rgb),0.8);
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
 }
 
 .forge-breadcrumbs-separator {
@@ -519,6 +526,7 @@
 .nav-toggle-btn.open::after {
   animation: hammerSwing 0.65s ease-out forwards;
 }
+
 .nav-toggle-btn.open::before {
   animation: sparksBurst 0.45s ease-out forwards;
 }
@@ -528,49 +536,49 @@
    ANIMATIONS
 ------------------------------------------------------ */
 @keyframes hammerSwing {
-  0%   { opacity:0; transform:rotate(-60deg); }
-  30%  { opacity:1; transform:rotate(-15deg); }
-  50%  {           transform:rotate(0deg); }
-  70%  {           transform:rotate(-12deg); }
-  100% { opacity:0; transform:rotate(-60deg); }
+  0%   { opacity: 0; transform: rotate(-60deg); }
+  30%  { opacity: 1; transform: rotate(-15deg); }
+  50%  { transform: rotate(0deg); }
+  70%  { transform: rotate(-12deg); }
+  100% { opacity: 0; transform: rotate(-60deg); }
 }
 
 @keyframes sparksBurst {
-  0%   { opacity:0; transform:translateY(0) scale(0.5); }
-  30%  { opacity:1; transform:translateY(-6px) scale(1.2); }
-  100% { opacity:0; transform:translateY(-10px) scale(0.6); }
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  30%  { opacity: 1; transform: translateY(-6px) scale(1.2); }
+  100% { opacity: 0; transform: translateY(-10px) scale(0.6); }
 }
 
 @keyframes forgeHeaderGlow {
-  0%   { box-shadow:0 0 12px rgba(var(--forge-hotmetal-rgb),0.18); }
-  100% { box-shadow:0 0 22px rgba(var(--forge-hotmetal-rgb),0.32); }
+  0%   { box-shadow: 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.18); }
+  100% { box-shadow: 0 0 22px rgba(var(--forge-hotmetal-rgb), 0.32); }
 }
 
 @keyframes forgeTitleSpectrum {
-  0%   { background-position:0% 50%; }
-  50%  { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes burgerIdlePulse {
-  0%   { transform:scale(1); }
-  50%  { transform:scale(1.06); }
-  100% { transform:scale(1); }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
 }
 
 @keyframes burgerFlicker {
-  0%,100% { opacity:1; }
-  45%     { opacity:0.75; }
-  55%     { opacity:0.9; }
+  0%, 100% { opacity: 1; }
+  45%      { opacity: 0.75; }
+  55%      { opacity: 0.9; }
 }
 
 @keyframes idleSparkBurst {
-  0%   { opacity:0; }
-  30%  { opacity:1; }
-  100% { opacity:0; }
+  0%   { opacity: 0; }
+  30%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-.nav-toggle-btn::before { pointer-events:none; }
+.nav-toggle-btn::before { pointer-events: none; }
 .nav-toggle-btn.idle-spark::before { animation: idleSparkBurst 0.6s ease-out forwards; }
 .nav-toggle-btn.idle-pulse .forge-burger .bar { animation: burgerIdlePulse 1.6s ease-out; }
 .nav-toggle-btn.idle-flicker .forge-burger .bar { animation: burgerFlicker 0.25s linear; }
