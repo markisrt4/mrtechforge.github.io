@@ -251,6 +251,23 @@
   opacity: 0.7;
 }
 
+/* Mark LLM callout (Easter egg link) */
+.footer-llm-callout {
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  opacity: 0.78;
+}
+
+.footer-llm-callout a {
+  color: var(--forge-accent);
+}
+
+.footer-llm-callout a:hover,
+.footer-llm-callout a:visited {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
+}
+
 /* ---------------------------------------------------------
    Responsive tweaks
 ---------------------------------------------------------- */
