@@ -113,7 +113,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
           <p class="forge-offering-desc">{{ offering.description }}</p>
 
-          <div class="forge-offering-pricing">
+          <div class="forge-offering-pricing is-setup">
             {% if offering.monthly %}
               <div class="forge-price-row">
                 <span class="label">Monthly</span>
@@ -122,7 +122,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
             {% endif %}
 
             {% if offering.setup != nil %}
-              <div class="forge-price-row">
+              <div class="forge-price-row is-setup">
                 <span class="label">Setup</span>
                 {% if offering.setup == 0 %}
                   <span class="value is-included">Included</span>
@@ -140,6 +140,62 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
     <p><em>MRTF-Line offerings are coming soon. Please contact M.R. TechForge for current pricing.</em></p>
   {% endif %}
 </section>
+
+<div class="services-divider"></div>
+
+<section class="service-section forge-bundles">
+  <h2 class="services-heading">Suggested Configurations</h2>
+  <p class="section-sub">
+    These examples help estimate monthly cost quickly. Final setup is always tailored to your workflow.
+  </p>
+
+  <div class="forge-bundle-grid">
+    <article class="forge-bundle-card">
+      <div class="forge-bundle-tag">Essentials</div>
+      <div class="forge-bundle-price">$27/mo</div>
+      <div class="forge-bundle-meta">Approximate • Setup from $15</div>
+      <ul class="forge-bundle-list">
+        <li>MRTF-Line Phone Line</li>
+        <li>Hours &amp; Routing</li>
+        <li>Secure Messaging (Signal)</li>
+      </ul>
+      <p class="forge-bundle-desc">
+        A clean professional line with time-aware behavior + optional secure channel.
+      </p>
+    </article>
+
+    <article class="forge-bundle-card">
+      <div class="forge-bundle-tag">Community</div>
+      <div class="forge-bundle-price">$42/mo</div>
+      <div class="forge-bundle-meta">Approximate • Setup from $50</div>
+      <ul class="forge-bundle-list">
+        <li>MRTF-Line Phone Line</li>
+        <li>Call Menu (IVR)</li>
+        <li>Hours &amp; Routing</li>
+        <li>Caller Shield</li>
+      </ul>
+      <p class="forge-bundle-desc">
+        Great for libraries, churches, and community organizations handling frequent inquiries.
+      </p>
+    </article>
+
+    <article class="forge-bundle-card">
+      <div class="forge-bundle-tag">Enhanced Security</div>
+      <div class="forge-bundle-price">$52/mo</div>
+      <div class="forge-bundle-meta">Approximate • Setup from $55</div>
+      <ul class="forge-bundle-list">
+        <li>MRTF-Line Phone Line</li>
+        <li>2FA Delivery</li>
+        <li>Caller Shield</li>
+        <li>Dashboard (Basic)</li>
+      </ul>
+      <p class="forge-bundle-desc">
+        For organizations that need verification and a control surface without complexity.
+      </p>
+    </article>
+  </div>
+</section>
+
 
 <div class="services-divider"></div>
 
