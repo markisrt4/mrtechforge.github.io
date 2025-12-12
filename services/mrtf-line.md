@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: "MRTF-Line Communication Services"
 permalink: /services/mrtf-line/
 description: "A modular, managed phone and messaging line powered by M.R. TechForge."
@@ -57,7 +57,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
 <div class="services-divider"></div>
 
-<section class="service-section">
+<section class="service-section forge-service-pricing">
   <h2 class="services-heading">MRTF-Line Offerings &amp; Pricing</h2>
   <p>
     Every MRTF-Line setup starts with the <strong>MRTF-Line Phone Line</strong>. From there, you can
@@ -65,7 +65,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
   </p>
 
   {% if mrtf_line and mrtf_line.offerings %}
-    <div class="mrtf-line-grid">
+    <div class="forge-offerings-grid">
       {% for offering in mrtf_line.offerings %}
         {% assign name = offering.name %}
 
@@ -101,37 +101,39 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
           {% assign is_core = true %}
         {% endif %}
 
-        <article class="mrtf-card">
-          <div class="mrtf-card-icon">{{ icon }}</div>
-          <h3 class="mrtf-card-title">
+        <article class="forge-offering-card">
+          <div class="forge-offering-icon">{{ icon }}</div>
+
+          <h3 class="forge-offering-title">
             {{ offering.name }}
             {% if is_core %}
-              <span class="mrtf-badge-core">Core</span>
+              <span class="forge-offering-badge">Core</span>
             {% endif %}
           </h3>
-          <p class="mrtf-card-desc">{{ offering.description }}</p>
 
-          <div class="mrtf-card-pricing">
+          <p class="forge-offering-desc">{{ offering.description }}</p>
+
+          <div class="forge-offering-pricing">
             {% if offering.monthly %}
-              <div class="mrtf-price-line">
+              <div class="forge-price-row">
                 <span class="label">Monthly</span>
                 <span class="value">${{ offering.monthly }} / mo</span>
               </div>
             {% endif %}
+
             {% if offering.setup != nil %}
-              <div class="mrtf-price-line">
+              <div class="forge-price-row">
                 <span class="label">Setup</span>
-                <span class="value">
-                  {% if offering.setup == 0 %}
-                    Included
-                  {% else %}
-                    ${{ offering.setup }} one-time
-                  {% endif %}
-                </span>
+                {% if offering.setup == 0 %}
+                  <span class="value is-included">Included</span>
+                {% else %}
+                  <span class="value">${{ offering.setup }} one-time</span>
+                {% endif %}
               </div>
             {% endif %}
           </div>
         </article>
+
       {% endfor %}
     </div>
   {% else %}
