@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Products
 permalink: /products/nfc/
 description: "M.R. TechForge NFC tags + companion apps for fast tap automations."
