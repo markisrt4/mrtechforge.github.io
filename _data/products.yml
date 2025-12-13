@@ -1,166 +1,196 @@
-# ======================================================
-# M.R. TechForge — Product & Service Catalog
-# Used by /products/ and product category pages
-# ======================================================
+# M.R. TechForge — Products Catalog
 
-# -------------------------
-# PRIVATE CLOUD / VPN
-# -------------------------
+- id: mrtf-nfc-starter-pack
+  name: "MRTF NFC Starter Pack"
+  category: "NFC Tags"
+  badge: "Best Value"
+  status: "available"
+  price: "$24.99"
+  price_note: "Includes 6 tags"
+  image: "/assets/img/products/nfc-starter-pack.webp"
+  alt: "MRTF NFC Starter Pack"
+  short: "Six pre-labeled NFC tags for daily automation: Wi-Fi, VPN, Home, Car, Guest, SOS."
+  features:
+    - "6 durable NFC tags (mix of sticker + keychain, configurable)"
+    - "Works with Android automations + MRTF NFC App"
+    - "Simple tap actions (no batteries)"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+    - "Works great with Tasker / routines (optional)"
+  includes:
+    - "6× NFC tags"
+    - "Quick-start setup guide (QR)"
+  cta_label: "View Starter Pack"
+  cta_url: "/products/#mrtf-nfc-starter-pack"
 
-- name: MRTF Private Cloud Node
-  description: >
-    A managed, on-prem private cloud and VPN entrypoint for your small business.
-    Your data lives on a secure mini-server inside your office, with encrypted
-    remote access and nightly backups to a separate, Windows-readable drive.
-  price: 0
-  image: /assets/images/private_cloud_node.png
-  category: private-cloud
-  short_features:
-    - "Your data stays on hardware you own, inside your building"
-    - "Secure WireGuard-based VPN access"
-    - "Nightly backups to USB or a network target"
-    - "Fully managed by M.R. TechForge (MRTF)"
+- id: wifi-toggle-tag
+  name: "Wi-Fi Toggle Tag"
+  category: "NFC Tags"
+  badge: "Popular"
+  status: "available"
+  price: "$6.99"
+  price_note: "Single tag"
+  image: "/assets/img/products/wifi-toggle-tag.webp"
+  alt: "Wi-Fi Toggle NFC tag"
+  short: "Tap to toggle Wi-Fi on/off (perfect for commuting, battery saving, and quick reconnects)."
+  features:
+    - "Fast Wi-Fi toggle"
+    - "Optional: connect to a specific SSID"
+    - "Label-ready (clean minimal design)"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "1× NFC tag"
+    - "Setup QR"
+  cta_label: "View Wi-Fi Tag"
+  cta_url: "/products/#wifi-toggle-tag"
 
+- id: vpn-connect-tag
+  name: "VPN Connect Tag"
+  category: "NFC Tags"
+  badge: "MRTF Favorite"
+  status: "available"
+  price: "$7.99"
+  price_note: "Single tag"
+  image: "/assets/img/products/vpn-connect-tag.webp"
+  alt: "VPN Connect NFC tag"
+  short: "Tap to connect/disconnect your VPN profile for instant secure browsing."
+  features:
+    - "One-tap VPN connect/disconnect"
+    - "Designed for ForgeVPN / home VPN workflows"
+    - "Great for public Wi-Fi"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "1× NFC tag"
+    - "Setup QR"
+  cta_label: "View VPN Tag"
+  cta_url: "/products/#vpn-connect-tag"
 
-# -------------------------
-# NFC TAGS & AUTOMATIONS
-# -------------------------
+- id: home-mode-tag
+  name: "Home Mode Tag"
+  category: "NFC Tags"
+  status: "available"
+  price: "$7.99"
+  price_note: "Single tag"
+  image: "/assets/img/products/home-mode-tag.webp"
+  alt: "Home Mode NFC tag"
+  short: "Tap to switch into Home Mode: volume, brightness, Wi-Fi, and your preferred settings."
+  features:
+    - "Home profile toggle"
+    - "Quiet hours / ringtone presets"
+    - "Optional smart-home hooks (future)"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "1× NFC tag"
+    - "Setup QR"
+  cta_label: "View Home Mode"
+  cta_url: "/products/#home-mode-tag"
 
-- name: Wi-Fi Toggle NFC Tag
-  description: Tap to instantly enable or disable Wi-Fi on your device.
-  price: 6
-  image: /assets/images/nfc_wifi_tag.png
-  category: nfc
+- id: car-mode-tag
+  name: "Car Mode Tag"
+  category: "NFC Tags"
+  status: "available"
+  price: "$7.99"
+  price_note: "Single tag"
+  image: "/assets/img/products/car-mode-tag.webp"
+  alt: "Car Mode NFC tag"
+  short: "Tap to launch navigation + set driving-friendly audio and screen settings."
+  features:
+    - "Launch Maps + music/podcast"
+    - "Hands-free friendly defaults"
+    - "Optional: Bluetooth device targeting"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "1× NFC tag"
+    - "Setup QR"
+  cta_label: "View Car Mode"
+  cta_url: "/products/#car-mode-tag"
 
-- name: VPN Connect NFC Tag
-  description: Tap to connect your device to your private WireGuard VPN.
-  price: 8
-  image: /assets/images/nfc_vpn_tag.png
-  category: nfc
+- id: guest-wifi-tag
+  name: "Guest Wi-Fi Tag"
+  category: "NFC Tags"
+  badge: "Party Trick"
+  status: "available"
+  price: "$8.99"
+  price_note: "Single tag"
+  image: "/assets/img/products/guest-wifi-tag.webp"
+  alt: "Guest Wi-Fi NFC tag"
+  short: "Tap to join your guest network without reading passwords out loud."
+  features:
+    - "One-tap Wi-Fi join"
+    - "Great for visitors + smart devices"
+    - "Keeps your main network separate"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "1× NFC tag"
+    - "Setup QR"
+  cta_label: "View Guest Wi-Fi"
+  cta_url: "/products/#guest-wifi-tag"
 
-- name: Home Mode NFC Tag
-  description: >
-    Tap to instantly enable or disable your home connectivity — toggling Wi-Fi,
-    Bluetooth, and optional Do Not Disturb in one go. Works with Android and iPhone.
-  price: 7
-  image: /assets/images/nfc_home_mode_tag.png
-  category: nfc
-  short_features:
-    - "Toggle Wi-Fi + Bluetooth together"
-    - "Optional Do Not Disturb"
-    - "Android native toggle / iPhone Shortcuts"
-    - "Perfect for desks or entryways"
+- id: sos-emergency-tag
+  name: "SOS Emergency Tag"
+  category: "NFC Tags"
+  badge: "Safety"
+  status: "available"
+  price: "$9.99"
+  price_note: "Single tag"
+  image: "/assets/img/products/sos-emergency-tag.webp"
+  alt: "SOS Emergency NFC tag"
+  short: "Tap to run your emergency workflow (call/text, location share, or preset alert actions)."
+  features:
+    - "Emergency shortcut trigger"
+    - "Location-sharing workflow support"
+    - "Customizable for your needs"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "1× NFC tag"
+    - "Setup QR"
+  cta_label: "View SOS Tag"
+  cta_url: "/products/#sos-emergency-tag"
 
-- name: Guest Wi-Fi NFC Tag
-  description: >
-    Instantly share guest Wi-Fi. Android auto-connects; iPhone opens a QR code.
-    Ideal for homes, offices, or AirBnB setups.
-  price: 6
-  image: /assets/images/nfc_guest_wifi_tag.png
-  category: nfc
-  short_features:
-    - "One-tap Wi-Fi access"
-    - "Android auto-connect / iPhone QR fallback"
-    - "Securely stores your SSID + password"
-    - "Includes setup card"
+- id: mrtf-nfc-android-app
+  name: "MRTF NFC Android App"
+  category: "Apps"
+  badge: "Companion"
+  status: "available"
+  price: "Free"
+  price_note: "Core features"
+  image: "/assets/img/products/mrtf-nfc-android-app.webp"
+  alt: "MRTF NFC Android App"
+  short: "The companion app that programs tags and runs Forge-style tap automations."
+  features:
+    - "Guided tag setup"
+    - "Profiles: Home / Car / Work"
+    - "Works alongside Tasker (optional)"
+  compatibility:
+    - "Android (NFC-enabled phones)"
+  includes:
+    - "App install + onboarding"
+  cta_label: "Get the App"
+  cta_url: "/mrtf-nfc-app/"
 
-- name: SOS Emergency NFC Tag
-  description: >
-    A single tap sends or prepares your emergency text — optionally with GPS
-    location. Keep one on a keychain or bedside.
-  price: 8
-  image: /assets/images/nfc_sos_tag.png
-  category: nfc
-  short_features:
-    - "Tap to trigger emergency text"
-    - "Optional GPS link"
-    - "Android: direct SMS intent / iPhone: Shortcut"
-    - "Bright red emergency design"
-
-- name: Car Mode NFC Tag
-  description: >
-    Launch navigation, toggle Bluetooth, and enable Do Not Disturb as soon as
-    you enter your car. Fully configurable.
-  price: 7
-  image: /assets/images/nfc_car_mode_tag.png
-  category: nfc
-  short_features:
-    - "Launch maps or playlists"
-    - "Turns on Bluetooth + DND"
-    - "Android Tasker / iPhone Shortcuts"
-    - "Mount near dash"
-
-- name: NFC Business Card
-  description: >
-    A reusable, tap-to-share digital business card. Send contact info instantly
-    without printing new cards.
-  price: 9
-  image: /assets/images/nfc_business_card.png
-  category: nfc
-  short_features:
-    - "Stores full vCard or URL"
-    - "Android & iPhone compatible"
-    - "Reusable — rewrite anytime"
-    - "Optional custom design"
-
-- name: Serenity (Bedtime) NFC Tag
-  description: >
-    A tap transitions your device into nighttime mode: Sleep, DND, or quiet time.
-    Ideal for nightstands.
-  price: 6
-  image: /assets/images/nfc_serenity_tag.png
-  category: nfc
-  short_features:
-    - "Enables Sleep / DND mode"
-    - "Android: NFC Tools or Tasker"
-    - "iPhone: Sleep Focus"
-    - "Optional ‘Wake’ companion tag"
-
-- name: Car Finder NFC Tag
-  description: >
-    Tap before walking away to drop a pin and save your parking location.
-    Works on Android and iPhone.
-  price: 7
-  image: /assets/images/nfc_car_finder_tag.png
-  category: nfc
-  short_features:
-    - "Tap to mark parking spot"
-    - "Opens Google/Apple Maps"
-    - "Android geo: link / iPhone Shortcut"
-    - "Durable adhesive tag"
-
-
-# -------------------------
-# TECH GADGETS & HARDWARE
-# -------------------------
-
-- name: ForgeSecure USB
-  description: Pre-loaded USB with privacy and digital security tools.
-  price: 12
-  image: /assets/images/forge_usb.png
-  category: gadgets
-
-- name: MRTF Ultimate Drive
-  description: >
-    A pre-loaded multi-boot USB toolkit for diagnostics, repair, forensics,
-    cloning, and recovery. Built on Ventoy.
-  price: 40
-  image: /assets/images/mrtf_ultimate_drive_generic.png
-  category: gadgets
-  short_features:
-    - "Multi-boot Linux & recovery tools"
-    - "Kali for advanced troubleshooting"
-    - "Rescue & anti-virus utilities"
-    - "Disk cloning & hardware diagnostics"
-    - "Easy Ventoy drag-and-drop updates"
-
-
-# -------------------------
-# VIRTUAL SERVICES
-# -------------------------
-
-- name: Remote Support Session
-  description: One-hour secure remote support for troubleshooting or personalized guidance.
-  price: 45
-  image: /assets/images/remote_support.png
-  category: virtual
+- id: mrtf-nfc-watch-app
+  name: "MRTF NFC Watch Companion"
+  category: "Apps"
+  badge: "Coming Soon"
+  status: "coming_soon"
+  price: "Planned"
+  price_note: "Wear OS"
+  image: "/assets/img/products/mrtf-nfc-watch-app.webp"
+  alt: "MRTF NFC Watch Companion for Wear OS"
+  short: "A future Wear OS companion for quick actions, status, and tag-triggered workflows."
+  features:
+    - "Quick toggles + shortcuts"
+    - "Status tiles + complication ideas"
+    - "Fast “tap → confirm → run” flows"
+  compatibility:
+    - "Wear OS (future)"
+  includes:
+    - "Early-access roadmap updates (when available)"
+  cta_label: "Roadmap"
+  cta_url: "/products/#mrtf-nfc-watch-app"
