@@ -2,5 +2,5 @@
 layout: default
 title: "Documentation"
 permalink: /documentation/
-redirect_to: /services/documentation-product-services/
+redirect_to: /services/documentation-product-testing/
 ---
