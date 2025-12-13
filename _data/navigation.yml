@@ -10,6 +10,8 @@ main:
     children:
       - title: "MRTF-Line Communication"
         url: "/services/mrtf-line/"
+      - title: "MRTF-Secure Network" 
+        url: "/services/secure-network-services/"
 
   - title: "Guides"
     url: "/guides/"
