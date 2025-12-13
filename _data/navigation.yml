@@ -8,10 +8,10 @@ main:
   - title: "Services"
     url: "/services/"
     children:
-       - title: Documentation
-       url: /services/documentation-product-testing/#documentation
-       - title: Product Testing
-       url: /services/documentation-product-testing/#product-testing
+       - title: "Documentation"
+       url: "/services/documentation-product-testing/#documentation"
+       - title: "Product Testing"
+       url: "/services/documentation-product-testing/#product-testing" 
 
   - title: "Guides"
     url: "/guides/"
