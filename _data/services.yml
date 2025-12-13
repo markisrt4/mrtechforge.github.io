@@ -1,0 +1,61 @@
+- name: "MRTF-Line Communication Services"
+  id: mrtf-line
+  category: "communication"
+  url: "/services/mrtf-line/"
+  image: "/assets/images/mrtf-line.png"
+  description: >
+    MRTF-Line is a fully managed communication solution that provides a dedicated business
+    phone & text line for homes, ministries, libraries, and small organizations. Built on a
+    secure SignalWire backbone, MRTF-Line offers custom call menus, routing, voicemail upgrades,
+    secure messaging, 2FA delivery, and optional dashboard access.
+
+  offerings:
+    - name: "MRTF-Line Phone Line"
+      monthly: 12
+      setup: 15
+      description: "Your dedicated managed phone & text number with basic voicemail and initial configuration."
+
+    - name: "Call Menu"
+      monthly: 10
+      setup: 35
+      description: "Custom 'Press 1, Press 2' call menus and routing flows tailored to your organization."
+
+    - name: "Hours & Routing"
+      monthly: 10
+      setup: 0
+      description: "Automatically adjust call behavior for open hours, closed hours, weekends, and holidays."
+
+    - name: "Voicemail+"
+      monthly: 5
+      setup: 0
+      description: "Custom voicemail greetings and voicemail-to-text transcription delivered to your team."
+
+    - name: "Text Auto-Replies"
+      monthly: 5
+      setup: 10
+      description: "Automated keyword responses such as HOURS, EVENTS, HELP, PRAYER, and more."
+
+    - name: "Secure Messaging (Signal)"
+      monthly: 5
+      setup: 10
+      description: "Encrypted communication channel via Signal for sensitive or confidential interactions."
+
+    - name: "Caller Shield"
+      monthly: 5
+      setup: 0
+      description: "Basic caller verification and unwanted call filtering."
+
+    - name: "2FA Delivery"
+      monthly: 20
+      setup: 40
+      description: "Send one-time passcodes from your MRTF-Line number as part of your authentication flow."
+
+    - name: "Dashboard (Basic)"
+      monthly: 15
+      setup: 30
+      description: "Single-admin dashboard for activity logs, greetings, call menu settings, and routing updates."
+
+    - name: "Dashboard (Multi-Admin)"
+      monthly: 20
+      setup: 40
+      description: "Multi-user dashboard with role-based access for teams and organizations."

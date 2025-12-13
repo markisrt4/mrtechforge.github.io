@@ -12,6 +12,10 @@ main:
         url: "/services/documentation-product-testing/#documentation"
       - title: "Product Testing"
         url: "/services/documentation-product-testing/#product-testing"
+      - title: "MRTF-Line Communication"
+        url: "/services/mrtf-line/"
+      - title: "MRTF-Secure Network" 
+        url: "/services/secure-network-services/"
 
   - title: "Guides"
     url: "/guides/"

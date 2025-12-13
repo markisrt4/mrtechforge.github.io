@@ -35,6 +35,13 @@
   text-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.5);
 }
 
+/* Global list alignment inside forge cards */
+.forge-card ul,
+.forge-card ol {
+  margin-left: 0.2rem;
+  padding-left: 1.2rem;
+}
+
 /* ----------------------------------------------------------
    COMPLEXITY CARDS (Green = Easy • Yellow = Medium • Red = Hard)
    Used for the Life Without Google page
