@@ -1,8 +1,11 @@
 /* ==========================================================
-   M.R. TECHFORGE — CLASSIC FORGE BUTTONS (v3.0 Molten Core)
-   Large • Rounded • Gradient • Molten interior • Hover flare
+   M.R. TECHFORGE — FORGE BUTTON SYSTEM (v3.1)
+   Forged steel shell • Molten interior • Heat shimmer
    ========================================================== */
 
+/* ----------------------------------------------------------
+   BASE BUTTON
+---------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -22,11 +25,14 @@
   position: relative;
   overflow: hidden;
 
+  border: 0;
   z-index: 5;
-  transition: transform 0.22s ease, box-shadow 0.25s ease, filter 0.25s ease;
   pointer-events: auto;
 
-  border: 0;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
 
 /* Optional icon support */
@@ -36,13 +42,13 @@
   font-size: 1.1rem;
 }
 
-/* ---------------------------------------
-   Forge button w/ “molten core”
----------------------------------------- */
+/* ----------------------------------------------------------
+   FORGE BUTTON — FORGED STEEL + MOLTEN CORE
+---------------------------------------------------------- */
 .btn-forge {
   color: #ffffff;
 
-  /* outer shell gradient */
+  /* forged steel outer shell */
   background: linear-gradient(
     90deg,
     var(--forge-hotmetal-dark),
@@ -52,95 +58,109 @@
   );
   background-size: 260%;
 
+  outline: 1px solid rgba(255,255,255,0.08);
+
   box-shadow:
     0 0 14px rgba(var(--forge-accent-rgb), 0.45),
     inset 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.40);
-
-  /* crisp edges */
-  outline: 1px solid rgba(255,255,255,0.08);
 }
 
-/* molten layer */
+/* molten interior layer */
 .btn-forge::before {
   content: "";
   position: absolute;
-  inset: 2px;              /* creates “rim” */
-  border-radius: 999px;
-  z-index: -1;
+  inset: 2px;                 /* creates forged rim */
+  border-radius: inherit;
+  z-index: 0;
 
   background:
     radial-gradient(circle at 30% 35%, rgba(251,191,36,0.65), transparent 45%),
     radial-gradient(circle at 65% 60%, rgba(245,158,11,0.55), transparent 48%),
     radial-gradient(circle at 55% 25%, rgba(56,189,248,0.22), transparent 55%),
-    linear-gradient(180deg, rgba(10,10,12,0.55), rgba(0,0,0,0.65));
+    linear-gradient(180deg, rgba(12,12,14,0.65), rgba(0,0,0,0.75));
 
   box-shadow:
-    inset 0 0 16px rgba(251,191,36,0.22),
-    inset 0 0 28px rgba(245,158,11,0.14);
+    inset 0 0 18px rgba(251,191,36,0.22),
+    inset 0 0 30px rgba(245,158,11,0.14);
 
-  filter: saturate(1.1);
-  animation: moltenDrift 5.8s ease-in-out infinite;
+  filter: saturate(1.08);
   opacity: 0.95;
+
+  animation: moltenDrift 6s ease-in-out infinite;
 }
 
-/* shimmer / heat sweep */
+/* heat shimmer sweep */
 .btn-forge::after {
   content: "";
   position: absolute;
-  inset: -40% -60%;
-  z-index: 0;
+  inset: -45% -60%;
+  z-index: 1;
 
   background: linear-gradient(
     120deg,
-    transparent 35%,
-    rgba(255,255,255,0.12) 48%,
-    rgba(251,191,36,0.20) 52%,
-    transparent 65%
+    transparent 38%,
+    rgba(255,255,255,0.10) 48%,
+    rgba(251,191,36,0.22) 52%,
+    transparent 62%
   );
 
-  transform: translateX(-18%) rotate(8deg);
+  transform: translateX(-20%) rotate(8deg);
   opacity: 0.35;
-  transition: opacity 0.25s ease, transform 0.35s ease;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s ease;
+
   pointer-events: none;
 }
 
-/* keep text above effects */
+/* keep text above all effects */
 .btn-forge > * {
   position: relative;
   z-index: 2;
 }
 
+/* ----------------------------------------------------------
+   HOVER / ACTIVE STATES
+---------------------------------------------------------- */
 .btn-forge:hover {
   transform: translateY(-3px);
   background-position: 100% 0;
 
   box-shadow:
-    0 0 30px rgba(var(--forge-accent-rgb), 0.78),
-    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.45),
-    inset 0 0 12px rgba(var(--forge-hotmetal-rgb), 0.55);
+    0 0 32px rgba(var(--forge-accent-rgb), 0.78),
+    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.45),
+    inset 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
 
-  filter: brightness(1.03);
+  filter: brightness(1.04);
 }
 
 .btn-forge:hover::after {
-  opacity: 0.55;
-  transform: translateX(6%) rotate(8deg);
+  opacity: 0.6;
+  transform: translateX(8%) rotate(8deg);
 }
 
 .btn-forge:active {
-  transform: translateY(-1px) scale(0.99);
+  transform: translateY(-1px) scale(0.985);
 }
 
-/* Secondary + Ghost variants for your thanks page buttons */
+/* ----------------------------------------------------------
+   VARIANTS
+---------------------------------------------------------- */
+
+/* Secondary forge (less intense glow) */
 .btn-forge-secondary {
   box-shadow:
-    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.35),
-    inset 0 0 10px rgba(var(--forge-accent-rgb), 0.22);
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.32),
+    inset 0 0 8px rgba(var(--forge-accent-rgb), 0.22);
 }
 
+/* Ghost / outline button */
 .btn-forge-ghost {
   background: rgba(0,0,0,0.35);
   border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  color: var(--forge-text);
+
   box-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
@@ -153,7 +173,9 @@
   box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.35);
 }
 
-/* Molten drift animation */
+/* ----------------------------------------------------------
+   MOLTEN CORE DRIFT
+---------------------------------------------------------- */
 @keyframes moltenDrift {
   0%   { transform: scale(1) translate(0, 0); }
   40%  { transform: scale(1.02) translate(1px, -1px); }
@@ -161,13 +183,9 @@
   100% { transform: scale(1) translate(0, 0); }
 }
 
-/* Ripple effect (your original behavior, but improved) */
-.btn::after {
-  /* NOTE: we already use ::after for the forge shimmer.
-     So ripple is applied only to .btn (non-forge) unless you want both.
-     If you want ripple on forge buttons too, tell me and I’ll combine them cleanly. */
-}
-
+/* ----------------------------------------------------------
+   RIPPLE EFFECT (NON-FORGE BUTTONS ONLY)
+---------------------------------------------------------- */
 .btn:not(.btn-forge)::after {
   content: "";
   position: absolute;
