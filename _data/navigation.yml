@@ -8,6 +8,8 @@ main:
   - title: "Services"
     url: "/services/"
     children:
+      - title: "Tech Services"
+        url: "/services/tech-services/"
       - title: "MRTF-Line Communication"
         url: "/services/mrtf-line/"
       - title: "MRTF-Secure Network" 
