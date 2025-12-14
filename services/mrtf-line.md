@@ -133,6 +133,38 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
 <div class="services-divider"></div>
 
+<section class="service-section">
+  <h2 class="services-heading">Download the MRTF-Line Overview (PDF)</h2>
+
+  <p>
+    Want something you can share with staff, boards, or leadership teams?
+    Download a one-page MRTF-Line overview:
+  </p>
+
+  <p>
+    <a href="/assets/docs/MRTF-Line_Marketing_Overview.pdf" class="btn btn-forge">
+      Download MRTF-Line Marketing Overview (PDF)
+    </a>
+  </p>
+</section>
+
+<div class="services-divider"></div>
+
+<section class="service-section services-cta">
+  <h2 class="services-heading">Ready to Talk About Your Line?</h2>
+
+  <p>
+    Most clients start with a single <strong>MRTF-Line Phone Line</strong> and one or two add-ons,
+    then evolve over time as their needs change.
+  </p>
+
+  <p>
+    If you're curious whether MRTF-Line would be a good fit for your home, ministry,
+    library, or small organization, reach out and we’ll design a setup that makes
+    sense for your size, budget, and comfort level.
+  </p>
+</section>
+
 <section class="forge-form-card">
   <h2 class="services-heading">Request an MRTF-Line Setup Quote</h2>
 
@@ -150,15 +182,44 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <label>Don’t fill this out: <input name="bot-field" /></label>
     </p>
 
+    <div class="form-grid">
+      <div>
+        <label>Organization / Project Name</label>
+        <input type="text" name="organization" required />
+      </div>
+
+      <div>
+        <label>Phone Number (optional)</label>
+        <input type="text" name="area_code" placeholder="" />
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div>
+        <label>Contact Name</label>
+        <input type="text" name="name" required />
+      </div>
+
+      <div>
+        <label>Email Address</label>
+        <input type="email" name="email" required />
+      </div>
+    </div>
+
+    <label>How should calls/texts work?</label>
+    <textarea
+      name="workflow"
+      rows="4"
+      placeholder="Example: After-hours voicemail to email; business hours ring 2 staff; texts auto-reply with HOURS; etc."
+      required
+    ></textarea>
+
     <label>Interested Features</label>
     <select name="features">
       <option value="not_sure">Not sure yet</option>
       <option value="core_only">Core line only</option>
       <option value="ivr">Call Menu (IVR)</option>
       <option value="hours_routing">Hours & Routing</option>
-      <option value="voicemail">Voicemail+</option>
-      <option value="text_autoreplies">Text Auto-Replies</option>
-      <option value="slack">Slack Notifications</option>
       <option value="signal">Secure Messaging (Signal)</option>
       <option value="caller_shield">Caller Shield</option>
       <option value="2fa">2FA Delivery</option>
