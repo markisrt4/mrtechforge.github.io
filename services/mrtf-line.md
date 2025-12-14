@@ -225,7 +225,53 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
     library, or small organization, reach out and we’ll design a setup that makes
     sense for your size, budget, and comfort level.
   </p>
-  <p>
-    <a href="/contact/" class="btn-glow">Contact M.R. TechForge About MRTF-Line</a>
-  </p>
+    <form
+    name="mrtf-line"
+    method="POST"
+    data-netlify="true"
+    class="forge-form-wrapper"
+  >
+    <input type="hidden" name="form-name" value="mrtf-line">
+
+    <h3>Request an MRTF-Line Setup</h3>
+
+    <label>
+      Organization / Project Name
+      <input type="text" name="organization" required>
+    </label>
+
+    <label>
+      Contact Name
+      <input type="text" name="name" required>
+    </label>
+
+    <label>
+      Email Address
+      <input type="email" name="email" required>
+    </label>
+
+    <label>
+      What do you want this line to handle?
+      <textarea name="use_case" rows="3"
+        placeholder="Calls, texts, hours, verification codes, etc."
+        required></textarea>
+    </label>
+
+    <label>
+      Interested Features
+      <select name="features">
+        <option>Core Line Only</option>
+        <option>Call Menu (IVR)</option>
+        <option>Hours & Routing</option>
+        <option>Secure Messaging (Signal)</option>
+        <option>2FA Delivery</option>
+        <option>Dashboard</option>
+        <option>Not Sure Yet</option>
+      </select>
+    </label>
+
+    <button type="submit" class="btn-glow">
+      Request Setup Quote
+    </button>
+  </form>
 </section>
