@@ -48,7 +48,11 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
   <div class="phone-services-card">
     <ol class="how-it-works-steps">
       <li><strong>We set up your MRTF-Line number.</strong> You get a dedicated phone &amp; text line managed by M.R. TechForge.</li>
-      <li><strong>You pick your add-ons.</strong> Choose from call menus, hours &amp; routing, voicemail+, text auto-replies, secure messaging, 2FA delivery, and dashboard access.</li>
+      <li>
+        <strong>You pick your add-ons.</strong>
+        Choose from call menus, hours &amp; routing, voicemail+, text auto-replies,
+        <strong>Slack notifications</strong>, secure messaging, 2FA delivery, and dashboard access.
+      </li>
       <li><strong>We customize everything to your organization.</strong> Greetings, menus, routing, and responses are built around how you actually work.</li>
       <li><strong>You focus on people, not phone systems.</strong> When you need changes, MRTF handles them — or you can use the dashboard if you prefer.</li>
     </ol>
@@ -70,7 +74,6 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       {% for offering in mrtf_line.offerings %}
         {% assign name = offering.name %}
 
-        {%- comment -%} Simple icon mapping by offering name {%- endcomment -%}
         {% assign icon = "📞" %}
         {% case name %}
           {% when "MRTF-Line Phone Line" %}{% assign icon = "📞" %}
@@ -78,6 +81,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
           {% when "Hours & Routing" %}{% assign icon = "⏰" %}
           {% when "Voicemail+" %}{% assign icon = "🎙️" %}
           {% when "Text Auto-Replies" %}{% assign icon = "💬" %}
+          {% when "Slack Notifications" %}{% assign icon = "🔔" %}
           {% when "Secure Messaging (Signal)" %}{% assign icon = "🛡️" %}
           {% when "Caller Shield" %}{% assign icon = "🚫" %}
           {% when "2FA Delivery" %}{% assign icon = "✅" %}
@@ -124,106 +128,10 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
         </article>
       {% endfor %}
     </div>
-  {% else %}
-    <p><em>MRTF-Line offerings are coming soon. Please contact M.R. TechForge for current pricing.</em></p>
   {% endif %}
 </section>
 
 <div class="services-divider"></div>
-
-<section class="service-section forge-bundles">
-  <h2 class="services-heading">Suggested Configurations</h2>
-
-  <p class="section-sub">
-    These examples help estimate monthly cost quickly. Final setup is always tailored to your workflow.
-  </p>
-
-  <div class="forge-bundle-grid">
-    <article class="forge-bundle-card">
-      <div class="forge-bundle-tag">Essentials</div>
-      <div class="forge-bundle-price">$27/mo</div>
-      <div class="forge-bundle-meta">Approximate • Setup from $15</div>
-
-      <ul class="forge-bundle-list">
-        <li>MRTF-Line Phone Line</li>
-        <li>Hours &amp; Routing</li>
-        <li>Secure Messaging (Signal)</li>
-      </ul>
-
-      <p class="forge-bundle-desc">
-        A clean professional line with time-aware behavior + optional secure channel.
-      </p>
-    </article>
-
-    <article class="forge-bundle-card">
-      <div class="forge-bundle-tag">Community</div>
-      <div class="forge-bundle-price">$42/mo</div>
-      <div class="forge-bundle-meta">Approximate • Setup from $50</div>
-
-      <ul class="forge-bundle-list">
-        <li>MRTF-Line Phone Line</li>
-        <li>Call Menu (IVR)</li>
-        <li>Hours &amp; Routing</li>
-        <li>Caller Shield</li>
-      </ul>
-
-      <p class="forge-bundle-desc">
-        Great for libraries, churches, and community organizations handling frequent inquiries.
-      </p>
-    </article>
-
-    <article class="forge-bundle-card">
-      <div class="forge-bundle-tag">Enhanced Security</div>
-      <div class="forge-bundle-price">$52/mo</div>
-      <div class="forge-bundle-meta">Approximate • Setup from $55</div>
-
-      <ul class="forge-bundle-list">
-        <li>MRTF-Line Phone Line</li>
-        <li>2FA Delivery</li>
-        <li>Caller Shield</li>
-        <li>Dashboard (Basic)</li>
-      </ul>
-
-      <p class="forge-bundle-desc">
-        For organizations that need verification and a control surface without complexity.
-      </p>
-    </article>
-  </div>
-</section>
-
-<div class="services-divider"></div>
-
-<section class="service-section">
-  <h2 class="services-heading">Download the MRTF-Line Overview (PDF)</h2>
-
-  <p>
-    Want something you can share with staff, boards, or leadership teams?
-    Download a one-page MRTF-Line overview:
-  </p>
-
-  <p>
-    <a href="/assets/docs/MRTF-Line_Marketing_Overview.pdf" class="btn btn-forge">
-      Download MRTF-Line Marketing Overview (PDF)
-    </a>
-  </p>
-</section>
-
-<div class="services-divider"></div>
-
-<section class="service-section services-cta">
-  <h2 class="services-heading">Ready to Talk About Your Line?</h2>
-
-  <p>
-    Most clients start with a single <strong>MRTF-Line Phone Line</strong> and one or two add-ons,
-    then evolve over time as their needs change.
-  </p>
-
-  <p>
-    If you're curious whether MRTF-Line would be a good fit for your home, ministry,
-    library, or small organization, reach out and we’ll design a setup that makes
-    sense for your size, budget, and comfort level.
-  </p>
-</section>
 
 <section class="forge-form-card">
   <h2 class="services-heading">Request an MRTF-Line Setup Quote</h2>
@@ -242,44 +150,15 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <label>Don’t fill this out: <input name="bot-field" /></label>
     </p>
 
-    <div class="form-grid">
-      <div>
-        <label>Organization / Project Name</label>
-        <input type="text" name="organization" required />
-      </div>
-
-      <div>
-        <label>Preferred Area Code (optional)</label>
-        <input type="text" name="area_code" placeholder="e.g., 248" />
-      </div>
-    </div>
-
-    <div class="form-grid">
-      <div>
-        <label>Contact Name</label>
-        <input type="text" name="name" required />
-      </div>
-
-      <div>
-        <label>Email Address</label>
-        <input type="email" name="email" required />
-      </div>
-    </div>
-
-    <label>How should calls/texts work?</label>
-    <textarea
-      name="workflow"
-      rows="4"
-      placeholder="Example: After-hours voicemail to email; business hours ring 2 staff; texts auto-reply with HOURS; etc."
-      required
-    ></textarea>
-
     <label>Interested Features</label>
     <select name="features">
       <option value="not_sure">Not sure yet</option>
       <option value="core_only">Core line only</option>
       <option value="ivr">Call Menu (IVR)</option>
       <option value="hours_routing">Hours & Routing</option>
+      <option value="voicemail">Voicemail+</option>
+      <option value="text_autoreplies">Text Auto-Replies</option>
+      <option value="slack">Slack Notifications</option>
       <option value="signal">Secure Messaging (Signal)</option>
       <option value="caller_shield">Caller Shield</option>
       <option value="2fa">2FA Delivery</option>
