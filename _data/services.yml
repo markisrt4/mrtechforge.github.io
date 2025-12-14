@@ -15,35 +15,25 @@
       setup: 15
       description: "Your dedicated managed phone & text number with basic voicemail and initial configuration."
 
-    - name: "Call Menu"
+    - name: "Call Menu (IVR)"
       monthly: 10
-      setup: 35
-      description: "Custom 'Press 1, Press 2' call menus and routing flows tailored to your organization."
+      setup: 25
+      description: "Professional call routing menu (Press 1, Press 2…) with configurable destinations."
 
-    - name: "Hours & Routing"
+    - name: "Call Forwarding (Smart Routing)"
+      monthly: 5
+      setup: 15
+      description: "Forward calls to one or more numbers using time-of-day, schedule rules, or failover."
+
+    - name: "Voicemail Upgrade"
+      monthly: 5
+      setup: 15
+      description: "Custom voicemail greetings, voicemail-to-email, and enhanced caller experience."
+
+    - name: "Secure SMS / Messaging"
       monthly: 10
-      setup: 0
-      description: "Automatically adjust call behavior for open hours, closed hours, weekends, and holidays."
-
-    - name: "Voicemail+"
-      monthly: 5
-      setup: 0
-      description: "Custom voicemail greetings and voicemail-to-text transcription delivered to your team."
-
-    - name: "Text Auto-Replies"
-      monthly: 5
-      setup: 10
-      description: "Automated keyword responses such as HOURS, EVENTS, HELP, PRAYER, and more."
-
-    - name: "Secure Messaging (Signal)"
-      monthly: 5
-      setup: 10
-      description: "Encrypted communication channel via Signal for sensitive or confidential interactions."
-
-    - name: "Caller Shield"
-      monthly: 5
-      setup: 0
-      description: "Basic caller verification and unwanted call filtering."
+      setup: 25
+      description: "Secure messaging options and configuration guidance for safe texting workflows."
 
     - name: "2FA Delivery"
       monthly: 20
@@ -59,3 +49,173 @@
       monthly: 20
       setup: 40
       description: "Multi-user dashboard with role-based access for teams and organizations."
+
+    - name: "Custom Greeting + Branding Pack"
+      monthly: 0
+      setup: 35
+      description: "Polished phone greetings + routing language tailored to your organization."
+
+    - name: "After-Hours / Emergency Routing"
+      monthly: 8
+      setup: 25
+      description: "Route calls differently after hours or during emergencies with clear escalation paths."
+
+    - name: "Spam & Robocall Filtering (Rules)"
+      monthly: 6
+      setup: 20
+      description: "Basic rule-based filtering to reduce spam calls and nuisance traffic."
+
+- name: "MRTF Tech Services & Coaching"
+  id: tech-services
+  category: "technology"
+  url: "/services/tech-services/"
+  image: "/assets/images/mrtf-tech-services.png"
+  description: >
+    Practical, friendly technology help for individuals, families, and small organizations.
+    From websites and e-commerce to online safety, remote support, and hands-on coaching —
+    M.R. TechForge helps you build, secure, and maintain your digital life with confidence.
+
+  offerings:
+    - name: "Website Setup / Redesign"
+      price: 0
+      unit: "quote"
+      description: "New site setup or refresh (structure, styling, performance basics, and deployment guidance)."
+
+    - name: "E-Commerce Integration"
+      price: 0
+      unit: "quote"
+      description: "Help integrating payments, storefronts, product pages, and order flows (platform-dependent)."
+
+    - name: "Remote Support Session"
+      price: 0
+      unit: "hour"
+      description: "Troubleshooting, setup help, tune-ups, installs, and configuration guidance (remote)."
+
+    - name: "Digital Security Seminar"
+      price: 0
+      unit: "quote"
+      description: "Plain-English security training for groups: passwords, 2FA, scams, backups, privacy basics."
+
+    - name: "Private Security Coaching"
+      price: 0
+      unit: "hour"
+      description: "One-on-one guidance to improve your security posture and build better habits."
+
+    - name: "Parent Coaching: Kids Online"
+      price: 0
+      unit: "session"
+      description: "Device + account safety, app/privacy settings, boundaries, and practical monitoring options."
+
+    - name: "Coding 101 for Kids"
+      price: 0
+      unit: "class"
+      description: "Beginner-friendly coding sessions for kids/teens (curriculum and pacing tailored to age)."
+
+    - name: "File Recovery Assessment"
+      price: 0
+      unit: "quote"
+      description: "Software-based recovery attempts + honest assessment (no cleanroom / miracle promises)."
+
+- id: secure-network-services
+  title: "MRTF Secure Network Services"
+  product_tag: "MRTF Secure Network by M.R. TechForge"
+  description: "Secure, private, local-first network infrastructure for homes and small businesses — built intentionally, documented clearly, and supported with optional ongoing care."
+
+  who_for:
+    - "Home users who want security without guessing or breaking things."
+    - "Remote workers who need safe access to files and systems while away."
+    - "Families who want network-wide protection for all devices."
+    - "Small businesses without in-house IT staff."
+    - "Anyone who wants local control instead of unnecessary cloud dependence."
+
+  how_it_works:
+    - title: "We review your environment."
+      text: "We look at your current hardware, your usage patterns, and what you want to protect."
+    - title: "We design a secure network."
+      text: "We define clear separation, strong defaults, and predictable behavior."
+    - title: "We configure and test."
+      text: "Access, protections, and policies are validated so you’re not guessing."
+    - title: "You receive documentation."
+      text: "You get a clear written guide describing the setup and what to do if something changes."
+    - title: "Optional ongoing care."
+      text: "For clients who want continued peace of mind and support over time."
+
+  offerings:
+    - name: "Network Setup & Protection"
+      description: "Secure router configuration with intentional design, network separation, DNS protection, and written network documentation."
+      pricing:
+        setup_label: "One-time"
+        monthly_label: null
+      badge: "Core"
+
+    - name: "Secure Remote Access"
+      description: "Encrypted access into your network from anywhere without exposing services or relying on risky port forwarding."
+      pricing:
+        setup_label: "One-time"
+        monthly_label: null
+
+    - name: "Network-Wide Protection"
+      description: "Automatic ad, tracker, and malware blocking for every device on the network — no per-device software required."
+      pricing:
+        setup_label: "Included with Setup"
+        monthly_label: null
+
+    - name: "Local Storage & Backup Design"
+      description: "Secure local storage and automated backups — designed, configured, and documented while you retain full control of your data."
+      pricing:
+        setup_label: "One-time"
+        monthly_label: null
+
+    - name: "Managed Network Care"
+      description: "Optional ongoing care: configuration backups, health checks, update guidance, and recovery assistance."
+      pricing:
+        setup_label: "Setup + Monthly"
+        monthly_label: "Ongoing"
+
+  bundles:
+    - tag: "Home"
+      price: "Essential Protection"
+      meta: "One-time setup"
+      items:
+        - "Network Setup & Protection"
+        - "Network-Wide Protection"
+        - "Written Network Documentation"
+      description: "A secure, well-documented home network built correctly from day one."
+
+    - tag: "Home / Remote"
+      price: "Secure Access & Backup Ready"
+      meta: "One-time setup"
+      items:
+        - "Everything in Essential"
+        - "Secure Remote Access"
+        - "Local Storage & Backup Design"
+      description: "Ideal for remote workers and families with important data."
+
+    - tag: "Business"
+      price: "Fully Managed Network Care"
+      meta: "Setup + monthly care"
+      items:
+        - "All core services"
+        - "Configuration backups"
+        - "Health checks & updates"
+        - "Recovery assistance"
+      description: "For businesses that want proactive care and minimal downtime risk."
+
+  faq:
+    - q: "Do I need a new router?"
+      a: "Not always. We can use your existing router if it supports the security and network features required. If it doesn’t, we’ll recommend a few vetted options or design a sidecar approach that works alongside ISP equipment."
+
+    - q: "Do you store or access my data?"
+      a: "No. MRTF does not store customer data, access files, or hold encryption keys. We design and configure storage and backup systems so you retain full ownership and control."
+
+    - q: "Is this the same as a consumer VPN?"
+      a: "No. Secure Remote Access is about safely reaching your own network when you’re away. It’s not a ‘privacy VPN subscription.’"
+
+    - q: "What devices are protected by Network-Wide Protection?"
+      a: "Everything on your network — phones, laptops, tablets, smart TVs, and IoT devices — without installing software on each one."
+
+    - q: "Do you provide 24/7 emergency support?"
+      a: "Not by default. Managed Network Care can include priority support expectations, but MRTF does not advertise 24/7 on-call service unless explicitly agreed."
+
+    - q: "What if I need new hardware like cables or storage drives?"
+      a: "We can validate your existing equipment, recommend compatible hardware for you to purchase directly, or optionally supply hardware with clear itemization — no proprietary lock-in."
