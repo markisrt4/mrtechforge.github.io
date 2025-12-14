@@ -81,3 +81,22 @@
   opacity: 1;
   transform: scale(85);
 }
+
+/* Make <button class="btn btn-forge"> match <a> buttons */
+button.btn {
+  border: none;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Ensure buttons inherit the same text color */
+button.btn.btn-forge {
+  color: white;
+}
+
+/* Improve accessibility: focus ring */
+.btn:focus-visible {
+  outline: 2px solid rgba(var(--forge-accent-rgb), 0.85);
+  outline-offset: 3px;
+}

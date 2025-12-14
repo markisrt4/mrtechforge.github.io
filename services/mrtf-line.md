@@ -59,6 +59,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
 <section class="service-section forge-service-pricing">
   <h2 class="services-heading">MRTF-Line Offerings &amp; Pricing</h2>
+
   <p>
     Every MRTF-Line setup starts with the <strong>MRTF-Line Phone Line</strong>. From there, you can
     mix and match add-ons based on your needs and budget.
@@ -69,31 +70,19 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       {% for offering in mrtf_line.offerings %}
         {% assign name = offering.name %}
 
-        {%- comment -%}
-        Simple icon mapping by offering name
-        {%- endcomment -%}
+        {%- comment -%} Simple icon mapping by offering name {%- endcomment -%}
         {% assign icon = "📞" %}
         {% case name %}
-          {% when "MRTF-Line Phone Line" %}
-            {% assign icon = "📞" %}
-          {% when "Call Menu" %}
-            {% assign icon = "📲" %}
-          {% when "Hours & Routing" %}
-            {% assign icon = "⏰" %}
-          {% when "Voicemail+" %}
-            {% assign icon = "🎙️" %}
-          {% when "Text Auto-Replies" %}
-            {% assign icon = "💬" %}
-          {% when "Secure Messaging (Signal)" %}
-            {% assign icon = "🛡️" %}
-          {% when "Caller Shield" %}
-            {% assign icon = "🚫" %}
-          {% when "2FA Delivery" %}
-            {% assign icon = "✅" %}
-          {% when "Dashboard (Basic)" %}
-            {% assign icon = "📊" %}
-          {% when "Dashboard (Multi-Admin)" %}
-            {% assign icon = "👥" %}
+          {% when "MRTF-Line Phone Line" %}{% assign icon = "📞" %}
+          {% when "Call Menu" %}{% assign icon = "📲" %}
+          {% when "Hours & Routing" %}{% assign icon = "⏰" %}
+          {% when "Voicemail+" %}{% assign icon = "🎙️" %}
+          {% when "Text Auto-Replies" %}{% assign icon = "💬" %}
+          {% when "Secure Messaging (Signal)" %}{% assign icon = "🛡️" %}
+          {% when "Caller Shield" %}{% assign icon = "🚫" %}
+          {% when "2FA Delivery" %}{% assign icon = "✅" %}
+          {% when "Dashboard (Basic)" %}{% assign icon = "📊" %}
+          {% when "Dashboard (Multi-Admin)" %}{% assign icon = "👥" %}
         {% endcase %}
 
         {% assign is_core = false %}
@@ -113,7 +102,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
           <p class="forge-offering-desc">{{ offering.description }}</p>
 
-          <div class="forge-offering-pricing is-setup">
+          <div class="forge-offering-pricing">
             {% if offering.monthly %}
               <div class="forge-price-row">
                 <span class="label">Monthly</span>
@@ -133,7 +122,6 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
             {% endif %}
           </div>
         </article>
-
       {% endfor %}
     </div>
   {% else %}
@@ -145,6 +133,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
 <section class="service-section forge-bundles">
   <h2 class="services-heading">Suggested Configurations</h2>
+
   <p class="section-sub">
     These examples help estimate monthly cost quickly. Final setup is always tailored to your workflow.
   </p>
@@ -154,11 +143,13 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <div class="forge-bundle-tag">Essentials</div>
       <div class="forge-bundle-price">$27/mo</div>
       <div class="forge-bundle-meta">Approximate • Setup from $15</div>
+
       <ul class="forge-bundle-list">
         <li>MRTF-Line Phone Line</li>
         <li>Hours &amp; Routing</li>
         <li>Secure Messaging (Signal)</li>
       </ul>
+
       <p class="forge-bundle-desc">
         A clean professional line with time-aware behavior + optional secure channel.
       </p>
@@ -168,12 +159,14 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <div class="forge-bundle-tag">Community</div>
       <div class="forge-bundle-price">$42/mo</div>
       <div class="forge-bundle-meta">Approximate • Setup from $50</div>
+
       <ul class="forge-bundle-list">
         <li>MRTF-Line Phone Line</li>
         <li>Call Menu (IVR)</li>
         <li>Hours &amp; Routing</li>
         <li>Caller Shield</li>
       </ul>
+
       <p class="forge-bundle-desc">
         Great for libraries, churches, and community organizations handling frequent inquiries.
       </p>
@@ -183,12 +176,14 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <div class="forge-bundle-tag">Enhanced Security</div>
       <div class="forge-bundle-price">$52/mo</div>
       <div class="forge-bundle-meta">Approximate • Setup from $55</div>
+
       <ul class="forge-bundle-list">
         <li>MRTF-Line Phone Line</li>
         <li>2FA Delivery</li>
         <li>Caller Shield</li>
         <li>Dashboard (Basic)</li>
       </ul>
+
       <p class="forge-bundle-desc">
         For organizations that need verification and a control surface without complexity.
       </p>
@@ -196,17 +191,18 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
   </div>
 </section>
 
-
 <div class="services-divider"></div>
 
 <section class="service-section">
   <h2 class="services-heading">Download the MRTF-Line Overview (PDF)</h2>
+
   <p>
     Want something you can share with staff, boards, or leadership teams?
     Download a one-page MRTF-Line overview:
   </p>
+
   <p>
-    <a href="/assets/docs/MRTF-Line_Marketing_Overview.pdf" class="btn-glow">
+    <a href="/assets/docs/MRTF-Line_Marketing_Overview.pdf" class="btn btn-forge">
       Download MRTF-Line Marketing Overview (PDF)
     </a>
   </p>
@@ -216,62 +212,87 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
 <section class="service-section services-cta">
   <h2 class="services-heading">Ready to Talk About Your Line?</h2>
+
   <p>
     Most clients start with a single <strong>MRTF-Line Phone Line</strong> and one or two add-ons,
     then evolve over time as their needs change.
   </p>
+
   <p>
     If you're curious whether MRTF-Line would be a good fit for your home, ministry,
     library, or small organization, reach out and we’ll design a setup that makes
     sense for your size, budget, and comfort level.
   </p>
-    <form
+</section>
+
+<section class="forge-form-card">
+  <h2 class="services-heading">Request an MRTF-Line Setup Quote</h2>
+
+  <form
     name="mrtf-line"
     method="POST"
+    action="/thanks/"
     data-netlify="true"
-    class="forge-form-wrapper"
+    data-netlify-honeypot="bot-field"
+    class="forge-form"
   >
-    <input type="hidden" name="form-name" value="mrtf-line">
+    <input type="hidden" name="form-name" value="mrtf-line" />
 
-    <h3>Request an MRTF-Line Setup</h3>
+    <p style="display:none;">
+      <label>Don’t fill this out: <input name="bot-field" /></label>
+    </p>
 
-    <label>
-      Organization / Project Name
-      <input type="text" name="organization" required>
-    </label>
+    <div class="form-grid">
+      <div>
+        <label>Organization / Project Name</label>
+        <input type="text" name="organization" required />
+      </div>
 
-    <label>
-      Contact Name
-      <input type="text" name="name" required>
-    </label>
+      <div>
+        <label>Preferred Area Code (optional)</label>
+        <input type="text" name="area_code" placeholder="e.g., 248" />
+      </div>
+    </div>
 
-    <label>
-      Email Address
-      <input type="email" name="email" required>
-    </label>
+    <div class="form-grid">
+      <div>
+        <label>Contact Name</label>
+        <input type="text" name="name" required />
+      </div>
 
-    <label>
-      What do you want this line to handle?
-      <textarea name="use_case" rows="3"
-        placeholder="Calls, texts, hours, verification codes, etc."
-        required></textarea>
-    </label>
+      <div>
+        <label>Email Address</label>
+        <input type="email" name="email" required />
+      </div>
+    </div>
 
-    <label>
-      Interested Features
-      <select name="features">
-        <option>Core Line Only</option>
-        <option>Call Menu (IVR)</option>
-        <option>Hours & Routing</option>
-        <option>Secure Messaging (Signal)</option>
-        <option>2FA Delivery</option>
-        <option>Dashboard</option>
-        <option>Not Sure Yet</option>
-      </select>
-    </label>
+    <label>How should calls/texts work?</label>
+    <textarea
+      name="workflow"
+      rows="4"
+      placeholder="Example: After-hours voicemail to email; business hours ring 2 staff; texts auto-reply with HOURS; etc."
+      required
+    ></textarea>
 
-    <button type="submit" class="btn-glow">
+    <label>Interested Features</label>
+    <select name="features">
+      <option value="not_sure">Not sure yet</option>
+      <option value="core_only">Core line only</option>
+      <option value="ivr">Call Menu (IVR)</option>
+      <option value="hours_routing">Hours & Routing</option>
+      <option value="signal">Secure Messaging (Signal)</option>
+      <option value="caller_shield">Caller Shield</option>
+      <option value="2fa">2FA Delivery</option>
+      <option value="dashboard_basic">Dashboard (Basic)</option>
+      <option value="dashboard_multi">Dashboard (Multi-Admin)</option>
+    </select>
+
+    <button type="submit" class="btn btn-forge" style="margin-top: 1rem; width: 100%;">
       Request Setup Quote
     </button>
   </form>
+
+  <p style="margin-top: 0.9rem; color: var(--forge-subtext); font-size: 0.95rem;">
+    We’ll respond with a recommended configuration and setup quote.
+  </p>
 </section>

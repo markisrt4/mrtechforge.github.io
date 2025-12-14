@@ -27,3 +27,55 @@
   outline: none;
   box-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb),0.4);
 }
+
+/* ==========================================================
+   MRTF additions — form layout upgrades (still generic)
+   ========================================================== */
+
+.forge-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.85rem;
+  margin-bottom: 0.25rem;
+  color: var(--forge-subtext);
+}
+
+.forge-form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.6rem 0;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(var(--forge-accent-rgb),0.35);
+  border-radius: 8px;
+  color: var(--forge-text);
+  font-size: 1rem;
+}
+
+.forge-form select:focus {
+  border-color: var(--forge-hotmetal);
+  outline: none;
+  box-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb),0.4);
+}
+
+/* Nice grouped rows for desktop */
+.forge-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 760px) {
+  .forge-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form container card styling (optional but clean) */
+.forge-form-card {
+  margin: 2.2rem 0 1.2rem;
+  padding: 1.5rem 1.7rem;
+  border-radius: 14px;
+  background: rgba(5, 10, 20, 0.9);
+  border: 1px solid rgba(0,150,255,0.45);
+  box-shadow: 0 0 24px rgba(0,150,255,0.25);
+}
