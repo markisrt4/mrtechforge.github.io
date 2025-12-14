@@ -35,6 +35,11 @@
       setup: 10
       description: "Automated keyword responses such as HOURS, EVENTS, HELP, PRAYER, and more."
 
+    - name: "Slack Notifications"
+      monthly: 5
+      setup: 10
+      description: "Send alerts to your Slack channel for missed calls, voicemails, and key events (team-friendly)."
+
     - name: "Secure Messaging (Signal)"
       monthly: 5
       setup: 10
