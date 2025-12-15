@@ -327,3 +327,56 @@
   color: var(--forge-silver, #cfd6df);
   text-shadow: 0 0 10px rgba(90, 170, 255, 0.12);
 }
+
+/* ==========================================================
+   MRTF-Line Icon Glow
+   Subtle blue/orange forge aura
+   ========================================================== */
+
+.forge-offering-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+
+  /* Base glow */
+  filter:
+    drop-shadow(0 0 6px rgba(60, 160, 255, 0.35))
+    drop-shadow(0 0 8px rgba(255, 140, 40, 0.28));
+
+  animation: forgeIconPulse 4.5s ease-in-out infinite;
+}
+
+/* Slightly stronger on hover/focus */
+.forge-offering-card:hover .forge-offering-icon,
+.forge-offering-card:focus-within .forge-offering-icon {
+  filter:
+    drop-shadow(0 0 8px rgba(60, 170, 255, 0.55))
+    drop-shadow(0 0 12px rgba(255, 150, 50, 0.45));
+}
+
+/* Gentle breathing animation */
+@keyframes forgeIconPulse {
+  0% {
+    filter:
+      drop-shadow(0 0 5px rgba(60, 160, 255, 0.30))
+      drop-shadow(0 0 7px rgba(255, 140, 40, 0.25));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 9px rgba(60, 170, 255, 0.55))
+      drop-shadow(0 0 13px rgba(255, 150, 50, 0.45));
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 5px rgba(60, 160, 255, 0.30))
+      drop-shadow(0 0 7px rgba(255, 140, 40, 0.25));
+  }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .forge-offering-icon {
+    animation: none;
+  }
+}
