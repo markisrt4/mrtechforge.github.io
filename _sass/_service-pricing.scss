@@ -321,3 +321,9 @@
   font-size: 0.93rem;
   line-height: 1.45;
 }
+
+/* MRTF-Line offering title polish */
+.forge-offering-title {
+  color: var(--forge-silver, #cfd6df);
+  text-shadow: 0 0 10px rgba(90, 170, 255, 0.12);
+}
