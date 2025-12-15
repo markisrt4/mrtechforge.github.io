@@ -50,7 +50,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <li><strong>We set up your MRTF-Line number.</strong> You get a dedicated phone &amp; text line managed by M.R. TechForge.</li>
       <li>
         <strong>You pick your add-ons.</strong>
-        Choose from call menus, hours &amp; routing, voicemail+, text auto-replies,
+        Choose from call menus, hours &amp; routing, voicemail upgrades,
         <strong>Slack notifications</strong>, secure messaging, 2FA delivery, and dashboard access.
       </li>
       <li><strong>We customize everything to your organization.</strong> Greetings, menus, routing, and responses are built around how you actually work.</li>
@@ -72,25 +72,10 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
   {% if mrtf_line and mrtf_line.offerings %}
     <div class="forge-offerings-grid">
       {% for offering in mrtf_line.offerings %}
-        {% assign name = offering.name %}
 
-        {% assign icon = "📞" %}
-        {% case name %}
-          {% when "MRTF-Line Phone Line" %}{% assign icon = "📞" %}
-          {% when "Call Menu" %}{% assign icon = "📲" %}
-          {% when "Hours & Routing" %}{% assign icon = "⏰" %}
-          {% when "Voicemail+" %}{% assign icon = "🎙️" %}
-          {% when "Text Auto-Replies" %}{% assign icon = "💬" %}
-          {% when "Slack Notifications" %}{% assign icon = "🔔" %}
-          {% when "Secure Messaging (Signal)" %}{% assign icon = "🛡️" %}
-          {% when "Caller Shield" %}{% assign icon = "🚫" %}
-          {% when "2FA Delivery" %}{% assign icon = "✅" %}
-          {% when "Dashboard (Basic)" %}{% assign icon = "📊" %}
-          {% when "Dashboard (Multi-Admin)" %}{% assign icon = "👥" %}
-        {% endcase %}
-
+        {% assign icon = offering.icon | default: "📞" %}
         {% assign is_core = false %}
-        {% if name == "MRTF-Line Phone Line" %}
+        {% if offering.name == "MRTF-Line Phone Line" %}
           {% assign is_core = true %}
         {% endif %}
 
@@ -190,7 +175,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
       <div>
         <label>Phone Number (optional)</label>
-        <input type="text" name="area_code" placeholder="" />
+        <input type="text" name="area_code" />
       </div>
     </div>
 
@@ -220,8 +205,8 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       <option value="core_only">Core line only</option>
       <option value="ivr">Call Menu (IVR)</option>
       <option value="hours_routing">Hours & Routing</option>
-      <option value="signal">Secure Messaging (Signal)</option>
-      <option value="caller_shield">Caller Shield</option>
+      <option value="secure_sms">Secure SMS / Messaging</option>
+      <option value="slack">Slack Notifications</option>
       <option value="2fa">2FA Delivery</option>
       <option value="dashboard_basic">Dashboard (Basic)</option>
       <option value="dashboard_multi">Dashboard (Multi-Admin)</option>
