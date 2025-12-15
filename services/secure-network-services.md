@@ -82,6 +82,9 @@ description: "Secure, local-first network infrastructure for homes and small bus
     <div class="forge-bundle-grid">
       {% for p in sn.home_packages %}
         <article class="forge-bundle-card">
+        <h3 class="forge-bundle-title">
+  {{ p.title | default: p.name | default: p.label | default: "Package" }}
+        </h3>
           <div class="forge-bundle-tag">Home</div>
 
           <div class="forge-bundle-price">
@@ -145,6 +148,9 @@ description: "Secure, local-first network infrastructure for homes and small bus
     <div class="forge-bundle-grid">
       {% for p in sn.business_packages %}
         <article class="forge-bundle-card">
+          <h3 class="forge-bundle-title">
+  {{ p.title | default: p.name | default: p.label | default: "Package" }}
+          </h3>
           <div class="forge-bundle-tag">Business</div>
 
           <div class="forge-bundle-price">
