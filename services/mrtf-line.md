@@ -62,6 +62,32 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 <div class="services-divider"></div>
 
 <section class="service-section forge-service-pricing">
+  <h2 class="services-heading">Typical Cost</h2>
+
+  <div class="phone-services-card">
+    <p style="margin-top: 0;">
+      <strong>Typical monthly cost:</strong>
+      <span style="white-space: nowrap;">$20–$45 / month</span>
+      <span style="color: var(--forge-subtext);">based on common MRTF-Line configurations.</span>
+    </p>
+
+    <p style="margin-bottom: 0;">
+      <strong>Quick reassurance:</strong>
+      Setup covers consultation, configuration, testing, and documentation so your line behaves correctly
+      during business hours, after hours, and when changes happen.
+    </p>
+
+    {% if mrtf_line and mrtf_line.pricing_note %}
+      <p style="margin-top: 0.85rem; color: var(--forge-subtext); font-size: 0.95rem;">
+        {{ mrtf_line.pricing_note }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+<div class="services-divider"></div>
+
+<section class="service-section forge-service-pricing">
   <h2 class="services-heading">MRTF-Line Offerings &amp; Pricing</h2>
 
   <p>
@@ -75,7 +101,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
         {% assign icon = offering.icon | default: "📞" %}
         {% assign is_core = false %}
-        {% if offering.name == "MRTF-Line Phone Line" %}
+        {% if offering.core == true or offering.name == "MRTF-Line Phone Line" %}
           {% assign is_core = true %}
         {% endif %}
 
