@@ -1,204 +1,139 @@
 /* ==========================================================
-   M.R. TECHFORGE — FORGE BUTTON SYSTEM (v3.1)
-   Forged steel shell • Molten interior • Heat shimmer
+   M.R. TECHFORGE — BUTTONS (vNext)
+   Always-on Forge glow • Silver core • Blue/Orange flame motion. Version 4.0
    ========================================================== */
 
-/* ----------------------------------------------------------
-   BASE BUTTON
----------------------------------------------------------- */
-.btn {
+.btn,
+.btn-glow,
+.btn-forge {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 1rem 2rem;
-  border-radius: 999px;
-
-  font-family: "Orbitron", sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  text-decoration: none;
+  gap: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 14px;
+  padding: 0.85rem 1.05rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
   cursor: pointer;
+  user-select: none;
   position: relative;
   overflow: hidden;
-
-  border: 0;
-  z-index: 5;
-  pointer-events: auto;
-
-  transition:
-    transform 0.22s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
+  transform: translateZ(0);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, filter 180ms ease;
 }
 
-/* Optional icon support */
-.btn i,
-.btn svg {
-  margin-right: 0.45rem;
-  font-size: 1.1rem;
-}
-
-/* ----------------------------------------------------------
-   FORGE BUTTON — FORGED STEEL + MOLTEN CORE
----------------------------------------------------------- */
+/* Base "Forge" button: always alive */
 .btn-forge {
-  color: #ffffff;
-
-  /* forged steel outer shell */
-  background: linear-gradient(
-    90deg,
-    var(--forge-hotmetal-dark),
-    var(--forge-hotmetal),
-    var(--forge-accent),
-    var(--forge-accent-dark)
-  );
-  background-size: 260%;
-
-  outline: 1px solid rgba(255,255,255,0.08);
-
+  color: var(--forge-text);
+  background: rgba(6, 14, 28, 0.78);
   box-shadow:
-    0 0 14px rgba(var(--forge-accent-rgb), 0.45),
-    inset 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.40);
+    0 0 0 1px rgba(var(--forge-accent-rgb), 0.18) inset,
+    0 10px 30px rgba(0, 0, 0, 0.55),
+    0 0 24px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-/* molten interior layer */
+/* Animated flame layer */
 .btn-forge::before {
   content: "";
   position: absolute;
-  inset: 2px;                 /* creates forged rim */
-  border-radius: inherit;
-  z-index: 0;
-
+  inset: -2px;
   background:
-    radial-gradient(circle at 30% 35%, rgba(251,191,36,0.65), transparent 45%),
-    radial-gradient(circle at 65% 60%, rgba(245,158,11,0.55), transparent 48%),
-    radial-gradient(circle at 55% 25%, rgba(56,189,248,0.22), transparent 55%),
-    linear-gradient(180deg, rgba(12,12,14,0.65), rgba(0,0,0,0.75));
-
-  box-shadow:
-    inset 0 0 18px rgba(251,191,36,0.22),
-    inset 0 0 30px rgba(245,158,11,0.14);
-
-  filter: saturate(1.08);
+    radial-gradient(120% 140% at 10% 10%, rgba(255, 170, 40, 0.28) 0%, rgba(255, 170, 40, 0.0) 55%),
+    radial-gradient(120% 140% at 90% 20%, rgba(40, 170, 255, 0.26) 0%, rgba(40, 170, 255, 0.0) 52%),
+    linear-gradient(120deg,
+      rgba(210, 215, 222, 0.65) 0%,
+      rgba(210, 215, 222, 0.22) 18%,
+      rgba(40, 170, 255, 0.32) 42%,
+      rgba(255, 170, 40, 0.36) 60%,
+      rgba(210, 215, 222, 0.20) 82%,
+      rgba(210, 215, 222, 0.60) 100%
+    );
+  filter: blur(0px);
   opacity: 0.95;
-
-  animation: moltenDrift 6s ease-in-out infinite;
+  z-index: 0;
+  transform: translate3d(-18%, 0, 0);
+  animation: forgeFlameFlow 3.6s linear infinite;
 }
 
-/* heat shimmer sweep */
+/* Silver “core plate” to keep it readable */
 .btn-forge::after {
   content: "";
   position: absolute;
-  inset: -45% -60%;
-  z-index: 1;
-
+  inset: 2px;
+  border-radius: 12px;
   background: linear-gradient(
-    120deg,
-    transparent 38%,
-    rgba(255,255,255,0.10) 48%,
-    rgba(251,191,36,0.22) 52%,
-    transparent 62%
+    180deg,
+    rgba(230, 233, 238, 0.14) 0%,
+    rgba(230, 233, 238, 0.08) 40%,
+    rgba(0, 0, 0, 0.18) 100%
   );
-
-  transform: translateX(-20%) rotate(8deg);
-  opacity: 0.35;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.35s ease;
-
-  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 0 1px rgba(var(--forge-accent-rgb), 0.12);
+  z-index: 1;
 }
 
-/* keep text above all effects */
+/* Ensure text stays above flame layers */
 .btn-forge > * {
   position: relative;
   z-index: 2;
 }
 
-/* ----------------------------------------------------------
-   HOVER / ACTIVE STATES
----------------------------------------------------------- */
-.btn-forge:hover {
-  transform: translateY(-3px);
-  background-position: 100% 0;
-
+/* Hover / focus: tighter, hotter */
+.btn-forge:hover,
+.btn-forge:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(var(--forge-accent-rgb), 0.55);
   box-shadow:
-    0 0 32px rgba(var(--forge-accent-rgb), 0.78),
-    0 0 20px rgba(var(--forge-hotmetal-rgb), 0.45),
-    inset 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
-
-  filter: brightness(1.04);
-}
-
-.btn-forge:hover::after {
-  opacity: 0.6;
-  transform: translateX(8%) rotate(8deg);
+    0 0 0 1px rgba(var(--forge-accent-rgb), 0.25) inset,
+    0 12px 34px rgba(0, 0, 0, 0.65),
+    0 0 34px rgba(var(--forge-accent-rgb), 0.26);
+  filter: saturate(1.1);
 }
 
 .btn-forge:active {
-  transform: translateY(-1px) scale(0.985);
+  transform: translateY(0px) scale(0.99);
+  filter: saturate(1.0);
 }
 
-/* ----------------------------------------------------------
-   VARIANTS
----------------------------------------------------------- */
-
-/* Secondary forge (less intense glow) */
-.btn-forge-secondary {
-  box-shadow:
-    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.32),
-    inset 0 0 8px rgba(var(--forge-accent-rgb), 0.22);
+@keyframes forgeFlameFlow {
+  0%   { transform: translate3d(-22%, 0, 0) scale(1.03); filter: blur(0px); }
+  50%  { transform: translate3d( 18%, 0, 0) scale(1.03); filter: blur(0.2px); }
+  100% { transform: translate3d(-22%, 0, 0) scale(1.03); filter: blur(0px); }
 }
 
-/* Ghost / outline button */
-.btn-forge-ghost {
-  background: rgba(0,0,0,0.35);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  color: var(--forge-text);
-
-  box-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
+/* Alternate class used around the site */
+.btn-glow {
+  @extend .btn-forge;
 }
 
-.btn-forge-ghost::before,
-.btn-forge-ghost::after {
-  display: none;
+/* Full-width button helper (forms) */
+.btn-full {
+  width: 100%;
 }
 
-.btn-forge-ghost:hover {
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.35);
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-forge::before {
+    animation: none;
+    transform: none;
+  }
+  .btn,
+  .btn-glow,
+  .btn-forge {
+    transition: none;
+  }
 }
 
-/* ----------------------------------------------------------
-   MOLTEN CORE DRIFT
----------------------------------------------------------- */
-@keyframes moltenDrift {
-  0%   { transform: scale(1) translate(0, 0); }
-  40%  { transform: scale(1.02) translate(1px, -1px); }
-  70%  { transform: scale(1.015) translate(-1px, 1px); }
-  100% { transform: scale(1) translate(0, 0); }
-}
-
-/* ----------------------------------------------------------
-   RIPPLE EFFECT (NON-FORGE BUTTONS ONLY)
----------------------------------------------------------- */
-.btn:not(.btn-forge)::after {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: rgba(255,255,255,0.45);
-  border-radius: 50%;
-  opacity: 0;
-  transform: scale(1);
-  transition: transform 0.55s ease, opacity 0.55s ease;
-}
-
-.btn:not(.btn-forge):active::after {
-  opacity: 1;
-  transform: scale(85);
+/* Mobile: slightly tighter */
+@media (max-width: 520px) {
+  .btn,
+  .btn-glow,
+  .btn-forge {
+    padding: 0.82rem 0.95rem;
+    border-radius: 13px;
+  }
 }
