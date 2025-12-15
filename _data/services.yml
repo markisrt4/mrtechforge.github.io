@@ -117,14 +117,19 @@
       description: "Software-based recovery attempts + honest assessment (no cleanroom / miracle promises)."
 
 - id: secure-network-services
+  name: "MRTF Secure Network Services"
   title: "MRTF Secure Network Services"
   product_tag: "MRTF Secure Network by M.R. TechForge"
-  description: "Secure, private, local-first network infrastructure for homes and small businesses — built intentionally, documented clearly, and supported with optional ongoing care."
+  description: >
+    Secure, private, local-first network infrastructure for homes and small businesses —
+    built intentionally, documented clearly, and supported with optional ongoing care.
+    This is not a consumer VPN or a black-box router. It’s a network you can understand,
+    trust, and recover if something goes wrong.
 
   who_for:
     - "Home users who want security without guessing or breaking things."
     - "Remote workers who need safe access to files and systems while away."
-    - "Families who want network-wide protection for all devices."
+    - "Families who want safer internet defaults and practical parental controls."
     - "Small businesses without in-house IT staff."
     - "Anyone who wants local control instead of unnecessary cloud dependence."
 
@@ -142,64 +147,182 @@
 
   offerings:
     - name: "Network Setup & Protection"
-      description: "Secure router configuration with intentional design, network separation, DNS protection, and written network documentation."
-      pricing:
-        setup_label: "One-time"
-        monthly_label: null
       badge: "Core"
-
-    - name: "Secure Remote Access"
-      description: "Encrypted access into your network from anywhere without exposing services or relying on risky port forwarding."
+      description: >
+        Secure router configuration with intentional design, network separation, safer defaults,
+        and clear written documentation so you’re not guessing later.
       pricing:
         setup_label: "One-time"
         monthly_label: null
 
     - name: "Network-Wide Protection"
-      description: "Automatic ad, tracker, and malware blocking for every device on the network — no per-device software required."
+      description: >
+        Automatic blocking of many known malicious and unsafe sites for every device on the network —
+        without installing software on each device.
       pricing:
         setup_label: "Included with Setup"
         monthly_label: null
 
+    - name: "Secure Remote Access"
+      description: >
+        Encrypted access into your own network while you’re away — designed to avoid risky exposure
+        and fragile “just open a port” setups.
+      pricing:
+        setup_label: "One-time"
+        monthly_label: null
+
     - name: "Local Storage & Backup Design"
-      description: "Secure local storage and automated backups — designed, configured, and documented while you retain full control of your data."
+      description: >
+        Backup and recovery design with clear documentation. You keep full ownership and control
+        of your data — MRTF does not take custody of files or encryption keys.
       pricing:
         setup_label: "One-time"
         monthly_label: null
 
     - name: "Managed Network Care"
-      description: "Optional ongoing care: configuration backups, health checks, update guidance, and recovery assistance."
+      description: >
+        Optional ongoing care: configuration backups, periodic check-ins, update guidance,
+        change assistance, and recovery help when needed.
+        This is best-effort support (not a 24/7 emergency helpdesk unless explicitly agreed).
       pricing:
         setup_label: "Setup + Monthly"
         monthly_label: "Ongoing"
 
+  home_packages:
+    - name: "Home – Essential Network Protection"
+      tier: essential
+      billing: one-time
+      price_range: "$350 – $600"
+      scope_hint: "Typical home"
+      includes:
+        - "Secure router setup + network separation (home / guest / devices)"
+        - "Network-wide protection (blocking many known malicious sites)"
+        - "Baseline parental controls (content filtering + safer defaults)"
+        - "Written documentation"
+      expectations:
+        - "Designed to limit impact if something goes wrong"
+        - "No ongoing monitoring by default"
+        - "No data custody"
+
+    - name: "Home – Secure Access & Backup Ready"
+      tier: secure
+      billing: one-time
+      price_range: "$600 – $1,100"
+      includes:
+        - "Everything in Home Essential"
+        - "Secure remote access design"
+        - "Backup + recovery planning (no data custody)"
+        - "Recovery documentation"
+      ideal_for:
+        - "Remote workers"
+        - "Families with important data"
+
+    - name: "Home – Fully Managed Network Care"
+      tier: managed
+      billing: setup-plus-monthly
+      setup_range: "$400 – $800"
+      monthly_range: "$40 – $90"
+      includes:
+        - "Ongoing change assistance"
+        - "Configuration awareness + backup of critical settings"
+        - "Guidance during problems and recovery help"
+      expectations:
+        - "Best-effort support"
+        - "Not business-critical response guarantees"
+
+  business_packages:
+    - name: "Business – Essential Network Protection"
+      tier: essential
+      billing: one-time
+      price_range: "$600 – $1,200"
+      includes:
+        - "Secure router/gateway setup + stronger segmentation"
+        - "Network-wide protection for business devices"
+        - "Higher documentation standards"
+      notes:
+        - "Business environments tend to have more devices and tighter security assumptions."
+
+    - name: "Business – Secure Access & Backup Ready"
+      tier: secure
+      billing: one-time
+      price_range: "$1,200 – $2,500"
+      includes:
+        - "Everything in Business Essential"
+        - "Structured secure remote access for multiple users"
+        - "Documented recovery paths"
+        - "Backup + storage planning"
+      note: "This is infrastructure, not convenience."
+
+    - name: "Business – Fully Managed Network Care"
+      tier: managed
+      billing: setup-plus-monthly
+      setup_range: "$800 – $1,500"
+      monthly_range: "$100 – $250"
+      includes:
+        - "Change assistance and ongoing guidance"
+        - "Faster context because MRTF designed the baseline"
+        - "Best-effort recovery help when something breaks"
+      expectations:
+        - "Higher expectations than home environments"
+        - "Not advertised as 24/7 emergency support unless explicitly agreed"
+
   bundles:
     - tag: "Home"
-      price: "Essential Protection"
-      meta: "One-time setup"
+      price: "$350 – $600"
+      meta: "One-time"
       items:
         - "Network Setup & Protection"
         - "Network-Wide Protection"
-        - "Written Network Documentation"
-      description: "A secure, well-documented home network built correctly from day one."
+        - "Baseline parental controls"
+        - "Written documentation"
+      description: "A secure, well-documented home network with safer defaults for the whole household."
 
-    - tag: "Home / Remote"
-      price: "Secure Access & Backup Ready"
-      meta: "One-time setup"
+    - tag: "Home"
+      price: "$600 – $1,100"
+      meta: "One-time"
       items:
-        - "Everything in Essential"
+        - "Everything in Home Essential"
         - "Secure Remote Access"
         - "Local Storage & Backup Design"
-      description: "Ideal for remote workers and families with important data."
+        - "Recovery documentation"
+      description: "Ideal for remote workers and families who want a clear recovery plan."
+
+    - tag: "Home"
+      price: "Setup: $400 – $800"
+      meta: "Monthly: $40 – $90"
+      items:
+        - "Managed Network Care"
+        - "Change assistance"
+        - "Guided recovery support"
+      description: "Ongoing care for clients who want continued help keeping things stable."
 
     - tag: "Business"
-      price: "Fully Managed Network Care"
-      meta: "Setup + monthly care"
+      price: "$600 – $1,200"
+      meta: "One-time"
       items:
-        - "All core services"
-        - "Configuration backups"
-        - "Health checks & updates"
-        - "Recovery assistance"
-      description: "For businesses that want proactive care and minimal downtime risk."
+        - "Network Setup & Protection"
+        - "Network-Wide Protection"
+        - "Higher documentation standard"
+      description: "A secure baseline designed for small organizations."
+
+    - tag: "Business"
+      price: "$1,200 – $2,500"
+      meta: "One-time"
+      items:
+        - "Everything in Business Essential"
+        - "Secure Remote Access"
+        - "Local Storage & Backup Design"
+        - "Documented recovery paths"
+      description: "Structured access + recovery planning for real operations."
+
+    - tag: "Business"
+      price: "Setup: $800 – $1,500"
+      meta: "Monthly: $100 – $250"
+      items:
+        - "Managed Network Care"
+        - "Change assistance"
+        - "Best-effort recovery support"
+      description: "Ongoing care for businesses that want continuity and context."
 
   faq:
     - q: "Do I need a new router?"
@@ -215,7 +338,7 @@
       a: "Everything on your network — phones, laptops, tablets, smart TVs, and IoT devices — without installing software on each one."
 
     - q: "Do you provide 24/7 emergency support?"
-      a: "Not by default. Managed Network Care can include priority support expectations, but MRTF does not advertise 24/7 on-call service unless explicitly agreed."
+      a: "Not by default. Managed Network Care can include clearer response expectations, but MRTF does not advertise 24/7 on-call service unless explicitly agreed."
 
     - q: "What if I need new hardware like cables or storage drives?"
       a: "We can validate your existing equipment, recommend compatible hardware for you to purchase directly, or optionally supply hardware with clear itemization — no proprietary lock-in."
