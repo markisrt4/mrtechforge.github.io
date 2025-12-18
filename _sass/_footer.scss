@@ -1,6 +1,6 @@
 /* =========================================================
-   M.R. TechForge — Footer v4.2
-   Grid-based top layout • True-centered mobile • Clean spacing
+   M.R. TechForge — Footer v4.3
+   Stable grid layout • True mobile centering • Polished spacing
    ========================================================= */
 
 .forge-footer {
@@ -21,17 +21,17 @@
    Top area: brand + link columns
 ---------------------------------------------------------- */
 
-/* Use grid on desktop so alignment/spacing is predictable */
 .footer-top {
   display: grid;
-  grid-template-columns: minmax(260px, 340px) 1fr;
+  grid-template-columns: 320px 1fr;
   column-gap: 3rem;
-  row-gap: 1.25rem;
+  row-gap: 1.2rem;
   align-items: start;
   margin-bottom: 1.2rem;
 }
 
 /* Brand block */
+
 .footer-brand {
   text-align: left;
 }
@@ -39,53 +39,55 @@
 .footer-wordmark {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
   font-size: 1.05rem;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.3rem;
   color: var(--forge-accent);
 }
 
 .footer-mission {
-  font-size: 0.94rem;
+  font-size: 0.95rem;
   line-height: 1.5;
+  margin: 0 0 0.4rem;
   opacity: 0.9;
-  margin: 0 0 0.45rem;
 }
 
 .footer-cta-link {
   display: inline-block;
-  margin-top: 0.15rem;
   font-size: 0.88rem;
+  margin-top: 0.15rem;
 }
 
-/* Link columns */
+/* ---------------------------------------------------------
+   Footer columns
+---------------------------------------------------------- */
+
 .footer-columns {
   display: grid;
   grid-template-columns: repeat(3, minmax(160px, 1fr));
   gap: 2rem 2.4rem;
-  justify-items: start;
   align-items: start;
+  justify-items: start;
   text-align: left;
 }
 
-/* Column box */
 .footer-column {
   min-width: 0;
 }
 
-/* kill bullets hard */
-.forge-footer .footer-column ul,
-.forge-footer .footer-column li {
+/* Remove list bullets + padding hard */
+.footer-column ul,
+.footer-column li {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .footer-heading {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 0.35rem; /* IMPORTANT: remove default h3 top margin */
+  margin: 0 0 0.35rem;
   color: var(--forge-subtext);
 }
 
@@ -103,7 +105,7 @@
   gap: 1.5rem;
   align-items: center;
   justify-content: space-between;
-  margin: 0.8rem 0 0.4rem;
+  margin: 0.9rem 0 0.4rem;
   border-top: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   padding-top: 0.6rem;
 }
@@ -121,7 +123,7 @@
 }
 
 .footer-contact + .footer-contact {
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 .footer-contact-label {
@@ -133,6 +135,7 @@
 }
 
 /* Social block */
+
 .footer-social-block {
   flex: 0 1 260px;
   text-align: right;
@@ -140,17 +143,14 @@
 
 .footer-social {
   display: inline-flex;
-  justify-content: center;
   gap: 0.6rem;
   margin-top: 0.25rem;
 }
 
-.footer-social a,
-.footer-social a:visited {
+.footer-social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 999px;
@@ -171,43 +171,18 @@
 
 .footer-social a:hover {
   color: var(--forge-hotmetal);
+  transform: translateY(-2px);
   box-shadow:
     0 0 10px rgba(var(--forge-hotmetal-rgb), 0.9),
     0 0 0 1px rgba(var(--forge-hotmetal-rgb), 0.7);
-  transform: translateY(-2px);
 }
 
 /* ---------------------------------------------------------
-   Links — blue default, orange hover + visited (text)
----------------------------------------------------------- */
-
-.forge-footer a {
-  text-decoration: none;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.footer-columns a,
-.footer-cta-link,
-.footer-contact-block a {
-  color: var(--forge-accent);
-}
-
-.footer-columns a:hover,
-.footer-columns a:visited,
-.footer-cta-link:hover,
-.footer-cta-link:visited,
-.footer-contact-block a:hover,
-.footer-contact-block a:visited {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
-}
-
-/* ---------------------------------------------------------
-   Terminal wrapper — centered box, left-aligned text
+   Terminal block
 ---------------------------------------------------------- */
 
 .footer-terminal-wrapper {
-  margin: 0.5rem 0 0.5rem;
+  margin: 0.5rem 0 0.6rem;
 }
 
 .footer-terminal {
@@ -218,8 +193,7 @@
     inset 0 0 6px rgba(77, 184, 255, 0.16);
 }
 
-.footer-terminal pre,
-.footer-terminal code {
+.footer-terminal pre {
   text-align: left;
 }
 
@@ -240,101 +214,92 @@
 }
 
 .footer-meta {
-  margin: 0.18rem 0 0;
+  margin: 0.2rem 0 0;
   font-size: 0.76rem;
   opacity: 0.7;
 }
 
 .footer-llm-callout {
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
   font-size: 0.78rem;
   opacity: 0.78;
 }
 
+/* ---------------------------------------------------------
+   Link colors
+---------------------------------------------------------- */
+
+.forge-footer a {
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footer-columns a,
+.footer-cta-link,
+.footer-contact-block a,
 .footer-llm-callout a {
   color: var(--forge-accent);
 }
 
-.footer-llm-callout a:hover,
-.footer-llm-callout a:visited {
+.footer-columns a:hover,
+.footer-cta-link:hover,
+.footer-contact-block a:hover,
+.footer-llm-callout a:hover {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
 }
 
 /* ---------------------------------------------------------
-   Responsive tweaks
+   Responsive
 ---------------------------------------------------------- */
 
-/* Tablet: 2 columns for link groups */
 @media (max-width: 900px) {
   .footer-top {
     grid-template-columns: 1fr;
-    row-gap: 1.1rem;
+    row-gap: 1rem;
   }
 
   .footer-columns {
     grid-template-columns: repeat(2, minmax(160px, 1fr));
-    justify-items: start;
   }
 }
 
-/* Mobile: stack + truly centered + no phantom gap before "Company" */
 @media (max-width: 640px) {
-
-  .forge-footer {
-    margin-top: 2.2rem;
-    padding-top: 1.6rem;
-  }
-
-  .footer-inner {
-    padding: 0 1.1rem;
-  }
-
-  /* tighter and more consistent spacing than the old flex/gap */
-  .footer-top {
-    grid-template-columns: 1fr;
-    row-gap: 0.95rem; /* THIS is the “gap before Company” fix */
-    margin-bottom: 0.95rem;
-  }
 
   .footer-brand {
     text-align: center;
+    margin-bottom: 0;
   }
 
-  /* Make columns center perfectly, not “center-ish” */
+  .footer-mission {
+    margin-bottom: 0.35rem;
+  }
+
   .footer-columns {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
     justify-items: center;
     text-align: center;
+    gap: 0.85rem;
   }
 
   .footer-column {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* prevents left-lean on some devices */
+    align-items: center;
   }
 
-  /* stack contact + social with no giant vertical space */
   .footer-contact-social {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 0.6rem;
-    margin-top: 0.6rem;
-    padding-top: 0.5rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
-    flex: 0 0 auto;
     width: 100%;
     text-align: center;
-  }
-
-  .footer-social {
-    margin-top: 0.25rem;
   }
 
   .footer-terminal {
