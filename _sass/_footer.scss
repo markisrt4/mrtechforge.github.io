@@ -1,6 +1,6 @@
 /* =========================================================
-   M.R. TechForge — Footer v4.3
-   Stable grid layout • True mobile centering • Polished spacing
+   M.R. TechForge — Footer v4.4
+   Fix mobile flex "space-between" gap • Stable grid layout
    ========================================================= */
 
 .forge-footer {
@@ -104,7 +104,7 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* NOTE: overridden on mobile */
   margin: 0.9rem 0 0.4rem;
   border-top: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   padding-top: 0.6rem;
@@ -289,17 +289,28 @@
     align-items: center;
   }
 
+  /* ✅ KEY FIX:
+     When flex-direction becomes column, space-between creates a huge vertical gap.
+     Override it on mobile. */
   .footer-contact-social {
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     text-align: center;
+    justify-content: center;   /* <-- THIS removes the canyon */
     gap: 0.6rem;
+    margin-top: 0.6rem;
+    padding-top: 0.55rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
     width: 100%;
     text-align: center;
+  }
+
+  .footer-social {
+    margin-top: 0.25rem;
   }
 
   .footer-terminal {
