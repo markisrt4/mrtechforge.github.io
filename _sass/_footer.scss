@@ -1,6 +1,6 @@
 /* =========================================================
-   M.R. TechForge — Footer v4.4
-   Fix mobile flex "space-between" gap • Stable grid layout
+   M.R. TechForge — Footer v4.5
+   Fix mobile contact/social canyon • Stable grid layout
    ========================================================= */
 
 .forge-footer {
@@ -87,7 +87,7 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.35rem; /* kill default H3 top margin */
   color: var(--forge-subtext);
 }
 
@@ -104,7 +104,7 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
-  justify-content: space-between; /* NOTE: overridden on mobile */
+  justify-content: space-between; /* desktop intent */
   margin: 0.9rem 0 0.4rem;
   border-top: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   padding-top: 0.6rem;
@@ -147,10 +147,12 @@
   margin-top: 0.25rem;
 }
 
-.footer-social a {
+.footer-social a,
+.footer-social a:visited {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 999px;
@@ -193,7 +195,8 @@
     inset 0 0 6px rgba(77, 184, 255, 0.16);
 }
 
-.footer-terminal pre {
+.footer-terminal pre,
+.footer-terminal code {
   text-align: left;
 }
 
@@ -289,22 +292,25 @@
     align-items: center;
   }
 
-  /* ✅ KEY FIX:
-     When flex-direction becomes column, space-between creates a huge vertical gap.
-     Override it on mobile. */
+  /* ✅ THE FIX (forced):
+     space-between + column creates a giant vertical canyon.
+     We override it *hard* on mobile. */
   .footer-contact-social {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
     text-align: center;
-    justify-content: center;   /* <-- THIS removes the canyon */
+
+    justify-content: flex-start !important; /* kill canyon */
     gap: 0.6rem;
+
     margin-top: 0.6rem;
     padding-top: 0.55rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
+    flex: 0 0 auto;
     width: 100%;
     text-align: center;
   }
