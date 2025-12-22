@@ -145,58 +145,6 @@
   line-height: 1.6;
   color: #26e0ff;
   text-align: left;
-
-  position: relative;
-  transition: opacity 0.45s ease, filter 0.45s ease;
-}
-
-/* =========================================================
-   MODE TEXT FX (JS-driven)
-   ========================================================= */
-
-@keyframes forgeCursorBlink {
-  0%, 48% { opacity: 1; }
-  49%, 100% { opacity: 0; }
-}
-
-.forge-terminal-screen code.is-typing::after {
-  content: "▌";
-  display: inline-block;
-  margin-left: 0.12rem;
-  animation: forgeCursorBlink 0.9s steps(1) infinite;
-  opacity: 1;
-}
-
-.forge-terminal-screen code.is-vanishing {
-  opacity: 0;
-  filter: blur(2px);
-}
-
-.forge-terminal-screen code.is-erasing {
-  text-shadow:
-    0 0 10px rgba(38, 224, 255, 0.35),
-    0 0 18px rgba(38, 224, 255, 0.18);
-}
-
-@keyframes forgePoofBurst {
-  0%   { opacity: 0; transform: scale(0.7); filter: blur(0px); }
-  22%  { opacity: 0.65; }
-  100% { opacity: 0; transform: scale(1.35); filter: blur(2px); }
-}
-
-.forge-terminal-screen code.is-poofing::before {
-  content: "";
-  position: absolute;
-  left: -14px;
-  top: -10px;
-  right: -14px;
-  bottom: -10px;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 28% 35%, rgba(255,255,255,0.18), transparent 45%),
-    radial-gradient(circle at 68% 55%, rgba(245,184,65,0.18), transparent 52%),
-    radial-gradient(circle at 50% 50%, rgba(10,109,255,0.22), transparent 60%);
-  animation: forgePoofBurst 0.65s ease-out forwards;
 }
 
 /* CRT overlay base */
@@ -245,27 +193,18 @@
 }
 
 .forge-terminal-panel.crt-radar .forge-terminal-screen code {
+  /* Very dim baseline (radar lights it up under the sweep) */
   color: #80ffb5;
+  opacity: 0.055;
+  filter: saturate(0.85) brightness(0.75);
 }
 
-/* =========================================================
-   RADAR ILLUMINATION (CSS-driven)
-   Duplicate the text in a bright layer, then mask it with a sweeping wedge.
-   ========================================================= */
-
-@property --radar-angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
-}
-
-@keyframes forgeRadarAngle {
-  from { --radar-angle: 0deg; }
-  to   { --radar-angle: 360deg; }
-}
-
+/* Radar illumination
+   - Base text is extremely dim.
+   - A bright duplicate is masked by a sweeping conic-gradient wedge.
+   - The wedge has a long tail (afterglow) so the text stays lit longer. */
 .forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate {
-  opacity: 0.18;
+  position: relative;
 }
 
 .forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate::after {
@@ -273,31 +212,38 @@
   position: absolute;
   inset: 0;
   white-space: pre-wrap;
-  color: #caffdf;
-  text-shadow:
-    0 0 10px rgba(0, 255, 160, 0.35),
-    0 0 18px rgba(0, 255, 160, 0.18);
+  color: #d7ffe8;
+  opacity: 1;
+  pointer-events: none;
 
-  /* Mask: only show the bright layer within a moving sweep wedge */
+  /* Make it *really* pop when lit */
+  text-shadow:
+    0 0 10px rgba(0, 255, 170, 0.55),
+    0 0 18px rgba(0, 255, 170, 0.28),
+    0 0 28px rgba(0, 255, 170, 0.18);
+
+  /* The mask IS the radar sweep.
+     Wider, with a longer tail to increase illuminated duration. */
   -webkit-mask-image: conic-gradient(
-    from var(--radar-angle),
-    rgba(0,0,0,0) 0deg,
-    rgba(0,0,0,1) 2deg,
-    rgba(0,0,0,1) 26deg,
-    rgba(0,0,0,0) 40deg,
-    rgba(0,0,0,0) 360deg
+    from 0deg,
+    rgba(255,255,255,1) 0deg,
+    rgba(255,255,255,0.95) 40deg,
+    rgba(255,255,255,0.55) 90deg,
+    rgba(255,255,255,0.22) 135deg,
+    rgba(255,255,255,0) 170deg,
+    rgba(255,255,255,0) 360deg
   );
   mask-image: conic-gradient(
-    from var(--radar-angle),
-    rgba(0,0,0,0) 0deg,
-    rgba(0,0,0,1) 2deg,
-    rgba(0,0,0,1) 26deg,
-    rgba(0,0,0,0) 40deg,
-    rgba(0,0,0,0) 360deg
+    from 0deg,
+    rgba(255,255,255,1) 0deg,
+    rgba(255,255,255,0.95) 40deg,
+    rgba(255,255,255,0.55) 90deg,
+    rgba(255,255,255,0.22) 135deg,
+    rgba(255,255,255,0) 170deg,
+    rgba(255,255,255,0) 360deg
   );
 
-  animation: forgeRadarAngle 4s linear infinite;
-  pointer-events: none;
+  animation: radarSweepText 6.5s linear infinite;
 }
 
 .forge-terminal-panel.crt-radar::after {
@@ -305,21 +251,59 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
+  /* Wider sweep + long tail to match the illuminated text */
   background: conic-gradient(
     from 0deg,
-    rgba(0, 255, 128, 0.9) 0deg,
-    rgba(0, 255, 128, 0) 50deg,
-    rgba(0, 255, 128, 0) 360deg
+    rgba(0, 255, 170, 0.95) 0deg,
+    rgba(0, 255, 170, 0.65) 45deg,
+    rgba(0, 255, 170, 0.22) 120deg,
+    rgba(0, 255, 170, 0.0) 175deg,
+    rgba(0, 255, 170, 0.0) 360deg
   );
   mix-blend-mode: screen;
   pointer-events: none;
-  opacity: 0.28;
-  animation: radarSweep 4s linear infinite;
+  opacity: 0.26;
+  animation: radarSweep 6.5s linear infinite;
 }
 
 @keyframes radarSweep {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+@keyframes radarSweepText {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   MODERN / FUTURISTIC MODE (optional)
+   ========================================================= */
+
+.forge-terminal-panel.crt-modern {
+  background: radial-gradient(circle at top, rgba(10,109,255,0.18) 0%, rgba(0,0,0,1) 65%);
+  border: 1px solid rgba(10, 109, 255, 0.35);
+}
+
+.forge-terminal-panel.crt-modern .forge-terminal-screen {
+  background: rgba(5, 12, 26, 0.72);
+  border: 1px solid rgba(120, 232, 255, 0.45);
+  box-shadow:
+    0 0 18px rgba(10, 109, 255, 0.35),
+    inset 0 0 28px rgba(0, 0, 0, 0.75);
+}
+
+.forge-terminal-panel.crt-modern .forge-terminal-screen::before {
+  opacity: 0.22;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(245,184,65,0.15), transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(10,109,255,0.22), transparent 60%),
+    linear-gradient(90deg, rgba(120,232,255,0.12), rgba(0,0,0,0) 55%);
+}
+
+.forge-terminal-panel.crt-modern .forge-terminal-screen code {
+  color: #bfeaff;
+  text-shadow: 0 0 10px rgba(120, 232, 255, 0.22);
 }
 
 .forge-terminal-panel.crt-clean .forge-terminal-screen::before {

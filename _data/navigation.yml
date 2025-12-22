@@ -14,8 +14,8 @@ main:
         url: "/services/documentation-product-testing/#documentation"
       - title: "Product Testing"
         url: "/services/documentation-product-testing/#product-testing"
-      - title: "MRTF-Line Communication"
-        url: "/services/mrtf-line/"
+      - title: "Forge Managed Phone & Text"
+        url: "/services/forge-managed-phone-text/"
       - title: "MRTF-Secure Network" 
         url: "/services/secure-network-services/"
 

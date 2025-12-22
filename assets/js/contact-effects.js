@@ -1,11 +1,12 @@
 /* ===========================================================
    CONTACT PAGE INTERACTIVITY
-   - CRT Mode Switching (Scanline / Grid / Radar / Clean)
+   - CRT Mode Switching (Scanline / Grid / Radar / Clean / Modern)
    - Copy Email Template Button
    - Animated Text Effects per Mode
-     - Scanline/Grid: Type-in loop, then vanish after 10s, restart
-     - Radar: Text illuminates only under the sweep (CSS-driven)
-     - Clean: Text erases, then "poof" burst
+     - Scanline/Grid: Type-in loop, hold 10s, vanish, restart
+     - Radar: Text illuminates only under the sweep (CSS mask)
+     - Clean: Text erases, then "poof" burst, restart
+     - Modern: Subtle futuristic glass look (no text gimmicks)
    =========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,26 +19,35 @@ document.addEventListener("DOMContentLoaded", () => {
     "[data-terminal] .forge-terminal-screen code"
   );
 
-  // Store original terminal text (one-time capture)
+  // One-time capture of original terminal text (preserves newlines)
   terminalCodes.forEach((codeEl) => {
     if (!codeEl.dataset.originalText) {
-      // innerText preserves newlines nicely for terminals
       codeEl.dataset.originalText = codeEl.innerText;
     }
   });
 
-  // Track running animation loops so we can stop them on mode changes
+  // Track running loops so we can stop them cleanly on mode changes
   const controllers = new Map(); // codeEl -> { stopped: boolean, timeouts: number[] }
 
   const stopController = (codeEl) => {
     const ctrl = controllers.get(codeEl);
-    if (!ctrl) return;
+    if (!ctrl) {
+      // still clear radar attrs/classes
+      codeEl.classList.remove(
+        "is-typing",
+        "is-vanishing",
+        "is-erasing",
+        "is-poofing",
+        "radar-illuminate"
+      );
+      codeEl.removeAttribute("data-text");
+      return;
+    }
 
     ctrl.stopped = true;
     ctrl.timeouts.forEach((t) => window.clearTimeout(t));
     controllers.delete(codeEl);
 
-    // Clean up classes/attrs
     codeEl.classList.remove(
       "is-typing",
       "is-vanishing",
@@ -55,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setText = (codeEl, text) => {
-    // Use textContent to avoid HTML parsing
     codeEl.textContent = text;
   };
 
@@ -88,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ctrl.stopped) return;
 
         if (i >= full.length) {
-          // Finished typing
+          // finished typing
           codeEl.classList.remove("is-typing");
 
-          // Hold for a bit, then vanish, then restart
+          // hold, vanish, restart
           schedule(ctrl, () => {
             if (ctrl.stopped) return;
 
@@ -146,10 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
           if (ctrl.stopped) return;
 
           if (i <= 0) {
-            // Done erasing -> poof
             codeEl.classList.remove("is-erasing");
             codeEl.classList.add("is-poofing");
-
             setText(codeEl, "");
 
             schedule(ctrl, () => {
@@ -161,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
           }
 
-          // Magical erase: delete 1-3 chars per tick for a more organic feel
+          // delete 1-3 chars per tick for an organic "magic erase"
           const chop = Math.random() < 0.22 ? 3 : Math.random() < 0.35 ? 2 : 1;
           i = Math.max(0, i - chop);
           setText(codeEl, full.slice(0, i));
@@ -184,36 +191,47 @@ document.addEventListener("DOMContentLoaded", () => {
       if (mode === "scanline" || mode === "grid") {
         startTypingLoop(codeEl);
       } else if (mode === "radar") {
-        // CSS handles illumination; we just provide the duplicate text via data-text
+        // CSS does the illumination sweep. We just provide the duplicated text.
         codeEl.classList.add("radar-illuminate");
         codeEl.setAttribute("data-text", codeEl.dataset.originalText || "");
       } else if (mode === "clean") {
         startCleanEraseLoop(codeEl);
+      } else {
+        // modern (or any future non-effect mode)
+        // keep original text with no looping effects
       }
     });
   };
 
   const setMode = (mode) => {
     terminalPanels.forEach((panel) => {
-      panel.classList.remove("crt-scanline", "crt-grid", "crt-radar", "crt-clean");
+      panel.classList.remove(
+        "crt-scanline",
+        "crt-grid",
+        "crt-radar",
+        "crt-clean",
+        "crt-modern"
+      );
       panel.classList.add(`crt-${mode}`);
     });
 
     applyModeEffects(mode);
   };
 
-  // Wire up buttons
+  // button behavior
   modeButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       modeButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
-      setMode(btn.dataset.mode);
+
+      const selected = btn.dataset.mode; // scanline/grid/radar/clean/modern
+      setMode(selected);
     });
   });
 
-  // Apply effects on initial load (based on the active button)
-  const initiallyActive = document.querySelector(".terminal-mode-btn.is-active");
-  setMode((initiallyActive && initiallyActive.dataset.mode) || "scanline");
+  // initialize to whichever button is marked active (fallback scanline)
+  const initialBtn = document.querySelector(".terminal-mode-btn.is-active");
+  setMode((initialBtn && initialBtn.dataset.mode) || "scanline");
 
   /* ---------------------------------------------
      COPY EMAIL TEMPLATE
@@ -228,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         await navigator.clipboard.writeText(text);
 
-        // Temporary glow feedback
         copyBtn.classList.add("copied");
         copyBtn.textContent = "Copied!";
 
