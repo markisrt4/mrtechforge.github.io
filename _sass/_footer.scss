@@ -1,6 +1,6 @@
 /* =========================================================
-   M.R. TechForge — Footer v4.1
-   Clean desktop layout • Tight spacing • Mobile-friendly
+   M.R. TechForge — Footer v4.5
+   Fix mobile contact/social canyon • Stable grid layout
    ========================================================= */
 
 .forge-footer {
@@ -22,73 +22,72 @@
 ---------------------------------------------------------- */
 
 .footer-top {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  column-gap: 3rem;
+  row-gap: 1.2rem;
+  align-items: start;
   margin-bottom: 1.2rem;
 }
 
 /* Brand block */
 
 .footer-brand {
-  flex: 1 1 260px;
-  min-width: 260px;
-  max-width: 340px;
   text-align: left;
 }
 
 .footer-wordmark {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
   font-size: 1.05rem;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.3rem;
   color: var(--forge-accent);
 }
 
 .footer-mission {
-  font-size: 0.94rem;
+  font-size: 0.95rem;
   line-height: 1.5;
+  margin: 0 0 0.4rem;
   opacity: 0.9;
-  margin: 0 0 0.45rem;
 }
 
 .footer-cta-link {
   display: inline-block;
-  margin-top: 0.1rem;
   font-size: 0.88rem;
+  margin-top: 0.15rem;
 }
 
-/* Link columns */
+/* ---------------------------------------------------------
+   Footer columns
+---------------------------------------------------------- */
 
 .footer-columns {
-  display: flex;
-  flex: 2 1 420px;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 2rem 2.4rem;
+  align-items: start;
+  justify-items: start;
   text-align: left;
 }
 
 .footer-column {
-  min-width: 150px;
+  min-width: 0;
 }
 
-/* kill bullets hard */
-.forge-footer .footer-column ul,
-.forge-footer .footer-column li {
+/* Remove list bullets + padding hard */
+.footer-column ul,
+.footer-column li {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .footer-heading {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.35rem; /* kill default H3 top margin */
   color: var(--forge-subtext);
 }
 
@@ -105,8 +104,8 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
-  justify-content: space-between;
-  margin: 0.8rem 0 0.4rem;
+  justify-content: space-between; /* desktop intent */
+  margin: 0.9rem 0 0.4rem;
   border-top: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   padding-top: 0.6rem;
 }
@@ -124,7 +123,7 @@
 }
 
 .footer-contact + .footer-contact {
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 .footer-contact-label {
@@ -144,7 +143,6 @@
 
 .footer-social {
   display: inline-flex;
-  justify-content: center;
   gap: 0.6rem;
   margin-top: 0.25rem;
 }
@@ -159,7 +157,7 @@
   height: 2.2rem;
   border-radius: 999px;
 
-  color: var(--forge-accent); /* blue icons */
+  color: var(--forge-accent);
   background: radial-gradient(circle at 30% 20%, #163a70 0%, #050711 70%);
   box-shadow:
     0 0 6px rgba(var(--forge-accent-rgb), 0.55),
@@ -175,44 +173,18 @@
 
 .footer-social a:hover {
   color: var(--forge-hotmetal);
+  transform: translateY(-2px);
   box-shadow:
     0 0 10px rgba(var(--forge-hotmetal-rgb), 0.9),
     0 0 0 1px rgba(var(--forge-hotmetal-rgb), 0.7);
-  transform: translateY(-2px);
 }
 
 /* ---------------------------------------------------------
-   Links — blue default, orange hover + visited (text)
----------------------------------------------------------- */
-
-.forge-footer a {
-  text-decoration: none;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-/* text links that should get orange visited/hover */
-.footer-columns a,
-.footer-cta-link,
-.footer-contact-block a {
-  color: var(--forge-accent);
-}
-
-.footer-columns a:hover,
-.footer-columns a:visited,
-.footer-cta-link:hover,
-.footer-cta-link:visited,
-.footer-contact-block a:hover,
-.footer-contact-block a:visited {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
-}
-
-/* ---------------------------------------------------------
-   Terminal wrapper — centered box, left-aligned text
+   Terminal block
 ---------------------------------------------------------- */
 
 .footer-terminal-wrapper {
-  margin: 0.5rem 0 0.5rem;
+  margin: 0.5rem 0 0.6rem;
 }
 
 .footer-terminal {
@@ -223,7 +195,6 @@
     inset 0 0 6px rgba(77, 184, 255, 0.16);
 }
 
-/* force footer terminal text left-aligned */
 .footer-terminal pre,
 .footer-terminal code {
   text-align: left;
@@ -246,65 +217,100 @@
 }
 
 .footer-meta {
-  margin: 0.18rem 0 0;
+  margin: 0.2rem 0 0;
   font-size: 0.76rem;
   opacity: 0.7;
 }
 
+.footer-llm-callout {
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  opacity: 0.78;
+}
+
 /* ---------------------------------------------------------
-   Responsive tweaks
+   Link colors
 ---------------------------------------------------------- */
 
-/* Tablet & down: soften layout slightly */
+.forge-footer a {
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footer-columns a,
+.footer-cta-link,
+.footer-contact-block a,
+.footer-llm-callout a {
+  color: var(--forge-accent);
+}
+
+.footer-columns a:hover,
+.footer-cta-link:hover,
+.footer-contact-block a:hover,
+.footer-llm-callout a:hover {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.7);
+}
+
+/* ---------------------------------------------------------
+   Responsive
+---------------------------------------------------------- */
+
 @media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+
   .footer-columns {
-    justify-content: flex-start;
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
   }
 }
 
-/* Mobile: stack + center, kill flex-basis height */
 @media (max-width: 640px) {
 
-  .forge-footer {
-    margin-top: 2.2rem;
-    padding-top: 1.6rem;
-  }
-
-  .footer-inner {
-    padding: 0 1.1rem;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    gap: 1.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .footer-brand,
-  .footer-columns,
-  .footer-column {
+  .footer-brand {
     text-align: center;
+    margin-bottom: 0;
+  }
+
+  .footer-mission {
+    margin-bottom: 0.35rem;
   }
 
   .footer-columns {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .footer-column {
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    gap: 1rem;
     align-items: center;
   }
 
-  /* stack contact + social with no giant vertical space */
+  /* ✅ THE FIX (forced):
+     space-between + column creates a giant vertical canyon.
+     We override it *hard* on mobile. */
   .footer-contact-social {
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     text-align: center;
-    gap: 0.6rem;          /* tighter vertical spacing */
+
+    justify-content: flex-start !important; /* kill canyon */
+    gap: 0.6rem;
+
     margin-top: 0.6rem;
-    padding-top: 0.5rem;
+    padding-top: 0.55rem;
   }
 
   .footer-contact-block,
   .footer-social-block {
-    flex: 0 0 auto;       /* remove 260px flex-basis height */
+    flex: 0 0 auto;
     width: 100%;
     text-align: center;
   }
