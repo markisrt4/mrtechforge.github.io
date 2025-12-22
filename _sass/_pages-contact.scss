@@ -145,6 +145,58 @@
   line-height: 1.6;
   color: #26e0ff;
   text-align: left;
+
+  position: relative;
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+/* =========================================================
+   MODE TEXT FX (JS-driven)
+   ========================================================= */
+
+@keyframes forgeCursorBlink {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+
+.forge-terminal-screen code.is-typing::after {
+  content: "▌";
+  display: inline-block;
+  margin-left: 0.12rem;
+  animation: forgeCursorBlink 0.9s steps(1) infinite;
+  opacity: 1;
+}
+
+.forge-terminal-screen code.is-vanishing {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.forge-terminal-screen code.is-erasing {
+  text-shadow:
+    0 0 10px rgba(38, 224, 255, 0.35),
+    0 0 18px rgba(38, 224, 255, 0.18);
+}
+
+@keyframes forgePoofBurst {
+  0%   { opacity: 0; transform: scale(0.7); filter: blur(0px); }
+  22%  { opacity: 0.65; }
+  100% { opacity: 0; transform: scale(1.35); filter: blur(2px); }
+}
+
+.forge-terminal-screen code.is-poofing::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: -10px;
+  right: -14px;
+  bottom: -10px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 28% 35%, rgba(255,255,255,0.18), transparent 45%),
+    radial-gradient(circle at 68% 55%, rgba(245,184,65,0.18), transparent 52%),
+    radial-gradient(circle at 50% 50%, rgba(10,109,255,0.22), transparent 60%);
+  animation: forgePoofBurst 0.65s ease-out forwards;
 }
 
 /* CRT overlay base */
@@ -194,6 +246,58 @@
 
 .forge-terminal-panel.crt-radar .forge-terminal-screen code {
   color: #80ffb5;
+}
+
+/* =========================================================
+   RADAR ILLUMINATION (CSS-driven)
+   Duplicate the text in a bright layer, then mask it with a sweeping wedge.
+   ========================================================= */
+
+@property --radar-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes forgeRadarAngle {
+  from { --radar-angle: 0deg; }
+  to   { --radar-angle: 360deg; }
+}
+
+.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate {
+  opacity: 0.18;
+}
+
+.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  white-space: pre-wrap;
+  color: #caffdf;
+  text-shadow:
+    0 0 10px rgba(0, 255, 160, 0.35),
+    0 0 18px rgba(0, 255, 160, 0.18);
+
+  /* Mask: only show the bright layer within a moving sweep wedge */
+  -webkit-mask-image: conic-gradient(
+    from var(--radar-angle),
+    rgba(0,0,0,0) 0deg,
+    rgba(0,0,0,1) 2deg,
+    rgba(0,0,0,1) 26deg,
+    rgba(0,0,0,0) 40deg,
+    rgba(0,0,0,0) 360deg
+  );
+  mask-image: conic-gradient(
+    from var(--radar-angle),
+    rgba(0,0,0,0) 0deg,
+    rgba(0,0,0,1) 2deg,
+    rgba(0,0,0,1) 26deg,
+    rgba(0,0,0,0) 40deg,
+    rgba(0,0,0,0) 360deg
+  );
+
+  animation: forgeRadarAngle 4s linear infinite;
+  pointer-events: none;
 }
 
 .forge-terminal-panel.crt-radar::after {

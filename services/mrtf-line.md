@@ -8,26 +8,34 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 {% assign mrtf_line = site.data.services | where: "id", "mrtf-line" | first %}
 
 <div class="service-hero">
-  <h1>MRTF-Line Communication Services</h1>
-  <div class="service-product-tag">MRTF-Line by M.R. TechForge</div>
+  <h1>M.R. TechForge Communication Line</h1>
+  <div class="service-product-tag">
+    Communication Line by M.R. TechForge
+    <span style="opacity:0.75;">(currently labeled “MRTF-Line”)</span>
+  </div>
 
   {% if mrtf_line %}
-    <p>{{ mrtf_line.description }}</p>
+    <!-- Option B (refined): no “cloud” wording -->
+    <p>
+      <strong>A phone number that works the way you do.</strong>
+      This is a managed phone and messaging number designed for real people — not call centers.
+      Instead of tying communication to a single device, your number lives on a secure managed platform and
+      can ring phones, send texts, deliver voicemails, or trigger notifications based on your needs.
+    </p>
   {% else %}
     <p>
-      MRTF-Line gives you a dedicated, managed phone &amp; messaging line for your home,
-      ministry, library, or small organization — without exposing your personal number
-      or wrestling with complex phone systems.
+      A managed phone &amp; messaging line that can route calls, send texts, deliver voicemails,
+      and trigger notifications — without exposing personal numbers or wrestling with a complex phone system.
     </p>
   {% endif %}
 
-  <p><strong>Start with a single MRTF-Line phone number, then add only the features you need.</strong></p>
+  <p><strong>Start with one number, then add only the features you need.</strong></p>
 </div>
 
 <div class="services-divider"></div>
 
 <section class="service-section">
-  <h2 class="services-heading">Who MRTF-Line Is For</h2>
+  <h2 class="services-heading">Who This Is For</h2>
 
   <div class="phone-services-card">
     <ul>
@@ -43,18 +51,18 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 <div class="services-divider"></div>
 
 <section class="service-section">
-  <h2 class="services-heading">How MRTF-Line Works</h2>
+  <h2 class="services-heading">How It Works</h2>
 
   <div class="phone-services-card">
     <ol class="how-it-works-steps">
-      <li><strong>We set up your MRTF-Line number.</strong> You get a dedicated phone &amp; text line managed by M.R. TechForge.</li>
+      <li><strong>We set up your dedicated number.</strong> You get a managed phone &amp; text line configured by M.R. TechForge.</li>
       <li>
         <strong>You pick your add-ons.</strong>
-        Choose from call menus, hours &amp; routing, voicemail upgrades,
-        <strong>Slack notifications</strong>, secure messaging, 2FA delivery, and dashboard access.
+        Choose from call menus, routing, voicemail upgrades, after-hours behavior,
+        <strong>Slack notifications</strong>, secure messaging, 2FA delivery, and dashboards.
       </li>
-      <li><strong>We customize everything to your organization.</strong> Greetings, menus, routing, and responses are built around how you actually work.</li>
-      <li><strong>You focus on people, not phone systems.</strong> When you need changes, MRTF handles them — or you can use the dashboard if you prefer.</li>
+      <li><strong>We customize the behavior.</strong> Greetings, menus, routing rules, and responses are built around how you actually work.</li>
+      <li><strong>You focus on people, not phone systems.</strong> When you need changes, MRTF handles them — or you can use a dashboard if you prefer.</li>
     </ol>
   </div>
 </section>
@@ -68,7 +76,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
     <p style="margin-top: 0;">
       <strong>Typical monthly cost:</strong>
       <span style="white-space: nowrap;">$20–$45 / month</span>
-      <span style="color: var(--forge-subtext);">based on common MRTF-Line configurations.</span>
+      <span style="color: var(--forge-subtext);">based on common configurations.</span>
     </p>
 
     <p style="margin-bottom: 0;">
@@ -77,8 +85,14 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       during business hours, after hours, and when changes happen.
     </p>
 
-    {% if mrtf_line and mrtf_line.pricing_note %}
+    {% if mrtf_line and mrtf_line.minimum_setup %}
       <p style="margin-top: 0.85rem; color: var(--forge-subtext); font-size: 0.95rem;">
+        <strong>Minimum setup:</strong> {{ mrtf_line.minimum_setup }}
+      </p>
+    {% endif %}
+
+    {% if mrtf_line and mrtf_line.pricing_note %}
+      <p style="margin-top: 0.6rem; color: var(--forge-subtext); font-size: 0.95rem;">
         {{ mrtf_line.pricing_note }}
       </p>
     {% endif %}
@@ -88,10 +102,10 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 <div class="services-divider"></div>
 
 <section class="service-section forge-service-pricing">
-  <h2 class="services-heading">MRTF-Line Offerings &amp; Pricing</h2>
+  <h2 class="services-heading">Offerings &amp; Pricing</h2>
 
   <p>
-    Every MRTF-Line setup starts with the <strong>MRTF-Line Phone Line</strong>. From there, you can
+    Every setup starts with the <strong>Phone Line</strong>. From there, you can
     mix and match add-ons based on your needs and budget.
   </p>
 
@@ -144,17 +158,91 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
 
 <div class="services-divider"></div>
 
+<!-- FAQ using your _faq.scss accordion structure: input then label then answer -->
 <section class="service-section">
-  <h2 class="services-heading">Download the MRTF-Line Overview (PDF)</h2>
+  <h2 class="faq-heading">FAQ</h2>
+  <p class="faq-subtitle">Simple answers to common questions.</p>
+
+  <div class="faq-item">
+    <input type="checkbox" id="faq-comm-1">
+    <label class="faq-question" for="faq-comm-1">Is this a physical phone line?</label>
+    <div class="faq-answer">
+      <p>
+        It’s a <strong>managed phone number</strong>, not a handset. You can use it with mobile apps,
+        desk phones, or routing rules depending on what fits your setup.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="faq-comm-2">
+    <label class="faq-question" for="faq-comm-2">Can I make outgoing calls from this number?</label>
+    <div class="faq-answer">
+      <p>
+        Yes — outbound calling can be enabled so calls show your managed number as the caller ID.
+        We’ll configure the safest approach for your use case.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="faq-comm-3">
+    <label class="faq-question" for="faq-comm-3">What is a “softphone” app?</label>
+    <div class="faq-answer">
+      <p>
+        A <strong>softphone</strong> is an app on your phone or computer that lets you make and receive calls
+        using your managed number — like having a second line inside an app.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="faq-comm-4">
+    <label class="faq-question" for="faq-comm-4">What is a SIP desk phone?</label>
+    <div class="faq-answer">
+      <p>
+        A <strong>SIP phone</strong> is a desk phone that uses your internet connection instead of a traditional phone jack.
+        It looks and feels like a normal office phone — just more modern under the hood.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="faq-comm-5">
+    <label class="faq-question" for="faq-comm-5">What is an ATA adapter?</label>
+    <div class="faq-answer">
+      <p>
+        An <strong>ATA adapter</strong> is a small device that lets a traditional phone (old-school handset)
+        work with an internet-based phone number.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="faq-comm-6">
+    <label class="faq-question" for="faq-comm-6">Do I need special hardware to start?</label>
+    <div class="faq-answer">
+      <p>
+        No. Most clients start with routing rules and/or a softphone app.
+        If you want a desk phone, we’ll recommend a simple, compatible option — no proprietary lock-in.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="services-divider"></div>
+
+<section class="service-section">
+  <h2 class="services-heading">Download the Overview (PDF)</h2>
 
   <p>
     Want something you can share with staff, boards, or leadership teams?
-    Download a one-page MRTF-Line overview:
+    Download a one-page overview:
   </p>
 
   <p>
     <a href="/assets/docs/MRTF-Line_Marketing_Overview.pdf" class="btn btn-forge">
-      Download MRTF-Line Marketing Overview (PDF)
+      Download Communication Line Overview (PDF)
     </a>
   </p>
 </section>
@@ -165,19 +253,18 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
   <h2 class="services-heading">Ready to Talk About Your Line?</h2>
 
   <p>
-    Most clients start with a single <strong>MRTF-Line Phone Line</strong> and one or two add-ons,
-    then evolve over time as their needs change.
+    Most clients start with one number and one or two add-ons, then evolve over time as needs change.
   </p>
 
   <p>
-    If you're curious whether MRTF-Line would be a good fit for your home, ministry,
+    If you're curious whether this would be a good fit for your home, ministry,
     library, or small organization, reach out and we’ll design a setup that makes
     sense for your size, budget, and comfort level.
   </p>
 </section>
 
 <section class="forge-form-card">
-  <h2 class="services-heading">Request an MRTF-Line Setup Quote</h2>
+  <h2 class="services-heading">Request a Setup Quote</h2>
 
   <form
     name="mrtf-line"
@@ -200,7 +287,7 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
       </div>
 
       <div>
-        <label>Phone Number (optional)</label>
+        <label>Preferred Area Code (optional)</label>
         <input type="text" name="area_code" />
       </div>
     </div>
@@ -228,11 +315,14 @@ description: "A modular, managed phone and messaging line powered by M.R. TechFo
     <label>Interested Features</label>
     <select name="features">
       <option value="not_sure">Not sure yet</option>
-      <option value="core_only">Core line only</option>
+      <option value="core_only">Phone Line (Core)</option>
       <option value="ivr">Call Menu (IVR)</option>
-      <option value="hours_routing">Hours & Routing</option>
-      <option value="secure_sms">Secure SMS / Messaging</option>
+      <option value="routing">Call Forwarding (Smart Routing)</option>
+      <option value="voicemail">Voicemail Upgrade</option>
+      <option value="after_hours">After-Hours / Emergency Routing</option>
+      <option value="spam_filter">Spam &amp; Robocall Filtering</option>
       <option value="slack">Slack Notifications</option>
+      <option value="secure_sms">Secure SMS / Messaging</option>
       <option value="2fa">2FA Delivery</option>
       <option value="dashboard_basic">Dashboard (Basic)</option>
       <option value="dashboard_multi">Dashboard (Multi-Admin)</option>

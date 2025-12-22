@@ -77,37 +77,37 @@
   description: Practical, friendly technology help for individuals, families, and small organizations. From websites and e-commerce to online safety, remote support, and hands-on coaching — M.R. TechForge helps you build, secure, and maintain your digital life with confidence.
   offerings:
     - name: Website Setup / Redesign
-      price: 0
-      unit: quote
+      price: $250 + $50hr
+      unit: Initial setup + hourly
       description: New site setup or refresh (structure, styling, performance basics, and deployment guidance).
     - name: E-Commerce Integration
-      price: 0
-      unit: quote
+      price: $50 / Call for quote
+      unit: Per service / Custom Cart
       description: Help integrating payments, storefronts, product pages, and order flows (platform-dependent).
     - name: Remote Support Session
-      price: 0
+      price: $50
       unit: hour
       description: Troubleshooting, setup help, tune-ups, installs, and configuration guidance (remote).
     - name: Digital Security Seminar
-      price: 0
-      unit: quote
+      price: Call for quote / scheduling
+      unit: 1-4 hour sessions
       description: "Plain-English security training for groups: passwords, 2FA, scams, backups, privacy basics."
     - name: Private Security Coaching
-      price: 0
-      unit: hour
+      price: Call for 
+      unit: 1-4 hour sessions
       description: One-on-one guidance to improve your security posture and build better habits.
     - name: "Parent Coaching: Kids Online"
-      price: 0
-      unit: session
+      price: Call for quote / scheduling
+      unit: 1-4 hour sessions
       description: Device + account safety, app/privacy settings, boundaries, and practical monitoring options.
     - name: Coding 101 for Kids
-      price: 0
-      unit: class
+      price: Call for quote / scheduling
+      unit: 1-2 hour classes
       description: Beginner-friendly coding sessions for kids/teens (curriculum and pacing tailored to age).
-    - name: File Recovery Assessment
-      price: 0
-      unit: quote
-      description: Software-based recovery attempts + honest assessment (no cleanroom / miracle promises).
+    - name: File/Backup Recovery Assessment
+      price: $50
+      unit: hr
+      description: Software-based recovery attempts + honest assessment (no miracle promises).
 
 - id: secure-network-services
   name: MRTF Secure Network Services
@@ -159,7 +159,7 @@
         setup_label: Setup + Monthly
         monthly_label: Ongoing
   home_packages:
-    - name: Home – Essential Network Protection
+    - name: Home – Essential Network Protection & Safety
       tier: essential
       billing: one-time
       price_range: $350 – $600
@@ -173,7 +173,7 @@
         - Designed to limit impact if something goes wrong
         - No ongoing monitoring by default
         - No data custody
-    - name: Home – Secure Access & Backup Ready
+    - name: Home – Remote Access & Private Cloud
       tier: secure
       billing: one-time
       price_range: $600 – $1,100
@@ -207,7 +207,7 @@
         - Network-wide protection for business devices
         - Higher documentation standards
       notes: Business environments tend to have more devices and tighter security assumptions.
-    - name: Business – Secure Access & Backup Ready
+    - name: Business – Remote Access & Private Cloud
       tier: secure
       billing: one-time
       price_range: $1,200 – $2,500
