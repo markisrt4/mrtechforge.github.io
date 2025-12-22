@@ -8,6 +8,8 @@ main:
   - title: "Services"
     url: "/services/"
     children:
+      - title: "Tech Services"
+        url: "/services/tech-services/"
       - title: "Documentation"
         url: "/services/documentation-product-testing/#documentation"
       - title: "Product Testing"
