@@ -1,83 +1,217 @@
 /* ==========================================================
-   M.R. TECHFORGE — CLASSIC FORGE BUTTONS (v2.1 Polished)
-   Large • Rounded • Gradient • Glow • Animated Hover Sweep
+   M.R. TECHFORGE — BUTTONS (v5.1)
+   Forge Silver core • Ultra-slow blue/orange drift
+   Premium, calm, always-on
    ========================================================== */
 
-.btn {
+/* ----------------------------------------------------------
+   Base button reset
+---------------------------------------------------------- */
+
+.btn,
+.btn-glow,
+.btn-forge {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
 
-  padding: 1rem 2rem;
-  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 
-  font-family: "Orbitron", sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  text-decoration: none;
-  cursor: pointer;
+  padding: 0.95rem 1.15rem;
+  border-radius: 14px;
 
   position: relative;
-  overflow: hidden;
-  z-index: 5;
+  isolation: isolate;
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  pointer-events: auto;
+  user-select: none;
+  white-space: nowrap;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 260ms ease,
+    filter 260ms ease,
+    opacity 260ms ease;
 }
 
-/* Forge Glow */
+.btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* ----------------------------------------------------------
+   Forge CORE-style Button
+---------------------------------------------------------- */
+
 .btn-forge {
-  background: linear-gradient(
-    90deg,
-    var(--forge-hotmetal-dark),
-    var(--forge-hotmetal),
-    var(--forge-accent),
-    var(--forge-accent-dark)
-  );
+  --forge-blue: var(--forge-accent, #2f7dff);
+  --forge-orange: var(--forge-hotmetal, #ff8a2a);
+  --forge-silver: #cfd4dd;
 
-  background-size: 260%;
-  color: white;
+  color: rgba(14, 20, 30, 0.92);
 
+  /* Forge Silver core */
+  background:
+    radial-gradient(140% 160% at 35% 20%,
+      rgba(255,255,255,0.92) 0%,
+      rgba(235,240,248,0.96) 38%,
+      rgba(205,212,224,0.98) 100%);
+
+  border: 1px solid rgba(140, 150, 170, 0.35);
+
+  /* Calm, silver-forward glow */
   box-shadow:
-    0 0 14px rgba(var(--forge-accent-rgb), 0.45),
-    inset 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45);
+    0 12px 28px rgba(0, 0, 0, 0.55),
+    0 0 14px rgba(207, 212, 221, 0.55),
+    0 0 18px rgba(47, 125, 255, 0.12),
+    0 0 18px rgba(255, 138, 42, 0.10);
 }
 
-.btn-forge:hover {
-  transform: translateY(-3px);
-  background-position: 100% 0;
+/* ----------------------------------------------------------
+   Animated rim (very slow, silver-dominant)
+---------------------------------------------------------- */
 
-  box-shadow:
-    0 0 26px rgba(var(--forge-accent-rgb), 0.88),
-    inset 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.75);
-}
-
-/* Optional icon support */
-.btn i,
-.btn svg {
-  margin-right: 0.45rem;
-  font-size: 1.1rem;
-}
-
-/* Ripple effect */
-.btn::after {
+.btn-forge::before {
   content: "";
   position: absolute;
-  width: 1px;
-  height: 1px;
+  inset: -2px;
+  border-radius: inherit;
+  z-index: -2;
 
-  background: rgba(255,255,255,0.45);
-  border-radius: 50%;
-  opacity: 0;
+  background: linear-gradient(
+    140deg,
+    rgba(207,212,221,0.95),
+    rgba(207,212,221,0.75),
+    rgba(47,125,255,0.65),
+    rgba(207,212,221,0.85),
+    rgba(255,138,42,0.65),
+    rgba(207,212,221,0.95)
+  );
 
-  transform: scale(1);
-  transition: transform 0.55s ease, opacity 0.55s ease;
+  background-size: 400% 400%;
+  animation: forgeSilverDrift 22s linear infinite;
+
+  opacity: 0.95;
+  filter: blur(0.2px);
 }
 
-.btn:active::after {
-  opacity: 1;
-  transform: scale(85);
+/* Inner edge depth (keeps badge feel) */
+.btn-forge::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  z-index: -1;
+
+  background:
+    radial-gradient(140% 140% at 40% 20%,
+      rgba(255,255,255,0.10) 0%,
+      rgba(0,0,0,0.10) 55%,
+      rgba(0,0,0,0.22) 100%);
+
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------
+   Hover / focus — slightly more energy, still calm
+---------------------------------------------------------- */
+
+.btn-forge:hover,
+.btn-forge:focus-visible {
+  transform: translateY(-1px);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.62),
+    0 0 22px rgba(207, 212, 221, 0.75),
+    0 0 26px rgba(47, 125, 255, 0.20),
+    0 0 26px rgba(255, 138, 42, 0.18);
+}
+
+.btn-forge:focus-visible {
+  outline: none;
+}
+
+/* Disabled */
+.btn-forge[disabled],
+.btn-forge.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  filter: grayscale(0.2);
+}
+
+/* ----------------------------------------------------------
+   Secondary glow button (optional)
+---------------------------------------------------------- */
+
+.btn-glow {
+  color: rgba(235, 240, 255, 0.95);
+  background: rgba(10, 16, 30, 0.72);
+  border: 1px solid rgba(47, 125, 255, 0.28);
+
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(47, 125, 255, 0.16);
+
+  position: relative;
+}
+
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  z-index: -1;
+
+  background: linear-gradient(
+    140deg,
+    rgba(207,212,221,0.55),
+    rgba(47,125,255,0.55),
+    rgba(255,138,42,0.55),
+    rgba(207,212,221,0.55)
+  );
+
+  background-size: 300% 300%;
+  animation: forgeSilverDrift 26s linear infinite;
+  opacity: 0.35;
+  filter: blur(2px);
+}
+
+/* ----------------------------------------------------------
+   Animations
+---------------------------------------------------------- */
+
+@keyframes forgeSilverDrift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----------------------------------------------------------
+   Reduced motion
+---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-forge::before,
+  .btn-glow::before {
+    animation: none;
+  }
+}
+
+/* ----------------------------------------------------------
+   Mobile tightening
+---------------------------------------------------------- */
+
+@media (max-width: 520px) {
+  .btn,
+  .btn-glow,
+  .btn-forge {
+    padding: 0.82rem 0.95rem;
+    border-radius: 13px;
+  }
 }

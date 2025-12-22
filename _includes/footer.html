@@ -1,46 +1,114 @@
 <footer class="forge-footer">
   <div class="footer-inner">
 
-    <!-- Terminal Block -->
-    <div class="forge-terminal crt-clean footer-terminal">
-      <pre>
+    <!-- Top area: brand + link columns -->
+    <div class="footer-top">
+
+      <!-- Brand / mission block -->
+      <div class="footer-brand">
+        <div class="footer-wordmark">M.R. TechForge</div>
+        <p class="footer-mission">
+          Practical, relationship-focused tech consulting for homes,
+          churches, libraries, and small businesses.
+        </p>
+        <a href="/about/" class="footer-cta-link">
+          Learn more about the mission →
+        </a>
+      </div>
+
+      <!-- Link columns -->
+      <div class="footer-columns">
+
+        <div class="footer-column">
+          <h3 class="footer-heading">Company</h3>
+          <ul>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/guides/">Guides Overview</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-heading">Resources</h3>
+          <ul>
+            <li><a href="/guides/digital-security/">Digital Security</a></li>
+            <li><a href="/guides/google-breakup/">Why Break Up with Google?</a></li>
+            <li><a href="/documentation/">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-heading">Legal</h3>
+          <ul>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/security/">Security & Integrity (coming soon)</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact + social row -->
+    <div class="footer-contact-social">
+
+      <div class="footer-contact-block">
+        <div class="footer-contact">
+          <span class="footer-contact-label">Email</span>
+          <a href="mailto:mark@mrtechforge.com">mark@mrtechforge.com</a>
+        </div>
+        <div class="footer-contact">
+          <span class="footer-contact-label">Location</span>
+          <span>Michigan, USA · Remote-friendly</span>
+        </div>
+      </div>
+
+      <div class="footer-social-block">
+        <span class="footer-contact-label">Connect</span>
+        <div class="footer-social">
+          <a href="https://github.com/mrtechforge" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/mark-g-russell" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://youtube.com/" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://facebook.com/" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Signature terminal block -->
+    <div class="footer-terminal-wrapper">
+      <div class="forge-terminal crt-clean footer-terminal">
+        <pre>
 <span class="term-prompt">mark@mrtechforge.com:~$</span> <span class="term-command">sudo forge-audit --verify</span>
 <span class="term-comment"># Systems checked. Integrity intact.</span>
 
 <span class="term-prompt">mark@mrtechforge.com:~$</span> <span class="term-command">sudo integrity-check --daily</span>
 <span class="term-comment"># Trust is built one clean system at a time.</span>
 <span class="cursor"></span>
-      </pre>
+        </pre>
+      </div>
     </div>
 
-    <!-- Footer Tagline -->
-    <p class="footer-tagline">
-      Secure Systems. Practical Guidance. Built on Integrity.
-    </p>
-
-    <!-- Social Icons -->
-    <div class="footer-social">
-      <a href="https://github.com/mrtechforge" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/mark-g-russell" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://youtube.com/" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://facebook.com/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <!-- Bottom meta -->
+    <div class="footer-bottom">
+    <div class="footer-llm-callout">
+    Powered by <a href="/mark-llm/">Mark AI LLM v1.0</a> — a human-trained intelligence model.
+     </div>
+      <p class="footer-copy">
+        © {{ site.time | date: "%Y" }} M.R. TechForge. All rights reserved.
+      </p>
+      <p class="footer-meta">
+        Site version v1.0 · Last updated {{ site.time | date: "%Y-%m-%d" }}
+      </p>
     </div>
-
-    <!-- Footer Links -->
-    <div class="footer-links">
-      <a href="/privacy/">Privacy</a>
-      <span class="divider">|</span>
-      <a href="/terms/">Terms</a>
-      <span class="divider">|</span>
-      <a href="/contact/">Contact</a>
-      <span class="divider">|</span>
-      <a href="/documentation/">Docs</a>
-    </div>
-
-    <!-- Copyright -->
-    <p class="footer-copy">
-      © {{ site.time | date: "%Y" }} M.R. TechForge
-    </p>
 
   </div>
 </footer>

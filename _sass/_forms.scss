@@ -1,29 +1,164 @@
 /* ==========================================================
-   M.R. TECHFORGE — FORMS (v1.0)
-   Contact page form
+   M.R. TECHFORGE — FORMS (v2.0)
+   Global form styling + Netlify forms + clean responsive grids
    ========================================================== */
 
 .forge-form {
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 
+/* Inputs */
 .forge-form input,
-.forge-form textarea {
+.forge-form textarea,
+.forge-form select {
   width: 100%;
-  padding: 0.75rem;
-  margin: 0.6rem 0;
-
-  background: rgba(0,0,0,0.4);
+  padding: 0.8rem 0.85rem;
+  margin: 0.55rem 0;
+  background: rgba(0,0,0,0.45);
   border: 1px solid rgba(var(--forge-accent-rgb),0.35);
-  border-radius: 8px;
-
+  border-radius: 10px;
   color: var(--forge-text);
   font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.12s ease;
+}
+
+.forge-form input::placeholder,
+.forge-form textarea::placeholder {
+  color: rgba(200, 215, 240, 0.55);
 }
 
 .forge-form input:focus,
-.forge-form textarea:focus {
+.forge-form textarea:focus,
+.forge-form select:focus {
   border-color: var(--forge-hotmetal);
   outline: none;
-  box-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb),0.4);
+  box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb),0.35);
+}
+
+/* Labels */
+.forge-form label {
+  display: block;
+  margin-top: 0.85rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.92rem;
+  color: rgba(210, 225, 255, 0.92);
+}
+
+/* Optional wrapper card */
+.forge-form-card {
+  margin: 2rem 0;
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-radius: 16px;
+  background: radial-gradient(circle at top, rgba(59,130,246,.14), rgba(0,0,0,.88));
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow:
+    0 0 18px rgba(0,0,0,0.55),
+    0 0 26px rgba(var(--forge-accent-rgb), 0.18);
+}
+
+.forge-form-card h2,
+.forge-form-card h3 {
+  margin-top: 0;
+}
+
+/* Responsive 2-col grid used by your form */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.1rem;
+}
+
+@media (max-width: 760px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .forge-form-card { padding: 1.2rem 1.1rem; }
+}
+
+/* Make select look consistent across browsers */
+.forge-form select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(245,184,65,0.95) 50%),
+    linear-gradient(135deg, rgba(245,184,65,0.95) 50%, transparent 50%),
+    linear-gradient(to right, rgba(255,255,255,0.10), rgba(255,255,255,0.10));
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px),
+    calc(100% - 2.4rem) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 1.8rem;
+  background-repeat: no-repeat;
+  padding-right: 2.8rem;
+}
+
+/* Thanks page helpers */
+.forge-thanks-hero {
+  padding: 2rem 1.8rem;
+}
+
+.forge-thanks-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--forge-accent);
+  margin-bottom: 0.5rem;
+  opacity: 0.95;
+}
+
+.forge-thanks-lead {
+  max-width: 900px;
+  color: var(--forge-subtext);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.forge-thanks-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.forge-thanks-chip {
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.92rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.28);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(230, 240, 255, 0.92);
+}
+
+.forge-thanks-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================
+   Mobile form sizing improvements (v2.1 patch)
+   ========================================================== */
+
+.forge-form-card {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.forge-form,
+.forge-form * {
+  box-sizing: border-box;
+}
+
+@media (max-width: 520px) {
+  .forge-form-card {
+    padding: 1.05rem 0.95rem;
+    border-radius: 14px;
+  }
+
+  .forge-form input,
+  .forge-form textarea,
+  .forge-form select {
+    padding: 0.7rem 0.75rem;
+  }
 }

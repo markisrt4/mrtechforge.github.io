@@ -1,14 +1,42 @@
+# ===========================================================
+# NETLIFY CONFIG — M.R. TechForge (Optimized for Jekyll)
+# ===========================================================
+
 [build]
-  command = "bundle exec jekyll build"
   publish = "_site"
+  command = "bundle exec jekyll build"
 
 [build.environment]
   JEKYLL_ENV = "production"
   RUBY_VERSION = "3.2.2"
 
-# Optional: make sure deploy previews build *all* branches
-[context.deploy-preview]
-  command = "bundle exec jekyll build"
+# -----------------------------------------------------------
+# PRETTY URL Redirection (force remove .html)
+# -----------------------------------------------------------
+[[redirects]]
+  from = "/*.html"
+  to = "/:splat/"
+  status = 301
+  force = true
 
-[context.branch-deploy]
-  command = "bundle exec jekyll build"
+# -----------------------------------------------------------
+# SECURITY HEADERS (super important)
+# -----------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' data: https:"
+
+# -----------------------------------------------------------
+# FORCE HTTPS (Cloudflare does it too but redundancy is good)
+# -----------------------------------------------------------
+[[redirects]]
+  from = "http://*"
+  to = "https://mrtechforge.com/:splat"
+  status = 301
+  force = true
