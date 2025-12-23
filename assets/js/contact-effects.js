@@ -1,139 +1,352 @@
-/* ==========================================================
-   CONTACT TERMINAL EFFECTS — M.R. TechForge
-   Modes: scanline, grid, radar, modern, future
-   Clean = transition (erase + poof)
-   ========================================================== */
+/* ===========================================================
+   CONTACT PAGE INTERACTIVITY (M.R. TechForge) — CLEAN BUILD
+   ===========================================================
+   Modes:
+     - scanline, grid: typing loop (type -> hold 10s -> vanish -> repeat)
+     - radar: text very dim by default; bright layer revealed by sweeping wedge (CSS)
+     - modern, future: start fresh typing on entry (and on every click)
 
-document.addEventListener("DOMContentLoaded", () => {
-  const terminals = document.querySelectorAll("[data-terminal]");
-  const modeButtons = document.querySelectorAll(".terminal-mode-btn");
+   Special button:
+     - clean: one-time erase + poof, then return to previous visual mode
 
-  let activeMode = "scanline";
-  let previousMode = "scanline";
-  let typingTimers = [];
+   Other:
+     - Copy template button
+   =========================================================== */
 
-  /* ------------------------------
-     Utilities
-  ------------------------------ */
+document.addEventListener('DOMContentLoaded', () => {
+  const modeButtons = Array.from(document.querySelectorAll('.terminal-mode-btn'));
+  const terminalPanels = Array.from(document.querySelectorAll('[data-terminal]'));
+  const terminalCodes = Array.from(
+    document.querySelectorAll('[data-terminal] .forge-terminal-screen code')
+  );
 
-  function clearTimers() {
-    typingTimers.forEach(t => clearTimeout(t));
-    typingTimers = [];
-  }
-
-  function resetTerminal(term) {
-    const original = term.getAttribute("data-original");
-    term.innerHTML = "";
-    term.dataset.text = original;
-  }
-
-  function storeOriginalText() {
-    terminals.forEach(term => {
-      if (!term.dataset.original) {
-        term.dataset.original = term.textContent.trim();
-      }
-    });
-  }
-
-  /* ------------------------------
-     Typing Effect
-  ------------------------------ */
-
-  function typeText(term, delay = 25) {
-    const text = term.dataset.original;
-    let index = 0;
-    term.innerHTML = "";
-
-    function tick() {
-      if (index < text.length) {
-        term.innerHTML += text[index++];
-        typingTimers.push(setTimeout(tick, delay));
-      }
+  // Capture original text once
+  terminalCodes.forEach((codeEl) => {
+    if (!codeEl.dataset.originalText) {
+      codeEl.dataset.originalText = codeEl.innerText;
     }
-    tick();
-  }
+  });
 
-  function typeAll() {
-    clearTimers();
-    terminals.forEach(term => {
-      resetTerminal(term);
-      typeText(term);
+  // Track timeouts so we can stop loops on mode change
+  const controllers = new Map(); // codeEl -> { stopped: boolean, timeouts: number[] }
+
+  const schedule = (ctrl, fn, ms) => {
+    const id = window.setTimeout(fn, ms);
+    ctrl.timeouts.push(id);
+    return id;
+  };
+
+  const stopController = (codeEl) => {
+    const ctrl = controllers.get(codeEl);
+    if (ctrl) {
+      ctrl.stopped = true;
+      ctrl.timeouts.forEach((t) => window.clearTimeout(t));
+      controllers.delete(codeEl);
+    }
+
+    const screen = codeEl.closest('.forge-terminal-screen');
+    if (screen) screen.classList.remove('clean-poof-burst');
+
+    codeEl.classList.remove(
+      'is-typing',
+      'is-vanishing',
+      'is-erasing',
+      'is-poofing',
+      'radar-illuminate'
+    );
+    codeEl.removeAttribute('data-text');
+  };
+
+  const stopAll = () => terminalCodes.forEach(stopController);
+
+  const setText = (codeEl, text) => {
+    codeEl.textContent = text;
+  };
+
+  const restoreOriginal = (codeEl) => {
+    setText(codeEl, codeEl.dataset.originalText || '');
+  };
+
+  /* -----------------------------------------------------------
+     Typing loop (scanline/grid)
+  ----------------------------------------------------------- */
+
+  const startTypingLoop = (codeEl, opts = {}) => {
+    const typeDelayMs = Number.isFinite(opts.typeDelayMs) ? opts.typeDelayMs : 18;
+    const holdMs = Number.isFinite(opts.holdMs) ? opts.holdMs : 10_000;
+    const vanishMs = Number.isFinite(opts.vanishMs) ? opts.vanishMs : 520;
+    const restartGapMs = Number.isFinite(opts.restartGapMs) ? opts.restartGapMs : 260;
+
+    stopController(codeEl);
+    const ctrl = { stopped: false, timeouts: [] };
+    controllers.set(codeEl, ctrl);
+
+    const full = codeEl.dataset.originalText || '';
+
+    const typeOnce = () => {
+      if (ctrl.stopped) return;
+
+      codeEl.classList.add('is-typing');
+      codeEl.classList.remove('is-vanishing');
+      setText(codeEl, '');
+
+      let i = 0;
+      const step = () => {
+        if (ctrl.stopped) return;
+
+        if (i >= full.length) {
+          codeEl.classList.remove('is-typing');
+
+          schedule(ctrl, () => {
+            if (ctrl.stopped) return;
+            codeEl.classList.add('is-vanishing');
+
+            schedule(ctrl, () => {
+              if (ctrl.stopped) return;
+              setText(codeEl, '');
+              codeEl.classList.remove('is-vanishing');
+              schedule(ctrl, typeOnce, restartGapMs);
+            }, vanishMs);
+          }, holdMs);
+
+          return;
+        }
+
+        setText(codeEl, full.slice(0, i + 1));
+        i += 1;
+        schedule(ctrl, step, typeDelayMs);
+      };
+
+      schedule(ctrl, step, Math.max(0, typeDelayMs));
+    };
+
+    typeOnce();
+  };
+
+  /* -----------------------------------------------------------
+     Typing once (modern/future)
+  ----------------------------------------------------------- */
+
+  const startTypingOnce = (codeEl, opts = {}) => {
+    const typeDelayMs = Number.isFinite(opts.typeDelayMs) ? opts.typeDelayMs : 14;
+
+    stopController(codeEl);
+    const ctrl = { stopped: false, timeouts: [] };
+    controllers.set(codeEl, ctrl);
+
+    const full = codeEl.dataset.originalText || '';
+    codeEl.classList.add('is-typing');
+    setText(codeEl, '');
+
+    let i = 0;
+    const step = () => {
+      if (ctrl.stopped) return;
+
+      if (i >= full.length) {
+        codeEl.classList.remove('is-typing');
+        schedule(ctrl, () => stopController(codeEl), 250);
+        return;
+      }
+
+      setText(codeEl, full.slice(0, i + 1));
+      i += 1;
+      schedule(ctrl, step, typeDelayMs);
+    };
+
+    schedule(ctrl, step, Math.max(0, typeDelayMs));
+  };
+
+  /* -----------------------------------------------------------
+     Radar setup (CSS does sweep; we provide bright duplicate text)
+  ----------------------------------------------------------- */
+
+  const enableRadarText = () => {
+    stopAll();
+    terminalCodes.forEach((codeEl) => {
+      restoreOriginal(codeEl);
+      codeEl.setAttribute('data-text', codeEl.dataset.originalText || '');
+      codeEl.classList.add('radar-illuminate');
     });
-  }
+  };
 
-  /* ------------------------------
-     Clean Transition
-  ------------------------------ */
+  /* -----------------------------------------------------------
+     Clean transition (erase + poof once, then return)
+  ----------------------------------------------------------- */
 
-  function cleanTransition() {
-    terminals.forEach(term => {
-      term.classList.add("clean-erasing");
-    });
+  const runCleanTransitionOnce = async (opts = {}) => {
+    const waitBeforeMs = Number.isFinite(opts.waitBeforeMs) ? opts.waitBeforeMs : 450;
+    const eraseDelayMs = Number.isFinite(opts.eraseDelayMs) ? opts.eraseDelayMs : 14;
+    const poofDurationMs = Number.isFinite(opts.poofDurationMs) ? opts.poofDurationMs : 650;
 
-    setTimeout(() => {
-      terminals.forEach(term => {
-        term.classList.remove("clean-erasing");
-        resetTerminal(term);
+    // Stop any loops so we erase what the user currently sees
+    stopAll();
+    terminalCodes.forEach(restoreOriginal);
+
+    await new Promise((r) => window.setTimeout(r, waitBeforeMs));
+
+    const erasePromises = terminalCodes.map((codeEl) => {
+      stopController(codeEl);
+      const ctrl = { stopped: false, timeouts: [] };
+      controllers.set(codeEl, ctrl);
+
+      return new Promise((resolve) => {
+        const full = codeEl.dataset.originalText || '';
+        let i = full.length;
+
+        codeEl.classList.add('is-erasing');
+
+        const step = () => {
+          if (ctrl.stopped) return resolve();
+
+          if (i <= 0) {
+            codeEl.classList.remove('is-erasing');
+            codeEl.classList.add('is-poofing');
+            setText(codeEl, '');
+
+            const screen = codeEl.closest('.forge-terminal-screen');
+            if (screen) screen.classList.add('clean-poof-burst');
+
+            schedule(ctrl, () => {
+              if (screen) screen.classList.remove('clean-poof-burst');
+              codeEl.classList.remove('is-poofing');
+              resolve();
+            }, poofDurationMs);
+
+            return;
+          }
+
+          // delete 1-3 chars per tick for a more organic "magic erase"
+          const chop = Math.random() < 0.22 ? 3 : Math.random() < 0.35 ? 2 : 1;
+          i = Math.max(0, i - chop);
+          setText(codeEl, full.slice(0, i));
+          schedule(ctrl, step, eraseDelayMs);
+        };
+
+        step();
       });
-
-      applyMode(previousMode, true);
-    }, 1200);
-  }
-
-  /* ------------------------------
-     Radar Setup
-  ------------------------------ */
-
-  function setupRadar() {
-    terminals.forEach(term => {
-      term.innerHTML = `
-        <span class="radar-dim">${term.dataset.original}</span>
-        <span class="radar-lit">${term.dataset.original}</span>
-      `;
     });
-  }
 
-  /* ------------------------------
-     Mode Handling
-  ------------------------------ */
+    await Promise.all(erasePromises);
+  };
 
-  function applyMode(mode, force = false) {
-    clearTimers();
+  /* -----------------------------------------------------------
+     Mode orchestration
+  ----------------------------------------------------------- */
 
-    if (mode !== "clean") {
-      previousMode = mode;
-    }
+  const visualModes = new Set(['scanline', 'grid', 'radar', 'modern', 'future']);
+  let previousVisualMode = 'scanline';
+  let currentMode = 'scanline';
 
-    document.body.className = "";
-    document.body.classList.add(`crt-${mode}`);
+  const setPanelModeClass = (mode) => {
+    terminalPanels.forEach((panel) => {
+      panel.classList.remove(
+        'crt-scanline',
+        'crt-grid',
+        'crt-radar',
+        'crt-clean',
+        'crt-modern',
+        'crt-future'
+      );
+      panel.classList.add(`crt-${mode}`);
+    });
+  };
 
-    if (mode === "clean") {
-      cleanTransition();
+  const applyModeEffects = (mode) => {
+    stopAll();
+
+    if (mode === 'scanline' || mode === 'grid') {
+      terminalCodes.forEach((codeEl) => startTypingLoop(codeEl));
       return;
     }
 
-    if (mode === "radar") {
-      setupRadar();
+    if (mode === 'radar') {
+      enableRadarText();
       return;
     }
 
-    if (force || mode === "modern" || mode === "future" || mode === "scanline" || mode === "grid") {
-      storeOriginalText();
-      typeAll();
+    // modern/future: type fresh on entry
+    terminalCodes.forEach((codeEl) => startTypingOnce(codeEl));
+  };
+
+  const setMode = (mode) => {
+    if (!visualModes.has(mode)) mode = 'scanline';
+
+    currentMode = mode;
+    previousVisualMode = mode;
+
+    setPanelModeClass(mode);
+    applyModeEffects(mode);
+  };
+
+  const runCleanAndReturn = async () => {
+    const returnMode = previousVisualMode;
+
+    // temporary clean overlay class during transition
+    terminalPanels.forEach((panel) => panel.classList.add('crt-clean'));
+
+    try {
+      await runCleanTransitionOnce();
+    } finally {
+      terminalPanels.forEach((panel) => panel.classList.remove('crt-clean'));
+      setMode(returnMode);
+
+      modeButtons.forEach((b) => b.classList.remove('is-active'));
+      const btn = modeButtons.find((b) => b.dataset.mode === returnMode);
+      if (btn) btn.classList.add('is-active');
     }
-  }
+  };
 
-  /* ------------------------------
-     Init
-  ------------------------------ */
+  // Button behavior
+  modeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.mode;
 
-  storeOriginalText();
-  applyMode(activeMode, true);
+      if (selected === 'clean') {
+        runCleanAndReturn();
+        return;
+      }
 
-  modeButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const mode = btn.dataset.mode;
-      applyMode(mode, true);
+      // Even clicking the same mode again should restart typing for modern/future
+      modeButtons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      setMode(selected);
     });
   });
+
+  // Initialize from active button
+  const initialBtn = document.querySelector('.terminal-mode-btn.is-active');
+  const initial = (initialBtn && initialBtn.dataset.mode) || 'scanline';
+  if (initial === 'clean') {
+    setMode('scanline');
+  } else {
+    setMode(initial);
+  }
+
+  /* -----------------------------------------------------------
+     Copy email template
+  ----------------------------------------------------------- */
+
+  const copyBtn = document.getElementById('copy-template');
+  const templateCode = document.getElementById('email-template-code');
+
+  if (copyBtn && templateCode) {
+    copyBtn.addEventListener('click', async () => {
+      const text = templateCode.innerText;
+
+      try {
+        await navigator.clipboard.writeText(text);
+
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = 'Copied!';
+
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.textContent = 'Copy Template';
+        }, 1400);
+      } catch (err) {
+        console.error('Clipboard error:', err);
+        alert('Copy failed — your browser may not allow clipboard access.');
+      }
+    });
+  }
 });
