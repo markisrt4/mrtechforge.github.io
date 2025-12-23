@@ -30,6 +30,7 @@ class: contact
       <button class="terminal-mode-btn" data-mode="grid">Grid</button>
       <button class="terminal-mode-btn" data-mode="radar">Radar</button>
       <button class="terminal-mode-btn" data-mode="modern">Modern</button>
+      <button class="terminal-mode-btn" data-mode="future">Future</button>
       <button class="terminal-mode-btn" data-mode="clean">Clean</button>
     </div>
   </section>

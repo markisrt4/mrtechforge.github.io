@@ -193,18 +193,14 @@
 }
 
 .forge-terminal-panel.crt-radar .forge-terminal-screen code {
-  /* Very dim baseline (radar lights it up under the sweep) */
   color: #80ffb5;
-  opacity: 0.055;
-  filter: saturate(0.85) brightness(0.75);
+  opacity: 0.055; /* VERY dim by default */
+  position: relative;
 }
 
-/* Radar illumination
-   - Base text is extremely dim.
-   - A bright duplicate is masked by a sweeping conic-gradient wedge.
-   - The wedge has a long tail (afterglow) so the text stays lit longer. */
 .forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate {
-  position: relative;
+  /* keep dim base, we light up via ::after */
+  text-shadow: none;
 }
 
 .forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate::after {
@@ -212,38 +208,39 @@
   position: absolute;
   inset: 0;
   white-space: pre-wrap;
-  color: #d7ffe8;
+  color: rgba(160, 255, 205, 1);
   opacity: 1;
-  pointer-events: none;
 
-  /* Make it *really* pop when lit */
+  /* bright pop */
   text-shadow:
-    0 0 10px rgba(0, 255, 170, 0.55),
-    0 0 18px rgba(0, 255, 170, 0.28),
-    0 0 28px rgba(0, 255, 170, 0.18);
+    0 0 10px rgba(0, 255, 150, 0.9),
+    0 0 26px rgba(0, 255, 150, 0.55);
 
-  /* The mask IS the radar sweep.
-     Wider, with a longer tail to increase illuminated duration. */
+  /* Reveal only within the sweep wedge + afterglow tail */
   -webkit-mask-image: conic-gradient(
     from 0deg,
     rgba(255,255,255,1) 0deg,
-    rgba(255,255,255,0.95) 40deg,
-    rgba(255,255,255,0.55) 90deg,
-    rgba(255,255,255,0.22) 135deg,
-    rgba(255,255,255,0) 170deg,
+    rgba(255,255,255,0.95) 26deg,
+    rgba(255,255,255,0.35) 62deg,
+    rgba(255,255,255,0) 120deg,
     rgba(255,255,255,0) 360deg
   );
   mask-image: conic-gradient(
     from 0deg,
     rgba(255,255,255,1) 0deg,
-    rgba(255,255,255,0.95) 40deg,
-    rgba(255,255,255,0.55) 90deg,
-    rgba(255,255,255,0.22) 135deg,
-    rgba(255,255,255,0) 170deg,
+    rgba(255,255,255,0.95) 26deg,
+    rgba(255,255,255,0.35) 62deg,
+    rgba(255,255,255,0) 120deg,
     rgba(255,255,255,0) 360deg
   );
 
-  animation: radarSweepText 6.5s linear infinite;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+
+  animation: radarTextSweep 6.5s linear infinite;
+  pointer-events: none;
 }
 
 .forge-terminal-panel.crt-radar::after {
@@ -251,18 +248,17 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  /* Wider sweep + long tail to match the illuminated text */
   background: conic-gradient(
     from 0deg,
-    rgba(0, 255, 170, 0.95) 0deg,
-    rgba(0, 255, 170, 0.65) 45deg,
-    rgba(0, 255, 170, 0.22) 120deg,
-    rgba(0, 255, 170, 0.0) 175deg,
-    rgba(0, 255, 170, 0.0) 360deg
+    rgba(0, 255, 128, 0.95) 0deg,
+    rgba(0, 255, 128, 0.55) 18deg,
+    rgba(0, 255, 128, 0.18) 55deg,
+    rgba(0, 255, 128, 0.0) 120deg,
+    rgba(0, 255, 128, 0) 360deg
   );
   mix-blend-mode: screen;
   pointer-events: none;
-  opacity: 0.26;
+  opacity: 0.32;
   animation: radarSweep 6.5s linear infinite;
 }
 
@@ -271,39 +267,120 @@
   to   { transform: rotate(360deg); }
 }
 
-@keyframes radarSweepText {
+@keyframes radarTextSweep {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
 /* =========================================================
-   MODERN / FUTURISTIC MODE (optional)
+   FUTURE MODE — holo HUD fireworks
    ========================================================= */
 
-.forge-terminal-panel.crt-modern {
-  background: radial-gradient(circle at top, rgba(10,109,255,0.18) 0%, rgba(0,0,0,1) 65%);
-  border: 1px solid rgba(10, 109, 255, 0.35);
-}
-
-.forge-terminal-panel.crt-modern .forge-terminal-screen {
-  background: rgba(5, 12, 26, 0.72);
-  border: 1px solid rgba(120, 232, 255, 0.45);
-  box-shadow:
-    0 0 18px rgba(10, 109, 255, 0.35),
-    inset 0 0 28px rgba(0, 0, 0, 0.75);
-}
-
-.forge-terminal-panel.crt-modern .forge-terminal-screen::before {
-  opacity: 0.22;
+.forge-terminal-panel.crt-future .forge-terminal-screen {
   background:
-    radial-gradient(circle at 20% 15%, rgba(245,184,65,0.15), transparent 55%),
-    radial-gradient(circle at 80% 70%, rgba(10,109,255,0.22), transparent 60%),
-    linear-gradient(90deg, rgba(120,232,255,0.12), rgba(0,0,0,0) 55%);
+    radial-gradient(circle at 25% 18%, rgba(80, 255, 245, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(245, 184, 65, 0.10), transparent 60%),
+    linear-gradient(180deg, #040a1a 0%, #02030a 100%);
 }
 
-.forge-terminal-panel.crt-modern .forge-terminal-screen code {
-  color: #bfeaff;
-  text-shadow: 0 0 10px rgba(120, 232, 255, 0.22);
+.forge-terminal-panel.crt-future .forge-terminal-screen::before {
+  opacity: 0.65;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(85, 255, 245, 0.09),
+      rgba(85, 255, 245, 0.09) 1px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(245, 184, 65, 0.06),
+      rgba(245, 184, 65, 0.06) 1px,
+      transparent 3px,
+      transparent 6px
+    );
+}
+
+.forge-terminal-panel.crt-future .forge-terminal-screen::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      110deg,
+      rgba(0, 255, 245, 0) 0%,
+      rgba(0, 255, 245, 0.25) 35%,
+      rgba(245, 184, 65, 0.20) 52%,
+      rgba(0, 255, 245, 0.0) 72%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  transform: translateX(-60%);
+  animation: futureShimmer 3.6s ease-in-out infinite;
+}
+
+.forge-terminal-panel.crt-future .forge-terminal-screen code {
+  color: #a8fbff;
+  text-shadow:
+    0 0 10px rgba(0, 255, 245, 0.55),
+    0 0 20px rgba(0, 255, 245, 0.28);
+}
+
+.forge-terminal-panel.crt-future {
+  box-shadow:
+    0 0 18px rgba(0, 255, 245, 0.25),
+    0 0 28px rgba(245, 184, 65, 0.12),
+    inset 0 0 26px rgba(0, 0, 0, 0.55);
+}
+
+.forge-terminal-panel.crt-future::after {
+  /* spark field (pure CSS): a handful of dots that drift + twinkle */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.95) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0,255,245,0.85) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(245,184,65,0.8) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.75) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0,255,245,0.75) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(245,184,65,0.7) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.7) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0,255,245,0.7) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(245,184,65,0.65) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.65) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0,255,245,0.65) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(245,184,65,0.6) 0 1px, transparent 2px);
+  opacity: 0.22;
+  filter: blur(0.2px);
+  mix-blend-mode: screen;
+  transform: translate3d(0,0,0);
+  animation: futureSparkle 2.8s ease-in-out infinite;
+
+  /* scatter the dots */
+  background-position:
+    12% 18%, 24% 62%, 37% 28%, 44% 74%, 58% 38%,
+    63% 66%, 72% 22%, 81% 58%, 88% 30%, 16% 82%,
+    52% 84%, 90% 78%;
+  background-size: 2px 2px;
+  background-repeat: no-repeat;
+}
+
+@keyframes futureShimmer {
+  0%   { transform: translateX(-70%) skewX(-12deg); opacity: 0.35; }
+  45%  { opacity: 0.75; }
+  100% { transform: translateX(70%) skewX(-12deg); opacity: 0.25; }
+}
+
+@keyframes futureSparkle {
+  0%   { opacity: 0.12; transform: translateY(0); }
+  45%  { opacity: 0.34; }
+  100% { opacity: 0.14; transform: translateY(-6px); }
 }
 
 .forge-terminal-panel.crt-clean .forge-terminal-screen::before {

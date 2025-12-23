@@ -1,62 +1,35 @@
 /* ===========================================================
-   CONTACT PAGE INTERACTIVITY
-   - CRT Mode Switching (Scanline / Grid / Radar / Clean / Modern)
-   - Copy Email Template Button
-   - Animated Text Effects per Mode
-     - Scanline/Grid: Type-in loop, hold 10s, vanish, restart
-     - Radar: Text illuminates only under the sweep (CSS mask)
-     - Clean: Text erases, then "poof" burst, restart
-     - Modern: Subtle futuristic glass look (no text gimmicks)
+   CONTACT PAGE INTERACTIVITY (M.R. TechForge)
+   ===========================================================
+   Modes:
+     - scanline, grid: typing loop (type -> hold 10s -> vanish -> repeat)
+     - radar: illumination synced to sweep (CSS-driven via data-text)
+     - modern: calm glass HUD styling (CSS-only)
+     - future: flashy holo HUD styling (CSS-only)
+
+   Special button:
+     - clean: transition (erase + poof), then returns to previous visual mode
+
+   Other:
+     - Copy template button
    =========================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* ---------------------------------------------
-     TERMINAL MODE SWITCHING
-  --------------------------------------------- */
-  const modeButtons = document.querySelectorAll(".terminal-mode-btn");
-  const terminalPanels = document.querySelectorAll("[data-terminal]");
-  const terminalCodes = document.querySelectorAll(
-    "[data-terminal] .forge-terminal-screen code"
+document.addEventListener('DOMContentLoaded', () => {
+  const modeButtons = Array.from(document.querySelectorAll('.terminal-mode-btn'));
+  const terminalPanels = Array.from(document.querySelectorAll('[data-terminal]'));
+  const terminalCodes = Array.from(
+    document.querySelectorAll('[data-terminal] .forge-terminal-screen code')
   );
 
-  // One-time capture of original terminal text (preserves newlines)
+  // Capture original text once
   terminalCodes.forEach((codeEl) => {
     if (!codeEl.dataset.originalText) {
       codeEl.dataset.originalText = codeEl.innerText;
     }
   });
 
-  // Track running loops so we can stop them cleanly on mode changes
+  // Track timeouts so we can stop loops on mode change
   const controllers = new Map(); // codeEl -> { stopped: boolean, timeouts: number[] }
-
-  const stopController = (codeEl) => {
-    const ctrl = controllers.get(codeEl);
-    if (!ctrl) {
-      // still clear radar attrs/classes
-      codeEl.classList.remove(
-        "is-typing",
-        "is-vanishing",
-        "is-erasing",
-        "is-poofing",
-        "radar-illuminate"
-      );
-      codeEl.removeAttribute("data-text");
-      return;
-    }
-
-    ctrl.stopped = true;
-    ctrl.timeouts.forEach((t) => window.clearTimeout(t));
-    controllers.delete(codeEl);
-
-    codeEl.classList.remove(
-      "is-typing",
-      "is-vanishing",
-      "is-erasing",
-      "is-poofing",
-      "radar-illuminate"
-    );
-    codeEl.removeAttribute("data-text");
-  };
 
   const schedule = (ctrl, fn, ms) => {
     const id = window.setTimeout(fn, ms);
@@ -64,52 +37,71 @@ document.addEventListener("DOMContentLoaded", () => {
     return id;
   };
 
+  const stopController = (codeEl) => {
+    const ctrl = controllers.get(codeEl);
+    if (ctrl) {
+      ctrl.stopped = true;
+      ctrl.timeouts.forEach((t) => window.clearTimeout(t));
+      controllers.delete(codeEl);
+    }
+
+    const screen = codeEl.closest('.forge-terminal-screen');
+    if (screen) screen.classList.remove('clean-poof-burst');
+
+    codeEl.classList.remove(
+      'is-typing',
+      'is-vanishing',
+      'is-erasing',
+      'is-poofing',
+      'radar-illuminate'
+    );
+    codeEl.removeAttribute('data-text');
+  };
+
+  const stopAll = () => terminalCodes.forEach(stopController);
+
   const setText = (codeEl, text) => {
     codeEl.textContent = text;
   };
 
   const restoreOriginal = (codeEl) => {
-    setText(codeEl, codeEl.dataset.originalText || "");
+    setText(codeEl, codeEl.dataset.originalText || '');
   };
 
   const startTypingLoop = (codeEl, opts = {}) => {
-    const typeDelayMs = typeof opts.typeDelayMs === "number" ? opts.typeDelayMs : 18;
-    const holdMs = typeof opts.holdMs === "number" ? opts.holdMs : 10_000;
-    const vanishMs = typeof opts.vanishMs === "number" ? opts.vanishMs : 520;
-    const restartGapMs = typeof opts.restartGapMs === "number" ? opts.restartGapMs : 260;
+    const typeDelayMs = Number.isFinite(opts.typeDelayMs) ? opts.typeDelayMs : 18;
+    const holdMs = Number.isFinite(opts.holdMs) ? opts.holdMs : 10_000;
+    const vanishMs = Number.isFinite(opts.vanishMs) ? opts.vanishMs : 520;
+    const restartGapMs = Number.isFinite(opts.restartGapMs) ? opts.restartGapMs : 260;
 
     stopController(codeEl);
     const ctrl = { stopped: false, timeouts: [] };
     controllers.set(codeEl, ctrl);
 
-    const full = codeEl.dataset.originalText || "";
+    const full = codeEl.dataset.originalText || '';
 
     const typeOnce = () => {
       if (ctrl.stopped) return;
 
-      codeEl.classList.add("is-typing");
-      codeEl.classList.remove("is-vanishing");
-      setText(codeEl, "");
+      codeEl.classList.add('is-typing');
+      codeEl.classList.remove('is-vanishing');
+      setText(codeEl, '');
 
       let i = 0;
-
       const step = () => {
         if (ctrl.stopped) return;
 
         if (i >= full.length) {
-          // finished typing
-          codeEl.classList.remove("is-typing");
+          codeEl.classList.remove('is-typing');
 
-          // hold, vanish, restart
           schedule(ctrl, () => {
             if (ctrl.stopped) return;
+            codeEl.classList.add('is-vanishing');
 
-            codeEl.classList.add("is-vanishing");
             schedule(ctrl, () => {
               if (ctrl.stopped) return;
-
-              setText(codeEl, "");
-              codeEl.classList.remove("is-vanishing");
+              setText(codeEl, '');
+              codeEl.classList.remove('is-vanishing');
               schedule(ctrl, typeOnce, restartGapMs);
             }, vanishMs);
           }, holdMs);
@@ -128,134 +120,200 @@ document.addEventListener("DOMContentLoaded", () => {
     typeOnce();
   };
 
-  const startCleanEraseLoop = (codeEl, opts = {}) => {
-    const waitBeforeMs = typeof opts.waitBeforeMs === "number" ? opts.waitBeforeMs : 2000;
-    const eraseDelayMs = typeof opts.eraseDelayMs === "number" ? opts.eraseDelayMs : 14;
-    const poofDurationMs = typeof opts.poofDurationMs === "number" ? opts.poofDurationMs : 650;
-    const resetHoldMs = typeof opts.resetHoldMs === "number" ? opts.resetHoldMs : 2500;
+  const runCleanTransitionOnce = async (opts = {}) => {
+    const waitBeforeMs = Number.isFinite(opts.waitBeforeMs) ? opts.waitBeforeMs : 650;
+    const eraseDelayMs = Number.isFinite(opts.eraseDelayMs) ? opts.eraseDelayMs : 14;
+    const poofDurationMs = Number.isFinite(opts.poofDurationMs) ? opts.poofDurationMs : 650;
 
-    stopController(codeEl);
-    const ctrl = { stopped: false, timeouts: [] };
-    controllers.set(codeEl, ctrl);
+    // Stop any loops so we erase what the user currently sees
+    stopAll();
 
-    const cycle = () => {
-      if (ctrl.stopped) return;
+    // Restore originals before erasing (deterministic)
+    terminalCodes.forEach(restoreOriginal);
 
-      restoreOriginal(codeEl);
-      codeEl.classList.remove("is-poofing");
-      codeEl.classList.add("is-erasing");
+    await new Promise((r) => window.setTimeout(r, waitBeforeMs));
 
-      schedule(ctrl, () => {
-        if (ctrl.stopped) return;
+    const erasePromises = terminalCodes.map((codeEl) => {
+      stopController(codeEl);
+      const ctrl = { stopped: false, timeouts: [] };
+      controllers.set(codeEl, ctrl);
 
-        const full = codeEl.dataset.originalText || "";
+      return new Promise((resolve) => {
+        const full = codeEl.dataset.originalText || '';
         let i = full.length;
 
+        codeEl.classList.add('is-erasing');
+
         const step = () => {
-          if (ctrl.stopped) return;
+          if (ctrl.stopped) return resolve();
 
           if (i <= 0) {
-            codeEl.classList.remove("is-erasing");
-            codeEl.classList.add("is-poofing");
-            setText(codeEl, "");
+            codeEl.classList.remove('is-erasing');
+            codeEl.classList.add('is-poofing');
+            setText(codeEl, '');
+
+            const screen = codeEl.closest('.forge-terminal-screen');
+            if (screen) screen.classList.add('clean-poof-burst');
 
             schedule(ctrl, () => {
-              if (ctrl.stopped) return;
-              codeEl.classList.remove("is-poofing");
-              schedule(ctrl, cycle, resetHoldMs);
+              if (screen) screen.classList.remove('clean-poof-burst');
+              codeEl.classList.remove('is-poofing');
+              resolve();
             }, poofDurationMs);
 
             return;
           }
 
-          // delete 1-3 chars per tick for an organic "magic erase"
           const chop = Math.random() < 0.22 ? 3 : Math.random() < 0.35 ? 2 : 1;
           i = Math.max(0, i - chop);
           setText(codeEl, full.slice(0, i));
-
           schedule(ctrl, step, eraseDelayMs);
         };
 
         step();
-      }, waitBeforeMs);
-    };
+      });
+    });
 
-    cycle();
-  };
+    await Promise.all(erasePromises);
 
-  const applyModeEffects = (mode) => {
+    // Cleanup
     terminalCodes.forEach((codeEl) => {
       stopController(codeEl);
       restoreOriginal(codeEl);
+    });
+  };
 
-      if (mode === "scanline" || mode === "grid") {
+  // ---------------------------
+  // Mode application
+  // ---------------------------
+  const visualModes = new Set(['scanline', 'grid', 'radar', 'modern', 'future']);
+  let currentMode = 'scanline';
+  let previousVisualMode = 'scanline';
+
+  const setPanelModeClass = (mode) => {
+    terminalPanels.forEach((panel) => {
+      panel.classList.remove(
+        'crt-scanline',
+        'crt-grid',
+        'crt-radar',
+        'crt-modern',
+        'crt-future'
+      );
+      panel.classList.add(`crt-${mode}`);
+    });
+  };
+
+  const applyModeEffects = (mode) => {
+    stopAll();
+
+    terminalCodes.forEach((codeEl) => {
+      restoreOriginal(codeEl);
+
+      if (mode === 'scanline' || mode === 'grid') {
         startTypingLoop(codeEl);
-      } else if (mode === "radar") {
-        // CSS does the illumination sweep. We just provide the duplicated text.
-        codeEl.classList.add("radar-illuminate");
-        codeEl.setAttribute("data-text", codeEl.dataset.originalText || "");
-      } else if (mode === "clean") {
-        startCleanEraseLoop(codeEl);
-      } else {
-        // modern (or any future non-effect mode)
-        // keep original text with no looping effects
+        return;
       }
+
+      if (mode === 'radar') {
+        codeEl.classList.add('radar-illuminate');
+        codeEl.setAttribute('data-text', codeEl.dataset.originalText || '');
+        return;
+      }
+
+      // modern/future: CSS-only visuals
     });
   };
 
   const setMode = (mode) => {
-    terminalPanels.forEach((panel) => {
-      panel.classList.remove(
-        "crt-scanline",
-        "crt-grid",
-        "crt-radar",
-        "crt-clean",
-        "crt-modern"
-      );
-      panel.classList.add(`crt-${mode}`);
-    });
+    if (mode === 'clean') return;
 
+    if (!visualModes.has(mode)) {
+      mode = 'scanline';
+    }
+
+    currentMode = mode;
+    previousVisualMode = mode;
+
+    setPanelModeClass(mode);
     applyModeEffects(mode);
   };
 
-  // button behavior
-  modeButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      modeButtons.forEach((b) => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
+  const runCleanAndReturn = async () => {
+    const returnMode = previousVisualMode;
 
-      const selected = btn.dataset.mode; // scanline/grid/radar/clean/modern
+    // Temporary "clean" class just for the overlay look during the transition
+    terminalPanels.forEach((panel) => {
+      panel.classList.add('crt-clean');
+    });
+
+    try {
+      await runCleanTransitionOnce();
+    } finally {
+      terminalPanels.forEach((panel) => {
+        panel.classList.remove('crt-clean');
+      });
+
+      // Return to whichever visual mode we were on before
+      setMode(returnMode);
+
+      // Re-highlight the active visual mode button
+      modeButtons.forEach((b) => b.classList.remove('is-active'));
+      const btn = modeButtons.find((b) => b.dataset.mode === returnMode);
+      if (btn) btn.classList.add('is-active');
+    }
+  };
+
+  // ---------------------------
+  // Button behavior
+  // ---------------------------
+  modeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.mode;
+
+      if (selected === 'clean') {
+        // Clean is a transition, not a persistent mode
+        runCleanAndReturn();
+        return;
+      }
+
+      modeButtons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
       setMode(selected);
     });
   });
 
-  // initialize to whichever button is marked active (fallback scanline)
-  const initialBtn = document.querySelector(".terminal-mode-btn.is-active");
-  setMode((initialBtn && initialBtn.dataset.mode) || "scanline");
+  // Initialize
+  const initialBtn = document.querySelector('.terminal-mode-btn.is-active');
+  const initial = (initialBtn && initialBtn.dataset.mode) || 'scanline';
+  if (initial === 'clean') {
+    setMode('scanline');
+  } else {
+    setMode(initial);
+  }
 
-  /* ---------------------------------------------
-     COPY EMAIL TEMPLATE
-  --------------------------------------------- */
-  const copyBtn = document.getElementById("copy-template");
-  const templateCode = document.getElementById("email-template-code");
+  // ---------------------------
+  // Copy email template
+  // ---------------------------
+  const copyBtn = document.getElementById('copy-template');
+  const templateCode = document.getElementById('email-template-code');
 
   if (copyBtn && templateCode) {
-    copyBtn.addEventListener("click", async () => {
+    copyBtn.addEventListener('click', async () => {
       const text = templateCode.innerText;
 
       try {
         await navigator.clipboard.writeText(text);
 
-        copyBtn.classList.add("copied");
-        copyBtn.textContent = "Copied!";
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = 'Copied!';
 
         setTimeout(() => {
-          copyBtn.classList.remove("copied");
-          copyBtn.textContent = "Copy Template";
+          copyBtn.classList.remove('copied');
+          copyBtn.textContent = 'Copy Template';
         }, 1400);
       } catch (err) {
-        console.error("Clipboard error:", err);
-        alert("Copy failed — your browser may not allow clipboard access.");
+        console.error('Clipboard error:', err);
+        alert('Copy failed — your browser may not allow clipboard access.');
       }
     });
   }
