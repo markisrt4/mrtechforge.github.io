@@ -1,589 +1,164 @@
-/* =========================================================
-   CONTACT PAGE — TERMINAL COMMS DECK (v3.0)
-   Wide centered layout • CRT panels • Neon cards
-   ========================================================= */
+/* ==========================================================
+   CONTACT PAGE TERMINAL EFFECTS
+   ========================================================== */
 
-.forge-contact-page {
-  padding: 2.4rem 0.8rem 3rem;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1240px;
-}
-
-/* =========================================================
-   INTRO HEADER
-   ========================================================= */
-
-.forge-contact-page .page-intro {
-  text-align: center;
-  margin-bottom: 1.8rem;
-}
-
-.forge-contact-page .page-intro h1 {
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
-  margin: 0 0 0.75rem;
-  color: var(--forge-hotmetal);
-
-  white-space: normal;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-}
-
-.forge-contact-page .page-intro .forge-highlight {
-  display: block;
-  font-size: 0.95em;
-}
-
-.forge-contact-page .page-intro .tagline {
-  color: var(--forge-subtext);
-  font-size: 1.05rem;
-  max-width: 640px;
-  margin: 0.25rem auto 0;
-}
-
-/* =========================================================
-   DISPLAY MODES BUTTON PANEL
-   ========================================================= */
-
-.forge-terminal-modes {
-  margin: 1.6rem auto 1.2rem;
-  text-align: center;
-  max-width: 1120px;
-  width: min(100%, 1120px);
-}
-
-.forge-terminal-modes .modes-heading {
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.95rem;
-  color: var(--forge-hotmetal);
-  margin-bottom: 0.6rem;
-}
-
-.modes-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.terminal-mode-btn {
-  min-width: 6.2rem;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.5);
-  background: rgba(3, 10, 24, 0.95);
-  color: var(--forge-text);
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.18s ease;
-}
-
-.terminal-mode-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.45);
-}
-
-.terminal-mode-btn.is-active {
-  background: radial-gradient(circle at 30% 20%, var(--forge-hotmetal), #c2881e);
-  color: #000;
-  border-color: var(--forge-hotmetal);
-  box-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.8);
-}
-
-/* =========================================================
-   TERMINAL PANELS — wide, centered, CRT overlays
-   ========================================================= */
-
-.forge-terminal-panel {
+[data-terminal] {
   position: relative;
-  margin: 1.8rem auto 2.4rem;
-  padding: 1.6rem 1.4rem;
-  border-radius: 22px;
-  max-width: 1120px;
-  width: min(100%, 1120px);
+  font-family: "JetBrains Mono", monospace;
+  white-space: pre-wrap;
+  transition: opacity 0.4s ease;
+}
 
-  background: radial-gradient(circle at top, #071629 0%, #020407 60%, #000 100%);
-  box-shadow:
-    0 0 6px rgba(0, 184, 212, 0.18),
-    0 0 10px rgba(0, 184, 212, 0.12) inset;
+/* ==========================================================
+   CLEAN TRANSITION
+   ========================================================== */
 
+.clean-erasing {
+  animation: cleanErase 1s forwards;
+}
+
+@keyframes cleanErase {
+  0% { opacity: 1; filter: blur(0); }
+  80% { opacity: 0; filter: blur(4px); }
+  100% { opacity: 0; }
+}
+
+/* ==========================================================
+   RADAR MODE
+   ========================================================== */
+
+.crt-radar {
+  background: radial-gradient(circle at center, #001a1a 0%, #000 70%);
   overflow: hidden;
 }
 
-.forge-terminal-screen {
-  position: relative;
-  padding: 1.05rem 1.25rem;  /* inner text padding, safe on both sides */
-  border-radius: 18px;
-
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(0, 184, 212, 0.45);
-  box-shadow:
-    0 0 15px rgba(0, 184, 212, 0.35),
-    0 0 20px rgba(0, 20, 60, 0.7) inset;
-
-  overflow: hidden;
-}
-
-.forge-terminal-screen code {
-  display: block;
-  white-space: pre-wrap;
-  font-family: "Courier New", monospace;
-  font-size: 0.94rem;
-  line-height: 1.6;
-  color: #26e0ff;
-  text-align: left;
-}
-
-/* CRT overlay base */
-.forge-terminal-screen::before {
+.crt-radar::before {
   content: "";
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: screen;
-}
-
-/* CRT MODES -------------------------------------------- */
-
-.forge-terminal-panel.crt-scanline .forge-terminal-screen::before {
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0, 255, 255, 0.15),
-      rgba(0, 255, 255, 0.15) 1px,
-      transparent 2px,
-      transparent 3px
-    );
-}
-
-.forge-terminal-panel.crt-grid .forge-terminal-screen::before {
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0, 255, 255, 0.17),
-      rgba(0, 255, 255, 0.17) 1px,
-      transparent 3px,
-      transparent 4px
-    ),
-    repeating-linear-gradient(
-      to right,
-      rgba(0, 255, 255, 0.17),
-      rgba(0, 255, 255, 0.17) 1px,
-      transparent 3px,
-      transparent 4px
-    );
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen {
-  background: radial-gradient(circle at 20% 15%, #002b1d 0%, #000 70%);
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen code {
-  color: #80ffb5;
-  opacity: 0.055; /* VERY dim by default */
-  position: relative;
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate {
-  /* keep dim base, we light up via ::after */
-  text-shadow: none;
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  white-space: pre-wrap;
-  color: rgba(160, 255, 205, 1);
-  opacity: 1;
-
-  /* bright pop */
-  text-shadow:
-    0 0 10px rgba(0, 255, 150, 0.9),
-    0 0 26px rgba(0, 255, 150, 0.55);
-
-  /* Reveal only within the sweep wedge + afterglow tail */
-  -webkit-mask-image: conic-gradient(
-    from 0deg,
-    rgba(255,255,255,1) 0deg,
-    rgba(255,255,255,0.95) 26deg,
-    rgba(255,255,255,0.35) 62deg,
-    rgba(255,255,255,0) 120deg,
-    rgba(255,255,255,0) 360deg
-  );
-  mask-image: conic-gradient(
-    from 0deg,
-    rgba(255,255,255,1) 0deg,
-    rgba(255,255,255,0.95) 26deg,
-    rgba(255,255,255,0.35) 62deg,
-    rgba(255,255,255,0) 120deg,
-    rgba(255,255,255,0) 360deg
-  );
-
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-
-  animation: radarTextSweep 6.5s linear infinite;
-  pointer-events: none;
-}
-
-.forge-terminal-panel.crt-radar::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
+  inset: -50%;
   background: conic-gradient(
-    from 0deg,
-    rgba(0, 255, 128, 0.95) 0deg,
-    rgba(0, 255, 128, 0.55) 18deg,
-    rgba(0, 255, 128, 0.18) 55deg,
-    rgba(0, 255, 128, 0.0) 120deg,
-    rgba(0, 255, 128, 0) 360deg
+    rgba(0,255,255,0.9) 0deg,
+    rgba(0,255,255,0.4) 12deg,
+    rgba(0,255,255,0.05) 28deg,
+    rgba(255,255,255,0) 60deg,
+    rgba(255,255,255,0) 360deg
   );
-  mix-blend-mode: screen;
-  pointer-events: none;
-  opacity: 0.32;
   animation: radarSweep 6.5s linear infinite;
+  mix-blend-mode: screen;
 }
 
 @keyframes radarSweep {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes radarTextSweep {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+.radar-dim {
+  opacity: 0.055;
+  display: block;
 }
 
-/* =========================================================
-   FUTURE MODE — holo HUD fireworks
-   ========================================================= */
-
-.forge-terminal-panel.crt-future .forge-terminal-screen {
-  background:
-    radial-gradient(circle at 25% 18%, rgba(80, 255, 245, 0.18), transparent 55%),
-    radial-gradient(circle at 80% 70%, rgba(245, 184, 65, 0.10), transparent 60%),
-    linear-gradient(180deg, #040a1a 0%, #02030a 100%);
-}
-
-.forge-terminal-panel.crt-future .forge-terminal-screen::before {
-  opacity: 0.65;
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(85, 255, 245, 0.09),
-      rgba(85, 255, 245, 0.09) 1px,
-      transparent 2px,
-      transparent 4px
-    ),
-    repeating-linear-gradient(
-      to right,
-      rgba(245, 184, 65, 0.06),
-      rgba(245, 184, 65, 0.06) 1px,
-      transparent 3px,
-      transparent 6px
-    );
-}
-
-.forge-terminal-panel.crt-future .forge-terminal-screen::after {
-  content: "";
+.radar-lit {
   position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  pointer-events: none;
+  inset: 0;
+  color: #9ff;
+  text-shadow: 0 0 14px rgba(120,255,255,0.9);
+  mask-image: conic-gradient(
+    rgba(255,255,255,1) 0deg,
+    rgba(255,255,255,1) 18deg,
+    rgba(255,255,255,0.3) 34deg,
+    rgba(0,0,0,0) 60deg
+  );
+  animation: radarMask 6.5s linear infinite;
+}
+
+@keyframes radarMask {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================
+   MODERN MODE
+   ========================================================== */
+
+.crt-modern {
+  background: linear-gradient(145deg, #0a0f14, #020508);
+  box-shadow: inset 0 0 0 1px rgba(0,255,255,0.15);
+}
+
+/* ==========================================================
+   FUTURE MODE
+   ========================================================== */
+
+.crt-future {
   background:
-    linear-gradient(
-      110deg,
-      rgba(0, 255, 245, 0) 0%,
-      rgba(0, 255, 245, 0.25) 35%,
-      rgba(245, 184, 65, 0.20) 52%,
-      rgba(0, 255, 245, 0.0) 72%
-    );
-  mix-blend-mode: screen;
-  opacity: 0.55;
-  transform: translateX(-60%);
-  animation: futureShimmer 3.6s ease-in-out infinite;
+    radial-gradient(circle at 30% 20%, rgba(0,255,255,0.15), transparent 40%),
+    linear-gradient(160deg, #020508, #050b12);
+  position: relative;
+  overflow: hidden;
 }
 
-.forge-terminal-panel.crt-future .forge-terminal-screen code {
-  color: #a8fbff;
-  text-shadow:
-    0 0 10px rgba(0, 255, 245, 0.55),
-    0 0 20px rgba(0, 255, 245, 0.28);
-}
-
-.forge-terminal-panel.crt-future {
-  box-shadow:
-    0 0 18px rgba(0, 255, 245, 0.25),
-    0 0 28px rgba(245, 184, 65, 0.12),
-    inset 0 0 26px rgba(0, 0, 0, 0.55);
-}
-
-.forge-terminal-panel.crt-future::after {
-  /* spark field (pure CSS): a handful of dots that drift + twinkle */
+.crt-future::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.95) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(0,255,245,0.85) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(245,184,65,0.8) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(0,255,245,0.75) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(245,184,65,0.7) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255,255,255,0.7) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(0,255,245,0.7) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(245,184,65,0.65) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255,255,255,0.65) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(0,255,245,0.65) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(245,184,65,0.6) 0 1px, transparent 2px);
-  opacity: 0.22;
-  filter: blur(0.2px);
-  mix-blend-mode: screen;
-  transform: translate3d(0,0,0);
-  animation: futureSparkle 2.8s ease-in-out infinite;
-
-  /* scatter the dots */
-  background-position:
-    12% 18%, 24% 62%, 37% 28%, 44% 74%, 58% 38%,
-    63% 66%, 72% 22%, 81% 58%, 88% 30%, 16% 82%,
-    52% 84%, 90% 78%;
-  background-size: 2px 2px;
-  background-repeat: no-repeat;
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,255,255,0.08) 0,
+      rgba(0,255,255,0.08) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  animation: holoGrid 8s linear infinite;
+  pointer-events: none;
 }
 
-@keyframes futureShimmer {
-  0%   { transform: translateX(-70%) skewX(-12deg); opacity: 0.35; }
-  45%  { opacity: 0.75; }
-  100% { transform: translateX(70%) skewX(-12deg); opacity: 0.25; }
+@keyframes holoGrid {
+  to { background-position-x: 300px; }
 }
 
-@keyframes futureSparkle {
-  0%   { opacity: 0.12; transform: translateY(0); }
-  45%  { opacity: 0.34; }
-  100% { opacity: 0.14; transform: translateY(-6px); }
+.crt-future::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(0,255,255,0.15),
+    transparent 70%
+  );
+  animation: shimmer 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.forge-terminal-panel.crt-clean .forge-terminal-screen::before {
-  opacity: 0.08;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.2), transparent 65%);
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-/* =========================================================
-   CONTACT CARDS — neon panels
-   ========================================================= */
+/* ==========================================================
+   SCANLINE / GRID (unchanged visual)
+   ========================================================== */
 
-.forge-contact-page .forge-card {
-  margin: 2rem auto;
-  padding: 2rem 1.8rem;
-  border-radius: 22px;
-  max-width: 1120px;
-  width: min(100%, 1120px);
-
-  background: radial-gradient(circle at top, #101829 0%, #05070c 60%, #000 100%);
-  box-shadow:
-    0 0 14px rgba(10, 109, 255, 0.22),
-    inset 0 0 22px rgba(0, 0, 0, 0.6);
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  text-align: left;
+.crt-scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
 }
 
-.forge-contact-page .forge-card h2 {
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 1.15rem;
-  color: var(--forge-hotmetal);
-  margin-top: 0;
-  margin-bottom: 0.9rem;
-}
-
-.forge-contact-page .forge-card p {
-  margin-bottom: 0.9rem;
-}
-
-.forge-contact-page .contact-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0.6rem 0 1.1rem;
-}
-
-.forge-contact-page .contact-list li {
-  margin: 0.25rem 0;
-}
-
-.forge-contact-page .contact-list a {
-  color: var(--forge-accent);
-}
-
-/* Glowy CTA button for "Copy Template" */
-.forge-contact-page .btn-glow {
-  display: inline-block;
-  margin-top: 0.3rem;
-  padding: 0.55rem 1.25rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.65);
-  background: radial-gradient(circle at 30% 20%, #0a6dff 0%, #021022 70%);
-
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #f8f9ff;
-
-  cursor: pointer;
-  box-shadow:
-    0 0 12px rgba(10,109,255,0.75),
-    0 0 22px rgba(10,109,255,0.55);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease;
-}
-
-.forge-contact-page .btn-glow:hover {
-  transform: translateY(-1px);
-  background: radial-gradient(circle at 30% 20%, #f5b841 0%, #381b03 70%);
-  box-shadow:
-    0 0 16px rgba(245,184,65,0.9),
-    0 0 26px rgba(245,184,65,0.7);
-}
-
-/* =========================================================
-   LOCATION CARD — blueprint block
-   ========================================================= */
-
-.forge-location-card {
-  margin: 2.4rem auto 0;
-  padding: 2.1rem 1.8rem 2.5rem;
-  border-radius: 24px;
-  max-width: 1120px;
-  width: min(100%, 1120px);
-  text-align: center;
-
-  background: radial-gradient(circle at top, #071c32 0%, #02050b 65%, #000 100%);
-  box-shadow:
-    0 0 18px rgba(0, 184, 212, 0.26),
-    inset 0 0 34px rgba(0, 0, 0, 0.8);
-}
-
-.forge-location-card h2 {
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.13em;
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: var(--forge-hotmetal);
-  margin-bottom: 1.4rem;
-}
-
-/* Blueprint plate */
-.forge-location-plate {
-  width: min(100%, 460px);
-  margin: 0 auto 1.4rem;
-  padding: 1.2rem 1.1rem;
-
-  font-family: "Fira Mono", monospace;
-  font-size: 0.92rem;
-  line-height: 1.6;
-
-  border: 2px solid rgba(0, 200, 255, 0.55);
-  border-radius: 12px;
-
-  background: radial-gradient(circle at center, #04101e, #000);
-  box-shadow:
-    0 0 14px rgba(0, 200, 255, 0.35),
-    inset 0 0 18px rgba(0, 50, 80, 0.9);
-
-  color: #cfefff;
-}
-
-.forge-location-plate .plate-line {
-  display: flex;
-  gap: 0.7rem;
-  padding: 0.18rem 0;
-}
-
-.forge-location-plate .plate-line span {
-  color: #78e8ff;
-  min-width: 120px;
-  text-align: right;
-  letter-spacing: 0.05em;
-}
-
-.plate-line.indent {
-  padding-left: 120px;
-}
-
-.forge-location-text {
-  font-family: "Titillium Web", sans-serif;
-  color: var(--forge-text);
-  font-size: 1.02rem;
-  line-height: 1.7;
-  max-width: 660px;
-  margin: 0 auto;
-}
-
-/* =========================================================
-   RESPONSIVE TWEAKS
-   ========================================================= */
-
-@media (max-width: 900px) {
-  .forge-contact-page {
-    padding-top: 2rem;
-  }
-
-  .forge-contact-page .forge-card,
-  .forge-terminal-panel,
-  .forge-terminal-modes,
-  .forge-location-card {
-    border-radius: 18px;
-  }
-}
-
-@media (max-width: 640px) {
-  .forge-contact-page {
-    padding: 1.6rem 0.6rem 2.1rem;
-  }
-
-  .forge-contact-page .page-intro h1 {
-    font-size: 1.7rem;
-  }
-
-  .forge-terminal-panel {
-    margin: 1.4rem auto 2rem;
-    padding: 1.2rem 1.1rem;
-  }
-
-  .forge-terminal-screen {
-    padding: 0.95rem 1.05rem;  /* slightly tighter but still safe */
-  }
-
-  .forge-contact-page .forge-card {
-    padding: 1.5rem 1.2rem;
-    margin: 1.6rem auto;
-  }
-
-  .forge-location-card {
-    padding: 1.8rem 1.2rem 2.1rem;
-  }
+.crt-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
 }
