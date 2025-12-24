@@ -149,39 +149,49 @@
 }
 
 /* =========================================================
-   TEXT EFFECT HELPERS (typing / vanish / clean erase + poof)
+   TEXT EFFECT HELPERS (Typing / Vanish / Radar Glow / Clean Poof)
    ========================================================= */
 
-.forge-terminal-screen code.is-typing::after{
+.forge-terminal-screen code.is-typing::after {
   content: "▋";
   display: inline-block;
   margin-left: 0.2rem;
-  opacity: 0.9;
-  animation: forgeCursorBlink 0.9s steps(2,end) infinite;
+  opacity: 0.85;
+  animation: forgeCursorBlink 0.9s steps(2, end) infinite;
 }
 
 @keyframes forgeCursorBlink {
-  0%, 49% { opacity: 0.95; }
+  0%, 49% { opacity: 0.9; }
   50%, 100% { opacity: 0.12; }
 }
 
-.forge-terminal-screen code.is-vanishing{
+.forge-terminal-screen code.is-vanishing {
   animation: forgeVanish 0.55s ease forwards;
 }
 
-@keyframes forgeVanish{
+@keyframes forgeVanish {
   to { opacity: 0; filter: blur(2px); }
 }
 
-.forge-terminal-screen code.is-erasing{
-  text-shadow: 0 0 10px rgba(38,224,255,0.25);
+/* Radar text: very dim by default; JS toggles .radar-lit when beam points at it */
+.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-dim {
+  opacity: 0.07;
 }
 
-.forge-terminal-screen.clean-poof-burst::after{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  pointer-events:none;
+.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-dim.radar-lit {
+  opacity: 1;
+  color: #eafff6;
+  text-shadow:
+    0 0 14px rgba(0, 255, 160, 0.65),
+    0 0 26px rgba(0, 255, 160, 0.28);
+}
+
+/* Clean transition helpers (JS adds classes) */
+.forge-terminal-screen.clean-poof-burst::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
   background:
     radial-gradient(circle at 50% 45%, rgba(0,255,255,0.55) 0%, rgba(0,255,255,0.0) 55%),
     radial-gradient(circle at 40% 55%, rgba(255,196,56,0.35) 0%, rgba(255,196,56,0.0) 60%),
@@ -191,10 +201,16 @@
   opacity: 0;
 }
 
-@keyframes forgePoof{
-  0%{ transform: scale(0.8); opacity: 0; }
-  20%{ opacity: 0.9; }
-  100%{ transform: scale(1.35); opacity: 0; }
+@keyframes forgePoof {
+  0% { transform: scale(0.8); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* Optional: slight "cleaning" overlay while clean is running */
+.forge-terminal-panel.crt-cleaning .forge-terminal-screen::before {
+  opacity: 0.10;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.25), transparent 65%);
 }
 
 /* CRT overlay base */
@@ -246,64 +262,6 @@
   color: #80ffb5;
 }
 
-/* =========================================================
-   RADAR ILLUMINATION (CSS-driven)
-   Duplicate the text in a bright layer, then mask it with a sweeping wedge.
-   ========================================================= */
-
-@property --radar-angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
-}
-
-@keyframes forgeRadarAngle {
-  from { --radar-angle: 0deg; }
-  to   { --radar-angle: 360deg; }
-}
-
-.forge-terminal-panel.crt-radar {
-  --radar-angle: 0deg;
-  animation: forgeRadarAngle 6.5s linear infinite;
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate {
-  opacity: 0.06;
-}
-
-.forge-terminal-panel.crt-radar .forge-terminal-screen code.radar-illuminate::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  white-space: pre-wrap;
-  color: #eafff6;
-  text-shadow:
-    0 0 14px rgba(0, 255, 160, 0.65),
-    0 0 26px rgba(0, 255, 160, 0.28);
-
-  /* Mobile-safe mask: white = visible */
-  -webkit-mask-image: conic-gradient(
-    from var(--radar-angle),
-    rgba(255,255,255,1) 0deg,
-    rgba(255,255,255,1) 10deg,
-    rgba(255,255,255,0.55) 28deg,
-    rgba(255,255,255,0.18) 46deg,
-    rgba(255,255,255,0) 72deg,
-    rgba(255,255,255,0) 360deg
-  );
-  mask-image: conic-gradient(
-    from var(--radar-angle),
-    rgba(255,255,255,1) 0deg,
-    rgba(255,255,255,1) 10deg,
-    rgba(255,255,255,0.55) 28deg,
-    rgba(255,255,255,0.18) 46deg,
-    rgba(255,255,255,0) 72deg,
-    rgba(255,255,255,0) 360deg
-  );
-
-  pointer-events: none;
-}
-
 .forge-terminal-panel.crt-radar::after {
   content: "";
   position: absolute;
@@ -312,13 +270,13 @@
   background: conic-gradient(
     from 0deg,
     rgba(0, 255, 128, 0.9) 0deg,
-    rgba(0, 255, 128, 0) 60deg,
+    rgba(0, 255, 128, 0) 50deg,
     rgba(0, 255, 128, 0) 360deg
   );
   mix-blend-mode: screen;
   pointer-events: none;
   opacity: 0.28;
-  animation: radarSweep 6.5s linear infinite;
+  animation: radarSweep 4s linear infinite;
 }
 
 @keyframes radarSweep {
@@ -385,68 +343,4 @@
 
 .forge-contact-page .contact-list a:hover {
   border-bottom-color: rgba(63, 227, 255, 0.7);
-}
-
-/* =========================================================
-   MODERN + FUTURE MODES
-   ========================================================= */
-
-.forge-terminal-panel.crt-modern .forge-terminal-screen{
-  background: linear-gradient(180deg, rgba(10,16,26,0.92), rgba(0,0,0,0.92));
-  border-color: rgba(0,184,212,0.55);
-  box-shadow: 0 0 18px rgba(0,184,212,0.35), inset 0 0 26px rgba(0,0,0,0.75);
-}
-
-.forge-terminal-panel.crt-modern .forge-terminal-screen::before{
-  opacity: 0.25;
-  background:
-    radial-gradient(circle at 18% 22%, rgba(0,255,255,0.12), transparent 55%),
-    radial-gradient(circle at 78% 35%, rgba(255,196,56,0.10), transparent 60%);
-}
-
-.forge-terminal-panel.crt-future .forge-terminal-screen{
-  background:
-    radial-gradient(circle at 22% 18%, rgba(0,255,255,0.10), transparent 55%),
-    radial-gradient(circle at 82% 30%, rgba(255,196,56,0.08), transparent 60%),
-    linear-gradient(180deg, rgba(5,8,14,0.95), rgba(0,0,0,0.95));
-  border-color: rgba(0,255,255,0.50);
-  box-shadow:
-    0 0 22px rgba(0,255,255,0.30),
-    0 0 42px rgba(0,80,255,0.14) inset;
-}
-
-.forge-terminal-panel.crt-future .forge-terminal-screen::before{
-  opacity: 0.35;
-  background-image:
-    repeating-linear-gradient(to bottom, rgba(0,255,255,0.10), rgba(0,255,255,0.10) 1px, transparent 2px, transparent 5px),
-    repeating-linear-gradient(to right, rgba(0,255,255,0.08), rgba(0,255,255,0.08) 1px, transparent 2px, transparent 28px);
-  animation: forgeHoloDrift 8s linear infinite;
-}
-
-@keyframes forgeHoloDrift{
-  from{ background-position: 0 0, 0 0; }
-  to{ background-position: 0 160px, 220px 0; }
-}
-
-.forge-terminal-panel.crt-future .forge-terminal-screen::after{
-  content:"";
-  position:absolute;
-  inset:-10%;
-  pointer-events:none;
-  background: linear-gradient(115deg, transparent 30%, rgba(0,255,255,0.10), transparent 70%);
-  mix-blend-mode: screen;
-  animation: forgeShimmerSweep 6.2s ease-in-out infinite;
-  opacity: 0.0;
-}
-
-@keyframes forgeShimmerSweep{
-  0%{ transform: translateX(-30%) rotate(0deg); opacity: 0; }
-  15%{ opacity: 0.55; }
-  55%{ opacity: 0.10; }
-  100%{ transform: translateX(30%) rotate(0deg); opacity: 0; }
-}
-
-.forge-terminal-panel.crt-future .forge-terminal-screen code{
-  color: #b8f6ff;
-  text-shadow: 0 0 10px rgba(0,255,255,0.18);
 }
