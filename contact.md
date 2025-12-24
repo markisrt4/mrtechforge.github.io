@@ -123,7 +123,7 @@ Looking forward to connecting,
   <!-- ============================
        LOCATION CARD — SIMPLE BLUEPRINT
   ============================ -->
-  <section class="forge-location-card">
+  <section class="forge-card forge-location-card">
     <h2>Proudly Serving Southeast Michigan</h2>
 
     <div class="forge-location-plate">
