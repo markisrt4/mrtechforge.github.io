@@ -33,6 +33,100 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeMode = "scanline";
   let previousMode = "scanline";
 
+  // -----------------------------
+  // Per-mode sound effects (WebAudio, no external files)
+  // Plays only on user gestures (button clicks) to satisfy mobile autoplay rules.
+  // -----------------------------
+  let audioCtx = null;
+
+  function getAudioCtx() {
+    if (audioCtx) return audioCtx;
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null;
+    audioCtx = new Ctx();
+    return audioCtx;
+  }
+
+  function playToneSequence(steps) {
+    const ctx = getAudioCtx();
+    if (!ctx) return;
+
+    // Some browsers start suspended until first interaction; button click counts.
+    if (ctx.state === "suspended") {
+      ctx.resume().catch(() => {});
+    }
+
+    const now = ctx.currentTime;
+    let t = now;
+
+    steps.forEach(({ freq, dur = 0.07, type = "sine", gain = 0.08 }) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, t);
+
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(gain, t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+      osc.connect(g);
+      g.connect(ctx.destination);
+
+      osc.start(t);
+      osc.stop(t + dur + 0.01);
+
+      t += dur + 0.015;
+    });
+  }
+
+  function playModeSfx(mode) {
+    // Keep these short + subtle (feels like UI feedback, not a ringtone)
+    switch (mode) {
+      case "scanline":
+        playToneSequence([
+          { freq: 620, dur: 0.06, type: "triangle", gain: 0.07 },
+          { freq: 840, dur: 0.06, type: "triangle", gain: 0.06 }
+        ]);
+        break;
+      case "grid":
+        playToneSequence([
+          { freq: 520, dur: 0.05, type: "square", gain: 0.05 },
+          { freq: 520, dur: 0.05, type: "square", gain: 0.04 },
+          { freq: 780, dur: 0.06, type: "triangle", gain: 0.05 }
+        ]);
+        break;
+      case "radar":
+        playToneSequence([
+          { freq: 380, dur: 0.08, type: "sine", gain: 0.07 },
+          { freq: 520, dur: 0.06, type: "sine", gain: 0.05 }
+        ]);
+        break;
+      case "modern":
+        playToneSequence([
+          { freq: 740, dur: 0.05, type: "sine", gain: 0.05 },
+          { freq: 980, dur: 0.07, type: "sine", gain: 0.06 }
+        ]);
+        break;
+      case "future":
+        playToneSequence([
+          { freq: 460, dur: 0.05, type: "sawtooth", gain: 0.045 },
+          { freq: 920, dur: 0.06, type: "triangle", gain: 0.055 },
+          { freq: 1240, dur: 0.05, type: "sine", gain: 0.05 }
+        ]);
+        break;
+      case "clean":
+        playToneSequence([
+          { freq: 880, dur: 0.04, type: "triangle", gain: 0.05 },
+          { freq: 520, dur: 0.10, type: "sine", gain: 0.05 }
+        ]);
+        break;
+      default:
+        break;
+    }
+  }
+
+
   function addTimer(code, id) {
     if (!timersByCode.has(code)) timersByCode.set(code, []);
     timersByCode.get(code).push(id);
@@ -124,6 +218,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typeStep();
   }
+  // -----------------------------
+  // Typing once (Modern / Future)
+  // -----------------------------
+  function startTypingOnce(code, opts = {}) {
+    const typeDelay = opts.typeDelay ?? 14;
+
+    const full = code.dataset.originalText || "";
+    code.textContent = "";
+    code.classList.add("is-typing");
+
+    let i = 0;
+
+    function step() {
+      if (activeMode !== "modern" && activeMode !== "future") return;
+
+      code.textContent = full.slice(0, i + 1);
+      i += 1;
+
+      if (i >= full.length) {
+        code.classList.remove("is-typing");
+        return;
+      }
+
+      addTimer(code, setTimeout(step, typeDelay));
+    }
+
+    addTimer(code, setTimeout(step, Math.max(0, typeDelay)));
+  }
+
+
 
   function enableTypingLoop() {
     restoreAllText();
@@ -150,8 +274,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Keep simple: sweep duration matches CSS beam animation (in scss)
     const durationMs = 4000;           // MUST match SCSS radarSweep duration
-    const beamHalfWidth = 24;          // degrees (beam cone)
-    const afterglowMs = 900;           // text stays lit after beam passes
+    const beamHalfWidth = 38;          // degrees (beam cone)
+    const afterglowMs = 1750;           // text stays lit after beam passes
     const hitTimes = new Map();        // code -> last hit timestamp
 
     radarStart = performance.now();
@@ -280,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------------
   function applyModeClasses(mode) {
     terminalPanels.forEach((panel) => {
-      panel.classList.remove("crt-scanline", "crt-grid", "crt-radar", "crt-clean");
+      panel.classList.remove("crt-scanline", "crt-grid", "crt-radar", "crt-clean", "crt-modern", "crt-future");
       panel.classList.add(`crt-${mode}`);
     });
   }
@@ -294,6 +418,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (mode === "radar") {
       enableRadar();
+      return;
+    }
+    if (mode === "modern" || mode === "future") {
+      restoreAllText();
+      codeBlocks.forEach((code) => startTypingOnce(code));
       return;
     }
     if (mode === "clean") {
