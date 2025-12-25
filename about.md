@@ -1,127 +1,126 @@
 ---
-title: About
 layout: default
+title: About M.R. TechForge
 permalink: /about/
+description: Technology that feels human — built by Mark Russell of M.R. TechForge.
 ---
 
-<div class="about-hero">
-  <div class="about-hero-grid">
-    <div class="about-hero-copy">
-      <h1>About <span class="forge-highlight">M.R. TechForge</span></h1>
-      <p class="about-tagline">Crafting Clarity • Forging Solutions • Secured with Integrity</p>
+<section class="about-hero forge-card">
+  <div class="about-hero-content">
+    <h1 class="about-title">
+      Hi, I’m <span class="forge-glow">Mark</span>.
+    </h1>
 
-      <p class="about-lead">
-        I’m <strong>Mark G. Russell</strong> — a lifelong technologist who helps people and small organizations
-        <strong>understand</strong> their tech, <strong>secure</strong> it, and <strong>make it work</strong> without the overwhelm.
-      </p>
+    <p class="about-tagline">
+      I build <span class="glow-blue">practical</span>,
+      <span class="glow-orange">human-friendly</span> technology —
+      not buzzwords.
+    </p>
 
-      <div class="about-badges">
-        <span class="about-badge">Security-minded</span>
-        <span class="about-badge">Plain‑English guidance</span>
-        <span class="about-badge">Built for real life</span>
-      </div>
-
-      <div class="about-cta-row">
-        <a class="btn-forge" href="/services/">Explore Services</a>
-        <a class="btn-glow" href="/contact/">Contact</a>
-      </div>
+    <div class="about-badges">
+      <span class="about-badge">🛠 Engineer</span>
+      <span class="about-badge">📡 Systems Thinker</span>
+      <span class="about-badge">😄 Humor Included</span>
     </div>
 
-    <div class="about-hero-media">
-      <figure class="about-photo-card">
-        <!-- Save the image below into your site and update the src path as needed -->
-        <img class="about-photo"
-             src="/assets/images/mark-techforge-mug.png"
-             alt="Mark holding an M.R. TechForge mug" loading="lazy" />
-        <figcaption class="about-photo-caption">
-          Tech, coffee, and a slightly unhealthy love for clean networks.
-        </figcaption>
-      </figure>
+    <div class="about-cta">
+      <a href="/contact/" class="btn-forge btn-glow">Get in Touch</a>
+      <a href="/services/" class="btn-forge-outline">View Services</a>
     </div>
   </div>
-</div>
 
-<section class="forge-card about-split">
-  <div>
-    <h2>What M.R. TechForge is</h2>
-    <p>
-      <strong>M.R. TechForge</strong> exists to bring calm, confidence, and control back to your technology.
-      Not just “fixing stuff” — but <em>explaining</em> it, strengthening it, and leaving you better equipped
-      than before.
-    </p>
-    <p>
-      Founded in <strong>2025</strong>, the mission is simple:
-      <strong>help everyday people and organizations take control of their technology</strong> with clarity, security,
-      and purpose.
-    </p>
-  </div>
-
-  <div class="about-quickfacts">
-    <h3>Quick Facts</h3>
-    <ul>
-      <li><strong>Focus:</strong> home + small org tech, security, and education</li>
-      <li><strong>Style:</strong> practical solutions, patient walkthroughs, clean documentation</li>
-      <li><strong>Promise:</strong> you’ll understand what we did &amp; why</li>
-    </ul>
+  <div class="about-photo-card">
+    <img
+      src="/assets/images/mark-techforge-mug.png"
+      alt="Mark Russell holding an M.R. TechForge mug"
+    />
   </div>
 </section>
 
-<section class="about-grid">
-  <div class="forge-card">
-    <h2>What I help with</h2>
-    <ul class="about-checklist">
-      <li><strong>Home &amp; small-office security</strong> — Wi‑Fi hardening, safer devices, smarter passwords.</li>
-      <li><strong>Networks &amp; connectivity</strong> — “why is this slow?” diagnostics, better coverage, fewer mysteries.</li>
-      <li><strong>Privacy + safer habits</strong> — reduce risk without becoming a hermit.</li>
-      <li><strong>Automation &amp; reliability</strong> — small improvements that save time every week.</li>
-    </ul>
-  </div>
+<section class="forge-card about-section">
+  <h2 class="about-section-title">
+    <span class="section-ico">🧠</span>
+    How I Think
+  </h2>
 
-  <div class="forge-card">
-    <h2>How I work</h2>
-    <ol class="about-steps">
-      <li><strong>Listen first.</strong> Understand the real problem and what “done” looks like.</li>
-      <li><strong>Explain clearly.</strong> No jargon walls — I teach as I go.</li>
-      <li><strong>Fix with intent.</strong> Secure, maintainable, and sized to your needs.</li>
-      <li><strong>Leave you stronger.</strong> Notes, next steps, and confidence — not dependency.</li>
-    </ol>
-  </div>
+  <p>
+    I believe technology should <strong>reduce friction</strong>,
+    <strong>increase clarity</strong>, and
+    <strong>respect people</strong>.
+  </p>
 
-  <div class="forge-card">
-    <h2>Values</h2>
-    <p class="about-values-lead">
-      A faith-based foundation of <strong>integrity, diligence, and excellence</strong> guides every engagement.
-    </p>
-    <div class="about-values">
-      <span class="about-chip">Integrity</span>
-      <span class="about-chip">Clarity</span>
-      <span class="about-chip">Security</span>
-      <span class="about-chip">Mentorship</span>
-      <span class="about-chip">Reliability</span>
-      <span class="about-chip">Craftsmanship</span>
-    </div>
+  <ul class="about-list">
+    <li><span class="about-li-ico">🔧</span>Build what’s needed — not what’s trendy</li>
+    <li><span class="about-li-ico">🔍</span>Make systems understandable and debuggable</li>
+    <li><span class="about-li-ico">📈</span>Design for longevity, not churn</li>
+  </ul>
+</section>
+
+<section class="forge-card about-section">
+  <h2 class="about-section-title">
+    <span class="section-ico">⚙️</span>
+    What I Work On
+  </h2>
+
+  <ul class="about-checklist">
+    <li>Managed phone & messaging systems</li>
+    <li>Privacy-respecting infrastructure</li>
+    <li>NFC tools & automation</li>
+    <li>Small-business friendly tech solutions</li>
+  </ul>
+</section>
+
+<section class="forge-card about-section">
+  <h2 class="about-section-title">
+    <span class="section-ico">📡</span>
+    Quick Facts
+  </h2>
+
+  <ul class="about-facts">
+    <li><strong>Location:</strong> Southeast Michigan</li>
+    <li><strong>Background:</strong> Engineering, systems design, mentoring</li>
+    <li><strong>Approach:</strong> Calm, direct, thoughtful — with humor</li>
+  </ul>
+</section>
+
+<section class="forge-card about-section about-satire">
+  <h2 class="about-section-title">
+    <span class="section-ico">😄</span>
+    Also… I Like to Have Fun
+  </h2>
+
+  <p>
+    Not everything has to be serious.
+    I maintain a small collection of satire and playful image projects —
+    <em>purely optional viewing</em>.
+  </p>
+
+  <a
+    href="https://photos.mrtechforge.com"
+    class="btn-forge btn-glow about-satire-btn"
+    target="_blank"
+    rel="noopener nofollow"
+  >
+    View Satire Photo Collection
+  </a>
+
+  <div class="about-satire-note">
+    Just for laughs • No tracking • No SEO games
   </div>
 </section>
 
-<section class="forge-card">
-  <h2>About Mark</h2>
-  <p>
-    My background spans embedded systems, networking, and software development — but what I enjoy most is
-    translating complex tech into something you can actually use.
-  </p>
-  <p>
-    Whether we’re securing a home network, setting up a managed phone/text line, or helping a small group adopt better
-    digital habits, the goal is the same: <strong>confidence through understanding</strong>.
-  </p>
-</section>
+<section class="forge-card about-final">
+  <h2 class="about-section-title">
+    <span class="section-ico">🚀</span>
+    Let’s Build Something Solid
+  </h2>
 
-<section class="forge-card about-cta-card">
-  <h2>Ready to forge something better?</h2>
   <p>
-    If you want technology that feels <strong>calm, safe, and understandable</strong>, I’d love to help.
+    If you’re tired of over-engineered nonsense or under-explained tech,
+    we’ll probably get along just fine.
   </p>
-  <div class="about-cta-row">
-    <a class="btn-forge" href="/contact/">Start a conversation</a>
-    <a class="btn-glow" href="/services/">See what I offer</a>
-  </div>
+
+  <a href="/contact/" class="btn-forge btn-glow btn-wide">
+    Start a Conversation
+  </a>
 </section>
