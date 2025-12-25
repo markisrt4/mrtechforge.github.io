@@ -10,13 +10,17 @@ main:
     children:
       - title: "Tech Services"
         url: "/services/tech-services/"
+
       - title: "Documentation"
         url: "/services/documentation-product-testing/#documentation"
+
       - title: "Product Testing"
         url: "/services/documentation-product-testing/#product-testing"
+
       - title: "Forge Managed Phone & Text"
         url: "/services/forge-managed-phone-text/"
-      - title: "MRTF-Secure Network" 
+
+      - title: "MRTF-Secure Network"
         url: "/services/secure-network-services/"
 
   - title: "Guides"
@@ -30,6 +34,9 @@ main:
 
           - title: "Google Replacement Guide"
             url: "/guides/digital-security/life-without-google/#google-replacement-guide"
+
+      - title: "Recommended Tools"
+        url: "/guides/recommended-tools/"
 
   - title: "FAQ"
     url: "/faq/"
