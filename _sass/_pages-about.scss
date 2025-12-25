@@ -1,189 +1,181 @@
 /* ==========================================================
-   ABOUT PAGE — M.R. TECHFORGE (v2.0)
-   Hero layout • Photo card • Chips • Responsive grid
-   Depends on: _cards.scss + _buttons.scss
+   ABOUT PAGE — M.R. TECHFORGE
    ========================================================== */
 
 .about-hero {
-  margin: 0 0 2rem 0;
-}
-
-.about-hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 1.6rem;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
   align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }
 
-.about-hero-copy h1 {
-  margin: 0 0 0.4rem 0;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1.1px;
-  animation: forgeGlow 4s ease-in-out infinite;
+.about-title {
+  font-size: 2.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .about-tagline {
-  margin: 0 0 1.15rem 0;
-  color: rgba(255,255,255,0.78);
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
-.about-lead {
-  margin: 0 0 1.15rem 0;
-  font-size: 1.08rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.86);
+.forge-glow {
+  color: var(--forge-blue);
+  text-shadow: 0 0 12px rgba(60, 180, 255, 0.6);
+}
+
+.glow-blue {
+  color: var(--forge-blue);
+  text-shadow: 0 0 10px rgba(60, 180, 255, 0.6);
+}
+
+.glow-orange {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 10px rgba(255, 140, 60, 0.6);
 }
 
 .about-badges {
   display: flex;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin: 0 0 1.15rem 0;
+  margin-bottom: 1.75rem;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
 }
 
 .about-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.42rem 0.65rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(15, 15, 15, 0.75);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  color: rgba(255,255,255,0.88);
-  font-weight: 800;
-  font-size: 0.92rem;
-  letter-spacing: 0.01em;
-  box-shadow: 0 0 16px rgba(var(--forge-accent-rgb), 0.08);
+  font-size: 0.85rem;
 }
 
-.about-cta-row {
+.about-cta {
   display: flex;
+  gap: 1rem;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.6rem;
-}
 
-.about-hero-media {
-  display: flex;
-  justify-content: center;
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
 }
 
 .about-photo-card {
-  margin: 0;
-  width: 100%;
-  max-width: 420px;
-  background: rgba(20, 20, 20, 0.75);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.10);
+  background: radial-gradient(
+    circle at top,
+    rgba(60, 180, 255, 0.25),
+    rgba(0, 0, 0, 0.9)
+  );
+  padding: 1rem;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(60, 180, 255, 0.25);
+
+  img {
+    width: 100%;
+    border-radius: 14px;
+    display: block;
+  }
 }
 
-.about-photo {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  filter: saturate(1.05) contrast(1.02);
+/* Sections */
+
+.about-section {
+  margin-top: 2.5rem;
 }
 
-.about-photo-caption {
-  padding: 0.85rem 1rem 1rem 1rem;
-  color: rgba(255,255,255,0.75);
-  font-size: 0.95rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
+.about-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.about-split {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 1.4rem;
-  align-items: start;
+.about-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--forge-blue),
+    var(--forge-hotmetal)
+  );
+  box-shadow: 0 0 10px rgba(60, 180, 255, 0.6);
 }
 
-.about-quickfacts h3 {
-  margin-top: 0;
+.section-ico {
+  filter: drop-shadow(0 0 6px rgba(60, 180, 255, 0.6));
 }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
-  margin: 1.5rem 0;
+/* Lists */
+
+.about-list,
+.about-checklist,
+.about-facts {
+  list-style: none;
+  padding-left: 0;
 }
 
-.about-checklist {
-  margin: 0.75rem 0 0 0;
-  padding-left: 1.15rem;
+.about-list li,
+.about-facts li {
+  margin-bottom: 0.6rem;
+}
+
+.about-li-ico {
+  margin-right: 0.4rem;
 }
 
 .about-checklist li {
-  margin: 0.55rem 0;
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.6rem;
 }
 
-.about-steps {
-  margin: 0.75rem 0 0 0;
-  padding-left: 1.25rem;
+.about-checklist li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--forge-blue);
+  text-shadow: 0 0 8px rgba(60, 180, 255, 0.7);
 }
 
-.about-steps li {
-  margin: 0.65rem 0;
+/* Satire section */
+
+.about-satire {
+  border: 1px dashed rgba(255, 255, 255, 0.25);
 }
 
-.about-values-lead {
+.about-satire-btn {
+  margin-top: 1rem;
+}
+
+.about-satire-note {
   margin-top: 0.75rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
 }
 
-.about-values {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 0.85rem;
-}
+/* Final CTA */
 
-.about-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.42rem 0.7rem;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(18,18,18,0.85), rgba(10,10,10,0.82));
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.24);
-  color: rgba(255,255,255,0.9);
-  font-weight: 800;
-  font-size: 0.92rem;
-  letter-spacing: 0.01em;
-  box-shadow: 0 0 16px rgba(var(--forge-accent-rgb), 0.08);
-}
-
-.about-cta-card {
+.about-final {
+  margin-top: 3rem;
   text-align: center;
 }
 
-.about-cta-card .about-cta-row {
-  justify-content: center;
-  margin-top: 1.1rem;
-}
-
-/* ----------------------------------------------------------
-   Responsive
----------------------------------------------------------- */
-
-@media (max-width: 980px) {
-  .about-hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-hero-media {
-    order: -1;
-  }
-
-  .about-split {
-    grid-template-columns: 1fr;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
+.btn-wide {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
