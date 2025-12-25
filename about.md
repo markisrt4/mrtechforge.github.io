@@ -31,7 +31,7 @@ permalink: /about/
       <figure class="about-photo-card">
         <!-- Save the image below into your site and update the src path as needed -->
         <img class="about-photo"
-             src="/assets/img/about/mark-techforge-mug.jpg"
+             src="/assets/images/mark-techforge-mug.png"
              alt="Mark holding an M.R. TechForge mug" loading="lazy" />
         <figcaption class="about-photo-caption">
           Tech, coffee, and a slightly unhealthy love for clean networks.
