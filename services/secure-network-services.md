@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "MRTF Secure Network Services"
+title: "Fogre Secure Network Services"
 permalink: /services/secure-network-services/
 description: "Secure, local-first network infrastructure for homes and small businesses."
 ---
@@ -8,9 +8,9 @@ description: "Secure, local-first network infrastructure for homes and small bus
 {% assign sn = site.data.services | where: "id", "secure-network-services" | first %}
 
 <div class="service-hero">
-  <h1>{% if sn and sn.title %}{{ sn.title }}{% else %}MRTF Secure Network Services{% endif %}</h1>
+  <h1>{% if sn and sn.title %}{{ sn.title }}{% else %}Forge Secure Network Services{% endif %}</h1>
   <div class="service-product-tag">
-    {% if sn and sn.product_tag %}{{ sn.product_tag }}{% else %}MRTF Secure Network by M.R. TechForge{% endif %}
+    {% if sn and sn.product_tag %}{{ sn.product_tag }}{% else %}Forge Secure Network by M.R. TechForge{% endif %}
   </div>
 
   {% if sn and sn.description %}
@@ -51,7 +51,7 @@ description: "Secure, local-first network infrastructure for homes and small bus
 <div class="services-divider"></div>
 
 <section class="service-section">
-  <h2 class="services-heading">How MRTF Secure Network Works</h2>
+  <h2 class="services-heading">How Forge Secure Network Works</h2>
 
   <div class="phone-services-card">
     <ol class="how-it-works-steps">
@@ -132,7 +132,7 @@ description: "Secure, local-first network infrastructure for homes and small bus
       {% endfor %}
     </div>
   {% else %}
-    <p><em>Home packages are being finalized. Contact MRTF for current availability.</em></p>
+    <p><em>Home packages are being finalized. Contact MR TechForge for current availability.</em></p>
   {% endif %}
 </section>
 
@@ -197,7 +197,7 @@ description: "Secure, local-first network infrastructure for homes and small bus
       {% endfor %}
     </div>
   {% else %}
-    <p><em>Business packages are being finalized. Contact MRTF for current availability.</em></p>
+    <p><em>Business packages are being finalized. Contact us for current availability.</em></p>
   {% endif %}
 </section>
 
@@ -226,7 +226,7 @@ description: "Secure, local-first network infrastructure for homes and small bus
 <section class="service-section forge-service-pricing">
   <h2 class="services-heading">What’s Included (Capabilities)</h2>
   <p>
-    These are the building blocks MRTF uses across packages. The exact mix depends on your environment and goals.
+    These are the building blocks we design across packages. The exact mix depends on your environment and goals.
   </p>
 
   {% if sn and sn.offerings %}
@@ -280,7 +280,7 @@ description: "Secure, local-first network infrastructure for homes and small bus
       {% endfor %}
     </div>
   {% else %}
-    <p><em>Capabilities are being finalized. Contact MRTF for current availability.</em></p>
+    <p><em>Capabilities are being finalized. Contact us for current availability.</em></p>
   {% endif %}
 </section>
 
@@ -379,7 +379,7 @@ description: "Secure, local-first network infrastructure for homes and small bus
   <h2 class="services-heading">Ready to Secure Your Network?</h2>
   <p>
     Most clients start with a secure foundation and expand only if needed.
-    MRTF Secure Network Services are designed to scale without surprises.
+    Forge Secure Network Services are designed to scale without surprises.
   </p>
   <p>
     <a href="/contact/" class="btn-glow">Contact M.R. TechForge</a>

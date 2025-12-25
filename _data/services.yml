@@ -82,7 +82,7 @@
       icon: "🚫"
 
 
-- name: "MRTF Tech Services & Coaching"
+- name: "Forged Tech Services & Coaching"
   id: "tech-services"
   category: "technology"
   url: "/services/tech-services/"
@@ -90,50 +90,50 @@
   description: "Practical, friendly technology help for individuals, families, and small organizations. From websites and e-commerce to online safety, remote support, and hands-on coaching — M.R. TechForge helps you build, secure, and maintain your digital life with confidence."
   offerings:
     - name: "Website Setup / Redesign"
-      price: "$250 setup + $50/hr"
+      price: "250 setup + $50/hr"
       unit: "Initial setup + hourly"
       description: "New site setup or refresh (structure, styling, performance basics, and deployment guidance)."
 
     - name: "E-Commerce Integration"
-      price: "Call for quote"
+      price: " (Call for quote)"
       unit: "Varies by platform"
       description: "Help integrating payments, storefronts, product pages, and order flows (platform-dependent)."
 
     - name: "Remote Support Session"
-      price: "$50"
+      price: "50"
       unit: "hour"
       description: "Troubleshooting, setup help, tune-ups, installs, and configuration guidance (remote)."
 
     - name: "Digital Security Seminar"
-      price: "Call for quote"
+      price: " (Call for quote)"
       unit: "1–4 hour sessions"
       description: "Plain-English security training for groups: passwords, 2FA, scams, backups, privacy basics."
 
     - name: "Private Security Coaching"
-      price: "Call for quote"
+      price: " (Call for quote)"
       unit: "1–4 hour sessions"
       description: "One-on-one guidance to improve your security posture and build better habits."
 
     - name: "Parent Coaching: Kids Online"
-      price: "Call for quote"
+      price: " (Call for quote)"
       unit: "1–4 hour sessions"
       description: "Device + account safety, app/privacy settings, boundaries, and practical monitoring options."
 
     - name: "Coding 101 for Kids"
-      price: "Call for quote"
+      price: " (Call for quote)"
       unit: "1–2 hour classes"
       description: "Beginner-friendly coding sessions for kids/teens (curriculum and pacing tailored to age)."
 
     - name: "File/Backup Recovery Assessment"
-      price: "$50"
+      price: "50"
       unit: "hr"
       description: "Software-based recovery attempts + honest assessment (no miracle promises)."
 
 
 - id: "secure-network-services"
-  name: "MRTF Secure Network Services"
-  title: "MRTF Secure Network Services"
-  product_tag: "MRTF Secure Network by M.R. TechForge"
+  name: "Forge Secure Network Services"
+  title: "Forge Secure Network Services"
+  product_tag: "Forge Secure Network by M.R. TechForge"
   description: "Secure, private, local-first network infrastructure for homes and small businesses — built intentionally, documented clearly, and supported with optional ongoing care. This is not a consumer VPN or a black-box router. It’s a network you can understand, trust, and recover if something goes wrong."
   who_for:
     - "Home users who want security without guessing or breaking things."
@@ -170,7 +170,7 @@
         setup_label: "One-time"
         monthly_label: ""
     - name: "Local Storage & Backup Design"
-      description: "Backup and recovery design with clear documentation. You keep full ownership and control of your data — MRTF does not take custody of files or encryption keys."
+      description: "Backup and recovery design with clear documentation. You keep full ownership and control of your data — we do not take custody of files or encryption keys."
       pricing:
         setup_label: "One-time"
         monthly_label: ""
@@ -250,7 +250,7 @@
       monthly_range: "$100 – $250"
       includes:
         - "Change assistance and ongoing guidance"
-        - "Faster context because MRTF designed the baseline"
+        - "Faster context because we design the baseline"
         - "Best-effort recovery help when something breaks"
       expectations:
         - "Higher expectations than home environments"
@@ -313,12 +313,12 @@
     - q: "Do I need a new router?"
       a: "Not always. We can use your existing router if it supports the security and network features required. If it doesn’t, we’ll recommend a few vetted options or design a sidecar approach that works alongside ISP equipment."
     - q: "Do you store or access my data?"
-      a: "No. MRTF does not store customer data, access files, or hold encryption keys. We design and configure storage and backup systems so you retain full ownership and control."
+      a: "No. We do not store customer data, access files, or hold encryption keys. We design and configure storage and backup systems so you retain full ownership and control."
     - q: "Is this the same as a consumer VPN?"
       a: "No. Secure Remote Access is about safely reaching your own network when you’re away. It’s not a ‘privacy VPN subscription.’"
     - q: "What devices are protected by Network-Wide Protection?"
       a: "Everything on your network — phones, laptops, tablets, smart TVs, and IoT devices — without installing software on each one."
     - q: "Do you provide 24/7 emergency support?"
-      a: "Not by default. Managed Network Care can include priority support expectations, but MRTF does not advertise 24/7 on-call service unless explicitly agreed."
+      a: "Not by default. Managed Network Care can include priority support expectations, but we do not advertise 24/7 on-call service unless explicitly agreed."
     - q: "What if I need new hardware like cables or storage drives?"
       a: "We can validate your existing equipment, recommend compatible hardware for you to purchase directly, or optionally supply hardware with clear itemization — no proprietary lock-in."

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Forge Tech Services & Coaching"
+title: "Forged Tech Services & Coaching"
 permalink: /services/tech-services/
 description: "Practical, friendly technology help — websites, e-commerce, security coaching, remote support, and digital safety for families."
 ---
@@ -8,7 +8,7 @@ description: "Practical, friendly technology help — websites, e-commerce, secu
 {% assign tech = site.data.services | where: "id", "tech-services" | first %}
 
 <div class="service-hero">
-  <h1>MRTF Tech Services &amp; Coaching</h1>
+  <h1>Forged Tech Services &amp; Coaching</h1>
   <div class="service-product-tag">General Tech by M.R. TechForge</div>
 
   {% if tech %}
@@ -63,7 +63,7 @@ description: "Practical, friendly technology help — websites, e-commerce, secu
 
   <div class="phone-services-card">
     <ol class="how-it-works-steps">
-      <li><strong>You tell MRTF what you’re trying to accomplish.</strong> (Fix, build, learn, secure, recover, or plan.)</li>
+      <li><strong>You tell us what you’re trying to accomplish.</strong> (Fix, build, learn, secure, recover, or plan.)</li>
       <li><strong>We recommend a path.</strong> Quick session, structured coaching, or a quoted project.</li>
       <li><strong>We do the work together (or for you).</strong> Clear steps, clean configs, and documentation when it matters.</li>
       <li><strong>You leave with confidence.</strong> Not just a fix — but fewer repeats of the same problem.</li>

@@ -17,7 +17,7 @@ description: "Services by M.R. TechForge — secure infrastructure, managed comm
   <div class="service-product-tag">Build • Secure • Support • Clarify</div>
 
   <p>
-    MRTF delivers practical, security-minded technology services — from hardened home &amp; small-business networks,
+    M.R. TechForge delivers practical, security-minded technology services — from hardened home &amp; small-business networks,
     to managed phone &amp; messaging systems, to general tech help and coaching, to documentation and product testing that reduces friction.
   </p>
 
@@ -26,7 +26,7 @@ description: "Services by M.R. TechForge — secure infrastructure, managed comm
   <p style="margin-top: 1rem;">
     <a href="#services-grid" class="btn btn-forge">Explore Services</a>
     &nbsp;
-    <a href="/contact/" class="btn-glow">Contact MRTF</a>
+    <a href="/contact/" class="btn-glow">Contact MR TechForge</a>
   </p>
 
   <p style="margin-top: 1rem; color: var(--forge-subtext); font-size: 0.95rem;">
@@ -41,12 +41,12 @@ description: "Services by M.R. TechForge — secure infrastructure, managed comm
 <div class="services-divider"></div>
 
 <section class="service-section" id="services-grid">
-  <h2 class="services-heading">What MRTF Offers</h2>
+  <h2 class="services-heading">What MR TechForge Offers</h2>
 
   <div class="phone-services-card">
     <p style="margin: 0;">
       You don’t need “more tech.” You need a setup that’s <strong>clear</strong>, <strong>safe</strong>, and <strong>recoverable</strong>.
-      MRTF focuses on solutions you can understand — with documentation and support options that match your comfort level.
+      We focus on solutions you can understand — with documentation and support options that match your comfort level.
     </p>
   </div>
 
@@ -261,7 +261,7 @@ description: "Services by M.R. TechForge — secure infrastructure, managed comm
   <div class="phone-services-card">
     <p>
       If your product is good but people still struggle, it’s usually clarity — not capability.
-      MRTF improves onboarding, reduces support load, and makes your product feel as polished as it truly is.
+      TechForge improves onboarding, reduces support load, and makes your product feel as polished as it truly is.
     </p>
 
     <ul>
@@ -282,7 +282,7 @@ description: "Services by M.R. TechForge — secure infrastructure, managed comm
 
   <div class="phone-services-card">
     <p style="margin-top: 0;">
-      Totally fine. Tell MRTF what you’re trying to achieve — and we’ll recommend the simplest path forward.
+      Totally fine. Tell M.R. TechForge what you’re trying to achieve — and we’ll recommend the simplest path forward.
     </p>
 
     <ul>
