@@ -1,45 +1,45 @@
 main:
   - title: "Home"
-    url: "/"
+    key: "pages.home"
 
   - title: "About"
-    url: "/about/"
+    key: "pages.about"
 
   - title: "Services"
-    url: "/services/"
+    key: "pages.services"
     children:
       - title: "Tech Services"
-        url: "/services/tech-services/"
+        key: "services.tech_services"
 
       - title: "Documentation"
-        url: "/services/documentation-product-testing/#documentation"
+        key: "services.doc_anchor"
 
       - title: "Product Testing"
-        url: "/services/documentation-product-testing/#product-testing"
+        key: "services.product_testing_anchor"
 
       - title: "Forge Managed Phone & Text"
-        url: "/services/forge-managed-phone-text/"
+        key: "services.forge_managed_phone_text"
 
       - title: "MRTF-Secure Network"
-        url: "/services/secure-network-services/"
+        key: "services.secure_network"
 
   - title: "Guides"
-    url: "/guides/"
+    key: "pages.guides"
     children:
       - title: "Digital Security"
-        url: "/guides/digital-security/"
+        key: "guides.digital_security"
         children:
           - title: "Why Break Up With Google?"
-            url: "/guides/digital-security/life-without-google/#google-breakup-intro"
+            key: "guides.google_breakup_intro"
 
           - title: "Google Replacement Guide"
-            url: "/guides/digital-security/life-without-google/#google-replacement-guide"
+            key: "guides.google_replacement_guide"
 
       - title: "Recommended Tools"
-        url: "/guides/recommended-tools/"
+        key: "guides.recommended_tools"
 
   - title: "FAQ"
-    url: "/faq/"
+    key: "pages.faq"
 
   - title: "Contact"
-    url: "/contact.html"
+    key: "pages.contact"

@@ -11,7 +11,7 @@
           Practical, relationship-focused tech consulting for homes,
           churches, libraries, and small businesses.
         </p>
-        <a href="/about/" class="footer-cta-link">
+        <a href="{{ site.data.links.pages.about }}" class="footer-cta-link">
           Learn more about the mission →
         </a>
       </div>
@@ -22,19 +22,19 @@
         <div class="footer-column">
           <h3 class="footer-heading">Company</h3>
           <ul>
-            <li><a href="/services/">Services</a></li>
-            <li><a href="/guides/">Guides Overview</a></li>
-            <li><a href="/contact/">Contact</a></li>
+            <li><a href="{{ site.data.links.pages.services }}">Services</a></li>
+            <li><a href="{{ site.data.links.pages.guides }}">Guides Overview</a></li>
+            <li><a href="{{ site.data.links.pages.contact }}">Contact</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h3 class="footer-heading">Resources</h3>
           <ul>
-            <li><a href="/guides/digital-security/">Digital Security</a></li>
-            <li><a href="/guides/google-breakup/">Why Break Up with Google?</a></li>
-            <li><a href="/guides/recommended-tools/">Recommended Tools</a></li>
-            <li><a href="/documentation/">Documentation</a></li>
+            <li><a href="{{ site.data.links.guides.digital_security }}">Digital Security</a></li>
+            <li><a href="{{ site.data.links.guides.google_breakup_intro }}">Why Break Up with Google?</a></li>
+            <li><a href="{{ site.data.links.guides.recommended_tools }}">Recommended Tools</a></li>
+            <li><a href="{{ site.data.links.pages.documentation }}">Documentation</a></li>
           </ul>
         </div>
 
@@ -67,12 +67,13 @@
       <div class="footer-social-block">
         <span class="footer-contact-label">Connect</span>
         <div class="footer-social">
-          <a href="https://github.com/mrtechforge" aria-label="GitHub">
+          <a href="{{ site.data.links.external.github }}" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com/in/mark-g-russell" aria-label="LinkedIn">
+          <a href="{{ site.data.links.external.linkedin }}" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
+          <!-- Keeping these as-is since you didn't include them in links.yml (yet) -->
           <a href="https://youtube.com/" aria-label="YouTube">
             <i class="fab fa-youtube"></i>
           </a>
@@ -84,7 +85,7 @@
 
     </div>
 
-    <!-- Privacy tools referral (NEW) -->
+    <!-- Privacy tools referral -->
     <div class="footer-privacy-callout glow-pulse-slow">
       <span class="privacy-ico" aria-hidden="true">🛡️</span>
       <span class="privacy-text">
@@ -94,14 +95,14 @@
 
       <div class="footer-privacy-actions">
         <a
-          href="/guides/recommended-tools/"
+          href="{{ site.data.links.guides.recommended_tools }}"
           class="footer-privacy-link"
         >
           Recommended Tools →
         </a>
 
         <a
-          href="https://pr.tn/ref/H8CD3SD5"
+          href="{{ site.data.links.external.proton_referral }}"
           class="footer-proton-link"
           target="_blank"
           rel="noopener nofollow"

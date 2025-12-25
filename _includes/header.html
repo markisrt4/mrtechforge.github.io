@@ -2,7 +2,7 @@
   <div class="header-inner">
 
     <!-- LOGO + WORDMARK -->
-    <a href="/" class="logo-link">
+    <a href="{{ site.data.links.pages.home | default: '/' }}" class="logo-link">
       <img src="/assets/images/logo_transparent.png"
            alt="M.R. TechForge Logo"
            class="forge-logo">
@@ -24,7 +24,17 @@
     <nav class="forge-nav">
 
       {% for item in site.data.navigation.main %}
-        {% assign item_url_clean = item.url | default: "/" | split: "#" | first %}
+
+        {%- comment -%} Resolve URL from key (preferred) or url (fallback) {%- endcomment -%}
+        {% assign item_url_resolved = item.url | default: "/" %}
+        {% if item.key %}
+          {% assign parts = item.key | split: "." %}
+          {% assign group = parts[0] %}
+          {% assign name  = parts[1] %}
+          {% assign item_url_resolved = site.data.links[group][name] | default: item_url_resolved %}
+        {% endif %}
+
+        {% assign item_url_clean = item_url_resolved | default: "/" | split: "#" | first %}
         {% assign item_is_active =
           current_url == item_url_clean or
           (current_url != "/" and current_url contains item_url_clean)
@@ -44,21 +54,29 @@
             <!-- DESKTOP DROPDOWN -->
             <div class="dropdown-content desktop-only">
 
-              {% if item.url %}
-                <a href="{{ item.url }}" class="dropdown-overview{% if item_is_active %} is-active{% endif %}">
+              {% if item_url_resolved %}
+                <a href="{{ item_url_resolved }}" class="dropdown-overview{% if item_is_active %} is-active{% endif %}">
                   {{ item.title }} Overview
                 </a>
               {% endif %}
 
               {% for child in item.children %}
-                
-                {% assign child_url_clean = child.url | split: "#" | first %}
+
+                {% assign child_url_resolved = child.url | default: "/" %}
+                {% if child.key %}
+                  {% assign cparts = child.key | split: "." %}
+                  {% assign cgroup = cparts[0] %}
+                  {% assign cname  = cparts[1] %}
+                  {% assign child_url_resolved = site.data.links[cgroup][cname] | default: child_url_resolved %}
+                {% endif %}
+
+                {% assign child_url_clean = child_url_resolved | split: "#" | first %}
                 {% assign child_is_active =
                   current_url == child_url_clean or
                   current_url contains child_url_clean
                 %}
 
-                <a href="{{ child.url }}"
+                <a href="{{ child_url_resolved }}"
                    data-child="true"
                    class="{% if child_is_active %}is-active{% endif %}">
                   {{ child.title }}
@@ -66,13 +84,22 @@
 
                 {% if child.children %}
                   {% for grand in child.children %}
-                    {% assign grand_url_clean = grand.url | split: "#" | first %}
+
+                    {% assign grand_url_resolved = grand.url | default: "/" %}
+                    {% if grand.key %}
+                      {% assign gparts = grand.key | split: "." %}
+                      {% assign ggroup = gparts[0] %}
+                      {% assign gname  = gparts[1] %}
+                      {% assign grand_url_resolved = site.data.links[ggroup][gname] | default: grand_url_resolved %}
+                    {% endif %}
+
+                    {% assign grand_url_clean = grand_url_resolved | split: "#" | first %}
                     {% assign grand_is_active =
                       current_url == grand_url_clean or
                       current_url contains grand_url_clean
                     %}
 
-                    <a href="{{ grand.url }}"
+                    <a href="{{ grand_url_resolved }}"
                        data-grandchild="true"
                        class="{% if grand_is_active %}is-active{% endif %}">
                       {{ grand.title }}
@@ -87,9 +114,9 @@
             <!-- MOBILE ACCORDION SUBMENU -->
             <ul class="mobile-submenu">
 
-              {% if item.url %}
+              {% if item_url_resolved %}
                 <li>
-                  <a href="{{ item.url }}" class="{% if item_is_active %}is-active{% endif %}">
+                  <a href="{{ item_url_resolved }}" class="{% if item_is_active %}is-active{% endif %}">
                     {{ item.title }} Overview
                   </a>
                 </li>
@@ -97,28 +124,45 @@
 
               {% for child in item.children %}
 
-                {% assign child_url_clean = child.url | split: "#" | first %}
+                {% assign child_url_resolved = child.url | default: "/" %}
+                {% if child.key %}
+                  {% assign cparts = child.key | split: "." %}
+                  {% assign cgroup = cparts[0] %}
+                  {% assign cname  = cparts[1] %}
+                  {% assign child_url_resolved = site.data.links[cgroup][cname] | default: child_url_resolved %}
+                {% endif %}
+
+                {% assign child_url_clean = child_url_resolved | split: "#" | first %}
                 {% assign child_is_active =
                   current_url == child_url_clean or
                   current_url contains child_url_clean
                 %}
 
                 <li class="mobile-child">
-                  <a href="{{ child.url }}" class="{% if child_is_active %}is-active{% endif %}">
+                  <a href="{{ child_url_resolved }}" class="{% if child_is_active %}is-active{% endif %}">
                     {{ child.title }}
                   </a>
                 </li>
 
                 {% if child.children %}
                   {% for grand in child.children %}
-                    {% assign grand_url_clean = grand.url | split: "#" | first %}
+
+                    {% assign grand_url_resolved = grand.url | default: "/" %}
+                    {% if grand.key %}
+                      {% assign gparts = grand.key | split: "." %}
+                      {% assign ggroup = gparts[0] %}
+                      {% assign gname  = gparts[1] %}
+                      {% assign grand_url_resolved = site.data.links[ggroup][gname] | default: grand_url_resolved %}
+                    {% endif %}
+
+                    {% assign grand_url_clean = grand_url_resolved | split: "#" | first %}
                     {% assign grand_is_active =
                       current_url == grand_url_clean or
                       current_url contains grand_url_clean
                     %}
 
                     <li class="mobile-grandchild">
-                      <a href="{{ grand.url }}" class="{% if grand_is_active %}is-active{% endif %}">
+                      <a href="{{ grand_url_resolved }}" class="{% if grand_is_active %}is-active{% endif %}">
                         {{ grand.title }}
                       </a>
                     </li>
@@ -132,7 +176,7 @@
           </div>
 
         {% else %}
-          <a href="{{ item.url }}"
+          <a href="{{ item_url_resolved }}"
              class="{% if item_is_active %}is-active{% endif %}">
             {{ item.title }}
           </a>

@@ -1,0 +1,35 @@
+# Site-wide canonical links (single source of truth)
+pages:
+  home: "/"
+  about: "/about/"
+  services: "/services/"
+  guides: "/guides/"
+  contact: "/contact/"        # canonical (avoid /contact.html unless you truly need it)
+  faq: "/faq/"
+  documentation: "/documentation/"
+
+guides:
+  digital_security: "/guides/digital-security/"
+  google_breakup_intro: "/guides/digital-security/life-without-google/#google-breakup-intro"
+  google_replacement_guide: "/guides/digital-security/life-without-google/#google-replacement-guide"
+  recommended_tools: "/guides/recommended-tools/"
+
+services:
+  tech_services: "/services/tech-services/"
+  doc_product_testing: "/services/documentation-product-testing/"
+  doc_anchor: "/services/documentation-product-testing/#documentation"
+  product_testing_anchor: "/services/documentation-product-testing/#product-testing"
+  forge_managed_phone_text: "/services/forge-managed-phone-text/"
+  secure_network: "/services/secure-network-services/"
+
+external:
+  proton_referral: "https://pr.tn/ref/H8CD3SD5"
+  signal: "https://signal.org/"
+  github: "https://github.com/mrtechforge"
+  linkedin: "https://www.linkedin.com/in/mark-g-russell"
+
+legal:
+  privacy: "/privacy/"
+  terms: "/terms/"
+  security: "/security/"
+
