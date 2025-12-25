@@ -29,6 +29,8 @@ class: contact
       <button class="terminal-mode-btn is-active" data-mode="scanline">Scanline</button>
       <button class="terminal-mode-btn" data-mode="grid">Grid</button>
       <button class="terminal-mode-btn" data-mode="radar">Radar</button>
+      <button class="terminal-mode-btn" data-mode="modern">Modern</button>
+      <button class="terminal-mode-btn" data-mode="future">Future</button>
       <button class="terminal-mode-btn" data-mode="clean">Clean</button>
     </div>
   </section>
@@ -76,7 +78,7 @@ class: contact
     <h2>Suggested Email Template</h2>
     <p>If you’re not sure what to say, here’s a quick format you can copy and adjust.</p>
 
-    <button id="copy-template" class="btn-glow">Copy Template</button>
+    <button id="copy-template" class="btn-forge btn-glow">Copy Template</button>
   </section>
 
   <!-- ============================
@@ -121,7 +123,7 @@ Looking forward to connecting,
   <!-- ============================
        LOCATION CARD — SIMPLE BLUEPRINT
   ============================ -->
-  <section class="forge-location-card">
+  <section class="forge-card forge-location-card">
     <h2>Proudly Serving Southeast Michigan</h2>
 
     <div class="forge-location-plate">

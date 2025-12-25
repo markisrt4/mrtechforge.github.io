@@ -2,13 +2,13 @@
 layout: default
 title: "Services"
 permalink: /services/
-description: "Services by M.R. TechForge — secure infrastructure, communication systems, general tech help, and clarity-focused documentation/testing."
+description: "Services by M.R. TechForge — secure infrastructure, managed communication systems, general tech help, and clarity-focused documentation/testing."
 ---
 
 {% assign all_services = site.data.services %}
 
 {% assign sn = all_services | where: "id", "secure-network-services" | first %}
-{% assign line = all_services | where: "id", "mrtf-line" | first %}
+{% assign line = all_services | where: "id", "forge-managed-phone-text" | first %}
 {% assign tech = all_services | where: "id", "tech-services" | first %}
 {%- comment -%} documentation-product-testing is a standalone page, not necessarily in services.yml {%- endcomment -%}
 
@@ -18,7 +18,7 @@ description: "Services by M.R. TechForge — secure infrastructure, communicatio
 
   <p>
     MRTF delivers practical, security-minded technology services — from hardened home &amp; small-business networks,
-    to managed phone lines, to general tech help and coaching, to documentation and product testing that reduces friction.
+    to managed phone &amp; messaging systems, to general tech help and coaching, to documentation and product testing that reduces friction.
   </p>
 
   <p><strong>Pick a lane below — or just tell us what you’re trying to accomplish.</strong></p>
@@ -32,7 +32,7 @@ description: "Services by M.R. TechForge — secure infrastructure, communicatio
   <p style="margin-top: 1rem; color: var(--forge-subtext); font-size: 0.95rem;">
     Jump to:
     <a href="#secure-network">Secure Network</a> •
-    <a href="#mrtf-line">MRTF-Line</a> •
+    <a href="#forge-managed-phone-text">Managed Phone &amp; Text</a> •
     <a href="#tech-services">Tech Services</a> •
     <a href="#docs-testing">Docs &amp; Testing</a>
   </p>
@@ -85,16 +85,16 @@ description: "Services by M.R. TechForge — secure infrastructure, communicatio
       </p>
     </article>
 
-    <!-- MRTF-Line -->
+    <!-- Managed Phone & Text -->
     <article class="forge-offering-card">
       <div class="forge-offering-icon">📞</div>
-      <h3 class="forge-offering-title">MRTF-Line Communication Services</h3>
+      <h3 class="forge-offering-title">Forge Managed Phone &amp; Text</h3>
 
       <p class="forge-offering-desc">
         {% if line and line.description %}
           {{ line.description }}
         {% else %}
-          A modular, managed phone &amp; messaging line so you can stay reachable without exposing your personal number.
+          A managed phone &amp; messaging service so you can stay reachable without exposing your personal number.
         {% endif %}
       </p>
 
@@ -110,10 +110,10 @@ description: "Services by M.R. TechForge — secure infrastructure, communicatio
       </div>
 
       <p style="margin-top: 1rem;">
-        <a class="btn btn-forge" href="/services/mrtf-line/">View MRTF-Line →</a>
+        <a class="btn btn-forge" href="/services/forge-managed-phone-text/">View Managed Phone &amp; Text →</a>
       </p>
       <p style="margin-top: 0.6rem; font-size: 0.95rem; color: var(--forge-subtext);">
-        <a href="#mrtf-line">Quick overview ↓</a>
+        <a href="#forge-managed-phone-text">Quick overview ↓</a>
       </p>
     </article>
 
@@ -204,23 +204,23 @@ description: "Services by M.R. TechForge — secure infrastructure, communicatio
 
 <div class="services-divider"></div>
 
-<section class="service-section" id="mrtf-line">
-  <h2 class="services-heading">MRTF-Line Communication Services</h2>
+<section class="service-section" id="forge-managed-phone-text">
+  <h2 class="services-heading">Forge Managed Phone &amp; Text</h2>
 
   <div class="phone-services-card">
     <p>
-      A managed phone &amp; text line that scales from simple to powerful. Start with one number,
+      A managed phone &amp; text service that scales from simple to powerful. Start with one number,
       then add only what you need (menus, routing, voicemail upgrades, secure messaging, dashboards, and more).
     </p>
 
     <ul>
-      <li><strong>Professional presence</strong> without enterprise phone-system pain</li>
+      <li><strong>Professional presence</strong> without exposing personal numbers</li>
       <li><strong>Modular add-ons</strong> so you only pay for what you use</li>
-      <li><strong>Clear workflows</strong> designed around how you actually operate</li>
+      <li><strong>Designed workflows</strong> based on how you actually operate</li>
     </ul>
 
     <p style="margin-top: 1rem;">
-      <a href="/services/mrtf-line/" class="btn btn-forge">Explore MRTF-Line →</a>
+      <a href="/services/forge-managed-phone-text/" class="btn btn-forge">Explore Managed Phone &amp; Text →</a>
       &nbsp;
       <a href="/assets/docs/MRTF-Line_Marketing_Overview.pdf" class="btn-glow">Download Overview PDF</a>
     </p>
@@ -287,7 +287,7 @@ description: "Services by M.R. TechForge — secure infrastructure, communicatio
 
     <ul>
       <li><strong>“I need safer Wi-Fi + remote access.”</strong> → Secure Network</li>
-      <li><strong>“I need a number for my org.”</strong> → MRTF-Line</li>
+      <li><strong>“I need a dedicated number for my org.”</strong> → Managed Phone &amp; Text</li>
       <li><strong>“I need help fixing / setting up stuff.”</strong> → Tech Services</li>
       <li><strong>“Users are confused.”</strong> → Docs &amp; Testing</li>
     </ul>

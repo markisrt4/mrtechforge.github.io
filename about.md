@@ -1,48 +1,126 @@
 ---
-title: About
 layout: default
+title: About M.R. TechForge
 permalink: /about/
+description: Technology that feels human — built by Mark Russell of M.R. TechForge.
 ---
 
-<div class="page-intro">
-  <h1>About <span class="forge-highlight">M.R. TechForge</span></h1>
-  <p class="tagline">Crafting Clarity. Forging Solutions. Secured with Integrity</p>
-</div>
+<section class="about-hero forge-card">
+  <div class="about-hero-content">
+    <h1 class="about-title">
+      Hi, I’m <span class="forge-glow">Mark</span>.
+    </h1>
 
-<section class="forge-card">
-  <p><strong>M.R. TechForge</strong> was founded by <strong>Mark G. Russell</strong> in 2025 with one mission in mind — to help everyday people and organizations take control of their technology with clarity, security, and purpose.</p>
+    <p class="about-tagline">
+      I build <span class="glow-blue">practical</span>,
+      <span class="glow-orange">human-friendly</span> technology —
+      not buzzwords.
+    </p>
 
-  <p>We believe that technology should *serve you*, not confuse you. Every system, seminar, and solution we build is guided by integrity, practicality, and a genuine desire to empower others.</p>
+    <div class="about-badges">
+      <span class="about-badge">🛠 Engineer</span>
+      <span class="about-badge">📡 Systems Thinker</span>
+      <span class="about-badge">😄 Humor Included</span>
+    </div>
+
+    <div class="about-cta">
+      <a href="/contact/" class="btn-forge btn-glow">Get in Touch</a>
+      <a href="/services/" class="btn-forge-outline">View Services</a>
+    </div>
+  </div>
+
+  <div class="about-photo-card">
+    <img
+      src="/assets/images/mark-techforge-mug.png"
+      alt="Mark Russell holding an M.R. TechForge mug"
+    />
+  </div>
 </section>
 
-<section class="forge-card">
-  <h2>Our Mission</h2>
-  <p>To <strong>forge relationships, technology, and innovative solutions</strong> through education, mentorship, and hands-on guidance.  
-  Whether we’re teaching digital safety, securing a home network, or inspiring young coders — our focus remains the same: building confidence through understanding.</p>
-</section>
+<section class="forge-card about-section">
+  <h2 class="about-section-title">
+    <span class="section-ico">🧠</span>
+    How I Think
+  </h2>
 
-<section class="forge-card">
-  <h2>About Mark G. Russell</h2>
-  <p>Mark is a lifelong technologist and problem-solver who loves demystifying the complex. His background in embedded systems, networking, and software development gives him a rare mix of deep technical skill and an educator’s heart.</p>
+  <p>
+    I believe technology should <strong>reduce friction</strong>,
+    <strong>increase clarity</strong>, and
+    <strong>respect people</strong>.
+  </p>
 
-  <p>He brings a faith-based foundation of <strong>integrity, diligence, and excellence</strong> to every project — ensuring the work is not only technically sound, but also trustworthy and sustainable.</p>
-</section>
-
-<section class="forge-card">
-  <h2>How We Work</h2>
-  <p>We approach each engagement as a partnership — guiding you through your technology goals with clear explanations, actionable steps, and patient, personal support.</p>
-
-  <ul>
-    <li><strong>Transparent.</strong> You’ll understand what we’re doing and why.</li>
-    <li><strong>Reliable.</strong> Our solutions are built to last, not just to impress.</li>
-    <li><strong>Empowering.</strong> We want you to feel confident — not dependent.</li>
+  <ul class="about-list">
+    <li><span class="about-li-ico">🔧</span>Build what’s needed — not what’s trendy</li>
+    <li><span class="about-li-ico">🔍</span>Make systems understandable and debuggable</li>
+    <li><span class="about-li-ico">📈</span>Design for longevity, not churn</li>
   </ul>
 </section>
 
-<section class="forge-card">
-  <h2>Why Choose M.R. TechForge?</h2>
-  <p>Because we don’t just fix technology — we teach it, refine it, and make it work for you.  
-  From digital-security education to home and online tech solutions, everything we deliver is forged with precision, purpose, and heart.</p>
+<section class="forge-card about-section">
+  <h2 class="about-section-title">
+    <span class="section-ico">⚙️</span>
+    What I Work On
+  </h2>
 
-  <blockquote>“Forging Relationships, Tech, & Innovative Solutions” — our promise to every client, every time.</blockquote>
+  <ul class="about-checklist">
+    <li>Managed phone & messaging systems</li>
+    <li>Privacy-respecting infrastructure</li>
+    <li>NFC tools & automation</li>
+    <li>Small-business friendly tech solutions</li>
+  </ul>
+</section>
+
+<section class="forge-card about-section">
+  <h2 class="about-section-title">
+    <span class="section-ico">📡</span>
+    Quick Facts
+  </h2>
+
+  <ul class="about-facts">
+    <li><strong>Location:</strong> Southeast Michigan</li>
+    <li><strong>Background:</strong> Engineering, systems design, mentoring</li>
+    <li><strong>Approach:</strong> Calm, direct, thoughtful — with humor</li>
+  </ul>
+</section>
+
+<section class="forge-card about-section about-satire">
+  <h2 class="about-section-title">
+    <span class="section-ico">😄</span>
+    Also… I Like to Have Fun
+  </h2>
+
+  <p>
+    Not everything has to be serious.
+    I maintain a small collection of satire and playful image projects —
+    <em>purely optional viewing</em>.
+  </p>
+
+  <a
+    href="https://photos.mrtechforge.com"
+    class="btn-forge btn-glow about-satire-btn"
+    target="_blank"
+    rel="noopener nofollow"
+  >
+    View Satire Photo Collection
+  </a>
+
+  <div class="about-satire-note">
+    Just for laughs • No tracking • No SEO games
+  </div>
+</section>
+
+<section class="forge-card about-final">
+  <h2 class="about-section-title">
+    <span class="section-ico">🚀</span>
+    Let’s Build Something Solid
+  </h2>
+
+  <p>
+    If you’re tired of over-engineered nonsense or under-explained tech,
+    we’ll probably get along just fine.
+  </p>
+
+  <a href="/contact/" class="btn-forge btn-glow btn-wide">
+    Start a Conversation
+  </a>
 </section>
