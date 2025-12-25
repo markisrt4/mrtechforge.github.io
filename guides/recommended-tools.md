@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Recommended Tools
+title: "Recommended Tools"
 permalink: /guides/recommended-tools/
-description: A short list of privacy-respecting tools I recommend and actually use: Proton, Signal, and Linux.
+description: A  list of privacy-respecting tools recommended tools: i.e. Proton, Signal, and Linux.
 ---
 
 <section class="forge-card">

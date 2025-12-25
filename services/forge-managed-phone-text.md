@@ -5,7 +5,7 @@ permalink: /services/forge-managed-phone-text/
 description: "A managed phone and messaging service designed and configured by M.R. TechForge."
 ---
 
-{% assign mrtf_line = site.data.services | where: "id", "mrtf-line" | first %}
+{% assign mrtf_line = site.data.services | where: "id", "forge-managed-phone-text" | first %}
 
 <div class="service-hero">
   <h1>Forge Managed Phone &amp; Text</h1>
@@ -79,7 +79,7 @@ description: "A managed phone and messaging service designed and configured by M
   <div class="phone-services-card">
     <p style="margin-top: 0;">
       <strong>Typical monthly cost:</strong>
-      <span style="white-space: nowrap;">$20–$45 / month</span>
+      <span style="white-space: nowrap;">{% if mrtf_line and mrtf_line.typical_monthly_range %}{{ mrtf_line.typical_monthly_range }}{% else %}$20–$45 / month{% endif %}</span>
       <span style="color: var(--forge-subtext);">
         depending on features and usage.
       </span>
@@ -97,6 +97,73 @@ description: "A managed phone and messaging service designed and configured by M
       </p>
     {% endif %}
   </div>
+</section>
+
+<div class="services-divider"></div>
+
+<section class="service-section forge-service-pricing">
+  <h2 class="services-heading">Bundle Packages (Out-the-Door Pricing)</h2>
+
+  <p>
+    These bundles are meant to make pricing easy to understand.
+    Exact costs depend on your feature choices and usage — but these represent common real-world setups.
+  </p>
+
+  {% if mrtf_line and mrtf_line.bundles %}
+    <div class="forge-offerings-grid">
+      {% for bundle in mrtf_line.bundles %}
+        <article class="forge-offering-card">
+          <div class="forge-offering-icon">{{ bundle.icon | default: "📦" }}</div>
+
+          <h3 class="forge-offering-title">
+            {{ bundle.name }}
+            {% if bundle.badge %}
+              <span class="forge-offering-badge">{{ bundle.badge }}</span>
+            {% endif %}
+          </h3>
+
+          {% if bundle.description %}
+            <p class="forge-offering-desc">{{ bundle.description }}</p>
+          {% endif %}
+
+          <div class="forge-offering-pricing">
+            {% if bundle.setup_range %}
+              <div class="forge-price-row is-setup">
+                <span class="label">Setup</span>
+                <span class="value">{{ bundle.setup_range }}</span>
+              </div>
+            {% endif %}
+
+            {% if bundle.monthly_range %}
+              <div class="forge-price-row">
+                <span class="label">Monthly</span>
+                <span class="value">{{ bundle.monthly_range }}</span>
+              </div>
+            {% endif %}
+          </div>
+
+          {% if bundle.includes %}
+            <ul class="forge-offering-desc" style="margin-top: 0.8rem;">
+              {% for item in bundle.includes %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="phone-services-card">
+      <p style="margin: 0;">
+        Bundles are not configured yet. Add a <code>bundles:</code> section under
+        <code>id: forge-managed-phone-text</code> in <code>_data/services.yml</code>.
+      </p>
+    </div>
+  {% endif %}
+
+  <p style="margin-top: 1rem; color: var(--forge-subtext);">
+    Want a tighter quote? Tell me your goals and I’ll propose the cleanest bundle for your needs.
+  </p>
 </section>
 
 <div class="services-divider"></div>
