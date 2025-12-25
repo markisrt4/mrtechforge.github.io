@@ -25,8 +25,9 @@ services:
 external:
   proton_referral: "https://pr.tn/ref/H8CD3SD5"
   signal: "https://signal.org/"
-  github: "https://github.com/mrtechforge"
-  linkedin: "https://www.linkedin.com/in/mark-g-russell"
+  github: "https://github.com/markisrt4"
+  linkedin: "https://www.linkedin.com/in/mark-russell-26278456/"
+  facebook: "https://www.facebook.com/profile.php?id=61582641067637"
 
 legal:
   privacy: "/privacy/"
