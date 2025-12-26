@@ -20,7 +20,7 @@ main:
       - title: "Forge Managed Phone & Text"
         key: "services.forge_managed_phone_text"
 
-      - title: "MRTF-Secure Network"
+      - title: "Forge Secure Network"
         key: "services.secure_network"
 
   - title: "Guides"

@@ -83,32 +83,6 @@ description: Technology that feels human — built by Mark Russell of M.R. TechF
   </ul>
 </section>
 
-<section class="forge-card about-section about-satire">
-  <h2 class="about-section-title">
-    <span class="section-ico">😄</span>
-    Also… I Like to Have Fun
-  </h2>
-
-  <p>
-    Not everything has to be serious.
-    I maintain a small collection of satire and playful image projects —
-    <em>purely optional viewing</em>.
-  </p>
-
-  <a
-    href="https://photos.mrtechforge.com"
-    class="btn-forge btn-glow about-satire-btn"
-    target="_blank"
-    rel="noopener nofollow"
-  >
-    View Satire Photo Collection
-  </a>
-
-  <div class="about-satire-note">
-    Just for laughs • No tracking • No SEO games
-  </div>
-</section>
-
 <section class="forge-card about-final">
   <h2 class="about-section-title">
     <span class="section-ico">🚀</span>
@@ -120,7 +94,7 @@ description: Technology that feels human — built by Mark Russell of M.R. TechF
     we’ll probably get along just fine.
   </p>
 
-  <a href="/contact/" class="btn-forge btn-glow btn-wide">
+  <a href="{{ site.data.links.pages.contact }}" class="btn-forge btn-glow btn-wide">
     Start a Conversation
   </a>
 </section>

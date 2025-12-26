@@ -4,7 +4,7 @@ pages:
   about: "/about/"
   services: "/services/"
   guides: "/guides/"
-  contact: "/contact/"        # canonical (avoid /contact.html unless you truly need it)
+  contact: "/contact/"
   faq: "/faq/"
   documentation: "/documentation/"
 
