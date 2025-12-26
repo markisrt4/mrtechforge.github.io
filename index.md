@@ -13,6 +13,10 @@ class: home
   <section class="forge-hero-cinematic" aria-label="M.R. TechForge hero">
 
     <div class="hero-video-wrap" aria-hidden="true">
+      {%- comment -%}
+        Video is decorative (hero text provides meaning).
+        We lazy-load the MP4 source for performance and mobile friendliness.
+      {%- endcomment -%}
 
       <video
         class="hero-video"
@@ -20,9 +24,9 @@ class: home
         muted
         loop
         playsinline
-        preload="metadata"
-        poster="/assets/images/banner/social_banner.jpg">
-        <source src="/assets/video/mrtechforge-hero.mp4" type="video/mp4">
+        preload="none"
+        poster="/assets/images/banner/social_banner.jpg"
+        data-src="/assets/video/mrtechforge-hero.mp4">
       </video>
 
       <div class="hero-vignette"></div>
@@ -61,11 +65,16 @@ class: home
       </div>
     </div>
 
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span class="scroll-dot"></span>
+      <span class="scroll-text forge-text-gradient-soft">Scroll</span>
+    </div>
+
   </section>
 
 
   <!-- QUICK OVERVIEW -->
-  <section class="home-section-card home-quick-grid">
+  <section class="home-section-card home-quick-grid" aria-label="Quick overview">
 
     <div class="quick-card">
       <h2>What I Do</h2>
@@ -76,13 +85,21 @@ class: home
 
       <ul class="quick-list">
         <li class="forge-text-gradient-soft">
-          <a href="{{ links.services.forge_managed_phone_text }}">Managed phone &amp; text services</a>
+          {% include service_link.html
+            id="forge-managed-phone-text"
+            text="Managed phone &amp; text services"
+            class="home-inline-link"
+          %}
         </li>
         <li class="forge-text-gradient-soft">
-          <a href="{{ links.services.secure_network }}">Secure networking &amp; Wi-Fi</a>
+          {% include service_link.html
+            id="secure-network-services"
+            text="Secure networking &amp; Wi-Fi"
+            class="home-inline-link"
+          %}
         </li>
         <li class="forge-text-gradient-soft">
-          <a href="{{ links.guides.digital_security }}">Digital security guidance</a>
+          <a class="home-inline-link" href="{{ links.guides.digital_security }}">Digital security guidance</a>
         </li>
         <li class="forge-text-gradient-soft">
           Web tools &amp; lightweight automation
@@ -96,6 +113,14 @@ class: home
         No jargon. No pressure. Just clear options, clean execution,
         and systems that work the way they should.
       </p>
+
+      <div class="signal-meter" aria-hidden="true">
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+      </div>
 
       <p class="quick-foot forge-text-gradient-soft">
         Built for real people — not big-tech chaos.
@@ -183,7 +208,7 @@ class: home
 
 
   <!-- FINAL CTA -->
-  <section class="home-final-callout">
+  <section class="home-final-callout" aria-label="Final call to action">
     <div class="final-card">
       <div class="final-brand forge-title-glow">M.R. TechForge</div>
 
@@ -205,3 +230,45 @@ class: home
   </section>
 
 </div>
+
+<script>
+/* Home hero video lazy-loader (respects Save-Data + reduced motion + small screens) */
+(function () {
+  const v = document.querySelector('.forge-hero-cinematic .hero-video');
+  if (!v) return;
+
+  const src = v.getAttribute('data-src');
+  if (!src) return;
+
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isSmallScreen = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+  const saveData = (navigator.connection && navigator.connection.saveData) ? true : false;
+
+  // If the user wants reduced motion, or is on small screen, or Save-Data is enabled:
+  // keep poster-only (no network hit for video).
+  if (prefersReducedMotion || isSmallScreen || saveData) return;
+
+  let loaded = false;
+
+  function loadVideo() {
+    if (loaded) return;
+    loaded = true;
+
+    const s = document.createElement('source');
+    s.src = src;
+    s.type = 'video/mp4';
+    v.appendChild(s);
+
+    // Attempt play; if blocked, it's fine — it'll still show poster.
+    v.load();
+    v.play().catch(() => {});
+    window.removeEventListener('pointerdown', loadVideo, { passive: true });
+    window.removeEventListener('keydown', loadVideo);
+  }
+
+  // Load shortly after paint, plus on first interaction as a backup.
+  window.setTimeout(loadVideo, 350);
+  window.addEventListener('pointerdown', loadVideo, { passive: true, once: true });
+  window.addEventListener('keydown', loadVideo, { once: true });
+})();
+</script>

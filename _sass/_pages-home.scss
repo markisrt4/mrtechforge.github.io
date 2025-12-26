@@ -1,4 +1,4 @@
-/* ===== Home Page Styles — Cinematic Hero Revamp (v2) ===== */
+/* ===== Home Page Styles — Cinematic Hero Revamp (v3) ===== */
 
 /* -----------------------------------------------
    HERO — CINEMATIC VIDEO BACKGROUND
@@ -21,6 +21,12 @@
   inset: 0;
   z-index: 0;
   background: #000;
+
+  /* Mobile/poster fallback background */
+  background-image: url("/assets/images/banner/social_banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-video {
@@ -68,8 +74,7 @@
 .hero-grain {
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 3px 3px;
   opacity: 0.05;
   z-index: 3;
@@ -127,9 +132,7 @@
   align-items: center;
 }
 
-.btn-hero {
-  min-width: 240px;
-}
+.btn-hero { min-width: 240px; }
 
 .btn-hero-secondary {
   opacity: 0.94;
@@ -185,7 +188,19 @@
   text-transform: uppercase;
 }
 
-/* Reduced motion: stop pulsing, optional video behavior */
+/* Inline links inside quick cards */
+.home-inline-link {
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  padding-bottom: 2px;
+}
+
+.home-inline-link:hover {
+  border-bottom-color: rgba(var(--forge-hotmetal-rgb, 245, 184, 65), 0.65);
+}
+
+/* Reduced motion: stop pulsing, and we already keep poster-only via JS */
 @media (prefers-reduced-motion: reduce) {
   .scroll-dot { animation: none; }
   .hero-video { filter: none; }
@@ -196,12 +211,7 @@
 ------------------------------------------------ */
 
 .forge-text-gradient-soft {
-  background: linear-gradient(
-    180deg,
-    #cfd5e3 0%,
-    #a7b0c3 45%,
-    #dadfe8 100%
-  );
+  background: linear-gradient(180deg, #cfd5e3 0%, #a7b0c3 45%, #dadfe8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -270,9 +280,7 @@
   list-style: none;
 }
 
-.quick-list li {
-  margin: 0.7rem 0;
-}
+.quick-list li { margin: 0.7rem 0; }
 
 .signal-meter {
   margin: 1.1rem 0 0.9rem;
@@ -370,23 +378,6 @@
   align-items: center;
 }
 
-/* Products list */
-.coming-list {
-  padding-left: 0;
-  list-style: none;
-  margin: 1.1rem auto 0;
-  max-width: 900px;
-}
-
-.coming-list li {
-  margin: 0.9rem 0;
-  padding: 0.9rem 1rem;
-  border-radius: 16px;
-  background: rgba(0,0,0,0.50);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.14);
-}
-
 /* -----------------------------------------------
    FINAL CALLOUT
 ------------------------------------------------ */
@@ -415,9 +406,7 @@
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-.final-brand {
-  margin-bottom: 1.1rem;
-}
+.final-brand { margin-bottom: 1.1rem; }
 
 .final-slogan {
   margin: 1rem auto 1.8rem;
@@ -431,9 +420,7 @@
   text-shadow: 0 0 16px rgba(10, 109, 255, 0.25);
 }
 
-.final-slogan span {
-  display: block;
-}
+.final-slogan span { display: block; }
 
 .final-slogan .accent {
   color: var(--forge-hotmetal);
@@ -452,42 +439,23 @@
 ------------------------------------------------ */
 
 @media (min-width: 640px) {
-  .hero-actions {
-    flex-direction: row;
-    justify-content: center;
-  }
+  .hero-actions { flex-direction: row; justify-content: center; }
+  .how-actions { flex-direction: row; justify-content: center; }
+  .final-actions { flex-direction: row; justify-content: center; }
 
-  .how-actions {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .final-actions {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .pillar-grid {
-    flex-direction: row;
-  }
-
-  .pillar-card {
-    flex: 1;
-  }
+  .pillar-grid { flex-direction: row; }
+  .pillar-card { flex: 1; }
 }
 
 @media (min-width: 860px) {
-  .home-quick-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .home-quick-grid { grid-template-columns: repeat(3, 1fr); }
+  .forge-hero-cinematic { margin-top: 1.6rem; }
+  .home-section-card { padding: 2.8rem 2.2rem; }
+}
 
-  .forge-hero-cinematic {
-    margin-top: 1.6rem;
-  }
-
-  .home-section-card {
-    padding: 2.8rem 2.2rem;
-  }
+/* Mobile: keep poster-only look (video stays hidden; JS also won’t load on small screens) */
+@media (max-width: 640px) {
+  .hero-video { display: none; }
 }
 
 /* -----------------------------------------------
