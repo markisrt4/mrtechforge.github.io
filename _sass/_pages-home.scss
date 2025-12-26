@@ -1,59 +1,43 @@
-/* ===== Home Page Styles — Cinematic Hero Revamp (v3) ===== */
-
-/* -----------------------------------------------
-   HERO — CINEMATIC VIDEO BACKGROUND
------------------------------------------------- */
+/* ===== Home Page Styles — Hero v3 (icons + modal + mobile fixes) ===== */
 
 .forge-hero-cinematic {
   position: relative;
-  min-height: clamp(520px, 92vh, 820px);
+  min-height: clamp(540px, 92vh, 840px);
   border-radius: 28px;
   overflow: hidden;
-  margin: 1.2rem auto 2.5rem;
+  margin: 1.2rem auto 2.0rem;
   max-width: 1200px;
   box-shadow:
     0 0 26px rgba(var(--forge-accent-rgb), 0.22),
     0 0 60px rgba(0, 0, 0, 0.85);
 }
 
-.hero-video-wrap {
+.hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   background: #000;
-
-  /* Mobile/poster fallback background */
   background-image: url("/assets/images/banner/social_banner.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.02); /* hide edge pixel jitter */
-  filter: saturate(1.06) contrast(1.04);
-}
-
-/* Darken edges and protect readability */
 .hero-vignette {
   position: absolute;
   inset: 0;
   background:
     radial-gradient(circle at 50% 35%,
       rgba(0,0,0,0.10) 0%,
-      rgba(0,0,0,0.60) 55%,
+      rgba(0,0,0,0.62) 55%,
       rgba(0,0,0,0.92) 100%),
     linear-gradient(180deg,
-      rgba(0,0,0,0.55) 0%,
-      rgba(0,0,0,0.85) 65%,
+      rgba(0,0,0,0.52) 0%,
+      rgba(0,0,0,0.86) 66%,
       rgba(0,0,0,0.96) 100%);
   z-index: 1;
 }
 
-/* Subtle scanline vibe (very light) */
 .hero-scanline {
   position: absolute;
   inset: 0;
@@ -70,7 +54,6 @@
   pointer-events: none;
 }
 
-/* Grain overlay */
 .hero-grain {
   position: absolute;
   inset: 0;
@@ -81,29 +64,30 @@
   pointer-events: none;
 }
 
-/* Content */
 .hero-inner {
   position: relative;
   z-index: 10;
-  padding: clamp(2.2rem, 6vw, 4.2rem) 1.25rem 2.2rem;
+  padding: clamp(2.3rem, 6vw, 4.4rem) 1.25rem 2.3rem;
   text-align: center;
   max-width: 980px;
   margin: 0 auto;
 }
 
+/* Fix #3: make the stamp big + glowy again */
 .hero-stamp {
   margin: 0 auto 1.15rem;
+  transform: translateZ(0);
 }
 
 .hero-headline {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 800;
-  font-size: clamp(1.6rem, 4.5vw, 3.0rem);
+  font-weight: 900;
+  font-size: clamp(1.65rem, 4.6vw, 3.05rem);
   line-height: 1.16;
-  max-width: 28ch;
-  margin: 1.1rem auto 1.1rem;
+  max-width: 30ch;
+  margin: 1.15rem auto 1.1rem;
   color: #fff;
   text-shadow:
     0 0 18px rgba(10, 109, 255, 0.35),
@@ -113,7 +97,7 @@
 .hero-headline-accent {
   color: var(--forge-hotmetal);
   text-shadow:
-    0 0 18px rgba(245, 184, 65, 0.50),
+    0 0 18px rgba(245, 184, 65, 0.55),
     0 0 22px rgba(10, 109, 255, 0.25);
 }
 
@@ -124,6 +108,7 @@
   line-height: 1.65;
 }
 
+/* Buttons: consistent, never overflow cards */
 .hero-actions {
   margin: 1.7rem 0 1.4rem;
   display: flex;
@@ -132,14 +117,38 @@
   align-items: center;
 }
 
-.btn-hero { min-width: 240px; }
+.btn-hero,
+.btn-cta {
+  width: min(360px, 100%);
+  max-width: 100%;
+  justify-content: center;
+}
 
-.btn-hero-secondary {
-  opacity: 0.94;
+.btn-hero-secondary,
+.btn-cta-secondary {
+  opacity: 0.95;
   filter: saturate(0.92);
 }
 
-/* Badges */
+.btn-hero-tertiary {
+  opacity: 0.98;
+}
+
+.btn-ico {
+  display: inline-flex;
+  width: 1.05em;
+  height: 1.05em;
+  margin-right: 0.55rem;
+  vertical-align: -0.12em;
+}
+
+.btn-ico svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Badges with icons */
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
@@ -152,12 +161,28 @@
   background: rgba(0, 0, 0, 0.48);
   border: 1px solid rgba(var(--forge-accent-rgb), 0.42);
   border-radius: 999px;
-  padding: 0.34rem 0.86rem;
+  padding: 0.36rem 0.86rem;
   font-size: 0.82rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.92);
   box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.badge-ico {
+  display: inline-flex;
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.badge-ico svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  opacity: 0.95;
 }
 
 /* Scroll hint */
@@ -188,7 +213,63 @@
   text-transform: uppercase;
 }
 
-/* Inline links inside quick cards */
+/* -----------------------------------------------
+   QUICK GRID (Fix #4: no outer card)
+------------------------------------------------ */
+
+.home-quick-grid {
+  margin: 0 auto 2.3rem;
+  max-width: 1100px;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.quick-card {
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.22) 0%,
+      rgba(0, 0, 0, 0.98) 62%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.94) 0%,
+      #000 72%);
+
+  border-radius: 22px;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  box-shadow:
+    0 0 16px rgba(var(--forge-accent-rgb), 0.18),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
+}
+
+.quick-card h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  text-align: center;
+  margin: 0 0 1.0rem;
+  color: var(--forge-hotmetal);
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.35);
+}
+
+.h2-ico {
+  display: inline-flex;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.h2-ico svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Inline links */
 .home-inline-link {
   color: rgba(255,255,255,0.92);
   text-decoration: none;
@@ -197,81 +278,7 @@
 }
 
 .home-inline-link:hover {
-  border-bottom-color: rgba(var(--forge-hotmetal-rgb, 245, 184, 65), 0.65);
-}
-
-/* Reduced motion: stop pulsing, and we already keep poster-only via JS */
-@media (prefers-reduced-motion: reduce) {
-  .scroll-dot { animation: none; }
-  .hero-video { filter: none; }
-}
-
-/* -----------------------------------------------
-   SOFT TEXT GRADIENT (Forge steel -> light grey)
------------------------------------------------- */
-
-.forge-text-gradient-soft {
-  background: linear-gradient(180deg, #cfd5e3 0%, #a7b0c3 45%, #dadfe8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* -----------------------------------------------
-   SECTION CARDS BASE
------------------------------------------------- */
-
-.home-section-card {
-  margin: 0 auto 2.3rem;
-  padding: 2.4rem 1.4rem;
-  max-width: 1100px;
-  border-radius: 22px;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(10, 80, 150, 0.24) 0%,
-      rgba(0, 0, 0, 0.98) 58%),
-    linear-gradient(180deg,
-      rgba(3, 8, 18, 0.96) 0%,
-      #000 72%);
-
-  box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.20),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
-}
-
-.home-section-card > h2 {
-  text-align: center;
-  margin-bottom: 1.6rem;
-  color: var(--forge-hotmetal);
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.6rem, 4.4vw, 2.2rem);
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
-}
-
-/* -----------------------------------------------
-   QUICK GRID
------------------------------------------------- */
-
-.home-quick-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.1rem;
-}
-
-.quick-card {
-  background: rgba(0,0,0,0.55);
-  border-radius: 18px;
-  padding: 1.4rem 1.4rem 1.55rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-.quick-card h2 {
-  font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  letter-spacing: 0.06em;
-  margin: 0 0 0.9rem;
-  font-size: 1.25rem;
+  border-bottom-color: rgba(245, 184, 65, 0.75);
 }
 
 .quick-list {
@@ -304,20 +311,41 @@
 .signal-bar:nth-child(4) { height: 34px; animation-delay: 0.30s; }
 .signal-bar:nth-child(5) { height: 26px; animation-delay: 0.40s; }
 
-.quick-foot {
-  margin-top: 0.2rem;
-  text-align: center;
-}
-
-/* Reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  .signal-bar { animation: none; }
-}
+.quick-foot { text-align: center; }
 
 /* -----------------------------------------------
-   PILLARS + HOW
+   SECTION CARDS BASE (keep for the rest)
 ------------------------------------------------ */
 
+.home-section-card {
+  margin: 0 auto 2.3rem;
+  padding: 2.4rem 1.4rem;
+  max-width: 1100px;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.24) 0%,
+      rgba(0, 0, 0, 0.98) 58%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.96) 0%,
+      #000 72%);
+
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.20),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
+}
+
+.home-section-card > h2 {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  color: var(--forge-hotmetal);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.6rem, 4.4vw, 2.2rem);
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
+}
+
+/* Pillars + How */
 .pillar-grid {
   display: flex;
   flex-direction: column;
@@ -406,32 +434,70 @@
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-.final-brand { margin-bottom: 1.1rem; }
+/* -----------------------------------------------
+   MODAL (video w/ audio)
+------------------------------------------------ */
 
-.final-slogan {
-  margin: 1rem auto 1.8rem;
-  max-width: 44ch;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(1.05rem, 2.7vw, 1.35rem);
-  line-height: 1.35;
+.forge-modal[hidden] { display: none; }
+
+.forge-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.forge-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(6px);
+}
+
+.forge-modal__panel {
+  position: relative;
+  width: min(980px, calc(100% - 2rem));
+  margin: 6vh auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  background: #000;
+  box-shadow:
+    0 0 24px rgba(var(--forge-accent-rgb), 0.22),
+    0 0 70px rgba(0,0,0,0.85);
+}
+
+.forge-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.55);
   color: #fff;
-  text-shadow: 0 0 16px rgba(10, 109, 255, 0.25);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
 }
 
-.final-slogan span { display: block; }
-
-.final-slogan .accent {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 18px rgba(245, 184, 65, 0.45);
+.forge-modal__video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
 }
 
-.final-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  align-items: center;
+.forge-modal__caption {
+  padding: 0.9rem 1rem 1.1rem;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+/* Stop background scrolling while modal open */
+.forge-modal-open {
+  overflow: hidden;
 }
 
 /* -----------------------------------------------
@@ -439,23 +505,44 @@
 ------------------------------------------------ */
 
 @media (min-width: 640px) {
-  .hero-actions { flex-direction: row; justify-content: center; }
-  .how-actions { flex-direction: row; justify-content: center; }
-  .final-actions { flex-direction: row; justify-content: center; }
+  .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-  .pillar-grid { flex-direction: row; }
-  .pillar-card { flex: 1; }
+  .how-actions {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pillar-grid {
+    flex-direction: row;
+  }
+
+  .pillar-card {
+    flex: 1;
+  }
 }
 
 @media (min-width: 860px) {
-  .home-quick-grid { grid-template-columns: repeat(3, 1fr); }
-  .forge-hero-cinematic { margin-top: 1.6rem; }
-  .home-section-card { padding: 2.8rem 2.2rem; }
+  .home-quick-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .home-section-card {
+    padding: 2.8rem 2.2rem;
+  }
 }
 
-/* Mobile: keep poster-only look (video stays hidden; JS also won’t load on small screens) */
-@media (max-width: 640px) {
-  .hero-video { display: none; }
+/* -----------------------------------------------
+   REDUCED MOTION
+------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-dot { animation: none; }
+  .signal-bar { animation: none; }
 }
 
 /* -----------------------------------------------
