@@ -1,0 +1,41 @@
+{%- assign svc = site.data.services | where: "id", include.id | first -%}
+
+{%- comment -%}
+  service_link.html
+  Usage:
+    {% include service_link.html id="forge-managed-phone-text" text="Explore →" class="btn btn-forge" %}
+
+  Optional flags:
+    target="_blank"
+    rel="noopener"
+    debug=true     (show warning even in production)
+    strict=true    (fail build if service ID missing)
+{%- endcomment -%}
+
+{%- if svc -%}
+  <a
+    href="{{ svc.url | relative_url }}"
+    class="{{ include.class | default: '' }}"
+    {%- if include.target -%} target="{{ include.target }}"{%- endif -%}
+    {%- if include.target == "_blank" -%}
+      rel="{{ include.rel | default: 'noopener noreferrer' }}"
+    {%- elsif include.rel -%}
+      rel="{{ include.rel }}"
+    {%- endif -%}
+  >
+    {{ include.text | default: svc.name }}
+  </a>
+{%- else -%}
+  {%- assign msg = "service_link: service id '" | append: include.id | append: "' not found in services.yml" -%}
+
+  {%- if include.strict == true or include.strict == "true" -%}
+    {%- comment -%} FAIL-LOUD (strict mode): {{ msg }} {%- endcomment -%}
+    {%- capture __force_error__ -%}{{ nonexistent_variable.property }}{%- endcapture -%}
+  {%- endif -%}
+
+  {%- if include.debug == true or include.debug == "true" or jekyll.environment == "development" -%}
+    <span class="forge-dev-warning">
+      ⚠ {{ msg }}
+    </span>
+  {%- endif -%}
+{%- endif -%}

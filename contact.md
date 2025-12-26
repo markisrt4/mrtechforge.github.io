@@ -1,7 +1,7 @@
 ---
 title: Contact
 layout: default
-permalink: /contact.html
+permalink: /contact/
 class: contact
 ---
 
