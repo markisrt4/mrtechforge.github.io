@@ -1,67 +1,53 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE (pages-home.scss v6.3)
+   M.R. TECHFORGE — HOME PAGE (pages-home.scss v6.5)
    Fixes:
-   1) Restore hero stamp glow
-   2) Enforce 3 distinct hero headline colors
-   3) Prevent tall/huge video preview on mobile (force 16:9 frame)
-   NOTE: Base card styling should live in _cards.scss (.forge-card)
+   - Hero stamp larger + stronger glow
+   - True silver (not white) for Building Solutions
+   - Buttons consistent width
+   - Video card no longer "on top" of video (wrapper card)
    ========================================================== */
 
-.home.home-v8 {
-  width: 100%;
-}
+.home.home-v8 { width: 100%; }
 
-/* ----------------------------------------------------------
+/* ------------------------------
    HERO INTRO
----------------------------------------------------------- */
-
-.home-hero-intro {
-  margin: 2.2rem 0 1.2rem;
-}
+------------------------------ */
+.home-hero-intro { margin: 2.2rem 0 1.2rem; }
 
 .home-hero-intro .hero-intro-card {
-  /* Visuals mostly come from .forge-card if present */
-  padding: 1.6rem 1.5rem;
+  padding: 1.65rem 1.45rem;
 }
 
-/* 1) Restore glow on the "M.R. TechForge" stamp */
+/* Bigger + glowy brand stamp */
 .hero-stamp-glow {
   display: inline-block;
   margin-bottom: 0.9rem;
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
+
+  font-size: 1.05rem;             /* was too small */
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 
-  color: var(--forge-silver, #d7dde6);
+  color: var(--forge-silver, #d2d9e3);
 
-  /* strong but tasteful glow */
   text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.40),
-    0 0 22px rgba(var(--forge-accent-rgb), 0.22),
-    0 0 34px rgba(var(--forge-accent-rgb), 0.14);
+    0 0 10px rgba(var(--forge-accent-rgb), 0.55),
+    0 0 22px rgba(var(--forge-accent-rgb), 0.30),
+    0 0 44px rgba(var(--forge-accent-rgb), 0.18);
 
-  /* optional subtle “alive” pulse (very gentle) */
-  animation: forgeStampPulse 4.5s ease-in-out infinite;
+  animation: forgeStampPulse 4.6s ease-in-out infinite;
 }
 
 @keyframes forgeStampPulse {
-  0%, 100% {
-    filter: brightness(1);
-    opacity: 0.95;
-  }
-  50% {
-    filter: brightness(1.08);
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.92; filter: brightness(1); }
+  50%      { opacity: 1;    filter: brightness(1.10); }
 }
 
-/* Headline block */
+/* Headline */
 .hero-headline {
   margin: 0 0 1rem;
   line-height: 1.05;
 }
 
-/* Common line styling */
 .hero-line {
   display: inline-block;
   font-family: "Orbitron", system-ui, sans-serif;
@@ -69,44 +55,66 @@
   text-transform: uppercase;
 }
 
-/* 2) Enforce 3 distinct colors (Forge Blue / Silver / Hot) */
+/* Three distinct colors */
 .hero-line-blue {
   color: var(--forge-accent);
-  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.35);
+  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.38);
 }
 
+/* Hard-set a *real* silver-blue so it won't read as white */
 .hero-line-silver {
-  color: var(--forge-silver, #cfd6df);
-  text-shadow: 0 0 12px rgba(207, 214, 223, 0.20);
+  color: #b9c4d3; /* silver-blue */
+  text-shadow: 0 0 12px rgba(185, 196, 211, 0.20);
 }
 
-/* Keep your existing “hot” class, but reinforce it */
 .hero-line-hot {
   color: var(--forge-hotmetal, #ff7a18);
   text-shadow:
-    0 0 12px rgba(255, 122, 24, 0.22),
-    0 0 22px rgba(255, 122, 24, 0.12);
+    0 0 12px rgba(255, 122, 24, 0.24),
+    0 0 24px rgba(255, 122, 24, 0.14);
 }
 
-/* Subtitle spacing */
 .hero-subtitle {
-  margin: 0.85rem 0 1.15rem;
+  margin: 0.9rem 0 1.15rem;
   max-width: 70ch;
 }
 
-/* Buttons layout only (buttons.scss owns visual styling) */
-.hero-actions {
+/* ------------------------------
+   BUTTONS (layout-only)
+------------------------------ */
+.hero-actions,
+.how-actions,
+.final-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin: 1.15rem 0 1.1rem;
 }
 
+/* Consistent widths */
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 220px;
+}
+
+/* Full-width buttons on narrow screens */
+@media (max-width: 520px) {
+  .home-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ------------------------------
+   BADGES
+------------------------------ */
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
 }
 
 .hero-badge {
@@ -116,63 +124,55 @@
   padding: 0.42rem 0.65rem;
   border-radius: 999px;
   font-size: 0.92rem;
-  opacity: 0.95;
-
-  /* keep this lightweight so it doesn't fight _cards.scss */
   border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.34);
 }
 
-
-/* ----------------------------------------------------------
-   HERO VIDEO (BELOW INTRO)
----------------------------------------------------------- */
-
-.home-hero-video {
-  margin: 1.2rem 0 2.2rem;
-}
+/* ------------------------------
+   HERO VIDEO
+------------------------------ */
+.home-hero-video { margin: 1.2rem 0 2.2rem; }
 
 .hero-video-wrap {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.95rem;
 }
 
-/* Make the entire card/button behave nicely */
+/* The wrapper card */
+.hero-video-shell {
+  padding: 0.95rem; /* small padding around the media */
+}
+
+/* The button itself is NOT a card */
 .hero-video-card {
   width: 100%;
   border: 0;
   padding: 0;
+  margin: 0;
+  background: transparent;
   cursor: pointer;
   text-align: left;
-  background: transparent;
 
-  /* If you added .forge-card to the button, this prevents double rounding issues */
-  overflow: hidden;
-}
-
-/* 3) Force a consistent 16:9 frame so a tall poster doesn't become huge */
-.hero-video-card {
   position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+
+  /* force a sane height on mobile even if poster is tall */
   aspect-ratio: 16 / 9;
-  min-height: 180px;
-  max-height: 520px; /* desktop guardrail */
 }
 
-/* The preview fills the frame and crops nicely */
+/* The preview fills the frame and crops */
 .hero-video-preview {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
   display: block;
-
-  object-fit: cover;      /* key fix for tall poster */
+  object-fit: cover;
   object-position: center;
-  border-radius: inherit;
 }
 
-/* Overlay stays on top */
+/* Overlay */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
@@ -182,12 +182,11 @@
   padding: 1rem;
   pointer-events: none;
 
-  /* subtle readability overlay */
   background: linear-gradient(
     180deg,
-    rgba(0,0,0,0.10) 0%,
-    rgba(0,0,0,0.20) 45%,
-    rgba(0,0,0,0.60) 100%
+    rgba(0,0,0,0.08) 0%,
+    rgba(0,0,0,0.18) 50%,
+    rgba(0,0,0,0.62) 100%
   );
 }
 
@@ -195,8 +194,8 @@
   width: 64px;
   height: 64px;
   border-radius: 999px;
-  border: 2px solid rgba(255,255,255,0.30);
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
+  border: 2px solid rgba(255,255,255,0.32);
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.22);
   display: grid;
   place-items: center;
 }
@@ -204,7 +203,7 @@
 .play-triangle {
   width: 0;
   height: 0;
-  border-left: 14px solid rgba(255,255,255,0.85);
+  border-left: 14px solid rgba(255,255,255,0.86);
   border-top: 9px solid transparent;
   border-bottom: 9px solid transparent;
   margin-left: 3px;
@@ -213,71 +212,29 @@
 .video-overlay-chip {
   display: inline-grid;
   gap: 0.15rem;
-  max-width: 90%;
+  max-width: 92%;
   padding: 0.65rem 0.75rem;
   border-radius: 14px;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.54);
   border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
   backdrop-filter: blur(8px);
 }
 
-.chip-title {
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
+.chip-title { font-weight: 700; letter-spacing: 0.02em; }
+.chip-sub   { opacity: 0.9; font-size: 0.95rem; }
 
-.chip-sub {
-  opacity: 0.9;
-  font-size: 0.95rem;
-}
+.hero-video-caption { margin: 0; opacity: 0.92; }
 
-/* Caption below video */
-.hero-video-caption {
-  margin: 0;
-  opacity: 0.92;
-}
-
-
-/* ----------------------------------------------------------
-   QUICK GRID / SECTIONS
-   (keep these minimal to avoid fighting _cards.scss)
----------------------------------------------------------- */
-
+/* ------------------------------
+   GRIDS / SECTION SPACING
+------------------------------ */
 .home-quick-grid {
   margin: 2rem 0;
   display: grid;
   gap: 1rem;
 }
 
-.quick-card {
-  padding: 1.25rem 1.15rem;
-}
-
-.quick-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
-}
-
-.quick-title-row h2 {
-  margin: 0;
-}
-
-.quick-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
-}
-
-.quick-foot {
-  margin-top: 0.9rem;
-}
-
-/* Pillars + How + Final: keep spacing only */
-.home-section-card {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1.35rem;
-}
+.quick-card { padding: 1.25rem 1.15rem; }
 
 .pillar-grid {
   margin-top: 1rem;
@@ -285,9 +242,7 @@
   gap: 1rem;
 }
 
-.pillar-card {
-  padding: 1.1rem 1rem;
-}
+.pillar-card { padding: 1.1rem 1rem; }
 
 .how-steps {
   margin: 1rem 0 0;
@@ -297,24 +252,12 @@
   gap: 0.75rem;
 }
 
-.mini-card {
-  padding: 0.95rem 1rem;
-}
+.mini-card { padding: 0.95rem 1rem; }
 
-.how-actions {
-  margin-top: 1.1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-}
+.home-section-card { margin: 2.2rem 0; padding: 1.5rem 1.35rem; }
 
-.home-final-callout {
-  margin: 2.4rem 0 2.2rem;
-}
-
-.final-card {
-  padding: 1.6rem 1.4rem;
-}
+.home-final-callout { margin: 2.4rem 0 2.2rem; }
+.final-card { padding: 1.6rem 1.4rem; }
 
 .final-slogan {
   margin: 0.9rem 0 1.15rem;
@@ -322,45 +265,11 @@
   gap: 0.25rem;
 }
 
-.final-slogan .accent {
-  color: var(--forge-hotmetal, #ff7a18);
-}
+.final-slogan .accent { color: var(--forge-hotmetal, #ff7a18); }
 
-/* ----------------------------------------------------------
-   RESPONSIVE
----------------------------------------------------------- */
-
+/* Responsive columns */
 @media (min-width: 820px) {
-  .home-quick-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.1rem;
-  }
-
-  .pillar-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .how-steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 520px) {
-  .home-hero-intro .hero-intro-card {
-    padding: 1.35rem 1.15rem;
-  }
-
-  .hero-video-card {
-    min-height: 170px;
-    max-height: 300px;  /* keeps it from feeling massive */
-  }
-
-  .video-overlay-chip {
-    max-width: 100%;
-  }
-
-  .play-ring {
-    width: 56px;
-    height: 56px;
-  }
+  .home-quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pillar-grid     { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .how-steps       { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
