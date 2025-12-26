@@ -50,34 +50,38 @@ class: home
   <section class="home-hero-video" aria-label="MR TechForge intro video">
     <div class="hero-video-wrap">
 
-      <button
-        type="button"
-        class="hero-video-card hero-open-video forge-card"
-        aria-haspopup="dialog"
-        aria-label="Play MR TechForge intro video">
+      <div class="forge-card hero-video-shell">
 
-        <video
-          class="hero-video-preview"
-          muted
-          playsinline
-          preload="none"
-          poster="{{ '/assets/video/mrtechforge-hero-poster.jpg' | relative_url }}">
-          <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
-        </video>
+        <button
+          type="button"
+          class="hero-video-card hero-open-video"
+          aria-haspopup="dialog"
+          aria-label="Play MR TechForge intro video">
 
-        <div class="hero-video-overlay" aria-hidden="true">
-          <div class="play-ring">
-            <div class="play-triangle"></div>
-          </div>
+          <video
+            class="hero-video-preview"
+            muted
+            playsinline
+            preload="none"
+            poster="{{ '/assets/video/mrtechforge-hero-poster.jpg' | relative_url }}">
+            <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
+          </video>
 
-          <div class="video-overlay-chip">
-            <div class="chip-title">MR TechForge — Intro</div>
-            <div class="chip-sub forge-text-gradient-soft">
-              ~40 seconds • Click to play with sound
+          <div class="hero-video-overlay" aria-hidden="true">
+            <div class="play-ring">
+              <div class="play-triangle"></div>
+            </div>
+
+            <div class="video-overlay-chip">
+              <div class="chip-title">MR TechForge — Intro</div>
+              <div class="chip-sub forge-text-gradient-soft">
+                ~40 seconds • Click to play with sound
+              </div>
             </div>
           </div>
-        </div>
-      </button>
+        </button>
+
+      </div>
 
       <div class="hero-video-caption forge-text-gradient-soft">
         A quick introduction to how M.R. TechForge thinks and builds.
