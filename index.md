@@ -13,7 +13,7 @@ class: home
   <section class="home-hero-intro" aria-label="M.R. TechForge intro">
     <div class="hero-intro-card forge-card">
 
-      <div class="hero-stamp-glow">M.R. TechForge</div>
+      <div class="hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
 
       <h1 class="hero-headline">
         <span class="hero-line hero-line-blue">Crafting Clarity.</span><br>
@@ -67,19 +67,19 @@ class: home
             <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
           </video>
 
+          <!-- overlay is now ONLY the play control + dark gradient -->
           <div class="hero-video-overlay" aria-hidden="true">
             <div class="play-ring">
               <div class="play-triangle"></div>
             </div>
-
-            <div class="video-overlay-chip">
-              <div class="chip-title">MR TechForge — Intro</div>
-              <div class="chip-sub forge-text-gradient-soft">
-                ~40 seconds • Click to play with sound
-              </div>
-            </div>
           </div>
         </button>
+
+        <!-- ✅ moved BELOW the video -->
+        <div class="hero-video-meta">
+          <div class="chip-title">MR TechForge — Intro</div>
+          <div class="chip-sub forge-text-gradient-soft">~40 seconds • Click to play with sound</div>
+        </div>
 
       </div>
 
@@ -223,7 +223,7 @@ class: home
   <!-- FINAL CTA -->
   <section class="home-final-callout" aria-label="Final call to action">
     <div class="final-card forge-card">
-      <div class="final-brand hero-stamp-glow">M.R. TechForge</div>
+      <div class="final-brand hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
 
       <p class="final-slogan">
         <span>Crafting Clarity.</span>
