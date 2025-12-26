@@ -61,9 +61,24 @@ class: contact
 
     <ul class="contact-list">
       <li>📧 <strong>Email:</strong> <a href="mailto:mark@mrtechforge.com">mark@mrtechforge.com</a></li>
-      <li>🐙 <strong>GitHub:</strong> <a href="https://github.com/markisrt4" target="_blank" rel="noopener">github.com/markisrt4</a></li>
-      <li>▶️ <strong>YouTube:</strong> <a href="https://youtube.com/@mrtechforge" target="_blank" rel="noopener">youtube.com/@mrtechforge</a></li>
-      <li>📘 <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61582641067637" target="_blank" rel="noopener">facebook.com/@mrtechforge</a></li>
+
+      <li>🐙 <strong>GitHub:</strong>
+        <a href="{{ site.data.links.external.github }}" target="_blank" rel="noopener">
+          github.com/markisrt4
+        </a>
+      </li>
+
+      <li>💼 <strong>LinkedIn:</strong>
+        <a href="{{ site.data.links.external.linkedin }}" target="_blank" rel="noopener">
+          LinkedIn Profile
+        </a>
+      </li>
+
+      <li>📘 <strong>Facebook:</strong>
+        <a href="{{ site.data.links.external.facebook }}" target="_blank" rel="noopener">
+          facebook.com/@mrtechforge
+        </a>
+      </li>
     </ul>
 
     <blockquote>
