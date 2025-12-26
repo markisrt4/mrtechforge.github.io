@@ -1,157 +1,89 @@
 /* ==========================================================
-   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v2.1)
-   Reusable Cards • Complexity Cards • Glow • Mobile-Ready
+   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v2.3)
+   Reusable Cards • Snappy Premium Feel • Mobile-Ready
    ========================================================== */
 
 /* ----------------------------------------------------------
-   BASE CARD (default “forge-card” used across site)
+   BASE CARD
 ---------------------------------------------------------- */
 
 .forge-card {
-  background: rgba(20, 20, 20, 0.75);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.20);
+  background:
+    radial-gradient(1200px 600px at 20% 0%,
+      rgba(var(--forge-accent-rgb), 0.10) 0%,
+      rgba(0,0,0,0.00) 55%),
+    linear-gradient(180deg,
+      rgba(22, 22, 22, 0.82) 0%,
+      rgba(14, 14, 14, 0.74) 100%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
   border-radius: 12px;
+
   padding: 1.6rem 1.3rem;
-  margin: 2rem 0;
+
+  /* was 2rem 0 — a bit “floaty” site-wide */
+  margin: 1.4rem 0;
+
   max-width: 100%;
-  box-sizing: border-box;
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.08);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.38),
+    0 0 26px rgba(var(--forge-accent-rgb), 0.10);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    filter 180ms ease;
 }
 
-.forge-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 25px rgba(var(--forge-accent-rgb), 0.18);
+@media (hover: hover) and (pointer: fine) {
+  .forge-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(var(--forge-accent-rgb), 0.30);
+    box-shadow:
+      0 14px 34px rgba(0,0,0,0.44),
+      0 0 34px rgba(var(--forge-accent-rgb), 0.14);
+    filter: brightness(1.03);
+  }
 }
 
-.forge-card h2,
-.forge-card h3 {
-  margin-top: 0;
-}
-
-.forge-card h3 {
-  color: var(--forge-accent);
-  text-shadow: 0 0 10px rgba(var(--forge-accent-rgb), 0.5);
-}
-
-/* Global list alignment inside forge cards */
-.forge-card ul,
-.forge-card ol {
-  margin-left: 0.2rem;
-  padding-left: 1.2rem;
+/* Optional “no lift” card for special layouts */
+.forge-card.is-static:hover {
+  transform: none;
+  filter: none;
 }
 
 /* ----------------------------------------------------------
-   COMPLEXITY CARDS (Green = Easy • Yellow = Medium • Red = Hard)
-   Used for the Life Without Google page
+   CARD TITLES / TEXT HELPERS
 ---------------------------------------------------------- */
 
-.forge-complexity-card {
-  background: linear-gradient(180deg, rgba(25,25,25,0.92), rgba(10,10,10,0.90));
-  border-radius: 14px;
-  padding: 1.4rem 1.3rem;
-  margin: 2.2rem 0;
-
-  border-left: 7px solid var(--forge-accent);
-  box-shadow: 0 0 22px rgba(0,0,0,0.35);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.forge-complexity-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(var(--forge-accent-rgb), 0.16);
-}
-
-/* Complexity colors */
-.forge-easy {
-  border-left-color: #22c55e; /* GREEN */
-  box-shadow: 0 0 18px rgba(34, 197, 94, 0.25);
-}
-
-.forge-medium {
-  border-left-color: #eab308; /* YELLOW */
-  box-shadow: 0 0 18px rgba(234, 179, 8, 0.25);
-}
-
-.forge-hard {
-  border-left-color: #ef4444; /* RED */
-  box-shadow: 0 0 18px rgba(239, 68, 68, 0.25);
-}
-
-/* Card internal title */
 .forge-card-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--forge-text);
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 12px rgba(var(--forge-accent-rgb), 0.4);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.forge-card p:last-child { margin-bottom: 0; }
+
+/* ----------------------------------------------------------
+   COMPLEXITY / MINI CARDS (if you use them)
+---------------------------------------------------------- */
+
+.forge-mini-card {
+  background: rgba(0,0,0,0.34);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
 }
 
 /* ----------------------------------------------------------
-   ACCORDION COMPONENT (Used for Tool Sections)
+   MOBILE TUNING
 ---------------------------------------------------------- */
 
-.forge-accordion {
-  margin-top: 1.4rem;
-}
-
-.forge-accordion button {
-  width: 100%;
-  background: rgba(0,0,0,0.35);
-  color: var(--forge-text);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  padding: 0.9rem 1rem;
-  border-radius: 8px;
-  text-align: left;
-  cursor: pointer;
-
-  font-size: 1.05rem;
-  font-weight: 600;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  transition: all 0.3s ease;
-}
-
-.forge-accordion button:hover {
-  background: rgba(var(--forge-accent-rgb), 0.12);
-}
-
-/* icon */
-.forge-accordion button .arrow {
-  transition: transform 0.25s ease;
-}
-
-.forge-accordion button.active .arrow {
-  transform: rotate(90deg);
-}
-
-/* accordion body */
-.forge-accordion .panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-  padding-left: 0.2rem;
-}
-
-.forge-accordion .panel.open {
-  padding-top: 0.9rem;
-  max-height: 800px;
-}
-
-/* ----------------------------------------------------------
-   RESPONSIVE CARD TWEAKS
----------------------------------------------------------- */
-
-@media (max-width: 760px) {
-  .forge-card,
-  .forge-complexity-card {
-    padding: 1.1rem 1rem;
+@media (max-width: 720px) {
+  .forge-card {
+    padding: 1.35rem 1.15rem;
+    margin: 1.1rem 0;
   }
 
   .forge-card-title {
@@ -166,8 +98,8 @@
 .forge-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.6rem;
-  margin: 2rem 0;
+  gap: 1.2rem;
+  margin: 1.6rem 0;
 }
 
 .forge-card-grid .forge-card {
