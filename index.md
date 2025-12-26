@@ -7,11 +7,10 @@ class: home
 
 {% assign links = site.data.links %}
 
-<div class="home home-v6">
+<div class="home home-v7">
 
   <!-- HERO -->
-  <section class="home-hero-v5" aria-label="M.R. TechForge hero">
-
+  <section class="home-hero-v7" aria-label="M.R. TechForge hero">
     <div class="hero-grid">
 
       <!-- LEFT -->
@@ -46,37 +45,41 @@ class: home
         </div>
       </div>
 
-      <!-- RIGHT: Video preview -->
+      <!-- RIGHT: Video preview (real frames) -->
       <div class="hero-right">
-        <button type="button" class="hero-video-card hero-open-video" aria-haspopup="dialog" aria-label="Play MR TechForge video">
-          <div class="hero-video-poster" aria-hidden="true"></div>
+        <button
+          type="button"
+          class="hero-video-card hero-open-video"
+          aria-haspopup="dialog"
+          aria-label="Play MR TechForge intro video">
+
+          <video
+            class="hero-video-preview"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/assets/video/mrtechforge-hero-poster.jpg">
+            <source src="/assets/video/mrtechforge-hero.mp4" type="video/mp4">
+          </video>
 
           <div class="hero-video-overlay" aria-hidden="true">
             <div class="play-ring">
               <div class="play-triangle"></div>
             </div>
 
-            <div class="video-overlay-frame">
-              <div class="video-frame-title">MR TechForge • Intro</div>
-              <div class="video-frame-sub forge-text-gradient-soft">
-                A quick look at how I approach clarity, security, and reliability.
-              </div>
-
-              <ul class="video-frame-bullets">
-                <li><span class="mini-ico" aria-hidden="true">✅</span>Plain-English options</li>
-                <li><span class="mini-ico" aria-hidden="true">✅</span>Clean, stable builds</li>
-              </ul>
-
-              <div class="video-frame-cta">
-                <span class="mini-ico" aria-hidden="true">▶</span>
-                Play (with audio)
+            <div class="video-overlay-chip">
+              <div class="chip-title">MR TechForge — Intro</div>
+              <div class="chip-sub forge-text-gradient-soft">
+                ~40 seconds • Click to play with sound
               </div>
             </div>
           </div>
         </button>
 
         <div class="hero-video-note forge-text-gradient-soft">
-          ~40 seconds • Optional • Click to play
+          Tip: choose a poster frame at <code>/assets/video/mrtechforge-hero-poster.jpg</code>
         </div>
       </div>
 
@@ -216,7 +219,7 @@ class: home
   <!-- FINAL CTA -->
   <section class="home-final-callout" aria-label="Final call to action">
     <div class="final-card">
-      <div class="final-brand forge-title-glow">M.R. TechForge</div>
+      <div class="final-brand hero-stamp-glow">M.R. TechForge</div>
 
       <p class="final-slogan">
         <span>Crafting Clarity.</span>
@@ -238,7 +241,7 @@ class: home
 </div>
 
 
-<!-- VIDEO MODAL (audio) -->
+<!-- VIDEO MODAL (plays with audio) -->
 <div class="forge-modal" id="forgeHeroVideoModal" role="dialog" aria-modal="true" aria-label="MR TechForge brand video" hidden>
   <div class="forge-modal__backdrop" data-close></div>
 
