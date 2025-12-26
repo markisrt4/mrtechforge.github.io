@@ -4,140 +4,144 @@ title: "Home"
 permalink: /
 class: home
 ---
-<div class="home">
 
-  <!-- HERO WRAPPER -->
-  <section class="forge-hero-vaporized">
+{% assign links = site.data.links %}
 
-    <p class="hero-tagline forge-text-gradient">
-      Practical, relationship-focused tech consulting for homes, churches, libraries, and small businesses.
-    </p>
+<div class="home home-v2">
 
-    <!-- BRAND STAMP -->
-    <div class="hero-stamp forge-title-glow">
-      M.R. TechForge
+  <!-- CINEMATIC HERO -->
+  <section class="forge-hero-cinematic" aria-label="M.R. TechForge hero">
+
+    <div class="hero-video-wrap" aria-hidden="true">
+
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/assets/images/banner/social_banner.jpg">
+        <source src="/assets/video/mrtechforge-hero.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-vignette"></div>
+      <div class="hero-scanline" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
     </div>
 
-    <!-- MAIN HERO TITLE -->
-    <h1 class="hero-title">
-      Crafting Practical<br>
-      Tech Solutions<br>
-      With Integrity & Skill
-    </h1>
+    <div class="hero-inner">
+      <div class="hero-stamp forge-title-glow">M.R. TechForge</div>
 
-    <p class="hero-subtitle forge-text-gradient-soft">
-      Clear, reliable, and relationship-driven technology help for your home, small business, church, library, or community.  
-      Built on hands-on experience, a love for Linux, and a commitment to integrity.
-    </p>
+      <h1 class="hero-headline">
+        Crafting Clarity.<br>
+        Building Solutions.<br>
+        <span class="hero-headline-accent">Forged with Integrity.</span>
+      </h1>
 
-    <!-- TAGS -->
-    <div class="hero-tags">
-      <span class="hero-tag">Linux</span>
-      <span class="hero-tag">Digital Security</span>
-      <span class="hero-tag">Networking</span>
-      <span class="hero-tag">Web Services</span>
-      <span class="hero-tag">Customized Tech Gadgets</span>
+      <p class="hero-subtitle forge-text-gradient-soft">
+        Practical, relationship-focused technology help for homes, churches, libraries,
+        and small businesses — built with modern tools and honest guidance.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{{ links.pages.services }}" class="btn btn-forge btn-hero">
+          Explore Services
+        </a>
+        <a href="{{ links.pages.contact }}" class="btn btn-forge btn-hero btn-hero-secondary">
+          Get in Touch
+        </a>
+      </div>
+
+      <div class="hero-badges" aria-label="Key strengths">
+        <span class="hero-badge">Clarity</span>
+        <span class="hero-badge">Security</span>
+        <span class="hero-badge">Reliability</span>
+        <span class="hero-badge">Craftsmanship</span>
+      </div>
     </div>
 
-    <!-- BUTTONS -->
-    <div class="hero-actions">
-      <a href="/services/" class="btn btn-forge">Our Services</a>
-      <a href="/contact.html" class="btn btn-forge">Get in Touch</a>
-    </div>
-
-    <div class="hero-footnote forge-text-gradient-soft">
-      Forging relationships — and solutions — that last.
-    </div>
   </section>
 
 
-  <div class="forge-section-spacer"></div>
+  <!-- QUICK OVERVIEW -->
+  <section class="home-section-card home-quick-grid">
+
+    <div class="quick-card">
+      <h2>What I Do</h2>
+      <p class="forge-text-gradient-soft">
+        I design and build dependable systems that reduce noise and create calm —
+        from communications to modern infrastructure.
+      </p>
+
+      <ul class="quick-list">
+        <li class="forge-text-gradient-soft">
+          <a href="{{ links.services.forge_managed_phone_text }}">Managed phone &amp; text services</a>
+        </li>
+        <li class="forge-text-gradient-soft">
+          <a href="{{ links.services.secure_network }}">Secure networking &amp; Wi-Fi</a>
+        </li>
+        <li class="forge-text-gradient-soft">
+          <a href="{{ links.guides.digital_security }}">Digital security guidance</a>
+        </li>
+        <li class="forge-text-gradient-soft">
+          Web tools &amp; lightweight automation
+        </li>
+      </ul>
+    </div>
+
+    <div class="quick-card">
+      <h2>How It Feels</h2>
+      <p class="forge-text-gradient-soft">
+        No jargon. No pressure. Just clear options, clean execution,
+        and systems that work the way they should.
+      </p>
+
+      <p class="quick-foot forge-text-gradient-soft">
+        Built for real people — not big-tech chaos.
+      </p>
+    </div>
+
+    <div class="quick-card">
+      <h2>Who I Help</h2>
+      <ul class="quick-list">
+        <li class="forge-text-gradient-soft">Homes &amp; families</li>
+        <li class="forge-text-gradient-soft">Churches &amp; ministries</li>
+        <li class="forge-text-gradient-soft">Libraries &amp; community orgs</li>
+        <li class="forge-text-gradient-soft">Small businesses</li>
+      </ul>
+    </div>
+
+  </section>
 
 
-  <!-- WHAT WE STAND FOR -->
+  <!-- VALUES -->
   <section class="home-section-card home-pillars">
     <h2>What We Stand For</h2>
 
     <div class="pillar-grid">
-
       <div class="pillar-card">
         <h3>Clarity</h3>
         <p class="forge-text-gradient-soft">
-          No confusing jargon. Clear explanations and real guidance.
+          Plain English, transparent choices, and guidance you can trust.
         </p>
       </div>
 
       <div class="pillar-card">
         <h3>Reliability</h3>
         <p class="forge-text-gradient-soft">
-          Dependable setups built to last — not quick hacks or shortcuts.
+          Stable systems built to last — no shortcuts, no fragile hacks.
         </p>
       </div>
 
       <div class="pillar-card">
         <h3>Integrity</h3>
         <p class="forge-text-gradient-soft">
-          Faith-driven values. Honest recommendations. Work done the right way.
+          Honest recommendations rooted in faith, craftsmanship, and respect.
         </p>
       </div>
-
     </div>
   </section>
-
-
-  <div class="forge-section-spacer"></div>
-
-
-  <!-- WHO I HELP -->
-  <section class="home-section-card home-audience">
-    <h2>Who I Help</h2>
-
-    <div class="audience-grid">
-      <div>
-        <ul>
-          <li class="forge-text-gradient-soft">Families needing safer, cleaner digital setups</li>
-          <li class="forge-text-gradient-soft">Small businesses seeking dependable tech guidance</li>
-          <li class="forge-text-gradient-soft">Churches wanting trustworthy network or communication help</li>
-          <li class="forge-text-gradient-soft">Customized tech gadgets needing integration, automation, or secure routing</li>
-        </ul>
-      </div>
-
-      <div>
-        <ul>
-          <li class="forge-text-gradient-soft">Professionals needing privacy-focused technical solutions</li>
-          <li class="forge-text-gradient-soft">Anyone overwhelmed by “big tech” systems and noise</li>
-          <li class="forge-text-gradient-soft">People wanting simpler, more organized home tech</li>
-          <li class="forge-text-gradient-soft">Those ready to build better digital habits</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-
-  <div class="forge-section-spacer"></div>
-
-
-  <!-- WHAT’S COMING SOON -->
-  <section class="home-section-card home-products">
-    <h2>What’s Coming Soon</h2>
-
-    <p class="forge-text-gradient-soft">
-      M.R. TechForge is actively developing a handful of lightweight, user-friendly tools designed to make digital life safer, calmer, and easier.
-    </p>
-
-    <ul>
-      <li class="forge-text-gradient-soft"><strong>ForgeDrive:</strong> A clean, organized USB toolkit with utilities &amp; documentation</li>
-      <li class="forge-text-gradient-soft"><strong>Forge Tags:</strong> Simple NFC cards for easy, secure information sharing</li>
-      <li class="forge-text-gradient-soft"><strong>ForgeSBC:</strong> A Raspberry-Pi powered home hub for ad-blocking, secure access, and syncing</li>
-    </ul>
-
-    <p class="forge-text-gradient-soft">
-      These tools are optional add-ons — helpful if you want a polished, secure foundation for your devices.
-    </p>
-  </section>
-
-
-  <div class="forge-section-spacer"></div>
 
 
   <!-- HOW IT WORKS -->
@@ -148,39 +152,56 @@ class: home
       <li class="mini-card">
         <span class="step-number">1. Connect</span>
         <span class="step-text forge-text-gradient-soft">
-          We talk through your needs, challenges, and goals — in plain English.
+          We talk through what’s happening and what you want to improve.
         </span>
       </li>
 
       <li class="mini-card">
         <span class="step-number">2. Plan</span>
         <span class="step-text forge-text-gradient-soft">
-          You get clear, practical options instead of overwhelming complexity.
+          You get clear, practical options — no overwhelm.
         </span>
       </li>
 
       <li class="mini-card">
         <span class="step-number">3. Build</span>
         <span class="step-text forge-text-gradient-soft">
-          Clean, dependable solutions designed for long-term stability.
+          Clean execution with long-term reliability in mind.
         </span>
       </li>
     </ul>
+
+    <div class="how-actions">
+      <a href="{{ links.pages.services }}" class="btn btn-forge">
+        View Services
+      </a>
+      <a href="{{ links.pages.contact }}" class="btn btn-forge btn-hero-secondary">
+        Start a Conversation
+      </a>
+    </div>
   </section>
 
 
-  <div class="forge-section-spacer"></div>
+  <!-- FINAL CTA -->
+  <section class="home-final-callout">
+    <div class="final-card">
+      <div class="final-brand forge-title-glow">M.R. TechForge</div>
 
+      <p class="final-slogan">
+        <span>Crafting Clarity.</span>
+        <span>Building Solutions.</span>
+        <span class="accent">Forged with Integrity.</span>
+      </p>
 
-  <!-- INTEGRITY -->
-  <section class="home-section-card home-integrity">
-    <h2>Faith • Integrity • Craftsmanship</h2>
-
-    <p class="forge-text-gradient-soft">
-      Every project is guided by values — honesty, transparency, and a commitment  
-      to treating people right. Whether it’s a consultation or a full setup, you get  
-      dependable help rooted in faith-driven integrity.
-    </p>
+      <div class="final-actions">
+        <a href="{{ links.pages.contact }}" class="btn btn-forge btn-hero">
+          Get in Touch
+        </a>
+        <a href="{{ links.pages.services }}" class="btn btn-forge btn-hero btn-hero-secondary">
+          Explore Services
+        </a>
+      </div>
+    </div>
   </section>
 
 </div>

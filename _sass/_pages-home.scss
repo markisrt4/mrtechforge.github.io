@@ -1,111 +1,194 @@
-/* ===== Home Page Styles (Refined, Unified) ===== */
+/* ===== Home Page Styles — Cinematic Hero Revamp (v2) ===== */
 
 /* -----------------------------------------------
-   HERO SECTION
+   HERO — CINEMATIC VIDEO BACKGROUND
 ------------------------------------------------ */
 
-.forge-hero-vaporized {
-  padding: 4rem 1rem 3rem;
-  text-align: center;
+.forge-hero-cinematic {
   position: relative;
+  min-height: clamp(520px, 92vh, 820px);
+  border-radius: 28px;
+  overflow: hidden;
+  margin: 1.2rem auto 2.5rem;
+  max-width: 1200px;
+  box-shadow:
+    0 0 26px rgba(var(--forge-accent-rgb), 0.22),
+    0 0 60px rgba(0, 0, 0, 0.85);
+}
+
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02); /* hide edge pixel jitter */
+  filter: saturate(1.06) contrast(1.04);
+}
+
+/* Darken edges and protect readability */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%,
+      rgba(0,0,0,0.10) 0%,
+      rgba(0,0,0,0.60) 55%,
+      rgba(0,0,0,0.92) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0.55) 0%,
+      rgba(0,0,0,0.85) 65%,
+      rgba(0,0,0,0.96) 100%);
   z-index: 1;
 }
 
-.forge-hero-vaporized .hero-tagline {
-  font-size: 1.15rem;
-  max-width: 650px;
-  margin: 0 auto 1.8rem;
-  line-height: 1.5;
-}
-
-/* Glowing "M.R. TechForge" stamp – reuse header vibe */
-.forge-hero-vaporized .hero-stamp {
-  margin: 0.75rem auto 1.75rem;
-}
-
-.forge-title-glow {
-  display: inline-block;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(1.6rem, 3.7vw, 2.35rem);
-
-  background: linear-gradient(
-    90deg,
-    #F5B841,
-    #F5B841,
-    #0A6DFF,
-    #153D77,
-    #F5B841
+/* Subtle scanline vibe (very light) */
+.hero-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    rgba(0,0,0,0) 4px,
+    rgba(0,0,0,0) 7px
   );
-  background-size: 260%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow:
-    0 0 12px rgba(245, 184, 65, 0.55),
-    0 0 22px rgba(10, 109, 255, 0.45);
-
-  animation: forgeTitleSpectrumHome 10s linear infinite;
+  opacity: 0.10;
+  mix-blend-mode: overlay;
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* Main lava hero title */
-.hero-title {
+/* Grain overlay */
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.05;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Content */
+.hero-inner {
+  position: relative;
+  z-index: 10;
+  padding: clamp(2.2rem, 6vw, 4.2rem) 1.25rem 2.2rem;
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.hero-stamp {
+  margin: 0 auto 1.15rem;
+}
+
+.hero-headline {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  font-weight: 700;
-  font-size: clamp(1.75rem,5vw, 3rem);
-  line-height: 1.2;
-  margin: 1.8rem auto 1.4rem;
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 18px rgba(245, 184, 65, 0.55);
   letter-spacing: 0.08em;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4.5vw, 3.0rem);
+  line-height: 1.16;
   max-width: 28ch;
-
-  word-wrap: normal;
-  overflow-wrap: normal;
-  white-space: normal;
+  margin: 1.1rem auto 1.1rem;
+  color: #fff;
+  text-shadow:
+    0 0 18px rgba(10, 109, 255, 0.35),
+    0 0 20px rgba(245, 184, 65, 0.22);
 }
 
-/* Subtitle below hero */
+.hero-headline-accent {
+  color: var(--forge-hotmetal);
+  text-shadow:
+    0 0 18px rgba(245, 184, 65, 0.50),
+    0 0 22px rgba(10, 109, 255, 0.25);
+}
+
 .hero-subtitle {
-  max-width: 720px;
-  margin: 1.6rem auto 2.6rem;
-  font-size: 1.05rem;
-  line-height: 1.6;
+  max-width: 760px;
+  margin: 0.9rem auto 1.8rem;
+  font-size: 1.06rem;
+  line-height: 1.65;
 }
 
-/* Tag bubbles */
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.hero-tag {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-}
-
-/* Hero buttons */
 .hero-actions {
-  margin: 2.1rem 0 1.6rem;
+  margin: 1.7rem 0 1.4rem;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
   align-items: center;
 }
 
-.hero-footnote {
-  margin-top: 2rem;
-  font-size: 0.98rem;
-  opacity: 0.9;
+.btn-hero {
+  min-width: 240px;
+}
+
+.btn-hero-secondary {
+  opacity: 0.94;
+  filter: saturate(0.92);
+}
+
+/* Badges */
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.hero-badge {
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.42);
+  border-radius: 999px;
+  padding: 0.34rem 0.86rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
+}
+
+/* Scroll hint */
+.hero-scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.1rem;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  opacity: 0.85;
+}
+
+.scroll-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.35);
+  animation: heroDotPulse 1.6s ease-in-out infinite;
+}
+
+.scroll-text {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Reduced motion: stop pulsing, optional video behavior */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-dot { animation: none; }
+  .hero-video { filter: none; }
 }
 
 /* -----------------------------------------------
@@ -124,76 +207,120 @@
 }
 
 /* -----------------------------------------------
-   SECTION SPACER
+   SECTION CARDS BASE
 ------------------------------------------------ */
 
-.forge-section-spacer {
-  height: 3.2rem;
-}
-
-/* -----------------------------------------------
-   LARGE SECTION CARDS (shared base)
-   (Old, subtler blue-to-black look)
------------------------------------------------- */
-
-.home-section-card,
-.home-pillars,
-.home-audience,
-.home-products,
-.home-how,
-.home-integrity {
-  margin: 0 auto 3.3rem;
-  padding: 2.6rem 1.6rem;
-  max-width: 860px;
+.home-section-card {
+  margin: 0 auto 2.3rem;
+  padding: 2.4rem 1.4rem;
+  max-width: 1100px;
   border-radius: 22px;
 
   background:
-    radial-gradient(
-      circle at top,
-      rgba(10, 80, 150, 0.26) 0%,
-      rgba(0, 0, 0, 0.98) 55%
-    ),
-    linear-gradient(
-      180deg,
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.24) 0%,
+      rgba(0, 0, 0, 0.98) 58%),
+    linear-gradient(180deg,
       rgba(3, 8, 18, 0.96) 0%,
-      #000 72%
-    );
+      #000 72%);
 
   box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.22),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.22);
+    0 0 18px rgba(var(--forge-accent-rgb), 0.20),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
 }
 
-/* Section headings */
-.home-section-card > h2,
-.home-pillars > h2,
-.home-audience > h2,
-.home-products > h2,
-.home-how > h2,
-.home-integrity > h2 {
+.home-section-card > h2 {
   text-align: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
   color: var(--forge-hotmetal);
   font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.7rem, 5vw, 2.4rem);
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.45);
+  font-size: clamp(1.6rem, 4.4vw, 2.2rem);
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
 }
 
 /* -----------------------------------------------
-   PILLAR CARDS
+   QUICK GRID
+------------------------------------------------ */
+
+.home-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.quick-card {
+  background: rgba(0,0,0,0.55);
+  border-radius: 18px;
+  padding: 1.4rem 1.4rem 1.55rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
+}
+
+.quick-card h2 {
+  font-family: "Orbitron", sans-serif;
+  color: var(--forge-hotmetal);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.9rem;
+  font-size: 1.25rem;
+}
+
+.quick-list {
+  margin: 0.9rem 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.quick-list li {
+  margin: 0.7rem 0;
+}
+
+.signal-meter {
+  margin: 1.1rem 0 0.9rem;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.signal-bar {
+  width: 12px;
+  height: 26px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.20);
+  animation: signalRise 1.9s ease-in-out infinite;
+}
+
+.signal-bar:nth-child(2) { height: 34px; animation-delay: 0.10s; }
+.signal-bar:nth-child(3) { height: 44px; animation-delay: 0.20s; }
+.signal-bar:nth-child(4) { height: 34px; animation-delay: 0.30s; }
+.signal-bar:nth-child(5) { height: 26px; animation-delay: 0.40s; }
+
+.quick-foot {
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .signal-bar { animation: none; }
+}
+
+/* -----------------------------------------------
+   PILLARS + HOW
 ------------------------------------------------ */
 
 .pillar-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.1rem;
 }
 
 .pillar-card {
   background: rgba(0, 0, 0, 0.55);
   border-radius: 18px;
-  padding: 1.4rem 1.6rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.4);
+  padding: 1.35rem 1.45rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
   box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
@@ -201,12 +328,8 @@
   font-family: "Orbitron", sans-serif;
   color: var(--forge-hotmetal);
   letter-spacing: 0.06em;
-  margin-bottom: 0.8rem;
+  margin: 0 0 0.7rem;
 }
-
-/* -----------------------------------------------
-   HOW IT WORKS – MINI CARDS
------------------------------------------------- */
 
 .how-steps {
   list-style: none;
@@ -214,14 +337,14 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.1rem;
 }
 
 .mini-card {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.60);
   border-radius: 18px;
   padding: 1.2rem 1.4rem 1.3rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.4);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
   box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
@@ -239,48 +362,107 @@
   line-height: 1.6;
 }
 
-/* -----------------------------------------------
-   GENERAL TEXT INSIDE HOME CARDS
------------------------------------------------- */
-
-.home-section-card p,
-.home-section-card li {
-  font-size: 1.02rem;
-  line-height: 1.6;
-  max-width: 760px;
-  margin: 0.55rem auto;
-}
-
-.home-products ul {
-  padding-left: 0;
-  list-style-position: inside;
-}
-
-/* -----------------------------------------------
-   AUDIENCE GRID
------------------------------------------------- */
-
-.audience-grid {
+.how-actions {
+  margin-top: 1.7rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.9rem;
+  align-items: center;
 }
 
-.audience-grid ul {
+/* Products list */
+.coming-list {
   padding-left: 0;
+  list-style: none;
+  margin: 1.1rem auto 0;
+  max-width: 900px;
 }
 
-.audience-grid li {
-  list-style: none;
-  margin-bottom: 0.8rem;
+.coming-list li {
+  margin: 0.9rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.50);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.14);
 }
 
 /* -----------------------------------------------
-   RESPONSIVE TWEAKS
+   FINAL CALLOUT
+------------------------------------------------ */
+
+.home-final-callout {
+  margin: 2.5rem auto 3.6rem;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.final-card {
+  border-radius: 26px;
+  padding: 2.6rem 1.4rem;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at 30% 10%,
+      rgba(245, 184, 65, 0.14) 0%,
+      rgba(10, 109, 255, 0.10) 30%,
+      rgba(0,0,0,0.98) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.98) 100%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow:
+    0 0 22px rgba(var(--forge-accent-rgb), 0.22),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
+}
+
+.final-brand {
+  margin-bottom: 1.1rem;
+}
+
+.final-slogan {
+  margin: 1rem auto 1.8rem;
+  max-width: 44ch;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.05rem, 2.7vw, 1.35rem);
+  line-height: 1.35;
+  color: #fff;
+  text-shadow: 0 0 16px rgba(10, 109, 255, 0.25);
+}
+
+.final-slogan span {
+  display: block;
+}
+
+.final-slogan .accent {
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 18px rgba(245, 184, 65, 0.45);
+}
+
+.final-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+/* -----------------------------------------------
+   RESPONSIVE
 ------------------------------------------------ */
 
 @media (min-width: 640px) {
   .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .how-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .final-actions {
     flex-direction: row;
     justify-content: center;
   }
@@ -294,27 +476,32 @@
   }
 }
 
-@media (min-width: 720px) {
-  .audience-grid {
-    flex-direction: row;
-    justify-content: space-between;
+@media (min-width: 860px) {
+  .home-quick-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .audience-grid > div {
-    width: 48%;
+  .forge-hero-cinematic {
+    margin-top: 1.6rem;
   }
 
   .home-section-card {
-    padding: 3rem 2.4rem;
+    padding: 2.8rem 2.2rem;
   }
 }
 
 /* -----------------------------------------------
-   HERO TITLE ANIMATION (reuse header motion)
+   ANIMATIONS
 ------------------------------------------------ */
 
-@keyframes forgeTitleSpectrumHome {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes heroDotPulse {
+  0%   { transform: translateY(0); opacity: 0.65; }
+  50%  { transform: translateY(-4px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.65; }
+}
+
+@keyframes signalRise {
+  0%   { transform: translateY(0); opacity: 0.70; }
+  50%  { transform: translateY(-3px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.70; }
 }
