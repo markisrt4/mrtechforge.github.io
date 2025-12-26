@@ -7,80 +7,80 @@ class: home
 
 {% assign links = site.data.links %}
 
-<div class="home home-v7">
+<div class="home home-v8">
 
-  <!-- HERO -->
-  <section class="home-hero-v7" aria-label="M.R. TechForge hero">
-    <div class="hero-grid">
+  <!-- HERO INTRO (TEXT ONLY) -->
+  <section class="home-hero-intro" aria-label="M.R. TechForge intro">
+    <div class="hero-intro-card">
 
-      <!-- LEFT -->
-      <div class="hero-left">
-        <div class="hero-stamp-glow">M.R. TechForge</div>
+      <div class="hero-stamp-glow">M.R. TechForge</div>
 
-        <h1 class="hero-headline">
-          Crafting Clarity.<br>
-          Building Solutions.<br>
-          <span class="hero-headline-accent">Forged with Integrity.</span>
-        </h1>
+      <h1 class="hero-headline">
+        <span class="hero-line hero-line-cool">Crafting Clarity.</span><br>
+        <span class="hero-line hero-line-cool">Building Solutions.</span><br>
+        <span class="hero-line hero-line-hot">Forged with Integrity.</span>
+      </h1>
 
-        <p class="hero-subtitle forge-text-gradient-soft">
-          Practical, relationship-focused technology help for homes, churches, libraries,
-          and small businesses — built with modern tools and honest guidance.
-        </p>
+      <p class="hero-subtitle forge-text-gradient-soft">
+        Practical, relationship-focused technology help for homes, churches, libraries,
+        and small businesses — built with modern tools and honest guidance.
+      </p>
 
-        <div class="hero-actions">
-          <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
-            Explore Services
-          </a>
-          <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
-            Get in Touch
-          </a>
-        </div>
-
-        <div class="hero-badges" aria-label="Key strengths">
-          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🧭</span>Clarity</span>
-          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🛡️</span>Security</span>
-          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🧱</span>Reliability</span>
-          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🛠️</span>Craftsmanship</span>
-        </div>
+      <div class="hero-actions">
+        <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
+          Explore Services
+        </a>
+        <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
+          Get in Touch
+        </a>
       </div>
 
-      <!-- RIGHT: Video preview (real frames) -->
-      <div class="hero-right">
-        <button
-          type="button"
-          class="hero-video-card hero-open-video"
-          aria-haspopup="dialog"
-          aria-label="Play MR TechForge intro video">
+      <div class="hero-badges" aria-label="Key strengths">
+        <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🧭</span>Clarity</span>
+        <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🛡️</span>Security</span>
+        <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🧱</span>Reliability</span>
+        <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🛠️</span>Craftsmanship</span>
+      </div>
 
-          <video
-            class="hero-video-preview"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            poster="/assets/video/mrtechforge-hero-poster.jpg">
-            <source src="/assets/video/mrtechforge-hero.mp4" type="video/mp4">
-          </video>
+    </div>
+  </section>
 
-          <div class="hero-video-overlay" aria-hidden="true">
-            <div class="play-ring">
-              <div class="play-triangle"></div>
-            </div>
 
-            <div class="video-overlay-chip">
-              <div class="chip-title">MR TechForge — Intro</div>
-              <div class="chip-sub forge-text-gradient-soft">
-                ~40 seconds • Click to play with sound
-              </div>
+  <!-- HERO VIDEO (BELOW INTRO) -->
+  <section class="home-hero-video" aria-label="MR TechForge intro video">
+    <div class="hero-video-wrap">
+
+      <button
+        type="button"
+        class="hero-video-card hero-open-video"
+        aria-haspopup="dialog"
+        aria-label="Play MR TechForge intro video">
+
+        <video
+          class="hero-video-preview"
+          muted
+          playsinline
+          preload="none"
+          poster="{{ '/assets/video/mrtechforge-hero-poster.jpg' | relative_url }}">
+          <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
+        </video>
+
+        <div class="hero-video-overlay" aria-hidden="true">
+          <div class="play-ring">
+            <div class="play-triangle"></div>
+          </div>
+
+          <div class="video-overlay-chip">
+            <div class="chip-title">MR TechForge — Intro</div>
+            <div class="chip-sub forge-text-gradient-soft">
+              ~40 seconds • Click to play with sound
             </div>
           </div>
-        </button>
-
-        <div class="hero-video-note forge-text-gradient-soft">
-          Tip: choose a poster frame at <code>/assets/video/mrtechforge-hero-poster.jpg</code>
         </div>
+      </button>
+
+      <div class="hero-video-caption forge-text-gradient-soft">
+        A quick introduction to how M.R. TechForge thinks and builds.
       </div>
 
     </div>
@@ -249,7 +249,7 @@ class: home
     <button class="forge-modal__close" type="button" aria-label="Close video" data-close>×</button>
 
     <video class="forge-modal__video" controls preload="metadata" playsinline>
-      <source src="/assets/video/mrtechforge-hero.mp4" type="video/mp4">
+      <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
     </video>
 
     <div class="forge-modal__caption forge-text-gradient-soft">

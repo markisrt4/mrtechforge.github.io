@@ -1,28 +1,23 @@
 /* ==========================================================
-   HOME PAGE (v7) — Video preview shows real frames
-   Works with buttons.scss (btn-forge)
+   HOME PAGE (v8) — Intro first, video below
+   Plays nice with buttons.scss (btn-forge)
    ========================================================== */
 
 /* -----------------------------------------------
-   HERO
+   HERO INTRO (TEXT)
 ------------------------------------------------ */
 
-.home-hero-v7 {
-  margin: 1.2rem auto 2.0rem;
+.home-hero-intro {
+  margin: 1.2rem auto 1.1rem;
   max-width: 1200px;
   padding: 0 1rem;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
-}
-
-.hero-left,
-.hero-right {
+.hero-intro-card {
   border-radius: 24px;
   overflow: hidden;
+  padding: 2.2rem 1.5rem 2.0rem;
+  text-align: center;
 
   background:
     radial-gradient(circle at top,
@@ -38,23 +33,14 @@
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.16);
 }
 
-.hero-left {
-  padding: 2.2rem 1.5rem 2.0rem;
-  text-align: center;
-}
-
-.hero-right {
-  padding: 1.15rem;
-}
-
-/* Stamp glow (homepage-specific, does not rely on forge-title-glow) */
+/* Stamp glow (homepage-specific) */
 .hero-stamp-glow {
   display: inline-block;
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.10em;
   font-weight: 900;
-  font-size: clamp(2.05rem, 4.6vw, 2.85rem);
+  font-size: clamp(2.0rem, 4.2vw, 2.75rem);
   margin: 0 auto 1rem;
 
   background: linear-gradient(
@@ -76,36 +62,55 @@
   animation: forgeTitleSpectrumHome 10s linear infinite;
 }
 
+/* Headline with cool (blue/silver) + hot (forge) lines */
 .hero-headline {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 900;
-  font-size: clamp(1.55rem, 4.2vw, 2.75rem);
-  line-height: 1.18;
-  max-width: 30ch;
-  margin: 1.1rem auto 1.0rem;
-  color: #fff;
-  text-shadow:
-    0 0 18px rgba(10, 109, 255, 0.30),
-    0 0 20px rgba(245, 184, 65, 0.22);
+  font-size: clamp(1.75rem, 4.6vw, 3.05rem);
+  line-height: 1.12;
+  margin: 1.05rem auto 1.05rem;
+  max-width: 24ch;
 }
 
-.hero-headline-accent {
+.hero-line {
+  display: inline-block;
+}
+
+.hero-line-cool {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 109, 255, 0.98) 0%,
+    rgba(200, 210, 225, 0.96) 55%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 14px rgba(10, 109, 255, 0.22),
+    0 0 10px rgba(200, 210, 225, 0.18);
+}
+
+.hero-line-hot {
   color: var(--forge-hotmetal);
   text-shadow:
     0 0 18px rgba(245, 184, 65, 0.55),
-    0 0 22px rgba(10, 109, 255, 0.25);
+    0 0 22px rgba(10, 109, 255, 0.18);
 }
 
 .hero-subtitle {
   max-width: 760px;
-  margin: 0.9rem auto 1.6rem;
+  margin: 0.9rem auto 1.4rem;
   font-size: 1.06rem;
   line-height: 1.65;
 }
 
-/* Buttons: do NOT fight buttons.scss; only size constraints */
+/* -----------------------------------------------
+   Buttons (do not fight buttons.scss)
+------------------------------------------------ */
+
 .hero-actions,
 .how-actions,
 .final-actions {
@@ -115,30 +120,34 @@
   align-items: center;
 }
 
+/* Reduce “too tall” feel while staying consistent */
 .home-btn {
   width: 100%;
   max-width: 340px;
   justify-content: center;
 
-  /* keep from feeling huge */
-  padding: 0.82rem 1.05rem;
+  /* tighten just a bit */
+  padding: 0.78rem 1.05rem;
 
   white-space: nowrap;
   text-align: center;
 }
 
-/* ensure dark text stays on forge-glow buttons */
+/* keep dark text on glowing forge buttons */
 .btn-forge.home-btn {
   color: rgba(14, 20, 30, 0.92);
 }
 
-/* Badges */
+/* -----------------------------------------------
+   Badges
+------------------------------------------------ */
+
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
   justify-content: center;
-  margin-top: 1.25rem;
+  margin-top: 1.15rem;
 }
 
 .hero-badge {
@@ -161,8 +170,33 @@
 }
 
 /* -----------------------------------------------
-   VIDEO PREVIEW (shows real frames)
+   HERO VIDEO (BELOW INTRO)
 ------------------------------------------------ */
+
+.home-hero-video {
+  margin: 0 auto 2.2rem;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.hero-video-wrap {
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 1.2rem;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.18) 0%,
+      rgba(0, 0, 0, 0.98) 62%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.90) 0%,
+      #000 72%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.14),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.14);
+}
 
 .hero-video-card {
   width: 100%;
@@ -179,6 +213,7 @@
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
+/* Poster will show immediately because we removed autoplay + preload */
 .hero-video-preview {
   width: 100%;
   height: auto;
@@ -197,9 +232,9 @@
   padding: 1rem;
   background:
     radial-gradient(circle at 50% 45%,
-      rgba(0,0,0,0.10) 0%,
-      rgba(0,0,0,0.42) 60%,
-      rgba(0,0,0,0.62) 100%);
+      rgba(0,0,0,0.06) 0%,
+      rgba(0,0,0,0.34) 60%,
+      rgba(0,0,0,0.55) 100%);
 }
 
 .play-ring {
@@ -246,16 +281,11 @@
   font-size: 0.98rem;
 }
 
-.hero-video-note {
-  margin-top: 0.85rem;
+.hero-video-caption {
+  margin-top: 0.9rem;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   opacity: 0.92;
-}
-
-.hero-video-note code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.92em;
 }
 
 /* Mobile: center chip */
@@ -334,7 +364,7 @@
 .quick-foot { text-align: center; }
 
 /* -----------------------------------------------
-   SECTION CARDS BASE
+   SECTION CARDS BASE (kept from your layout)
 ------------------------------------------------ */
 
 .home-section-card {
@@ -420,7 +450,7 @@
 }
 
 /* -----------------------------------------------
-   FINAL CALLOUT (light styling)
+   FINAL CALLOUT
 ------------------------------------------------ */
 
 .home-final-callout {
@@ -453,9 +483,7 @@
   line-height: 1.7;
 }
 
-.final-slogan span {
-  display: block;
-}
+.final-slogan span { display: block; }
 
 .final-slogan .accent {
   color: var(--forge-hotmetal);
@@ -526,12 +554,7 @@
 ------------------------------------------------ */
 
 @media (min-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1.15fr 0.85fr;
-    align-items: stretch;
-  }
-
-  .hero-left { text-align: left; }
+  .hero-intro-card { text-align: left; }
 
   .hero-actions,
   .how-actions,
