@@ -1,196 +1,154 @@
 # M.R. TechForge — Products Catalog
 
-- id: mrtf-nfc-starter-pack
-  name: "MRTF NFC Starter Pack"
-  category: "NFC Tags"
-  badge: "Best Value"
-  status: "available"
-  price: "$24.99"
-  price_note: "Includes 6 tags"
-  image: "/assets/img/products/nfc-starter-pack.webp"
-  alt: "MRTF NFC Starter Pack"
+- id: nfc-starter-pack
+  name: Forge NFC Starter Pack
+  category: NFC Tags
+  badge: Best Value
+  status: available
+  price: $24.99
+  price_note: Includes 6 tags
+  image: /assets/img/products/nfc-starter-pack.svg
+  alt: Forge NFC Starter Pack
   short: "Six pre-labeled NFC tags for daily automation: Wi-Fi, VPN, Home, Car, Guest, SOS."
   features:
     - "6 durable NFC tags (mix of sticker + keychain, configurable)"
-    - "Works with Android automations + MRTF NFC App"
+    - "Works with Android automations + Forge NFC app"
     - "Simple tap actions (no batteries)"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-    - "Works great with Tasker / routines (optional)"
-  includes:
-    - "6× NFC tags"
-    - "Quick-start setup guide (QR)"
-  cta_label: "View Starter Pack"
-  cta_url: "/products/#mrtf-nfc-starter-pack"
+  cta_label: View Starter Pack
+  cta_url: /products/nfc/#nfc-starter-pack
 
 - id: wifi-toggle-tag
-  name: "Wi-Fi Toggle Tag"
-  category: "NFC Tags"
-  badge: "Popular"
-  status: "available"
-  price: "$6.99"
-  price_note: "Single tag"
-  image: "/assets/img/products/wifi-toggle-tag.webp"
-  alt: "Wi-Fi Toggle NFC tag"
+  name: Forge Wi-Fi Toggle Tag
+  category: NFC Tags
+  badge: Popular
+  status: available
+  price: $6.99
+  price_note: Single tag
+  image: /assets/img/products/wifi-toggle-tag.svg
+  alt: Wi-Fi Toggle NFC tag
   short: "Tap to toggle Wi-Fi on/off (perfect for commuting, battery saving, and quick reconnects)."
   features:
-    - "Fast Wi-Fi toggle"
-    - "Optional: connect to a specific SSID"
-    - "Label-ready (clean minimal design)"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "1× NFC tag"
-    - "Setup QR"
-  cta_label: "View Wi-Fi Tag"
-  cta_url: "/products/#wifi-toggle-tag"
+    - "Fast Wi-Fi toggle (Android automation)"
+    - "Great for saving battery + quick reconnect"
+    - "Place on desk, car mount, or charger"
+  cta_label: View Wi-Fi Tag
+  cta_url: /products/nfc/#wifi-toggle-tag
 
 - id: vpn-connect-tag
-  name: "VPN Connect Tag"
-  category: "NFC Tags"
-  badge: "MRTF Favorite"
-  status: "available"
-  price: "$7.99"
-  price_note: "Single tag"
-  image: "/assets/img/products/vpn-connect-tag.webp"
-  alt: "VPN Connect NFC tag"
-  short: "Tap to connect/disconnect your VPN profile for instant secure browsing."
+  name: Forge VPN Connect Tag
+  category: NFC Tags
+  badge: Secure
+  status: available
+  price: $6.99
+  price_note: Single tag
+  image: /assets/img/products/vpn-connect-tag.svg
+  alt: VPN Connect NFC tag
+  short: "Tap to connect your VPN (or open your VPN app) before banking, work, or public Wi-Fi."
   features:
-    - "One-tap VPN connect/disconnect"
-    - "Designed for ForgeVPN / home VPN workflows"
+    - "Tap to connect VPN / open VPN app"
     - "Great for public Wi-Fi"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "1× NFC tag"
-    - "Setup QR"
-  cta_label: "View VPN Tag"
-  cta_url: "/products/#vpn-connect-tag"
+    - "Use with ForgeVPN / WireGuard / your setup"
+  cta_label: View VPN Tag
+  cta_url: /products/nfc/#vpn-connect-tag
 
 - id: home-mode-tag
-  name: "Home Mode Tag"
-  category: "NFC Tags"
-  status: "available"
-  price: "$7.99"
-  price_note: "Single tag"
-  image: "/assets/img/products/home-mode-tag.webp"
-  alt: "Home Mode NFC tag"
-  short: "Tap to switch into Home Mode: volume, brightness, Wi-Fi, and your preferred settings."
+  name: Forge Home Mode Tag
+  category: NFC Tags
+  badge: Smart
+  status: available
+  price: $6.99
+  price_note: Single tag
+  image: /assets/img/products/home-mode-tag.svg
+  alt: Home Mode NFC tag
+  short: "Tap to switch into Home Mode (Wi-Fi on, VPN off, smart home dashboard, comfy settings)."
   features:
-    - "Home profile toggle"
-    - "Quiet hours / ringtone presets"
-    - "Optional smart-home hooks (future)"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "1× NFC tag"
-    - "Setup QR"
-  cta_label: "View Home Mode"
-  cta_url: "/products/#home-mode-tag"
+    - "Connect home Wi-Fi"
+    - "Toggle VPN to your preference"
+    - "Open dashboard / app set"
+  cta_label: View Home Tag
+  cta_url: /products/nfc/#home-mode-tag
 
 - id: car-mode-tag
-  name: "Car Mode Tag"
-  category: "NFC Tags"
-  status: "available"
-  price: "$7.99"
-  price_note: "Single tag"
-  image: "/assets/img/products/car-mode-tag.webp"
-  alt: "Car Mode NFC tag"
-  short: "Tap to launch navigation + set driving-friendly audio and screen settings."
+  name: Forge Car Mode Tag
+  category: NFC Tags
+  badge: Drive
+  status: available
+  price: $6.99
+  price_note: Single tag
+  image: /assets/img/products/car-mode-tag.svg
+  alt: Car Mode NFC tag
+  short: "Tap for Car Mode (Bluetooth on, maps, music, volume, and drive-ready settings)."
   features:
-    - "Launch Maps + music/podcast"
-    - "Hands-free friendly defaults"
-    - "Optional: Bluetooth device targeting"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "1× NFC tag"
-    - "Setup QR"
-  cta_label: "View Car Mode"
-  cta_url: "/products/#car-mode-tag"
+    - "Bluetooth + navigation shortcut"
+    - "Start playlist / podcast"
+    - "Optional focus / DND while driving"
+  cta_label: View Car Tag
+  cta_url: /products/nfc/#car-mode-tag
 
 - id: guest-wifi-tag
-  name: "Guest Wi-Fi Tag"
-  category: "NFC Tags"
-  badge: "Party Trick"
-  status: "available"
-  price: "$8.99"
-  price_note: "Single tag"
-  image: "/assets/img/products/guest-wifi-tag.webp"
-  alt: "Guest Wi-Fi NFC tag"
-  short: "Tap to join your guest network without reading passwords out loud."
+  name: Forge Guest Wi-Fi Tag
+  category: NFC Tags
+  badge: Friendly
+  status: available
+  price: $6.99
+  price_note: Single tag
+  image: /assets/img/products/guest-wifi-tag.svg
+  alt: Guest Wi-Fi NFC tag
+  short: "Tap to share guest Wi-Fi (QR code / link / instructions) — perfect for friends and family."
   features:
-    - "One-tap Wi-Fi join"
-    - "Great for visitors + smart devices"
-    - "Keeps your main network separate"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "1× NFC tag"
-    - "Setup QR"
-  cta_label: "View Guest Wi-Fi"
-  cta_url: "/products/#guest-wifi-tag"
+    - "Tap to open a Guest Wi-Fi page"
+    - "Show QR code or instructions"
+    - "Reduces “what’s your Wi-Fi?” texts"
+  cta_label: View Guest Tag
+  cta_url: /products/nfc/#guest-wifi-tag
 
 - id: sos-emergency-tag
-  name: "SOS Emergency Tag"
-  category: "NFC Tags"
-  badge: "Safety"
-  status: "available"
-  price: "$9.99"
-  price_note: "Single tag"
-  image: "/assets/img/products/sos-emergency-tag.webp"
-  alt: "SOS Emergency NFC tag"
-  short: "Tap to run your emergency workflow (call/text, location share, or preset alert actions)."
+  name: Forge SOS Tag
+  category: NFC Tags
+  badge: Safety
+  status: available
+  price: $6.99
+  price_note: Single tag
+  image: /assets/img/products/sos-emergency-tag.svg
+  alt: SOS NFC tag
+  short: "Tap to trigger an SOS action (text a contact, share location, call a number, open medical info)."
   features:
-    - "Emergency shortcut trigger"
-    - "Location-sharing workflow support"
-    - "Customizable for your needs"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "1× NFC tag"
-    - "Setup QR"
-  cta_label: "View SOS Tag"
-  cta_url: "/products/#sos-emergency-tag"
+    - "Emergency shortcut / preset message"
+    - "Share location quickly"
+    - "Keep on keychain or nightstand"
+  cta_label: View SOS Tag
+  cta_url: /products/nfc/#sos-emergency-tag
 
-- id: mrtf-nfc-android-app
-  name: "MRTF NFC Android App"
-  category: "Apps"
-  badge: "Companion"
-  status: "available"
-  price: "Free"
-  price_note: "Core features"
-  image: "/assets/img/products/mrtf-nfc-android-app.webp"
-  alt: "MRTF NFC Android App"
-  short: "The companion app that programs tags and runs Forge-style tap automations."
+- id: forge-nfc-android-app
+  name: Forge NFC Android App
+  category: Apps
+  badge: Free
+  status: available
+  price: $0
+  price_note: Android
+  image: /assets/img/products/forge-nfc-android-app.svg
+  alt: Forge NFC Android app
+  short: "Guided setup for your tags, plus starter automations and tap-to-run shortcuts."
   features:
-    - "Guided tag setup"
-    - "Profiles: Home / Car / Work"
-    - "Works alongside Tasker (optional)"
-  compatibility:
-    - "Android (NFC-enabled phones)"
-  includes:
-    - "App install + onboarding"
-  cta_label: "Get the App"
-  cta_url: "/mrtf-nfc-app/"
+    - "Guided NFC tag setup"
+    - "Starter actions + templates"
+    - "Fast, clean UI"
+  cta_label: Learn More
+  cta_url: /products/nfc/#forge-nfc-android-app
 
-- id: mrtf-nfc-watch-app
-  name: "MRTF NFC Watch Companion"
-  category: "Apps"
-  badge: "Coming Soon"
-  status: "coming_soon"
-  price: "Planned"
-  price_note: "Wear OS"
-  image: "/assets/img/products/mrtf-nfc-watch-app.webp"
-  alt: "MRTF NFC Watch Companion for Wear OS"
-  short: "A future Wear OS companion for quick actions, status, and tag-triggered workflows."
+- id: forge-nfc-watch-app
+  name: Forge NFC Wear OS Companion
+  category: Apps
+  badge: Coming Soon
+  status: planned
+  price: TBD
+  price_note: Wear OS
+  image: /assets/img/products/forge-nfc-watch-app.svg
+  alt: Forge NFC Wear OS companion app
+  short: "Future companion for quick actions, confirmations, and tag management from your wrist."
   features:
-    - "Quick toggles + shortcuts"
-    - "Status tiles + complication ideas"
-    - "Fast “tap → confirm → run” flows"
-  compatibility:
-    - "Wear OS (future)"
-  includes:
-    - "Early-access roadmap updates (when available)"
-  cta_label: "Roadmap"
-  cta_url: "/products/#mrtf-nfc-watch-app"
+    - "Quick action triggers"
+    - "Status / confirmations"
+    - "Designed for Wear OS"
+  cta_label: Coming Soon
+  cta_url: /products/nfc/#forge-nfc-watch-app
