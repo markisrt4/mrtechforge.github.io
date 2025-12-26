@@ -11,13 +11,13 @@ class: home
 
   <!-- HERO INTRO (TEXT ONLY) -->
   <section class="home-hero-intro" aria-label="M.R. TechForge intro">
-    <div class="hero-intro-card">
+    <div class="hero-intro-card forge-card">
 
       <div class="hero-stamp-glow">M.R. TechForge</div>
 
       <h1 class="hero-headline">
-        <span class="hero-line hero-line-cool">Crafting Clarity.</span><br>
-        <span class="hero-line hero-line-cool">Building Solutions.</span><br>
+        <span class="hero-line hero-line-blue">Crafting Clarity.</span><br>
+        <span class="hero-line hero-line-silver">Building Solutions.</span><br>
         <span class="hero-line hero-line-hot">Forged with Integrity.</span>
       </h1>
 
@@ -52,7 +52,7 @@ class: home
 
       <button
         type="button"
-        class="hero-video-card hero-open-video"
+        class="hero-video-card hero-open-video forge-card"
         aria-haspopup="dialog"
         aria-label="Play MR TechForge intro video">
 
@@ -90,7 +90,7 @@ class: home
   <!-- QUICK OVERVIEW -->
   <section class="home-quick-grid" aria-label="Quick overview">
 
-    <div class="quick-card">
+    <div class="quick-card forge-card">
       <div class="quick-title-row">
         <span class="mini-ico" aria-hidden="true">🧰</span>
         <h2>What I Do</h2>
@@ -115,7 +115,7 @@ class: home
       </ul>
     </div>
 
-    <div class="quick-card">
+    <div class="quick-card forge-card">
       <div class="quick-title-row">
         <span class="mini-ico" aria-hidden="true">🤝</span>
         <h2>What to Expect</h2>
@@ -132,7 +132,7 @@ class: home
       </p>
     </div>
 
-    <div class="quick-card">
+    <div class="quick-card forge-card">
       <div class="quick-title-row">
         <span class="mini-ico" aria-hidden="true">🏡</span>
         <h2>Who I Help</h2>
@@ -150,25 +150,25 @@ class: home
 
 
   <!-- VALUES -->
-  <section class="home-section-card home-pillars">
+  <section class="home-section-card home-pillars forge-card">
     <h2>What We Stand For</h2>
 
     <div class="pillar-grid">
-      <div class="pillar-card">
+      <div class="pillar-card forge-card">
         <h3>Clarity</h3>
         <p class="forge-text-gradient-soft">
           Plain English, transparent choices, and guidance you can trust.
         </p>
       </div>
 
-      <div class="pillar-card">
+      <div class="pillar-card forge-card">
         <h3>Reliability</h3>
         <p class="forge-text-gradient-soft">
           Stable systems built to last — no shortcuts, no fragile hacks.
         </p>
       </div>
 
-      <div class="pillar-card">
+      <div class="pillar-card forge-card">
         <h3>Integrity</h3>
         <p class="forge-text-gradient-soft">
           Honest recommendations rooted in faith, craftsmanship, and respect.
@@ -179,25 +179,25 @@ class: home
 
 
   <!-- HOW IT WORKS -->
-  <section class="home-section-card home-how">
+  <section class="home-section-card home-how forge-card">
     <h2>How It Works</h2>
 
     <ul class="how-steps">
-      <li class="mini-card">
+      <li class="mini-card forge-card">
         <span class="step-number">1. Connect</span>
         <span class="step-text forge-text-gradient-soft">
           We talk through what’s happening and what you want to improve.
         </span>
       </li>
 
-      <li class="mini-card">
+      <li class="mini-card forge-card">
         <span class="step-number">2. Plan</span>
         <span class="step-text forge-text-gradient-soft">
           You get clear, practical options — no overwhelm.
         </span>
       </li>
 
-      <li class="mini-card">
+      <li class="mini-card forge-card">
         <span class="step-number">3. Build</span>
         <span class="step-text forge-text-gradient-soft">
           Clean execution with long-term reliability in mind.
@@ -218,7 +218,7 @@ class: home
 
   <!-- FINAL CTA -->
   <section class="home-final-callout" aria-label="Final call to action">
-    <div class="final-card">
+    <div class="final-card forge-card">
       <div class="final-brand hero-stamp-glow">M.R. TechForge</div>
 
       <p class="final-slogan">
