@@ -7,16 +7,16 @@ class: home
 
 {% assign links = site.data.links %}
 
-<div class="home home-v4">
+<div class="home home-v6">
 
   <!-- HERO -->
-  <section class="home-hero-v4" aria-label="M.R. TechForge hero">
+  <section class="home-hero-v5" aria-label="M.R. TechForge hero">
 
     <div class="hero-grid">
 
-      <!-- LEFT: Brand + CTA -->
+      <!-- LEFT -->
       <div class="hero-left">
-        <div class="hero-stamp forge-title-glow">M.R. TechForge</div>
+        <div class="hero-stamp-glow">M.R. TechForge</div>
 
         <h1 class="hero-headline">
           Crafting Clarity.<br>
@@ -30,23 +30,23 @@ class: home
         </p>
 
         <div class="hero-actions">
-          <a href="{{ links.pages.services }}" class="btn btn-forge btn-hero">
+          <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
             Explore Services
           </a>
-          <a href="{{ links.pages.contact }}" class="btn btn-forge btn-hero btn-hero-secondary">
+          <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
             Get in Touch
           </a>
         </div>
 
         <div class="hero-badges" aria-label="Key strengths">
-          <span class="hero-badge">Clarity</span>
-          <span class="hero-badge">Security</span>
-          <span class="hero-badge">Reliability</span>
-          <span class="hero-badge">Craftsmanship</span>
+          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🧭</span>Clarity</span>
+          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🛡️</span>Security</span>
+          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🧱</span>Reliability</span>
+          <span class="hero-badge"><span class="mini-ico" aria-hidden="true">🛠️</span>Craftsmanship</span>
         </div>
       </div>
 
-      <!-- RIGHT: Video preview (click to play with audio) -->
+      <!-- RIGHT: Video preview -->
       <div class="hero-right">
         <button type="button" class="hero-video-card hero-open-video" aria-haspopup="dialog" aria-label="Play MR TechForge video">
           <div class="hero-video-poster" aria-hidden="true"></div>
@@ -55,12 +55,28 @@ class: home
             <div class="play-ring">
               <div class="play-triangle"></div>
             </div>
-            <div class="play-text forge-text-gradient-soft">Watch the Video</div>
+
+            <div class="video-overlay-frame">
+              <div class="video-frame-title">MR TechForge • Intro</div>
+              <div class="video-frame-sub forge-text-gradient-soft">
+                A quick look at how I approach clarity, security, and reliability.
+              </div>
+
+              <ul class="video-frame-bullets">
+                <li><span class="mini-ico" aria-hidden="true">✅</span>Plain-English options</li>
+                <li><span class="mini-ico" aria-hidden="true">✅</span>Clean, stable builds</li>
+              </ul>
+
+              <div class="video-frame-cta">
+                <span class="mini-ico" aria-hidden="true">▶</span>
+                Play (with audio)
+              </div>
+            </div>
           </div>
         </button>
 
         <div class="hero-video-note forge-text-gradient-soft">
-          A quick 40-second intro to how M.R. TechForge thinks and builds.
+          ~40 seconds • Optional • Click to play
         </div>
       </div>
 
@@ -73,7 +89,7 @@ class: home
 
     <div class="quick-card">
       <div class="quick-title-row">
-        <span class="forge-icon icon-signal" aria-hidden="true"></span>
+        <span class="mini-ico" aria-hidden="true">🧰</span>
         <h2>What I Do</h2>
       </div>
 
@@ -98,31 +114,24 @@ class: home
 
     <div class="quick-card">
       <div class="quick-title-row">
-        <span class="forge-icon icon-compass" aria-hidden="true"></span>
-        <h2>How It Feels</h2>
+        <span class="mini-ico" aria-hidden="true">🤝</span>
+        <h2>What to Expect</h2>
       </div>
 
-      <p class="forge-text-gradient-soft">
-        No jargon. No pressure. Just clear options, clean execution,
-        and systems that work the way they should.
-      </p>
-
-      <div class="signal-meter" aria-hidden="true">
-        <div class="signal-bar"></div>
-        <div class="signal-bar"></div>
-        <div class="signal-bar"></div>
-        <div class="signal-bar"></div>
-        <div class="signal-bar"></div>
-      </div>
+      <ul class="quick-list">
+        <li class="forge-text-gradient-soft"><span class="mini-ico" aria-hidden="true">✅</span>Clear explanations (no jargon)</li>
+        <li class="forge-text-gradient-soft"><span class="mini-ico" aria-hidden="true">✅</span>Practical options you can choose from</li>
+        <li class="forge-text-gradient-soft"><span class="mini-ico" aria-hidden="true">✅</span>Stable results you can rely on</li>
+      </ul>
 
       <p class="quick-foot forge-text-gradient-soft">
-        Built for real people — not big-tech chaos.
+        Calm, clean, and built to last.
       </p>
     </div>
 
     <div class="quick-card">
       <div class="quick-title-row">
-        <span class="forge-icon icon-people" aria-hidden="true"></span>
+        <span class="mini-ico" aria-hidden="true">🏡</span>
         <h2>Who I Help</h2>
       </div>
 
@@ -194,10 +203,10 @@ class: home
     </ul>
 
     <div class="how-actions">
-      <a href="{{ links.pages.services }}" class="btn btn-forge btn-cta">
+      <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
         View Services
       </a>
-      <a href="{{ links.pages.contact }}" class="btn btn-forge btn-cta btn-cta-secondary">
+      <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
         Start a Conversation
       </a>
     </div>
@@ -216,10 +225,10 @@ class: home
       </p>
 
       <div class="final-actions">
-        <a href="{{ links.pages.contact }}" class="btn btn-forge btn-cta">
+        <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
           Get in Touch
         </a>
-        <a href="{{ links.pages.services }}" class="btn btn-forge btn-cta btn-cta-secondary">
+        <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
           Explore Services
         </a>
       </div>
@@ -229,7 +238,7 @@ class: home
 </div>
 
 
-<!-- VIDEO MODAL (plays WITH audio) -->
+<!-- VIDEO MODAL (audio) -->
 <div class="forge-modal" id="forgeHeroVideoModal" role="dialog" aria-modal="true" aria-label="MR TechForge brand video" hidden>
   <div class="forge-modal__backdrop" data-close></div>
 

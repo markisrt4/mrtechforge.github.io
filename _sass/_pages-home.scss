@@ -1,10 +1,10 @@
-/* ===== Home Page Styles — Hero v4 (video preview + consistent buttons + glow) ===== */
+/* ===== Home Page Styles — v6 (plays nice with buttons.scss) ===== */
 
 /* -----------------------------------------------
    HERO LAYOUT
 ------------------------------------------------ */
 
-.home-hero-v4 {
+.home-hero-v5 {
   margin: 1.2rem auto 2.0rem;
   max-width: 1200px;
   padding: 0 1rem;
@@ -40,18 +40,39 @@
   text-align: center;
 }
 
-.hero-right {
-  padding: 1.2rem;
-}
+.hero-right { padding: 1.2rem; }
 
-/* Fix #4: force the stamp to glow and stay large */
-.hero-stamp.forge-title-glow {
+/* -----------------------------------------------
+   Fix: MR TechForge stamp glow (homepage-specific)
+   (Do NOT rely on forge-title-glow if something overrides it)
+------------------------------------------------ */
+
+.hero-stamp-glow {
   display: inline-block;
-  font-size: clamp(1.9rem, 4.2vw, 2.6rem);
-  margin: 0 auto 1.0rem;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  font-weight: 800;
+  font-size: clamp(2.05rem, 4.6vw, 2.85rem);
+  margin: 0 auto 1rem;
+
+  background: linear-gradient(
+    90deg,
+    #F5B841,
+    #F5B841,
+    #0A6DFF,
+    #153D77,
+    #F5B841
+  );
+  background-size: 260% 260%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   text-shadow:
-    0 0 14px rgba(245, 184, 65, 0.60),
-    0 0 24px rgba(10, 109, 255, 0.55);
+    0 0 14px rgba(245, 184, 65, 0.70),
+    0 0 26px rgba(10, 109, 255, 0.60);
+
+  animation: forgeTitleSpectrumHome 10s linear infinite;
 }
 
 /* Headline */
@@ -85,7 +106,9 @@
 }
 
 /* -----------------------------------------------
-   Buttons (Fix #3 + #5): consistent widths/heights
+   Buttons (cascade-safe)
+   We DON'T fight buttons.scss.
+   We only set size/width constraints via a single class.
 ------------------------------------------------ */
 
 .hero-actions,
@@ -97,26 +120,45 @@
   align-items: center;
 }
 
-.btn-hero,
-.btn-cta {
-  width: min(360px, 100%);
-  max-width: 100%;
-  min-height: 52px;
-  display: inline-flex;
-  align-items: center;
+/* One class to rule them all */
+.home-btn {
+  /* full width on small screens, consistent max on desktop */
+  width: 100%;
+  max-width: 360px;
+
+  /* consistent heights without breaking your padding */
+  min-height: 54px;
+
+  /* keep your nice centered layout */
   justify-content: center;
-  padding: 0.95rem 1.2rem;
-  box-sizing: border-box;
-  white-space: nowrap;
+
+  /* allow wrap if user has big font settings */
+  white-space: normal;
+  text-align: center;
 }
 
-.btn-hero-secondary,
-.btn-cta-secondary {
-  opacity: 0.95;
-  filter: saturate(0.92);
+/* Keep your "dark text for glowing buttons" consistent */
+.btn-forge.home-btn {
+  color: rgba(14, 20, 30, 0.92);
 }
 
-/* Badges */
+/* Desktop: align like a proper row when there is space */
+@media (min-width: 860px) {
+  .hero-actions,
+  .how-actions,
+  .final-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-left { text-align: left; }
+}
+
+/* -----------------------------------------------
+   Badges
+------------------------------------------------ */
+
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
@@ -137,8 +179,17 @@
   box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
+/* Small “regular” icons without SVG:
+   Hook for your service icon system later */
+.mini-ico {
+  display: inline-flex;
+  width: 1.05em;
+  margin-right: 0.45rem;
+  opacity: 0.92;
+}
+
 /* -----------------------------------------------
-   Video preview card (Fix #2)
+   Video preview card (unchanged structure, improved overlay)
 ------------------------------------------------ */
 
 .hero-video-card {
@@ -150,6 +201,7 @@
   cursor: pointer;
   padding: 0;
   display: block;
+  position: relative;
   box-shadow:
     0 0 16px rgba(var(--forge-accent-rgb), 0.18),
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
@@ -166,14 +218,11 @@
 
 .hero-video-overlay {
   position: absolute;
-  inset: 1.2rem;
+  inset: 0;
   display: grid;
   place-items: center;
-  pointer-events: none;
-}
-
-.hero-video-card {
-  position: relative;
+  padding: 1rem;
+  background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.22), rgba(0,0,0,0.55));
 }
 
 .play-ring {
@@ -196,11 +245,50 @@
   margin-left: 4px;
 }
 
-.play-text {
-  margin-top: 0.75rem;
-  font-size: 0.98rem;
+/* Desktop: show frame content inside the play area */
+.video-overlay-frame {
+  width: min(520px, 92%);
+  margin-top: 0.9rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.58);
+  padding: 0.9rem 1rem;
+  text-align: left;
+  box-shadow: 0 0 18px rgba(0,0,0,0.65);
+}
+
+.video-frame-title {
+  font-family: "Orbitron", sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  font-size: 0.95rem;
+}
+
+.video-frame-sub {
+  margin-top: 0.35rem;
+  font-size: 0.98rem;
+}
+
+.video-frame-bullets {
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.video-frame-bullets li {
+  margin: 0.4rem 0;
+  color: rgba(255,255,255,0.92);
+}
+
+.video-frame-cta {
+  margin-top: 0.75rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.86rem;
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 14px rgba(245, 184, 65, 0.35);
 }
 
 .hero-video-note {
@@ -210,8 +298,32 @@
   opacity: 0.95;
 }
 
+/* Mobile: simplify frame so it’s not “lame text” */
+@media (max-width: 560px) {
+  .video-overlay-frame {
+    width: min(420px, 94%);
+    text-align: center;
+  }
+
+  .video-frame-bullets {
+    display: none;
+  }
+
+  .video-frame-sub {
+    display: none;
+  }
+
+  .video-frame-title {
+    font-size: 0.9rem;
+  }
+
+  .video-frame-cta {
+    margin-top: 0.5rem;
+  }
+}
+
 /* -----------------------------------------------
-   QUICK GRID
+   QUICK GRID (no weird animation; removed)
 ------------------------------------------------ */
 
 .home-quick-grid {
@@ -240,21 +352,6 @@
     0 0 16px rgba(var(--forge-accent-rgb), 0.18),
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
-
-/* “regular icons like services pages” – placeholder hooks */
-.forge-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 9px;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
-  background: rgba(0, 0, 0, 0.45);
-  box-shadow: inset 0 0 12px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-/* You can map these to your existing icon system */
-.icon-signal {}
-.icon-compass {}
-.icon-people {}
 
 .quick-title-row {
   display: flex;
@@ -292,230 +389,21 @@
 
 .quick-list li { margin: 0.7rem 0; }
 
-/* Meter */
-.signal-meter {
-  margin: 1.1rem 0 0.9rem;
-  display: flex;
-  gap: 0.4rem;
-  justify-content: center;
-}
-
-.signal-bar {
-  width: 12px;
-  height: 26px;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.65);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.20);
-  animation: signalRise 1.9s ease-in-out infinite;
-}
-
-.signal-bar:nth-child(2) { height: 34px; animation-delay: 0.10s; }
-.signal-bar:nth-child(3) { height: 44px; animation-delay: 0.20s; }
-.signal-bar:nth-child(4) { height: 34px; animation-delay: 0.30s; }
-.signal-bar:nth-child(5) { height: 26px; animation-delay: 0.40s; }
-
-.quick-foot { text-align: center; }
-
 /* -----------------------------------------------
-   Section cards base (rest of page)
------------------------------------------------- */
-
-.home-section-card {
-  margin: 0 auto 2.3rem;
-  padding: 2.4rem 1.4rem;
-  max-width: 1200px;
-  border-radius: 22px;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(10, 80, 150, 0.24) 0%,
-      rgba(0, 0, 0, 0.98) 58%),
-    linear-gradient(180deg,
-      rgba(3, 8, 18, 0.96) 0%,
-      #000 72%);
-
-  box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.20),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
-}
-
-.home-section-card > h2 {
-  text-align: center;
-  margin-bottom: 1.6rem;
-  color: var(--forge-hotmetal);
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.6rem, 4.4vw, 2.2rem);
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
-}
-
-/* Pillars */
-.pillar-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.pillar-card {
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 18px;
-  padding: 1.35rem 1.45rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-.pillar-card h3 {
-  font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  letter-spacing: 0.06em;
-  margin: 0 0 0.7rem;
-}
-
-/* How */
-.how-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.mini-card {
-  background: rgba(0, 0, 0, 0.60);
-  border-radius: 18px;
-  padding: 1.2rem 1.4rem 1.3rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-.mini-card .step-number {
-  display: block;
-  font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.06em;
-}
-
-.mini-card .step-text {
-  display: block;
-  font-size: 1.02rem;
-  line-height: 1.6;
-}
-
-/* -----------------------------------------------
-   MODAL
------------------------------------------------- */
-
-.forge-modal[hidden] { display: none; }
-
-.forge-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-}
-
-.forge-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.78);
-  backdrop-filter: blur(6px);
-}
-
-.forge-modal__panel {
-  position: relative;
-  width: min(980px, calc(100% - 2rem));
-  margin: 6vh auto 0;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  background: #000;
-  box-shadow:
-    0 0 24px rgba(var(--forge-accent-rgb), 0.22),
-    0 0 70px rgba(0,0,0,0.85);
-}
-
-.forge-modal__close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(0,0,0,0.55);
-  color: #fff;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.forge-modal__video {
-  width: 100%;
-  height: auto;
-  display: block;
-  background: #000;
-}
-
-.forge-modal__caption {
-  padding: 0.9rem 1rem 1.1rem;
-  text-align: center;
-  font-size: 0.98rem;
-}
-
-/* Stop background scrolling */
-.forge-modal-open { overflow: hidden; }
-
-/* -----------------------------------------------
-   Responsive
+   Responsive quick grid
 ------------------------------------------------ */
 
 @media (min-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1.15fr 0.85fr;
-    align-items: stretch;
-  }
-
-  .hero-left {
-    text-align: left;
-  }
-
-  .hero-actions,
-  .how-actions,
-  .final-actions {
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .hero-badges {
-    justify-content: flex-start;
-  }
-
-  .home-quick-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .pillar-grid {
-    flex-direction: row;
-  }
-
-  .pillar-card {
-    flex: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .signal-bar { animation: none; }
+  .home-quick-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-badges { justify-content: flex-start; }
 }
 
 /* -----------------------------------------------
-   Animations
+   Title animation
 ------------------------------------------------ */
 
-@keyframes signalRise {
-  0%   { transform: translateY(0); opacity: 0.70; }
-  50%  { transform: translateY(-3px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.70; }
+@keyframes forgeTitleSpectrumHome {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
