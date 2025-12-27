@@ -1,8 +1,10 @@
 # Site-wide canonical links (single source of truth)
+
 pages:
   home: "/"
   about: "/about/"
   services: "/services/"
+  products: "/products/"
   guides: "/guides/"
   contact: "/contact/"
   faq: "/faq/"
@@ -22,6 +24,11 @@ services:
   forge_managed_phone_text: "/services/forge-managed-phone-text/"
   secure_network: "/services/secure-network-services/"
 
+products:
+  index: "/products/"
+  nfc: "/products/nfc/"
+  gadgets: "/products/gadgets/"
+
 external:
   proton_referral: "https://pr.tn/ref/H8CD3SD5"
   signal: "https://signal.org/"
@@ -33,4 +40,3 @@ legal:
   privacy: "/privacy/"
   terms: "/terms/"
   security: "/security/"
-
