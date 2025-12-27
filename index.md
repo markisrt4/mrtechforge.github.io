@@ -7,7 +7,7 @@ class: home
 
 {% assign links = site.data.links %}
 
-<div class="home home-v8">
+<div class="home home-v9">
 
   <!-- HERO INTRO (TEXT ONLY) -->
   <section class="home-hero-intro" aria-label="M.R. TechForge intro">
@@ -16,8 +16,8 @@ class: home
       <div class="hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
 
       <h1 class="hero-headline">
-        <span class="hero-line hero-line-blue">Crafting Clarity.</span><br>
-        <span class="hero-line hero-line-silver">Building Solutions.</span><br>
+        <span class="hero-line hero-line-cool">Crafting Clarity.</span><br>
+        <span class="hero-line hero-line-cool">Building Solutions.</span><br>
         <span class="hero-line hero-line-hot">Forged with Integrity.</span>
       </h1>
 
@@ -67,7 +67,7 @@ class: home
             <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
           </video>
 
-          <!-- overlay is now ONLY the play control + dark gradient -->
+          <!-- overlay is ONLY the play control + subtle gradient -->
           <div class="hero-video-overlay" aria-hidden="true">
             <div class="play-ring">
               <div class="play-triangle"></div>
@@ -75,7 +75,7 @@ class: home
           </div>
         </button>
 
-        <!-- ✅ moved BELOW the video -->
+        <!-- meta BELOW the video -->
         <div class="hero-video-meta">
           <div class="chip-title">MR TechForge — Intro</div>
           <div class="chip-sub forge-text-gradient-soft">~40 seconds • Click to play with sound</div>
@@ -256,6 +256,12 @@ class: home
       <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
     </video>
 
+    <!-- Mobile hint (shows on phones, hides when playback starts) -->
+    <div class="forge-modal__hint" id="forgeModalHint">
+      <span class="hint-icon" aria-hidden="true">🔊</span>
+      Tap <strong>Play</strong> for sound
+    </div>
+
     <div class="forge-modal__caption forge-text-gradient-soft">
       Crafting Clarity. Building Solutions. Forged with Integrity.
     </div>
@@ -269,9 +275,10 @@ class: home
   if (!openBtn || !modal) return;
 
   const video = modal.querySelector('video');
+  const hint = document.getElementById('forgeModalHint');
   const closeEls = modal.querySelectorAll('[data-close]');
 
-  // True for desktop-like environments
+  // Desktop-ish environments: allow an autoplay attempt
   const canAutoplayAttempt =
     window.matchMedia &&
     window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -302,13 +309,14 @@ class: home
     document.documentElement.classList.add('forge-modal-open');
     lockScroll();
 
-    // Desktop: try to start playing right away
-    // Mobile: do NOT auto-play (prevents scroll-jumps + audio restrictions)
+    if (hint) hint.classList.remove('is-hidden');
+
     if (video) {
       video.currentTime = 0;
 
+      // Desktop: try to play immediately
+      // Mobile: do NOT autoplay (prevents scroll-jumps + audio restrictions)
       if (canAutoplayAttempt) {
-        // defer to avoid focus/scroll weirdness
         requestAnimationFrame(() => {
           video.play().catch(() => {});
         });
@@ -337,5 +345,11 @@ class: home
     if (modal.hidden) return;
     if (e.key === 'Escape') closeModal();
   });
+
+  if (video) {
+    video.addEventListener('play', () => {
+      if (hint) hint.classList.add('is-hidden');
+    });
+  }
 })();
 </script>
