@@ -13,9 +13,9 @@ class: home
   <!-- HERO INTRO (TEXT OUTSIDE CARD) -->
   <section class="home-hero-intro" aria-label="M.R. TechForge intro">
 
-    <!-- ✅ OUTSIDE CARD (per your wish) -->
+    <!-- OUTSIDE CARD -->
     <div class="hero-intro-top">
-      <div class="hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
+      <div class="hero-stamp-sweep" data-text="M.R. TechForge">M.R. TechForge</div>
 
       <h1 class="hero-headline">
         <span class="hero-line hero-line-blue">Crafting Clarity.</span><br>
@@ -29,7 +29,7 @@ class: home
       </p>
     </div>
 
-    <!-- ✅ ACTIONS in a card (keeps your “snappy card” vibe) -->
+    <!-- ACTIONS IN A CARD -->
     <div class="hero-intro-actions forge-card">
 
       <div class="hero-actions">
@@ -58,9 +58,9 @@ class: home
   <section class="home-hero-video" aria-label="MR TechForge intro video">
     <div class="hero-video-wrap">
 
-      <div class="forge-card hero-video-shell">
+      <!-- ✅ NOT inside a card anymore -->
+      <div class="hero-video-shell">
 
-        <!-- ✅ Replace the MP4 preview + modal with a stable inline YouTube embed -->
         <div class="hero-video-card hero-video-embed" aria-label="MR TechForge video">
           {% if intro_youtube_id != "" %}
 
@@ -73,7 +73,6 @@ class: home
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
 
-              <!-- Optional overlay hint (pointer-events should be none in CSS) -->
               <div class="hero-video-overlay" aria-hidden="true">
                 <div class="play-ring">
                   <div class="play-triangle"></div>
@@ -91,10 +90,9 @@ class: home
           {% endif %}
         </div>
 
-        <!-- Meta stays below video (your good behavior) -->
         <div class="hero-video-meta">
           <div class="chip-title">MR TechForge — Intro</div>
-          <div class="chip-sub forge-text-gradient-soft">~40 seconds • Tap to play with sound</div>
+          <div class="chip-sub forge-text-gradient-soft" Tap to play with sound</div>
         </div>
 
       </div>
@@ -242,7 +240,7 @@ class: home
   <!-- FINAL CTA -->
   <section class="home-final-callout" aria-label="Final call to action">
     <div class="final-card forge-card">
-      <div class="final-brand hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
+      <div class="final-brand hero-stamp-sweep" data-text="M.R. TechForge">M.R. TechForge</div>
 
       <p class="final-slogan">
         <span>Crafting Clarity.</span>
