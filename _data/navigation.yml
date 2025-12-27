@@ -10,33 +10,27 @@ main:
     children:
       - title: "Tech Services"
         key: "services.tech_services"
-
       - title: "Documentation"
         key: "services.doc_anchor"
-
       - title: "Product Testing"
         key: "services.product_testing_anchor"
-
       - title: "Forge Managed Phone & Text"
         key: "services.forge_managed_phone_text"
-
       - title: "Forge Secure Network"
         key: "services.secure_network"
 
+  - title: "Products"
+    key: "pages.products"
+    children:
+      - title: "All Products"
+        key: "products.index"
+      - title: "NFC Tags"
+        key: "products.nfc"
+      - title: "Gadgets"
+        key: "products.gadgets"
+
   - title: "Guides"
     key: "pages.guides"
-    children:
-      - title: "Digital Security"
-        key: "guides.digital_security"
-        children:
-          - title: "Why Break Up With Google?"
-            key: "guides.google_breakup_intro"
-
-          - title: "Google Replacement Guide"
-            key: "guides.google_replacement_guide"
-
-      - title: "Recommended Tools"
-        key: "guides.recommended_tools"
 
   - title: "FAQ"
     key: "pages.faq"
