@@ -62,13 +62,20 @@
 /* New homepage stamp: sweep glow (blue base, orange band rolls across) */
 .hero-stamp-sweep {
   position: relative;
-  display: inline-block;
-  margin: 0 0 0.65rem 0;
+
+  /* ✅ Center it + make it bigger */
+  display: block;
+  width: fit-content;
+  margin: 0 auto 0.75rem;
+  text-align: center;
 
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+
+  /* ✅ Larger, responsive size */
+  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
 
   /* Blue base */
   color: var(--forge-accent);
@@ -88,6 +95,12 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+
+  /* ✅ Keep overlay perfectly aligned/sized */
+  text-align: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
 
   color: transparent;
   -webkit-text-fill-color: transparent;
@@ -380,12 +393,18 @@
     width: 68px;
     height: 68px;
   }
+
+  /* Keep stamp a hair tighter on small phones */
+  .hero-stamp-sweep {
+    font-size: clamp(1.55rem, 6.2vw, 2.2rem);
+    letter-spacing: 0.12em;
+  }
 }
 
 /* ------------------------------
-   ANIMATION: Sweep Glow
+   ANIMATION: Sweep Glow (LEFT → RIGHT)
 ------------------------------ */
 @keyframes forgeHomeSweepGlow {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  0%   { background-position: -120% 50%; }
+  100% { background-position: 120% 50%; }
 }
