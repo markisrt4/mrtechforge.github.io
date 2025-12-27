@@ -1,280 +1,227 @@
 /* ==========================================================
-   HOME PAGE (v10) — HARDENED headline + stamp glow
-   Fixes:
-   - Tri-color headline (blue / silver / hotmetal)
-   - Stamp glow not being overridden
-   - Keeps modal tap hint + phone sizing
+   M.R. TECHFORGE — HOME PAGE (pages-home.scss v6.9)
+   Updates:
+   - Top stamp NOT in card (styles for .hero-top-stamp)
+   - Crafting Clarity = solid blue (no gradient / no bg-clip)
+   - Keep 3 headline colors + consistent buttons
+   - Video meta chip moved below preview
    ========================================================== */
 
+.home.home-v8 { width: 100%; }
+
+/* ----------------------------------------------------------
+   HERO INTRO
+---------------------------------------------------------- */
+
 .home-hero-intro {
-  margin: 1.2rem auto 1.1rem;
-  max-width: 1200px;
-  padding: 0 1rem;
+  margin: 1.7rem 0 1.2rem;
 }
 
-.hero-intro-card {
-  border-radius: 24px;
-  overflow: hidden;
-  padding: 2.2rem 1.5rem 2.0rem;
-  text-align: center;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(10, 80, 150, 0.22) 0%,
-      rgba(0, 0, 0, 0.98) 62%),
-    linear-gradient(180deg,
-      rgba(3, 8, 18, 0.94) 0%,
-      #000 72%);
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.38);
-  box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.16),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.16);
+/* Stamp is now outside the card */
+.hero-top-stamp {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.0rem;
 }
 
-/* ----------------------------------------------------------
-   STAMP — HARDENED (prevents other CSS from overriding)
----------------------------------------------------------- */
-
-.home .hero-stamp-glow {
+/* Brand stamp base */
+.hero-stamp-glow {
   display: inline-block;
-  font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.10em;
-  font-weight: 900;
-  font-size: clamp(2.0rem, 4.2vw, 2.75rem);
-  margin: 0 auto 1rem;
-  position: relative;
-  z-index: 2;
+  letter-spacing: 0.18em;
+}
 
-  /* IMPORTANT: use !important to beat global heading color rules */
-  background: linear-gradient(
-    90deg,
-    #F5B841,
-    #F5B841,
-    #0A6DFF,
-    #153D77,
-    #F5B841
-  ) !important;
-  background-size: 260% 260% !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+/* Strong glow variant */
+.hero-stamp-glow--forge {
+  font-size: 1.32rem;
+  color: #d7dee8;
 
   text-shadow:
-    0 0 14px rgba(245, 184, 65, 0.72),
-    0 0 26px rgba(10, 109, 255, 0.62);
+    0 0 10px rgba(120, 190, 255, 0.50),
+    0 0 24px rgba(0, 140, 255, 0.32),
+    0 0 48px rgba(0, 140, 255, 0.20),
+    0 0 76px rgba(0, 140, 255, 0.12);
 
-  animation: forgeTitleSpectrumHome 10s linear infinite;
+  filter: brightness(1.08);
+  animation: forgeStampPulse 4.6s ease-in-out infinite;
 }
 
-/* ----------------------------------------------------------
-   HEADLINE — HARDENED TRI-COLOR
----------------------------------------------------------- */
-
-.home .hero-headline {
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 900;
-  font-size: clamp(1.75rem, 4.6vw, 3.05rem);
-  line-height: 1.12;
-  margin: 1.05rem auto 1.05rem;
-  max-width: 24ch;
-
-  /* prevent inherited orange */
-  color: inherit;
+@keyframes forgeStampPulse {
+  0%, 100% { opacity: 0.94; filter: brightness(1.04); }
+  50%      { opacity: 1;    filter: brightness(1.14); }
 }
 
-.home .hero-line {
+@media (max-width: 420px) {
+  .hero-stamp-glow--forge {
+    font-size: 1.36rem;
+    letter-spacing: 0.20em;
+  }
+}
+
+/* Card content */
+.home-hero-intro .hero-intro-card {
+  padding: 1.65rem 1.45rem;
+}
+
+/* Headline */
+.hero-headline {
+  margin: 0 0 1rem;
+  line-height: 1.05;
+}
+
+.hero-line {
   display: inline-block;
+  font-family: "Orbitron", system-ui, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-/* Crafting Clarity = Forge Blue vertical gradient */
-.home .hero-line-blue {
-  background: linear-gradient(
-    180deg,
-    rgba(180, 205, 255, 0.98) 0%,
-    rgba(10, 109, 255, 0.98) 60%,
-    rgba(160, 190, 245, 0.96) 100%
-  ) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+/* Solid blue — explicitly disable gradient tricks */
+.hero-line-blue {
+  color: var(--forge-accent) !important;
 
-  text-shadow:
-    0 0 16px rgba(10, 109, 255, 0.26),
-    0 0 10px rgba(180, 205, 255, 0.18);
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+
+  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.38);
 }
 
-/* Building Solutions = Silver vertical gradient */
-.home .hero-line-silver {
-  background: linear-gradient(
-    180deg,
-    rgba(245, 248, 255, 0.96) 0%,
-    rgba(200, 210, 225, 0.98) 55%,
-    rgba(235, 240, 248, 0.96) 100%
-  ) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-
-  text-shadow:
-    0 0 14px rgba(207, 212, 221, 0.22),
-    0 0 10px rgba(255, 255, 255, 0.12);
+/* True silver-blue */
+.hero-line-silver {
+  color: #b9c4d3;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: 0 0 12px rgba(185, 196, 211, 0.18);
 }
 
-/* Forged with Integrity = Hotmetal */
-.home .hero-line-hot {
-  color: var(--forge-hotmetal) !important;
-  -webkit-text-fill-color: var(--forge-hotmetal) !important;
-
+.hero-line-hot {
+  color: var(--forge-hotmetal, #ff7a18);
   text-shadow:
-    0 0 18px rgba(245, 184, 65, 0.58),
-    0 0 22px rgba(10, 109, 255, 0.18);
+    0 0 12px rgba(255, 122, 24, 0.24),
+    0 0 24px rgba(255, 122, 24, 0.14);
 }
 
 .hero-subtitle {
-  max-width: 760px;
-  margin: 0.9rem auto 1.4rem;
-  font-size: 1.06rem;
-  line-height: 1.65;
+  margin: 0.9rem 0 1.15rem;
+  max-width: 70ch;
 }
 
 /* ----------------------------------------------------------
-   Buttons (do not fight buttons.scss)
+   BUTTONS (layout-only)
 ---------------------------------------------------------- */
 
 .hero-actions,
 .how-actions,
 .final-actions {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.85rem;
-  align-items: center;
 }
 
 .home-btn {
-  width: 100%;
-  max-width: 340px;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  padding: 0.78rem 1.05rem;
-  white-space: nowrap;
-  text-align: center;
+  min-width: 220px;
 }
 
-.btn-forge.home-btn {
-  color: rgba(14, 20, 30, 0.92);
+@media (max-width: 520px) {
+  .home-btn { width: 100%; min-width: 0; }
 }
 
 /* ----------------------------------------------------------
-   Badges
+   BADGES
 ---------------------------------------------------------- */
 
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  justify-content: center;
-  margin-top: 1.15rem;
+  margin-top: 0.6rem;
 }
 
 .hero-badge {
-  background: rgba(0, 0, 0, 0.48);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.42);
-  border-radius: 999px;
-  padding: 0.36rem 0.86rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.92);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-.mini-ico {
   display: inline-flex;
-  width: 1.05em;
-  margin-right: 0.45rem;
-  opacity: 0.92;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
+  background: rgba(0, 0, 0, 0.34);
 }
 
 /* ----------------------------------------------------------
    HERO VIDEO
 ---------------------------------------------------------- */
 
-.home-hero-video {
-  margin: 0 auto 2.2rem;
-  max-width: 1200px;
-  padding: 0 1rem;
-}
+.home-hero-video { margin: 1.2rem 0 2.2rem; }
 
 .hero-video-wrap {
-  border-radius: 24px;
-  overflow: hidden;
-  padding: 1.2rem;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(10, 80, 150, 0.18) 0%,
-      rgba(0, 0, 0, 0.98) 62%),
-    linear-gradient(180deg,
-      rgba(3, 8, 18, 0.90) 0%,
-      #000 72%);
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.14),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.14);
+  display: grid;
+  gap: 0.95rem;
 }
 
 .hero-video-shell {
-  border-radius: 22px;
-  overflow: hidden;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  box-shadow:
-    0 0 16px rgba(var(--forge-accent-rgb), 0.14),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.12);
+  padding: 0.95rem;
 }
 
+/* 16:9 frame button */
 .hero-video-card {
   width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #000;
-  cursor: pointer;
+  border: 0;
   padding: 0;
-  display: block;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+
   position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+
+  aspect-ratio: 16 / 9;
+  min-height: 180px;
+  max-height: 520px;
 }
 
 .hero-video-preview {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  aspect-ratio: 16 / 9;
+
   object-fit: cover;
-  background: #000;
-  filter: saturate(1.08) contrast(1.05);
+  object-position: center;
 }
 
+/* Overlay now only includes play ring (no chip overlay) */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
   display: grid;
-  place-items: center;
-  padding: 1rem;
-  background:
-    radial-gradient(circle at 50% 45%,
-      rgba(0,0,0,0.06) 0%,
-      rgba(0,0,0,0.34) 60%,
-      rgba(0,0,0,0.55) 100%);
+  place-content: center;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.04) 0%,
+    rgba(0,0,0,0.22) 60%,
+    rgba(0,0,0,0.38) 100%
+  );
 }
 
 .play-ring {
-  width: 92px;
-  height: 92px;
+  width: 64px;
+  height: 64px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.45);
-  background: rgba(0,0,0,0.35);
-  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.28);
+  border: 2px solid rgba(255,255,255,0.32);
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.22);
   display: grid;
   place-items: center;
 }
@@ -282,295 +229,123 @@
 .play-triangle {
   width: 0;
   height: 0;
-  border-left: 18px solid rgba(255,255,255,0.92);
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  margin-left: 4px;
+  border-left: 14px solid rgba(255,255,255,0.86);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-left: 3px;
 }
 
+/* Meta chip BELOW video */
 .hero-video-meta {
-  padding: 0.9rem 1rem 1.0rem;
-  text-align: center;
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
+  backdrop-filter: blur(8px);
 }
 
-.chip-title {
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.92);
+.hero-video-meta .chip-title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.15rem;
+}
+
+.hero-video-meta .chip-sub {
+  opacity: 0.9;
   font-size: 0.95rem;
 }
 
-.chip-sub {
-  margin-top: 0.35rem;
-  font-size: 0.98rem;
-}
+.hero-video-caption { margin: 0; opacity: 0.92; }
 
-.hero-video-caption {
-  margin-top: 0.9rem;
-  text-align: center;
-  font-size: 0.98rem;
-  opacity: 0.92;
+@media (max-width: 520px) {
+  .hero-video-card { min-height: 170px; max-height: 300px; }
+  .play-ring { width: 56px; height: 56px; }
 }
 
 /* ----------------------------------------------------------
-   QUICK GRID + SECTION BASICS (kept minimal)
+   QUICK GRID
 ---------------------------------------------------------- */
 
 .home-quick-grid {
-  margin: 0 auto 2.3rem;
-  max-width: 1200px;
-  padding: 0 1rem;
+  margin: 2rem 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.1rem;
+  gap: 1rem;
 }
 
-.quick-card {
-  border-radius: 22px;
-  padding: 1.6rem 1.5rem;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(10, 80, 150, 0.22) 0%,
-      rgba(0, 0, 0, 0.98) 62%),
-    linear-gradient(180deg,
-      rgba(3, 8, 18, 0.94) 0%,
-      #000 72%);
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  box-shadow:
-    0 0 16px rgba(var(--forge-accent-rgb), 0.18),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
-}
+.quick-card { padding: 1.25rem 1.15rem; }
 
 .quick-title-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  margin-bottom: 1.0rem;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
-.quick-card h2 {
-  margin: 0;
-  color: var(--forge-hotmetal);
-  font-family: "Orbitron", sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.06em;
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.35);
-}
-
-.home-inline-link {
-  color: rgba(255,255,255,0.92);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  padding-bottom: 2px;
-}
-
-.home-inline-link:hover {
-  border-bottom-color: rgba(245, 184, 65, 0.75);
-}
+.quick-title-row h2 { margin: 0; }
 
 .quick-list {
-  margin: 0.9rem 0 0;
-  padding-left: 0;
-  list-style: none;
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
 }
 
-.quick-list li { margin: 0.7rem 0; }
-.quick-foot { text-align: center; }
+.quick-foot { margin-top: 0.9rem; }
+
+/* ----------------------------------------------------------
+   VALUES / PILLARS
+---------------------------------------------------------- */
 
 .home-section-card {
-  margin: 0 auto 2.3rem;
-  padding: 2.4rem 1.4rem;
-  max-width: 1200px;
-  border-radius: 22px;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(10, 80, 150, 0.24) 0%,
-      rgba(0, 0, 0, 0.98) 58%),
-    linear-gradient(180deg,
-      rgba(3, 8, 18, 0.96) 0%,
-      #000 72%);
-
-  box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.20),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
+  margin: 2.2rem 0;
+  padding: 1.5rem 1.35rem;
 }
 
-.home-section-card > h2 {
-  text-align: center;
-  margin-bottom: 1.6rem;
-  color: var(--forge-hotmetal);
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.6rem, 4.4vw, 2.2rem);
-  text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
+.pillar-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
 }
+
+.pillar-card { padding: 1.1rem 1rem; }
+
+/* ----------------------------------------------------------
+   HOW IT WORKS
+---------------------------------------------------------- */
 
 .how-steps {
-  list-style: none;
+  margin: 1rem 0 0;
   padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
 }
 
-.mini-card {
-  background: rgba(0, 0, 0, 0.60);
-  border-radius: 18px;
-  padding: 1.2rem 1.4rem 1.3rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-}
+.mini-card { padding: 0.95rem 1rem; }
 
-.mini-card .step-number {
-  display: block;
-  font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.06em;
-}
-
-.mini-card .step-text {
-  display: block;
-  font-size: 1.02rem;
-  line-height: 1.6;
-}
+.how-actions { margin-top: 1.1rem; }
 
 /* ----------------------------------------------------------
-   MODAL + HINT + PHONE SHRINK
+   FINAL CTA
 ---------------------------------------------------------- */
 
-.forge-modal[hidden] { display: none; }
-.forge-modal { position: fixed; inset: 0; z-index: 9999; }
+.home-final-callout { margin: 2.4rem 0 2.2rem; }
 
-.forge-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.78);
-  backdrop-filter: blur(6px);
+.final-card { padding: 1.6rem 1.4rem; }
+
+.final-slogan {
+  margin: 0.9rem 0 1.15rem;
+  display: grid;
+  gap: 0.25rem;
 }
 
-.forge-modal__panel {
-  position: relative;
-  width: min(980px, calc(100% - 2rem));
-  margin: 6vh auto 0;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  background: #000;
-  box-shadow:
-    0 0 24px rgba(var(--forge-accent-rgb), 0.22),
-    0 0 70px rgba(0,0,0,0.85);
-}
-
-.forge-modal__close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(0,0,0,0.55);
-  color: #fff;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.forge-modal__video {
-  width: 100%;
-  height: auto;
-  display: block;
-  background: #000;
-}
-
-.forge-modal__hint {
-  margin: 0.75rem 1rem 0;
-  padding: 0.75rem 0.95rem;
-  border-radius: 14px;
-
-  background: rgba(0, 0, 0, 0.52);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.28);
-
-  color: rgba(255, 255, 255, 0.92);
-  text-align: center;
-
-  box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.16),
-    inset 0 0 16px rgba(var(--forge-accent-rgb), 0.10);
-}
-
-.forge-modal__hint .hint-icon { margin-right: 0.45rem; opacity: 0.95; }
-.forge-modal__hint.is-hidden { display: none; }
-
-.forge-modal__caption {
-  padding: 0.9rem 1rem 1.1rem;
-  text-align: center;
-  font-size: 0.98rem;
-}
-
-.forge-modal-open { overflow: hidden; }
-
-@media (min-width: 561px) {
-  .forge-modal__hint { display: none; }
-}
-
-@media (max-width: 560px) {
-  .forge-modal__panel {
-    width: calc(100% - 1rem);
-    margin: 3.5vh auto 0;
-    border-radius: 16px;
-
-    max-height: 84vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .forge-modal__video {
-    max-height: 56vh;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    background: #000;
-  }
-
-  .forge-modal__caption {
-    padding: 0.7rem 0.9rem 0.95rem;
-    font-size: 0.95rem;
-  }
-}
+.final-slogan .accent { color: var(--forge-hotmetal, #ff7a18); }
 
 /* ----------------------------------------------------------
-   RESPONSIVE
+   RESPONSIVE COLUMNS
 ---------------------------------------------------------- */
 
-@media (min-width: 860px) {
-  .hero-intro-card { text-align: left; }
-
-  .hero-actions,
-  .how-actions,
-  .final-actions {
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .hero-badges { justify-content: flex-start; }
-  .home-quick-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* ----------------------------------------------------------
-   ANIMATIONS
----------------------------------------------------------- */
-
-@keyframes forgeTitleSpectrumHome {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@media (min-width: 820px) {
+  .home-quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pillar-grid     { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .how-steps       { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
