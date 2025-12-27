@@ -92,7 +92,7 @@ class: home
 
         <div class="hero-video-meta">
           <div class="chip-title">MR TechForge — Intro</div>
-          <div class="chip-sub forge-text-gradient-soft" Tap to play with sound</div>
+          <div class="chip-sub forge-text-gradient-soft"> Tap to play with sound</div>
         </div>
 
       </div>
