@@ -271,12 +271,48 @@ class: home
   const video = modal.querySelector('video');
   const closeEls = modal.querySelectorAll('[data-close]');
 
+  // True for desktop-like environments
+  const canAutoplayAttempt =
+    window.matchMedia &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function lockScroll() {
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    document.body.dataset.scrollY = String(y);
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${y}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+
+  function unlockScroll() {
+    const y = parseInt(document.body.dataset.scrollY || '0', 10);
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    delete document.body.dataset.scrollY;
+    window.scrollTo(0, y);
+  }
+
   function openModal() {
     modal.hidden = false;
     document.documentElement.classList.add('forge-modal-open');
+    lockScroll();
+
+    // Desktop: try to start playing right away
+    // Mobile: do NOT auto-play (prevents scroll-jumps + audio restrictions)
     if (video) {
       video.currentTime = 0;
-      video.play().catch(() => {});
+
+      if (canAutoplayAttempt) {
+        // defer to avoid focus/scroll weirdness
+        requestAnimationFrame(() => {
+          video.play().catch(() => {});
+        });
+      }
     }
   }
 
@@ -284,10 +320,18 @@ class: home
     if (video) video.pause();
     modal.hidden = true;
     document.documentElement.classList.remove('forge-modal-open');
+    unlockScroll();
   }
 
-  openBtn.addEventListener('click', openModal);
-  closeEls.forEach(el => el.addEventListener('click', closeModal));
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+
+  closeEls.forEach(el => el.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal();
+  }));
 
   document.addEventListener('keydown', (e) => {
     if (modal.hidden) return;
