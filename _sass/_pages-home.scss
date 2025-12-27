@@ -1,351 +1,279 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE (pages-home.scss v6.9)
-   Updates:
-   - Top stamp NOT in card (styles for .hero-top-stamp)
-   - Crafting Clarity = solid blue (no gradient / no bg-clip)
-   - Keep 3 headline colors + consistent buttons
-   - Video meta chip moved below preview
+   HOME (v9) — Hero headline outside card + stable inline video
    ========================================================== */
 
-.home.home-v8 { width: 100%; }
-
-/* ----------------------------------------------------------
-   HERO INTRO
----------------------------------------------------------- */
-
-.home-hero-intro {
-  margin: 1.7rem 0 1.2rem;
+.home.home-v9 {
+  width: 100%;
+  padding: 0 0 3rem 0;
 }
 
-/* Stamp is now outside the card */
-.hero-top-stamp {
-  display: flex;
-  justify-content: center;
-  margin: 0 0 1.0rem;
+/* ------------------------------
+   HERO INTRO (NOT A CARD)
+------------------------------ */
+.hero-intro {
+  padding: 1.15rem 1.15rem 0.65rem 1.15rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* Brand stamp base */
-.hero-stamp-glow {
-  display: inline-block;
+.hero-kicker {
+  font-family: "Orbitron", "Titillium Web", sans-serif;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+  color: rgba(220, 235, 255, 0.75);
+  margin: 0 0 0.7rem 0;
 }
 
-/* Strong glow variant */
-.hero-stamp-glow--forge {
-  font-size: 1.32rem;
-  color: #d7dee8;
-
-  text-shadow:
-    0 0 10px rgba(120, 190, 255, 0.50),
-    0 0 24px rgba(0, 140, 255, 0.32),
-    0 0 48px rgba(0, 140, 255, 0.20),
-    0 0 76px rgba(0, 140, 255, 0.12);
-
-  filter: brightness(1.08);
-  animation: forgeStampPulse 4.6s ease-in-out infinite;
-}
-
-@keyframes forgeStampPulse {
-  0%, 100% { opacity: 0.94; filter: brightness(1.04); }
-  50%      { opacity: 1;    filter: brightness(1.14); }
-}
-
-@media (max-width: 420px) {
-  .hero-stamp-glow--forge {
-    font-size: 1.36rem;
-    letter-spacing: 0.20em;
-  }
-}
-
-/* Card content */
-.home-hero-intro .hero-intro-card {
-  padding: 1.65rem 1.45rem;
-}
-
-/* Headline */
 .hero-headline {
-  margin: 0 0 1rem;
+  margin: 0;
   line-height: 1.05;
+  font-family: "Orbitron", "Titillium Web", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .hero-line {
   display: inline-block;
-  font-family: "Orbitron", system-ui, sans-serif;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-/* Solid blue — explicitly disable gradient tricks */
-.hero-line-blue {
-  color: var(--forge-accent) !important;
-
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  -webkit-text-fill-color: currentColor !important;
-
-  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.38);
-}
-
-/* True silver-blue */
-.hero-line-silver {
-  color: #b9c4d3;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  -webkit-text-fill-color: currentColor !important;
-  text-shadow: 0 0 12px rgba(185, 196, 211, 0.18);
-}
-
-.hero-line-hot {
-  color: var(--forge-hotmetal, #ff7a18);
+  font-size: clamp(1.6rem, 5.5vw, 3.1rem);
   text-shadow:
-    0 0 12px rgba(255, 122, 24, 0.24),
-    0 0 24px rgba(255, 122, 24, 0.14);
+    0 0 10px rgba(70, 160, 255, 0.25),
+    0 0 22px rgba(70, 160, 255, 0.16);
 }
 
-.hero-subtitle {
-  margin: 0.9rem 0 1.15rem;
+.hero-blue {
+  color: var(--forge-blue, #2f8cff);
+  /* User request: no gradient here */
+}
+
+.hero-silver {
+  color: var(--forge-silver, #cfd6df);
+  text-shadow:
+    0 0 10px rgba(220, 235, 255, 0.18),
+    0 0 18px rgba(220, 235, 255, 0.10);
+}
+
+.hero-gold {
+  color: var(--forge-gold, #f0c36a);
+  text-shadow:
+    0 0 10px rgba(240, 195, 106, 0.22),
+    0 0 22px rgba(240, 195, 106, 0.14);
+}
+
+.hero-subtext {
+  margin: 0.85rem 0 0 0;
   max-width: 70ch;
+  color: rgba(230, 240, 255, 0.78);
+  font-size: 1.02rem;
+  line-height: 1.55;
 }
 
-/* ----------------------------------------------------------
-   BUTTONS (layout-only)
----------------------------------------------------------- */
-
-.hero-actions,
-.how-actions,
-.final-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
+/* ------------------------------
+   HERO ACTIONS (CARD)
+------------------------------ */
+.hero-actions {
+  max-width: 1100px;
+  margin: 0.85rem auto 0 auto;
+  padding: 0 1.15rem;
 }
 
-.home-btn {
+.hero-actions-card {
+  background: rgba(18, 24, 34, 0.62);
+  border: 1px solid rgba(120, 170, 255, 0.22);
+  border-radius: 16px;
+  padding: 1rem 1rem 0.9rem 1rem;
+  box-shadow:
+    0 0 0 1px rgba(70, 140, 255, 0.10) inset,
+    0 10px 30px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.hero-cta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* Buttons: consistent widths */
+.forge-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 220px;
+  width: 100%;
+  min-height: 52px;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  font-family: "Titillium Web", sans-serif;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  user-select: none;
 }
 
-@media (max-width: 520px) {
-  .home-btn { width: 100%; min-width: 0; }
+.forge-btn:active {
+  transform: translateY(1px) scale(0.995);
 }
 
-/* ----------------------------------------------------------
-   BADGES
----------------------------------------------------------- */
+.forge-btn-primary {
+  background: linear-gradient(180deg, rgba(75, 140, 255, 0.92), rgba(45, 95, 190, 0.92));
+  color: #0b1020;
+  box-shadow:
+    0 0 0 1px rgba(120, 190, 255, 0.22) inset,
+    0 10px 24px rgba(40, 120, 255, 0.18),
+    0 0 26px rgba(40, 120, 255, 0.14);
+}
+
+.forge-btn-secondary {
+  background: linear-gradient(180deg, rgba(190, 210, 240, 0.82), rgba(120, 150, 200, 0.78));
+  color: #0b1020;
+  box-shadow:
+    0 0 0 1px rgba(235, 245, 255, 0.18) inset,
+    0 10px 24px rgba(160, 190, 230, 0.14);
+}
+
+.forge-btn:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    0 0 0 1px rgba(160, 210, 255, 0.25) inset,
+    0 12px 30px rgba(60, 140, 255, 0.18);
+}
 
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-top: 0.6rem;
+  margin-top: 0.85rem;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.42rem 0.65rem;
+  padding: 0.45rem 0.7rem;
   border-radius: 999px;
   font-size: 0.92rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  background: rgba(0, 0, 0, 0.34);
+  background: rgba(10, 16, 24, 0.55);
+  border: 1px solid rgba(140, 190, 255, 0.18);
+  color: rgba(230, 240, 255, 0.82);
 }
 
-/* ----------------------------------------------------------
-   HERO VIDEO
----------------------------------------------------------- */
-
-.home-hero-video { margin: 1.2rem 0 2.2rem; }
-
-.hero-video-wrap {
-  display: grid;
-  gap: 0.95rem;
+/* ------------------------------
+   VIDEO (INLINE, NO MODAL)
+------------------------------ */
+.home-video {
+  max-width: 1100px;
+  margin: 1.2rem auto 0 auto;
+  padding: 0 1.15rem;
 }
 
-.hero-video-shell {
-  padding: 0.95rem;
-}
-
-/* 16:9 frame button */
-.hero-video-card {
-  width: 100%;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-
-  position: relative;
+.video-card {
+  background: rgba(18, 24, 34, 0.58);
+  border: 1px solid rgba(120, 170, 255, 0.18);
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 12px;
-
-  aspect-ratio: 16 / 9;
-  min-height: 180px;
-  max-height: 520px;
+  box-shadow:
+    0 0 0 1px rgba(70, 140, 255, 0.08) inset,
+    0 12px 32px rgba(0, 0, 0, 0.46);
 }
 
-.hero-video-preview {
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+/* Tap-to-play hint */
+.video-frame::after {
+  content: attr(data-tap-hint);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(10, 16, 24, 0.68);
+  border: 1px solid rgba(160, 210, 255, 0.25);
+  color: rgba(230, 245, 255, 0.86);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  box-shadow: 0 0 22px rgba(60, 140, 255, 0.14);
+}
+
+/* If user is on desktop with a mouse, hint still okay */
+.video-embed {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  display: block;
-
-  object-fit: cover;
-  object-position: center;
+  border: 0;
 }
 
-/* Overlay now only includes play ring (no chip overlay) */
-.hero-video-overlay {
+/* If you want the hint to disappear after interaction, you can do JS later.
+   For now it’s lightweight and never breaks playback. */
+
+.video-placeholder {
   position: absolute;
   inset: 0;
   display: grid;
-  place-content: center;
-  pointer-events: none;
-
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0.04) 0%,
-    rgba(0,0,0,0.22) 60%,
-    rgba(0,0,0,0.38) 100%
-  );
-}
-
-.play-ring {
-  width: 64px;
-  height: 64px;
-  border-radius: 999px;
-  border: 2px solid rgba(255,255,255,0.32);
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.22);
-  display: grid;
   place-items: center;
+  color: rgba(230, 240, 255, 0.85);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.5;
 }
 
-.play-triangle {
-  width: 0;
-  height: 0;
-  border-left: 14px solid rgba(255,255,255,0.86);
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  margin-left: 3px;
+.video-placeholder code {
+  padding: 0.15rem 0.35rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(160, 210, 255, 0.18);
 }
 
-/* Meta chip BELOW video */
-.hero-video-meta {
-  margin-top: 0.85rem;
-  padding: 0.75rem 0.85rem;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.38);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  backdrop-filter: blur(8px);
+.video-meta {
+  padding: 0.85rem 1rem 1rem 1rem;
+  border-top: 1px solid rgba(140, 190, 255, 0.10);
 }
 
-.hero-video-meta .chip-title {
-  font-weight: 700;
+.video-title {
+  font-weight: 800;
   letter-spacing: 0.02em;
-  margin-bottom: 0.15rem;
+  color: rgba(235, 245, 255, 0.92);
 }
 
-.hero-video-meta .chip-sub {
-  opacity: 0.9;
+.video-caption {
+  margin-top: 0.2rem;
   font-size: 0.95rem;
+  color: rgba(220, 235, 255, 0.70);
 }
 
-.hero-video-caption { margin: 0; opacity: 0.92; }
+/* ------------------------------
+   MOBILE TUNING
+------------------------------ */
+@media (max-width: 680px) {
+  .hero-intro {
+    padding-top: 0.95rem;
+  }
 
-@media (max-width: 520px) {
-  .hero-video-card { min-height: 170px; max-height: 300px; }
-  .play-ring { width: 56px; height: 56px; }
-}
+  .hero-cta-row {
+    grid-template-columns: 1fr;
+  }
 
-/* ----------------------------------------------------------
-   QUICK GRID
----------------------------------------------------------- */
+  .forge-btn {
+    min-height: 54px;
+  }
 
-.home-quick-grid {
-  margin: 2rem 0;
-  display: grid;
-  gap: 1rem;
-}
+  /* Slightly tighter cards on phones */
+  .hero-actions {
+    margin-top: 0.75rem;
+  }
 
-.quick-card { padding: 1.25rem 1.15rem; }
-
-.quick-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
-}
-
-.quick-title-row h2 { margin: 0; }
-
-.quick-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
-}
-
-.quick-foot { margin-top: 0.9rem; }
-
-/* ----------------------------------------------------------
-   VALUES / PILLARS
----------------------------------------------------------- */
-
-.home-section-card {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1.35rem;
-}
-
-.pillar-grid {
-  margin-top: 1rem;
-  display: grid;
-  gap: 1rem;
-}
-
-.pillar-card { padding: 1.1rem 1rem; }
-
-/* ----------------------------------------------------------
-   HOW IT WORKS
----------------------------------------------------------- */
-
-.how-steps {
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.mini-card { padding: 0.95rem 1rem; }
-
-.how-actions { margin-top: 1.1rem; }
-
-/* ----------------------------------------------------------
-   FINAL CTA
----------------------------------------------------------- */
-
-.home-final-callout { margin: 2.4rem 0 2.2rem; }
-
-.final-card { padding: 1.6rem 1.4rem; }
-
-.final-slogan {
-  margin: 0.9rem 0 1.15rem;
-  display: grid;
-  gap: 0.25rem;
-}
-
-.final-slogan .accent { color: var(--forge-hotmetal, #ff7a18); }
-
-/* ----------------------------------------------------------
-   RESPONSIVE COLUMNS
----------------------------------------------------------- */
-
-@media (min-width: 820px) {
-  .home-quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pillar-grid     { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .how-steps       { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .home-video {
+    margin-top: 1rem;
+  }
 }
