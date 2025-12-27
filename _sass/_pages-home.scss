@@ -1,13 +1,10 @@
 /* ==========================================================
-   HOME PAGE (v9) — Mobile-friendly modal + tap hint
-   - Vertical gradient for "Crafting Clarity / Building Solutions"
-   - Video below intro
-   - Scroll-lock friendly modal behavior
+   HOME PAGE (v10) — HARDENED headline + stamp glow
+   Fixes:
+   - Tri-color headline (blue / silver / hotmetal)
+   - Stamp glow not being overridden
+   - Keeps modal tap hint + phone sizing
    ========================================================== */
-
-/* -----------------------------------------------
-   HERO INTRO (TEXT)
------------------------------------------------- */
 
 .home-hero-intro {
   margin: 1.2rem auto 1.1rem;
@@ -35,8 +32,11 @@
     inset 0 0 18px rgba(var(--forge-accent-rgb), 0.16);
 }
 
-/* Stamp glow (homepage-specific) */
-.hero-stamp-glow {
+/* ----------------------------------------------------------
+   STAMP — HARDENED (prevents other CSS from overriding)
+---------------------------------------------------------- */
+
+.home .hero-stamp-glow {
   display: inline-block;
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
@@ -44,7 +44,10 @@
   font-weight: 900;
   font-size: clamp(2.0rem, 4.2vw, 2.75rem);
   margin: 0 auto 1rem;
+  position: relative;
+  z-index: 2;
 
+  /* IMPORTANT: use !important to beat global heading color rules */
   background: linear-gradient(
     90deg,
     #F5B841,
@@ -52,20 +55,23 @@
     #0A6DFF,
     #153D77,
     #F5B841
-  );
-  background-size: 260% 260%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  ) !important;
+  background-size: 260% 260% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 
   text-shadow:
-    0 0 14px rgba(245, 184, 65, 0.70),
-    0 0 26px rgba(10, 109, 255, 0.60);
+    0 0 14px rgba(245, 184, 65, 0.72),
+    0 0 26px rgba(10, 109, 255, 0.62);
 
   animation: forgeTitleSpectrumHome 10s linear infinite;
 }
 
-/* Headline */
-.hero-headline {
+/* ----------------------------------------------------------
+   HEADLINE — HARDENED TRI-COLOR
+---------------------------------------------------------- */
+
+.home .hero-headline {
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -74,33 +80,54 @@
   line-height: 1.12;
   margin: 1.05rem auto 1.05rem;
   max-width: 24ch;
+
+  /* prevent inherited orange */
+  color: inherit;
 }
 
-.hero-line {
+.home .hero-line {
   display: inline-block;
 }
 
-/* Vertical cool gradient (top->bottom) for first two lines */
-.hero-line-cool {
+/* Crafting Clarity = Forge Blue vertical gradient */
+.home .hero-line-blue {
   background: linear-gradient(
     180deg,
-    rgba(205, 215, 230, 0.98) 0%,
-    rgba(10, 109, 255, 0.98) 55%,
-    rgba(205, 215, 230, 0.96) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    rgba(180, 205, 255, 0.98) 0%,
+    rgba(10, 109, 255, 0.98) 60%,
+    rgba(160, 190, 245, 0.96) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 
   text-shadow:
-    0 0 14px rgba(10, 109, 255, 0.22),
-    0 0 10px rgba(205, 215, 230, 0.18);
+    0 0 16px rgba(10, 109, 255, 0.26),
+    0 0 10px rgba(180, 205, 255, 0.18);
 }
 
-/* Hotmetal line */
-.hero-line-hot {
-  color: var(--forge-hotmetal);
+/* Building Solutions = Silver vertical gradient */
+.home .hero-line-silver {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 248, 255, 0.96) 0%,
+    rgba(200, 210, 225, 0.98) 55%,
+    rgba(235, 240, 248, 0.96) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
   text-shadow:
-    0 0 18px rgba(245, 184, 65, 0.55),
+    0 0 14px rgba(207, 212, 221, 0.22),
+    0 0 10px rgba(255, 255, 255, 0.12);
+}
+
+/* Forged with Integrity = Hotmetal */
+.home .hero-line-hot {
+  color: var(--forge-hotmetal) !important;
+  -webkit-text-fill-color: var(--forge-hotmetal) !important;
+
+  text-shadow:
+    0 0 18px rgba(245, 184, 65, 0.58),
     0 0 22px rgba(10, 109, 255, 0.18);
 }
 
@@ -111,9 +138,9 @@
   line-height: 1.65;
 }
 
-/* -----------------------------------------------
+/* ----------------------------------------------------------
    Buttons (do not fight buttons.scss)
------------------------------------------------- */
+---------------------------------------------------------- */
 
 .hero-actions,
 .how-actions,
@@ -124,7 +151,6 @@
   align-items: center;
 }
 
-/* Keep consistent width, but not tall */
 .home-btn {
   width: 100%;
   max-width: 340px;
@@ -134,14 +160,13 @@
   text-align: center;
 }
 
-/* Keep dark text on glowing forge buttons */
 .btn-forge.home-btn {
   color: rgba(14, 20, 30, 0.92);
 }
 
-/* -----------------------------------------------
+/* ----------------------------------------------------------
    Badges
------------------------------------------------- */
+---------------------------------------------------------- */
 
 .hero-badges {
   display: flex;
@@ -170,9 +195,9 @@
   opacity: 0.92;
 }
 
-/* -----------------------------------------------
-   HERO VIDEO (BELOW INTRO)
------------------------------------------------- */
+/* ----------------------------------------------------------
+   HERO VIDEO
+---------------------------------------------------------- */
 
 .home-hero-video {
   margin: 0 auto 2.2rem;
@@ -202,24 +227,24 @@
 .hero-video-shell {
   border-radius: 22px;
   overflow: hidden;
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow:
+    0 0 16px rgba(var(--forge-accent-rgb), 0.14),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.12);
 }
 
 .hero-video-card {
   width: 100%;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
   background: #000;
   cursor: pointer;
   padding: 0;
   display: block;
   position: relative;
-  box-shadow:
-    0 0 16px rgba(var(--forge-accent-rgb), 0.18),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-/* Poster shows immediately (preload none, no autoplay) */
 .hero-video-preview {
   width: 100%;
   height: auto;
@@ -288,9 +313,9 @@
   opacity: 0.92;
 }
 
-/* -----------------------------------------------
-   QUICK GRID
------------------------------------------------- */
+/* ----------------------------------------------------------
+   QUICK GRID + SECTION BASICS (kept minimal)
+---------------------------------------------------------- */
 
 .home-quick-grid {
   margin: 0 auto 2.3rem;
@@ -356,10 +381,6 @@
 .quick-list li { margin: 0.7rem 0; }
 .quick-foot { text-align: center; }
 
-/* -----------------------------------------------
-   SECTION CARDS BASE
------------------------------------------------- */
-
 .home-section-card {
   margin: 0 auto 2.3rem;
   padding: 2.4rem 1.4rem;
@@ -388,29 +409,6 @@
   text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
 }
 
-/* Pillars */
-.pillar-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.pillar-card {
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 18px;
-  padding: 1.35rem 1.45rem;
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
-  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-.pillar-card h3 {
-  font-family: "Orbitron", sans-serif;
-  color: var(--forge-hotmetal);
-  letter-spacing: 0.06em;
-  margin: 0 0 0.7rem;
-}
-
-/* How */
 .how-steps {
   list-style: none;
   padding: 0;
@@ -442,50 +440,9 @@
   line-height: 1.6;
 }
 
-/* -----------------------------------------------
-   FINAL CALLOUT
------------------------------------------------- */
-
-.home-final-callout {
-  margin: 2.4rem auto 3.4rem;
-  max-width: 1200px;
-  padding: 0 1rem;
-}
-
-.final-card {
-  border-radius: 26px;
-  padding: 2.4rem 1.5rem;
-  text-align: center;
-
-  background:
-    radial-gradient(circle at 30% 10%,
-      rgba(245, 184, 65, 0.14) 0%,
-      rgba(10, 109, 255, 0.10) 30%,
-      rgba(0,0,0,0.98) 70%),
-    linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.98) 100%);
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
-  box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.22),
-    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
-}
-
-.final-slogan {
-  margin: 1.2rem auto 1.7rem;
-  max-width: 48ch;
-  line-height: 1.7;
-}
-
-.final-slogan span { display: block; }
-
-.final-slogan .accent {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 14px rgba(245, 184, 65, 0.35);
-}
-
-/* -----------------------------------------------
-   MODAL + HINT
------------------------------------------------- */
+/* ----------------------------------------------------------
+   MODAL + HINT + PHONE SHRINK
+---------------------------------------------------------- */
 
 .forge-modal[hidden] { display: none; }
 .forge-modal { position: fixed; inset: 0; z-index: 9999; }
@@ -549,14 +506,8 @@
     inset 0 0 16px rgba(var(--forge-accent-rgb), 0.10);
 }
 
-.forge-modal__hint .hint-icon {
-  margin-right: 0.45rem;
-  opacity: 0.95;
-}
-
-.forge-modal__hint.is-hidden {
-  display: none;
-}
+.forge-modal__hint .hint-icon { margin-right: 0.45rem; opacity: 0.95; }
+.forge-modal__hint.is-hidden { display: none; }
 
 .forge-modal__caption {
   padding: 0.9rem 1rem 1.1rem;
@@ -566,12 +517,10 @@
 
 .forge-modal-open { overflow: hidden; }
 
-/* Hint only on phones */
 @media (min-width: 561px) {
   .forge-modal__hint { display: none; }
 }
 
-/* Shrink modal height on phones + keep controls visible */
 @media (max-width: 560px) {
   .forge-modal__panel {
     width: calc(100% - 1rem);
@@ -597,9 +546,9 @@
   }
 }
 
-/* -----------------------------------------------
+/* ----------------------------------------------------------
    RESPONSIVE
------------------------------------------------- */
+---------------------------------------------------------- */
 
 @media (min-width: 860px) {
   .hero-intro-card { text-align: left; }
@@ -614,13 +563,11 @@
 
   .hero-badges { justify-content: flex-start; }
   .home-quick-grid { grid-template-columns: repeat(3, 1fr); }
-  .pillar-grid { flex-direction: row; }
-  .pillar-card { flex: 1; }
 }
 
-/* -----------------------------------------------
+/* ----------------------------------------------------------
    ANIMATIONS
------------------------------------------------- */
+---------------------------------------------------------- */
 
 @keyframes forgeTitleSpectrumHome {
   0%   { background-position: 0% 50%; }
