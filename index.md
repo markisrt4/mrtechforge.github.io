@@ -7,17 +7,17 @@ class: home
 
 {% assign links = site.data.links %}
 
-<div class="home home-v9">
+<div class="home home-v10">
 
   <!-- HERO INTRO (TEXT ONLY) -->
   <section class="home-hero-intro" aria-label="M.R. TechForge intro">
-    <div class="hero-intro-card forge-card">
+    <div class="hero-intro-card">
 
-      <div class="hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
+      <div class="hero-stamp-glow">M.R. TechForge</div>
 
       <h1 class="hero-headline">
-        <span class="hero-line hero-line-cool">Crafting Clarity.</span><br>
-        <span class="hero-line hero-line-cool">Building Solutions.</span><br>
+        <span class="hero-line hero-line-blue">Crafting Clarity.</span><br>
+        <span class="hero-line hero-line-silver">Building Solutions.</span><br>
         <span class="hero-line hero-line-hot">Forged with Integrity.</span>
       </h1>
 
@@ -27,12 +27,8 @@ class: home
       </p>
 
       <div class="hero-actions">
-        <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
-          Explore Services
-        </a>
-        <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
-          Get in Touch
-        </a>
+        <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">Explore Services</a>
+        <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">Get in Touch</a>
       </div>
 
       <div class="hero-badges" aria-label="Key strengths">
@@ -50,7 +46,7 @@ class: home
   <section class="home-hero-video" aria-label="MR TechForge intro video">
     <div class="hero-video-wrap">
 
-      <div class="forge-card hero-video-shell">
+      <div class="hero-video-shell">
 
         <button
           type="button"
@@ -67,7 +63,6 @@ class: home
             <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
           </video>
 
-          <!-- overlay is ONLY the play control + subtle gradient -->
           <div class="hero-video-overlay" aria-hidden="true">
             <div class="play-ring">
               <div class="play-triangle"></div>
@@ -75,7 +70,6 @@ class: home
           </div>
         </button>
 
-        <!-- meta BELOW the video -->
         <div class="hero-video-meta">
           <div class="chip-title">MR TechForge — Intro</div>
           <div class="chip-sub forge-text-gradient-soft">~40 seconds • Click to play with sound</div>
@@ -94,7 +88,7 @@ class: home
   <!-- QUICK OVERVIEW -->
   <section class="home-quick-grid" aria-label="Quick overview">
 
-    <div class="quick-card forge-card">
+    <div class="quick-card">
       <div class="quick-title-row">
         <span class="mini-ico" aria-hidden="true">🧰</span>
         <h2>What I Do</h2>
@@ -119,7 +113,7 @@ class: home
       </ul>
     </div>
 
-    <div class="quick-card forge-card">
+    <div class="quick-card">
       <div class="quick-title-row">
         <span class="mini-ico" aria-hidden="true">🤝</span>
         <h2>What to Expect</h2>
@@ -136,7 +130,7 @@ class: home
       </p>
     </div>
 
-    <div class="quick-card forge-card">
+    <div class="quick-card">
       <div class="quick-title-row">
         <span class="mini-ico" aria-hidden="true">🏡</span>
         <h2>Who I Help</h2>
@@ -153,55 +147,26 @@ class: home
   </section>
 
 
-  <!-- VALUES -->
-  <section class="home-section-card home-pillars forge-card">
-    <h2>What We Stand For</h2>
-
-    <div class="pillar-grid">
-      <div class="pillar-card forge-card">
-        <h3>Clarity</h3>
-        <p class="forge-text-gradient-soft">
-          Plain English, transparent choices, and guidance you can trust.
-        </p>
-      </div>
-
-      <div class="pillar-card forge-card">
-        <h3>Reliability</h3>
-        <p class="forge-text-gradient-soft">
-          Stable systems built to last — no shortcuts, no fragile hacks.
-        </p>
-      </div>
-
-      <div class="pillar-card forge-card">
-        <h3>Integrity</h3>
-        <p class="forge-text-gradient-soft">
-          Honest recommendations rooted in faith, craftsmanship, and respect.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
   <!-- HOW IT WORKS -->
-  <section class="home-section-card home-how forge-card">
+  <section class="home-section-card home-how">
     <h2>How It Works</h2>
 
     <ul class="how-steps">
-      <li class="mini-card forge-card">
+      <li class="mini-card">
         <span class="step-number">1. Connect</span>
         <span class="step-text forge-text-gradient-soft">
           We talk through what’s happening and what you want to improve.
         </span>
       </li>
 
-      <li class="mini-card forge-card">
+      <li class="mini-card">
         <span class="step-number">2. Plan</span>
         <span class="step-text forge-text-gradient-soft">
           You get clear, practical options — no overwhelm.
         </span>
       </li>
 
-      <li class="mini-card forge-card">
+      <li class="mini-card">
         <span class="step-number">3. Build</span>
         <span class="step-text forge-text-gradient-soft">
           Clean execution with long-term reliability in mind.
@@ -210,62 +175,34 @@ class: home
     </ul>
 
     <div class="how-actions">
-      <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
-        View Services
-      </a>
-      <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
-        Start a Conversation
-      </a>
+      <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">View Services</a>
+      <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">Start a Conversation</a>
     </div>
   </section>
 
 
-  <!-- FINAL CTA -->
-  <section class="home-final-callout" aria-label="Final call to action">
-    <div class="final-card forge-card">
-      <div class="final-brand hero-stamp-glow hero-stamp-glow--forge">M.R. TechForge</div>
+  <!-- VIDEO MODAL (plays with audio) -->
+  <div class="forge-modal" id="forgeHeroVideoModal" role="dialog" aria-modal="true" aria-label="MR TechForge brand video" hidden>
+    <div class="forge-modal__backdrop" data-close></div>
 
-      <p class="final-slogan">
-        <span>Crafting Clarity.</span>
-        <span>Building Solutions.</span>
-        <span class="accent">Forged with Integrity.</span>
-      </p>
+    <div class="forge-modal__panel" role="document">
+      <button class="forge-modal__close" type="button" aria-label="Close video" data-close>×</button>
 
-      <div class="final-actions">
-        <a href="{{ links.pages.contact }}" class="btn btn-forge home-btn">
-          Get in Touch
-        </a>
-        <a href="{{ links.pages.services }}" class="btn btn-forge home-btn">
-          Explore Services
-        </a>
+      <video class="forge-modal__video" controls preload="metadata" playsinline>
+        <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
+      </video>
+
+      <div class="forge-modal__hint" id="forgeModalHint">
+        <span class="hint-icon" aria-hidden="true">🔊</span>
+        Tap <strong>Play</strong> for sound
+      </div>
+
+      <div class="forge-modal__caption forge-text-gradient-soft">
+        Crafting Clarity. Building Solutions. Forged with Integrity.
       </div>
     </div>
-  </section>
-
-</div>
-
-
-<!-- VIDEO MODAL (plays with audio) -->
-<div class="forge-modal" id="forgeHeroVideoModal" role="dialog" aria-modal="true" aria-label="MR TechForge brand video" hidden>
-  <div class="forge-modal__backdrop" data-close></div>
-
-  <div class="forge-modal__panel" role="document">
-    <button class="forge-modal__close" type="button" aria-label="Close video" data-close>×</button>
-
-    <video class="forge-modal__video" controls preload="metadata" playsinline>
-      <source src="{{ '/assets/video/mrtechforge-hero.mp4' | relative_url }}" type="video/mp4">
-    </video>
-
-    <!-- Mobile hint (shows on phones, hides when playback starts) -->
-    <div class="forge-modal__hint" id="forgeModalHint">
-      <span class="hint-icon" aria-hidden="true">🔊</span>
-      Tap <strong>Play</strong> for sound
-    </div>
-
-    <div class="forge-modal__caption forge-text-gradient-soft">
-      Crafting Clarity. Building Solutions. Forged with Integrity.
-    </div>
   </div>
+
 </div>
 
 <script>
@@ -278,7 +215,6 @@ class: home
   const hint = document.getElementById('forgeModalHint');
   const closeEls = modal.querySelectorAll('[data-close]');
 
-  // Desktop-ish environments: allow an autoplay attempt
   const canAutoplayAttempt =
     window.matchMedia &&
     window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -313,9 +249,6 @@ class: home
 
     if (video) {
       video.currentTime = 0;
-
-      // Desktop: try to play immediately
-      // Mobile: do NOT autoplay (prevents scroll-jumps + audio restrictions)
       if (canAutoplayAttempt) {
         requestAnimationFrame(() => {
           video.play().catch(() => {});
