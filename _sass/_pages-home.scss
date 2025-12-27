@@ -1,234 +1,255 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE (pages-home.scss v6.8)
-   Home-only layout + hero + video section + grids
-   Fixes included:
-   - New stronger “Forge” stamp glow (mobile-visible)
-   - 3 distinct hero headline colors (blue / silver / hot)
-   - Buttons consistent widths (full width on mobile)
-   - Video overlay chip moved BELOW preview (no “card on top”)
-   - Video preview forced to 16:9 (tall poster won’t explode)
+   HOME PAGE (v9) — Mobile-friendly modal + tap hint
+   - Vertical gradient for "Crafting Clarity / Building Solutions"
+   - Video below intro
+   - Scroll-lock friendly modal behavior
    ========================================================== */
 
-.home.home-v8 {
-  width: 100%;
-}
-
-/* ----------------------------------------------------------
-   HERO INTRO
----------------------------------------------------------- */
+/* -----------------------------------------------
+   HERO INTRO (TEXT)
+------------------------------------------------ */
 
 .home-hero-intro {
-  margin: 2.2rem 0 1.2rem;
+  margin: 1.2rem auto 1.1rem;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
-.home-hero-intro .hero-intro-card {
-  padding: 1.65rem 1.45rem;
+.hero-intro-card {
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 2.2rem 1.5rem 2.0rem;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.22) 0%,
+      rgba(0, 0, 0, 0.98) 62%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.94) 0%,
+      #000 72%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.38);
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.16),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.16);
 }
 
-/* Brand stamp base */
+/* Stamp glow (homepage-specific) */
 .hero-stamp-glow {
   display: inline-block;
-  margin-bottom: 0.9rem;
+  font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-}
+  letter-spacing: 0.10em;
+  font-weight: 900;
+  font-size: clamp(2.0rem, 4.2vw, 2.75rem);
+  margin: 0 auto 1rem;
 
-/* Stronger “Forge” glow variant (use: hero-stamp-glow hero-stamp-glow--forge) */
-.hero-stamp-glow--forge {
-  font-size: 1.18rem;
-  color: #d7dee8;
+  background: linear-gradient(
+    90deg,
+    #F5B841,
+    #F5B841,
+    #0A6DFF,
+    #153D77,
+    #F5B841
+  );
+  background-size: 260% 260%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-  /* layered glow that shows up on mobile */
   text-shadow:
-    0 0 10px rgba(120, 190, 255, 0.46),
-    0 0 22px rgba(0, 140, 255, 0.30),
-    0 0 44px rgba(0, 140, 255, 0.18),
-    0 0 70px rgba(0, 140, 255, 0.10);
+    0 0 14px rgba(245, 184, 65, 0.70),
+    0 0 26px rgba(10, 109, 255, 0.60);
 
-  filter: brightness(1.06);
-  animation: forgeStampPulse 4.6s ease-in-out infinite;
-}
-
-@keyframes forgeStampPulse {
-  0%, 100% { opacity: 0.92; filter: brightness(1.02); }
-  50%      { opacity: 1;    filter: brightness(1.12); }
-}
-
-@media (max-width: 420px) {
-  .hero-stamp-glow--forge {
-    font-size: 1.22rem;
-    letter-spacing: 0.20em;
-  }
+  animation: forgeTitleSpectrumHome 10s linear infinite;
 }
 
 /* Headline */
 .hero-headline {
-  margin: 0 0 1rem;
-  line-height: 1.05;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4.6vw, 3.05rem);
+  line-height: 1.12;
+  margin: 1.05rem auto 1.05rem;
+  max-width: 24ch;
 }
 
 .hero-line {
   display: inline-block;
-  font-family: "Orbitron", system-ui, sans-serif;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
-/* 3 distinct colors */
-.hero-line-blue {
-  color: var(--forge-accent);
-  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.40);
-}
+/* Vertical cool gradient (top->bottom) for first two lines */
+.hero-line-cool {
+  background: linear-gradient(
+    180deg,
+    rgba(205, 215, 230, 0.98) 0%,
+    rgba(10, 109, 255, 0.98) 55%,
+    rgba(205, 215, 230, 0.96) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-/* A true silver-blue so it won’t read as white */
-.hero-line-silver {
-  color: #b9c4d3;
-  text-shadow: 0 0 12px rgba(185, 196, 211, 0.18);
-}
-
-.hero-line-hot {
-  color: var(--forge-hotmetal, #ff7a18);
   text-shadow:
-    0 0 12px rgba(255, 122, 24, 0.24),
-    0 0 24px rgba(255, 122, 24, 0.14);
+    0 0 14px rgba(10, 109, 255, 0.22),
+    0 0 10px rgba(205, 215, 230, 0.18);
+}
+
+/* Hotmetal line */
+.hero-line-hot {
+  color: var(--forge-hotmetal);
+  text-shadow:
+    0 0 18px rgba(245, 184, 65, 0.55),
+    0 0 22px rgba(10, 109, 255, 0.18);
 }
 
 .hero-subtitle {
-  margin: 0.9rem 0 1.15rem;
-  max-width: 70ch;
+  max-width: 760px;
+  margin: 0.9rem auto 1.4rem;
+  font-size: 1.06rem;
+  line-height: 1.65;
 }
 
-/* ----------------------------------------------------------
-   HERO ACTIONS / BUTTONS (layout-only)
-   NOTE: buttons.scss owns the visual styling of .btn/.btn-forge
----------------------------------------------------------- */
+/* -----------------------------------------------
+   Buttons (do not fight buttons.scss)
+------------------------------------------------ */
 
 .hero-actions,
 .how-actions,
 .final-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.85rem;
-}
-
-/* consistent widths */
-.home-btn {
-  display: inline-flex;
   align-items: center;
+}
+
+/* Keep consistent width, but not tall */
+.home-btn {
+  width: 100%;
+  max-width: 340px;
   justify-content: center;
-  min-width: 220px;
+  padding: 0.78rem 1.05rem;
+  white-space: nowrap;
+  text-align: center;
 }
 
-@media (max-width: 520px) {
-  .home-btn {
-    width: 100%;
-    min-width: 0;
-  }
+/* Keep dark text on glowing forge buttons */
+.btn-forge.home-btn {
+  color: rgba(14, 20, 30, 0.92);
 }
 
-/* ----------------------------------------------------------
-   HERO BADGES
----------------------------------------------------------- */
+/* -----------------------------------------------
+   Badges
+------------------------------------------------ */
 
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-top: 0.6rem;
+  justify-content: center;
+  margin-top: 1.15rem;
 }
 
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.65rem;
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.42);
   border-radius: 999px;
-  font-size: 0.92rem;
-  opacity: 0.98;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  background: rgba(0, 0, 0, 0.34);
+  padding: 0.36rem 0.86rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-/* ----------------------------------------------------------
-   HERO VIDEO (Below intro)
-   Structure expected:
-   .forge-card.hero-video-shell
-     button.hero-video-card
-       video.hero-video-preview
-       .hero-video-overlay (play ring only)
-     .hero-video-meta (chip BELOW)
----------------------------------------------------------- */
+.mini-ico {
+  display: inline-flex;
+  width: 1.05em;
+  margin-right: 0.45rem;
+  opacity: 0.92;
+}
+
+/* -----------------------------------------------
+   HERO VIDEO (BELOW INTRO)
+------------------------------------------------ */
 
 .home-hero-video {
-  margin: 1.2rem 0 2.2rem;
+  margin: 0 auto 2.2rem;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
 .hero-video-wrap {
-  display: grid;
-  gap: 0.95rem;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 1.2rem;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.18) 0%,
+      rgba(0, 0, 0, 0.98) 62%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.90) 0%,
+      #000 72%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.14),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.14);
 }
 
-/* wrapper card padding around media */
 .hero-video-shell {
-  padding: 0.95rem;
+  border-radius: 22px;
+  overflow: hidden;
 }
 
-/* media/button frame (not a card) */
 .hero-video-card {
   width: 100%;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-
-  position: relative;
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 12px;
-
-  /* keeps tall posters from becoming skyscrapers */
-  aspect-ratio: 16 / 9;
-  min-height: 180px;
-  max-height: 520px;
-}
-
-/* preview fills the frame */
-.hero-video-preview {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  background: #000;
+  cursor: pointer;
+  padding: 0;
   display: block;
-
-  object-fit: cover;
-  object-position: center;
+  position: relative;
+  box-shadow:
+    0 0 16px rgba(var(--forge-accent-rgb), 0.18),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-/* overlay now ONLY for play ring + subtle shade */
+/* Poster shows immediately (preload none, no autoplay) */
+.hero-video-preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+  filter: saturate(1.08) contrast(1.05);
+}
+
 .hero-video-overlay {
   position: absolute;
   inset: 0;
   display: grid;
-  place-content: center;
-  pointer-events: none;
-
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0.04) 0%,
-    rgba(0,0,0,0.22) 60%,
-    rgba(0,0,0,0.38) 100%
-  );
+  place-items: center;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(0,0,0,0.06) 0%,
+      rgba(0,0,0,0.34) 60%,
+      rgba(0,0,0,0.55) 100%);
 }
 
 .play-ring {
-  width: 64px;
-  height: 64px;
+  width: 92px;
+  height: 92px;
   border-radius: 999px;
-  border: 2px solid rgba(255,255,255,0.32);
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.22);
+  border: 1px solid rgba(255,255,255,0.45);
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 0 22px rgba(var(--forge-accent-rgb), 0.28);
   display: grid;
   place-items: center;
 }
@@ -236,164 +257,373 @@
 .play-triangle {
   width: 0;
   height: 0;
-  border-left: 14px solid rgba(255,255,255,0.86);
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  margin-left: 3px;
+  border-left: 18px solid rgba(255,255,255,0.92);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  margin-left: 4px;
 }
 
-/* BELOW-video chip */
 .hero-video-meta {
-  margin-top: 0.85rem;
-  padding: 0.75rem 0.85rem;
-  border-radius: 14px;
-
-  background: rgba(0, 0, 0, 0.38);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  backdrop-filter: blur(8px);
+  padding: 0.9rem 1rem 1.0rem;
+  text-align: center;
 }
 
-.hero-video-meta .chip-title {
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.15rem;
-}
-
-.hero-video-meta .chip-sub {
-  opacity: 0.9;
+.chip-title {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
   font-size: 0.95rem;
 }
 
+.chip-sub {
+  margin-top: 0.35rem;
+  font-size: 0.98rem;
+}
+
 .hero-video-caption {
-  margin: 0;
+  margin-top: 0.9rem;
+  text-align: center;
+  font-size: 0.98rem;
   opacity: 0.92;
 }
 
-/* ----------------------------------------------------------
+/* -----------------------------------------------
    QUICK GRID
----------------------------------------------------------- */
+------------------------------------------------ */
 
 .home-quick-grid {
-  margin: 2rem 0;
+  margin: 0 auto 2.3rem;
+  max-width: 1200px;
+  padding: 0 1rem;
   display: grid;
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
 }
 
 .quick-card {
-  padding: 1.25rem 1.15rem;
+  border-radius: 22px;
+  padding: 1.6rem 1.5rem;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.22) 0%,
+      rgba(0, 0, 0, 0.98) 62%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.94) 0%,
+      #000 72%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  box-shadow:
+    0 0 16px rgba(var(--forge-accent-rgb), 0.18),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
 .quick-title-row {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 1.0rem;
 }
 
-.quick-title-row h2 {
+.quick-card h2 {
   margin: 0;
+  color: var(--forge-hotmetal);
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.35);
+}
+
+.home-inline-link {
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  padding-bottom: 2px;
+}
+
+.home-inline-link:hover {
+  border-bottom-color: rgba(245, 184, 65, 0.75);
 }
 
 .quick-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
+  margin: 0.9rem 0 0;
+  padding-left: 0;
+  list-style: none;
 }
 
-.quick-foot {
-  margin-top: 0.9rem;
-}
+.quick-list li { margin: 0.7rem 0; }
+.quick-foot { text-align: center; }
 
-/* ----------------------------------------------------------
-   VALUES / PILLARS
----------------------------------------------------------- */
+/* -----------------------------------------------
+   SECTION CARDS BASE
+------------------------------------------------ */
 
 .home-section-card {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1.35rem;
+  margin: 0 auto 2.3rem;
+  padding: 2.4rem 1.4rem;
+  max-width: 1200px;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(10, 80, 150, 0.24) 0%,
+      rgba(0, 0, 0, 0.98) 58%),
+    linear-gradient(180deg,
+      rgba(3, 8, 18, 0.96) 0%,
+      #000 72%);
+
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.20),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.20);
 }
 
+.home-section-card > h2 {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  color: var(--forge-hotmetal);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.6rem, 4.4vw, 2.2rem);
+  text-shadow: 0 0 12px rgba(245, 184, 65, 0.42);
+}
+
+/* Pillars */
 .pillar-grid {
-  margin-top: 1rem;
-  display: grid;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
 .pillar-card {
-  padding: 1.1rem 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 18px;
+  padding: 1.35rem 1.45rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-/* ----------------------------------------------------------
-   HOW IT WORKS
----------------------------------------------------------- */
+.pillar-card h3 {
+  font-family: "Orbitron", sans-serif;
+  color: var(--forge-hotmetal);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.7rem;
+}
 
+/* How */
 .how-steps {
-  margin: 1rem 0 0;
-  padding: 0;
   list-style: none;
-  display: grid;
-  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
 .mini-card {
-  padding: 0.95rem 1rem;
+  background: rgba(0, 0, 0, 0.60);
+  border-radius: 18px;
+  padding: 1.2rem 1.4rem 1.3rem;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  box-shadow: inset 0 0 14px rgba(var(--forge-accent-rgb), 0.18);
 }
 
-.how-actions {
-  margin-top: 1.1rem;
+.mini-card .step-number {
+  display: block;
+  font-family: "Orbitron", sans-serif;
+  color: var(--forge-hotmetal);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06em;
 }
 
-/* ----------------------------------------------------------
-   FINAL CTA
----------------------------------------------------------- */
+.mini-card .step-text {
+  display: block;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* -----------------------------------------------
+   FINAL CALLOUT
+------------------------------------------------ */
 
 .home-final-callout {
-  margin: 2.4rem 0 2.2rem;
+  margin: 2.4rem auto 3.4rem;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
 .final-card {
-  padding: 1.6rem 1.4rem;
+  border-radius: 26px;
+  padding: 2.4rem 1.5rem;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at 30% 10%,
+      rgba(245, 184, 65, 0.14) 0%,
+      rgba(10, 109, 255, 0.10) 30%,
+      rgba(0,0,0,0.98) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.98) 100%);
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.35);
+  box-shadow:
+    0 0 22px rgba(var(--forge-accent-rgb), 0.22),
+    inset 0 0 18px rgba(var(--forge-accent-rgb), 0.18);
 }
 
 .final-slogan {
-  margin: 0.9rem 0 1.15rem;
-  display: grid;
-  gap: 0.25rem;
+  margin: 1.2rem auto 1.7rem;
+  max-width: 48ch;
+  line-height: 1.7;
 }
+
+.final-slogan span { display: block; }
 
 .final-slogan .accent {
-  color: var(--forge-hotmetal, #ff7a18);
+  color: var(--forge-hotmetal);
+  text-shadow: 0 0 14px rgba(245, 184, 65, 0.35);
 }
 
-/* ----------------------------------------------------------
-   RESPONSIVE LAYOUT
----------------------------------------------------------- */
+/* -----------------------------------------------
+   MODAL + HINT
+------------------------------------------------ */
 
-@media (min-width: 820px) {
-  .home-quick-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+.forge-modal[hidden] { display: none; }
+.forge-modal { position: fixed; inset: 0; z-index: 9999; }
+
+.forge-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(6px);
+}
+
+.forge-modal__panel {
+  position: relative;
+  width: min(980px, calc(100% - 2rem));
+  margin: 6vh auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.40);
+  background: #000;
+  box-shadow:
+    0 0 24px rgba(var(--forge-accent-rgb), 0.22),
+    0 0 70px rgba(0,0,0,0.85);
+}
+
+.forge-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.forge-modal__video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
+.forge-modal__hint {
+  margin: 0.75rem 1rem 0;
+  padding: 0.75rem 0.95rem;
+  border-radius: 14px;
+
+  background: rgba(0, 0, 0, 0.52);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.28);
+
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.16),
+    inset 0 0 16px rgba(var(--forge-accent-rgb), 0.10);
+}
+
+.forge-modal__hint .hint-icon {
+  margin-right: 0.45rem;
+  opacity: 0.95;
+}
+
+.forge-modal__hint.is-hidden {
+  display: none;
+}
+
+.forge-modal__caption {
+  padding: 0.9rem 1rem 1.1rem;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+.forge-modal-open { overflow: hidden; }
+
+/* Hint only on phones */
+@media (min-width: 561px) {
+  .forge-modal__hint { display: none; }
+}
+
+/* Shrink modal height on phones + keep controls visible */
+@media (max-width: 560px) {
+  .forge-modal__panel {
+    width: calc(100% - 1rem);
+    margin: 3.5vh auto 0;
+    border-radius: 16px;
+
+    max-height: 84vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  .pillar-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .forge-modal__video {
+    max-height: 56vh;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: #000;
   }
 
-  .how-steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .forge-modal__caption {
+    padding: 0.7rem 0.9rem 0.95rem;
+    font-size: 0.95rem;
   }
 }
 
-@media (max-width: 520px) {
-  .home-hero-intro .hero-intro-card {
-    padding: 1.35rem 1.15rem;
+/* -----------------------------------------------
+   RESPONSIVE
+------------------------------------------------ */
+
+@media (min-width: 860px) {
+  .hero-intro-card { text-align: left; }
+
+  .hero-actions,
+  .how-actions,
+  .final-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
-  .hero-video-card {
-    min-height: 170px;
-    max-height: 300px;
-  }
+  .hero-badges { justify-content: flex-start; }
+  .home-quick-grid { grid-template-columns: repeat(3, 1fr); }
+  .pillar-grid { flex-direction: row; }
+  .pillar-card { flex: 1; }
+}
 
-  .play-ring {
-    width: 56px;
-    height: 56px;
-  }
+/* -----------------------------------------------
+   ANIMATIONS
+------------------------------------------------ */
+
+@keyframes forgeTitleSpectrumHome {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
