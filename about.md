@@ -55,12 +55,11 @@ class: about about-v4
           loop
           autoplay
           preload="metadata"
-          aria-label="Short video of Mark smiling and holding coffee"
         ></video>
 
         <div class="about-video__hint" aria-hidden="true">
           <span class="about-video__hintIcon">▶</span>
-          <span class="about-video__hintText">Tap to play</span>
+          <span class="about-video__hintText">Tap to pause</span>
         </div>
       </div>
 
@@ -117,18 +116,12 @@ class: about about-v4
       <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
       What I build
     </h2>
-    <p>
-      M.R. TechForge isn’t an agency or a product factory. It’s a small, focused workshop where I build things end-to-end,
-      with clarity and responsibility in mind.
-    </p>
-
     <ul class="about-list">
       <li>Purpose-built software tools</li>
       <li>Secure, privacy-respecting communication systems</li>
       <li>NFC-driven physical + digital interactions</li>
       <li>Self-hosted and locally controlled infrastructure</li>
     </ul>
-
     <p class="about-muted">
       Everything is built with real people in mind — not just technical requirements.
     </p>
@@ -161,7 +154,6 @@ class: about about-v4
       <li><strong>Simple isn’t shallow</strong> — clarity takes real effort</li>
       <li><strong>Systems should explain themselves</strong> — good design leaves breadcrumbs</li>
     </ul>
-
     <p class="about-muted">
       If something feels fragile, opaque, or over-engineered, it usually means there’s more thinking to do.
     </p>
@@ -199,12 +191,14 @@ class: about about-v4
     const hideHint = () => hint.classList.add("is-hidden");
     const showHint = () => hint.classList.remove("is-hidden");
 
+    // Hide hint once it starts playing (autoplay counts)
     video.addEventListener("play", hideHint, { once: true });
     video.addEventListener("playing", hideHint, { once: true });
 
     const toggle = () => {
       if (video.paused) {
         video.play().catch(() => {});
+        hideHint();
       } else {
         video.pause();
         showHint();

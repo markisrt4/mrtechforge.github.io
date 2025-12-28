@@ -1,72 +1,74 @@
 /* ==========================================================
-   M.R. TECHFORGE — ABOUT PAGE STYLES (v4.3)
+   M.R. TECHFORGE — ABOUT PAGE STYLES (v4.95)
    File: assets/css/pages/_pages-about.scss
 
-   Updates:
-   - Keep v4 structure + Font Awesome icons
-   - HARD CAP video so it never dominates (desktop + mobile)
-   - Subtle paragraph color variation
-   - Scoped to .about.about-v4
+   Goals:
+   - Warm + technical About page
+   - Font Awesome icons (already loaded globally)
+   - Subtle paragraph color
+   - Video is a SMALL accent (hard caps; cannot dominate)
+   - Includes hint styling + accessibility
+   - Uses fallback selectors (.about ...) so it works even if class changes
    ========================================================== */
 
-.about.about-v4 { width: 100%; }
+.about { width: 100%; }
 
 /* ------------------------------
    HERO
 ------------------------------ */
-.about.about-v4 .about-hero {
+.about .about-hero {
   width: 100%;
   padding: clamp(1.1rem, 2.2vw, 2rem) 1rem 0.75rem;
 }
 
-.about.about-v4 .about-hero__inner {
+.about .about-hero__inner {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr; /* smaller media column */
+  grid-template-columns: 1.35fr 0.65fr;
   gap: clamp(0.9rem, 2.6vw, 1.8rem);
   align-items: start;
 }
 
 @media (max-width: 900px) {
-  .about.about-v4 .about-hero__inner { grid-template-columns: 1fr; }
+  .about .about-hero__inner { grid-template-columns: 1fr; }
 }
 
-.about.about-v4 .about-title {
+.about .about-title {
   margin: 0 0 0.7rem;
   font-size: clamp(2rem, 3.4vw, 3rem);
   line-height: 1.08;
   letter-spacing: 0.2px;
 }
 
-/* Paragraph color: slightly “silver-blue” to break up white */
-.about.about-v4 .about-lead {
+.about .about-lead {
   margin: 0 0 0.8rem;
   font-size: clamp(1.05rem, 1.25vw, 1.18rem);
   color: rgba(235, 242, 255, 0.90);
 }
 
-.about.about-v4 .about-lead em {
+.about .about-lead em {
   color: rgba(54, 163, 255, 0.95);
   font-style: italic;
   text-shadow: 0 0 10px rgba(54, 163, 255, 0.16);
 }
 
-.about.about-v4 .about-brand {
+.about .about-brand {
   color: var(--forge-accent, #00b8d4);
   text-shadow: 0 0 12px rgba(0, 150, 255, 0.22);
 }
 
-/* Pills */
-.about.about-v4 .about-hero__quick {
+/* Traits pills */
+.about .about-hero__quick {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 0.95rem;
 }
 
-.about.about-v4 .about-pill {
+.about .about-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -80,8 +82,7 @@
   backdrop-filter: blur(6px);
 }
 
-/* Icon chip wrapper */
-.about.about-v4 .about-ico {
+.about .about-ico {
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
@@ -92,13 +93,10 @@
   color: rgba(0, 170, 255, 0.95);
   background: rgba(0, 150, 255, 0.12);
   border: 1px solid rgba(0, 150, 255, 0.18);
-
   filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.10));
 }
 
-/* HARD CAP Font Awesome sizing */
-.about.about-v4 .about-ico i,
-.about.about-v4 .about-h2__icon i {
+.about .about-ico i {
   font-size: 0.85rem !important;
   line-height: 1 !important;
   width: 1em;
@@ -107,23 +105,36 @@
 }
 
 /* ------------------------------
-   VIDEO (HARD LIMITS so it’s a subtle accent)
+   VIDEO — SMALL ACCENT (HARD CAPS)
 ------------------------------ */
-.about.about-v4 .about-hero__media {
+.about .about-hero__media {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
+
+  /* cap the whole column */
+  max-width: 300px !important;
+  justify-self: end;
 }
 
-/* This is the main fix: constrain width HARD */
-.about.about-v4 .about-video {
-  position: relative;
-  width: 100%;
-  max-width: 280px;  /* <<< smaller than before */
-  margin-left: auto;
+@media (max-width: 900px) {
+  .about .about-hero__media {
+    max-width: 240px !important;
+    justify-self: center;
+    margin: 0 auto;
+  }
+}
 
+/* container cap */
+.about .about-video {
+  position: relative;
+  width: 100% !important;
+  max-width: 300px !important;
   border-radius: 14px;
   overflow: hidden;
+
+  opacity: 0.92;
+  filter: saturate(0.95) contrast(0.98);
 
   border: 1px solid rgba(0, 150, 255, 0.18);
   box-shadow:
@@ -131,81 +142,86 @@
     0 0 14px rgba(0, 150, 255, 0.10);
 }
 
-/* Make it feel “secondary” visually */
-.about.about-v4 .about-video {
-  opacity: 0.92;
-  filter: saturate(0.95) contrast(0.98);
+/* cap the video element itself (multiple selectors for safety) */
+.about .about-video video,
+.about video.about-video__el,
+.about .about-video__el {
+  width: 100% !important;
+  height: auto !important;
+
+  aspect-ratio: 4 / 3 !important;
+  object-fit: cover !important;
+
+  max-height: 200px !important; /* HARD STOP */
 }
 
-/* Personal, not cinematic: 4/3 + hard height cap */
-.about.about-v4 .about-video__el {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  max-height: 200px;  /* <<< hard stop */
-}
-
-/* Mobile: even smaller & centered */
 @media (max-width: 600px) {
-  .about.about-v4 .about-video {
-    max-width: 220px;
-    margin: 0 auto;
-  }
-
-  .about.about-v4 .about-video__el {
-    max-height: 160px;
+  .about .about-video { max-width: 220px !important; }
+  .about .about-video video,
+  .about video.about-video__el,
+  .about .about-video__el {
+    max-height: 160px !important;
   }
 }
 
-.about.about-v4 .about-video__caption {
+.about .about-video__caption {
   margin: 0;
   font-size: 0.9rem;
   color: rgba(220, 230, 245, 0.78);
-  padding-left: 0.15rem;
-  max-width: 280px;
+  max-width: 300px;
   margin-left: auto;
 }
 
-@media (max-width: 600px) {
-  .about.about-v4 .about-video__caption {
-    max-width: 220px;
-    margin: 0 auto;
+@media (max-width: 900px) {
+  .about .about-video__caption {
     text-align: center;
+    margin: 0 auto;
+    max-width: 240px;
   }
 }
 
-/* Hint */
-.about.about-v4 .about-video__hint {
+/* Tap hint */
+.about .about-video__hint {
   position: absolute;
   left: 0.65rem;
   bottom: 0.65rem;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+
   padding: 0.45rem 0.7rem;
   border-radius: 999px;
+
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
+
   color: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+
   user-select: none;
   pointer-events: none;
 }
 
-.about.about-v4 .about-video__hintIcon {
+.about .about-video__hintIcon {
   width: 26px;
   height: 26px;
   display: grid;
   place-items: center;
   border-radius: 999px;
+
   background: rgba(0, 150, 255, 0.18);
   border: 1px solid rgba(0, 150, 255, 0.22);
   text-shadow: 0 0 10px rgba(0, 150, 255, 0.35);
 }
 
-.about.about-v4 .about-video__hint.is-hidden {
+.about .about-video__hintText {
+  font-size: 0.92rem;
+  letter-spacing: 0.15px;
+  opacity: 0.95;
+}
+
+.about .about-video__hint.is-hidden {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 250ms ease, transform 250ms ease;
@@ -214,7 +230,7 @@
 /* ------------------------------
    BODY WRAP + CARDS
 ------------------------------ */
-.about.about-v4 .about-wrap {
+.about .about-wrap {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -224,10 +240,9 @@
   gap: 1rem;
 }
 
-.about.about-v4 .about-card { padding: clamp(1.05rem, 2.2vw, 1.6rem); }
+.about .about-card { padding: clamp(1.05rem, 2.2vw, 1.6rem); }
 
-/* Headings with icon */
-.about.about-v4 .about-h2 {
+.about .about-h2 {
   margin: 0 0 0.65rem;
   font-size: clamp(1.22rem, 1.85vw, 1.55rem);
   letter-spacing: 0.2px;
@@ -236,7 +251,7 @@
   gap: 0.6rem;
 }
 
-.about.about-v4 .about-h2__icon {
+.about .about-h2__icon {
   width: 24px;
   height: 24px;
   flex: 0 0 24px;
@@ -251,17 +266,23 @@
   filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.10));
 }
 
+.about .about-h2__icon i {
+  font-size: 0.9rem !important;
+  line-height: 1 !important;
+}
+
 /* Paragraph color accents */
-.about.about-v4 .about-card p {
+.about .about-card p {
   margin: 0 0 0.85rem;
   color: rgba(232, 240, 255, 0.86);
 }
 
-.about.about-v4 .about-card p strong { color: rgba(245, 248, 255, 0.94); }
-.about.about-v4 .about-card p:last-child { margin-bottom: 0; }
-.about.about-v4 .about-muted { opacity: 0.82; }
+.about .about-card p strong { color: rgba(245, 248, 255, 0.94); }
+.about .about-card p:last-child { margin-bottom: 0; }
 
-.about.about-v4 .about-quote {
+.about .about-muted { opacity: 0.82; }
+
+.about .about-quote {
   margin: 0.9rem 0 1rem;
   padding: 0.85rem 1rem;
   border-radius: 14px;
@@ -270,14 +291,15 @@
   color: rgba(235, 244, 255, 0.90);
 }
 
-.about.about-v4 .about-list,
-.about.about-v4 .about-principles {
+/* Lists */
+.about .about-list,
+.about .about-principles {
   margin: 0.6rem 0 0.95rem 1.1rem;
   padding: 0;
 }
 
-.about.about-v4 .about-list li,
-.about.about-v4 .about-principles li {
+.about .about-list li,
+.about .about-principles li {
   margin: 0.35rem 0;
   padding-left: 0.2rem;
   color: rgba(230, 238, 255, 0.86);
@@ -286,9 +308,9 @@
 /* ------------------------------
    CLOSING / CTA
 ------------------------------ */
-.about.about-v4 .about-card--closing { position: relative; overflow: hidden; }
+.about .about-card--closing { position: relative; overflow: hidden; }
 
-.about.about-v4 .about-card--closing::before {
+.about .about-card--closing::before {
   content: "";
   position: absolute;
   inset: -40% -20%;
@@ -300,30 +322,30 @@
   pointer-events: none;
 }
 
-.about.about-v4 .about-actions {
+.about .about-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
 }
 
-.about.about-v4 .about-btn {
+.about .about-btn {
   min-width: 170px;
   justify-content: center;
   text-align: center;
 }
 
 @media (max-width: 520px) {
-  .about.about-v4 .about-btn { width: 100%; min-width: 0; }
+  .about .about-btn { width: 100%; min-width: 0; }
 }
 
-.about.about-v4 .about-btn--ghost {
+.about .about-btn--ghost {
   background: transparent !important;
   border: 1px solid rgba(0, 150, 255, 0.28) !important;
   box-shadow: none !important;
   opacity: 0.95;
 }
 
-.about.about-v4 .about-btn--ghost:hover {
+.about .about-btn--ghost:hover {
   border-color: rgba(255, 110, 25, 0.40) !important;
 }
