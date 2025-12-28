@@ -1,24 +1,26 @@
 /* ==========================================================
-   M.R. TECHFORGE — ABOUT PAGE STYLES (v3.0)
+   M.R. TECHFORGE — ABOUT PAGE STYLES (v4.0)
    File: assets/css/pages/_pages-about.scss
 
-   Fix:
-   - Remove SVG entirely (glyph icons only)
-   - Prevent any icon from “breaking out” and becoming huge
-   - Keep your small-icon vibe (chip icons + heading icons)
+   Uses Font Awesome (already loaded via head.html)
+   - No SVG anywhere
+   - Hard caps icon sizes to prevent “giant icon” behavior
+   - Adds subtle color variation to paragraph text
+   - Video intentionally small, especially on mobile
+   Scoped: .about.about-v4
    ========================================================== */
 
-.about.about-v3 { width: 100%; }
+.about.about-v4 { width: 100%; }
 
 /* ------------------------------
    HERO
 ------------------------------ */
-.about.about-v3 .about-hero {
+.about.about-v4 .about-hero {
   width: 100%;
   padding: clamp(1.1rem, 2.2vw, 2rem) 1rem 0.75rem;
 }
 
-.about.about-v3 .about-hero__inner {
+.about.about-v4 .about-hero__inner {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -29,45 +31,46 @@
 }
 
 @media (max-width: 900px) {
-  .about.about-v3 .about-hero__inner { grid-template-columns: 1fr; }
+  .about.about-v4 .about-hero__inner { grid-template-columns: 1fr; }
 }
 
-.about.about-v3 .about-title {
+.about.about-v4 .about-title {
   margin: 0 0 0.7rem;
   font-size: clamp(2rem, 3.4vw, 3rem);
   line-height: 1.08;
   letter-spacing: 0.2px;
 }
 
-.about.about-v3 .about-lead {
+/* Paragraph color: slightly “silver-blue” to break up white */
+.about.about-v4 .about-lead {
   margin: 0 0 0.8rem;
   font-size: clamp(1.05rem, 1.25vw, 1.18rem);
   color: rgba(235, 242, 255, 0.90);
 }
 
-.about.about-v3 .about-lead em {
+.about.about-v4 .about-lead em {
   color: rgba(54, 163, 255, 0.95);
   font-style: italic;
   text-shadow: 0 0 10px rgba(54, 163, 255, 0.16);
 }
 
-.about.about-v3 .about-brand {
-  color: var(--forge-blue, #36a3ff);
-  text-shadow: 0 0 12px rgba(54, 163, 255, 0.22);
+.about.about-v4 .about-brand {
+  color: var(--forge-accent, #00b8d4);
+  text-shadow: 0 0 12px rgba(0, 150, 255, 0.22);
 }
 
 /* Pills */
-.about.about-v3 .about-hero__quick {
+.about.about-v4 .about-hero__quick {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 0.95rem;
 }
 
-.about.about-v3 .about-pill {
+.about.about-v4 .about-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   padding: 0.42rem 0.7rem;
   border-radius: 999px;
   font-size: 0.92rem;
@@ -78,52 +81,64 @@
   backdrop-filter: blur(6px);
 }
 
-/* Small icon look (glyph) */
-.about.about-v3 .about-ico {
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
+/* Icon chip wrapper */
+.about.about-v4 .about-ico {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
   display: grid;
   place-items: center;
   border-radius: 999px;
 
-  color: rgba(54, 163, 255, 0.95);
-  background: rgba(54, 163, 255, 0.12);
-  border: 1px solid rgba(54, 163, 255, 0.18);
+  color: rgba(0, 170, 255, 0.95);
+  background: rgba(0, 150, 255, 0.12);
+  border: 1px solid rgba(0, 150, 255, 0.18);
 
-  font-size: 0.92rem;
-  line-height: 1;
-  filter: drop-shadow(0 0 10px rgba(54, 163, 255, 0.10));
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.10));
+}
+
+/* HARD CAP Font Awesome sizing — prevents “giant icon” */
+.about.about-v4 .about-ico i,
+.about.about-v4 .about-h2__icon i {
+  font-size: 0.85rem !important;
+  line-height: 1 !important;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
 }
 
 /* ------------------------------
-   VIDEO (smaller + mobile-safe)
+   VIDEO (small + mobile-safe)
 ------------------------------ */
-.about.about-v3 .about-hero__media {
+.about.about-v4 .about-hero__media {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
 }
 
-.about.about-v3 .about-video {
+.about.about-v4 .about-video {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 420px; /* intentional: not a hero */
   margin-left: auto;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(54, 163, 255, 0.22);
+
+  border: 1px solid rgba(0, 150, 255, 0.22);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05) inset,
     0 14px 30px rgba(0, 0, 0, 0.52),
-    0 0 18px rgba(54, 163, 255, 0.10);
+    0 0 18px rgba(0, 150, 255, 0.10);
 }
 
 @media (max-width: 900px) {
-  .about.about-v3 .about-video { max-width: 520px; margin: 0 auto; }
+  .about.about-v4 .about-video {
+    max-width: 520px;
+    margin: 0 auto;
+  }
 }
 
-.about.about-v3 .about-video__el {
+.about.about-v4 .about-video__el {
   width: 100%;
   display: block;
   aspect-ratio: 16 / 9;
@@ -132,10 +147,10 @@
 }
 
 @media (max-width: 520px) {
-  .about.about-v3 .about-video__el { max-height: 180px; }
+  .about.about-v4 .about-video__el { max-height: 180px; }
 }
 
-.about.about-v3 .about-video__caption {
+.about.about-v4 .about-video__caption {
   margin: 0;
   font-size: 0.95rem;
   color: rgba(220, 230, 245, 0.78);
@@ -145,10 +160,14 @@
 }
 
 @media (max-width: 900px) {
-  .about.about-v3 .about-video__caption { margin: 0 auto; max-width: 520px; }
+  .about.about-v4 .about-video__caption {
+    margin: 0 auto;
+    max-width: 520px;
+  }
 }
 
-.about.about-v3 .about-video__hint {
+/* Hint */
+.about.about-v4 .about-video__hint {
   position: absolute;
   left: 0.75rem;
   bottom: 0.75rem;
@@ -166,18 +185,18 @@
   pointer-events: none;
 }
 
-.about.about-v3 .about-video__hintIcon {
+.about.about-v4 .about-video__hintIcon {
   width: 28px;
   height: 28px;
   display: grid;
   place-items: center;
   border-radius: 999px;
-  background: rgba(54, 163, 255, 0.18);
-  border: 1px solid rgba(54, 163, 255, 0.22);
-  text-shadow: 0 0 10px rgba(54, 163, 255, 0.35);
+  background: rgba(0, 150, 255, 0.18);
+  border: 1px solid rgba(0, 150, 255, 0.22);
+  text-shadow: 0 0 10px rgba(0, 150, 255, 0.35);
 }
 
-.about.about-v3 .about-video__hint.is-hidden {
+.about.about-v4 .about-video__hint.is-hidden {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 250ms ease, transform 250ms ease;
@@ -186,7 +205,7 @@
 /* ------------------------------
    BODY WRAP + CARDS
 ------------------------------ */
-.about.about-v3 .about-wrap {
+.about.about-v4 .about-wrap {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -196,10 +215,10 @@
   gap: 1rem;
 }
 
-.about.about-v3 .about-card { padding: clamp(1.05rem, 2.2vw, 1.6rem); }
+.about.about-v4 .about-card { padding: clamp(1.05rem, 2.2vw, 1.6rem); }
 
-/* Headings with glyph icon */
-.about.about-v3 .about-h2 {
+/* Headings with icon */
+.about.about-v4 .about-h2 {
   margin: 0 0 0.65rem;
   font-size: clamp(1.22rem, 1.85vw, 1.55rem);
   letter-spacing: 0.2px;
@@ -208,50 +227,48 @@
   gap: 0.6rem;
 }
 
-.about.about-v3 .about-h2__icon {
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
+.about.about-v4 .about-h2__icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   display: grid;
   place-items: center;
-  border-radius: 8px;
+  border-radius: 10px;
 
-  color: rgba(54, 163, 255, 0.95);
-  background: rgba(54, 163, 255, 0.10);
-  border: 1px solid rgba(54, 163, 255, 0.16);
+  color: rgba(0, 170, 255, 0.95);
+  background: rgba(0, 150, 255, 0.10);
+  border: 1px solid rgba(0, 150, 255, 0.16);
 
-  font-size: 1rem;
-  line-height: 1;
-  filter: drop-shadow(0 0 10px rgba(54, 163, 255, 0.10));
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.10));
 }
 
 /* Paragraph color accents */
-.about.about-v3 .about-card p {
+.about.about-v4 .about-card p {
   margin: 0 0 0.85rem;
   color: rgba(232, 240, 255, 0.86);
 }
 
-.about.about-v3 .about-card p strong { color: rgba(245, 248, 255, 0.94); }
-.about.about-v3 .about-card p:last-child { margin-bottom: 0; }
-.about.about-v3 .about-muted { opacity: 0.82; }
+.about.about-v4 .about-card p strong { color: rgba(245, 248, 255, 0.94); }
+.about.about-v4 .about-card p:last-child { margin-bottom: 0; }
+.about.about-v4 .about-muted { opacity: 0.82; }
 
-.about.about-v3 .about-quote {
+.about.about-v4 .about-quote {
   margin: 0.9rem 0 1rem;
   padding: 0.85rem 1rem;
   border-radius: 14px;
-  border: 1px solid rgba(54, 163, 255, 0.14);
-  background: rgba(54, 163, 255, 0.06);
+  border: 1px solid rgba(0, 150, 255, 0.14);
+  background: rgba(0, 150, 255, 0.06);
   color: rgba(235, 244, 255, 0.90);
 }
 
-.about.about-v3 .about-list,
-.about.about-v3 .about-principles {
+.about.about-v4 .about-list,
+.about.about-v4 .about-principles {
   margin: 0.6rem 0 0.95rem 1.1rem;
   padding: 0;
 }
 
-.about.about-v3 .about-list li,
-.about.about-v3 .about-principles li {
+.about.about-v4 .about-list li,
+.about.about-v4 .about-principles li {
   margin: 0.35rem 0;
   padding-left: 0.2rem;
   color: rgba(230, 238, 255, 0.86);
@@ -260,44 +277,44 @@
 /* ------------------------------
    CLOSING / CTA
 ------------------------------ */
-.about.about-v3 .about-card--closing { position: relative; overflow: hidden; }
+.about.about-v4 .about-card--closing { position: relative; overflow: hidden; }
 
-.about.about-v3 .about-card--closing::before {
+.about.about-v4 .about-card--closing::before {
   content: "";
   position: absolute;
   inset: -40% -20%;
   background: radial-gradient(
     circle at 25% 20%,
-    rgba(54, 163, 255, 0.14) 0%,
+    rgba(0, 150, 255, 0.14) 0%,
     rgba(0, 0, 0, 0.00) 55%
   );
   pointer-events: none;
 }
 
-.about.about-v3 .about-actions {
+.about.about-v4 .about-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
 }
 
-.about.about-v3 .about-btn {
+.about.about-v4 .about-btn {
   min-width: 170px;
   justify-content: center;
   text-align: center;
 }
 
 @media (max-width: 520px) {
-  .about.about-v3 .about-btn { width: 100%; min-width: 0; }
+  .about.about-v4 .about-btn { width: 100%; min-width: 0; }
 }
 
-.about.about-v3 .about-btn--ghost {
+.about.about-v4 .about-btn--ghost {
   background: transparent !important;
-  border: 1px solid rgba(54, 163, 255, 0.28) !important;
+  border: 1px solid rgba(0, 150, 255, 0.28) !important;
   box-shadow: none !important;
   opacity: 0.95;
 }
 
-.about.about-v3 .about-btn--ghost:hover {
+.about.about-v4 .about-btn--ghost:hover {
   border-color: rgba(255, 110, 25, 0.40) !important;
 }

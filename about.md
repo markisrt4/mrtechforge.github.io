@@ -3,7 +3,7 @@ layout: default
 title: "About"
 permalink: /about/
 description: "Meet Mark — the engineer behind M.R. TechForge. Clear, dependable systems, built with care, and explained in plain language."
-class: about about-v3
+class: about about-v4
 ---
 
 <section class="about-hero">
@@ -25,19 +25,19 @@ class: about about-v3
 
       <div class="about-hero__quick" aria-label="Quick traits">
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true">✦</span>
+          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span>
           Warm engineering
         </div>
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true">≡</span>
+          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-comment-dots"></i></span>
           Clear communication
         </div>
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true">🛡</span>
+          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
           Security-minded
         </div>
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true">⟠</span>
+          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-screwdriver-wrench"></i></span>
           Built to last
         </div>
       </div>
@@ -74,7 +74,7 @@ class: about about-v3
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">⌁</span>
+      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-microchip"></i></span>
       How I think about technology
     </h2>
     <p>
@@ -89,7 +89,7 @@ class: about about-v3
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">✓</span>
+      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-compass"></i></span>
       The why
     </h2>
     <p>
@@ -112,7 +112,7 @@ class: about about-v3
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">▣</span>
+      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
       What I build
     </h2>
     <p>
@@ -134,7 +134,7 @@ class: about about-v3
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">★</span>
+      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></span>
       Teaching, learning, and the next generation
     </h2>
     <p>
@@ -150,7 +150,7 @@ class: about about-v3
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">✶</span>
+      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></span>
       How I work
     </h2>
     <ul class="about-principles">
@@ -167,7 +167,7 @@ class: about about-v3
 
   <div class="forge-card about-card about-card--closing">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">◉</span>
+      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span>
       A human moment
     </h2>
     <p>
