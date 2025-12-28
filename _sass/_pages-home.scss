@@ -1,12 +1,12 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.3)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.2)
    File: assets/css/pages/_pages-home.scss
 
    Fixes:
-   - Hero stamp sweep restored: Forge blue base + narrow orange band L->R
-   - Buttons not too wide on mobile
-   - More vertical spacing BETWEEN cards/sections (not padding)
-   - Cleaner gaps for grids (pillars/how steps)
+   - Hero slogan alignment (centered + consistent line blocks)
+   - Buttons too wide on mobile (cap width + stack)
+   - YouTube sizing / centering (explicit max width, keeps 16:9)
+   - Slightly wider home sections + nicer spacing between cards
    ========================================================== */
 
 /* ------------------------------
@@ -16,16 +16,15 @@
   width: 100%;
 }
 
-/* ------------------------------
-   HERO INTRO TOP (outside card)
------------------------------- */
-.home.home-v8 .home-hero-intro {
-  padding: 1.6rem 1.1rem 0.9rem;
-}
-
-.home.home-v8 .hero-intro-top {
-  text-align: center;
-  margin-bottom: 1.15rem;
+/* A safe max width helper (home only) */
+.home.home-v8 .home-hero-intro,
+.home.home-v8 .home-hero-video,
+.home.home-v8 .home-quick-grid,
+.home.home-v8 .home-section-card,
+.home.home-v8 .home-final-callout {
+  max-width: 1280px; /* slightly wider than before */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ------------------------------
@@ -38,19 +37,25 @@
   width: 1.25em;
   min-width: 1.25em;
   margin-right: 0.45rem;
-  transform: translateY(0.02em);
-  filter: drop-shadow(0 0 8px rgba(255, 138, 42, 0.15));
-  opacity: 0.95;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 10px rgba(var(--forge-accent-rgb), 0.18));
 }
 
-/* ----------------------------------------------------------
-   HERO STAMP — BLUE BASE + ORANGE SWEEP
-   Your markup already matches:
-     <div class="hero-stamp-sweep" data-text="M.R. TechForge">M.R. TechForge</div>
----------------------------------------------------------- */
+/* ------------------------------
+   HERO INTRO
+------------------------------ */
+.home-hero-intro {
+  padding: 1.15rem 1rem 0.2rem;
+}
 
+/* OUTSIDE CARD TOP AREA */
+.hero-intro-top {
+  text-align: center;
+  padding: 0.2rem 0.2rem 0.65rem;
+}
+
+/* Stamp (your sweep glow) */
 .hero-stamp-sweep {
-  position: relative;
   display: block;
   width: fit-content;
   margin: 0 auto 0.75rem;
@@ -62,245 +67,458 @@
   text-transform: uppercase;
   font-size: clamp(1.7rem, 3.8vw, 2.6rem);
 
-  /* FORCE Forge Blue base */
-  color: var(--forge-blue, #1ea0ff);
+  /* base */
+  color: var(--forge-accent);
   text-shadow:
-    0 0 10px rgba(30, 160, 255, 0.42),
-    0 0 22px rgba(30, 160, 255, 0.20);
+    0 0 12px rgba(var(--forge-accent-rgb), 0.35),
+    0 0 26px rgba(var(--forge-accent-rgb), 0.20);
 
-  transform: translateZ(0);
+  position: relative;
+  isolation: isolate;
 }
 
-/* Narrow orange band that sweeps left -> right */
+/* Sweep overlay (orange band that rolls L->R) */
 .hero-stamp-sweep::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   pointer-events: none;
 
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  text-align: inherit;
-
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  /* Narrow band + soft falloff */
-  background-image: linear-gradient(
+  /* the orange slice */
+  background: linear-gradient(
     90deg,
-    rgba(255, 138, 42, 0.00) 0%,
-    rgba(255, 138, 42, 0.00) 46%,
-    rgba(255, 138, 42, 0.95) 50%,
-    rgba(255, 138, 42, 0.00) 54%,
-    rgba(255, 138, 42, 0.00) 100%
+    transparent 0%,
+    rgba(var(--forge-hotmetal-rgb), 0.00) 35%,
+    rgba(var(--forge-hotmetal-rgb), 0.85) 50%,
+    rgba(var(--forge-hotmetal-rgb), 0.00) 65%,
+    transparent 100%
   );
 
-  background-size: 260% 100%;
-  background-position: -120% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 
-  filter: drop-shadow(0 0 10px rgba(255, 138, 42, 0.20));
-  animation: forgeHomeSweepGlow 4.6s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(var(--forge-hotmetal-rgb), 0.25));
+  animation: heroSweep 4.6s linear infinite;
 }
 
-@keyframes forgeHomeSweepGlow {
-  0%   { background-position: -120% 0; opacity: 0.92; }
+@keyframes heroSweep {
+  0%   { transform: translateX(-32%); opacity: 0; }
+  10%  { opacity: 1; }
   50%  { opacity: 1; }
-  100% { background-position: 120% 0; opacity: 0.92; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(32%); opacity: 0; }
 }
 
-/* If data-text missing, don't show overlay */
-.hero-stamp-sweep:not([data-text])::after {
-  content: "";
-  display: none;
-}
-
-/* ------------------------------
-   3-color hero headline
------------------------------- */
+/* Headline */
 .hero-headline {
   margin: 0;
-  line-height: 1.05;
+  padding: 0.15rem 0 0.25rem;
+  line-height: 1.02;
+
   font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.05em;
+  font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(2.2rem, 6.4vw, 3.4rem);
+  letter-spacing: 0.02em;
+
+  text-align: center; /* ✅ align fix */
 }
 
-.hero-line { display: inline-block; }
+/* Make each line behave consistently (helps alignment on mobile) */
+.hero-headline .hero-line {
+  display: block;     /* ✅ line up as blocks */
+  width: 100%;
+}
 
+/* 3-color lines */
 .hero-line-blue {
-  color: var(--forge-blue, #1ea0ff);
-  text-shadow: 0 0 16px rgba(30, 160, 255, 0.20);
+  color: var(--forge-accent);
+  text-shadow:
+    0 0 10px rgba(var(--forge-accent-rgb), 0.30),
+    0 0 20px rgba(var(--forge-accent-rgb), 0.16);
 }
+
 .hero-line-silver {
-  color: var(--forge-silver, #c8d2dc);
-  text-shadow: 0 0 12px rgba(200, 210, 220, 0.14);
+  color: var(--forge-silver, #cfd6df);
+  text-shadow:
+    0 0 10px rgba(220, 235, 255, 0.16),
+    0 0 20px rgba(220, 235, 255, 0.10);
 }
+
 .hero-line-hot {
-  color: var(--forge-hotmetal, #ff8a2a);
-  text-shadow: 0 0 16px rgba(255, 138, 42, 0.18);
+  color: var(--forge-hotmetal, #f5b841);
+  text-shadow:
+    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.22),
+    0 0 26px rgba(var(--forge-hotmetal-rgb), 0.14);
 }
 
-/* Subtitle width + spacing */
 .hero-subtitle {
-  margin: 0.95rem auto 0;
-  max-width: 68ch;
+  margin: 0.65rem auto 0;
+  max-width: 72ch;
+  text-align: center;
+  opacity: 0.92;
 }
 
-/* ------------------------------
-   ACTIONS CARD
------------------------------- */
-.home.home-v8 .hero-intro-actions {
-  margin: 1.15rem auto 0;
-  max-width: 720px;
+/* ACTIONS IN A CARD */
+.hero-intro-actions {
+  margin-top: 0.85rem;
+  padding: 1rem;
 }
 
-/* Buttons: cap width on mobile so they don’t become slabs */
+/* Buttons row */
 .hero-actions {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
+  justify-items: center; /* ✅ keep buttons centered */
 }
 
+/* Home buttons */
 .home-btn {
+  /* ✅ cap width so they don’t become giant pills on phones */
   width: 100%;
-  max-width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 52px;
+  max-width: 340px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  min-height: 52px;
+
+  /* ✅ allow wrap so long labels don’t force width */
+  white-space: normal !important;
+  text-align: center;
+  line-height: 1.15;
 }
 
-@media (min-width: 900px) {
-  .hero-actions {
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    justify-content: center;
-    gap: 1.0rem;
-  }
-  .home-btn {
-    max-width: 420px;
-  }
-}
-
-/* Badge row spacing */
+/* Badges */
 .hero-badges {
-  margin-top: 1.05rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem 0.75rem;
   justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+
+  font-size: 0.92rem;
+  background: rgba(0, 0, 0, 0.20);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.16);
 }
 
 /* ------------------------------
-   HERO VIDEO SPACING
+   HERO VIDEO
 ------------------------------ */
-.home.home-v8 .home-hero-video {
-  padding: 0.6rem 1.1rem 0.4rem;
-  margin-top: 0.35rem;
+.home-hero-video {
+  padding: 1.05rem 1rem 0.2rem;
+}
+
+.hero-video-wrap {
+  display: grid;
+  gap: 0.55rem;
+
+  /* ✅ keep video from feeling “massive” */
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-video-shell {
+  border-radius: 16px;
+  overflow: hidden;
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
+  background: rgba(5, 8, 16, 0.86);
+
+  box-shadow:
+    0 0 0 1px rgba(var(--forge-accent-rgb), 0.08) inset,
+    0 14px 34px rgba(0, 0, 0, 0.55);
+}
+
+/* Frame holds aspect ratio */
+.hero-youtube-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+/* Iframe */
+.hero-youtube-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Overlay play hint */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.play-ring {
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.34);
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.22),
+    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.18),
+    0 0 32px rgba(var(--forge-accent-rgb), 0.12);
+
+  background: rgba(0, 0, 0, 0.25);
+  display: grid;
+  place-items: center;
+}
+
+.play-triangle {
+  width: 0;
+  height: 0;
+  border-left: 18px solid rgba(245, 184, 65, 0.95);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  transform: translateX(2px);
+}
+
+.hero-video-meta {
+  padding: 0.85rem 1rem 1rem;
+  border-top: 1px solid rgba(var(--forge-accent-rgb), 0.10);
+}
+
+.chip-title {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forge-silver, #cfd6df);
+}
+
+.chip-sub {
+  margin-top: 0.2rem;
+  opacity: 0.88;
+}
+
+.hero-video-caption {
+  margin-top: 0.15rem;
+  opacity: 0.9;
 }
 
 /* ------------------------------
-   VERTICAL SPACING BETWEEN SECTIONS/CARDS (the real “spacing” fix)
+   QUICK GRID
 ------------------------------ */
-.home.home-v8 .home-quick-grid {
-  padding: 1.1rem 1.1rem 0.6rem;
+.home-quick-grid {
+  padding: 0.9rem 1rem 0.15rem;
   display: grid;
-  gap: 1.15rem; /* spacing between cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-@media (min-width: 900px) {
-  .home.home-v8 .home-quick-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
-  }
+.quick-card {
+  padding: 1.05rem 1.05rem; /* a touch more breathing room */
 }
 
-/* Big card sections should not touch each other */
-.home.home-v8 .home-section-card {
-  margin: 1.35rem 1.1rem;
+.quick-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
-/* Pillar grid spacing */
-.home.home-v8 .pillar-grid {
+.quick-title-row h2 {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quick-list {
+  margin: 0.6rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.quick-list li {
+  margin: 0.35rem 0;
+}
+
+.home-inline-link {
+  color: var(--forge-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.quick-foot {
+  margin-top: 0.7rem;
+  opacity: 0.92;
+}
+
+/* ------------------------------
+   SECTION CARDS
+------------------------------ */
+.home-section-card {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1.1rem 1.1rem;
+}
+
+.home-section-card h2 {
+  margin: 0 0 0.8rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--forge-accent);
+  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.20);
+}
+
+/* Pillar grid */
+.pillar-grid {
   display: grid;
-  gap: 1.05rem;
-  margin-top: 1.05rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-@media (min-width: 900px) {
-  .home.home-v8 .pillar-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
-  }
+.pillar-card {
+  padding: 1rem 1rem 1.05rem;
 }
 
-/* How-it-works steps spacing */
-.home.home-v8 .how-steps {
+.pillar-card h3 {
+  margin: 0 0 0.45rem;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--forge-hotmetal, #f5b841);
+}
+
+/* How it works */
+.how-steps {
   list-style: none;
   padding: 0;
-  margin: 1.0rem 0 0;
+  margin: 0;
   display: grid;
-  gap: 0.95rem; /* spacing between mini cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-@media (min-width: 900px) {
-  .home.home-v8 .how-steps {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.1rem;
-  }
+.mini-card {
+  padding: 1rem;
 }
 
-/* How actions spacing */
-.home.home-v8 .how-actions {
-  margin-top: 1.1rem;
+.step-number {
+  display: block;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--forge-silver, #cfd6df);
+  margin-bottom: 0.35rem;
+}
+
+.step-text {
+  display: block;
+  opacity: 0.92;
+}
+
+/* Actions block under How It Works */
+.how-actions {
+  margin-top: 1rem;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
   justify-items: center;
 }
 
-@media (min-width: 900px) {
-  .home.home-v8 .how-actions {
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    justify-content: center;
-    gap: 1.0rem;
-  }
+/* ------------------------------
+   FINAL CTA
+------------------------------ */
+.home-final-callout {
+  padding: 0.9rem 1rem 1.25rem;
 }
 
-/* Final CTA spacing */
-.home.home-v8 .home-final-callout {
-  padding: 1.0rem 1.1rem 2.0rem;
-  margin-top: 0.6rem;
+.final-card {
+  padding: 1.05rem;
 }
 
-.home.home-v8 .final-actions {
-  margin-top: 1.0rem;
+.final-brand {
+  margin: 0 auto 0.7rem;
+  width: fit-content;
+}
+
+.final-slogan {
+  margin: 0;
+  text-align: center;
+  opacity: 0.92;
+}
+
+.final-slogan span {
+  display: inline-block;
+  margin: 0.1rem 0.25rem;
+}
+
+.final-slogan .accent {
+  color: var(--forge-hotmetal, #f5b841);
+}
+
+.final-actions {
+  margin-top: 0.9rem;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
   justify-items: center;
 }
 
-@media (min-width: 900px) {
-  .home.home-v8 .final-actions {
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    justify-content: center;
-    gap: 1.0rem;
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 980px) {
+  .home-quick-grid {
+    grid-template-columns: 1fr;
+  }
+  .pillar-grid {
+    grid-template-columns: 1fr;
+  }
+  .how-steps {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Inline links */
-.home-inline-link {
-  color: var(--forge-blue, #1ea0ff);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(30, 160, 255, 0.25);
-}
-.home-inline-link:hover {
-  border-bottom-color: rgba(255, 138, 42, 0.55);
+@media (max-width: 760px) {
+  /* slightly tighter side padding on phones, makes cards feel wider */
+  .home-hero-intro,
+  .home-hero-video,
+  .home-quick-grid,
+  .home-section-card,
+  .home-final-callout {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* stack buttons */
+  .hero-actions,
+  .how-actions,
+  .final-actions {
+    grid-template-columns: 1fr;
+  }
+
+  /* cap button width and center */
+  .home-btn {
+    max-width: 320px;
+  }
+
+  /* reduce play ring size a touch */
+  .play-ring {
+    width: 76px;
+    height: 76px;
+  }
 }
