@@ -13,14 +13,20 @@ class: faq-page
 <section class="faq-hero">
   <div class="faq-hero-inner">
     <div class="faq-hero-text">
-      <h1 class="faq-title">Frequently Asked Questions</h1>
+
+      <h1 class="faq-title">
+        <span class="faq-title-line faq-title-line1">Frequently</span>
+        <span class="faq-title-line faq-title-line2">Asked</span>
+        <span class="faq-title-line faq-title-line3">Questions</span>
+      </h1>
+
       <p class="faq-subtitle">
         Clear, honest answers — practical guidance with a little Forge personality.
       </p>
 
       <div class="faq-actions">
-        <a class="btn btn-forge" href="{{ links.pages.contact | relative_url }}">Still stuck? Contact me</a>
-        <a class="btn btn-forge" href="#faq-categories">Browse categories</a>
+        <a class="forge-btn faq-hero-btn" href="{{ links.pages.contact | relative_url }}">Still stuck? Contact me</a>
+        <a class="forge-btn faq-hero-btn faq-hero-btn--ghost" href="#faq-categories">Browse categories</a>
       </div>
     </div>
 
@@ -60,7 +66,7 @@ class: faq-page
       <div class="faq-list">
         {% assign cat_items = items | where: "category", c.id %}
         {% for f in cat_items %}
-          <details class="faq-item">
+          <details class="faq-item forge-card">
             <summary class="faq-question">
               <span class="faq-q">{{ f.q }}</span>
               <span class="faq-chevron" aria-hidden="true">▾</span>
@@ -74,14 +80,14 @@ class: faq-page
     </section>
   {% endfor %}
 
-  <section class="faq-footer">
-    <h2>Still have questions?</h2>
-    <p>
+  <section class="faq-footer forge-card">
+    <h2 class="faq-footer-title">Still have questions?</h2>
+    <p class="faq-footer-text">
       I’m always happy to help — whether it’s digital security, tech guidance,
       or something that didn’t make it onto this page.
     </p>
-    <p>
-      <a class="btn btn-forge" href="{{ links.pages.contact | relative_url }}">Contact M.R. TechForge</a>
+    <p class="faq-footer-actions">
+      <a class="forge-btn" href="{{ links.pages.contact | relative_url }}">Contact M.R. TechForge</a>
     </p>
   </section>
 
