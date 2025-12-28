@@ -29,7 +29,7 @@ class: home
       </p>
     </div>
 
-    <img src="/assets/images/hero-forge-tech.jpg" alt="Forged steel and glowing circuitry — craftsmanship meets technology" class = "hero-forge-image" />
+    <img src="/assets/images/hero-forge-tech.png" alt="Forged steel and glowing circuitry — craftsmanship meets technology" class = "hero-forge-image" />
 
     <!-- ACTIONS IN A CARD -->
     <div class="hero-intro-actions forge-card">
