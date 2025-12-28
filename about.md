@@ -3,7 +3,7 @@ layout: default
 title: "About"
 permalink: /about/
 description: "Meet Mark — the engineer behind M.R. TechForge. Clear, dependable systems, built with care, and explained in plain language."
-class: about about-v1
+class: about about-v2
 ---
 
 <section class="about-hero">
@@ -24,15 +24,35 @@ class: about about-v1
       </p>
 
       <div class="about-hero__quick">
-        <div class="about-pill">Warm engineering</div>
-        <div class="about-pill">Clear communication</div>
-        <div class="about-pill">Security-minded</div>
-        <div class="about-pill">Built to last</div>
+        <div class="about-pill">
+          <span class="about-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          Warm engineering
+        </div>
+        <div class="about-pill">
+          <span class="about-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          Clear communication
+        </div>
+        <div class="about-pill">
+          <span class="about-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          Security-minded
+        </div>
+        <div class="about-pill">
+          <span class="about-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 20h10M9 16h6M10 4h4l1 5H9l1-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Built to last
+        </div>
       </div>
     </div>
 
     <div class="about-hero__media" aria-label="About video">
-      <div class="about-video">
+      <div class="about-video" role="button" tabindex="0" aria-label="Play or pause about video">
         <video
           class="about-video__el"
           src="/assets/video/about_video.mp4"
@@ -53,6 +73,16 @@ class: about about-v1
       <p class="about-video__caption">
         A quiet moment between builds. Coffee helps.
       </p>
+
+      {%- comment -%}
+      Optional later:
+      If you decide you want tiny photos/icons to break up text, we can add a small strip here:
+      <div class="about-microgallery">
+        <img src="/assets/img/about/desk.jpg" alt="Workbench detail" />
+        <img src="/assets/img/about/terminal.jpg" alt="Terminal closeup" />
+        <img src="/assets/img/about/tools.jpg" alt="Tools" />
+      </div>
+      {%- endcomment -%}
     </div>
 
   </div>
@@ -61,18 +91,29 @@ class: about about-v1
 <section class="about-wrap">
 
   <div class="forge-card about-card">
-    <h2>How I think about technology</h2>
+    <h2 class="about-h2">
+      <span class="about-h2__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.5" opacity="0.9"/></svg>
+      </span>
+      How I think about technology
+    </h2>
     <p>
-      I build systems that are <strong>clear, dependable, and useful</strong>.
+      I build systems that are <strong>clear, dependable, and quietly useful</strong>.
       Not flashy. Not bloated. Just technology that works the way you expect it to — and explains itself along the way.
     </p>
     <p>
-      Good engineering doesn’t just solve problems; it builds confidence. If a system only makes sense to its creator, it’s unfinished.
+      Good engineering doesn’t just solve problems; it builds confidence.
+      If a system only makes sense to its creator, it’s unfinished.
     </p>
   </div>
 
   <div class="forge-card about-card">
-    <h2>The why</h2>
+    <h2 class="about-h2">
+      <span class="about-h2__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4 7-11V6l-7-3-7 3v4c0 7 7 11 7 11z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12.2l2.1 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      The why
+    </h2>
     <p>
       I’ve spent years working with software, hardware, and infrastructure — from code and automation to devices operating on real networks
       in real environments.
@@ -92,7 +133,12 @@ class: about about-v1
   </div>
 
   <div class="forge-card about-card">
-    <h2>What I build</h2>
+    <h2 class="about-h2">
+      <span class="about-h2__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.6"/><path d="M9 3h6M10 21h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/></svg>
+      </span>
+      What I build
+    </h2>
     <p>
       M.R. TechForge isn’t an agency or a product factory. It’s a small, focused workshop where I build things end-to-end,
       with clarity and responsibility in mind.
@@ -111,7 +157,12 @@ class: about about-v1
   </div>
 
   <div class="forge-card about-card">
-    <h2>Teaching, learning, and the next generation</h2>
+    <h2 class="about-h2">
+      <span class="about-h2__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 10h16v8H4z" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      Teaching, learning, and the next generation
+    </h2>
     <p>
       Teaching is one of the most rewarding parts of what I do.
       I enjoy helping people — technical or not — understand how systems work, how to use them safely,
@@ -124,7 +175,12 @@ class: about about-v1
   </div>
 
   <div class="forge-card about-card">
-    <h2>How I work</h2>
+    <h2 class="about-h2">
+      <span class="about-h2__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3.2 6.8L22 12l-6.8 3.2L12 22l-3.2-6.8L2 12l6.8-3.2L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+      </span>
+      How I work
+    </h2>
     <ul class="about-principles">
       <li><strong>Clarity beats cleverness</strong> — understanding builds trust</li>
       <li><strong>Reliability beats novelty</strong> — boring systems last longer</li>
@@ -138,7 +194,12 @@ class: about about-v1
   </div>
 
   <div class="forge-card about-card about-card--closing">
-    <h2>A human moment</h2>
+    <h2 class="about-h2">
+      <span class="about-h2__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12s3-7 9-7 9 7 9 7-3 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.6"/><path d="M12 9.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z" stroke="currentColor" stroke-width="1.6"/></svg>
+      </span>
+      A human moment
+    </h2>
     <p>
       Some of my best work happens in quiet moments — helping someone untangle a technical problem, teaching a concept until it clicks,
       or standing still for a minute, coffee in hand, thinking through a system from first principles.
@@ -161,30 +222,33 @@ class: about about-v1
   (function () {
     const video = document.querySelector(".about-video__el");
     const hint = document.querySelector(".about-video__hint");
-    if (!video || !hint) return;
+    const container = document.querySelector(".about-video");
+    if (!video || !hint || !container) return;
 
     const hideHint = () => hint.classList.add("is-hidden");
+    const showHint = () => hint.classList.remove("is-hidden");
 
-    // Hide hint if autoplay succeeds (desktop) or once user plays.
     video.addEventListener("play", hideHint, { once: true });
     video.addEventListener("playing", hideHint, { once: true });
 
-    // Tap/click to toggle play (especially useful on mobile where autoplay is blocked).
-    const container = video.closest(".about-video");
-    if (container) {
-      container.addEventListener("click", function () {
-        if (video.paused) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-          hint.classList.remove("is-hidden");
-        }
-      });
-    }
+    const toggle = () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        showHint();
+      }
+    };
 
-    // If user interacts with page, don't keep the hint around forever.
+    container.addEventListener("click", toggle);
+    container.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+
     window.addEventListener("touchstart", () => {
-      // If it’s already playing, remove hint.
       if (!video.paused) hideHint();
     }, { once: true });
   })();
