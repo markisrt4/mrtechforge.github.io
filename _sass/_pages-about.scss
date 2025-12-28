@@ -1,14 +1,11 @@
 /* ==========================================================
-   M.R. TECHFORGE — ABOUT PAGE STYLES (v4.95)
+   M.R. TECHFORGE — ABOUT PAGE STYLES (v5.1)
    File: assets/css/pages/_pages-about.scss
 
-   Goals:
-   - Warm + technical About page
-   - Font Awesome icons (already loaded globally)
-   - Subtle paragraph color
-   - Video is a SMALL accent (hard caps; cannot dominate)
-   - Includes hint styling + accessibility
-   - Uses fallback selectors (.about ...) so it works even if class changes
+   Fix focus:
+   - Video must be a small “motion portrait” accent
+   - Works even if other CSS says video { width:100% }
+   - Targets BOTH classes AND the actual mp4 src path
    ========================================================== */
 
 .about { width: 100%; }
@@ -60,7 +57,7 @@
   text-shadow: 0 0 12px rgba(0, 150, 255, 0.22);
 }
 
-/* Traits pills */
+/* Pills */
 .about .about-hero__quick {
   display: flex;
   flex-wrap: wrap;
@@ -105,31 +102,26 @@
 }
 
 /* ------------------------------
-   VIDEO — SMALL ACCENT (HARD CAPS)
+   VIDEO — HARD FORCE SMALL FOOTPRINT
 ------------------------------ */
-.about .about-hero__media {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
 
-  /* cap the whole column */
-  max-width: 300px !important;
-  justify-self: end;
+/* If your grid collapses, this still caps it */
+.about .about-accent-media {
+  max-width: 260px !important;
+  width: 100% !important;
 }
 
 @media (max-width: 900px) {
-  .about .about-hero__media {
-    max-width: 240px !important;
-    justify-self: center;
-    margin: 0 auto;
+  .about .about-accent-media {
+    max-width: 220px !important;
+    margin-top: 0.75rem;
   }
 }
 
-/* container cap */
+/* Container gets a hard cap */
 .about .about-video {
-  position: relative;
   width: 100% !important;
-  max-width: 300px !important;
+  max-width: 260px !important;       /* DESKTOP CAP */
   border-radius: 14px;
   overflow: hidden;
 
@@ -142,42 +134,46 @@
     0 0 14px rgba(0, 150, 255, 0.10);
 }
 
-/* cap the video element itself (multiple selectors for safety) */
+/* The “can’t ignore me” video rules:
+   - target by class
+   - target any video inside about-video
+   - target by src substring */
 .about .about-video video,
 .about video.about-video__el,
-.about .about-video__el {
+.about .about-video__el,
+.about video[src*="about_video.mp4"] {
   width: 100% !important;
-  height: auto !important;
+  max-width: 260px !important;
 
-  aspect-ratio: 4 / 3 !important;
+  /* make it a small portrait-style square */
+  aspect-ratio: 1 / 1 !important;
   object-fit: cover !important;
 
-  max-height: 200px !important; /* HARD STOP */
+  /* hard stop height */
+  max-height: 220px !important;
+  height: auto !important;
+
+  display: block !important;
 }
 
+/* Mobile: smaller still */
 @media (max-width: 600px) {
-  .about .about-video { max-width: 220px !important; }
+  .about .about-video { max-width: 200px !important; }
+
   .about .about-video video,
   .about video.about-video__el,
-  .about .about-video__el {
-    max-height: 160px !important;
+  .about .about-video__el,
+  .about video[src*="about_video.mp4"] {
+    max-width: 200px !important;
+    max-height: 170px !important;
   }
 }
 
 .about .about-video__caption {
-  margin: 0;
+  margin: 0.35rem 0 0;
   font-size: 0.9rem;
   color: rgba(220, 230, 245, 0.78);
-  max-width: 300px;
-  margin-left: auto;
-}
-
-@media (max-width: 900px) {
-  .about .about-video__caption {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 240px;
-  }
+  max-width: 260px;
 }
 
 /* Tap hint */
@@ -188,7 +184,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-
   padding: 0.45rem 0.7rem;
   border-radius: 999px;
 
@@ -215,12 +210,6 @@
   text-shadow: 0 0 10px rgba(0, 150, 255, 0.35);
 }
 
-.about .about-video__hintText {
-  font-size: 0.92rem;
-  letter-spacing: 0.15px;
-  opacity: 0.95;
-}
-
 .about .about-video__hint.is-hidden {
   opacity: 0;
   transform: translateY(6px);
@@ -228,7 +217,7 @@
 }
 
 /* ------------------------------
-   BODY WRAP + CARDS
+   BODY
 ------------------------------ */
 .about .about-wrap {
   width: 100%;
@@ -240,47 +229,12 @@
   gap: 1rem;
 }
 
-.about .about-card { padding: clamp(1.05rem, 2.2vw, 1.6rem); }
-
-.about .about-h2 {
-  margin: 0 0 0.65rem;
-  font-size: clamp(1.22rem, 1.85vw, 1.55rem);
-  letter-spacing: 0.2px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.about .about-h2__icon {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-
-  color: rgba(0, 170, 255, 0.95);
-  background: rgba(0, 150, 255, 0.10);
-  border: 1px solid rgba(0, 150, 255, 0.16);
-
-  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.10));
-}
-
-.about .about-h2__icon i {
-  font-size: 0.9rem !important;
-  line-height: 1 !important;
-}
-
-/* Paragraph color accents */
 .about .about-card p {
   margin: 0 0 0.85rem;
   color: rgba(232, 240, 255, 0.86);
 }
 
-.about .about-card p strong { color: rgba(245, 248, 255, 0.94); }
 .about .about-card p:last-child { margin-bottom: 0; }
-
-.about .about-muted { opacity: 0.82; }
 
 .about .about-quote {
   margin: 0.9rem 0 1rem;
@@ -289,37 +243,6 @@
   border: 1px solid rgba(0, 150, 255, 0.14);
   background: rgba(0, 150, 255, 0.06);
   color: rgba(235, 244, 255, 0.90);
-}
-
-/* Lists */
-.about .about-list,
-.about .about-principles {
-  margin: 0.6rem 0 0.95rem 1.1rem;
-  padding: 0;
-}
-
-.about .about-list li,
-.about .about-principles li {
-  margin: 0.35rem 0;
-  padding-left: 0.2rem;
-  color: rgba(230, 238, 255, 0.86);
-}
-
-/* ------------------------------
-   CLOSING / CTA
------------------------------- */
-.about .about-card--closing { position: relative; overflow: hidden; }
-
-.about .about-card--closing::before {
-  content: "";
-  position: absolute;
-  inset: -40% -20%;
-  background: radial-gradient(
-    circle at 25% 20%,
-    rgba(0, 150, 255, 0.14) 0%,
-    rgba(0, 0, 0, 0.00) 55%
-  );
-  pointer-events: none;
 }
 
 .about .about-actions {

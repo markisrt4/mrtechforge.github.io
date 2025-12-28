@@ -45,7 +45,8 @@ class: about about-v4
       </div>
     </div>
 
-    <div class="about-hero__media" aria-label="About video">
+    <!-- Small, subtle motion accent -->
+    <div class="about-hero__media about-accent-media" aria-label="About video">
       <div class="about-video" role="button" tabindex="0" aria-label="Play or pause about video">
         <video
           class="about-video__el"
@@ -55,6 +56,7 @@ class: about about-v4
           loop
           autoplay
           preload="metadata"
+          aria-label="Short video of Mark smiling and holding coffee"
         ></video>
 
         <div class="about-video__hint" aria-hidden="true">
@@ -143,31 +145,11 @@ class: about about-v4
     </p>
   </div>
 
-  <div class="forge-card about-card">
-    <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></span>
-      How I work
-    </h2>
-    <ul class="about-principles">
-      <li><strong>Clarity beats cleverness</strong> — understanding builds trust</li>
-      <li><strong>Reliability beats novelty</strong> — boring systems last longer</li>
-      <li><strong>Simple isn’t shallow</strong> — clarity takes real effort</li>
-      <li><strong>Systems should explain themselves</strong> — good design leaves breadcrumbs</li>
-    </ul>
-    <p class="about-muted">
-      If something feels fragile, opaque, or over-engineered, it usually means there’s more thinking to do.
-    </p>
-  </div>
-
   <div class="forge-card about-card about-card--closing">
     <h2 class="about-h2">
       <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span>
       A human moment
     </h2>
-    <p>
-      Some of my best work happens in quiet moments — helping someone untangle a technical problem, teaching a concept until it clicks,
-      or standing still for a minute, coffee in hand, thinking through a system from first principles.
-    </p>
     <p>
       If you’re here because you value clarity, thoughtful engineering, or working with someone who takes the time to explain things well,
       you’re in the right place.
@@ -191,7 +173,6 @@ class: about about-v4
     const hideHint = () => hint.classList.add("is-hidden");
     const showHint = () => hint.classList.remove("is-hidden");
 
-    // Hide hint once it starts playing (autoplay counts)
     video.addEventListener("play", hideHint, { once: true });
     video.addEventListener("playing", hideHint, { once: true });
 
