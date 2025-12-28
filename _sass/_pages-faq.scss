@@ -440,3 +440,10 @@
     transition: none;
   }
 }
+
+/* Allow FAQ components to look good outside /faq/ too */
+.service-section .faq-list {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}

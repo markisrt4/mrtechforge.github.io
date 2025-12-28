@@ -1,0 +1,77 @@
+{%- comment -%}
+  _includes/faq-section.html
+  ------------------------------------------------------------
+  Reusable FAQ renderer for any page.
+
+  Usage examples:
+
+  1) By category:
+     {% include faq-section.html
+        category="managed-phone-text"
+        title="FAQ"
+        subtitle="Straight answers, no telecom jargon."
+     %}
+
+  2) By tag (show a subset across categories):
+     {% include faq-section.html
+        tag="nfc"
+        title="NFC FAQ"
+        subtitle="Quick answers about Forge NFC."
+     %}
+
+  Optional:
+  - limit="6"    (number)
+  - id="faq-fmpt" (anchor id)
+{%- endcomment -%}
+
+{%- assign faq = site.data.faq -%}
+{%- assign all_items = faq.items | default: empty -%}
+
+{%- assign section_title = include.title | default: "FAQ" -%}
+{%- assign section_subtitle = include.subtitle | default: "" -%}
+{%- assign section_id = include.id | default: "" -%}
+{%- assign limit_val = include.limit | default: "" -%}
+
+{%- assign filtered = all_items -%}
+
+{%- if include.category and include.category != "" -%}
+  {%- assign filtered = filtered | where: "category", include.category -%}
+{%- endif -%}
+
+{%- if include.tag and include.tag != "" -%}
+  {%- assign tag_items = "" | split: "" -%}
+  {%- for item in filtered -%}
+    {%- if item.tags and item.tags contains include.tag -%}
+      {%- assign tag_items = tag_items | push: item -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign filtered = tag_items -%}
+{%- endif -%}
+
+{%- if limit_val != "" -%}
+  {%- assign limit_n = limit_val | plus: 0 -%}
+  {%- assign filtered = filtered | slice: 0, limit_n -%}
+{%- endif -%}
+
+{%- if filtered and filtered.size > 0 -%}
+<section class="service-section faq-section" {% if section_id != "" %}id="{{ section_id }}"{% endif %}>
+  <h2 class="faq-heading">{{ section_title }}</h2>
+  {%- if section_subtitle != "" -%}
+    <p class="faq-subtitle">{{ section_subtitle }}</p>
+  {%- endif -%}
+
+  <div class="faq-list">
+    {%- for f in filtered -%}
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span class="faq-q">{{ f.q }}</span>
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </summary>
+        <div class="faq-answer">
+          <p>{{ f.a }}</p>
+        </div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

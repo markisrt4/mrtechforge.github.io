@@ -22,6 +22,12 @@ categories:
     icon: "🛡️"
     description: "Questions specific to secure network services and local-first infrastructure."
 
+  - id: managed-phone-text
+    title: "Forge Managed Phone & Text"
+    icon: "📞"
+    description: "Questions specific to Managed Phone & Text — straight answers, no telecom jargon."
+
+
 items:
   # ---------------------------
   # GENERAL
@@ -157,3 +163,26 @@ items:
     a: "I can validate your existing equipment, recommend compatible hardware for you to purchase directly, or optionally supply hardware with clear itemization — no proprietary lock-in."
     tags: ["secure-network"]
 
+  # ---------------------------
+  # FORGE SECURE NETWORK (moved from managed_phone_line.md)
+  # ---------------------------
+
+  - category: managed-phone-text
+    q: "Are you a phone carrier?"
+    a: "No. M.R. TechForge is not a phone carrier. We design and manage communication systems using modern phone and messaging platforms, but we are not selling minutes, data plans, or telecom contracts."
+    tags: ["managed-phone-text", "communication"]
+
+  - category: managed-phone-text
+    q: "Can I make outgoing calls from this number?"
+    a: "Yes. Outgoing calling can be enabled so calls display your managed number as the caller ID. This is configured intentionally based on your needs."
+    tags: ["managed-phone-text", "communication"]
+
+  - category: managed-phone-text
+    q: "Do I need special hardware?"
+    a: "No. Most clients use mobile or desktop apps. Desk phones or traditional handsets can be supported if desired, but no hardware is required to get started."
+    tags: ["managed-phone-text", "communication"]
+
+  - category: managed-phone-text
+    q: "Is this a replacement for my personal phone?"
+    a: "Not necessarily. Many clients use this as a separate, public-facing number while keeping their personal number private."
+    tags: ["managed-phone-text", "communication"]
