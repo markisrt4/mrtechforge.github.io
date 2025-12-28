@@ -6,6 +6,8 @@ description: "Meet Mark — the engineer behind M.R. TechForge. Clear, dependabl
 class: about about-v4
 ---
 
+{% assign links = site.data.links %}
+
 <section class="about-hero">
   <div class="about-hero__inner">
 
@@ -180,8 +182,8 @@ class: about about-v4
     </p>
 
     <div class="about-actions">
-      <a class="forge-btn about-btn" href="/contact/">Reach out</a>
-      <a class="forge-btn about-btn about-btn--ghost" href="/products/">Explore products</a>
+      <a class="forge-btn about-btn" href="{{ links.pages.contact | relative_url }}">Reach out</a>
+      <a class="forge-btn about-btn about-btn--ghost" href="{{ links.pages.products | relative_url }}">Explore products</a>
     </div>
   </div>
 
