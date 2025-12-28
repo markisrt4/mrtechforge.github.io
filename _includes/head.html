@@ -34,10 +34,8 @@
   <!-- ===============================
        Main Stylesheet (AUTO CACHE-BUST)
        =============================== -->
-  <link
-    rel="stylesheet"
-    href="{{ '/assets/css/main.css?v=' | append: site.time | date: '%Y%m%d%H%M%S' | relative_url }}"
-  >
+ {% assign css_ver = site.time | date: '%Y%m%d%H%M%S' %}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ css_ver }}">
 
   <!-- ===============================
        Favicon
