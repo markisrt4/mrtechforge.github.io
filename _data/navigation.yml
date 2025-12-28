@@ -22,12 +22,14 @@ main:
   - title: "Products"
     key: "pages.products"
     children:
-      - title: "All Products"
+      - title: "Products Overview"
         key: "products.index"
       - title: "NFC Tags"
         key: "products.nfc"
       - title: "Gadgets"
         key: "products.gadgets"
+      - title: "All Products"
+        key: "products.all"
 
   - title: "Guides"
     key: "pages.guides"
