@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Products"
-permalink: /products/
+permalink: /products/products/
 ---
 
 <section class="forge-products">
