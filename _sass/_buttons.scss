@@ -1,7 +1,7 @@
 /* ==========================================================
-   M.R. TECHFORGE — BUTTONS (v5.1)
+   M.R. TECHFORGE — BUTTONS (v5.2)
    Forge Silver core • Ultra-slow blue/orange drift
-   Premium, calm, always-on
+   Premium, calm, always-on (less intense)
    ========================================================== */
 
 /* ----------------------------------------------------------
@@ -25,7 +25,8 @@
   font-weight: 800;
   letter-spacing: 0.02em;
 
-  padding: 0.95rem 1.15rem;
+  /* slightly shorter than before */
+  padding: 0.82rem 1.10rem;
   border-radius: 14px;
 
   position: relative;
@@ -68,13 +69,13 @@
   /* Calm, silver-forward glow */
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.55),
-    0 0 14px rgba(207, 212, 221, 0.55),
-    0 0 18px rgba(47, 125, 255, 0.12),
-    0 0 18px rgba(255, 138, 42, 0.10);
+    0 0 14px rgba(207, 212, 221, 0.52),
+    0 0 18px rgba(47, 125, 255, 0.10),
+    0 0 18px rgba(255, 138, 42, 0.08);
 }
 
 /* ----------------------------------------------------------
-   Animated rim (very slow, silver-dominant)
+   Animated rim (slower + calmer, silver included)
 ---------------------------------------------------------- */
 
 .btn-forge::before {
@@ -86,19 +87,20 @@
 
   background: linear-gradient(
     140deg,
-    rgba(207,212,221,0.95),
-    rgba(207,212,221,0.75),
-    rgba(47,125,255,0.65),
-    rgba(207,212,221,0.85),
-    rgba(255,138,42,0.65),
-    rgba(207,212,221,0.95)
+    rgba(207,212,221,0.98),
+    rgba(207,212,221,0.82),
+    rgba(47,125,255,0.58),
+    rgba(207,212,221,0.88),
+    rgba(255,138,42,0.55),
+    rgba(207,212,221,0.98)
   );
 
-  background-size: 400% 400%;
-  animation: forgeSilverDrift 22s linear infinite;
+  background-size: 420% 420%;
+  animation: forgeSilverDrift 34s linear infinite;
 
-  opacity: 0.95;
-  filter: blur(0.2px);
+  /* slightly reduced intensity */
+  opacity: 0.88;
+  filter: blur(0.25px);
 }
 
 /* Inner edge depth (keeps badge feel) */
@@ -127,9 +129,9 @@
   transform: translateY(-1px);
   box-shadow:
     0 16px 38px rgba(0, 0, 0, 0.62),
-    0 0 22px rgba(207, 212, 221, 0.75),
-    0 0 26px rgba(47, 125, 255, 0.20),
-    0 0 26px rgba(255, 138, 42, 0.18);
+    0 0 22px rgba(207, 212, 221, 0.70),
+    0 0 26px rgba(47, 125, 255, 0.18),
+    0 0 26px rgba(255, 138, 42, 0.16);
 }
 
 .btn-forge:focus-visible {
@@ -177,8 +179,8 @@
   );
 
   background-size: 300% 300%;
-  animation: forgeSilverDrift 26s linear infinite;
-  opacity: 0.35;
+  animation: forgeSilverDrift 40s linear infinite;
+  opacity: 0.28;
   filter: blur(2px);
 }
 
@@ -211,7 +213,7 @@
   .btn,
   .btn-glow,
   .btn-forge {
-    padding: 0.82rem 0.95rem;
+    padding: 0.74rem 0.92rem; /* shorter */
     border-radius: 13px;
   }
 }
