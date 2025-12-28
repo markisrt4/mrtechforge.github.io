@@ -1,12 +1,12 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.2)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.3)
    File: assets/css/pages/_pages-home.scss
 
    Fixes:
-   - Hero headline OUTSIDE card
-   - 3-color intro lines
-   - Stamp glow: blue base + narrow orange sweep L->R (loop)
-   - Buttons not absurdly wide on mobile
+   - Hero stamp sweep restored: Forge blue base + narrow orange band L->R
+   - Buttons not too wide on mobile
+   - More vertical spacing BETWEEN cards/sections (not padding)
+   - Cleaner gaps for grids (pillars/how steps)
    ========================================================== */
 
 /* ------------------------------
@@ -14,6 +14,18 @@
 ------------------------------ */
 .home.home-v8 {
   width: 100%;
+}
+
+/* ------------------------------
+   HERO INTRO TOP (outside card)
+------------------------------ */
+.home.home-v8 .home-hero-intro {
+  padding: 1.6rem 1.1rem 0.9rem;
+}
+
+.home.home-v8 .hero-intro-top {
+  text-align: center;
+  margin-bottom: 1.15rem;
 }
 
 /* ------------------------------
@@ -27,15 +39,16 @@
   min-width: 1.25em;
   margin-right: 0.45rem;
   transform: translateY(0.02em);
-  filter: drop-shadow(0 0 8px rgba(var(--forge-hotmetal-rgb), 0.18));
+  filter: drop-shadow(0 0 8px rgba(255, 138, 42, 0.15));
   opacity: 0.95;
 }
 
-/* ------------------------------
-   HERO STAMP: BLUE BASE + ORANGE SWEEP
-   Use like:
-     <div class="hero-stamp-sweep" data-text="M.R. TECHFORGE">M.R. TECHFORGE</div>
------------------------------- */
+/* ----------------------------------------------------------
+   HERO STAMP — BLUE BASE + ORANGE SWEEP
+   Your markup already matches:
+     <div class="hero-stamp-sweep" data-text="M.R. TechForge">M.R. TechForge</div>
+---------------------------------------------------------- */
+
 .hero-stamp-sweep {
   position: relative;
   display: block;
@@ -49,16 +62,16 @@
   text-transform: uppercase;
   font-size: clamp(1.7rem, 3.8vw, 2.6rem);
 
-  /* Force Forge Blue base */
+  /* FORCE Forge Blue base */
   color: var(--forge-blue, #1ea0ff);
   text-shadow:
     0 0 10px rgba(30, 160, 255, 0.42),
-    0 0 20px rgba(30, 160, 255, 0.22);
+    0 0 22px rgba(30, 160, 255, 0.20);
 
   transform: translateZ(0);
 }
 
-/* Narrow orange sweep overlay */
+/* Narrow orange band that sweeps left -> right */
 .hero-stamp-sweep::after {
   content: attr(data-text);
   position: absolute;
@@ -75,7 +88,7 @@
   -webkit-background-clip: text;
   background-clip: text;
 
-  /* narrow band centered ~50% with soft falloff */
+  /* Narrow band + soft falloff */
   background-image: linear-gradient(
     90deg,
     rgba(255, 138, 42, 0.00) 0%,
@@ -88,8 +101,8 @@
   background-size: 260% 100%;
   background-position: -120% 0;
 
-  filter: drop-shadow(0 0 10px rgba(255, 138, 42, 0.22));
-  animation: forgeHomeSweepGlow 4.2s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 138, 42, 0.20));
+  animation: forgeHomeSweepGlow 4.6s linear infinite;
 }
 
 @keyframes forgeHomeSweepGlow {
@@ -98,14 +111,14 @@
   100% { background-position: 120% 0; opacity: 0.92; }
 }
 
-/* If you forget data-text, don't show the overlay */
+/* If data-text missing, don't show overlay */
 .hero-stamp-sweep:not([data-text])::after {
   content: "";
   display: none;
 }
 
 /* ------------------------------
-   HEADLINE (3 colors)
+   3-color hero headline
 ------------------------------ */
 .hero-headline {
   margin: 0;
@@ -120,7 +133,7 @@
 
 .hero-line-blue {
   color: var(--forge-blue, #1ea0ff);
-  text-shadow: 0 0 16px rgba(30, 160, 255, 0.22);
+  text-shadow: 0 0 16px rgba(30, 160, 255, 0.20);
 }
 .hero-line-silver {
   color: var(--forge-silver, #c8d2dc);
@@ -128,19 +141,29 @@
 }
 .hero-line-hot {
   color: var(--forge-hotmetal, #ff8a2a);
-  text-shadow: 0 0 16px rgba(255, 138, 42, 0.20);
+  text-shadow: 0 0 16px rgba(255, 138, 42, 0.18);
+}
+
+/* Subtitle width + spacing */
+.hero-subtitle {
+  margin: 0.95rem auto 0;
+  max-width: 68ch;
 }
 
 /* ------------------------------
-   HERO ACTIONS
-   Fix: buttons too wide on mobile
+   ACTIONS CARD
 ------------------------------ */
-.hero-actions {
-  display: grid;
-  gap: 0.8rem;
+.home.home-v8 .hero-intro-actions {
+  margin: 1.15rem auto 0;
+  max-width: 720px;
 }
 
-/* Cap button width so they don't become huge slabs */
+/* Buttons: cap width on mobile so they don’t become slabs */
+.hero-actions {
+  display: grid;
+  gap: 0.85rem;
+}
+
 .home-btn {
   width: 100%;
   max-width: 360px;
@@ -158,8 +181,126 @@
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     justify-content: center;
+    gap: 1.0rem;
   }
   .home-btn {
     max-width: 420px;
   }
+}
+
+/* Badge row spacing */
+.hero-badges {
+  margin-top: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
+  justify-content: center;
+}
+
+/* ------------------------------
+   HERO VIDEO SPACING
+------------------------------ */
+.home.home-v8 .home-hero-video {
+  padding: 0.6rem 1.1rem 0.4rem;
+  margin-top: 0.35rem;
+}
+
+/* ------------------------------
+   VERTICAL SPACING BETWEEN SECTIONS/CARDS (the real “spacing” fix)
+------------------------------ */
+.home.home-v8 .home-quick-grid {
+  padding: 1.1rem 1.1rem 0.6rem;
+  display: grid;
+  gap: 1.15rem; /* spacing between cards */
+}
+
+@media (min-width: 900px) {
+  .home.home-v8 .home-quick-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* Big card sections should not touch each other */
+.home.home-v8 .home-section-card {
+  margin: 1.35rem 1.1rem;
+}
+
+/* Pillar grid spacing */
+.home.home-v8 .pillar-grid {
+  display: grid;
+  gap: 1.05rem;
+  margin-top: 1.05rem;
+}
+
+@media (min-width: 900px) {
+  .home.home-v8 .pillar-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* How-it-works steps spacing */
+.home.home-v8 .how-steps {
+  list-style: none;
+  padding: 0;
+  margin: 1.0rem 0 0;
+  display: grid;
+  gap: 0.95rem; /* spacing between mini cards */
+}
+
+@media (min-width: 900px) {
+  .home.home-v8 .how-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+}
+
+/* How actions spacing */
+.home.home-v8 .how-actions {
+  margin-top: 1.1rem;
+  display: grid;
+  gap: 0.85rem;
+  justify-items: center;
+}
+
+@media (min-width: 900px) {
+  .home.home-v8 .how-actions {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: center;
+    gap: 1.0rem;
+  }
+}
+
+/* Final CTA spacing */
+.home.home-v8 .home-final-callout {
+  padding: 1.0rem 1.1rem 2.0rem;
+  margin-top: 0.6rem;
+}
+
+.home.home-v8 .final-actions {
+  margin-top: 1.0rem;
+  display: grid;
+  gap: 0.85rem;
+  justify-items: center;
+}
+
+@media (min-width: 900px) {
+  .home.home-v8 .final-actions {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: center;
+    gap: 1.0rem;
+  }
+}
+
+/* Inline links */
+.home-inline-link {
+  color: var(--forge-blue, #1ea0ff);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(30, 160, 255, 0.25);
+}
+.home-inline-link:hover {
+  border-bottom-color: rgba(255, 138, 42, 0.55);
 }
