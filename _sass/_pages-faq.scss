@@ -1,9 +1,9 @@
 /* ==========================================================
-   M.R. TechForge — FAQ Page Styles (v2.5 FIXED)
-   - Restores full hero/pills/card layout (no regressions)
-   - Orbitron for headings + questions (techy)
-   - Left accent bar animates on open
-   - Vertical gradient for question/answer text
+   M.R. TechForge — FAQ Page Styles (v2.6 FINAL TUNE)
+   Fixes:
+   - Hero JPG no longer cropped (object-fit: contain)
+   - Vertical gradient applied specifically to FAQ Q/A text
+   - Keeps the full hero/pills/card layout (no regressions)
    ========================================================== */
 
 .faq-page .faq-wrap {
@@ -76,7 +76,6 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
-  /* Forge title gradient */
   background: linear-gradient(
     90deg,
     rgba(0, 163, 255, 1),
@@ -111,6 +110,7 @@
   overflow: hidden;
   border: 1px solid rgba(0,150,255,0.24);
   background: rgba(0,0,0,0.35);
+
   min-height: 220px;
   display: grid;
   place-items: center;
@@ -120,12 +120,17 @@
   z-index: 1;
 }
 
+/* ✅ FIX: this is where cropping was happening.
+   Use contain + padding so the full graphic shows. */
 .faq-hero-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;            /* <- key fix */
+  object-position: center center; /* <- ensure centered */
   display: block;
-  filter: saturate(1.08) contrast(1.05);
+  padding: 14px;                 /* keep border visible + prevent edge clipping */
+  background: rgba(0,0,0,0.25);  /* subtle backing behind transparent-ish edges */
+  filter: saturate(1.05) contrast(1.03);
 }
 
 /* mobile hero */
@@ -135,6 +140,9 @@
   }
   .faq-hero-media {
     min-height: 180px;
+  }
+  .faq-hero-media img {
+    padding: 10px;
   }
 }
 
@@ -241,7 +249,6 @@
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-/* subtle scan texture */
 .faq-item::after {
   content: "";
   position: absolute;
@@ -309,7 +316,7 @@
 }
 
 /* ------------------------------
-   QUESTION (VERTICAL GRADIENT TEXT)
+   QUESTION ROW
 ------------------------------ */
 .faq-question {
   cursor: pointer;
@@ -321,12 +328,27 @@
   justify-content: space-between;
   gap: 0.9rem;
 
+  /* keep the row normal so chevron stays clean */
+  color: rgba(240, 250, 255, 0.98);
+
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 
-  /* white -> silver vertical gradient */
+  position: relative;
+  z-index: 1;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+/* ✅ Vertical gradient applied only to the question text */
+.faq-q {
+  line-height: 1.35;
+  font-size: 0.98rem;
+
   background: linear-gradient(
     180deg,
     #ffffff 0%,
@@ -338,23 +360,12 @@
   color: transparent;
 
   text-shadow:
-    0 0 12px rgba(255,255,255,0.07),
+    0 0 12px rgba(255,255,255,0.06),
     0 0 18px rgba(0,150,255,0.12);
-  position: relative;
-  z-index: 1;
 }
 
-.faq-question::-webkit-details-marker {
-  display: none;
-}
-
-.faq-q {
-  line-height: 1.35;
-  font-size: 0.98rem;
-}
-
-/* Open: slightly warm at the bottom */
-.faq-item[open] .faq-question {
+/* Open: warmer bottom */
+.faq-item[open] .faq-q {
   background: linear-gradient(
     180deg,
     #ffffff 0%,
@@ -385,13 +396,21 @@
 }
 
 /* ------------------------------
-   ANSWER (SOFTER VERTICAL GRADIENT TEXT)
+   ANSWER
 ------------------------------ */
 .faq-answer {
   padding: 0 1.0rem 1.0rem 0.75rem;
   border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  z-index: 1;
+}
 
-  /* light silver -> muted silver vertical gradient */
+/* ✅ Vertical gradient applied to answer text */
+.faq-answer p {
+  margin: 0.85rem 0 0;
+  line-height: 1.85;
+  font-size: 1.02rem;
+
   background: linear-gradient(
     180deg,
     #e9eef4 0%,
@@ -401,15 +420,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
-  position: relative;
-  z-index: 1;
-}
-
-.faq-answer p {
-  margin: 0.85rem 0 0;
-  line-height: 1.85;
-  font-size: 1.02rem;
 }
 
 /* ------------------------------
