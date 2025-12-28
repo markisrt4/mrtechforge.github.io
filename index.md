@@ -23,13 +23,13 @@ class: home
         <span class="hero-line hero-line-hot">Forged with Integrity.</span>
       </h1>
 
+<img src="/assets/images/hero-forge-tech.png" alt="Forged steel and glowing circuitry — craftsmanship meets technology" class = "hero-forge-image" />
+
       <p class="hero-subtitle forge-text-gradient-soft">
         Practical, relationship-focused technology help for homes, churches, libraries,
         and small businesses — built with modern tools and honest guidance.
       </p>
     </div>
-
-    <img src="/assets/images/hero-forge-tech.png" alt="Forged steel and glowing circuitry — craftsmanship meets technology" class = "hero-forge-image" />
 
     <!-- ACTIONS IN A CARD -->
     <div class="hero-intro-actions forge-card">
