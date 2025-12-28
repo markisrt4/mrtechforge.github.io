@@ -1,21 +1,13 @@
 /* ==========================================================
-   M.R. TECHFORGE — GLOBAL STYLES (v10.2)
-   Background • Typography • Layout • Link Behavior • Fixes
+   M.R. TECHFORGE — GLOBAL STYLES (v10.3)
    ========================================================== */
 
-/* ------------------------------
-   GLOBAL BOX SIZING
-   Prevents width math from drifting
------------------------------- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* ------------------------------
-   BACKGROUND + BASE TYPOGRAPHY
------------------------------- */
 html,
 body {
   margin: 0;
@@ -30,9 +22,6 @@ body {
   font-size: 1.05rem;
   line-height: 1.65;
 
-  /* Important:
-     overflow-x:hidden can “fake” a right-leaning layout if something overflows left.
-     clip is safer + avoids scrollbars without shifting appearance. */
   overflow-x: clip;
 }
 
@@ -41,20 +30,22 @@ body {
   background-color: #000;
 }
 
-/* ------------------------------
-   GLOBAL CENTERED CONTAINER
-   This is the “stop hugging the right edge” fix.
-   We apply it to common Jekyll/minima wrappers.
------------------------------- */
 :root {
   --forge-container-max: 1200px;
   --forge-container-pad: 1rem;
 
-  /* Safe-area padding for notched phones */
   --forge-safe-left: env(safe-area-inset-left, 0px);
   --forge-safe-right: env(safe-area-inset-right, 0px);
 }
 
+/* ✅ Slightly less padding on small screens = cards feel wider */
+@media (max-width: 640px) {
+  :root {
+    --forge-container-pad: 0.75rem;
+  }
+}
+
+/* Center common minima wrappers */
 .forge-container,
 main,
 .wrapper,
@@ -66,31 +57,21 @@ main,
 .footer-col-wrapper {
   width: 100%;
   max-width: var(--forge-container-max);
-
-  /* Use logical properties so LTR/RTL safe */
   margin-inline: auto;
 
-  /* Symmetric padding + safe-area */
   padding-inline: calc(var(--forge-container-pad) + var(--forge-safe-left))
                   calc(var(--forge-container-pad) + var(--forge-safe-right));
 }
 
-/* Main vertical spacing */
 main {
   margin-block: 2rem;
 }
 
-/* Make sure theme sections don't re-introduce side bias */
-.page-content,
-.wrapper {
-  padding-inline: calc(var(--forge-container-pad) + var(--forge-safe-left))
-                  calc(var(--forge-container-pad) + var(--forge-safe-right));
+@media (max-width: 600px) {
+  main { margin-block: 1.25rem; }
 }
 
-/* ------------------------------
-   HARD STOP: NO ELEMENT SHOULD PUSH HORIZONTAL WIDTH
-   This prevents “one rogue element” from shifting the entire look.
------------------------------- */
+/* Prevent overflow elements from biasing layout */
 img,
 svg,
 video,
@@ -103,15 +84,9 @@ table {
   max-width: 100%;
 }
 
-/* Pre/code can still overflow if lines are long — allow scroll instead of shifting layout */
-pre {
-  overflow-x: auto;
-}
+pre { overflow-x: auto; }
 
-/* ------------------------------
-   HEADINGS — BASE STYLE
-   (shared structure + anti-clipping)
------------------------------- */
+/* Headings */
 h1,
 h2,
 h3 {
@@ -119,7 +94,6 @@ h3 {
   letter-spacing: 1.4px;
   text-transform: uppercase;
 
-  /* prevent glow clipping */
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
@@ -127,69 +101,47 @@ h3 {
   transition: color 0.2s ease, text-shadow 0.25s ease;
 }
 
-/* H1 / H3 — Forge Hotmetal */
 h1,
 h3 {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
 }
 
-/* H2 — Forge Blue (Services Heading Style) */
 h2 {
   color: var(--forge-accent, #00b8d4);
   font-weight: 700;
-
   text-shadow: 0 0 14px rgba(0, 150, 255, 0.45);
-
   border-bottom: 1px solid rgba(0, 150, 255, 0.3);
   padding-bottom: 0.4rem;
 }
 
-/* Hover glow — desktop only */
-@media (hover: hover) and (pointer: fine) {
-  h2:hover {
-    color: rgba(220, 245, 255, 0.98);
-    border-bottom-color: rgba(0, 150, 255, 0.55);
-    text-shadow:
-      0 0 10px rgba(0, 150, 255, 0.55),
-      0 0 18px rgba(0, 150, 255, 0.35);
-  }
-}
-
-/* Reduced glow on mobile to avoid clipping */
 @media (max-width: 600px) {
-  main {
-    margin-block: 1.25rem;
-  }
-
-  h1,
-  h2,
-  h3 {
-    letter-spacing: 1.2px;
-  }
-
-  h1,
-  h3 {
-    text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45);
-  }
-
-  h2 {
-    text-shadow: 0 0 8px rgba(0, 150, 255, 0.35);
-  }
+  h1, h2, h3 { letter-spacing: 1.2px; }
+  h1, h3 { text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45); }
+  h2 { text-shadow: 0 0 8px rgba(0, 150, 255, 0.35); }
 }
 
-/* ------------------------------
-   BODY TEXT
------------------------------- */
 p,
 li {
   color: var(--forge-text);
   text-shadow: none;
 }
 
-/* ------------------------------
-   LINKS
------------------------------- */
+/* ✅ Bullet indent fix (global) */
+ul,
+ol {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  ul,
+  ol {
+    padding-left: 1.05rem; /* ✅ less indent on mobile */
+  }
+}
+
+/* Links */
 a {
   color: var(--forge-accent);
   text-decoration: none;
@@ -205,16 +157,12 @@ a:visited {
   color: var(--forge-hotmetal-light);
 }
 
-/* ------------------------------
-   REMOVE DUPLICATE TITLES
------------------------------- */
+/* Remove duplicate titles */
 main > h1:first-child {
   display: none !important;
 }
 
-/* ------------------------------
-   FOOTER — FULL CENTERING FIX
------------------------------- */
+/* Footer */
 .forge-footer {
   text-align: center;
   width: 100%;
@@ -224,14 +172,4 @@ main > h1:first-child {
   margin: 0 auto !important;
   text-align: center !important;
   max-width: 900px;
-}
-
-.forge-dev-warning {
-  display: inline-block;
-  padding: 0.25rem 0.6rem;
-  border-radius: 10px;
-  border: 1px dashed rgba(255, 138, 42, 0.55);
-  color: rgba(255, 180, 120, 0.95);
-  background: rgba(0, 0, 0, 0.25);
-  font-size: 0.9rem;
 }
