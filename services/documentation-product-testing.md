@@ -135,22 +135,30 @@ description: "Forging clarity between engineers, products, and people."
         <a href="https://www.mobilityengineeringtech.com/component/content/article/50043-deterministic-and-modular-architecture-for-embedded-vehicle-systems">
           Deterministic &amp; Modular Architecture for Embedded Vehicle Systems — NDIA (2023)
         </a>
+    </p>
+    <p>
       </strong>
       <strong>
         <a href="https://saemobilus.sae.org/papers/gvsets-2020-paper-multiple-crew-station-xecutor-mcsx-2024-01-3860#view">
           Multiple Crew Station Xecutor (MCSX) — NDIA (2020)
         </a>
       </strong>
+    </p>
+    <p>
       <strong>
         <a href="https://saemobilus.sae.org/papers/latent-dirichlet-allocation-lda-anomaly-detection-ground-vehicle-network-traffic-2024-01-3862#view">
           Latent Dirichlet Allocation (LDA) for Anomaly Detection in Ground Vehicle Network Traffic — NDIA (2020)
         </a>
       </strong>
+    </p>
+    <p>
       <strong>
         <a href="https://saemobilus.sae.org/papers/tardecs-highly-robust-accurate-vehicle-time-synchronization-platform-2024-01-3661#view">
           Highly Robust and Accurate Vehicle Time [Synchronization] Platform — NDIA (2017)
         </a>
       </strong>
+    </p>
+    <p>
       <strong>
         <a href="https://apps.dtic.mil/sti/tr/pdf/ADA566260.pdf">
           Performance of an Embedded Platform Aggregating and Executing Core Vehicular Integration for C4ISR/EW Interoperability (VICTORY) Services — NDIA (2012)
