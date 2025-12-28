@@ -1,32 +1,27 @@
 /* ==========================================================
-   M.R. TECHFORGE — ABOUT PAGE STYLES (v2.0)
+   M.R. TECHFORGE — ABOUT PAGE STYLES (v3.0)
    File: assets/css/pages/_pages-about.scss
 
-   Updates:
-   - Smaller video (especially mobile) + tighter hero height
-   - Desktop: text + smaller video on same row
-   - Icons for headings + pills (inline SVG)
-   - Subtle paragraph color accents (blue/silver) for readability
-   - Scoped to .about.about-v2
+   Fix:
+   - Remove SVG entirely (glyph icons only)
+   - Prevent any icon from “breaking out” and becoming huge
+   - Keep your small-icon vibe (chip icons + heading icons)
    ========================================================== */
 
-.about.about-v2 {
-  width: 100%;
-}
+.about.about-v3 { width: 100%; }
 
 /* ------------------------------
    HERO
 ------------------------------ */
-.about.about-v2 .about-hero {
+.about.about-v3 .about-hero {
   width: 100%;
   padding: clamp(1.1rem, 2.2vw, 2rem) 1rem 0.75rem;
 }
 
-.about.about-v2 .about-hero__inner {
+.about.about-v3 .about-hero__inner {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 1.25fr 0.75fr; /* smaller media column */
   gap: clamp(0.9rem, 2.6vw, 1.8rem);
@@ -34,46 +29,42 @@
 }
 
 @media (max-width: 900px) {
-  .about.about-v2 .about-hero__inner {
-    grid-template-columns: 1fr;
-  }
+  .about.about-v3 .about-hero__inner { grid-template-columns: 1fr; }
 }
 
-/* Title */
-.about.about-v2 .about-title {
+.about.about-v3 .about-title {
   margin: 0 0 0.7rem;
   font-size: clamp(2rem, 3.4vw, 3rem);
   line-height: 1.08;
   letter-spacing: 0.2px;
 }
 
-/* Color accents: readable, not neon */
-.about.about-v2 .about-lead {
+.about.about-v3 .about-lead {
   margin: 0 0 0.8rem;
   font-size: clamp(1.05rem, 1.25vw, 1.18rem);
-  color: rgba(235, 242, 255, 0.90); /* soft “silver-blue” */
+  color: rgba(235, 242, 255, 0.90);
 }
 
-.about.about-v2 .about-lead em {
+.about.about-v3 .about-lead em {
   color: rgba(54, 163, 255, 0.95);
   font-style: italic;
   text-shadow: 0 0 10px rgba(54, 163, 255, 0.16);
 }
 
-.about.about-v2 .about-brand {
+.about.about-v3 .about-brand {
   color: var(--forge-blue, #36a3ff);
   text-shadow: 0 0 12px rgba(54, 163, 255, 0.22);
 }
 
 /* Pills */
-.about.about-v2 .about-hero__quick {
+.about.about-v3 .about-hero__quick {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 0.95rem;
 }
 
-.about.about-v2 .about-pill {
+.about.about-v3 .about-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -82,76 +73,69 @@
   font-size: 0.92rem;
   letter-spacing: 0.15px;
   color: rgba(245, 248, 255, 0.90);
-
   border: 1px solid rgba(255, 255, 255, 0.10);
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(6px);
 }
 
-.about.about-v2 .about-pill__icon svg {
-  width: 18px;
-  height: 18px;
-  display: block;
-  color: rgba(54, 163, 255, 0.92);
-  filter: drop-shadow(0 0 8px rgba(54, 163, 255, 0.18));
+/* Small icon look (glyph) */
+.about.about-v3 .about-ico {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+
+  color: rgba(54, 163, 255, 0.95);
+  background: rgba(54, 163, 255, 0.12);
+  border: 1px solid rgba(54, 163, 255, 0.18);
+
+  font-size: 0.92rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px rgba(54, 163, 255, 0.10));
 }
 
 /* ------------------------------
    VIDEO (smaller + mobile-safe)
 ------------------------------ */
-.about.about-v2 .about-hero__media {
+.about.about-v3 .about-hero__media {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
 }
 
-/* Keep it intentionally “small” */
-.about.about-v2 .about-video {
+.about.about-v3 .about-video {
   position: relative;
   width: 100%;
-  max-width: 420px; /* caps size on desktop */
-  margin-left: auto; /* aligns nicely in right column */
+  max-width: 420px;
+  margin-left: auto;
   border-radius: 16px;
   overflow: hidden;
-
   border: 1px solid rgba(54, 163, 255, 0.22);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05) inset,
     0 14px 30px rgba(0, 0, 0, 0.52),
     0 0 18px rgba(54, 163, 255, 0.10);
-
-  background: linear-gradient(
-    180deg,
-    rgba(54, 163, 255, 0.07) 0%,
-    rgba(0, 0, 0, 0.28) 45%,
-    rgba(255, 110, 25, 0.06) 100%
-  );
 }
 
 @media (max-width: 900px) {
-  .about.about-v2 .about-video {
-    max-width: 520px;
-    margin: 0 auto; /* center on mobile */
-  }
+  .about.about-v3 .about-video { max-width: 520px; margin: 0 auto; }
 }
 
-/* The key: cap video height on mobile so it doesn't dominate */
-.about.about-v2 .about-video__el {
+.about.about-v3 .about-video__el {
   width: 100%;
   display: block;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-
-  max-height: 240px; /* desktop-ish */
+  max-height: 240px;
 }
 
 @media (max-width: 520px) {
-  .about.about-v2 .about-video__el {
-    max-height: 180px; /* mobile cap */
-  }
+  .about.about-v3 .about-video__el { max-height: 180px; }
 }
 
-.about.about-v2 .about-video__caption {
+.about.about-v3 .about-video__caption {
   margin: 0;
   font-size: 0.95rem;
   color: rgba(220, 230, 245, 0.78);
@@ -161,14 +145,10 @@
 }
 
 @media (max-width: 900px) {
-  .about.about-v2 .about-video__caption {
-    margin: 0 auto;
-    max-width: 520px;
-  }
+  .about.about-v3 .about-video__caption { margin: 0 auto; max-width: 520px; }
 }
 
-/* Tap hint */
-.about.about-v2 .about-video__hint {
+.about.about-v3 .about-video__hint {
   position: absolute;
   left: 0.75rem;
   bottom: 0.75rem;
@@ -177,36 +157,27 @@
   gap: 0.55rem;
   padding: 0.5rem 0.75rem;
   border-radius: 999px;
-
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
-
   color: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
   user-select: none;
   pointer-events: none;
 }
 
-.about.about-v2 .about-video__hintIcon {
+.about.about-v3 .about-video__hintIcon {
   width: 28px;
   height: 28px;
   display: grid;
   place-items: center;
   border-radius: 999px;
-
   background: rgba(54, 163, 255, 0.18);
   border: 1px solid rgba(54, 163, 255, 0.22);
   text-shadow: 0 0 10px rgba(54, 163, 255, 0.35);
 }
 
-.about.about-v2 .about-video__hintText {
-  font-size: 0.95rem;
-  letter-spacing: 0.15px;
-  opacity: 0.95;
-}
-
-.about.about-v2 .about-video__hint.is-hidden {
+.about.about-v3 .about-video__hint.is-hidden {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 250ms ease, transform 250ms ease;
@@ -215,7 +186,7 @@
 /* ------------------------------
    BODY WRAP + CARDS
 ------------------------------ */
-.about.about-v2 .about-wrap {
+.about.about-v3 .about-wrap {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -225,12 +196,10 @@
   gap: 1rem;
 }
 
-.about.about-v2 .about-card {
-  padding: clamp(1.05rem, 2.2vw, 1.6rem);
-}
+.about.about-v3 .about-card { padding: clamp(1.05rem, 2.2vw, 1.6rem); }
 
-/* Headings w/ icons */
-.about.about-v2 .about-h2 {
+/* Headings with glyph icon */
+.about.about-v3 .about-h2 {
   margin: 0 0 0.65rem;
   font-size: clamp(1.22rem, 1.85vw, 1.55rem);
   letter-spacing: 0.2px;
@@ -239,34 +208,34 @@
   gap: 0.6rem;
 }
 
-.about.about-v2 .about-h2__icon svg {
+.about.about-v3 .about-h2__icon {
   width: 22px;
   height: 22px;
-  display: block;
-  color: rgba(54, 163, 255, 0.92);
-  filter: drop-shadow(0 0 10px rgba(54, 163, 255, 0.16));
+  flex: 0 0 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+
+  color: rgba(54, 163, 255, 0.95);
+  background: rgba(54, 163, 255, 0.10);
+  border: 1px solid rgba(54, 163, 255, 0.16);
+
+  font-size: 1rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px rgba(54, 163, 255, 0.10));
 }
 
-/* Paragraph color: subtle but noticeable */
-.about.about-v2 .about-card p {
+/* Paragraph color accents */
+.about.about-v3 .about-card p {
   margin: 0 0 0.85rem;
-  color: rgba(232, 240, 255, 0.86); /* soft silver-blue */
+  color: rgba(232, 240, 255, 0.86);
 }
 
-.about.about-v2 .about-card p strong {
-  color: rgba(245, 248, 255, 0.94);
-}
+.about.about-v3 .about-card p strong { color: rgba(245, 248, 255, 0.94); }
+.about.about-v3 .about-card p:last-child { margin-bottom: 0; }
+.about.about-v3 .about-muted { opacity: 0.82; }
 
-.about.about-v2 .about-card p:last-child {
-  margin-bottom: 0;
-}
-
-.about.about-v2 .about-muted {
-  opacity: 0.82;
-}
-
-/* Quote box: add slight color */
-.about.about-v2 .about-quote {
+.about.about-v3 .about-quote {
   margin: 0.9rem 0 1rem;
   padding: 0.85rem 1rem;
   border-radius: 14px;
@@ -275,15 +244,14 @@
   color: rgba(235, 244, 255, 0.90);
 }
 
-/* Lists */
-.about.about-v2 .about-list,
-.about.about-v2 .about-principles {
+.about.about-v3 .about-list,
+.about.about-v3 .about-principles {
   margin: 0.6rem 0 0.95rem 1.1rem;
   padding: 0;
 }
 
-.about.about-v2 .about-list li,
-.about.about-v2 .about-principles li {
+.about.about-v3 .about-list li,
+.about.about-v3 .about-principles li {
   margin: 0.35rem 0;
   padding-left: 0.2rem;
   color: rgba(230, 238, 255, 0.86);
@@ -292,12 +260,9 @@
 /* ------------------------------
    CLOSING / CTA
 ------------------------------ */
-.about.about-v2 .about-card--closing {
-  position: relative;
-  overflow: hidden;
-}
+.about.about-v3 .about-card--closing { position: relative; overflow: hidden; }
 
-.about.about-v2 .about-card--closing::before {
+.about.about-v3 .about-card--closing::before {
   content: "";
   position: absolute;
   inset: -40% -20%;
@@ -309,33 +274,30 @@
   pointer-events: none;
 }
 
-.about.about-v2 .about-actions {
+.about.about-v3 .about-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
 }
 
-.about.about-v2 .about-btn {
+.about.about-v3 .about-btn {
   min-width: 170px;
   justify-content: center;
   text-align: center;
 }
 
 @media (max-width: 520px) {
-  .about.about-v2 .about-btn {
-    width: 100%;
-    min-width: 0;
-  }
+  .about.about-v3 .about-btn { width: 100%; min-width: 0; }
 }
 
-.about.about-v2 .about-btn--ghost {
+.about.about-v3 .about-btn--ghost {
   background: transparent !important;
   border: 1px solid rgba(54, 163, 255, 0.28) !important;
   box-shadow: none !important;
   opacity: 0.95;
 }
 
-.about.about-v2 .about-btn--ghost:hover {
+.about.about-v3 .about-btn--ghost:hover {
   border-color: rgba(255, 110, 25, 0.40) !important;
 }

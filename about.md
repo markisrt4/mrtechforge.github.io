@@ -3,7 +3,7 @@ layout: default
 title: "About"
 permalink: /about/
 description: "Meet Mark — the engineer behind M.R. TechForge. Clear, dependable systems, built with care, and explained in plain language."
-class: about about-v2
+class: about about-v3
 ---
 
 <section class="about-hero">
@@ -23,32 +23,21 @@ class: about about-v2
         <strong class="about-brand">M.R. TechForge</strong>.
       </p>
 
-      <div class="about-hero__quick">
+      <div class="about-hero__quick" aria-label="Quick traits">
         <div class="about-pill">
-          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          </svg>
+          <span class="about-ico" aria-hidden="true">✦</span>
           Warm engineering
         </div>
-
         <div class="about-pill">
-          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
+          <span class="about-ico" aria-hidden="true">≡</span>
           Clear communication
         </div>
-
         <div class="about-pill">
-          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          </svg>
+          <span class="about-ico" aria-hidden="true">🛡</span>
           Security-minded
         </div>
-
         <div class="about-pill">
-          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 20h10M9 16h6M10 4h4l1 5H9l1-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <span class="about-ico" aria-hidden="true">⟠</span>
           Built to last
         </div>
       </div>
@@ -85,15 +74,12 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.5" opacity="0.9"/>
-      </svg>
+      <span class="about-h2__icon" aria-hidden="true">⌁</span>
       How I think about technology
     </h2>
     <p>
       I build systems that are <strong>clear, dependable, and quietly useful</strong>.
-      Not flashy. Not bloated. Just technology that works the way you expect it to — (and explains itself along the way).
+      Not flashy. Not bloated. Just technology that works the way you expect it to — and explains itself along the way.
     </p>
     <p>
       Good engineering doesn’t just solve problems; it builds confidence.
@@ -103,10 +89,7 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 21s7-4 7-11V6l-7-3-7 3v4c0 7 7 11 7 11z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M8.5 12.2l2.1 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <span class="about-h2__icon" aria-hidden="true">✓</span>
       The why
     </h2>
     <p>
@@ -129,11 +112,7 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M9 3h6M10 21h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
-      </svg>
+      <span class="about-h2__icon" aria-hidden="true">▣</span>
       What I build
     </h2>
     <p>
@@ -155,11 +134,7 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 10h16v8H4z" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
+      <span class="about-h2__icon" aria-hidden="true">★</span>
       Teaching, learning, and the next generation
     </h2>
     <p>
@@ -175,10 +150,7 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 2l3.2 6.8L22 12l-6.8 3.2L12 22l-3.2-6.8L2 12l6.8-3.2L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M9.5 12h5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-      </svg>
+      <span class="about-h2__icon" aria-hidden="true">✶</span>
       How I work
     </h2>
     <ul class="about-principles">
@@ -195,10 +167,7 @@ class: about about-v2
 
   <div class="forge-card about-card about-card--closing">
     <h2 class="about-h2">
-      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 12s3-7 9-7 9 7 9 7-3 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M12 9.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z" stroke="currentColor" stroke-width="1.6"/>
-      </svg>
+      <span class="about-h2__icon" aria-hidden="true">◉</span>
       A human moment
     </h2>
     <p>
@@ -247,9 +216,5 @@ class: about about-v2
         toggle();
       }
     });
-
-    window.addEventListener("touchstart", () => {
-      if (!video.paused) hideHint();
-    }, { once: true });
   })();
 </script>
