@@ -1,10 +1,11 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.x hotfix)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.x patched)
    File: assets/css/pages/_pages-home.scss
 
-   Fixes:
-   - Hero stamp sweep: remove orange "ghosting" by masking sweep band
-   - Buttons: slightly shorter + more side breathing room
+   Fixes in this patch:
+   - Prevent button glow/pseudo-elements being clipped inside forge-card
+   - Home buttons have side breathing room on mobile
+   - Slightly reduced button height
    ========================================================== */
 
 /* ------------------------------
@@ -17,92 +18,47 @@
 /* A safe max width helper */
 .home-max {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 /* ------------------------------
-   HERO INTRO (TEXT OUTSIDE CARD)
+   HERO INTRO
 ------------------------------ */
 .home-hero-intro {
-  padding: 1.3rem 1rem 0.4rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.4rem 1rem 0.6rem;
 }
 
 .hero-intro-top {
   text-align: center;
+  padding: 0.6rem 0.2rem 1rem;
 }
 
 .hero-stamp-sweep {
-  position: relative;
-  display: inline-block;
-
   font-family: "Orbitron", sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.10em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-size: 1.6rem;
+  line-height: 1.1;
 
-  font-size: clamp(1.55rem, 4.6vw, 2.5rem);
-  color: rgba(var(--forge-accent-rgb), 0.98);
-
+  color: #0aa8ff;
   text-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.32),
-    0 0 34px rgba(var(--forge-accent-rgb), 0.18);
+    0 0 10px rgba(0, 170, 255, 0.35),
+    0 0 22px rgba(0, 170, 255, 0.20);
 
-  /* helps avoid subpixel shimmer on mobile */
-  transform: translateZ(0);
-}
-
-/* ✅ FIX: masked sweep band so the orange never "ghosts" the whole word */
-.hero-stamp-sweep::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-
-  /* orange band color */
-  color: rgba(var(--forge-hotmetal-rgb), 0.92);
-
-  /* mask creates a narrow visible band that moves across */
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    #000 45%,
-    #000 55%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    #000 45%,
-    #000 55%,
-    transparent 100%
-  );
-
-  -webkit-mask-size: 220% 100%;
-  mask-size: 220% 100%;
-
-  -webkit-mask-position: -120% 50%;
-  mask-position: -120% 50%;
-
-  opacity: 0.55;
-  mix-blend-mode: screen;
-
-  /* subtle glow ONLY (no drop-shadow that causes "full text" ghosting) */
-  text-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.18);
-
-  animation: heroSweepMask 6.5s linear infinite;
-}
-
-@keyframes heroSweepMask {
-  0%   { -webkit-mask-position: -120% 50%; mask-position: -120% 50%; }
-  100% { -webkit-mask-position: 120% 50%;  mask-position: 120% 50%; }
+  margin-bottom: 0.75rem;
 }
 
 .hero-headline {
-  margin: 0.75rem 0 0.25rem;
-  line-height: 1.08;
+  margin: 0.15rem auto 0.75rem;
+  line-height: 1.05;
   text-align: center;
+  max-width: 680px;
 }
 
 .hero-line {
@@ -110,41 +66,29 @@
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-size: clamp(2.1rem, 8.2vw, 3.4rem);
-  display: inline-block;
+  font-size: clamp(2.0rem, 7vw, 3.25rem);
 }
 
-.hero-line-blue {
-  color: rgba(var(--forge-accent-rgb), 0.98);
-  text-shadow:
-    0 0 24px rgba(var(--forge-accent-rgb), 0.22),
-    0 0 42px rgba(var(--forge-accent-rgb), 0.12);
-}
-
-.hero-line-silver {
-  color: rgba(210, 215, 225, 0.96);
-  text-shadow:
-    0 0 22px rgba(210, 215, 225, 0.14);
-}
-
-.hero-line-hot {
-  color: rgba(var(--forge-hotmetal-rgb), 0.96);
-  text-shadow:
-    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.16),
-    0 0 40px rgba(var(--forge-hotmetal-rgb), 0.10);
-}
+.hero-line-blue   { color: #0aa8ff; text-shadow: 0 0 16px rgba(0,170,255,0.28); }
+.hero-line-silver { color: #cfd6df; text-shadow: 0 0 14px rgba(207,214,223,0.22); }
+.hero-line-hot    { color: #ffb64a; text-shadow: 0 0 18px rgba(255,182,74,0.24); }
 
 .hero-subtitle {
-  max-width: 64ch;
-  margin: 0.6rem auto 0;
+  max-width: 820px;
+  margin: 0.5rem auto 0;
   font-size: 1.05rem;
-  line-height: 1.55;
+  opacity: 0.95;
 }
 
-/* Actions card block */
+/* ------------------------------
+   HERO ACTIONS CARD
+------------------------------ */
 .hero-intro-actions {
-  margin-top: 0.85rem;
-  padding: 1.25rem; /* ✅ more breathing room around buttons */
+  margin: 1.15rem auto 0;
+  padding: 1.15rem;
+
+  /* ✅ IMPORTANT: allow button glow to render outside without being clipped */
+  overflow: visible;
 }
 
 .hero-actions {
@@ -153,255 +97,334 @@
   gap: 0.85rem;
 }
 
-/* ✅ Buttons: slightly shorter, plus "side breathing room" */
+/* ✅ Buttons: shorter + centered with side breathing room */
 .home-btn {
   width: 100%;
+  max-width: 440px;       /* gives side padding automatically */
+  margin: 0 auto;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem;
+  gap: 0.55rem;
 
-  min-height: 46px; /* was 52 */
+  min-height: 44px;
 }
 
 /* Badges */
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 0.9rem;
   justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.45rem 0.7rem;
+  gap: 0.45rem;
+
+  padding: 0.5rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.92rem;
 
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
-  color: rgba(230, 240, 255, 0.86);
+  background: rgba(6, 20, 35, 0.62);
+  border: 1px solid rgba(40, 130, 210, 0.35);
 
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.08);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
 }
 
 /* ------------------------------
-   HERO VIDEO (YOUTUBE) — NOT A CARD
+   HERO VIDEO
 ------------------------------ */
 .home-hero-video {
-  padding: 1.05rem 1rem 0.2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 1rem auto 0;
+  padding: 0 1rem;
 }
 
 .hero-video-wrap {
-  display: grid;
-  gap: 0.55rem;
+  width: 100%;
 }
 
-/* Premium frame, but NOT forge-card */
 .hero-video-shell {
-  border-radius: 16px;
-  overflow: hidden;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  background: linear-gradient(180deg, rgba(10, 16, 30, 0.72), rgba(5, 8, 14, 0.85));
-
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.55),
-    0 0 28px rgba(var(--forge-accent-rgb), 0.10);
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .hero-video-card {
-  padding: 0;
+  width: 100%;
 }
 
 .hero-youtube-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  border-radius: 18px;
   overflow: hidden;
+  border: 1px solid rgba(40, 130, 210, 0.45);
+  box-shadow: 0 0 22px rgba(0, 140, 255, 0.16);
+}
+
+.hero-youtube-frame::before {
+  content: attr(data-tap-hint);
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  z-index: 3;
+
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 182, 74, 0.28);
+  color: rgba(230, 238, 246, 0.92);
 }
 
 .hero-youtube-iframe {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 9;
   border: 0;
   display: block;
 }
 
-/* overlay play ring */
+/* overlay (play ring) */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
   pointer-events: none;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.55));
 }
 
 .play-ring {
-  width: 84px;
-  height: 84px;
+  width: 86px;
+  height: 86px;
   border-radius: 999px;
-  border: 2px solid rgba(210, 215, 225, 0.55);
+  border: 2px solid rgba(255, 182, 74, 0.55);
   box-shadow:
-    0 0 22px rgba(var(--forge-accent-rgb), 0.22),
-    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.10);
+    0 0 20px rgba(255, 182, 74, 0.25),
+    0 0 22px rgba(0, 170, 255, 0.18);
   display: grid;
   place-items: center;
-  background: rgba(0,0,0,0.18);
-  backdrop-filter: blur(2px);
 }
 
 .play-triangle {
   width: 0;
   height: 0;
-  border-left: 20px solid rgba(240, 245, 255, 0.88);
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  transform: translateX(2px);
+  border-left: 18px solid rgba(230, 238, 246, 0.92);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 4px;
 }
 
-/* video meta chips */
+/* Meta chips */
 .hero-video-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 0.95rem;
-  gap: 0.75rem;
+  margin: 0.85rem auto 0;
+  text-align: center;
 }
 
 .chip-title {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
   font-family: "Orbitron", sans-serif;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(220, 230, 245, 0.90);
-  font-weight: 800;
-  font-size: 0.95rem;
+  border: 1px solid rgba(40, 130, 210, 0.35);
+  background: rgba(7, 18, 30, 0.58);
 }
 
 .chip-sub {
-  font-size: 0.95rem;
-  opacity: 0.88;
+  margin-top: 0.45rem;
+  opacity: 0.9;
 }
 
-/* caption */
+/* Video caption */
 .hero-video-caption {
-  font-size: 0.98rem;
-  opacity: 0.90;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
+  margin: 0.75rem auto 0;
+  text-align: center;
+  max-width: 760px;
 }
 
 /* ------------------------------
    QUICK GRID
 ------------------------------ */
 .home-quick-grid {
-  padding: 1rem 1rem 0.25rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.4rem auto 0;
+  padding: 0 1rem;
+
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
 .quick-card {
-  padding: 1.15rem;
+  padding: 1.25rem 1.15rem;
 }
 
 .quick-title-row {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 0.55rem;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .quick-title-row h2 {
   margin: 0;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .quick-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
+  margin: 0.85rem 0 0;
+  padding-left: 1.15rem;
 }
 
-.quick-foot {
-  margin-top: 0.75rem;
+.quick-list li {
+  margin: 0.45rem 0;
+}
+
+.home-inline-link {
+  color: #0aa8ff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* ------------------------------
-   VALUES
+   VALUES / PILLARS
 ------------------------------ */
-.home-section-card {
-  margin: 1rem 1rem 0.25rem;
-  padding: 1.2rem;
+.home-pillars {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.6rem auto 0;
+  padding: 1.4rem 1.2rem;
+}
+
+.home-pillars h2 {
+  margin: 0 0 1rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .pillar-grid {
   display: grid;
-  gap: 0.9rem;
-  margin-top: 0.9rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
 .pillar-card {
-  padding: 1.1rem;
+  padding: 1.1rem 1rem;
+}
+
+.pillar-card h3 {
+  margin: 0 0 0.5rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffb64a;
 }
 
 /* ------------------------------
    HOW IT WORKS
 ------------------------------ */
+.home-how {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.6rem auto 0;
+  padding: 1.4rem 1.2rem;
+
+  /* ✅ allow button glow inside this card too */
+  overflow: visible;
+}
+
+.home-how h2 {
+  margin: 0 0 1rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .how-steps {
   list-style: none;
-  margin: 0.9rem 0 0;
   padding: 0;
+  margin: 0;
   display: grid;
   gap: 0.85rem;
 }
 
 .mini-card {
-  padding: 0.95rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .step-number {
+  display: inline-block;
   font-family: "Orbitron", sans-serif;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-weight: 900;
-  color: rgba(var(--forge-accent-rgb), 0.95);
+  color: #0aa8ff;
+  margin-bottom: 0.3rem;
+}
+
+.step-text {
   display: block;
-  margin-bottom: 0.35rem;
 }
 
 .how-actions {
+  margin-top: 1.1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
-  margin-top: 0.95rem;
 }
 
 /* ------------------------------
    FINAL CTA
 ------------------------------ */
 .home-final-callout {
-  padding: 1.2rem 1rem 2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.7rem auto 2.2rem;
+  padding: 0 1rem;
 }
 
 .final-card {
-  padding: 1.25rem;
-  text-align: center;
+  padding: 1.3rem 1.2rem;
+
+  /* ✅ allow button glow inside this card too */
+  overflow: visible;
 }
 
 .final-brand {
-  margin-bottom: 0.65rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
 }
 
 .final-slogan {
+  text-align: center;
+  margin: 0.55rem 0 1rem;
   display: grid;
-  gap: 0.2rem;
-  margin: 0.65rem auto 0.9rem;
-  max-width: 52ch;
+  gap: 0.25rem;
 }
 
 .final-slogan .accent {
-  color: rgba(var(--forge-hotmetal-rgb), 0.96);
+  color: #ffb64a;
 }
 
 .final-actions {
@@ -411,25 +434,19 @@
 }
 
 /* ------------------------------
-   MOBILE
+   RESPONSIVE
 ------------------------------ */
-@media (max-width: 740px) {
-  .hero-actions,
-  .how-actions,
-  .final-actions {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 980px) {
+  .home-quick-grid { grid-template-columns: 1fr; }
+  .pillar-grid { grid-template-columns: 1fr; }
+}
 
-  /* ✅ Adds side breathing room so buttons don’t feel edge-to-edge */
-  .hero-intro-actions {
-    padding: 1.15rem;
-  }
+@media (max-width: 720px) {
+  .hero-actions { grid-template-columns: 1fr; }
+  .how-actions { grid-template-columns: 1fr; }
+  .final-actions { grid-template-columns: 1fr; }
 
-  .home-btn {
-    min-height: 44px;
-  }
-
-  .hero-subtitle {
-    font-size: 1.02rem;
-  }
+  /* a touch more breathing room on small screens */
+  .home-hero-intro { padding-left: 0.9rem; padding-right: 0.9rem; }
+  .home-hero-video { padding-left: 0.9rem; padding-right: 0.9rem; }
 }
