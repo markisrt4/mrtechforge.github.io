@@ -1,38 +1,81 @@
+{% comment %}
+  breadcrumbs.html
+  - Robust breadcrumb trail based on site.data.navigation.main
+  - Fixes incorrect page detection due to bad split syntax / partial matches
+{% endcomment %}
+
+{% assign nav_root = site.data.navigation.main | default: site.data.navigation %}
+{% assign home_url = "/" | relative_url %}
+
 {% assign current_url = page.url | default: "/" %}
+{% assign current_url = current_url | replace: "index.html", "" %}
+
+{%- comment -%}
+  Normalize: ensure leading slash, and remove any double slashes.
+{%- endcomment -%}
+{% unless current_url startswith "/" %}
+  {% assign current_url = "/" | append: current_url %}
+{% endunless %}
+{% assign current_url = current_url | replace: "//", "/" %}
+
+{%- comment -%}
+  Helper: compare “clean” urls (strip trailing slash except root)
+{%- endcomment -%}
+{% assign current_clean = current_url | replace: "//", "/" %}
+{% if current_clean != "/" %}
+  {% assign current_clean = current_clean | replace: "/$", "" %}
+{% endif %}
 
 {% assign top_item = nil %}
 {% assign child_item = nil %}
 
-{% for item in site.data.navigation.main %}
-  {% assign item_clean = item.url | default:"/" | split:"#": | first %}
+{% if nav_root %}
+  {%- for item in nav_root -%}
+    {% assign item_url = item.url | default: "" %}
+    {% assign item_clean = item_url | replace: "index.html", "" | replace: "//", "/" %}
+    {% if item_clean != "/" %}
+      {% assign item_clean = item_clean | replace: "/$", "" %}
+    {% endif %}
 
-  {% if current_url == item_clean or current_url contains item_clean %}
-    {% assign top_item = item %}
-  {% endif %}
+    {%- comment -%}
+      Prefer exact match. Otherwise allow “starts with” match for sections like /services/...
+    {%- endcomment -%}
+    {% if current_clean == item_clean or (item_clean != "/" and current_clean != "/" and current_clean contains item_clean) %}
+      {% assign top_item = item %}
 
-  {% if item.children %}
-    {% for child in item.children %}
-      {% assign child_clean = child.url | split:"#": | first %}
-      {% if current_url == child_clean or current_url contains child_clean %}
-        {% assign top_item = item %}
-        {% assign child_item = child %}
+      {% if item.dropdown %}
+        {%- for child in item.dropdown -%}
+          {% assign child_url = child.url | default: "" %}
+          {% assign child_clean = child_url | replace: "index.html", "" | replace: "//", "/" %}
+          {% if child_clean != "/" %}
+            {% assign child_clean = child_clean | replace: "/$", "" %}
+          {% endif %}
+
+          {% if current_clean == child_clean %}
+            {% assign child_item = child %}
+          {% endif %}
+        {%- endfor -%}
       {% endif %}
-    {% endfor %}
+    {% endif %}
+  {%- endfor -%}
+{% endif %}
+
+<nav class="forge-breadcrumbs" aria-label="Breadcrumbs">
+  <a href="{{ home_url }}">Home</a>
+
+  {% if top_item and top_item.title and top_item.url and current_clean != "/" %}
+    <span class="sep">/</span>
+    <a href="{{ top_item.url | relative_url }}">{{ top_item.title }}</a>
   {% endif %}
-{% endfor %}
 
-{% unless current_url == "/" %}
-<nav class="forge-breadcrumbs" aria-label="Breadcrumb">
-  <a href="/">Home</a>
-
-  {% if top_item and top_item.url != "/" %}
-    <span class="forge-breadcrumbs-separator">/</span>
-    <a href="{{ top_item.url }}">{{ top_item.title }}</a>
-  {% endif %}
-
-  {% if child_item %}
-    <span class="forge-breadcrumbs-separator">/</span>
-    <span class="forge-breadcrumbs-current">{{ child_item.title }}</span>
+  {% if child_item and child_item.title and child_item.url %}
+    <span class="sep">/</span>
+    <a href="{{ child_item.url | relative_url }}">{{ child_item.title }}</a>
+  {% elsif current_clean != "/" and (top_item == nil or (top_item and (top_item.url | replace:"/","") == "" )) %}
+    {%- comment -%}
+      Fallback: if not found in nav, show the page title.
+    {%- endcomment -%}
+    <span class="sep">/</span>
+    <span class="current">{{ page.title }}</span>
   {% endif %}
 </nav>
-{% endunless %}
