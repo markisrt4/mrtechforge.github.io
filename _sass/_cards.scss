@@ -39,6 +39,17 @@
 
 .forge-card p:last-child { margin-bottom: 0; }
 
+/* Hover lift utility (used by offering cards) */
+.forge-hoverlift {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.forge-hoverlift:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,0.46),
+    0 0 22px rgba(0,150,255,0.12);
+}
+
 /* ----------------------------------------------------------
    REUSABLE SNAPPY CARD SURFACE
    Apply to clickable/product/pricing cards for the premium feel.
