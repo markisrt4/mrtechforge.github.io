@@ -1,11 +1,12 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.1)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.2)
    File: assets/css/pages/_pages-home.scss
 
    Fixes:
-   - Restore stamp glow sweep: blue base + orange band rolling L->R
-   - Buttons not too wide on mobile
-   - Keep hero top outside card (your markup already does this)
+   - Hero headline OUTSIDE card
+   - 3-color intro lines
+   - Stamp glow: blue base + narrow orange sweep L->R (loop)
+   - Buttons not absurdly wide on mobile
    ========================================================== */
 
 /* ------------------------------
@@ -13,29 +14,6 @@
 ------------------------------ */
 .home.home-v8 {
   width: 100%;
-}
-
-/* Keep major sections centered */
-.home-hero-intro,
-.home.home-v8 .home-hero-video,
-.home.home-v8 .home-quick-grid,
-.home.home-v8 .home-section-card,
-.home.home-v8 .home-final-callout {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ------------------------------
-   HERO INTRO TOP (outside card)
------------------------------- */
-.home.home-v8 .home-hero-intro {
-  padding: 1.5rem 1.1rem 0.75rem;
-}
-
-.home.home-v8 .hero-intro-top {
-  text-align: center;
-  margin-bottom: 1.0rem;
 }
 
 /* ------------------------------
@@ -53,11 +31,11 @@
   opacity: 0.95;
 }
 
-/* ----------------------------------------------------------
-   HERO STAMP — BLUE BASE + ORANGE SWEEP
----------------------------------------------------------- */
-
-/* Base blue stamp */
+/* ------------------------------
+   HERO STAMP: BLUE BASE + ORANGE SWEEP
+   Use like:
+     <div class="hero-stamp-sweep" data-text="M.R. TECHFORGE">M.R. TECHFORGE</div>
+------------------------------ */
 .hero-stamp-sweep {
   position: relative;
   display: block;
@@ -71,68 +49,63 @@
   text-transform: uppercase;
   font-size: clamp(1.7rem, 3.8vw, 2.6rem);
 
-  /* Force “forge blue” base even if variables drift */
+  /* Force Forge Blue base */
   color: var(--forge-blue, #1ea0ff);
   text-shadow:
     0 0 10px rgba(30, 160, 255, 0.42),
-    0 0 20px rgba(30, 160, 255, 0.20);
+    0 0 20px rgba(30, 160, 255, 0.22);
 
   transform: translateZ(0);
-  will-change: filter;
 }
 
-/* Sweeping narrow orange band overlay */
+/* Narrow orange sweep overlay */
 .hero-stamp-sweep::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   pointer-events: none;
 
-  text-align: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  font: inherit;
   letter-spacing: inherit;
   text-transform: inherit;
+  text-align: inherit;
 
-  /* Make the text itself be the gradient */
   color: transparent;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
 
-  /* Narrow band + soft falloff (smaller portion of orange) */
+  /* narrow band centered ~50% with soft falloff */
   background-image: linear-gradient(
     90deg,
     rgba(255, 138, 42, 0.00) 0%,
-    rgba(255, 138, 42, 0.00) 44%,
+    rgba(255, 138, 42, 0.00) 46%,
     rgba(255, 138, 42, 0.95) 50%,
-    rgba(255, 138, 42, 0.00) 56%,
+    rgba(255, 138, 42, 0.00) 54%,
     rgba(255, 138, 42, 0.00) 100%
   );
 
-  /* Make the band move across */
   background-size: 260% 100%;
   background-position: -120% 0;
 
   filter: drop-shadow(0 0 10px rgba(255, 138, 42, 0.22));
-
-  animation: forgeHomeSweepGlow 3.6s linear infinite;
+  animation: forgeHomeSweepGlow 4.2s linear infinite;
 }
 
-/* If data-text missing, hide overlay */
+@keyframes forgeHomeSweepGlow {
+  0%   { background-position: -120% 0; opacity: 0.92; }
+  50%  { opacity: 1; }
+  100% { background-position: 120% 0; opacity: 0.92; }
+}
+
+/* If you forget data-text, don't show the overlay */
 .hero-stamp-sweep:not([data-text])::after {
   content: "";
   display: none;
 }
 
-@keyframes forgeHomeSweepGlow {
-  0%   { background-position: -120% 0; opacity: 0.95; }
-  50%  { opacity: 1; }
-  100% { background-position: 120% 0; opacity: 0.95; }
-}
-
 /* ------------------------------
-   HEADLINE (3 color lines)
+   HEADLINE (3 colors)
 ------------------------------ */
 .hero-headline {
   margin: 0;
@@ -158,38 +131,28 @@
   text-shadow: 0 0 16px rgba(255, 138, 42, 0.20);
 }
 
-/* Subtitle */
-.hero-subtitle {
-  margin: 0.85rem auto 0;
-  max-width: 68ch;
-}
-
 /* ------------------------------
-   HERO ACTIONS (in card)
+   HERO ACTIONS
    Fix: buttons too wide on mobile
 ------------------------------ */
 .hero-actions {
   display: grid;
   gap: 0.8rem;
-  margin-top: 0.15rem;
 }
 
-/* Your current .home-btn makes width:100% — keep that,
-   but cap it so it doesn’t become a massive slab on phones. */
+/* Cap button width so they don't become huge slabs */
 .home-btn {
   width: 100%;
   max-width: 360px;
   margin-left: auto;
   margin-right: auto;
+  min-height: 52px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem;
-  min-height: 52px;
 }
 
-/* On larger screens, allow buttons to expand naturally */
 @media (min-width: 900px) {
   .hero-actions {
     grid-auto-flow: column;
@@ -199,40 +162,4 @@
   .home-btn {
     max-width: 420px;
   }
-}
-
-/* ------------------------------
-   QUICK GRID + SECTIONS spacing
------------------------------- */
-.home.home-v8 .home-quick-grid {
-  padding: 1.0rem 1.1rem 0.5rem;
-  display: grid;
-  gap: 1.0rem;
-}
-
-@media (min-width: 900px) {
-  .home.home-v8 .home-quick-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.15rem;
-  }
-}
-
-/* Pillars and other large sections */
-.home.home-v8 .home-section-card {
-  margin: 1.2rem 1.1rem;
-}
-
-/* Final CTA spacing */
-.home.home-v8 .home-final-callout {
-  padding: 1.0rem 1.1rem 2.2rem;
-}
-
-/* Inline link style used in “What I do” list */
-.home-inline-link {
-  color: var(--forge-blue, #1ea0ff);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(30, 160, 255, 0.25);
-}
-.home-inline-link:hover {
-  border-bottom-color: rgba(255, 138, 42, 0.55);
 }
