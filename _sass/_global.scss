@@ -1,7 +1,17 @@
 /* ==========================================================
-   M.R. TECHFORGE — GLOBAL STYLES (v10.1)
+   M.R. TECHFORGE — GLOBAL STYLES (v10.2)
    Background • Typography • Layout • Link Behavior • Fixes
    ========================================================== */
+
+/* ------------------------------
+   GLOBAL BOX SIZING
+   Prevents width math from drifting
+------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 /* ------------------------------
    BACKGROUND + BASE TYPOGRAPHY
@@ -12,12 +22,18 @@ body {
   padding: 0;
   min-height: 100%;
   font-family: "Titillium Web", sans-serif;
+
   background: linear-gradient(180deg, #050505 0%, #000 100%);
   background-attachment: fixed;
+
   color: var(--forge-text);
   font-size: 1.05rem;
   line-height: 1.65;
-  overflow-x: hidden !important; /* prevents white edge scroll */
+
+  /* Important:
+     overflow-x:hidden can “fake” a right-leaning layout if something overflows left.
+     clip is safer + avoids scrollbars without shifting appearance. */
+  overflow-x: clip;
 }
 
 body {
@@ -26,14 +42,70 @@ body {
 }
 
 /* ------------------------------
-   MAIN CONTENT WRAPPER
+   GLOBAL CENTERED CONTAINER
+   This is the “stop hugging the right edge” fix.
+   We apply it to common Jekyll/minima wrappers.
 ------------------------------ */
-main {
+:root {
+  --forge-container-max: 1200px;
+  --forge-container-pad: 1rem;
+
+  /* Safe-area padding for notched phones */
+  --forge-safe-left: env(safe-area-inset-left, 0px);
+  --forge-safe-right: env(safe-area-inset-right, 0px);
+}
+
+.forge-container,
+main,
+.wrapper,
+.page-content,
+.site-header,
+.site-footer,
+.site-nav,
+.site-title,
+.footer-col-wrapper {
   width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
+  max-width: var(--forge-container-max);
+
+  /* Use logical properties so LTR/RTL safe */
+  margin-inline: auto;
+
+  /* Symmetric padding + safe-area */
+  padding-inline: calc(var(--forge-container-pad) + var(--forge-safe-left))
+                  calc(var(--forge-container-pad) + var(--forge-safe-right));
+}
+
+/* Main vertical spacing */
+main {
+  margin-block: 2rem;
+}
+
+/* Make sure theme sections don't re-introduce side bias */
+.page-content,
+.wrapper {
+  padding-inline: calc(var(--forge-container-pad) + var(--forge-safe-left))
+                  calc(var(--forge-container-pad) + var(--forge-safe-right));
+}
+
+/* ------------------------------
+   HARD STOP: NO ELEMENT SHOULD PUSH HORIZONTAL WIDTH
+   This prevents “one rogue element” from shifting the entire look.
+------------------------------ */
+img,
+svg,
+video,
+iframe,
+embed,
+object,
+pre,
+code,
+table {
+  max-width: 100%;
+}
+
+/* Pre/code can still overflow if lines are long — allow scroll instead of shifting layout */
+pre {
+  overflow-x: auto;
 }
 
 /* ------------------------------
@@ -55,18 +127,14 @@ h3 {
   transition: color 0.2s ease, text-shadow 0.25s ease;
 }
 
-/* ------------------------------
-   H1 / H3 — Forge Hotmetal
------------------------------- */
+/* H1 / H3 — Forge Hotmetal */
 h1,
 h3 {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 14px rgba(var(--forge-hotmetal-rgb), 0.55);
 }
 
-/* ------------------------------
-   H2 — Forge Blue (Services Heading Style)
------------------------------- */
+/* H2 — Forge Blue (Services Heading Style) */
 h2 {
   color: var(--forge-accent, #00b8d4);
   font-weight: 700;
@@ -90,6 +158,10 @@ h2 {
 
 /* Reduced glow on mobile to avoid clipping */
 @media (max-width: 600px) {
+  main {
+    margin-block: 1.25rem;
+  }
+
   h1,
   h2,
   h3 {
@@ -112,7 +184,7 @@ h2 {
 p,
 li {
   color: var(--forge-text);
-  text-shadow: none; /* crisp text everywhere */
+  text-shadow: none;
 }
 
 /* ------------------------------
