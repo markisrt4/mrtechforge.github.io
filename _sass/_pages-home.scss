@@ -1,12 +1,21 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.2 Stable)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.3)
    File: assets/css/pages/_pages-home.scss
 
-   Fixes:
-   - REMOVE ghosting on “M.R. TECHFORGE” by eliminating duplicate text overlay
-   - Animated sweep now uses ONE text layer (background-clip: text)
-   - Hero tagline lines bigger on mobile
-   - More vertical spacing between hero lines
+   Fixes in this revision:
+   1) "M.R. TechForge" stamp:
+      - darker blue
+      - sweep is slower
+      - sweep direction reversed (right -> left)
+      - avoids ghosting (single-layer background-clip text)
+
+   2) Weird layout under the YouTube video:
+      - hard styles for .hero-video-meta/.chip-* so no inherited avatar/circle nonsense
+      - consistent spacing + alignment on mobile
+
+   Notes:
+   - This file targets your actual index.md markup:
+     .home.home-v8, .hero-stamp-sweep, .hero-video-shell, .btn.btn-forge.home-btn, etc.
    ========================================================== */
 
 /* ------------------------------
@@ -16,7 +25,6 @@
   width: 100%;
 }
 
-/* A safe max width helper */
 .home.home-v8 .home-hero-intro,
 .home.home-v8 .home-hero-video,
 .home.home-v8 .home-quick-grid,
@@ -30,7 +38,7 @@
 /* ------------------------------
    MINI ICONS
 ------------------------------ */
-.mini-ico {
+.home.home-v8 .mini-ico {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,30 +51,27 @@
   border: 1px solid rgba(60, 180, 255, 0.18);
   box-shadow:
     0 0 14px rgba(60, 180, 255, 0.10),
-    inset 0 0 10px rgba(0,0,0,0.55);
+    inset 0 0 10px rgba(0, 0, 0, 0.55);
 
   font-size: 0.95rem;
 }
 
-/* ------------------------------
-   HERO INTRO (headline outside card)
------------------------------- */
-.home-hero-intro {
+/* ==========================================================
+   HERO INTRO (text outside card)
+========================================================== */
+.home.home-v8 .home-hero-intro {
   padding: 1.25rem 1rem 1.25rem;
 }
 
-/* Headline group container */
-.hero-intro {
-  margin: 0 auto;
+.home.home-v8 .hero-intro-top {
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ==========================================================
-   “M.R. TECHFORGE” STAMP (NO GHOSTING)
-   - single text layer
-   - orange sweep via animated background gradient
-   ========================================================== */
-.hero-stamp-sweep {
+   STAMP (NO GHOSTING) — darker blue + slower + reverse direction
+========================================================== */
+.home.home-v8 .hero-stamp-sweep {
   display: inline-block;
   position: relative;
 
@@ -76,101 +81,97 @@
   letter-spacing: 0.12em;
   font-size: clamp(1.85rem, 4.8vw, 3.05rem);
 
-  /* Single-layer sweep (blue base + orange band) */
+  /* Single layer text fill */
   color: transparent;
   -webkit-text-fill-color: transparent;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(60, 180, 255, 0.98) 0%,
-      rgba(60, 180, 255, 0.98) 42%,
-      rgba(255, 165, 85, 0.0) 47%,
-      rgba(255, 165, 85, 0.95) 50%,
-      rgba(255, 165, 85, 0.0) 53%,
-      rgba(60, 180, 255, 0.98) 58%,
-      rgba(60, 180, 255, 0.98) 100%
-    );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
   -webkit-background-clip: text;
   background-clip: text;
 
-  /* Glow is applied once (no double text render) */
-  filter: drop-shadow(0 0 12px rgba(60, 180, 255, 0.22))
-          drop-shadow(0 0 20px rgba(0, 0, 0, 0.55));
+  /* Darker blue base + orange sweep band */
+  background-image: linear-gradient(
+    90deg,
+    rgba(25, 105, 185, 0.98) 0%,
+    rgba(25, 105, 185, 0.98) 40%,
+    rgba(255, 165, 85, 0.00) 47%,
+    rgba(255, 165, 85, 0.95) 50%,
+    rgba(255, 165, 85, 0.00) 53%,
+    rgba(25, 105, 185, 0.98) 60%,
+    rgba(25, 105, 185, 0.98) 100%
+  );
+
+  background-size: 260% 100%;
+  background-position: 120% 50%;
+
+  /* Slower sweep, reversed direction */
+  animation: stampSweepRTL 7.2s linear infinite;
+
+  filter:
+    drop-shadow(0 0 12px rgba(25, 105, 185, 0.18))
+    drop-shadow(0 0 24px rgba(0, 0, 0, 0.55));
 
   margin: 0 0 0.9rem;
-  animation: stampSweepOneLayer 2.9s linear infinite;
 }
 
-@keyframes stampSweepOneLayer {
-  0%   { background-position: -120% 50%; }
-  100% { background-position: 120% 50%; }
+@keyframes stampSweepRTL {
+  0%   { background-position: 120% 50%; }
+  100% { background-position: -120% 50%; }
 }
 
-/* ------------------------------
-   HERO TAGLINE (3 lines)
------------------------------- */
-.hero-headline {
+/* ==========================================================
+   HERO HEADLINE (3 lines)
+   - more vertical spacing
+   - mobile: avoid feeling too wide
+========================================================== */
+.home.home-v8 .hero-headline {
   margin: 0;
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-
-  /* give room between lines globally */
   line-height: 1.12;
 }
 
-.hero-line {
+.home.home-v8 .hero-line {
   display: block;
-
-  /* Bigger than before (desktop stays strong, mobile gets room) */
   font-size: clamp(2.05rem, 5.8vw, 3.35rem);
 
-  /* More vertical spacing between stacked lines */
-  padding: 0.16em 0;
+  /* vertical breathing room (what you asked for) */
+  padding: 0.18em 0;
 
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 
-/* Colors */
-.hero-line-blue {
+.home.home-v8 .hero-line-blue {
   color: var(--forge-accent);
   text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.30),
-    0 0 20px rgba(var(--forge-accent-rgb), 0.16);
+    0 0 10px rgba(var(--forge-accent-rgb), 0.26),
+    0 0 20px rgba(var(--forge-accent-rgb), 0.14);
 }
 
-.hero-line-silver {
+.home.home-v8 .hero-line-silver {
   color: var(--forge-silver, #cfd6df);
   text-shadow:
-    0 0 10px rgba(220, 235, 255, 0.16),
-    0 0 18px rgba(220, 235, 255, 0.10);
+    0 0 10px rgba(220, 235, 255, 0.14),
+    0 0 18px rgba(220, 235, 255, 0.09);
 }
 
-.hero-line-hot {
+.home.home-v8 .hero-line-hot {
   color: var(--forge-hotmetal);
   text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.30),
-    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.18);
+    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.28),
+    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.16);
 }
 
-.hero-subtitle {
+.home.home-v8 .hero-subtitle {
   margin: 0.95rem 0 0;
   max-width: 72ch;
   font-size: 1.05rem;
   line-height: 1.55;
 }
 
-/* ------------------------------
-   HERO IMAGE SLOT (your JPEG under the tagline)
------------------------------- */
-.hero-forge-image {
+/* Image under the tagline */
+.home.home-v8 .hero-forge-image {
   width: 100%;
   max-width: 720px;
   display: block;
@@ -178,30 +179,30 @@
 
   border-radius: 18px;
   border: 1px solid rgba(0, 195, 255, 0.18);
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
 
   box-shadow:
-    0 0 28px rgba(0, 170, 255, 0.14),
-    0 0 22px rgba(255, 150, 60, 0.14),
-    inset 0 0 28px rgba(0,0,0,0.55);
+    0 0 28px rgba(0, 170, 255, 0.12),
+    0 0 22px rgba(255, 150, 60, 0.12),
+    inset 0 0 28px rgba(0, 0, 0, 0.55);
 }
 
-/* ------------------------------
+/* ==========================================================
    HERO ACTIONS (inside a card)
------------------------------- */
-.hero-intro-actions {
+========================================================== */
+.home.home-v8 .hero-intro-actions {
   margin-top: 1.1rem;
   padding: 1.05rem 1.05rem;
 }
 
-.hero-actions {
+.home.home-v8 .hero-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
 }
 
-/* Buttons (home page) */
-.home.home-v8 .forge-btn {
+/* Buttons on home use: .btn.btn-forge.home-btn */
+.home.home-v8 a.btn.btn-forge.home-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -223,20 +224,15 @@
   box-sizing: border-box;
 }
 
-.home.home-v8 .forge-btn span {
-  display: inline-block;
-  min-height: 0;
-}
-
 /* Badges */
-.hero-badges {
+.home.home-v8 .hero-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 0.95rem;
 }
 
-.hero-badge {
+.home.home-v8 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -248,158 +244,232 @@
   border: 1px solid rgba(60, 180, 255, 0.16);
   box-shadow: 0 0 16px rgba(60, 180, 255, 0.10);
 
-  color: rgba(235,245,255,0.90);
+  color: rgba(235, 245, 255, 0.90);
   font-size: 0.92rem;
 }
 
-/* ------------------------------
-   HOME VIDEO (embed block)
------------------------------- */
-.home-hero-video {
+/* ==========================================================
+   HERO VIDEO (YouTube)
+========================================================== */
+.home.home-v8 .home-hero-video {
   padding: 0 1rem 1.25rem;
 }
 
-.home-hero-video .video-wrap {
+.home.home-v8 .hero-video-wrap {
+  width: 100%;
+}
+
+/* shell around the embed + meta */
+.home.home-v8 .hero-video-shell {
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(60, 180, 255, 0.18);
+  background: rgba(0, 0, 0, 0.18);
+
   box-shadow:
     0 0 26px rgba(60, 180, 255, 0.10),
-    inset 0 0 28px rgba(0,0,0,0.65);
+    inset 0 0 28px rgba(0, 0, 0, 0.65);
 }
 
-/* Tap-to-play overlay hint */
-.video-wrap {
+/* Embed card */
+.home.home-v8 .hero-video-card.hero-video-embed {
+  padding: 0;
+}
+
+/* Responsive iframe frame */
+.home.home-v8 .hero-youtube-frame {
   position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
 }
 
-.video-tap-hint {
+/* iframe */
+.home.home-v8 .hero-youtube-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* overlay play ring */
+.home.home-v8 .hero-video-overlay {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
   pointer-events: none;
-  opacity: 1;
-  transition: opacity 220ms ease;
 }
 
-.video-tap-hint.is-hidden {
-  opacity: 0;
-}
-
-.play-ring {
+.home.home-v8 .play-ring {
   width: 78px;
   height: 78px;
   border-radius: 999px;
   display: grid;
   place-items: center;
 
-  background: rgba(0,0,0,0.40);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0, 0, 0, 0.40);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
     0 0 26px rgba(60, 180, 255, 0.18),
     0 0 22px rgba(255, 150, 60, 0.10);
 }
 
-.play-triangle {
+.home.home-v8 .play-triangle {
   font-size: 1.25rem;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   transform: translateX(2px);
 }
 
-/* ------------------------------
-   QUICK GRID
------------------------------- */
-.home-quick-grid {
+/* ==========================================================
+   VIDEO META (FIX “WEIRD CIRCLE” BELOW VIDEO)
+   This block must NOT inherit any chip/avatar component rules.
+========================================================== */
+.home.home-v8 .hero-video-meta {
+  /* hard reset-ish */
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0.85rem 0.95rem 0.95rem;
+
+  background: rgba(0, 0, 0, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  text-align: left;
+}
+
+/* If anything global adds pseudo elements to chips, nuke them here */
+.home.home-v8 .hero-video-meta::before,
+.home.home-v8 .hero-video-meta::after,
+.home.home-v8 .hero-video-meta .chip-title::before,
+.home.home-v8 .hero-video-meta .chip-title::after,
+.home.home-v8 .hero-video-meta .chip-sub::before,
+.home.home-v8 .hero-video-meta .chip-sub::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Title/subtitle appearance */
+.home.home-v8 .hero-video-meta .chip-title {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.05rem;
+}
+
+.home.home-v8 .hero-video-meta .chip-sub {
+  display: block;
+  margin-top: 0.25rem;
+  padding: 0;
+  opacity: 0.88;
+  font-size: 0.95rem;
+}
+
+/* caption under the whole shell */
+.home.home-v8 .hero-video-caption {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.2rem 0.1rem;
+}
+
+/* ==========================================================
+   QUICK OVERVIEW GRID
+========================================================== */
+.home.home-v8 .home-quick-grid {
   padding: 0 1rem 1.5rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.quick-card {
+.home.home-v8 .quick-card {
   padding: 1.05rem 1.05rem;
 }
 
-.quick-row {
+.home.home-v8 .quick-title-row {
   display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.quick-row h2 {
+.home.home-v8 .quick-title-row h2 {
   margin: 0;
 }
 
-.quick-list {
+.home.home-v8 .quick-list {
   margin: 0.75rem 0 0;
   padding-left: 1.1rem;
 }
 
-.quick-foot {
+.home.home-v8 .quick-foot {
   margin-top: 0.65rem;
 }
 
-/* ------------------------------
+/* ==========================================================
    RESPONSIVE
------------------------------- */
+========================================================== */
 @media (max-width: 980px) {
-  .home-quick-grid {
+  .home.home-v8 .home-quick-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 760px) {
-  .home-hero-intro {
+  .home.home-v8 .home-hero-intro {
     padding-top: 0.95rem;
   }
 
-  /* Stamp: keep strong on mobile */
-  .hero-stamp-sweep {
+  /* Keep stamp strong on mobile */
+  .home.home-v8 .hero-stamp-sweep {
     font-size: clamp(1.65rem, 7.0vw, 2.35rem);
     letter-spacing: 0.12em;
+    animation-duration: 8.4s; /* even slower on mobile */
   }
 
-  /* Hero lines: BIGGER on mobile + better vertical rhythm */
-  .hero-headline {
+  /* Hero lines: keep big + avoid wide feel */
+  .home.home-v8 .hero-headline {
     line-height: 1.18;
   }
 
-  .hero-line {
+  .home.home-v8 .hero-line {
     max-width: 92vw;
     margin-left: auto;
     margin-right: auto;
-
-    /* bump up vs previous version */
     font-size: clamp(2.15rem, 10.2vw, 3.05rem);
-    padding: 0.18em 0;
-
+    padding: 0.20em 0;
     letter-spacing: 0.015em;
     overflow-wrap: anywhere;
   }
 
-  /* Keep long words from feeling too wide */
-  .hero-line-silver,
-  .hero-line-hot {
-    letter-spacing: 0.01em;
-  }
-
-  .hero-actions {
+  .home.home-v8 .hero-actions {
     grid-template-columns: 1fr;
   }
 
-  .hero-intro-actions {
+  .home.home-v8 .hero-intro-actions {
     padding: 0.95rem;
   }
 
-  .play-ring {
+  .home.home-v8 .play-ring {
     width: 68px;
     height: 68px;
   }
 
-  .hero-forge-image {
+  .home.home-v8 .hero-forge-image {
     max-width: 92vw;
     margin-top: 1.05rem;
     border-radius: 16px;
+  }
+
+  /* Meta block: keep readable on mobile */
+  .home.home-v8 .hero-video-meta {
+    padding: 0.85rem 0.85rem 0.9rem;
+    text-align: left;
   }
 }
