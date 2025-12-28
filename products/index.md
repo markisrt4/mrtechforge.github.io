@@ -1,161 +1,155 @@
 ---
 layout: default
-title: "Products & Services"
+title: "Products"
 permalink: /products/
+class: products
+description: "Products from M.R. TechForge — physical triggers, practical gadgets, and tools that reduce friction."
 ---
 
+{% assign links = site.data.links %}
+
 <section class="forge-products">
-  <h1 class="page-title">Products &amp; Services</h1>
-  <p class="page-intro">
-    Tools, tags, gadgets, and services from M.R. TechForge (MRTF) — built to
-    simplify your digital life, protect your privacy, and keep your systems
-    calm and reliable.
-  </p>
 
-  <!-- ==========================
-       SERVICE HIGHLIGHTS
-     ========================== -->
-  <section class="product-section">
-    <div class="product-section-header">
-      <h2>Service Highlights</h2>
+  <!-- =========================================
+       HERO
+  ========================================== -->
+  <header class="forge-section-header">
+    <h1 class="page-title">Products</h1>
+    <p class="page-intro">
+      M.R. TechForge products are designed to <strong>reduce friction</strong> — tools that make the right action feel automatic.
+      Simple, durable, and built for real life.
+    </p>
+
+    <div class="forge-hero-cta">
+      <a class="forge-btn" href="{{ links.products.nfc | relative_url }}">Explore Forge NFC</a>
+      <a class="forge-btn" href="{{ links.products.gadgets | relative_url }}">Browse Gadgets</a>
+      <a class="forge-btn" href="{{ links.pages.contact | relative_url }}">Ask About Custom Packs</a>
+    </div>
+  </header>
+
+  <!-- Hero image that carries the vibe -->
+  <section class="forge-card" aria-label="Products hero image">
+    <div class="forge-card-media" style="aspect-ratio: 21 / 9;">
+      <img class="forge-card-img"
+           src="{{ '/assets/img/products/products-hero.jpg' | relative_url }}"
+           alt="Forge products on a desk: NFC tags, a phone, and small gadgets"
+           loading="lazy" />
     </div>
 
-    <div class="product-grid">
-      <!-- MRTF Private Cloud Node -->
-      <div class="product-card">
-        <h3>MRTF Private Cloud Node</h3>
-        <p>
-          A managed, on-prem private cloud and VPN entrypoint for your small
-          business. Your data stays on hardware you own, inside your building,
-          with encrypted remote access and nightly backups.
-        </p>
-        <ul>
-          <li>Keep business files on a mini-server in your office</li>
-          <li>Secure VPN access for staff working from home</li>
-          <li>Nightly backups to a separate, Windows-readable drive</li>
-          <li>Fully managed by M.R. TechForge</li>
-        </ul>
-
-        <span class="price price-contact">Service · Contact for quote</span>
-        <a class="btn-glow"
-           href="{{ '/services/private-cloud/' | relative_url }}">
-          Learn more about private cloud
-        </a>
+    <div class="forge-ideas-grid" style="margin-top: 0.95rem;">
+      <div class="forge-idea">
+        <h3>Physical triggers</h3>
+        <p>Tap-to-run routines that live where you need them.</p>
       </div>
-
-      <!-- Phone, Voice & Messaging -->
-      <div class="product-card">
-        <h3>Phone, Voice &amp; Messaging</h3>
-        <p>
-          Simple phone and texting systems that keep your personal number private
-          and make it easier for people to reach you.
-        </p>
-        <ul>
-          <li>A business phone number that isn’t your personal cell</li>
-          <li>“Press 1 for…” menus that sound friendly, not robotic</li>
-          <li>Auto-reply text lines for HOURS, ADDRESS, or INFO</li>
-          <li>Safer numbers for login codes or privacy-sensitive calls</li>
-        </ul>
-
-        <span class="price price-contact">Service · Contact for quote</span>
-        <a class="btn-glow"
-           href="{{ '/services/phone-voice-messaging/' | relative_url }}">
-          Learn more about phone &amp; messaging
-        </a>
+      <div class="forge-idea">
+        <h3>Practical by design</h3>
+        <p>No fluff — just tools that get used.</p>
+      </div>
+      <div class="forge-idea">
+        <h3>Premium presentation</h3>
+        <p>Snappy cards, clean UI, and strong visuals.</p>
+      </div>
+      <div class="forge-idea">
+        <h3>Built to expand</h3>
+        <p>Starter packs now, deeper workflows later.</p>
       </div>
     </div>
   </section>
 
-  <!-- ==========================
-       SHOP BY CATEGORY
-     ========================== -->
-  <section class="product-section">
+  <!-- =========================================
+       FEATURED CATEGORIES (snappy link cards)
+  ========================================== -->
+  <section class="product-section" aria-label="Featured product categories">
     <div class="product-section-header">
-      <h2>Shop by Category</h2>
+      <h2>Featured</h2>
     </div>
 
-    <div class="product-grid">
-      <!-- Private Cloud & VPN category -->
-      <div class="product-card">
-        <h3>Private Cloud &amp; VPN</h3>
-        <p>
-          On-prem mini-servers and secure VPN entrypoints for small businesses
-          that want control over their data without becoming their own IT department.
-        </p>
-        <ul>
-          <li>Store files on hardware you own, not “somewhere in the cloud”</li>
-          <li>Remote access for staff over an encrypted VPN tunnel</li>
-          <li>Backup plans that are actually usable on bad days</li>
-        </ul>
+    <div class="forge-products-grid">
 
-        <a class="btn-glow"
-           href="{{ '/products/private-cloud/' | relative_url }}">
-          Explore private cloud &amp; VPN
-        </a>
+      <a class="forge-product-card" href="{{ links.products.nfc | relative_url }}">
+        <div class="forge-card-topline">
+          <span class="forge-card-title">Forge NFC</span>
+          <span class="forge-badge">Most Popular</span>
+        </div>
+
+        <div class="forge-card-media" style="aspect-ratio: 16 / 9;">
+          <img class="forge-card-img"
+               src="{{ '/assets/img/products/nfc-hero.jpg' | relative_url }}"
+               alt="Phone tapping an NFC tag"
+               loading="lazy" />
+        </div>
+
+        <p>
+          Put a tag where a decision happens — desk, car, nightstand — then tap to run the routine you want.
+        </p>
+
+        <span class="forge-card-cta">Explore NFC →</span>
+      </a>
+
+      <a class="forge-product-card" href="{{ links.products.gadgets | relative_url }}">
+        <div class="forge-card-topline">
+          <span class="forge-card-title">Gadgets</span>
+          <span class="forge-badge">Practical</span>
+        </div>
+
+        <div class="forge-card-media" style="aspect-ratio: 16 / 9;">
+          <img class="forge-card-img"
+               src="{{ '/assets/img/products/gadgets-hero.jpg' | relative_url }}"
+               alt="Small practical gadgets on a workspace"
+               loading="lazy" />
+        </div>
+
+        <p>
+          Small hardware helpers and tools — curated and built to actually get used.
+        </p>
+
+        <span class="forge-card-cta">Browse Gadgets →</span>
+      </a>
+
+      <a class="forge-product-card" href="{{ links.pages.contact | relative_url }}">
+        <div class="forge-card-topline">
+          <span class="forge-card-title">Custom Packs</span>
+          <span class="forge-badge">By Request</span>
+        </div>
+
+        <div class="forge-card-media" style="aspect-ratio: 16 / 9;">
+          <img class="forge-card-img"
+               src="{{ '/assets/img/products/custom-hero.jpg' | relative_url }}"
+               alt="Custom kit concept with components and labels"
+               loading="lazy" />
+        </div>
+
+        <p>
+          Want a labeled NFC set, onboarding instructions, or a “tap-to-open” workflow for your org?
+        </p>
+
+        <span class="forge-card-cta">Contact →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       OPTIONAL: QUICK PATHS
+  ========================================== -->
+  <section class="forge-card" aria-label="Quick paths">
+    <h2 style="margin-top: 0;">Quick paths</h2>
+    <div class="forge-ideas-grid" style="margin-top: 0.9rem;">
+      <div class="forge-idea">
+        <h3>Start with a pack</h3>
+        <p>Buy once, place tags in your daily locations, and instantly feel the difference.</p>
+        <p style="margin-top: 0.65rem;">
+          <a class="forge-btn" href="{{ links.products.nfc | relative_url }}">Go to Forge NFC</a>
+        </p>
       </div>
-
-      <!-- NFC Tags & Automations category -->
-      <div class="product-card">
-        <h3>NFC Tags &amp; Automations</h3>
-        <p>
-          A whole line of MRTF NFC tags that trigger real-world actions with a tap:
-          Wi-Fi toggles, VPN connects, car mode, bedtime mode, guest Wi-Fi, SOS,
-          and more.
+      <div class="forge-idea">
+        <h3>Make it yours</h3>
+        <p>Custom tag label sets, guest pages, safety flows, or internal docs links for a team.</p>
+        <p style="margin-top: 0.65rem;">
+          <a class="forge-btn" href="{{ links.pages.contact | relative_url }}">Request a Custom Pack</a>
         </p>
-        <ul>
-          <li>Tap-to-toggle Wi-Fi, Bluetooth, or Focus modes</li>
-          <li>Share guest Wi-Fi without reading long passwords</li>
-          <li>Quick actions for the car, bedtime, or emergencies</li>
-          <li>Works with Android and iPhone automations</li>
-        </ul>
-
-        <a class="btn-glow"
-           href="{{ '/products/nfc/' | relative_url }}">
-          Browse NFC tags &amp; automations
-        </a>
-      </div>
-
-      <!-- Virtual Tools & Sessions category -->
-      <div class="product-card">
-        <h3>Virtual Tools &amp; Sessions</h3>
-        <p>
-          Remote tech help, downloadable toolkits, and (soon) phone and watch apps
-          or infrastructure-as-a-service options — all designed to give you more
-          control over your devices without having to be “the computer person.”
-        </p>
-        <ul>
-          <li>One-hour remote support sessions</li>
-          <li>Downloadable diagnostic and recovery tools</li>
-          <li>Future: Android / WearOS apps and small IaaS offerings</li>
-        </ul>
-
-        <a class="btn-glow"
-           href="{{ '/products/virtual/' | relative_url }}">
-          Explore virtual tools &amp; sessions
-        </a>
-      </div>
-
-      <!-- Tech Gadgets & Hardware category -->
-      <div class="product-card">
-        <h3>Tech Gadgets &amp; Hardware</h3>
-        <p>
-          MRTF-assembled hardware tools like the Ultimate Drive and ForgeSecure USB —
-          curated, tested gadgets that make fixing, rescuing, and securing systems
-          a lot less painful.
-        </p>
-        <ul>
-          <li>Multi-boot USB drives with rescue and diagnostic tools</li>
-          <li>Privacy-focused USB kits and utilities</li>
-          <li>Future hardware experiments as they graduate from the lab</li>
-        </ul>
-
-        <a class="btn-glow"
-           href="{{ '/products/gadgets/' | relative_url }}">
-          See tech gadgets &amp; hardware
-        </a>
       </div>
     </div>
   </section>
+
 </section>
-
-{% include cart-drawer.html %}
