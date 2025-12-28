@@ -1,12 +1,10 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.2)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.x hotfix)
    File: assets/css/pages/_pages-home.scss
 
    Fixes:
-   - Hero slogan alignment (centered + consistent line blocks)
-   - Buttons too wide on mobile (cap width + stack)
-   - YouTube sizing / centering (explicit max width, keeps 16:9)
-   - Slightly wider home sections + nicer spacing between cards
+   - Hero stamp sweep: remove orange "ghosting" by masking sweep band
+   - Buttons: slightly shorter + more side breathing room
    ========================================================== */
 
 /* ------------------------------
@@ -16,205 +14,181 @@
   width: 100%;
 }
 
-/* A safe max width helper (home only) */
-.home.home-v8 .home-hero-intro,
-.home.home-v8 .home-hero-video,
-.home.home-v8 .home-quick-grid,
-.home.home-v8 .home-section-card,
-.home.home-v8 .home-final-callout {
-  max-width: 1280px; /* slightly wider than before */
-  margin-left: auto;
-  margin-right: auto;
+/* A safe max width helper */
+.home-max {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* ------------------------------
-   MINI ICONS
------------------------------- */
-.mini-ico {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.25em;
-  min-width: 1.25em;
-  margin-right: 0.45rem;
-  opacity: 0.92;
-  filter: drop-shadow(0 0 10px rgba(var(--forge-accent-rgb), 0.18));
-}
-
-/* ------------------------------
-   HERO INTRO
+   HERO INTRO (TEXT OUTSIDE CARD)
 ------------------------------ */
 .home-hero-intro {
-  padding: 1.15rem 1rem 0.2rem;
+  padding: 1.3rem 1rem 0.4rem;
 }
 
-/* OUTSIDE CARD TOP AREA */
 .hero-intro-top {
   text-align: center;
-  padding: 0.2rem 0.2rem 0.65rem;
 }
 
-/* Stamp (your sweep glow) */
 .hero-stamp-sweep {
-  display: block;
-  width: fit-content;
-  margin: 0 auto 0.75rem;
-  text-align: center;
+  position: relative;
+  display: inline-block;
 
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
 
-  /* base */
-  color: var(--forge-accent);
+  font-size: clamp(1.55rem, 4.6vw, 2.5rem);
+  color: rgba(var(--forge-accent-rgb), 0.98);
+
   text-shadow:
-    0 0 12px rgba(var(--forge-accent-rgb), 0.35),
-    0 0 26px rgba(var(--forge-accent-rgb), 0.20);
+    0 0 18px rgba(var(--forge-accent-rgb), 0.32),
+    0 0 34px rgba(var(--forge-accent-rgb), 0.18);
 
-  position: relative;
-  isolation: isolate;
+  /* helps avoid subpixel shimmer on mobile */
+  transform: translateZ(0);
 }
 
-/* Sweep overlay (orange band that rolls L->R) */
+/* ✅ FIX: masked sweep band so the orange never "ghosts" the whole word */
 .hero-stamp-sweep::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   pointer-events: none;
 
-  /* the orange slice */
-  background: linear-gradient(
+  /* orange band color */
+  color: rgba(var(--forge-hotmetal-rgb), 0.92);
+
+  /* mask creates a narrow visible band that moves across */
+  -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(var(--forge-hotmetal-rgb), 0.00) 35%,
-    rgba(var(--forge-hotmetal-rgb), 0.85) 50%,
-    rgba(var(--forge-hotmetal-rgb), 0.00) 65%,
+    #000 45%,
+    #000 55%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 45%,
+    #000 55%,
     transparent 100%
   );
 
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-mask-size: 220% 100%;
+  mask-size: 220% 100%;
 
-  filter: drop-shadow(0 0 12px rgba(var(--forge-hotmetal-rgb), 0.25));
-  animation: heroSweep 4.6s linear infinite;
+  -webkit-mask-position: -120% 50%;
+  mask-position: -120% 50%;
+
+  opacity: 0.55;
+  mix-blend-mode: screen;
+
+  /* subtle glow ONLY (no drop-shadow that causes "full text" ghosting) */
+  text-shadow: 0 0 16px rgba(var(--forge-hotmetal-rgb), 0.18);
+
+  animation: heroSweepMask 6.5s linear infinite;
 }
 
-@keyframes heroSweep {
-  0%   { transform: translateX(-32%); opacity: 0; }
-  10%  { opacity: 1; }
-  50%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translateX(32%); opacity: 0; }
+@keyframes heroSweepMask {
+  0%   { -webkit-mask-position: -120% 50%; mask-position: -120% 50%; }
+  100% { -webkit-mask-position: 120% 50%;  mask-position: 120% 50%; }
 }
 
-/* Headline */
 .hero-headline {
-  margin: 0;
-  padding: 0.15rem 0 0.25rem;
-  line-height: 1.02;
+  margin: 0.75rem 0 0.25rem;
+  line-height: 1.08;
+  text-align: center;
+}
 
+.hero-line {
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-
-  text-align: center; /* ✅ align fix */
+  font-size: clamp(2.1rem, 8.2vw, 3.4rem);
+  display: inline-block;
 }
 
-/* Make each line behave consistently (helps alignment on mobile) */
-.hero-headline .hero-line {
-  display: block;     /* ✅ line up as blocks */
-  width: 100%;
-}
-
-/* 3-color lines */
 .hero-line-blue {
-  color: var(--forge-accent);
+  color: rgba(var(--forge-accent-rgb), 0.98);
   text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.30),
-    0 0 20px rgba(var(--forge-accent-rgb), 0.16);
+    0 0 24px rgba(var(--forge-accent-rgb), 0.22),
+    0 0 42px rgba(var(--forge-accent-rgb), 0.12);
 }
 
 .hero-line-silver {
-  color: var(--forge-silver, #cfd6df);
+  color: rgba(210, 215, 225, 0.96);
   text-shadow:
-    0 0 10px rgba(220, 235, 255, 0.16),
-    0 0 20px rgba(220, 235, 255, 0.10);
+    0 0 22px rgba(210, 215, 225, 0.14);
 }
 
 .hero-line-hot {
-  color: var(--forge-hotmetal, #f5b841);
+  color: rgba(var(--forge-hotmetal-rgb), 0.96);
   text-shadow:
-    0 0 12px rgba(var(--forge-hotmetal-rgb), 0.22),
-    0 0 26px rgba(var(--forge-hotmetal-rgb), 0.14);
+    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.16),
+    0 0 40px rgba(var(--forge-hotmetal-rgb), 0.10);
 }
 
 .hero-subtitle {
-  margin: 0.65rem auto 0;
-  max-width: 72ch;
-  text-align: center;
-  opacity: 0.92;
+  max-width: 64ch;
+  margin: 0.6rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
 }
 
-/* ACTIONS IN A CARD */
+/* Actions card block */
 .hero-intro-actions {
   margin-top: 0.85rem;
-  padding: 1rem;
+  padding: 1.25rem; /* ✅ more breathing room around buttons */
 }
 
-/* Buttons row */
 .hero-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
-  justify-items: center; /* ✅ keep buttons centered */
 }
 
-/* Home buttons */
+/* ✅ Buttons: slightly shorter, plus "side breathing room" */
 .home-btn {
-  /* ✅ cap width so they don’t become giant pills on phones */
   width: 100%;
-  max-width: 340px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.1rem;
 
-  min-height: 52px;
-
-  /* ✅ allow wrap so long labels don’t force width */
-  white-space: normal !important;
-  text-align: center;
-  line-height: 1.15;
+  min-height: 46px; /* was 52 */
 }
 
 /* Badges */
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 0.85rem;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-
-  padding: 0.35rem 0.6rem;
+  padding: 0.45rem 0.7rem;
   border-radius: 999px;
-
   font-size: 0.92rem;
-  background: rgba(0, 0, 0, 0.20);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.16);
+
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.18);
+  color: rgba(230, 240, 255, 0.86);
+
+  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.08);
 }
 
 /* ------------------------------
-   HERO VIDEO
+   HERO VIDEO (YOUTUBE) — NOT A CARD
 ------------------------------ */
 .home-hero-video {
   padding: 1.05rem 1rem 0.2rem;
@@ -223,43 +197,40 @@
 .hero-video-wrap {
   display: grid;
   gap: 0.55rem;
-
-  /* ✅ keep video from feeling “massive” */
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
+/* Premium frame, but NOT forge-card */
 .hero-video-shell {
   border-radius: 16px;
   overflow: hidden;
 
   border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  background: rgba(5, 8, 16, 0.86);
+  background: linear-gradient(180deg, rgba(10, 16, 30, 0.72), rgba(5, 8, 14, 0.85));
 
   box-shadow:
-    0 0 0 1px rgba(var(--forge-accent-rgb), 0.08) inset,
-    0 14px 34px rgba(0, 0, 0, 0.55);
+    0 18px 42px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(var(--forge-accent-rgb), 0.10);
 }
 
-/* Frame holds aspect ratio */
+.hero-video-card {
+  padding: 0;
+}
+
 .hero-youtube-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #000;
+  overflow: hidden;
 }
 
-/* Iframe */
 .hero-youtube-iframe {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  display: block;
 }
 
-/* Overlay play hint */
+/* overlay play ring */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
@@ -269,256 +240,196 @@
 }
 
 .play-ring {
-  width: 86px;
-  height: 86px;
+  width: 84px;
+  height: 84px;
   border-radius: 999px;
-
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.34);
+  border: 2px solid rgba(210, 215, 225, 0.55);
   box-shadow:
-    0 0 18px rgba(var(--forge-accent-rgb), 0.22),
-    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.18),
-    0 0 32px rgba(var(--forge-accent-rgb), 0.12);
-
-  background: rgba(0, 0, 0, 0.25);
+    0 0 22px rgba(var(--forge-accent-rgb), 0.22),
+    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.10);
   display: grid;
   place-items: center;
+  background: rgba(0,0,0,0.18);
+  backdrop-filter: blur(2px);
 }
 
 .play-triangle {
   width: 0;
   height: 0;
-  border-left: 18px solid rgba(245, 184, 65, 0.95);
-  border-top: 11px solid transparent;
-  border-bottom: 11px solid transparent;
+  border-left: 20px solid rgba(240, 245, 255, 0.88);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
   transform: translateX(2px);
 }
 
+/* video meta chips */
 .hero-video-meta {
-  padding: 0.85rem 1rem 1rem;
-  border-top: 1px solid rgba(var(--forge-accent-rgb), 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.95rem;
+  gap: 0.75rem;
 }
 
 .chip-title {
   font-family: "Orbitron", sans-serif;
-  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--forge-silver, #cfd6df);
+  color: rgba(220, 230, 245, 0.90);
+  font-weight: 800;
+  font-size: 0.95rem;
 }
 
 .chip-sub {
-  margin-top: 0.2rem;
+  font-size: 0.95rem;
   opacity: 0.88;
 }
 
+/* caption */
 .hero-video-caption {
-  margin-top: 0.15rem;
-  opacity: 0.9;
+  font-size: 0.98rem;
+  opacity: 0.90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 /* ------------------------------
    QUICK GRID
 ------------------------------ */
 .home-quick-grid {
-  padding: 0.9rem 1rem 0.15rem;
+  padding: 1rem 1rem 0.25rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
 .quick-card {
-  padding: 1.05rem 1.05rem; /* a touch more breathing room */
+  padding: 1.15rem;
 }
 
 .quick-title-row {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.4rem;
+  gap: 0.55rem;
+  margin-bottom: 0.55rem;
 }
 
 .quick-title-row h2 {
   margin: 0;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .quick-list {
-  margin: 0.6rem 0 0;
-  padding-left: 1.15rem;
-}
-
-.quick-list li {
-  margin: 0.35rem 0;
-}
-
-.home-inline-link {
-  color: var(--forge-accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
 }
 
 .quick-foot {
-  margin-top: 0.7rem;
-  opacity: 0.92;
+  margin-top: 0.75rem;
 }
 
 /* ------------------------------
-   SECTION CARDS
+   VALUES
 ------------------------------ */
 .home-section-card {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  padding: 1.1rem 1.1rem;
+  margin: 1rem 1rem 0.25rem;
+  padding: 1.2rem;
 }
 
-.home-section-card h2 {
-  margin: 0 0 0.8rem;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--forge-accent);
-  text-shadow: 0 0 14px rgba(var(--forge-accent-rgb), 0.20);
-}
-
-/* Pillar grid */
 .pillar-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
 }
 
 .pillar-card {
-  padding: 1rem 1rem 1.05rem;
+  padding: 1.1rem;
 }
 
-.pillar-card h3 {
-  margin: 0 0 0.45rem;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--forge-hotmetal, #f5b841);
-}
-
-/* How it works */
+/* ------------------------------
+   HOW IT WORKS
+------------------------------ */
 .how-steps {
   list-style: none;
+  margin: 0.9rem 0 0;
   padding: 0;
-  margin: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .mini-card {
-  padding: 1rem;
+  padding: 0.95rem 1rem;
 }
 
 .step-number {
-  display: block;
   font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--forge-silver, #cfd6df);
+  font-weight: 900;
+  color: rgba(var(--forge-accent-rgb), 0.95);
+  display: block;
   margin-bottom: 0.35rem;
 }
 
-.step-text {
-  display: block;
-  opacity: 0.92;
-}
-
-/* Actions block under How It Works */
 .how-actions {
-  margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
-  justify-items: center;
+  margin-top: 0.95rem;
 }
 
 /* ------------------------------
    FINAL CTA
 ------------------------------ */
 .home-final-callout {
-  padding: 0.9rem 1rem 1.25rem;
+  padding: 1.2rem 1rem 2rem;
 }
 
 .final-card {
-  padding: 1.05rem;
+  padding: 1.25rem;
+  text-align: center;
 }
 
 .final-brand {
-  margin: 0 auto 0.7rem;
-  width: fit-content;
+  margin-bottom: 0.65rem;
 }
 
 .final-slogan {
-  margin: 0;
-  text-align: center;
-  opacity: 0.92;
-}
-
-.final-slogan span {
-  display: inline-block;
-  margin: 0.1rem 0.25rem;
+  display: grid;
+  gap: 0.2rem;
+  margin: 0.65rem auto 0.9rem;
+  max-width: 52ch;
 }
 
 .final-slogan .accent {
-  color: var(--forge-hotmetal, #f5b841);
+  color: rgba(var(--forge-hotmetal-rgb), 0.96);
 }
 
 .final-actions {
-  margin-top: 0.9rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
-  justify-items: center;
 }
 
 /* ------------------------------
-   RESPONSIVE
+   MOBILE
 ------------------------------ */
-@media (max-width: 980px) {
-  .home-quick-grid {
-    grid-template-columns: 1fr;
-  }
-  .pillar-grid {
-    grid-template-columns: 1fr;
-  }
-  .how-steps {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 760px) {
-  /* slightly tighter side padding on phones, makes cards feel wider */
-  .home-hero-intro,
-  .home-hero-video,
-  .home-quick-grid,
-  .home-section-card,
-  .home-final-callout {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  /* stack buttons */
+@media (max-width: 740px) {
   .hero-actions,
   .how-actions,
   .final-actions {
     grid-template-columns: 1fr;
   }
 
-  /* cap button width and center */
-  .home-btn {
-    max-width: 320px;
+  /* ✅ Adds side breathing room so buttons don’t feel edge-to-edge */
+  .hero-intro-actions {
+    padding: 1.15rem;
   }
 
-  /* reduce play ring size a touch */
-  .play-ring {
-    width: 76px;
-    height: 76px;
+  .home-btn {
+    min-height: 44px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.02rem;
   }
 }
