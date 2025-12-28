@@ -12,10 +12,10 @@ class: about about-v4
   <div class="about-hero__inner">
 
     <div class="about-hero__text">
-      <h1 class="about-title">Hi — I’m Mark.</h1>
+      <h1 class="about-title">About M.R. TechForge</h1>
 
       <p class="about-lead">
-        I’m an engineer who genuinely enjoys building relationships and helping people understand the technology they rely on.
+        <strong>Hi — I’m Mark.</strong> I’m an engineer who genuinely enjoys building relationships and helping people understand the technology they rely on.
         One of my favorite moments is watching someone hit that <em>“a-ha”</em> point — when a complex technical idea suddenly
         clicks and feels approachable.
       </p>
@@ -27,19 +27,19 @@ class: about about-v4
 
       <div class="about-hero__quick" aria-label="Quick traits">
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span>
+          <span class="about-ico" aria-hidden="true">🤝</span>
           Warm engineering
         </div>
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-comment-dots"></i></span>
+          <span class="about-ico" aria-hidden="true">💬</span>
           Clear communication
         </div>
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+          <span class="about-ico" aria-hidden="true">🛡️</span>
           Security-minded
         </div>
         <div class="about-pill">
-          <span class="about-ico" aria-hidden="true"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+          <span class="about-ico" aria-hidden="true">🛠️</span>
           Built to last
         </div>
       </div>
@@ -77,7 +77,7 @@ class: about about-v4
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-microchip"></i></span>
+      <span class="about-h2__icon" aria-hidden="true">🧠</span>
       How I think about technology
     </h2>
     <p>
@@ -92,7 +92,7 @@ class: about about-v4
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-compass"></i></span>
+      <span class="about-h2__icon" aria-hidden="true">🧭</span>
       The why
     </h2>
     <p>
@@ -115,7 +115,7 @@ class: about about-v4
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
+      <span class="about-h2__icon" aria-hidden="true">🧱</span>
       What I build
     </h2>
     <ul class="about-list">
@@ -131,7 +131,7 @@ class: about about-v4
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></span>
+      <span class="about-h2__icon" aria-hidden="true">🧑‍🏫</span>
       Teaching, learning, and the next generation
     </h2>
     <p>
@@ -147,7 +147,7 @@ class: about about-v4
 
   <div class="forge-card about-card about-card--closing">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span>
+      <span class="about-h2__icon" aria-hidden="true">☕</span>
       A human moment
     </h2>
     <p>
