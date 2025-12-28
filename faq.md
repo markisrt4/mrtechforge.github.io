@@ -19,8 +19,8 @@ class: faq-page
       </p>
 
       <div class="faq-actions">
-        <a class="forge-btn" href="{{ links.pages.contact | relative_url }}">Still stuck? Contact me</a>
-        <a class="forge-btn" href="#faq-categories">Browse categories</a>
+        <a class="btn btn-forge" href="{{ links.pages.contact | relative_url }}">Still stuck? Contact me</a>
+        <a class="btn btn-forge" href="#faq-categories">Browse categories</a>
       </div>
     </div>
 
@@ -74,14 +74,14 @@ class: faq-page
     </section>
   {% endfor %}
 
-  <section class="faq-footer forge-card">
-    <h2 style="margin-top: 0;">Still have questions?</h2>
+  <section class="faq-footer">
+    <h2>Still have questions?</h2>
     <p>
       I’m always happy to help — whether it’s digital security, tech guidance,
       or something that didn’t make it onto this page.
     </p>
-    <p style="margin-top: 0.75rem;">
-      <a class="forge-btn" href="{{ links.pages.contact | relative_url }}">Contact M.R. TechForge</a>
+    <p>
+      <a class="btn btn-forge" href="{{ links.pages.contact | relative_url }}">Contact M.R. TechForge</a>
     </p>
   </section>
 
