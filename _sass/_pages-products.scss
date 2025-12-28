@@ -1,10 +1,12 @@
 /* ============================================================
-   M.R. TechForge — Products & Cart Styles (MRTF Brand)
-   Scoped to .forge-products so globals stay intact
+   M.R. TechForge — Products & Cart Styles
+   Layout-only + small product-page utilities.
+   Card surfaces/hover/media live in _cards.scss.
    ============================================================ */
 
-/* --- 1. Products Wrapper / Layout --- */
-
+/* ------------------------------------------------------------
+   1. Products Wrapper / Layout
+------------------------------------------------------------ */
 .forge-products {
   display: block;
   max-width: 1100px;
@@ -14,225 +16,92 @@
   color: var(--forge-gray, #cfd8dc);
 }
 
-/* Page title override so it doesn’t split words weirdly */
 .forge-products .page-title {
-  margin: 0 0 0.75rem;
-  color: var(--forge-accent, #00b8d4);
-  font-size: 1.6rem;
-  letter-spacing: 0.12em;
-  text-align: center;
-
-  /* undo some global heading padding/wrapping just here */
-  padding-left: 0;
-  padding-right: 0;
-  overflow-wrap: normal;
-  word-break: normal;
-  white-space: normal;
-}
-
-@media (min-width: 640px) {
-  .forge-products .page-title {
-    font-size: 2.2rem;
-  }
+  margin: 0 0 0.6rem;
+  font-size: clamp(2.0rem, 3.2vw, 2.8rem);
+  letter-spacing: 0.02em;
+  color: var(--forge-text, #eaf6ff);
 }
 
 .forge-products .page-intro {
+  margin: 0 auto 1.4rem;
+  max-width: 820px;
   font-size: 1.05rem;
-  max-width: 720px;
-  margin: 0 auto 2rem;
   line-height: 1.7;
+  opacity: 0.92;
 }
 
-
-/* --- 2. Section Headers (e.g. “Shop by Category”) --- */
-
-.product-section {
-  margin-bottom: 2.5rem;
-}
-
-.product-section-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 1100px;
-  margin: 0 auto 0.5rem;
-  gap: 0.25rem;
-}
-
-.product-section-header h2 {
-  margin: 0;
-}
-
-.product-section-header .section-link {
-  font-size: 0.9rem;
-  color: var(--forge-accent, #00b8d4);
-  text-decoration: none;
-}
-
-.product-section-header .section-link:hover {
-  text-decoration: underline;
-}
-
-@media (min-width: 640px) {
-  .product-section-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-}
-
-
-/* ============================================================
-   3. GRID & CARD LAYOUT
-   (Fixes the “right aligned” feel on mobile)
-   ============================================================ */
-
-/* Mobile: single column, grid centered in container */
+/* ------------------------------------------------------------
+   2. Category / Product Grids
+------------------------------------------------------------ */
+.forge-products-grid,
 .product-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-  padding: 1rem 0;
-
-  justify-content: center;
-  align-content: start;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.1rem;
+  margin-top: 1.25rem;
 }
 
-/* Larger: multiple columns, still centered */
-@media (min-width: 640px) {
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    justify-content: center;
-  }
+.forge-products-grid > *,
+.product-grid > * {
+  grid-column: span 4;
 }
 
-/* Each card: width-limited and centered in its grid cell */
+@media (max-width: 980px) {
+  .forge-products-grid > *, .product-grid > * { grid-column: span 6; }
+}
+
+@media (max-width: 720px) {
+  .forge-products-grid > *, .product-grid > * { grid-column: span 12; }
+}
+
+/* Snappy cards (legacy .product-card markup) */
 .product-card {
-  background: #1a1a1a;
-  border-radius: 14px;
-  padding: 1.2rem 1.3rem;
-  box-shadow: 0 0 10px rgba(0, 184, 212, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  @extend .forge-surface-card;
+  @extend .forge-hoverlift;
 
   width: 100%;
-  max-width: 420px;
+  max-width: 520px;
   justify-self: center;
   text-align: left;
 }
 
-.product-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px rgba(0, 184, 212, 0.6);
-}
-
-.product-card img {
-  width: 160px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
-  display: block;
-}
-
-.product-card h3 {
+.product-card h2 {
   margin: 0 0 0.4rem;
-  font-size: 1.1rem;
-  text-transform: none; // don’t shout product names
-  letter-spacing: 0.05em;
+  color: var(--forge-text, #eaf6ff);
 }
 
 .product-card p {
-  font-size: 0.95rem;
-  margin: 0 0 0.5rem;
+  margin: 0.25rem 0 0;
+  line-height: 1.6;
+  opacity: 0.92;
 }
 
-.product-card ul {
-  margin: 0 0 0.7rem 1.1rem;
-  padding: 0;
-  font-size: 0.92rem;
-  list-style: disc;
+/* ------------------------------------------------------------
+   3. Product Section Helpers
+------------------------------------------------------------ */
+.product-section {
+  margin-top: 2rem;
+  text-align: left;
 }
 
-
-/* --- 4. Price & Status Badges --- */
-
-.price {
-  display: block;
-  color: var(--forge-hotmetal, #ffa000);
-  font-weight: 700;
-  margin: 0.6rem 0;
+.product-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-.price-contact {
-  color: #cfd8dc;
-  font-style: italic;
+.product-section-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--forge-text, #eaf6ff);
 }
 
-
-/* ============================================================
-   5. Full-Width Forged-Glow Buttons (MRTF Palette)
-   ============================================================ */
-
-.forge-products .btn-glow {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-
-  /* Blue-only gradient, slow & subtle */
-  background: linear-gradient(
-    135deg,
-    #004d73,
-    #007ea7,
-    #00b8d4,
-    #007ea7
-  );
-  background-size: 220% 220%;
-  animation: forge-glow-blue 10s ease-in-out infinite;
-
-  color: #ffffff;
-  border: 1px solid rgba(0, 184, 212, 0.45);
-  border-radius: 8px;
-
-  padding: 0.7rem 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-
-  box-shadow:
-    0 0 8px rgba(0, 184, 212, 0.35),
-    0 0 18px rgba(0, 120, 170, 0.35);
-  transition: transform 0.12s ease, box-shadow 0.2s ease;
-}
-
-.forge-products .btn-glow:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 10px rgba(0, 184, 212, 0.6),
-    0 0 22px rgba(0, 120, 170, 0.5);
-}
-
-.forge-products .btn-glow:active {
-  transform: translateY(1px) scale(0.99);
-}
-
-/* Soft blue lava motion */
-@keyframes forge-glow-blue {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ============================================================
-   6. Cart Drawer
-   ============================================================ */
-
+/* ------------------------------------------------------------
+   4. Cart / Checkout (if you use it)
+------------------------------------------------------------ */
 .cart {
   position: fixed;
   bottom: 0;
@@ -240,10 +109,10 @@
   background: #111;
   color: #ccc;
   padding: 1rem;
+  width: min(360px, 92vw);
   border-top-left-radius: 12px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-  max-width: 300px;
-  width: 100%;
+  border: 1px solid rgba(0,150,255,0.25);
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.12);
   z-index: 999;
 }
 
@@ -262,7 +131,9 @@
 #cart-items li {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.3rem;
+  align-items: center;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   font-size: 0.9rem;
 }
 
