@@ -1,100 +1,191 @@
 ---
 layout: default
-title: About M.R. TechForge
+title: "About"
 permalink: /about/
-description: Technology that feels human — built by Mark Russell of M.R. TechForge.
+description: "Meet Mark — the engineer behind M.R. TechForge. Clear, dependable systems, built with care, and explained in plain language."
+class: about about-v1
 ---
 
-<section class="about-hero forge-card">
-  <div class="about-hero-content">
-    <h1 class="about-title">
-      Hi, I’m <span class="forge-glow">Mark</span>.
-    </h1>
+<section class="about-hero">
+  <div class="about-hero__inner">
 
-    <p class="about-tagline">
-      I build <span class="glow-blue">practical</span>,
-      <span class="glow-orange">human-friendly</span> technology —
-      not buzzwords.
+    <div class="about-hero__text">
+      <h1 class="about-title">Hi — I’m Mark.</h1>
+
+      <p class="about-lead">
+        I’m an engineer who genuinely enjoys building relationships and helping people understand the technology they rely on.
+        One of my favorite moments is watching someone hit that <em>“a-ha”</em> point — when a complex technical idea suddenly
+        clicks and feels approachable.
+      </p>
+
+      <p class="about-lead">
+        That ability to translate complicated systems into plain, human language is at the heart of everything I build at
+        <strong class="about-brand">M.R. TechForge</strong>.
+      </p>
+
+      <div class="about-hero__quick">
+        <div class="about-pill">Warm engineering</div>
+        <div class="about-pill">Clear communication</div>
+        <div class="about-pill">Security-minded</div>
+        <div class="about-pill">Built to last</div>
+      </div>
+    </div>
+
+    <div class="about-hero__media" aria-label="About video">
+      <div class="about-video">
+        <video
+          class="about-video__el"
+          src="/assets/video/about_video.mp4"
+          playsinline
+          muted
+          loop
+          autoplay
+          preload="metadata"
+          aria-label="Short video of Mark smiling and holding coffee"
+        ></video>
+
+        <div class="about-video__hint" aria-hidden="true">
+          <span class="about-video__hintIcon">▶</span>
+          <span class="about-video__hintText">Tap to play</span>
+        </div>
+      </div>
+
+      <p class="about-video__caption">
+        A quiet moment between builds. Coffee helps.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="about-wrap">
+
+  <div class="forge-card about-card">
+    <h2>How I think about technology</h2>
+    <p>
+      I build systems that are <strong>clear, dependable, and useful</strong>.
+      Not flashy. Not bloated. Just technology that works the way you expect it to — and explains itself along the way.
+    </p>
+    <p>
+      Good engineering doesn’t just solve problems; it builds confidence. If a system only makes sense to its creator, it’s unfinished.
+    </p>
+  </div>
+
+  <div class="forge-card about-card">
+    <h2>The why</h2>
+    <p>
+      I’ve spent years working with software, hardware, and infrastructure — from code and automation to devices operating on real networks
+      in real environments.
     </p>
 
-    <div class="about-badges">
-      <span class="about-badge">🛠 Engineer</span>
-      <span class="about-badge">📡 Systems Thinker</span>
-      <span class="about-badge">😄 Humor Included</span>
-    </div>
+    <p class="about-quote">
+      Tools that were powerful, but difficult to trust.
+      Solutions that solved one problem while introducing unnecessary complexity.
+      Systems that required expertise just to understand what they were doing.
+    </p>
 
-    <div class="about-cta">
-      <a href="/contact/" class="btn-forge btn-glow">Get in Touch</a>
-      <a href="/services/" class="btn-forge-outline">View Services</a>
+    <p>
+      M.R. TechForge started as a response to that frustration.
+      My goal is always to <strong>reduce cognitive load</strong>, not add to it — to design systems that communicate clearly,
+      behave predictably, and respect the people using them.
+    </p>
+  </div>
+
+  <div class="forge-card about-card">
+    <h2>What I build</h2>
+    <p>
+      M.R. TechForge isn’t an agency or a product factory. It’s a small, focused workshop where I build things end-to-end,
+      with clarity and responsibility in mind.
+    </p>
+
+    <ul class="about-list">
+      <li>Purpose-built software tools</li>
+      <li>Secure, privacy-respecting communication systems</li>
+      <li>NFC-driven physical + digital interactions</li>
+      <li>Self-hosted and locally controlled infrastructure</li>
+    </ul>
+
+    <p class="about-muted">
+      Everything is built with real people in mind — not just technical requirements.
+    </p>
+  </div>
+
+  <div class="forge-card about-card">
+    <h2>Teaching, learning, and the next generation</h2>
+    <p>
+      Teaching is one of the most rewarding parts of what I do.
+      I enjoy helping people — technical or not — understand how systems work, how to use them safely,
+      and how to make informed decisions online.
+    </p>
+    <p>
+      I’m especially excited about the idea of teaching the <strong>next generation of coders</strong>, engineers, and problem-solvers —
+      and helping others develop good online habits around <strong>privacy</strong>, <strong>security</strong>, and digital responsibility.
+    </p>
+  </div>
+
+  <div class="forge-card about-card">
+    <h2>How I work</h2>
+    <ul class="about-principles">
+      <li><strong>Clarity beats cleverness</strong> — understanding builds trust</li>
+      <li><strong>Reliability beats novelty</strong> — boring systems last longer</li>
+      <li><strong>Simple isn’t shallow</strong> — clarity takes real effort</li>
+      <li><strong>Systems should explain themselves</strong> — good design leaves breadcrumbs</li>
+    </ul>
+
+    <p class="about-muted">
+      If something feels fragile, opaque, or over-engineered, it usually means there’s more thinking to do.
+    </p>
+  </div>
+
+  <div class="forge-card about-card about-card--closing">
+    <h2>A human moment</h2>
+    <p>
+      Some of my best work happens in quiet moments — helping someone untangle a technical problem, teaching a concept until it clicks,
+      or standing still for a minute, coffee in hand, thinking through a system from first principles.
+    </p>
+    <p>
+      If you’re here because you value clarity, thoughtful engineering, or working with someone who takes the time to explain things well,
+      you’re in the right place.
+    </p>
+
+    <div class="about-actions">
+      <a class="forge-btn about-btn" href="/contact/">Reach out</a>
+      <a class="forge-btn about-btn about-btn--ghost" href="/products/">Explore products</a>
     </div>
   </div>
 
-  <div class="about-photo-card">
-    <img
-      src="/assets/images/mark-techforge-mug.png"
-      alt="Mark Russell holding an M.R. TechForge mug"
-    />
-  </div>
 </section>
 
-<section class="forge-card about-section">
-  <h2 class="about-section-title">
-    <span class="section-ico">🧠</span>
-    How I Think
-  </h2>
+<script>
+  // About video hint behavior (mobile-friendly, no dependencies)
+  (function () {
+    const video = document.querySelector(".about-video__el");
+    const hint = document.querySelector(".about-video__hint");
+    if (!video || !hint) return;
 
-  <p>
-    I believe technology should <strong>reduce friction</strong>,
-    <strong>increase clarity</strong>, and
-    <strong>respect people</strong>.
-  </p>
+    const hideHint = () => hint.classList.add("is-hidden");
 
-  <ul class="about-list">
-    <li><span class="about-li-ico">🔧</span>Build what’s needed — not what’s trendy</li>
-    <li><span class="about-li-ico">🔍</span>Make systems understandable and debuggable</li>
-    <li><span class="about-li-ico">📈</span>Design for longevity, not churn</li>
-  </ul>
-</section>
+    // Hide hint if autoplay succeeds (desktop) or once user plays.
+    video.addEventListener("play", hideHint, { once: true });
+    video.addEventListener("playing", hideHint, { once: true });
 
-<section class="forge-card about-section">
-  <h2 class="about-section-title">
-    <span class="section-ico">⚙️</span>
-    What I Work On
-  </h2>
+    // Tap/click to toggle play (especially useful on mobile where autoplay is blocked).
+    const container = video.closest(".about-video");
+    if (container) {
+      container.addEventListener("click", function () {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          hint.classList.remove("is-hidden");
+        }
+      });
+    }
 
-  <ul class="about-checklist">
-    <li>Managed phone & messaging systems</li>
-    <li>Privacy-respecting infrastructure</li>
-    <li>NFC tools & automation</li>
-    <li>Small-business friendly tech solutions</li>
-  </ul>
-</section>
-
-<section class="forge-card about-section">
-  <h2 class="about-section-title">
-    <span class="section-ico">📡</span>
-    Quick Facts
-  </h2>
-
-  <ul class="about-facts">
-    <li><strong>Location:</strong> Southeast Michigan</li>
-    <li><strong>Background:</strong> Engineering, systems design, mentoring</li>
-    <li><strong>Approach:</strong> Calm, direct, thoughtful — with humor</li>
-  </ul>
-</section>
-
-<section class="forge-card about-final">
-  <h2 class="about-section-title">
-    <span class="section-ico">🚀</span>
-    Let’s Build Something Solid
-  </h2>
-
-  <p>
-    If you’re tired of over-engineered nonsense or under-explained tech,
-    we’ll probably get along just fine.
-  </p>
-
-  <a href="{{ site.data.links.pages.contact }}" class="btn-forge btn-glow btn-wide">
-    Start a Conversation
-  </a>
-</section>
+    // If user interacts with page, don't keep the hint around forever.
+    window.addEventListener("touchstart", () => {
+      // If it’s already playing, remove hint.
+      if (!video.paused) hideHint();
+    }, { once: true });
+  })();
+</script>
