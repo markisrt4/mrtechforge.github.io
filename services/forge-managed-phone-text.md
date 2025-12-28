@@ -15,10 +15,9 @@ description: "A managed phone and messaging service designed and configured by M
 
   <p>
     <strong>A phone number that works the way you do.</strong>
-    Forge Managed Phone &amp; Text is a managed phone and messaging service designed for real people —
-    not call centers and not phone companies.
-    Instead of tying communication to a single device, your number is intentionally configured to
-    ring phones, send texts, deliver voicemails, or trigger notifications based on how you actually operate.
+    Forge Managed Phone &amp; Text is a managed phone and messaging service designed for real people — not call centers and not phone companies. Instead of tying communication to a single device, your number is intentionally configured to ring phones, send texts, deliver voicemails, or trigger notifications based on how you actually operate.
+  </p><p>
+    Your number lives on resilient, centrally managed systems — not inside a phone and not dependent on a single carrier or piece of hardware.
   </p>
 
   <p>
@@ -102,6 +101,63 @@ description: "A managed phone and messaging service designed and configured by M
 <div class="services-divider"></div>
 
 <section class="service-section forge-service-pricing">
+  <h2 class="services-heading">Available Features</h2>
+
+  <p>
+    Every setup starts with a managed phone number.
+    From there, features are added based on what actually helps you communicate clearly and safely.
+  </p>
+
+  {% if mrtf_line and mrtf_line.offerings %}
+    <div class="forge-offerings-grid">
+      {% for offering in mrtf_line.offerings %}
+
+        {% assign icon = offering.icon | default: "📞" %}
+        {% assign is_core = false %}
+        {% if offering.core == true %}
+          {% assign is_core = true %}
+        {% endif %}
+
+        <article class="forge-offering-card">
+          <div class="forge-offering-icon">{{ icon }}</div>
+
+          <h3 class="forge-offering-title">
+            {{ offering.name }}
+            {% if is_core %}
+              <span class="forge-offering-badge">Core</span>
+            {% endif %}
+          </h3>
+
+          <p class="forge-offering-desc">{{ offering.description }}</p>
+
+          <div class="forge-offering-pricing">
+            {% if offering.monthly %}
+              <div class="forge-price-row">
+                <span class="label">Monthly</span>
+                <span class="value">${{ offering.monthly }} / mo</span>
+              </div>
+            {% endif %}
+
+            {% if offering.setup != nil %}
+              <div class="forge-price-row is-setup">
+                <span class="label">Setup</span>
+                {% if offering.setup == 0 %}
+                  <span class="value is-included">Included</span>
+                {% else %}
+                  <span class="value">${{ offering.setup }} one-time</span>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+
+<div class="services-divider"></div>
+
+<section class="service-section forge-service-pricing">
   <h2 class="services-heading">Bundle Packages (Out-the-Door Pricing)</h2>
 
   <p>
@@ -164,63 +220,6 @@ description: "A managed phone and messaging service designed and configured by M
   <p style="margin-top: 1rem; color: var(--forge-subtext);">
     Want a tighter quote? Tell me your goals and I’ll propose the cleanest bundle for your needs.
   </p>
-</section>
-
-<div class="services-divider"></div>
-
-<section class="service-section forge-service-pricing">
-  <h2 class="services-heading">Available Features</h2>
-
-  <p>
-    Every setup starts with a managed phone number.
-    From there, features are added based on what actually helps you communicate clearly and safely.
-  </p>
-
-  {% if mrtf_line and mrtf_line.offerings %}
-    <div class="forge-offerings-grid">
-      {% for offering in mrtf_line.offerings %}
-
-        {% assign icon = offering.icon | default: "📞" %}
-        {% assign is_core = false %}
-        {% if offering.core == true %}
-          {% assign is_core = true %}
-        {% endif %}
-
-        <article class="forge-offering-card">
-          <div class="forge-offering-icon">{{ icon }}</div>
-
-          <h3 class="forge-offering-title">
-            {{ offering.name }}
-            {% if is_core %}
-              <span class="forge-offering-badge">Core</span>
-            {% endif %}
-          </h3>
-
-          <p class="forge-offering-desc">{{ offering.description }}</p>
-
-          <div class="forge-offering-pricing">
-            {% if offering.monthly %}
-              <div class="forge-price-row">
-                <span class="label">Monthly</span>
-                <span class="value">${{ offering.monthly }} / mo</span>
-              </div>
-            {% endif %}
-
-            {% if offering.setup != nil %}
-              <div class="forge-price-row is-setup">
-                <span class="label">Setup</span>
-                {% if offering.setup == 0 %}
-                  <span class="value is-included">Included</span>
-                {% else %}
-                  <span class="value">${{ offering.setup }} one-time</span>
-                {% endif %}
-              </div>
-            {% endif %}
-          </div>
-        </article>
-      {% endfor %}
-    </div>
-  {% endif %}
 </section>
 
 <div class="services-divider"></div>

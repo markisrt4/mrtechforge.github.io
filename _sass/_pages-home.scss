@@ -61,6 +61,7 @@
 ========================================================== */
 .home.home-v8 .home-hero-intro {
   padding: 1.25rem 1rem 1.25rem;
+  text-align: center;
 }
 
 .home.home-v8 .hero-intro-top {
@@ -110,6 +111,7 @@
     drop-shadow(0 0 24px rgba(0, 0, 0, 0.55));
 
   margin: 0 0 0.9rem;
+  margin-bottom: 1rem; /* or 0.85rem if you want it subtle */
 }
 
 @keyframes stampSweepRTL {

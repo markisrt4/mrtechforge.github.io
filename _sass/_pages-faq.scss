@@ -292,6 +292,8 @@
   cursor: pointer;
   padding: 0.92rem 1.05rem 0.92rem 1.05rem;
   padding-left: calc(1.05rem + 6px);
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
 
   display: flex;
   align-items: center;
@@ -348,6 +350,8 @@ details[open] .faq-chevron,
 .faq-page .faq-answer {
   padding: 0.15rem 1.05rem 1.05rem;
   padding-left: calc(1.05rem + 6px);
+  padding-top: 0.4rem;
+  padding-bottom: 0.6rem;
 }
 
 /* Answer text: subtle vertical gradient (the “super slick” part) */
