@@ -18,163 +18,131 @@
 }
 
 /* A safe max width helper */
-.home.home-v8 .home-hero-intro,
-.home.home-v8 .home-hero-video,
-.home.home-v8 .home-quick-grid,
-.home.home-v8 .home-section-card,
-.home.home-v8 .home-final-callout {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+.home-max {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* ------------------------------
-   MINI ICONS
+   HERO — TOP AREA
 ------------------------------ */
-.mini-ico {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.25em;
-  min-width: 1.25em;
-  margin-right: 0.45rem;
-  transform: translateY(0.02em);
-  filter: drop-shadow(0 0 8px rgba(var(--forge-hotmetal-rgb), 0.18));
-  opacity: 0.95;
+.home-hero {
+  margin-top: 1.75rem;
 }
 
-/* Make emoji icons a bit tighter inside badges */
-.hero-badge .mini-ico {
-  margin-right: 0.35rem;
+.home-hero-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* ------------------------------
-   HERO INTRO (TEXT OUTSIDE CARD)
------------------------------- */
 .home-hero-intro {
-  padding: 1.15rem 1rem 0.4rem;
-}
+  border-radius: 18px;
+  padding: 1.25rem;
 
-.hero-intro-top {
-  padding: 0.25rem 0.15rem 0.85rem;
-}
+  background:
+    radial-gradient(1200px 600px at 18% 0%,
+      rgba(var(--forge-accent-rgb), 0.18) 0%,
+      rgba(0,0,0,0.00) 58%),
+    linear-gradient(180deg,
+      rgba(10, 18, 30, 0.84) 0%,
+      rgba(2, 6, 13, 0.96) 100%);
 
-/* New homepage stamp: sweep glow (blue base, orange band rolls across) */
-.hero-stamp-sweep {
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.34);
+  box-shadow:
+    0 0 28px rgba(var(--forge-accent-rgb), 0.16),
+    0 18px 46px rgba(0,0,0,0.72);
+
+  overflow: hidden;
   position: relative;
-
-  /* ✅ Center it + make it bigger */
-  display: block;
-  width: fit-content;
-  margin: 0 auto 0.75rem;
-  text-align: center;
-
-  font-family: "Orbitron", sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-
-  /* ✅ Larger, responsive size */
-  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
-
-  /* Blue base */
-  color: var(--forge-accent);
-  text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.38),
-    0 0 18px rgba(var(--forge-accent-rgb), 0.20);
-
-  /* keep glow visible */
-  overflow: visible;
-  transform: translateZ(0);
-  will-change: filter, transform;
 }
 
-/* Sweeping orange band overlay */
-.hero-stamp-sweep::after {
-  content: attr(data-text);
+/* subtle scan texture */
+.home-hero-intro::after {
+  content: "";
   position: absolute;
   inset: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      rgba(0,0,0,0.00) 4px,
+      rgba(0,0,0,0.00) 7px
+    );
+  opacity: 0.16;
   pointer-events: none;
-
-  /* ✅ Keep overlay perfectly aligned/sized */
-  text-align: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  /* Orange band with soft falloff */
-  background-image: linear-gradient(
-    90deg,
-    rgba(245, 184, 65, 0.00) 0%,
-    rgba(245, 184, 65, 0.00) 36%,
-    rgba(245, 184, 65, 0.95) 50%,
-    rgba(245, 184, 65, 0.00) 64%,
-    rgba(245, 184, 65, 0.00) 100%
-  );
-
-  background-size: 220% 100%;
-  background-position: 0% 50%;
-
-  filter: drop-shadow(0 0 10px rgba(var(--forge-hotmetal-rgb), 0.55))
-          drop-shadow(0 0 24px rgba(var(--forge-hotmetal-rgb), 0.28));
-
-  animation: forgeHomeSweepGlow 2.8s linear infinite;
-  opacity: 1;
 }
 
-/* If data-text is missing, don’t show overlay */
-.hero-stamp-sweep:not([data-text])::after {
-  content: "";
-  display: none;
+/* ------------------------------
+   HERO HEADLINE (3-COLOR)
+------------------------------ */
+.hero-stamp-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0.65rem;
 }
 
-/* Headline */
-.hero-headline {
-  margin: 0;
-  line-height: 1.05;
+.hero-stamp-sweep {
+  display: inline-block;
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
+  font-size: clamp(1.85rem, 4.0vw, 2.7rem);
+  line-height: 1.08;
 
-.hero-line {
-  display: inline-block;
-  font-size: clamp(1.7rem, 5.7vw, 3.2rem);
-}
+  color: rgba(var(--forge-accent-rgb), 0.98);
 
-/* 3-color hero intro */
-.hero-line-blue {
-  color: var(--forge-accent);
   text-shadow:
-    0 0 10px rgba(var(--forge-accent-rgb), 0.30),
-    0 0 20px rgba(var(--forge-accent-rgb), 0.16);
+    0 0 18px rgba(var(--forge-accent-rgb), 0.16),
+    0 0 22px rgba(245,184,65,0.08);
 }
 
-.hero-line-silver {
-  color: var(--forge-silver, #cfd6df);
-  text-shadow:
-    0 0 10px rgba(220, 235, 255, 0.16),
-    0 0 18px rgba(220, 235, 255, 0.10);
+/* Rolling orange band (L->R) */
+.hero-stamp-sweep::after {
+  content: "";
+  position: absolute;
+  left: -20%;
+  top: 0;
+  width: 140%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 184, 65, 0.00) 0%,
+    rgba(245, 184, 65, 0.20) 40%,
+    rgba(245, 184, 65, 0.00) 70%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  pointer-events: none;
+
+  animation: forgeHomeSweepGlow 6.6s ease-in-out infinite;
 }
 
-.hero-line-hot {
-  color: var(--forge-hotmetal);
-  text-shadow:
-    0 0 10px rgba(var(--forge-hotmetal-rgb), 0.30),
-    0 0 22px rgba(var(--forge-hotmetal-rgb), 0.18);
+.hero-intro-lines {
+  margin-top: 0.6rem;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(225,235,245,0.92);
+  position: relative;
+  z-index: 2;
 }
 
-.hero-subtitle {
-  margin: 0.85rem 0 0;
-  max-width: 72ch;
-  font-size: 1.05rem;
-  line-height: 1.55;
+.hero-intro-lines .line-1 {
+  color: rgba(var(--forge-accent-rgb), 0.98);
+  font-weight: 800;
+}
+
+.hero-intro-lines .line-2 {
+  color: rgba(230, 240, 255, 0.92);
+  font-weight: 700;
+}
+
+.hero-intro-lines .line-3 {
+  color: rgba(190, 205, 220, 0.92);
+  font-weight: 650;
 }
 
 /* Actions card block (you still want actions inside a card) */
@@ -185,17 +153,33 @@
 
 .hero-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
   gap: 0.85rem;
+
+  /* keep CTAs from turning into huge slabs */
+  max-width: 760px;
+  margin: 0 auto;
+  justify-content: center;
+  justify-items: center;
 }
 
 .home-btn {
-  width: 100%;
+  /* consistent width, but not overly wide */
+  width: clamp(220px, 55vw, 360px);
+  max-width: 360px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem; /* text spacing */
-  min-height: 52px;
+  gap: 0.55rem;
+
+  /* shorter + snappier */
+  padding: 0.62rem 1.05rem;
+  min-height: 44px;
+  line-height: 1.1;
+  font-size: 0.98rem;
+
+  border-radius: 14px;
 }
 
 /* Badges */
@@ -232,150 +216,61 @@
   gap: 0.55rem;
 }
 
-/* Premium frame, but NOT forge-card */
-.hero-video-shell {
-  border-radius: 16px;
+/* Premium frame for the youtube embed */
+.hero-video-frame {
+  border-radius: 18px;
   overflow: hidden;
-
   border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  background: rgba(5, 8, 16, 0.86);
+  background:
+    radial-gradient(900px 520px at 20% 0%,
+      rgba(var(--forge-accent-rgb), 0.10),
+      rgba(0,0,0,0.22));
 
   box-shadow:
-    0 0 0 1px rgba(var(--forge-accent-rgb), 0.08) inset,
-    0 14px 34px rgba(0, 0, 0, 0.55);
+    0 0 24px rgba(var(--forge-accent-rgb), 0.10),
+    0 18px 46px rgba(0,0,0,0.70);
 }
 
-/* The responsive video box */
-.hero-youtube-frame {
-  position: relative;
+.hero-video-frame iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #000;
-}
-
-/* Make iframe fill */
-.hero-youtube-iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   border: 0;
+  display: block;
 }
 
-/* Overlay must NOT block taps */
-.hero-video-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-
-  display: flex;
+/* Tap-to-play hint overlay (if used) */
+.tap-to-play-hint {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.85;
-}
+  gap: 0.55rem;
 
-/* Play ring */
-.play-ring {
-  width: 74px;
-  height: 74px;
+  margin: 0 auto;
+  padding: 0.55rem 0.95rem;
   border-radius: 999px;
-  border: 2px solid rgba(var(--forge-hotmetal-rgb), 0.55);
-  box-shadow:
-    0 0 18px rgba(var(--forge-hotmetal-rgb), 0.25),
-    0 0 32px rgba(var(--forge-accent-rgb), 0.12);
-  background: rgba(0, 0, 0, 0.25);
-  display: grid;
-  place-items: center;
-}
 
-/* Play triangle */
-.play-triangle {
-  width: 0;
-  height: 0;
-  border-left: 18px solid rgba(245, 184, 65, 0.95);
-  border-top: 11px solid transparent;
-  border-bottom: 11px solid transparent;
-  transform: translateX(2px);
-}
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.25);
+  color: rgba(235,245,255,0.90);
 
-/* Tap hint pill */
-.hero-youtube-frame::after {
-  content: attr(data-tap-hint);
-  position: absolute;
-  left: 50%;
-  bottom: 14px;
-  transform: translateX(-50%);
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(var(--forge-accent-rgb), 0.22);
-  color: rgba(230, 240, 255, 0.84);
-  font-size: 0.9rem;
-  pointer-events: none;
-  box-shadow: 0 0 18px rgba(var(--forge-accent-rgb), 0.10);
-}
-
-/* Meta under the video */
-.hero-video-meta {
-  padding: 0.85rem 1rem 1rem;
-  border-top: 1px solid rgba(var(--forge-accent-rgb), 0.10);
-}
-
-.chip-title {
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
-.chip-sub {
-  margin-top: 0.2rem;
-  opacity: 0.85;
-}
-
-.hero-video-caption {
-  margin-top: 0.15rem;
-  opacity: 0.9;
-}
-
-/* ------------------------------
-   QUICK GRID + SECTIONS
-   (kept light — your existing card system handles most)
------------------------------- */
-.home-quick-grid {
-  padding: 1.0rem 1rem 0.2rem;
-  display: grid;
-  gap: 0.9rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.quick-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.quick-title-row h2 {
-  margin: 0;
-}
-
-.quick-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
-}
-
-.quick-foot {
-  margin-top: 0.65rem;
+/* Play ring styling (if used) */
+.play-ring {
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--forge-accent-rgb), 0.45);
+  box-shadow:
+    0 0 18px rgba(var(--forge-accent-rgb), 0.16),
+    inset 0 0 14px rgba(0,0,0,0.55);
 }
 
 /* ------------------------------
    RESPONSIVE
 ------------------------------ */
-@media (max-width: 980px) {
-  .home-quick-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 760px) {
   .home-hero-intro {
     padding-top: 0.95rem;
@@ -383,6 +278,11 @@
 
   .hero-actions {
     grid-template-columns: 1fr;
+  }
+
+  .home-btn {
+    width: 100%;
+    max-width: 360px;
   }
 
   .hero-intro-actions {
