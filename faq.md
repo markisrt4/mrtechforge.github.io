@@ -26,7 +26,7 @@ class: faq-page
 
     <div class="faq-hero-media" aria-hidden="true">
       <img
-        src="{{ '/assets/img/faq/faq-hero.jpg' | relative_url }}"
+        src="{{ '/assets/images/faq-hero.jpg' | relative_url }}"
         alt="FAQ"
         loading="lazy"
       />
