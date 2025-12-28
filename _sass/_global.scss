@@ -1,7 +1,18 @@
 /* ==========================================================
-   M.R. TECHFORGE — GLOBAL STYLES (v10.3)
+   M.R. TECHFORGE — GLOBAL STYLES (v10.4)
+   File: assets/css/_global.scss
+
+   Goals:
+   - Stop mobile "right-hugging" layout drift
+   - Keep content/cards centered AND comfortably wide
+   - Safer container padding (including phone safe-areas)
+   - Fix bullet list indentation on mobile
+   - Avoid double-padding nested header/footer elements
    ========================================================== */
 
+/* ------------------------------
+   BOX SIZING / BASE RESET
+------------------------------ */
 *,
 *::before,
 *::after {
@@ -13,6 +24,36 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  width: 100%;
+}
+
+/* ------------------------------
+   THEME VARIABLES
+------------------------------ */
+:root {
+  /* Site layout */
+  --forge-container-max: 1200px;
+
+  /* Default horizontal breathing room */
+  --forge-container-pad: 1rem;
+
+  /* iOS notch safe-area support */
+  --forge-safe-left: env(safe-area-inset-left, 0px);
+  --forge-safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* ✅ Keep content wider on small screens (less padding) */
+@media (max-width: 640px) {
+  :root {
+    --forge-container-pad: 0.65rem; /* was 0.75rem */
+  }
+}
+
+/* ------------------------------
+   PAGE BACKGROUND + TYPOGRAPHY
+------------------------------ */
+html,
+body {
   font-family: "Titillium Web", sans-serif;
 
   background: linear-gradient(180deg, #050505 0%, #000 100%);
@@ -22,7 +63,8 @@ body {
   font-size: 1.05rem;
   line-height: 1.65;
 
-  overflow-x: clip;
+  /* Prevent any stray element from pushing layout sideways */
+  overflow-x: hidden;
 }
 
 body {
@@ -30,48 +72,48 @@ body {
   background-color: #000;
 }
 
-:root {
-  --forge-container-max: 1200px;
-  --forge-container-pad: 1rem;
-
-  --forge-safe-left: env(safe-area-inset-left, 0px);
-  --forge-safe-right: env(safe-area-inset-right, 0px);
-}
-
-/* ✅ Slightly less padding on small screens = cards feel wider */
-@media (max-width: 640px) {
-  :root {
-    --forge-container-pad: 0.75rem;
-  }
-}
-
-/* Center common minima wrappers */
-.forge-container,
-main,
-.wrapper,
-.page-content,
-.site-header,
-.site-footer,
-.site-nav,
-.site-title,
-.footer-col-wrapper {
+/* ------------------------------
+   GLOBAL CONTAINER / CENTERING
+------------------------------ */
+/*
+  IMPORTANT:
+  Only pad/center the OUTER wrappers.
+  Padding things like .site-title or inner nav pieces can create
+  odd “right drift” and stacking on mobile.
+*/
+:where(.forge-container, main, .wrapper, .page-content) {
   width: 100%;
   max-width: var(--forge-container-max);
   margin-inline: auto;
 
-  padding-inline: calc(var(--forge-container-pad) + var(--forge-safe-left))
-                  calc(var(--forge-container-pad) + var(--forge-safe-right));
+  padding-left: calc(var(--forge-container-pad) + var(--forge-safe-left));
+  padding-right: calc(var(--forge-container-pad) + var(--forge-safe-right));
 }
 
+/* Header/footer wrappers (minima uses nested wrappers) */
+:where(.site-header .wrapper, .site-footer .wrapper) {
+  width: 100%;
+  max-width: var(--forge-container-max);
+  margin-inline: auto;
+
+  padding-left: calc(var(--forge-container-pad) + var(--forge-safe-left));
+  padding-right: calc(var(--forge-container-pad) + var(--forge-safe-right));
+}
+
+/* Vertical spacing */
 main {
   margin-block: 2rem;
 }
 
 @media (max-width: 600px) {
-  main { margin-block: 1.25rem; }
+  main {
+    margin-block: 1.25rem;
+  }
 }
 
-/* Prevent overflow elements from biasing layout */
+/* ------------------------------
+   MEDIA / CODE / TABLE SAFETY
+------------------------------ */
 img,
 svg,
 video,
@@ -84,9 +126,13 @@ table {
   max-width: 100%;
 }
 
-pre { overflow-x: auto; }
+pre {
+  overflow-x: auto;
+}
 
-/* Headings */
+/* ------------------------------
+   HEADINGS
+------------------------------ */
 h1,
 h2,
 h3 {
@@ -94,10 +140,10 @@ h3 {
   letter-spacing: 1.4px;
   text-transform: uppercase;
 
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-
+  /* Prevent long headings from causing horizontal scroll */
   overflow-wrap: break-word;
+  word-break: break-word;
+
   transition: color 0.2s ease, text-shadow 0.25s ease;
 }
 
@@ -116,32 +162,61 @@ h2 {
 }
 
 @media (max-width: 600px) {
-  h1, h2, h3 { letter-spacing: 1.2px; }
-  h1, h3 { text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45); }
-  h2 { text-shadow: 0 0 8px rgba(0, 150, 255, 0.35); }
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 1.2px;
+  }
+
+  h1,
+  h3 {
+    text-shadow: 0 0 8px rgba(var(--forge-hotmetal-rgb), 0.45);
+  }
+
+  h2 {
+    text-shadow: 0 0 8px rgba(0, 150, 255, 0.35);
+  }
 }
 
+/* Body text */
 p,
 li {
   color: var(--forge-text);
   text-shadow: none;
 }
 
-/* ✅ Bullet indent fix (global) */
+/* ------------------------------
+   LIST INDENT FIX (GLOBAL)
+------------------------------ */
+/* Default list spacing */
 ul,
 ol {
   margin: 0.75rem 0 1rem;
+
+  /* Desktop: comfortable, not huge */
   padding-left: 1.25rem;
 }
 
+/* ✅ Mobile: reduce indent so bullets don't look "too far right" */
 @media (max-width: 640px) {
   ul,
   ol {
-    padding-left: 1.05rem; /* ✅ less indent on mobile */
+    padding-left: 1.05rem;
   }
 }
 
-/* Links */
+/* If nested lists get too deep, keep them from drifting */
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0.5rem;
+  padding-left: 1.1rem;
+}
+
+/* ------------------------------
+   LINKS
+------------------------------ */
 a {
   color: var(--forge-accent);
   text-decoration: none;
@@ -157,12 +232,15 @@ a:visited {
   color: var(--forge-hotmetal-light);
 }
 
-/* Remove duplicate titles */
+/* ------------------------------
+   MINIMA QUIRKS
+------------------------------ */
+/* Remove duplicate titles (minima sometimes repeats page title) */
 main > h1:first-child {
   display: none !important;
 }
 
-/* Footer */
+/* Footer alignment */
 .forge-footer {
   text-align: center;
   width: 100%;
