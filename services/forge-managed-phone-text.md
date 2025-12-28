@@ -225,56 +225,11 @@ description: "A managed phone and messaging service designed and configured by M
 
 <div class="services-divider"></div>
 
-<section class="service-section">
-  <h2 class="faq-heading">FAQ</h2>
-  <p class="faq-subtitle">Straight answers, no telecom jargon.</p>
-
-  <div class="faq-item">
-    <input type="checkbox" id="faq-fmpt-1">
-    <label class="faq-question" for="faq-fmpt-1">Are you a phone carrier?</label>
-    <div class="faq-answer">
-      <p>
-        No. M.R. TechForge is not a phone carrier.
-        We design and manage communication systems using modern phone and messaging platforms,
-        but we are not selling minutes, data plans, or telecom contracts.
-      </p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <input type="checkbox" id="faq-fmpt-2">
-    <label class="faq-question" for="faq-fmpt-2">Can I make outgoing calls from this number?</label>
-    <div class="faq-answer">
-      <p>
-        Yes. Outgoing calling can be enabled so calls display your managed number as the caller ID.
-        This is configured intentionally based on your needs.
-      </p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <input type="checkbox" id="faq-fmpt-3">
-    <label class="faq-question" for="faq-fmpt-3">Do I need special hardware?</label>
-    <div class="faq-answer">
-      <p>
-        No. Most clients use mobile or desktop apps.
-        Desk phones or traditional handsets can be supported if desired,
-        but no hardware is required to get started.
-      </p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <input type="checkbox" id="faq-fmpt-4">
-    <label class="faq-question" for="faq-fmpt-4">Is this a replacement for my personal phone?</label>
-    <div class="faq-answer">
-      <p>
-        Not necessarily. Many clients use this as a separate, public-facing number
-        while keeping their personal number private.
-      </p>
-    </div>
-  </div>
-</section>
+{% include faq-section.html
+  category="managed-phone-text"
+  title="FAQ"
+  subtitle="Straight answers, no telecom jargon."
+%}
 
 <div class="services-divider"></div>
 

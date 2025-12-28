@@ -22,15 +22,39 @@ main:
   - title: "Products"
     key: "pages.products"
     children:
-      - title: "All Products"
+      - title: "Products Overview"
         key: "products.index"
       - title: "NFC Tags"
         key: "products.nfc"
       - title: "Gadgets"
         key: "products.gadgets"
+      - title: "All Products"
+        key: "products.all"
 
   - title: "Guides"
     key: "pages.guides"
+    children:
+      # Grandparent link (Guides landing)
+      - title: "Guides Overview"
+        key: "pages.guides"
+
+      # Parent: Digital Security (with children)
+      - title: "Digital Security"
+        key: "guides.digital_security"
+        children:
+          # Parent link (Digital Security landing)
+          - title: "Overview"
+            key: "guides.digital_security"
+
+          # Grandchild anchors / sections
+          - title: "Break Up With Google"
+            key: "guides.google_breakup_intro"
+
+          - title: "Google Replacement Guide"
+            key: "guides.google_replacement_guide"
+
+      - title: "Recommended Tools"
+        key: "guides.recommended_tools"
 
   - title: "FAQ"
     key: "pages.faq"

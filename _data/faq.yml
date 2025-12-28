@@ -1,0 +1,188 @@
+# _data/faq.yml
+# ============================================================
+# M.R. TechForge — FAQ Data
+# - categories: define sections shown on /faq/
+# - items: each item belongs to one category and can optionally be tagged
+#   for re-use on other pages (ex: "secure-network", "nfc", "products")
+# ============================================================
+
+categories:
+  - id: general
+    title: "General"
+    icon: "🧰"
+    description: "The practical stuff — how it works, what I do, and what to expect."
+
+  - id: fun
+    title: "Fun"
+    icon: "😄"
+    description: "Because not everything has to be serious."
+
+  - id: secure-network
+    title: "Forge Secure Network"
+    icon: "🛡️"
+    description: "Questions specific to secure network services and local-first infrastructure."
+
+  - id: managed-phone-text
+    title: "Forge Managed Phone & Text"
+    icon: "📞"
+    description: "Questions specific to Managed Phone & Text — straight answers, no telecom jargon."
+
+
+items:
+  # ---------------------------
+  # GENERAL
+  # ---------------------------
+  - category: general
+    q: "What services does M.R. TechForge offer?"
+    a: "I provide digital security guidance, home-based tech solutions, website builds, innovative tech products, and general tech consulting. If it boots, beeps, or misbehaves, I can help."
+    tags: ["general"]
+
+  - category: general
+    q: "Do you work with families, individuals, and small businesses?"
+    a: "Absolutely. Whether you’re a parent trying to secure your home network, a small business needing tech support, or someone overwhelmed by passwords — I’m here to help."
+    tags: ["general"]
+
+  - category: general
+    q: "Do you offer remote support?"
+    a: "Yes. Many issues can be solved over video call, secure remote sessions, or step-by-step guidance."
+    tags: ["general"]
+
+  - category: general
+    q: "Do you travel for in-person support?"
+    a: "Yes — within reasonable driving distance of the metro Detroit area. (If you're far away, remote might be faster!)"
+    tags: ["general"]
+
+  - category: general
+    q: "Do you save or store any of my data?"
+    a: "No. Your data stays yours. I don’t save passwords, files, or personal information. Integrity isn’t just a slogan — it’s part of how I work."
+    tags: ["general", "privacy"]
+
+  - category: general
+    q: "How much do your services cost?"
+    a: "Pricing depends on complexity, but I always give a clear estimate before any work starts. No surprises, no mystery charges."
+    tags: ["general", "pricing"]
+
+  - category: general
+    q: "What is a Digital Security Seminar?"
+    a: "It’s a practical, easy-to-understand workshop covering passwords, online safety, account security, kid-friendly best practices, and avoiding common digital pitfalls."
+    tags: ["general", "security"]
+
+  - category: general
+    q: "How do I get started?"
+    a: "Just reach out through my contact page. Tell me what you’re dealing with, and we’ll take it from there — simple, friendly, no pressure."
+    tags: ["general"]
+
+  # ---------------------------
+  # FUN
+  # ---------------------------
+  - category: fun
+    q: "Why “TechForge”?"
+    a: "Because good technology should be built with intention. Also because “Mark Build You Tech Things” didn’t test well."
+    tags: ["fun", "brand"]
+
+  - category: fun
+    q: "Does Mark like Microsoft Windows?"
+    a: "Is that like asking if I enjoy the blue-screen of death? Let’s just say I’ve been hurt before. By Windows. A LOT."
+    tags: ["fun"]
+
+  - category: fun
+    q: "What’s better — Android or iPhone?"
+    a: "I’m an Android guy. I like freedom, customization, and buttons that don’t yell at me. But if you use an iPhone, just be okay with the fact that an angel loses its wings."
+    tags: ["fun", "mobile"]
+
+  - category: fun
+    q: "Will Mark work for coffee?"
+    a: "Coffee? Possibly. But Mountain Dew + Cheetos? Let’s talk."
+    tags: ["fun"]
+
+  - category: fun
+    q: "Do I actually like people??"
+    a: "Believe it or not — yes! I’m an engineer, so here’s a fun bit of trivia: Q: How can you tell the difference between an introverted and an extroverted engineer? A: The introvert looks at his own shoes while talking. The extrovert looks at your shoes. But helping folks is literally why M.R. TechForge exists — people matter, and I’m here for them."
+    tags: ["fun"]
+
+  - category: fun
+    q: "What does Mark remember about old computers?"
+    a: "Oh you know — punch cards, DOS, dial-up… I personally taught Babbage everything he knows."
+    tags: ["fun"]
+
+  - category: fun
+    q: "Do you really like Linux that much?"
+    a: "Absolutely. Linux is dependable, logical, and free! It's written by a bunch of cool nerds like me."
+    tags: ["fun", "linux"]
+
+  - category: fun
+    q: "Will you judge my terrible passwords?"
+    a: "No judgment — but I will lovingly guide you away from “password123.” I’m a bit nicer than the bad guys."
+    tags: ["fun", "security"]
+
+  - category: fun
+    q: "Can you fix my printer?"
+    a: "I can. But every time I fix a printer, I die a little inside."
+    tags: ["fun"]
+
+  - category: fun
+    q: "Why do you like computers?"
+    a: "As a dad, I appreciate that computers don’t hit, scream, or call me names. They just quietly crash — which honestly feels refreshing."
+    tags: ["fun"]
+
+  - category: fun
+    q: "Will you help me switch to Linux?"
+    a: "Of course! I’ll guide you gently. You’ll thank me later."
+    tags: ["fun", "linux"]
+
+  # ---------------------------
+  # FORGE SECURE NETWORK (moved from services.yml)
+  # ---------------------------
+  - category: secure-network
+    q: "Do I need a new router?"
+    a: "Not always. We can use your existing router if it supports the security and network features required. If it doesn’t, I’ll recommend vetted options or design a sidecar approach that works alongside ISP equipment."
+    tags: ["secure-network"]
+
+  - category: secure-network
+    q: "Do you store or access my data?"
+    a: "No. I do not store customer data, access files, or hold encryption keys. I design and configure storage and backup systems so you retain full ownership and control."
+    tags: ["secure-network", "privacy"]
+
+  - category: secure-network
+    q: "Is this the same as a consumer VPN?"
+    a: "No. Secure Remote Access is about safely reaching your own network when you’re away. It’s not a “privacy VPN subscription.”"
+    tags: ["secure-network"]
+
+  - category: secure-network
+    q: "What devices are protected by Network-Wide Protection?"
+    a: "Everything on your network — phones, laptops, tablets, smart TVs, and IoT devices — without installing software on each one."
+    tags: ["secure-network"]
+
+  - category: secure-network
+    q: "Do you provide 24/7 emergency support?"
+    a: "Not by default. Managed Network Care can include priority support expectations, but I do not advertise 24/7 on-call service unless explicitly agreed."
+    tags: ["secure-network"]
+
+  - category: secure-network
+    q: "What if I need new hardware like cables or storage drives?"
+    a: "I can validate your existing equipment, recommend compatible hardware for you to purchase directly, or optionally supply hardware with clear itemization — no proprietary lock-in."
+    tags: ["secure-network"]
+
+  # ---------------------------
+  # FORGE SECURE NETWORK (moved from managed_phone_line.md)
+  # ---------------------------
+
+  - category: managed-phone-text
+    q: "Are you a phone carrier?"
+    a: "No. M.R. TechForge is not a phone carrier. We design and manage communication systems using modern phone and messaging platforms, but we are not selling minutes, data plans, or telecom contracts."
+    tags: ["managed-phone-text", "communication"]
+
+  - category: managed-phone-text
+    q: "Can I make outgoing calls from this number?"
+    a: "Yes. Outgoing calling can be enabled so calls display your managed number as the caller ID. This is configured intentionally based on your needs."
+    tags: ["managed-phone-text", "communication"]
+
+  - category: managed-phone-text
+    q: "Do I need special hardware?"
+    a: "No. Most clients use mobile or desktop apps. Desk phones or traditional handsets can be supported if desired, but no hardware is required to get started."
+    tags: ["managed-phone-text", "communication"]
+
+  - category: managed-phone-text
+    q: "Is this a replacement for my personal phone?"
+    a: "Not necessarily. Many clients use this as a separate, public-facing number while keeping their personal number private."
+    tags: ["managed-phone-text", "communication"]

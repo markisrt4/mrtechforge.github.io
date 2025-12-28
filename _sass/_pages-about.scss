@@ -1,181 +1,275 @@
 /* ==========================================================
-   ABOUT PAGE — M.R. TECHFORGE
+   M.R. TECHFORGE — ABOUT PAGE STYLES (v5.1)
+   File: assets/css/pages/_pages-about.scss
+
+   Fix focus:
+   - Video must be a small “motion portrait” accent
+   - Works even if other CSS says video { width:100% }
+   - Targets BOTH classes AND the actual mp4 src path
    ========================================================== */
 
-.about-hero {
+.about { width: 100%; }
+
+/* ------------------------------
+   HERO
+------------------------------ */
+.about .about-hero {
+  width: 100%;
+  padding: clamp(1.1rem, 2.2vw, 2rem) 1rem 0.75rem;
+}
+
+.about .about-hero__inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2.5rem;
-  align-items: center;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: clamp(0.9rem, 2.6vw, 1.8rem);
+  align-items: start;
 }
 
-.about-title {
-  font-size: 2.6rem;
-  margin-bottom: 0.75rem;
+@media (max-width: 900px) {
+  .about .about-hero__inner { grid-template-columns: 1fr; }
 }
 
-.about-tagline {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+.about .about-title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: 0.2px;
 }
 
-.forge-glow {
-  color: var(--forge-blue);
-  text-shadow: 0 0 12px rgba(60, 180, 255, 0.6);
+.about .about-lead {
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+  color: rgba(235, 242, 255, 0.90);
 }
 
-.glow-blue {
-  color: var(--forge-blue);
-  text-shadow: 0 0 10px rgba(60, 180, 255, 0.6);
+.about .about-lead em {
+  color: rgba(54, 163, 255, 0.95);
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(54, 163, 255, 0.16);
 }
 
-.glow-orange {
-  color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(255, 140, 60, 0.6);
+.about .about-brand {
+  color: var(--forge-accent, #00b8d4);
+  text-shadow: 0 0 12px rgba(0, 150, 255, 0.22);
 }
 
-.about-badges {
+/* Pills */
+.about .about-hero__quick {
   display: flex;
-  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 1.75rem;
-
-  @media (max-width: 900px) {
-    justify-content: center;
-  }
+  gap: 0.55rem;
+  margin-top: 0.95rem;
 }
 
-.about-badge {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.35rem 0.7rem;
+.about .about-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 0.7rem;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.15px;
+  color: rgba(245, 248, 255, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
 }
 
-.about-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+.about .about-ico {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
 
-  @media (max-width: 900px) {
-    justify-content: center;
+  color: rgba(0, 170, 255, 0.95);
+  background: rgba(0, 150, 255, 0.12);
+  border: 1px solid rgba(0, 150, 255, 0.18);
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.10));
+}
+
+.about .about-ico i {
+  font-size: 0.85rem !important;
+  line-height: 1 !important;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
+
+/* ------------------------------
+   VIDEO — HARD FORCE SMALL FOOTPRINT
+------------------------------ */
+
+/* If your grid collapses, this still caps it */
+.about .about-accent-media {
+  max-width: 260px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 900px) {
+  .about .about-accent-media {
+    max-width: 220px !important;
+    margin-top: 0.75rem;
   }
 }
 
-.about-photo-card {
-  background: radial-gradient(
-    circle at top,
-    rgba(60, 180, 255, 0.25),
-    rgba(0, 0, 0, 0.9)
-  );
-  padding: 1rem;
-  border-radius: 18px;
-  box-shadow: 0 0 30px rgba(60, 180, 255, 0.25);
+/* Container gets a hard cap */
+.about .about-video {
+  width: 100% !important;
+  max-width: 260px !important;       /* DESKTOP CAP */
+  border-radius: 14px;
+  overflow: hidden;
 
-  img {
-    width: 100%;
-    border-radius: 14px;
-    display: block;
+  opacity: 0.92;
+  filter: saturate(0.95) contrast(0.98);
+
+  border: 1px solid rgba(0, 150, 255, 0.18);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.45),
+    0 0 14px rgba(0, 150, 255, 0.10);
+}
+
+/* The “can’t ignore me” video rules:
+   - target by class
+   - target any video inside about-video
+   - target by src substring */
+.about .about-video video,
+.about video.about-video__el,
+.about .about-video__el,
+.about video[src*="about_video.mp4"] {
+  width: 100% !important;
+  max-width: 260px !important;
+
+  /* make it a small portrait-style square */
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+
+  /* hard stop height */
+  max-height: 220px !important;
+  height: auto !important;
+
+  display: block !important;
+}
+
+/* Mobile: smaller still */
+@media (max-width: 600px) {
+  .about .about-video { max-width: 200px !important; }
+
+  .about .about-video video,
+  .about video.about-video__el,
+  .about .about-video__el,
+  .about video[src*="about_video.mp4"] {
+    max-width: 200px !important;
+    max-height: 170px !important;
   }
 }
 
-/* Sections */
-
-.about-section {
-  margin-top: 2.5rem;
+.about .about-video__caption {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(220, 230, 245, 0.78);
+  max-width: 260px;
 }
 
-.about-section-title {
-  display: flex;
+/* Tap hint */
+.about .about-video__hint {
+  position: absolute;
+  left: 0.65rem;
+  bottom: 0.65rem;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  position: relative;
+  gap: 0.55rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+
+  user-select: none;
+  pointer-events: none;
 }
 
-.about-section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--forge-blue),
-    var(--forge-hotmetal)
-  );
-  box-shadow: 0 0 10px rgba(60, 180, 255, 0.6);
+.about .about-video__hintIcon {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+
+  background: rgba(0, 150, 255, 0.18);
+  border: 1px solid rgba(0, 150, 255, 0.22);
+  text-shadow: 0 0 10px rgba(0, 150, 255, 0.35);
 }
 
-.section-ico {
-  filter: drop-shadow(0 0 6px rgba(60, 180, 255, 0.6));
+.about .about-video__hint.is-hidden {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 250ms ease, transform 250ms ease;
 }
 
-/* Lists */
-
-.about-list,
-.about-checklist,
-.about-facts {
-  list-style: none;
-  padding-left: 0;
+/* ------------------------------
+   BODY
+------------------------------ */
+.about .about-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem clamp(2rem, 3vw, 3rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-.about-list li,
-.about-facts li {
-  margin-bottom: 0.6rem;
+.about .about-card p {
+  margin: 0 0 0.85rem;
+  color: rgba(232, 240, 255, 0.86);
 }
 
-.about-li-ico {
-  margin-right: 0.4rem;
+.about .about-card p:last-child { margin-bottom: 0; }
+
+.about .about-quote {
+  margin: 0.9rem 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 150, 255, 0.14);
+  background: rgba(0, 150, 255, 0.06);
+  color: rgba(235, 244, 255, 0.90);
 }
 
-.about-checklist li {
-  position: relative;
-  padding-left: 1.6rem;
-  margin-bottom: 0.6rem;
-}
-
-.about-checklist li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--forge-blue);
-  text-shadow: 0 0 8px rgba(60, 180, 255, 0.7);
-}
-
-/* Satire section */
-
-.about-satire {
-  border: 1px dashed rgba(255, 255, 255, 0.25);
-}
-
-.about-satire-btn {
+.about .about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 1rem;
 }
 
-.about-satire-note {
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-/* Final CTA */
-
-.about-final {
-  margin-top: 3rem;
+.about .about-btn {
+  min-width: 170px;
+  justify-content: center;
   text-align: center;
 }
 
-.btn-wide {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+@media (max-width: 520px) {
+  .about .about-btn { width: 100%; min-width: 0; }
 }
+
+.about .about-btn--ghost {
+  background: transparent !important;
+  border: 1px solid rgba(0, 150, 255, 0.28) !important;
+  box-shadow: none !important;
+  opacity: 0.95;
+}
+
+.about .about-btn--ghost:hover {
+  border-color: rgba(255, 110, 25, 0.40) !important;
+}
+/* ABOUT_CANARY_12345 */

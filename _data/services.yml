@@ -343,17 +343,3 @@
         - "Change assistance"
         - "Best-effort recovery support"
       description: "Ongoing care for businesses that want continuity and context."
-
-  faq:
-    - q: "Do I need a new router?"
-      a: "Not always. We can use your existing router if it supports the security and network features required. If it doesn’t, we’ll recommend a few vetted options or design a sidecar approach that works alongside ISP equipment."
-    - q: "Do you store or access my data?"
-      a: "No. We do not store customer data, access files, or hold encryption keys. We design and configure storage and backup systems so you retain full ownership and control."
-    - q: "Is this the same as a consumer VPN?"
-      a: "No. Secure Remote Access is about safely reaching your own network when you’re away. It’s not a ‘privacy VPN subscription.’"
-    - q: "What devices are protected by Network-Wide Protection?"
-      a: "Everything on your network — phones, laptops, tablets, smart TVs, and IoT devices — without installing software on each one."
-    - q: "Do you provide 24/7 emergency support?"
-      a: "Not by default. Managed Network Care can include priority support expectations, but we do not advertise 24/7 on-call service unless explicitly agreed."
-    - q: "What if I need new hardware like cables or storage drives?"
-      a: "We can validate your existing equipment, recommend compatible hardware for you to purchase directly, or optionally supply hardware with clear itemization — no proprietary lock-in."
