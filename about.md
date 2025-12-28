@@ -38,7 +38,7 @@ class: about about-v5
       <div class="about-hero-quick" aria-label="Quick traits">
         <div class="about-pill">
           <span class="about-ico" aria-hidden="true">🤝</span>
-          Warm engineering
+          Systems-oriented engineering
         </div>
         <div class="about-pill">
           <span class="about-ico" aria-hidden="true">💬</span>
