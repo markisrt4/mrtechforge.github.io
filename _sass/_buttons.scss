@@ -1,219 +1,170 @@
 /* ==========================================================
-   M.R. TECHFORGE — BUTTONS (v5.2)
-   Forge Silver core • Ultra-slow blue/orange drift
-   Premium, calm, always-on (less intense)
+   M.R. TECHFORGE — BUTTONS (v10.2)
+   File: assets/css/_buttons.scss
+
+   Notes:
+   - Slower, calmer animated "chip" glow
+   - Includes Forge Silver in the gradient cycle
+   - Slightly shorter button height
+   - Keeps neon edge + shimmer but less intense
    ========================================================== */
 
-/* ----------------------------------------------------------
-   Base button reset
----------------------------------------------------------- */
-
-.btn,
-.btn-glow,
-.btn-forge {
-  -webkit-tap-highlight-color: transparent;
-  text-decoration: none;
-  appearance: none;
-  border: none;
-  cursor: pointer;
-
+/* Base Button */
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
 
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 
-  /* slightly shorter than before */
-  padding: 0.82rem 1.10rem;
-  border-radius: 14px;
+  padding: 0.78rem 1.1rem;  /* slightly shorter than before */
+  border-radius: 18px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
 
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+
+  /* Helps prevent width math weirdness on mobile */
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Generic hover lift */
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0px);
+}
+
+/* ----------------------------------------------------------
+   FORGE BUTTON (Animated chip glow)
+---------------------------------------------------------- */
+.btn-forge {
   position: relative;
   isolation: isolate;
 
-  user-select: none;
-  white-space: nowrap;
+  color: #1a1e23; /* dark ink */
+  border: 1px solid rgba(210, 224, 238, 0.55);
 
-  transition:
-    transform 180ms ease,
-    box-shadow 260ms ease,
-    filter 260ms ease,
-    opacity 260ms ease;
-}
-
-.btn:active {
-  transform: translateY(1px) scale(0.99);
-}
-
-/* ----------------------------------------------------------
-   Forge CORE-style Button
----------------------------------------------------------- */
-
-.btn-forge {
-  --forge-blue: var(--forge-accent, #2f7dff);
-  --forge-orange: var(--forge-hotmetal, #ff8a2a);
-  --forge-silver: #cfd4dd;
-
-  color: rgba(14, 20, 30, 0.92);
-
-  /* Forge Silver core */
-  background:
-    radial-gradient(140% 160% at 35% 20%,
-      rgba(255,255,255,0.92) 0%,
-      rgba(235,240,248,0.96) 38%,
-      rgba(205,212,224,0.98) 100%);
-
-  border: 1px solid rgba(140, 150, 170, 0.35);
-
-  /* Calm, silver-forward glow */
+  /* Softer base glow */
   box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.55),
-    0 0 14px rgba(207, 212, 221, 0.52),
-    0 0 18px rgba(47, 125, 255, 0.10),
-    0 0 18px rgba(255, 138, 42, 0.08);
+    0 0 14px rgba(0, 140, 255, 0.16),
+    0 0 22px rgba(255, 150, 0, 0.10);
+
+  /* chip-like gradient (includes Forge Silver) */
+  background: linear-gradient(
+    120deg,
+    rgba(226, 234, 242, 0.92),
+    rgba(203, 214, 224, 0.92),
+    rgba(255, 186, 92, 0.78),
+    rgba(0, 170, 255, 0.70),
+    rgba(226, 234, 242, 0.92)
+  );
+  background-size: 520% 520%;
+  animation: forgeFlow 18s ease-in-out infinite; /* slower + calmer */
+
+  /* Keep the button itself from hiding its own effects */
+  overflow: visible;
 }
 
-/* ----------------------------------------------------------
-   Animated rim (slower + calmer, silver included)
----------------------------------------------------------- */
-
+/* Inner bevel / glass */
 .btn-forge::before {
   content: "";
   position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index: -2;
 
-  background: linear-gradient(
-    140deg,
-    rgba(207,212,221,0.98),
-    rgba(207,212,221,0.82),
-    rgba(47,125,255,0.58),
-    rgba(207,212,221,0.88),
-    rgba(255,138,42,0.55),
-    rgba(207,212,221,0.98)
-  );
+  /* IMPORTANT:
+     inset is tighter now so it doesn't get clipped as easily */
+  inset: -1px;
 
-  background-size: 420% 420%;
-  animation: forgeSilverDrift 34s linear infinite;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
 
-  /* slightly reduced intensity */
-  opacity: 0.88;
-  filter: blur(0.25px);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+    inset 0 0 18px rgba(255, 255, 255, 0.10);
+
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Inner edge depth (keeps badge feel) */
+/* Moving shimmer line (softer + slower) */
 .btn-forge::after {
   content: "";
   position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  z-index: -1;
-
-  background:
-    radial-gradient(140% 140% at 40% 20%,
-      rgba(255,255,255,0.10) 0%,
-      rgba(0,0,0,0.10) 55%,
-      rgba(0,0,0,0.22) 100%);
-
-  pointer-events: none;
-}
-
-/* ----------------------------------------------------------
-   Hover / focus — slightly more energy, still calm
----------------------------------------------------------- */
-
-.btn-forge:hover,
-.btn-forge:focus-visible {
-  transform: translateY(-1px);
-  box-shadow:
-    0 16px 38px rgba(0, 0, 0, 0.62),
-    0 0 22px rgba(207, 212, 221, 0.70),
-    0 0 26px rgba(47, 125, 255, 0.18),
-    0 0 26px rgba(255, 138, 42, 0.16);
-}
-
-.btn-forge:focus-visible {
-  outline: none;
-}
-
-/* Disabled */
-.btn-forge[disabled],
-.btn-forge.is-disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  transform: none;
-  filter: grayscale(0.2);
-}
-
-/* ----------------------------------------------------------
-   Secondary glow button (optional)
----------------------------------------------------------- */
-
-.btn-glow {
-  color: rgba(235, 240, 255, 0.95);
-  background: rgba(10, 16, 30, 0.72);
-  border: 1px solid rgba(47, 125, 255, 0.28);
-
-  box-shadow:
-    0 10px 26px rgba(0, 0, 0, 0.55),
-    0 0 16px rgba(47, 125, 255, 0.16);
-
-  position: relative;
-}
-
-.btn-glow::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index: -1;
+  inset: 0;
+  border-radius: 18px;
 
   background: linear-gradient(
-    140deg,
-    rgba(207,212,221,0.55),
-    rgba(47,125,255,0.55),
-    rgba(255,138,42,0.55),
-    rgba(207,212,221,0.55)
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
   );
+  transform: translateX(-35%);
+  animation: forgeShimmer 3.8s ease-in-out infinite;
 
-  background-size: 300% 300%;
-  animation: forgeSilverDrift 40s linear infinite;
-  opacity: 0.28;
-  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+  opacity: 0.55;
 }
 
-/* ----------------------------------------------------------
-   Animations
----------------------------------------------------------- */
+/* Button content above effects */
+.btn-forge > * {
+  position: relative;
+  z-index: 1;
+}
 
-@keyframes forgeSilverDrift {
+/* Optional stronger hover (still subtle) */
+.btn-forge:hover {
+  filter: brightness(1.02);
+  box-shadow:
+    0 0 18px rgba(0, 140, 255, 0.20),
+    0 0 28px rgba(255, 150, 0, 0.14);
+}
+
+/* Accessibility */
+.btn:focus-visible {
+  outline: 2px solid rgba(0, 170, 255, 0.65);
+  outline-offset: 3px;
+}
+
+/* Animations */
+@keyframes forgeFlow {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ----------------------------------------------------------
-   Reduced motion
----------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-  .btn-forge::before,
-  .btn-glow::before {
-    animation: none;
-  }
+@keyframes forgeShimmer {
+  0%   { transform: translateX(-40%); opacity: 0.18; }
+  50%  { transform: translateX(40%);  opacity: 0.55; }
+  100% { transform: translateX(140%); opacity: 0.18; }
 }
 
 /* ----------------------------------------------------------
-   Mobile tightening
+   Small icon inside buttons
 ---------------------------------------------------------- */
+.btn .mini-ico {
+  font-size: 1.05rem;
+  line-height: 1;
+  transform: translateY(1px);
+}
 
+/* Mobile tightening */
 @media (max-width: 520px) {
-  .btn,
-  .btn-glow,
-  .btn-forge {
-    padding: 0.74rem 0.92rem; /* shorter */
-    border-radius: 13px;
+  .btn {
+    padding: 0.72rem 1.0rem;
+    border-radius: 16px;
+  }
+  .btn-forge::before,
+  .btn-forge::after {
+    border-radius: 16px;
   }
 }
