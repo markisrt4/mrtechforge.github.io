@@ -28,6 +28,7 @@ products:
   index: "/products/"
   nfc: "/products/nfc/"
   gadgets: "/products/gadgets/"
+  all: "/products/all/"
 
 external:
   proton_referral: "https://pr.tn/ref/H8CD3SD5"
