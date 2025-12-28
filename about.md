@@ -25,27 +25,30 @@ class: about about-v2
 
       <div class="about-hero__quick">
         <div class="about-pill">
-          <span class="about-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          </span>
+          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
           Warm engineering
         </div>
+
         <div class="about-pill">
-          <span class="about-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </span>
+          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
           Clear communication
         </div>
+
         <div class="about-pill">
-          <span class="about-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          </span>
+          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
           Security-minded
         </div>
+
         <div class="about-pill">
-          <span class="about-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M7 20h10M9 16h6M10 4h4l1 5H9l1-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
+          <svg class="about-pill__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 20h10M9 16h6M10 4h4l1 5H9l1-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           Built to last
         </div>
       </div>
@@ -73,16 +76,6 @@ class: about about-v2
       <p class="about-video__caption">
         A quiet moment between builds. Coffee helps.
       </p>
-
-      {%- comment -%}
-      Optional later:
-      If you decide you want tiny photos/icons to break up text, we can add a small strip here:
-      <div class="about-microgallery">
-        <img src="/assets/img/about/desk.jpg" alt="Workbench detail" />
-        <img src="/assets/img/about/terminal.jpg" alt="Terminal closeup" />
-        <img src="/assets/img/about/tools.jpg" alt="Tools" />
-      </div>
-      {%- endcomment -%}
     </div>
 
   </div>
@@ -92,14 +85,15 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.5" opacity="0.9"/></svg>
-      </span>
+      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.5" opacity="0.9"/>
+      </svg>
       How I think about technology
     </h2>
     <p>
       I build systems that are <strong>clear, dependable, and quietly useful</strong>.
-      Not flashy. Not bloated. Just technology that works the way you expect it to — and explains itself along the way.
+      Not flashy. Not bloated. Just technology that works the way you expect it to — (and explains itself along the way).
     </p>
     <p>
       Good engineering doesn’t just solve problems; it builds confidence.
@@ -109,9 +103,10 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4 7-11V6l-7-3-7 3v4c0 7 7 11 7 11z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12.2l2.1 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
+      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 21s7-4 7-11V6l-7-3-7 3v4c0 7 7 11 7 11z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M8.5 12.2l2.1 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       The why
     </h2>
     <p>
@@ -134,9 +129,11 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.6"/><path d="M9 3h6M10 21h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/></svg>
-      </span>
+      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M9 3h6M10 21h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+      </svg>
       What I build
     </h2>
     <p>
@@ -158,9 +155,11 @@ class: about about-v2
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 10h16v8H4z" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </span>
+      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 10h16v8H4z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
       Teaching, learning, and the next generation
     </h2>
     <p>
@@ -169,16 +168,17 @@ class: about about-v2
       and how to make informed decisions online.
     </p>
     <p>
-      I’m especially excited about the idea of teaching the <strong>next generation of coders</strong>, engineers, and problem-solvers —
-      and helping others develop good online habits around <strong>privacy</strong>, <strong>security</strong>, and digital responsibility.
+      I’m especially excited about teaching the <strong>next generation of coders</strong>, engineers, and problem-solvers —
+      and helping others build good online habits around <strong>privacy</strong>, <strong>security</strong>, and digital responsibility.
     </p>
   </div>
 
   <div class="forge-card about-card">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3.2 6.8L22 12l-6.8 3.2L12 22l-3.2-6.8L2 12l6.8-3.2L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.5 12h5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-      </span>
+      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2l3.2 6.8L22 12l-6.8 3.2L12 22l-3.2-6.8L2 12l6.8-3.2L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M9.5 12h5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
       How I work
     </h2>
     <ul class="about-principles">
@@ -195,9 +195,10 @@ class: about about-v2
 
   <div class="forge-card about-card about-card--closing">
     <h2 class="about-h2">
-      <span class="about-h2__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12s3-7 9-7 9 7 9 7-3 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.6"/><path d="M12 9.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z" stroke="currentColor" stroke-width="1.6"/></svg>
-      </span>
+      <svg class="about-h2__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 12s3-7 9-7 9 7 9 7-3 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M12 9.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
       A human moment
     </h2>
     <p>
@@ -218,7 +219,6 @@ class: about about-v2
 </section>
 
 <script>
-  // About video hint behavior (mobile-friendly, no dependencies)
   (function () {
     const video = document.querySelector(".about-video__el");
     const hint = document.querySelector(".about-video__hint");
