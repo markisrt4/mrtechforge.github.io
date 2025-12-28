@@ -1,177 +1,272 @@
 /* ==========================================================
-   M.R. TECHFORGE — CARDS (vNext Clean Restore)
+   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v3.2 GH-PAGES SAFE)
    File: assets/css/_cards.scss
 
-   Fixes:
-   - Restores missing sections (no "..." corruption)
-   - Re-introduces .forge-hoverlift for @extend users
-   - Ensures cards center horizontally (no right-hug)
-   - Adds consistent vertical spacing between cards
+   Why this version:
+   - GitHub Pages uses older sassc which can choke on rgba(var(--x), a)
+   - Removes rgba(var(...), ...) patterns
+   - Removes @extend to avoid selector/compile issues
+   - Preserves your existing class names + structure
    ========================================================== */
 
-/* ------------------------------
-   CARD BASE
------------------------------- */
-.forge-card {
-  width: 100%;
-  max-width: 980px;              /* wider cards (your ask) */
-  margin: 0 auto;                /* center horizontally */
-  padding: 1.35rem 1.25rem;
-  border-radius: 22px;
-  box-sizing: border-box;
+/* ----------------------------------------------------------
+   BASE SECTION CARD
+   Used for content blocks (not necessarily clickable).
+---------------------------------------------------------- */
 
-  background: radial-gradient(120% 140% at 30% 10%,
-      rgba(40, 110, 200, 0.22) 0%,
-      rgba(10, 40, 80, 0.28) 35%,
-      rgba(0, 0, 0, 0.65) 100%),
+.forge-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 1.55rem 1.25rem 1.65rem;
+
+  /* IMPORTANT: hard-coded rgba values for sassc compatibility */
+  background:
+    radial-gradient(1200px 600px at 18% 0%,
+      rgba(0, 150, 255, 0.12) 0%,
+      rgba(0, 0, 0, 0.00) 55%),
     linear-gradient(180deg,
       rgba(10, 18, 30, 0.78) 0%,
-      rgba(5, 10, 18, 0.86) 100%);
+      rgba(2, 6, 13, 0.92) 100%);
 
-  border: 1px solid rgba(70, 170, 255, 0.22);
+  border: 1px solid rgba(0, 150, 255, 0.22);
+
   box-shadow:
-    0 18px 44px rgba(0, 0, 0, 0.55),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    0 0 0 1px rgba(0, 0, 0, 0.30) inset,
+    0 12px 30px rgba(0, 0, 0, 0.40),
+    0 0 18px rgba(0, 140, 255, 0.10);
 
-  color: var(--forge-text, #d9e2ee);
   overflow: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
-/* spacing between stacked cards (what you actually wanted) */
-.forge-card + .forge-card {
-  margin-top: 1.15rem;
+/* Titles inside cards */
+.forge-card-title {
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.02em;
 }
 
-/* ------------------------------
-   HOVERLIFT UTILITY (RESTORED)
------------------------------- */
+.forge-card p:last-child { margin-bottom: 0; }
+
+/* ----------------------------------------------------------
+   HOVER LIFT UTILITY (used by offering cards)
+---------------------------------------------------------- */
+
 .forge-hoverlift {
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
+
 .forge-hoverlift:hover {
   transform: translateY(-3px);
-  border-color: rgba(70, 170, 255, 0.34);
   box-shadow:
-    0 22px 54px rgba(0, 0, 0, 0.62),
-    0 0 32px rgba(40, 140, 255, 0.10),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    0 14px 34px rgba(0, 0, 0, 0.46),
+    0 0 22px rgba(0, 150, 255, 0.12);
 }
 
-/* ------------------------------
-   MINI CARD (used in "How it works")
------------------------------- */
-.mini-card {
-  @extend .forge-hoverlift;
-  padding: 1rem 1rem;
-  border-radius: 18px;
-}
+/* ----------------------------------------------------------
+   REUSABLE SNAPPY CARD SURFACE
+   Apply to clickable/product/pricing cards for premium feel.
+---------------------------------------------------------- */
 
-/* ------------------------------
-   SECTION CARD WRAPPER
------------------------------- */
-.home-section-card,
-.section-card {
-  @extend .forge-card;
-}
+.forge-surface-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 1.30rem 1.1rem 1.35rem;
 
-/* ------------------------------
-   QUICK GRID + PILLARS
------------------------------- */
-.home-quick-grid,
-.quick-grid {
-  width: 100%;
-  max-width: 1100px;
-  margin: 1.6rem auto 0;
-  padding: 0 0.25rem;
+  background:
+    radial-gradient(900px 420px at 20% 15%,
+      rgba(0, 150, 255, 0.12),
+      rgba(0, 0, 0, 0.00) 62%),
+    linear-gradient(180deg,
+      rgba(10, 18, 30, 0.76) 0%,
+      rgba(2, 6, 13, 0.92) 100%);
+
+  border: 1px solid rgba(0, 150, 255, 0.18);
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.38),
+    0 0 22px rgba(0, 150, 255, 0.10);
+
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
   box-sizing: border-box;
+  max-width: 100%;
+}
 
+.forge-surface-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 150, 255, 0.30);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.46),
+    0 0 26px rgba(0, 150, 255, 0.13);
+}
+
+/* Compact version for tight spaces */
+.forge-surface-card--compact {
+  padding: 1.12rem 1.0rem 1.18rem;
+}
+
+/* ----------------------------------------------------------
+   MEDIA FRAMES / THUMBNAILS
+---------------------------------------------------------- */
+
+.forge-media-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 150, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.38),
+    0 0 18px rgba(0, 140, 255, 0.08);
+}
+
+/* ----------------------------------------------------------
+   CHIPS / PILLS (used in hero tags, badges)
+---------------------------------------------------------- */
+
+.forge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+
+  border: 1px solid rgba(0, 150, 255, 0.22);
+  background: rgba(10, 22, 38, 0.55);
+  color: rgba(215, 230, 245, 0.92);
+
+  font-size: 0.92rem;
+}
+
+/* ----------------------------------------------------------
+   BADGES
+---------------------------------------------------------- */
+
+.forge-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  border: 1px solid rgba(0, 150, 255, 0.35);
+  background: rgba(0, 150, 255, 0.12);
+  color: rgba(230, 245, 255, 0.95);
+  white-space: nowrap;
+}
+
+/* Legacy alias used by some pages */
+.forge-offering-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  border: 1px solid rgba(0, 150, 255, 0.35);
+  background: rgba(0, 150, 255, 0.12);
+  color: rgba(230, 245, 255, 0.95);
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------
+   CLICKABLE LINK CARD (Products/Services landing cards)
+---------------------------------------------------------- */
+
+.forge-link-card {
+  position: relative;
+  display: block;
+  border-radius: 18px;
+  padding: 1.1rem 1rem;
+
+  text-decoration: none;
+  color: inherit;
+
+  background:
+    radial-gradient(1000px 520px at 18% 0%,
+      rgba(0, 150, 255, 0.13) 0%,
+      rgba(0, 0, 0, 0.00) 55%),
+    linear-gradient(180deg,
+      rgba(10, 18, 30, 0.76) 0%,
+      rgba(2, 6, 13, 0.92) 100%);
+
+  border: 1px solid rgba(0, 150, 255, 0.20);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.42),
+    0 0 18px rgba(0, 150, 255, 0.08);
+
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  overflow: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.forge-link-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 150, 255, 0.30);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.50),
+    0 0 24px rgba(0, 150, 255, 0.12);
+}
+
+/* ----------------------------------------------------------
+   CARD GRID HELPERS
+---------------------------------------------------------- */
+
+.forge-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.15rem; /* vertical + horizontal spacing between cards */
+  gap: 1.05rem;
 }
 
-.quick-card {
-  @extend .forge-card;
-  @extend .forge-hoverlift;
-  max-width: none;          /* grid decides the width */
-  margin: 0;                /* grid handles spacing */
+@media (min-width: 900px) {
+  .forge-card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .forge-card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 }
 
-.pillar-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.15rem;
-  margin-top: 1.1rem;
+.forge-card-grid .forge-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.pillar-card {
-  @extend .forge-card;
-  @extend .forge-hoverlift;
-  max-width: none;
+/* ----------------------------------------------------------
+   GLOBAL STACK SPACING BETWEEN CARDS
+   - Adds breathing room when cards appear one after another
+   - Does NOT affect cards inside grid containers that already use gap
+---------------------------------------------------------- */
+
+.forge-card {
+  margin: 0 0 1.15rem;
+}
+
+.forge-card:last-child {
+  margin-bottom: 0;
+}
+
+/* If a container uses grid/flex gaps, remove margins inside it */
+.forge-card-grid .forge-card,
+.forge-offerings-grid .forge-card,
+.forge-offerings-grid .forge-offering-card,
+.services-grid .forge-card,
+.home-quick-grid .forge-card,
+.pricing-grid .forge-card {
   margin: 0;
 }
 
-/* ------------------------------
-   COMMON CARD TYPOGRAPHY
------------------------------- */
-.forge-card h2,
-.forge-card h3 {
-  margin: 0 0 0.85rem 0;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
+/* ----------------------------------------------------------
+   MOBILE TUNING
+---------------------------------------------------------- */
 
-.forge-card h2 {
-  font-family: "Orbitron", system-ui, sans-serif;
-  font-size: 1.25rem;
-  color: var(--forge-blue, #2f95ff);
-  text-shadow: 0 0 14px rgba(40, 140, 255, 0.35);
-}
-
-.forge-card h3 {
-  font-family: "Orbitron", system-ui, sans-serif;
-  font-size: 1.1rem;
-  color: var(--forge-hotmetal, #ffb13b);
-  text-shadow: 0 0 12px rgba(255, 165, 0, 0.25);
-}
-
-.forge-card p {
-  margin: 0.35rem 0 0.85rem 0;
-}
-
-/* ------------------------------
-   LISTS IN CARDS
------------------------------- */
-.forge-card ul {
-  margin: 0.75rem 0 0 0;
-  padding-left: 1.25rem;
-}
-.forge-card li {
-  margin: 0.45rem 0;
-}
-
-/* ------------------------------
-   RESPONSIVE
------------------------------- */
-@media (max-width: 980px) {
-  .home-quick-grid,
-  .quick-grid,
-  .pillar-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .forge-card {
-    max-width: 980px; /* still centered; main padding will keep it off edges */
-  }
-}
-
-@media (max-width: 520px) {
-  .forge-card {
-    padding: 1.15rem 1.05rem;
-    border-radius: 20px;
-  }
-
-  .forge-card + .forge-card {
-    margin-top: 1.0rem;
-  }
+@media (max-width: 720px) {
+  .forge-card { padding: 1.45rem 1.1rem 1.55rem; }
+  .forge-surface-card { padding: 1.18rem 1.0rem 1.25rem; }
 }
