@@ -1,18 +1,12 @@
 /* ==========================================================
-   M.R. TECHFORGE — HOME PAGE STYLES (v8.x)
+   M.R. TECHFORGE — HOME PAGE STYLES (v8.2 Stable)
    File: assets/css/pages/_pages-home.scss
 
-   Goals:
-   - Hero headline OUTSIDE card
-   - 3-color intro lines
-   - New sweep glow stamp: blue base + orange band rolling L->R
-   - YouTube embed styled (NOT inside forge-card)
-   - Consistent small icon styling
-
-   Updates (Mobile polish):
-   - Fix long hero lines being too wide on small screens
-   - Add more vertical spacing between stacked hero lines
-   - Add hero-forge-image styling (for your new JPEG under the tagline)
+   Fixes:
+   - REMOVE ghosting on “M.R. TECHFORGE” by eliminating duplicate text overlay
+   - Animated sweep now uses ONE text layer (background-clip: text)
+   - Hero tagline lines bigger on mobile
+   - More vertical spacing between hero lines
    ========================================================== */
 
 /* ------------------------------
@@ -67,7 +61,11 @@
   max-width: 1200px;
 }
 
-/* Stamp sweep (glowing brand headline) */
+/* ==========================================================
+   “M.R. TECHFORGE” STAMP (NO GHOSTING)
+   - single text layer
+   - orange sweep via animated background gradient
+   ========================================================== */
 .hero-stamp-sweep {
   display: inline-block;
   position: relative;
@@ -76,72 +74,71 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: clamp(1.7rem, 4.8vw, 3rem);
+  font-size: clamp(1.85rem, 4.8vw, 3.05rem);
 
-  color: rgba(60, 180, 255, 0.95);
-  text-shadow:
-    0 0 18px rgba(60, 180, 255, 0.22),
-    0 0 30px rgba(0, 0, 0, 0.55);
+  /* Single-layer sweep (blue base + orange band) */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 
-  margin: 0 0 0.85rem;
-}
+  background:
+    linear-gradient(
+      90deg,
+      rgba(60, 180, 255, 0.98) 0%,
+      rgba(60, 180, 255, 0.98) 42%,
+      rgba(255, 165, 85, 0.0) 47%,
+      rgba(255, 165, 85, 0.95) 50%,
+      rgba(255, 165, 85, 0.0) 53%,
+      rgba(60, 180, 255, 0.98) 58%,
+      rgba(60, 180, 255, 0.98) 100%
+    );
 
-/* rolling orange band */
-.hero-stamp-sweep::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  color: rgba(255, 165, 85, 0.95);
-
-  background: linear-gradient(
-    90deg,
-    rgba(255,165,85,0) 0%,
-    rgba(255,165,85,0.95) 50%,
-    rgba(255,165,85,0) 100%
-  );
+  background-size: 260% 100%;
+  background-position: 0% 50%;
 
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
 
-  filter: blur(0px);
-  transform: translateX(-120%);
-  animation: stampGlow 2.8s linear infinite;
-  opacity: 1;
+  /* Glow is applied once (no double text render) */
+  filter: drop-shadow(0 0 12px rgba(60, 180, 255, 0.22))
+          drop-shadow(0 0 20px rgba(0, 0, 0, 0.55));
+
+  margin: 0 0 0.9rem;
+  animation: stampSweepOneLayer 2.9s linear infinite;
 }
 
-/* If data-text is missing, don’t show overlay */
-.hero-stamp-sweep:not([data-text])::after {
-  content: "";
-  display: none;
+@keyframes stampSweepOneLayer {
+  0%   { background-position: -120% 50%; }
+  100% { background-position: 120% 50%; }
 }
 
-@keyframes stampGlow {
-  0%   { transform: translateX(-120%); opacity: 0.00; }
-  10%  { opacity: 0.75; }
-  50%  { opacity: 1.00; }
-  90%  { opacity: 0.75; }
-  100% { transform: translateX(120%); opacity: 0.00; }
-}
-
-/* Headline */
+/* ------------------------------
+   HERO TAGLINE (3 lines)
+------------------------------ */
 .hero-headline {
   margin: 0;
-  line-height: 1.05;
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+
+  /* give room between lines globally */
+  line-height: 1.12;
 }
 
 .hero-line {
-  display: inline-block;
-  font-size: clamp(1.7rem, 5.7vw, 3.2rem);
-  /* Give each line breathing room (helps the stacked look) */
-  padding: 0.10em 0;
+  display: block;
+
+  /* Bigger than before (desktop stays strong, mobile gets room) */
+  font-size: clamp(2.05rem, 5.8vw, 3.35rem);
+
+  /* More vertical spacing between stacked lines */
+  padding: 0.16em 0;
+
+  word-break: keep-all;
   overflow-wrap: anywhere;
 }
 
+/* Colors */
 .hero-line-blue {
   color: var(--forge-accent);
   text-shadow:
@@ -164,13 +161,15 @@
 }
 
 .hero-subtitle {
-  margin: 0.85rem 0 0;
+  margin: 0.95rem 0 0;
   max-width: 72ch;
   font-size: 1.05rem;
   line-height: 1.55;
 }
 
-/* New: hero image slot under the tagline (for your forge+tech JPEG) */
+/* ------------------------------
+   HERO IMAGE SLOT (your JPEG under the tagline)
+------------------------------ */
 .hero-forge-image {
   width: 100%;
   max-width: 720px;
@@ -187,7 +186,9 @@
     inset 0 0 28px rgba(0,0,0,0.55);
 }
 
-/* Actions card block (you still want actions inside a card) */
+/* ------------------------------
+   HERO ACTIONS (inside a card)
+------------------------------ */
 .hero-intro-actions {
   margin-top: 1.1rem;
   padding: 1.05rem 1.05rem;
@@ -208,7 +209,7 @@
   text-decoration: none;
   font-weight: 850;
 
-  /* Keep them snappy (not giant slabs) */
+  /* keep snappy, not tall */
   min-height: 46px;
   padding: 0.62rem 1.05rem;
 
@@ -224,7 +225,6 @@
 
 .home.home-v8 .forge-btn span {
   display: inline-block;
-  gap: 0.1rem; /* text spacing */
   min-height: 0;
 }
 
@@ -233,7 +233,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-top: 0.9rem;
+  margin-top: 0.95rem;
 }
 
 .hero-badge {
@@ -354,25 +354,33 @@
     padding-top: 0.95rem;
   }
 
-  /* Mobile hero headline tuning:
-     - More vertical breathing room between lines
-     - Prevent long words like SOLUTIONS / INTEGRITY from feeling too wide
-  */
+  /* Stamp: keep strong on mobile */
+  .hero-stamp-sweep {
+    font-size: clamp(1.65rem, 7.0vw, 2.35rem);
+    letter-spacing: 0.12em;
+  }
+
+  /* Hero lines: BIGGER on mobile + better vertical rhythm */
   .hero-headline {
     line-height: 1.18;
   }
 
   .hero-line {
     max-width: 92vw;
-    padding: 0.14em 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* bump up vs previous version */
+    font-size: clamp(2.15rem, 10.2vw, 3.05rem);
+    padding: 0.18em 0;
+
     letter-spacing: 0.015em;
     overflow-wrap: anywhere;
   }
 
-  /* Slightly tighten the longest lines on very small screens */
+  /* Keep long words from feeling too wide */
   .hero-line-silver,
   .hero-line-hot {
-    font-size: clamp(1.45rem, 7.2vw, 2.45rem);
     letter-spacing: 0.01em;
   }
 
@@ -389,15 +397,9 @@
     height: 68px;
   }
 
-  /* Keep stamp a hair tighter on small phones */
-  .hero-stamp-sweep {
-    font-size: clamp(1.55rem, 6.2vw, 2.2rem);
-    letter-spacing: 0.12em;
-  }
-
   .hero-forge-image {
     max-width: 92vw;
-    margin-top: 1.0rem;
+    margin-top: 1.05rem;
     border-radius: 16px;
   }
 }
