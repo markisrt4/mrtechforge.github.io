@@ -11,6 +11,7 @@ pages:
   documentation: "/documentation/"
 
 guides:
+  index: "/guides/"
   digital_security: "/guides/digital-security/"
   google_breakup_intro: "/guides/digital-security/life-without-google/#google-breakup-intro"
   google_replacement_guide: "/guides/digital-security/life-without-google/#google-replacement-guide"
