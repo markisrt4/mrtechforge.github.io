@@ -203,3 +203,29 @@
   .forge-card { padding: 1.45rem 1.1rem 1.55rem; }
   .forge-surface-card { padding: 1.18rem 1.0rem 1.25rem; }
 }
+
+/* ==========================================================
+   GLOBAL STACK SPACING BETWEEN CARDS
+   - Adds breathing room when cards appear one after another
+   - Does NOT affect cards inside grid containers that already use gap
+   ========================================================== */
+
+/* Default: stacked cards get spacing */
+.forge-card {
+  margin: 0 0 1.15rem;
+}
+
+/* Last card in a stack shouldn't add extra bottom space */
+.forge-card:last-child {
+  margin-bottom: 0;
+}
+
+/* If a container uses grid/flex gaps, remove margins inside it */
+.forge-card-grid .forge-card,
+.forge-offerings-grid .forge-card,
+.forge-offerings-grid .forge-offering-card,
+.services-grid .forge-card,
+.home-quick-grid .forge-card,
+.pricing-grid .forge-card {
+  margin: 0;
+}
