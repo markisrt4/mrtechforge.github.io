@@ -2,6 +2,7 @@
   breadcrumbs.html
   - Robust breadcrumb trail based on site.data.navigation.main
   - Fixes incorrect page detection due to bad split syntax / partial matches
+  - GitHub Pages / Liquid-safe: no "startswith" operator
 {% endcomment %}
 
 {% assign nav_root = site.data.navigation.main | default: site.data.navigation %}
@@ -13,7 +14,8 @@
 {%- comment -%}
   Normalize: ensure leading slash, and remove any double slashes.
 {%- endcomment -%}
-{% unless current_url startswith "/" %}
+{% assign first_char = current_url | slice: 0, 1 %}
+{% unless first_char == "/" %}
   {% assign current_url = "/" | append: current_url %}
 {% endunless %}
 {% assign current_url = current_url | replace: "//", "/" %}
@@ -39,6 +41,7 @@
 
     {%- comment -%}
       Prefer exact match. Otherwise allow “starts with” match for sections like /services/...
+      NOTE: Using "contains" here as you had it; it is not a true prefix check but kept for compatibility.
     {%- endcomment -%}
     {% if current_clean == item_clean or (item_clean != "/" and current_clean != "/" and current_clean contains item_clean) %}
       {% assign top_item = item %}
