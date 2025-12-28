@@ -3,28 +3,39 @@ layout: default
 title: "About"
 permalink: /about/
 description: "Meet Mark — the engineer behind M.R. TechForge. Clear, dependable systems, built with care, and explained in plain language."
-class: about about-v4
+class: about about-v5
 ---
 
 {% assign links = site.data.links %}
 
 <section class="about-hero">
-  <div class="about-hero__inner">
+  <div class="about-hero-inner">
 
-    <div class="about-hero__text">
+    <div class="about-hero-text">
       <h1 class="about-title">About M.R. TechForge</h1>
 
-      <p class="about-lead">
-        <strong>Hi — I’m Mark.</strong> I’m an engineer who genuinely enjoys building relationships and helping people understand the technology they rely on.
-        One of my favorite moments is watching someone hit that <em>“a-ha”</em> point — when a complex technical idea suddenly clicks and feels approachable.
+      <p class="about-subtitle">
+        Clear, dependable systems — built with care, and explained in plain language.
       </p>
 
-      <p class="about-lead">
-        That ability to translate complicated systems into plain, human language is at the heart of everything I build at
-        <strong class="about-brand">M.R. TechForge</strong>.
-      </p>
+      <div class="about-actions-top">
+        <a class="forge-btn about-btn" href="{{ links.pages.contact | relative_url }}">Get in Touch</a>
+        <a class="forge-btn about-btn about-btn--ghost" href="{{ links.pages.services | relative_url }}">Explore Services</a>
+      </div>
 
-      <div class="about-hero__quick" aria-label="Quick traits">
+      <div class="about-lead-block">
+        <p class="about-lead">
+          <strong>Hi — I’m Mark.</strong> I’m an engineer who genuinely enjoys building relationships and helping people understand the technology they rely on.
+          One of my favorite moments is watching someone hit that <em>“a-ha”</em> point — when a complex technical idea suddenly clicks and feels approachable.
+        </p>
+
+        <p class="about-lead">
+          That ability to translate complicated systems into plain, human language is at the heart of everything I build at
+          <strong class="about-brand">M.R. TechForge</strong>.
+        </p>
+      </div>
+
+      <div class="about-hero-quick" aria-label="Quick traits">
         <div class="about-pill">
           <span class="about-ico" aria-hidden="true">🤝</span>
           Warm engineering
@@ -44,23 +55,25 @@ class: about about-v4
       </div>
     </div>
 
-    <!-- Small, subtle motion accent -->
-    <div class="about-hero__media about-accent-media" aria-label="About video">
-      <div class="about-video" role="button" tabindex="0" aria-label="Play or pause about video">
-        <video
-          class="about-video__el"
-          src="/assets/video/about_video.mp4"
-          playsinline
-          muted
-          loop
-          autoplay
-          preload="metadata"
-          aria-label="Short video of Mark smiling and holding coffee"
-        ></video>
+    <!-- Right media area (desktop), stacked below on mobile -->
+    <div class="about-hero-media" aria-label="About video">
+      <div class="about-media-frame">
+        <div class="about-video" role="button" tabindex="0" aria-label="Play or pause about video">
+          <video
+            class="about-video__el"
+            src="/assets/video/about_video.mp4"
+            playsinline
+            muted
+            loop
+            autoplay
+            preload="metadata"
+            aria-label="Short video of Mark smiling and holding coffee"
+          ></video>
 
-        <div class="about-video__hint" aria-hidden="true">
-          <span class="about-video__hintIcon">▶</span>
-          <span class="about-video__hintText">Tap to pause</span>
+          <div class="about-video__hint" aria-hidden="true">
+            <span class="about-video__hintIcon">▶</span>
+            <span class="about-video__hintText">Tap to pause</span>
+          </div>
         </div>
       </div>
 
