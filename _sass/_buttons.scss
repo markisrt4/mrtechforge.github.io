@@ -1,135 +1,63 @@
+
 /* ==========================================================
-   M.R. TECHFORGE — BUTTONS (vNext Clean Restore)
+   M.R. TECHFORGE — BUTTONS (vNext)
    File: assets/css/_buttons.scss
 
-   Fixes:
-   - No "..." corruption
-   - Prevents mobile clipping
+   Fix goals:
+   - No clipping on mobile
    - Slightly shorter buttons
-   - Calm glow + gentle color cycling (blue / silver / orange)
+   - Soft, slow color cycling (blue → silver → orange)
+   - Keep the “CORE tag” vibe (polished, not fiery-chaos)
    ========================================================== */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
 
+  text-decoration: none;
+  font-weight: 700;
+
+  /* shorter */
+  padding: 0.78rem 1.05rem;
+
+  border-radius: 18px;
+
+  /* critical for mobile clipping issues */
   box-sizing: border-box;
   max-width: 100%;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
+
+  transition: transform 160ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 
-/* Base “Forge” button */
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* main forge button */
 .btn-forge {
-  position: relative;
   width: 100%;
-  border-radius: 16px;
 
-  padding: 0.78rem 1.05rem; /* shorter + good side padding */
-  font-weight: 700;
-  letter-spacing: 0.02em;
-
-  color: rgba(12, 18, 28, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-
-  background:
-    radial-gradient(120% 140% at 30% 20%,
-      rgba(255, 255, 255, 0.85) 0%,
-      rgba(220, 230, 240, 0.78) 35%,
-      rgba(190, 200, 215, 0.70) 100%);
-
-  box-shadow:
-    0 12px 26px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-
-  overflow: hidden;
-  transform: translateZ(0);
-}
-
-/* Gentle cycling “core label” style glow */
-.btn-forge::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 18px;
-  pointer-events: none;
-
+  color: rgba(25, 25, 25, 0.92);
   background: linear-gradient(
     90deg,
-    rgba(70, 170, 255, 0.55),
-    rgba(210, 220, 235, 0.55),
-    rgba(255, 170, 40, 0.55),
-    rgba(70, 170, 255, 0.55)
+    rgba(45, 160, 255, 0.18),
+    rgba(215, 225, 235, 0.22),
+    rgba(255, 170, 60, 0.18)
   );
-  background-size: 220% 100%;
-  opacity: 0.40;
 
-  filter: blur(10px);
-  animation: forgeBtnCycle 6.5s linear infinite;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(120, 190, 255, 0.10) inset;
+
+  /* subtle cycling sheen */
+  background-size: 260% 100%;
+  animation: forgeBtnCycle 8.5s ease-in-out infinite;
 }
 
 @keyframes forgeBtnCycle {
   0%   { background-position: 0% 50%; }
-  100% { background-position: 220% 50%; }
-}
-
-/* Inner bevel */
-.btn-forge::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 15px;
-  pointer-events: none;
-  box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.10),
-    inset 0 0 24px rgba(255, 255, 255, 0.10);
-  opacity: 0.9;
-}
-
-/* content sits above effects */
-.btn-forge > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Hover: tiny lift only */
-.btn-forge:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 16px 34px rgba(0, 0, 0, 0.52),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
-}
-
-/* Focus */
-.btn-forge:focus-visible {
-  outline: 2px solid rgba(70, 170, 255, 0.55);
-  outline-offset: 3px;
-}
-
-/* Home button helper */
-.home-btn {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* small icon inside button */
-.mini-ico {
-  display: inline-flex;
-  width: 1.35rem;
-  height: 1.35rem;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.15rem;
-  line-height: 1;
-}
-
-/* Mobile tweaks */
-@media (max-width: 520px) {
-  .btn-forge {
-    border-radius: 15px;
-    padding: 0.72rem 0.95rem;
-  }
-}
+  50%  { background-position: 100% 50%; }
