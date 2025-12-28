@@ -1,11 +1,54 @@
 /* ==========================================================
-   M.R. TECHFORGE — CARDS (BUILD-SAFE CORE)
-   File: _sass/_cards.scss  (or assets/css/_cards.scss)
+   M.R. TECHFORGE — GLOBAL CARD SYSTEM (v3.3 Restored + GH Safe)
+   One source of truth for card surfaces, hover lift, media frames, chips, badges, and grids.
+
+   Notes:
+   - Restores the “missing” utilities from your larger cards file
+   - Avoids rgba(var(--x), a) which can break GitHub Pages sassc
    ========================================================== */
 
-/* ------------------------------
-   FORGE HOVERLIFT (extend target)
------------------------------- */
+/* ----------------------------------------------------------
+   BASE SECTION CARD
+   Used for content blocks (not necessarily clickable).
+---------------------------------------------------------- */
+.forge-card {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;          /* slightly wider overall */
+  margin: 0 auto 1.15rem;     /* centered + default stack spacing */
+  border-radius: 16px;
+  padding: 1.55rem 1.25rem 1.65rem;
+
+  background:
+    radial-gradient(1200px 600px at 18% 0%,
+      rgba(0, 150, 255, 0.12) 0%,
+      rgba(0, 0, 0, 0.00) 55%),
+    linear-gradient(180deg,
+      rgba(10, 18, 30, 0.78) 0%,
+      rgba(2, 6, 13, 0.92) 100%);
+
+  border: 1px solid rgba(0, 150, 255, 0.22);
+
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.30) inset,
+    0 12px 30px rgba(0, 0, 0, 0.40),
+    0 0 18px rgba(0, 140, 255, 0.10);
+
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Titles inside cards */
+.forge-card-title {
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.forge-card p:last-child { margin-bottom: 0; }
+
+/* ----------------------------------------------------------
+   HOVER LIFT UTILITY (extend target)
+---------------------------------------------------------- */
 .forge-hoverlift {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
   will-change: transform, box-shadow;
@@ -13,107 +56,196 @@
 
 .forge-hoverlift:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 190, 255, 0.35);
+  border-color: rgba(0, 150, 255, 0.30);
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.62),
-    0 0 42px rgba(0, 170, 255, 0.18);
+    0 14px 34px rgba(0, 0, 0, 0.46),
+    0 0 26px rgba(0, 150, 255, 0.13);
 }
 
-/* ------------------------------
-   BASE CARD
------------------------------- */
-.forge-card {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto 1.25rem auto;
-  padding: 1.45rem 1.55rem;
-  border-radius: 18px;
+/* ----------------------------------------------------------
+   REUSABLE SNAPPY CARD SURFACE
+   Apply to clickable/product/pricing cards for the premium feel.
+---------------------------------------------------------- */
+.forge-surface-card {
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+  padding: 1.30rem 1.1rem 1.35rem;
+  margin: 0; /* grid controls spacing */
 
   background:
-    radial-gradient(circle at 20% 18%,
-      rgba(0, 150, 255, 0.16) 0%,
-      rgba(0, 0, 0, 0.00) 55%),
+    radial-gradient(900px 420px at 20% 15%,
+      rgba(0, 150, 255, 0.12) 0%,
+      rgba(0, 0, 0, 0.00) 62%),
     linear-gradient(180deg,
-      rgba(7, 20, 36, 0.84) 0%,
-      rgba(3, 10, 18, 0.90) 100%);
+      rgba(10, 18, 30, 0.76) 0%,
+      rgba(2, 6, 13, 0.92) 100%);
 
-  border: 1px solid rgba(0, 180, 255, 0.22);
+  border: 1px solid rgba(0, 150, 255, 0.18);
+
   box-shadow:
-    0 0 0 1px rgba(0, 180, 255, 0.06) inset,
-    0 14px 36px rgba(0, 0, 0, 0.50),
-    0 0 28px rgba(0, 140, 255, 0.12);
+    0 10px 28px rgba(0, 0, 0, 0.38),
+    0 0 22px rgba(0, 150, 255, 0.10);
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* hover behavior built-in */
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-/* ------------------------------
-   SURFACE CARD (extend target)
-   Used by Services/Pricing cards
------------------------------- */
-.forge-surface-card {
-  @extend .forge-card;
+.forge-surface-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 150, 255, 0.30);
 
-  border: 1px solid rgba(0, 180, 255, 0.20);
   box-shadow:
-    0 0 0 1px rgba(0, 170, 255, 0.07) inset,
-    0 18px 44px rgba(0, 0, 0, 0.55),
-    0 0 34px rgba(0, 160, 255, 0.12);
+    0 14px 34px rgba(0, 0, 0, 0.46),
+    0 0 26px rgba(0, 150, 255, 0.13);
 }
 
-/* ------------------------------
-   BADGES (extend target)
-   THIS is what your build is missing.
------------------------------- */
+/* Compact version for tight spaces */
+.forge-surface-card--compact {
+  padding: 1.12rem 1.0rem 1.18rem;
+}
+
+/* ----------------------------------------------------------
+   MEDIA FRAMES / THUMBNAILS
+---------------------------------------------------------- */
+.forge-media-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 150, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.38),
+    0 0 18px rgba(0, 140, 255, 0.08);
+}
+
+/* ----------------------------------------------------------
+   CHIPS / PILLS (used in hero tags, meta, badges)
+---------------------------------------------------------- */
+.forge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+
+  border: 1px solid rgba(0, 150, 255, 0.22);
+  background: rgba(10, 22, 38, 0.55);
+  color: rgba(215, 230, 245, 0.92);
+
+  font-size: 0.92rem;
+}
+
+/* ----------------------------------------------------------
+   BADGES
+---------------------------------------------------------- */
 .forge-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
 
-  padding: 0.32rem 0.7rem;
+  padding: 0.22rem 0.55rem;
   border-radius: 999px;
-
   font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  line-height: 1;
 
-  color: rgba(235, 245, 255, 0.92);
-  background: rgba(10, 22, 38, 0.55);
-  border: 1px solid rgba(0, 180, 255, 0.25);
-  box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.35),
-    0 0 18px rgba(0, 150, 255, 0.10);
-
+  border: 1px solid rgba(0, 150, 255, 0.35);
+  background: rgba(0, 150, 255, 0.12);
+  color: rgba(230, 245, 255, 0.95);
   white-space: nowrap;
 }
 
-/* This is what was failing: keep it here so it ALWAYS works */
-.forge-offering-badge {
-  @extend .forge-badge;
+/* Legacy alias used by some pages */
+.forge-offering-badge { @extend .forge-badge; }
+
+/* ----------------------------------------------------------
+   CLICKABLE LINK CARD (Products/Services landing cards)
+---------------------------------------------------------- */
+.forge-link-card {
+  position: relative;
+  display: block;
+  border-radius: 18px;
+  padding: 1.1rem 1rem;
+
+  text-decoration: none;
+  color: inherit;
+
+  background:
+    radial-gradient(1000px 520px at 18% 0%,
+      rgba(0, 150, 255, 0.13) 0%,
+      rgba(0, 0, 0, 0.00) 55%),
+    linear-gradient(180deg,
+      rgba(10, 18, 30, 0.76) 0%,
+      rgba(2, 6, 13, 0.92) 100%);
+
+  border: 1px solid rgba(0, 150, 255, 0.20);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.42),
+    0 0 18px rgba(0, 150, 255, 0.08);
+
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* ------------------------------
-   OFFERING CARDS
------------------------------- */
-.forge-offering-card {
-  @extend .forge-surface-card;
-  @extend .forge-hoverlift;
-
-  padding: 1.25rem 1.35rem;
-  border-radius: 16px;
+.forge-link-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 150, 255, 0.30);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.50),
+    0 0 24px rgba(0, 150, 255, 0.12);
 }
 
-/* ------------------------------
+/* ----------------------------------------------------------
+   CARD GRID HELPERS
+---------------------------------------------------------- */
+.forge-card-grid {
+  display: grid;
+  gap: 1.05rem;
+}
+
+@media (min-width: 900px) {
+  .forge-card-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .forge-card-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.forge-card-grid .forge-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* grids handle spacing; don’t stack-margin */
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   STACK SPACING BETWEEN CARDS
+   Default stacked cards get spacing.
+   If a container uses grid/flex gaps, remove margins inside it.
+---------------------------------------------------------- */
+.forge-card:last-child { margin-bottom: 0; }
+
+.forge-card-grid .forge-card,
+.forge-offerings-grid .forge-card,
+.forge-offerings-grid .forge-offering-card,
+.services-grid .forge-card,
+.home-quick-grid .forge-card,
+.pricing-grid .forge-card {
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
    MOBILE TUNING
------------------------------- */
-@media (max-width: 640px) {
-  .forge-card,
-  .forge-surface-card,
-  .forge-offering-card {
-    max-width: 92vw;
-    padding: 1.15rem 1.15rem;
-    margin-left: auto;
-    margin-right: auto;
+---------------------------------------------------------- */
+@media (max-width: 720px) {
+  .forge-card {
+    padding: 1.40rem 1.10rem 1.50rem;
+  }
+  .forge-surface-card {
+    padding: 1.18rem 1.0rem 1.25rem;
   }
 }
