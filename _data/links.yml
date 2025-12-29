@@ -29,6 +29,7 @@ products:
   index: "/products/"
   nfc: "/products/nfc/"
   labs: "/products/labs/"
+  software_toolkits: "/products/software_toolkits/"
   all: "/products/all/"
 
 external:
