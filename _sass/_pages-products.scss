@@ -1,12 +1,12 @@
 /* ============================================================
-   M.R. TechForge — Products Styles (v2.0)
+   M.R. TechForge — Products Styles (v2.1)
    Layout + product-page utilities.
    Card surfaces/hover/media live in _cards.scss.
 
-   Changes vs old:
-   - Adds Products landing hero + feature cards (services-like)
-   - De-emphasizes / removes cart-first styling
-   - Keeps legacy .forge-products compatibility
+   Changes vs v2.0:
+   - Forge NFC: brighter in-page links (non-button links)
+   - Forge NFC: 2x2 grid for the hero "No batteries / No pairing" tiles
+   - Forge NFC: responsive grid defaults for other idea grids
    ============================================================ */
 
 /* ------------------------------------------------------------
@@ -339,4 +339,110 @@
 
 .checkout-btn {
   width: auto;
+}
+
+/* ------------------------------------------------------------
+   5) Forge NFC page (products/nfc)
+   - Fix barely-visible text links
+   - 2x2 grid for "No batteries / No pairing / ..." section
+------------------------------------------------------------ */
+
+/* Make the NFC page content align with the rest of your layout */
+.forge-service-pricing.nfc-page {
+  max-width: 1100px;
+  margin: 1.4rem auto 4rem;
+  padding: 0 1rem 4rem;
+}
+
+/* Make sure plain links are visible (but do NOT touch forge-btn) */
+.forge-service-pricing.nfc-page a:not(.forge-btn) {
+  color: rgba(120, 220, 255, 0.98);
+  text-decoration: underline;
+  text-decoration-color: rgba(120, 220, 255, 0.55);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  transition: color 160ms ease, text-decoration-color 160ms ease, filter 160ms ease;
+}
+
+.forge-service-pricing.nfc-page a:not(.forge-btn):hover {
+  color: rgba(255, 200, 120, 0.98);
+  text-decoration-color: rgba(255, 200, 120, 0.60);
+  filter: drop-shadow(0 0 10px rgba(0, 170, 255, 0.10));
+}
+
+/* Slightly stronger <strong> emphasis in the subtext */
+.forge-service-pricing.nfc-page .forge-subtext strong {
+  color: rgba(245, 184, 65, 0.98);
+  text-shadow: 0 0 16px rgba(245, 184, 65, 0.10);
+}
+
+/* The small "idea" tiles styling (works for both grids) */
+.forge-service-pricing.nfc-page .forge-idea {
+  position: relative;
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem 0.9rem;
+
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.34),
+    inset 0 0 0 1px rgba(0,0,0,0.28);
+
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.forge-service-pricing.nfc-page .forge-idea:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0,195,255,0.18);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,0.44),
+    0 0 20px rgba(0,170,255,0.07);
+}
+
+.forge-service-pricing.nfc-page .forge-idea h3 {
+  margin: 0 0 0.35rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: rgba(235,245,255,0.96);
+}
+
+.forge-service-pricing.nfc-page .forge-idea p {
+  margin: 0;
+  color: rgba(225,235,245,0.86);
+  line-height: 1.6;
+}
+
+/* ✅ ONLY the first hero card's ideas grid becomes 2x2 */
+.forge-service-pricing.nfc-page > .forge-card[aria-label="Forge NFC hero image"] .forge-ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.95rem;
+}
+
+@media (max-width: 560px) {
+  .forge-service-pricing.nfc-page > .forge-card[aria-label="Forge NFC hero image"] .forge-ideas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Other idea grids (like Use Cases) stay multi-column & responsive */
+.forge-service-pricing.nfc-page .forge-card#use-cases .forge-ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .forge-service-pricing.nfc-page .forge-card#use-cases .forge-ideas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .forge-service-pricing.nfc-page .forge-card#use-cases .forge-ideas-grid {
+    grid-template-columns: 1fr;
+  }
 }

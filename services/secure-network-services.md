@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Fogre Secure Network Services"
+title: "Forge Secure Network Services"
 permalink: /services/secure-network-services/
 description: "Secure, local-first network infrastructure for homes and small businesses."
 ---

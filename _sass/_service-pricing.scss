@@ -99,6 +99,22 @@
   opacity: 0.85;
 }
 
+/* --- Restore per-row pricing colors (Monthly = blue, Setup = orange) --- */
+.forge-price-row .label,
+.forge-price-row .value {
+  font-weight: 800;
+}
+
+.forge-price-row.is-setup .label,
+.forge-price-row.is-setup .value {
+  color: var(--forge-hotmetal, #f5b841); /* orange */
+}
+
+.forge-price-row:not(.is-setup) .label,
+.forge-price-row:not(.is-setup) .value {
+  color: var(--forge-accent, #0096ff); /* forge blue */
+}
+
 /* -----------------------------
    Tiers (plans)
 ------------------------------ */
