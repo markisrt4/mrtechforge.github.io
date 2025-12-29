@@ -8,16 +8,31 @@ class: contact
 <div class="forge-contact-page">
 
   <!-- ============================
-       INTRO HEADER
+      INTRO HEADER (Upgraded)
   ============================ -->
-  <div class="page-intro">
-    <h1>
-      Signal Beacon:
-      <span class="forge-highlight">Contact M.R. TechForge</span>
-    </h1>
-    <p class="tagline">
-      Forged connections start with a simple “hello.”
-    </p>
+  <div class="page-intro contact-hero">
+    <div class="contact-hero-inner">
+
+      <div class="contact-hero-text">
+        <h1 class="contact-hero-title">
+          Signal Beacon:
+          <span class="forge-highlight">Contact M.R. TechForge</span>
+        </h1>
+
+        <p class="tagline contact-hero-subtitle">
+          Forged connections start with a simple “hello.”
+        </p>
+      </div>
+
+      <div class="contact-hero-visual" aria-hidden="true">
+        <img
+          src="{{ '/assets/images/signal_beacon.png' | relative_url }}"
+          alt=""
+          loading="eager"
+        />
+      </div>
+
+    </div>
   </div>
 
   <!-- ============================

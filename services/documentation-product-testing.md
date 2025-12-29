@@ -135,9 +135,9 @@ description: "Forging clarity between engineers, products, and people."
         <a href="https://www.mobilityengineeringtech.com/component/content/article/50043-deterministic-and-modular-architecture-for-embedded-vehicle-systems">
           Deterministic &amp; Modular Architecture for Embedded Vehicle Systems — NDIA (2023)
         </a>
+      </strong>
     </p>
     <p>
-      </strong>
       <strong>
         <a href="https://saemobilus.sae.org/papers/gvsets-2020-paper-multiple-crew-station-xecutor-mcsx-2024-01-3860#view">
           Multiple Crew Station Xecutor (MCSX) — NDIA (2020)

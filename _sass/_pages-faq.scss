@@ -2,12 +2,13 @@
    M.R. TECHFORGE — FAQ PAGE STYLES (Hero Side-by-Side + Classic Slick Rows)
    File: assets/css/pages/_pages-faq.scss
 
-   Fixes:
-   - Desktop hero: TEXT + GRAPHIC side-by-side (targets .faq-hero-inner from faq.md)
-   - Title smaller / less tall hero
-   - Hero media portrait ratio on desktop (9:16), normal on mobile
+   Tweaks in this revision:
+   - Fonts: use site font (inherit) for consistency
+   - Hero: desktop text + portrait media side-by-side
+   - Hero media: better object-position to reduce “clipped” look
    - FAQ rows: tight padding, larger type, NO answer gradient
-   - Remove spacing between rows + defeat .forge-card padding/styles on details
+   - Left edge: SOLID when closed, GRADIENT when expanded
+   - Remove spacing between rows + defeat .forge-card padding on details
    ========================================================== */
 
 /* ------------------------------
@@ -80,7 +81,6 @@
   z-index: 1;
 }
 
-/* Desktop: text + graphic side-by-side */
 @media (min-width: 900px) {
   .faq-hero,
   .faq-page .faq-hero {
@@ -100,12 +100,12 @@
   }
 }
 
-/* Title smaller + less tall */
+/* Title: keep the “Forge vibe” but use the site font */
 .faq-title,
 .faq-page .faq-title {
   margin: 0 0 0.45rem 0;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.085em;
+  font-family: inherit; /* <<< consistency */
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   line-height: 1.02;
 }
@@ -157,16 +157,12 @@
   gap: 0.65rem;
 }
 
-/* Hero buttons: keep tidy */
 .faq-hero-btn {
   min-height: 44px;
   padding: 0.58rem 1.0rem;
   border-radius: 14px;
 }
-
-.faq-hero-btn--ghost {
-  opacity: 0.92;
-}
+.faq-hero-btn--ghost { opacity: 0.92; }
 
 /* HERO MEDIA */
 .faq-hero-media,
@@ -180,13 +176,13 @@
     0 0 22px rgba(0, 170, 255, 0.09);
 }
 
-/* Mobile: keep normal banner-ish image */
+/* Mobile: banner ratio */
 .faq-hero-media,
 .faq-page .faq-hero-media {
   aspect-ratio: 16 / 9;
 }
 
-/* Desktop: portrait “panel” (9:16) on the right */
+/* Desktop: portrait panel (9:16) */
 @media (min-width: 900px) {
   .faq-hero-media,
   .faq-page .faq-hero-media {
@@ -203,6 +199,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: 50% 35%; /* <<< reduces “top clipped” look */
 }
 
 /* ------------------------------
@@ -250,7 +247,8 @@
 .faq-category-title,
 .faq-page .faq-category-title {
   margin: 0 0 0.25rem 0;
-  font-family: "Orbitron", sans-serif;
+  font-family: inherit; /* <<< consistency */
+  font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(0, 195, 255, 0.95);
@@ -264,54 +262,50 @@
 }
 
 /* ------------------------------
-   FAQ ROWS (Restore Classic Slick Rows)
+   FAQ ROWS (Classic Slick Rows)
 ------------------------------ */
-
-/* list: no gaps between rows */
 .faq-list,
 .faq-page .faq-list {
   display: grid;
-  gap: 0;
+  gap: 0; /* no vertical spacing */
   margin: 0;
   padding: 0;
 }
 
-/* defeat any inherited forge-card padding/margins on details */
+/* defeat forge-card padding/margins on details */
 .faq-item.forge-card,
 .faq-page .faq-item.forge-card {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* Remove default <summary> marker triangles */
+/* Remove default markers */
 .faq-item > summary,
-.faq-page .faq-item > summary {
-  list-style: none;
-}
+.faq-page .faq-item > summary { list-style: none; }
 .faq-item > summary::-webkit-details-marker,
-.faq-page .faq-item > summary::-webkit-details-marker {
-  display: none;
-}
+.faq-page .faq-item > summary::-webkit-details-marker { display: none; }
 .faq-item > summary::marker,
-.faq-page .faq-item > summary::marker {
-  content: "";
-}
+.faq-page .faq-item > summary::marker { content: ""; }
 
-/* Base row surface (force NOT a big blue card) */
+/* Base row */
 .faq-item,
 .faq-page .faq-item {
   position: relative;
   overflow: hidden;
+
   background: rgba(0, 0, 0, 0.22) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
+
   border-radius: 0;
+
   box-shadow:
     0 10px 30px rgba(0,0,0,0.28),
     inset 0 0 0 1px rgba(0,0,0,0.25) !important;
+
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-/* Only stack edges rounded */
+/* Rounded stack edges */
 .faq-list > .faq-item:first-child,
 .faq-page .faq-list > .faq-item:first-child {
   border-top-left-radius: 14px;
@@ -323,13 +317,11 @@
   border-bottom-right-radius: 14px;
 }
 
-/* Collapse borders between rows */
+/* No double borders between rows */
 .faq-item + .faq-item,
-.faq-page .faq-item + .faq-item {
-  border-top: 0 !important;
-}
+.faq-page .faq-item + .faq-item { border-top: 0 !important; }
 
-/* Left gradient strip */
+/* LEFT EDGE: SOLID when closed */
 .faq-item::before,
 .faq-page .faq-item::before {
   content: "";
@@ -338,17 +330,11 @@
   top: 0;
   width: 6px;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 195, 255, 0.0) 0%,
-    rgba(0, 195, 255, 0.55) 40%,
-    rgba(245, 184, 65, 0.55) 75%,
-    rgba(245, 184, 65, 0.0) 100%
-  );
-  opacity: 0.42;
+  background: rgba(0, 195, 255, 0.60); /* <<< solid when closed */
+  opacity: 0.55;
 }
 
-/* Question row: tighter padding + bigger font */
+/* Question */
 .faq-question,
 .faq-page .faq-question {
   cursor: pointer;
@@ -365,18 +351,13 @@
   letter-spacing: 0.01em;
 
   font-size: 1.10rem;
+  font-family: inherit;
 
   text-shadow:
     0 0 10px rgba(0, 170, 255, 0.08),
     0 0 18px rgba(0, 0, 0, 0.45);
 }
 
-.faq-q,
-.faq-page .faq-q {
-  display: inline-block;
-}
-
-/* Chevron */
 .faq-chevron,
 .faq-page .faq-chevron {
   flex: 0 0 auto;
@@ -398,25 +379,32 @@ details[open].faq-item,
   transform: translateY(-1px);
 }
 
-details[open].faq-item::before,
-.faq-page details[open].faq-item::before {
-  opacity: 0.9;
-  box-shadow: 0 0 18px rgba(0, 195, 255, 0.22);
-}
-
 details[open] .faq-chevron,
 .faq-page details[open] .faq-chevron {
   transform: rotate(180deg);
   opacity: 1;
 }
 
-/* Thin divider line under question when open */
+/* LEFT EDGE: GRADIENT when expanded */
+details[open].faq-item::before,
+.faq-page details[open].faq-item::before {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 195, 255, 0.0) 0%,
+    rgba(0, 195, 255, 0.75) 38%,
+    rgba(245, 184, 65, 0.75) 78%,
+    rgba(245, 184, 65, 0.0) 100%
+  );
+  opacity: 0.95;
+  box-shadow: 0 0 18px rgba(0, 195, 255, 0.22);
+}
+
 details[open] .faq-question,
 .faq-page details[open] .faq-question {
   box-shadow: inset 0 -1px 0 rgba(255,255,255,0.06);
 }
 
-/* Answer area: tight + NO gradient text */
+/* Answer: tight + NO gradient text */
 .faq-answer,
 .faq-page .faq-answer {
   padding: 0.10rem 1.05rem 0.60rem;
@@ -425,6 +413,7 @@ details[open] .faq-question,
   color: rgba(235, 245, 255, 0.88);
   font-size: 1.06rem;
   line-height: 1.72;
+  font-family: inherit;
 }
 
 .faq-answer p,
@@ -434,7 +423,6 @@ details[open] .faq-question,
   margin: 0.35rem 0 0;
   line-height: 1.72;
 
-  /* hard override any previous gradient text rules */
   background: none !important;
   -webkit-background-clip: border-box !important;
   background-clip: border-box !important;
@@ -446,7 +434,6 @@ details[open] .faq-question,
   margin: 0.30rem 0 0.10rem 1.05rem;
 }
 
-/* Hover: subtle */
 .faq-item:hover,
 .faq-page .faq-item:hover {
   border-color: rgba(255,255,255,0.12) !important;
@@ -472,7 +459,8 @@ details[open] .faq-question,
 .faq-footer-title,
 .faq-page .faq-footer-title {
   margin: 0 0 0.35rem 0;
-  font-family: "Orbitron", sans-serif;
+  font-family: inherit;
+  font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.92);
