@@ -218,7 +218,7 @@ ol ul {
    LINKS (text links only — not buttons)
 ------------------------------ */
 a:not(.forge-btn):not(.btn):not(.btn-forge) {
-  color: var(--forge-subtext, #aab4c7);
+  color: var(--forge-blue, #aab4c7);
   text-decoration: none;
   text-underline-offset: 0px;
   transition: color 0.25s ease, text-shadow 0.25s ease;
@@ -226,7 +226,7 @@ a:not(.forge-btn):not(.btn):not(.btn-forge) {
 
 a:not(.forge-btn):not(.btn):not(.btn-forge):hover {
   color: var(--forge-hotmetal);
-  text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.55);
+  text-shadow: 0 0 6px rgba(77, 179, 255, 0.35);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
