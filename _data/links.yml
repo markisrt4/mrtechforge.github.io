@@ -43,3 +43,7 @@ legal:
   privacy: "/privacy/"
   terms: "/terms/"
   security: "/security/"
+
+downloads:
+  forge_line_comms_overview: "/assets/downloads/Forge-Line%20Communications%20Overview.pdf"
+  online_digital_seminar_outline: "/assets/downloads/Online-Digital-Seminar-Outline.pdf"
