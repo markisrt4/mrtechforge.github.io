@@ -35,21 +35,21 @@
   cta_url: /products/nfc/#wifi-toggle-tag
 
 - id: nfc-business-card-tag
-  category: nfc
+  category: "NFC Tags"
   name: "Business Card Tag"
-  short_name: "Business Card NFC"
-  image: /assets/images/products/nfc-business-card-tag.jpg
-  description: >
-    A tap-to-share NFC tag that instantly opens your digital business card.
-    Designed for networking, events, and quick introductions — no app required.
-  short_features:
-    - Tap to share your contact info
-    - Works with Android & iOS
-    - Reprogrammable anytime
-    - No batteries or pairing
-  badge: Signature
-  cta_label: Learn More
-  cta_url: /products/nfc/#business-card-tag
+  badge: "Pro"
+  short: "A tap-to-share NFC business card — your contact info, links, and socials in one clean tap."
+  features:
+    - "Tap to open your contact card + link hub"
+    - "Optional vCard download"
+    - "Works great on modern Android; iPhone support varies by use-case"
+    - "Custom branding/label available"
+  price: "—"
+  price_note: ""
+  image: "/assets/img/products/nfc-business-card-tag.png"
+  alt: "A minimal NFC business card tag on a desk"
+  cta_label: "View Details"
+  cta_url: "/products/nfc/#nfc-business-card-tag"
 
 - id: vpn-connect-tag
   name: Forge VPN Connect Tag
