@@ -5,6 +5,8 @@ permalink: /products/software-toolkits/
 description: "Purpose-built software tools and build environments designed to remove friction from real development workflows."
 ---
 
+{% assign toolkits = site.data.products | where: "category", "software-toolkits" %}
+
 <div class="forge-service-pricing software-toolkits-page">
 
   <!-- ============================
@@ -14,8 +16,8 @@ description: "Purpose-built software tools and build environments designed to re
     <div class="forge-card-body">
       <h1>Software Toolkits</h1>
       <p class="forge-lead">
-        Self-contained software environments and tools built to solve
-        real engineering problems — without bloat, lock-in, or guesswork.
+        Self-contained software environments and tools built to solve real engineering problems —
+        without bloat, lock-in, or guesswork.
       </p>
 
       <div class="forge-ideas-grid">
@@ -40,37 +42,53 @@ description: "Purpose-built software tools and build environments designed to re
   </div>
 
   <!-- ============================
-       PRODUCTS
+       TOOLKITS (DATA-DRIVEN)
   ============================ -->
   <div class="forge-card" id="toolkits">
     <h2>Available Toolkits</h2>
     <p>
-      These toolkits are designed to stand on their own, but optional guidance
-      and support are available if you want help integrating them into your workflow.
+      These toolkits are designed to stand on their own. Optional guidance is available
+      if you want help integrating them into your workflow.
     </p>
 
     <div class="forge-ideas-grid">
 
-      <div class="forge-idea">
-        <h3>Android Build Toolkit</h3>
-        <p>
-          A fully self-contained Docker-based Android build environment.
-          Clone your repo, run one command, and produce APKs or AABs —
-          without installing the Android SDK locally.
-        </p>
-        <p class="forge-note">
-          Docker • Android SDK • Gradle • CLI-first
-        </p>
-      </div>
+      {% if toolkits and toolkits.size > 0 %}
+        {% for p in toolkits %}
+          <div class="forge-idea">
+            {% if p.badge %}
+              <div class="forge-badge">{{ p.badge }}</div>
+            {% endif %}
 
-      <!-- Future toolkits slot -->
-      <div class="forge-idea forge-idea-muted">
-        <h3>More Toolkits Coming</h3>
-        <p>
-          Additional build environments and automation tools are actively
-          being explored and developed.
-        </p>
-      </div>
+            <h3>{{ p.name }}</h3>
+
+            {% if p.description %}
+              <p>{{ p.description }}</p>
+            {% endif %}
+
+            {% if p.short_features %}
+              <ul class="forge-bullets">
+                {% for f in p.short_features %}
+                  <li>{{ f }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if p.url %}
+              <a class="forge-btn" href="{{ p.url }}">
+                {{ p.cta_label | default: "View Toolkit" }}
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="forge-idea forge-idea-muted">
+          <h3>Toolkits Incoming</h3>
+          <p>
+            Toolkits are actively being forged. Check back soon.
+          </p>
+        </div>
+      {% endif %}
 
     </div>
   </div>
@@ -79,10 +97,9 @@ description: "Purpose-built software tools and build environments designed to re
        CTA
   ============================ -->
   <div class="forge-card">
-    <h2>Interested in a toolkit?</h2>
+    <h2>Want help choosing the right toolkit?</h2>
     <p>
-      If you’re curious about availability, licensing, or fit for your workflow,
-      feel free to reach out.
+      If you’re curious about fit for your workflow, reach out — I’ll point you in the right direction.
     </p>
     <a class="forge-btn" href="/contact/">Start a Conversation</a>
   </div>
