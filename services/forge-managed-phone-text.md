@@ -126,17 +126,20 @@ description: "A managed phone and messaging service designed and configured by M
           {% endif %}
 
           <div class="forge-offering-pricing">
-            {% if bundle.setup_range %}
+            {% assign setup_val = bundle.setup_price | default: bundle.setup_range %}
+            {% assign monthly_val = bundle.monthly_price | default: bundle.monthly_range %}
+
+            {% if setup_val %}
               <div class="forge-price-row is-setup">
                 <span class="label">Setup</span>
-                <span class="value">{{ bundle.setup_range }}</span>
+                <span class="value">{{ setup_val }}</span>
               </div>
             {% endif %}
 
-            {% if bundle.monthly_range %}
+            {% if monthly_val %}
               <div class="forge-price-row">
                 <span class="label">Monthly</span>
-                <span class="value">{{ bundle.monthly_range }}</span>
+                <span class="value">{{ monthly_val }}</span>
               </div>
             {% endif %}
           </div>
