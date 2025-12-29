@@ -435,6 +435,36 @@
   gap: 0.95rem;
 }
 
+/* ------------------------------------------------------------
+   Forge NFC — Orange card titles
+------------------------------------------------------------ */
+
+.forge-service-pricing.nfc-page {
+
+  /* Idea tiles + use cases */
+  .forge-idea h3 {
+    color: var(--forge-hotmetal, #f5b841);
+    text-shadow:
+      0 0 12px rgba(245, 184, 65, 0.25),
+      0 0 24px rgba(245, 184, 65, 0.12);
+  }
+}
+
+/* All-caps headings inside Forge NFC cards → orange */
+
+.forge-service-pricing.nfc-page {
+
+  .forge-card-title,
+  .forge-idea h3,
+  .pricing-card h3 {
+    color: var(--forge-hotmetal, #f5b841);
+    letter-spacing: 0.06em;
+    text-shadow:
+      0 0 10px rgba(245, 184, 65, 0.22),
+      0 0 20px rgba(245, 184, 65, 0.10);
+  }
+}
+
 @media (max-width: 900px) {
   .forge-service-pricing.nfc-page .forge-card#use-cases .forge-ideas-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -444,5 +474,13 @@
 @media (max-width: 560px) {
   .forge-service-pricing.nfc-page .forge-card#use-cases .forge-ideas-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .products-title {
+    font-size: clamp(2.1rem, 7vw, 2.6rem);
+    letter-spacing: 0.08em;
+    word-break: break-word;
   }
 }

@@ -36,7 +36,7 @@ description: "Forge NFC — tap-to-run tags that turn real spaces into reliable 
   <section class="forge-card" aria-label="Forge NFC hero image">
     <div class="forge-card-media" style="aspect-ratio: 21 / 9;">
       <img class="forge-card-img"
-           src="{{ '/assets/img/products/nfc-hero.jpg' | relative_url }}"
+           src="{{ '/assets/img/products/nfc-hero.png' | relative_url }}"
            alt="Phone tapping an NFC tag on a desk with subtle blue lighting"
            loading="lazy" />
     </div>
@@ -81,7 +81,7 @@ description: "Forge NFC — tap-to-run tags that turn real spaces into reliable 
 
           <div class="forge-card-media" style="aspect-ratio: 21 / 9;">
             <img class="forge-card-img"
-                 src="{{ '/assets/img/products/nfc-starter-pack-photo.jpg' | relative_url }}"
+                 src="{{ '/assets/img/products/nfc-starter-pack.png' | relative_url }}"
                  alt="Forge NFC Starter Pack photographed on a desk"
                  loading="lazy" />
           </div>

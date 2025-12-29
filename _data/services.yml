@@ -233,7 +233,7 @@
         - "No ongoing monitoring by default"
         - "No data custody"
 
-    - name: "Home – Secure Access & Backup Ready"
+    - name: "Home – Secure Remote Access & Private Cloud"
       tier: "secure"
       billing: "one-time"
       price_range: "$600 – $1,100"
@@ -270,7 +270,7 @@
         - "Higher documentation standards"
       notes: "Business environments tend to have more devices and tighter security assumptions."
 
-    - name: "Business – Secure Access & Backup Ready"
+    - name: "Business – Secure Remote Access & Private Cloud"
       tier: "secure"
       billing: "one-time"
       price_range: "$1,200 – $2,500"
