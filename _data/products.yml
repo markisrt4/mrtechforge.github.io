@@ -269,3 +269,18 @@
   badge: "New"
   cta_label: "Learn More"
   url: /products/software-toolkits/automated-android-app-toolkit/
+
+- id: forge-bookstack-deployment-toolkit
+  category: "Software Toolkits"
+  name: "Forge BookStack Deployment Toolkit"
+  badge: "New"
+  short: "A safe-by-default BookStack deployment toolkit with LAN-only and public HTTPS modes, plus backups and clean update workflows."
+  features:
+    - "Two modes: LAN-only or public HTTPS"
+    - "Compose + env templates with sane defaults"
+    - "Backup/restore scripts (DB + uploads)"
+    - "Update workflow with verification + rollback guidance"
+  image: "/assets/img/products/forge-bookstack-toolkit.png"
+  alt: "A terminal view showing a docker compose deployment for BookStack"
+  cta_label: "View Toolkit"
+  cta_url: "/products/software_toolkits/#forge-bookstack-deployment-toolkit"
