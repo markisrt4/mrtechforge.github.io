@@ -1,14 +1,14 @@
--name: "Forge Managed Phone & Text"
-id: "forge-managed-phone-text"
-category: "communication"
-url: "/services/forge-managed-phone-text/"
-image: "/assets/images/mrtf-line.png"
-description: "Forge Managed Phone & Text is a managed communication service that provides a dedicated phone & text number for homes, ministries, libraries, and small organizations. It supports call menus, routing, voicemail upgrades, secure messaging, 2FA delivery, Slack notifications, and optional dashboard access."
-pricing_note: "Setup covers consultation, configuration, testing, and documentation so your line behaves correctly during business hours, after hours, and when changes occur. Monthly pricing covers the platform and light ongoing management."
-minimum_setup: "$99 minimum engagement"
-typical_monthly_range: "$25–$65 / month"
+- name: "Forge Managed Phone & Text"
+  id: "forge-managed-phone-text"
+  category: "communication"
+  url: "/services/forge-managed-phone-text/"
+  image: "/assets/images/mrtf-line.png"
+  description: "Forge Managed Phone & Text is a managed communication service that provides a dedicated phone & text number for homes, ministries, libraries, and small organizations. It supports call menus, routing, voicemail upgrades, secure messaging, 2FA delivery, Slack notifications, and optional dashboard access."
+  pricing_note: "Setup covers consultation, configuration, testing, and documentation so your line behaves correctly during business hours, after hours, and when changes occur. Monthly pricing covers the platform and light ongoing management."
+  minimum_setup: "$99 minimum engagement"
+  typical_monthly_range: "$25–$65 / month"
 
-bundles:
+  bundles:
   - name: "Starter Bundle"
     badge: "Most Popular"
     icon: "🏠"
@@ -46,7 +46,7 @@ bundles:
       - "Priority Configuration & Support"
     description: "For workflows involving sensitive communication, access control, or compliance-conscious environments."
 
-offerings:
+  offerings:
   - name: "Managed Line (Core)"
     monthly: 15
     setup: 100
@@ -119,8 +119,6 @@ offerings:
     setup: 65
     description: "Rule-based filtering to reduce spam calls and nuisance traffic."
     icon: "🚫"
-
-
 
 - name: "Forged Tech Services & Coaching"
   id: "tech-services"
