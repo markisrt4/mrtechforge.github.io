@@ -28,7 +28,7 @@ services:
 products:
   index: "/products/"
   nfc: "/products/nfc/"
-  gadgets: "/products/gadgets/"
+  labs: "/products/labs/"
   all: "/products/all/"
 
 external:
