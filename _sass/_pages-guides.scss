@@ -407,3 +407,55 @@
 .guide-page .guide-cta-actions {
   margin: 0.85rem 0 0;
 }
+
+
+/* ----------------------------------------------------------
+   Guide accordions
+-----------------------------------------------------------*/
+.guide-page .forge-accordion { margin: 0.75rem 0; }
+
+.guide-page .forge-accordion .accordion-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  cursor: pointer;
+
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--forge-text, #eaf6ff);
+
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.guide-page .forge-accordion .accordion-btn:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 0 10px rgba(60,180,255,0.15);
+}
+
+.guide-page .forge-accordion .accordion-btn .arrow {
+  transition: transform 180ms ease, opacity 180ms ease;
+  opacity: 0.85;
+}
+
+.guide-page .forge-accordion .accordion-btn.active .arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.guide-page .forge-accordion .panel {
+  overflow: hidden;
+  max-height: 0;                /* JS sets this for animation */
+  transition: max-height 220ms ease;
+  padding: 0 0.9rem;            /* vertical padding added when open */
+}
+
+.guide-page .forge-accordion .panel.open {
+  padding-top: 0.6rem;
+  padding-bottom: 0.75rem;
+}
