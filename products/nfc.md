@@ -17,7 +17,7 @@ description: "Forge NFC — tap-to-run tags that turn real spaces into reliable 
        HERO: intent + positioning
   ========================================== -->
   <header class="forge-section-header">
-    <h1 class="forge-page-title">Forge NFC (Near-Field Communication)</h1>
+    <h1 class="forge-page-title">Forge NFC (Near-Field Communication) Tags</h1>
 
     <p class="forge-subtext">
       Forge NFC is a simple idea: <strong>put a shortcut where life happens</strong>.
@@ -48,7 +48,7 @@ description: "Forge NFC — tap-to-run tags that turn real spaces into reliable 
       </div>
       <div class="forge-idea">
         <h3>No pairing</h3>
-        <p>Place it. Tap it. Done.</p>
+        <p>Place it. Tap it. Done  (An app may be required)</p>
       </div>
       <div class="forge-idea">
         <h3>Built for routines</h3>
