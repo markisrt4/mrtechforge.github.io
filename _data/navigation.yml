@@ -26,6 +26,8 @@ main:
         key: "products.nfc"
       - title: "Labs"
         key: "products.lab"
+      - title: "Software Toolkits"
+        key: "products.software_toolkits"
       - title: "All Products"
         key: "products.all"
 
