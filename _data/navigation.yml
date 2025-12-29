@@ -24,8 +24,8 @@ main:
     children:
       - title: "NFC Tags"
         key: "products.nfc"
-      - title: "Gadgets"
-        key: "products.gadgets"
+      - title: "Labs"
+        key: "products.lab"
       - title: "All Products"
         key: "products.all"
 
