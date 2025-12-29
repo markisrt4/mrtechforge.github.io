@@ -203,3 +203,16 @@
 .forge-btn * {
   color: #000;
 }
+
+/* ----------------------------------------
+   Button text color safety lock
+----------------------------------------- */
+.btn-forge,
+.btn-forge * {
+  color: rgba(18, 18, 18, 0.92);
+}
+
+.btn-forge:hover,
+.btn-forge:hover * {
+  color: rgba(18, 18, 18, 0.92);
+}
