@@ -219,14 +219,16 @@ ol ul {
 ------------------------------ */
 a:not(.forge-btn):not(.btn):not(.btn-forge) {
   color: var(--forge-subtext, #aab4c7);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
+  text-underline-offset: 0px;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 a:not(.forge-btn):not(.btn):not(.btn-forge):hover {
   color: var(--forge-hotmetal);
   text-shadow: 0 0 10px rgba(var(--forge-hotmetal-rgb), 0.55);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 a:not(.forge-btn):not(.btn):not(.btn-forge):visited {
@@ -258,38 +260,4 @@ main > h1:first-child {
   margin: 0 auto !important;
   text-align: center !important;
   max-width: 900px;
-}
-
-/* ------------------------------
-   LINKS
-   (Important: do NOT restyle buttons)
------------------------------- */
-
-/* Default text links (non-buttons only) */
-a:not(.forge-btn):not(.btn):not(.btn-forge) {
-  color: var(--forge-subtext, #aab4c7);
-  text-decoration: none;
-  text-underline-offset: 0px;
-  transition:
-    color 0.25s ease,
-    text-shadow 0.25s ease,
-    text-decoration-color 0.25s ease;
-}
-
-a:not(.forge-btn):not(.btn):not(.btn-forge):hover {
-  color: var(--forge-hotmetal, #f5b841);
-  text-shadow: 0 0 10px rgba(245, 184, 65, 0.45);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-a:not(.forge-btn):not(.btn):not(.btn-forge):visited {
-  color: var(--forge-subtext, #aab4c7);
-}
-
-/* Safety: button-like anchors must never look like text links */
-a.forge-btn,
-a.btn,
-a.btn-forge {
-  text-decoration: none;
 }
