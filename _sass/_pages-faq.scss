@@ -33,7 +33,7 @@
 .faq-page .faq-hero {
   max-width: 1100px;
   margin: 1.25rem auto 1.15rem;
-  padding: 1.35rem 1.10rem 1.15rem;
+  padding: 1rem 1.25rem; /* was ~1.4–1.6rem tall */
   border-radius: 22px;
   position: relative;
   overflow: hidden;
@@ -100,10 +100,19 @@
   }
 }
 
+@media (min-width: 900px) {
+  .faq-hero-media,
+  .faq-page .faq-hero-media {
+    align-self: center;      /* stop stretching */
+    max-height: 320px;       /* cap height */
+  }
+}
+
 /* Title: keep the “Forge vibe” but use the site font */
 .faq-title,
 .faq-page .faq-title {
   margin: 0 0 0.45rem 0;
+  margin-bottom: 0.35rem; /* was ~0.45–0.6 */
   font-family: inherit; /* <<< consistency */
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -143,6 +152,7 @@
 .faq-subtitle,
 .faq-page .faq-subtitle {
   margin: 0;
+  margin-top: 0.25rem;
   color: rgba(235, 245, 255, 0.86);
   font-size: 1.05rem;
   line-height: 1.7;
@@ -151,7 +161,7 @@
 
 .faq-actions,
 .faq-page .faq-actions {
-  margin-top: 0.85rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
