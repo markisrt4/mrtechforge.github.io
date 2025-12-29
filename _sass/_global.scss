@@ -256,7 +256,7 @@ main > h1:first-child {
 a:not(.forge-btn) {
   color: var(--forge-blue, #4db3ff);
   text-decoration: none;
-  text-underline-offset: 2px;
+  text-underline-offset: 0px;
 }
 
 a:not(.forge-btn):hover {
