@@ -251,3 +251,14 @@ main > h1:first-child {
   text-align: center !important;
   max-width: 900px;
 }
+
+/* Make text links look clickable again (don’t touch buttons) */
+a:not(.forge-btn) {
+  color: var(--forge-blue, #4db3ff);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:not(.forge-btn):hover {
+  text-decoration-thickness: 2px;
+}
