@@ -16,7 +16,9 @@
 
 .forge-contact-page .page-intro {
   text-align: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.1rem;   /* was visually closer to ~1.8rem */
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 
 .forge-contact-page .page-intro h1 {
@@ -73,7 +75,7 @@
 .forge-contact-page .contact-hero-inner {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 1.25rem;
+  gap: 0.85rem; /* was ~1.25rem */
   align-items: center;
 }
 
@@ -124,6 +126,7 @@
 .forge-contact-page .contact-hero-visual img {
   width: 100%;
   max-width: 420px;
+  max-height: 260px;
   height: auto;
   display: block;
 

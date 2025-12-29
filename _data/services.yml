@@ -1,120 +1,125 @@
-- name: "Forge Managed Phone & Text"
-  id: "forge-managed-phone-text"
-  category: "communication"
-  url: "/services/forge-managed-phone-text/"
-  image: "/assets/images/mrtf-line.png"
-  description: "Forge Managed Phone & Text is a managed communication service that provides a dedicated phone & text number for homes, ministries, libraries, and small organizations. It supports call menus, routing, voicemail upgrades, secure messaging, 2FA delivery, Slack notifications, and optional dashboard access."
-  pricing_note: "Setup covers consultation, configuration, testing, and documentation so your line behaves correctly during business hours, after hours, and when changes occur. Monthly pricing covers the platform and light ongoing management."
-  minimum_setup: "$100 minimum engagement"
-  typical_monthly_range: "$20–$45 / month"
+-name: "Forge Managed Phone & Text"
+id: "forge-managed-phone-text"
+category: "communication"
+url: "/services/forge-managed-phone-text/"
+image: "/assets/images/mrtf-line.png"
+description: "Forge Managed Phone & Text is a managed communication service that provides a dedicated phone & text number for homes, ministries, libraries, and small organizations. It supports call menus, routing, voicemail upgrades, secure messaging, 2FA delivery, Slack notifications, and optional dashboard access."
+pricing_note: "Setup covers consultation, configuration, testing, and documentation so your line behaves correctly during business hours, after hours, and when changes occur. Monthly pricing covers the platform and light ongoing management."
+minimum_setup: "$99 minimum engagement"
+typical_monthly_range: "$25–$65 / month"
 
-  bundles:
-    - name: "Starter Bundle"
-      badge: "Popular"
-      icon: "🏠"
-      setup_range: "$100 one-time"
-      monthly_range: "$15–$25 / mo"
-      includes:
-        - "Managed Line (Core)"
-        - "Voicemail Upgrade"
-        - "Basic Smart Routing"
-      description: "A clean, professional number with voicemail basics and sensible routing defaults."
+bundles:
+  - name: "Starter Bundle"
+    badge: "Most Popular"
+    icon: "🏠"
+    setup_price: "$99 one-time"
+    monthly_price: "$25 / month"
+    includes:
+      - "Managed Line (Core)"
+      - "Voicemail Upgrade"
+      - "Smart Routing (Basic)"
+      - "Spam & Robocall Filtering (Basic)"
+    description: "A clean, professional number with voicemail, sensible routing, and basic protection — ideal for homes, solo operators, and small ministries."
 
-    - name: "Organization Bundle"
-      icon: "🏢"
-      setup_range: "$200–$350 one-time"
-      monthly_range: "$30–$55 / mo"
-      includes:
-        - "Managed Line (Core)"
-        - "Call Menu (IVR)"
-        - "After-Hours / Emergency Routing"
-        - "Slack Notifications (Basic)"
-      description: "Great for ministries, community orgs, and small teams who want clean call handling."
+  - name: "Organization Bundle"
+    icon: "🏢"
+    setup_price: "$199 one-time"
+    monthly_price: "$45 / month"
+    includes:
+      - "Managed Line (Core)"
+      - "Call Menu (IVR)"
+      - "After-Hours / Emergency Routing"
+      - "Slack Notifications (Basic)"
+      - "Dashboard (Basic)"
+      - "Spam & Robocall Filtering (Rules)"
+    description: "Designed for organizations and teams that need structured call handling, visibility, and reliable escalation."
 
-    - name: "Secure Workflow Bundle"
-      icon: "🔐"
-      setup_range: "$300–$500 one-time"
-      monthly_range: "$45–$85 / mo"
-      includes:
-        - "Managed Line (Core)"
-        - "Secure SMS / Messaging"
-        - "Dashboard (Basic or Multi-Admin)"
-        - "Spam & Robocall Filtering (Rules)"
-      description: "When communication touches sensitive work, you want safer defaults and better control."
+  - name: "Secure Workflow Bundle"
+    icon: "🔐"
+    setup_price: "$299 one-time"
+    monthly_price: "$65 / month"
+    includes:
+      - "Managed Line (Core)"
+      - "Secure SMS / Messaging"
+      - "Dashboard (Multi-Admin)"
+      - "Spam & Robocall Filtering (Rules)"
+      - "Priority Configuration & Support"
+    description: "For workflows involving sensitive communication, access control, or compliance-conscious environments."
 
-  offerings:
-    - name: "Managed Line (Core)"
-      monthly: 15
-      setup: 100
-      description: "Your dedicated managed phone & text number with basic voicemail and initial configuration."
-      icon: "📞"
-      core: true
+offerings:
+  - name: "Managed Line (Core)"
+    monthly: 15
+    setup: 100
+    description: "Your dedicated managed phone & text number with voicemail and baseline configuration."
+    icon: "📞"
+    core: true
 
-    - name: "Call Menu (IVR)"
-      monthly: 10
-      setup: 85
-      description: "Professional call routing menu (Press 1, Press 2…) with configurable destinations."
-      icon: "📲"
+  - name: "Call Menu (IVR)"
+    monthly: 8
+    setup: 85
+    description: "Professional call routing menu (Press 1, Press 2…) with configurable destinations."
+    icon: "📲"
 
-    - name: "Call Forwarding (Smart Routing)"
-      monthly: 5
-      setup: 65
-      description: "Forward calls to one or more numbers using schedules, time-of-day rules, or failover."
-      icon: "🔀"
+  - name: "Call Forwarding / Smart Routing"
+    monthly: 5
+    setup: 65
+    description: "Forward calls using schedules, time-of-day rules, or failover paths."
+    icon: "🔀"
 
-    - name: "Voicemail Upgrade"
-      monthly: 5
-      setup: 50
-      description: "Custom voicemail greetings, voicemail-to-email, and enhanced caller experience."
-      icon: "🎙️"
+  - name: "Voicemail Upgrade"
+    monthly: 0
+    setup: 50
+    description: "Custom voicemail greetings and voicemail-to-email delivery."
+    icon: "🎙️"
 
-    - name: "Secure SMS / Messaging"
-      monthly: 10
-      setup: 95
-      description: "Secure messaging options and configuration guidance for safer texting workflows."
-      icon: "🛡️"
+  - name: "Secure SMS / Messaging"
+    monthly: 12
+    setup: 95
+    description: "Secure messaging configuration and guidance for safer texting workflows."
+    icon: "🛡️"
 
-    - name: "2FA Delivery"
-      monthly: 20
-      setup: 150
-      description: "Send one-time passcodes from your managed number as part of an authentication flow."
-      icon: "✅"
+  - name: "2FA Delivery"
+    monthly: 25
+    setup: 150
+    description: "Send one-time passcodes from your managed number as part of an authentication flow."
+    icon: "✅"
 
-    - name: "Dashboard (Basic)"
-      monthly: 15
-      setup: 95
-      description: "Single-admin dashboard for logs, greetings, call menu settings, and routing updates."
-      icon: "📊"
+  - name: "Dashboard (Basic)"
+    monthly: 10
+    setup: 95
+    description: "Single-admin dashboard for logs, greetings, call menus, and routing updates."
+    icon: "📊"
 
-    - name: "Dashboard (Multi-Admin)"
-      monthly: 20
-      setup: 150
-      description: "Multi-user dashboard with role-based access for teams and organizations."
-      icon: "👥"
+  - name: "Dashboard (Multi-Admin)"
+    monthly: 20
+    setup: 150
+    description: "Multi-user dashboard with role-based access for teams and organizations."
+    icon: "👥"
 
-    - name: "Slack Notifications (Basic)"
-      monthly: 5
-      setup: 75
-      description: "Send call + voicemail notifications to a Slack channel (basic integration — notifications only)."
-      icon: "🔔"
+  - name: "Slack Notifications (Basic)"
+    monthly: 5
+    setup: 75
+    description: "Call and voicemail notifications delivered to a Slack channel."
+    icon: "🔔"
 
-    - name: "Custom Greeting + Branding Pack"
-      monthly: 0
-      setup: 75
-      description: "Polished phone greetings + routing language tailored to your organization."
-      icon: "✨"
+  - name: "Custom Greeting + Branding Pack"
+    monthly: 0
+    setup: 75
+    description: "Polished phone greetings and routing language tailored to your organization."
+    icon: "✨"
 
-    - name: "After-Hours / Emergency Routing"
-      monthly: 8
-      setup: 85
-      description: "Route calls differently after hours or during emergencies with clear escalation paths."
-      icon: "⏰"
+  - name: "After-Hours / Emergency Routing"
+    monthly: 8
+    setup: 85
+    description: "Alternate routing behavior after hours or during emergencies."
+    icon: "⏰"
 
-    - name: "Spam & Robocall Filtering (Rules)"
-      monthly: 6
-      setup: 65
-      description: "Basic rule-based filtering to reduce spam calls and nuisance traffic."
-      icon: "🚫"
+  - name: "Spam & Robocall Filtering (Rules)"
+    monthly: 5
+    setup: 65
+    description: "Rule-based filtering to reduce spam calls and nuisance traffic."
+    icon: "🚫"
+
 
 
 - name: "Forged Tech Services & Coaching"
