@@ -7,7 +7,7 @@
   status: available
   price: $24.99
   price_note: Includes 6 tags
-  image: /assets/img/products/nfc-starter-pack.svg
+  image: /assets/img/products/nfc-starter-pack.png
   alt: Forge NFC Starter Pack
   short: "Six pre-labeled NFC tags for daily automation: Wi-Fi, VPN, Home, Car, Guest, SOS."
   features:
@@ -24,7 +24,7 @@
   status: available
   price: $6.99
   price_note: Single tag
-  image: /assets/img/products/wifi-toggle-tag.svg
+  image: /assets/img/products/wifi-toggle-tag.png
   alt: Wi-Fi Toggle NFC tag
   short: "Tap to toggle Wi-Fi on/off (perfect for commuting, battery saving, and quick reconnects)."
   features:
@@ -41,7 +41,7 @@
   status: available
   price: $6.99
   price_note: Single tag
-  image: /assets/img/products/vpn-connect-tag.svg
+  image: /assets/img/products/vpn-connect-tag.png
   alt: VPN Connect NFC tag
   short: "Tap to connect your VPN (or open your VPN app) before banking, work, or public Wi-Fi."
   features:
@@ -58,7 +58,7 @@
   status: available
   price: $6.99
   price_note: Single tag
-  image: /assets/img/products/home-mode-tag.svg
+  image: /assets/img/products/home-mode-tag.png
   alt: Home Mode NFC tag
   short: "Tap to switch into Home Mode (Wi-Fi on, VPN off, smart home dashboard, comfy settings)."
   features:
@@ -75,7 +75,7 @@
   status: available
   price: $6.99
   price_note: Single tag
-  image: /assets/img/products/car-mode-tag.svg
+  image: /assets/img/products/car-mode-tag.png
   alt: Car Mode NFC tag
   short: "Tap for Car Mode (Bluetooth on, maps, music, volume, and drive-ready settings)."
   features:
@@ -92,7 +92,7 @@
   status: available
   price: $6.99
   price_note: Single tag
-  image: /assets/img/products/guest-wifi-tag.svg
+  image: /assets/img/products/guest-wifi-tag.png
   alt: Guest Wi-Fi NFC tag
   short: "Tap to share guest Wi-Fi (QR code / link / instructions) — perfect for friends and family."
   features:
@@ -109,7 +109,7 @@
   status: available
   price: $6.99
   price_note: Single tag
-  image: /assets/img/products/sos-emergency-tag.svg
+  image: /assets/img/products/sos-emergency-tag.png
   alt: SOS NFC tag
   short: "Tap to trigger an SOS action (text a contact, share location, call a number, open medical info)."
   features:
@@ -126,7 +126,7 @@
   status: available
   price: $0
   price_note: Android
-  image: /assets/img/products/forge-nfc-android-app.svg
+  image: /assets/img/products/forge-nfc-android-app.png
   alt: Forge NFC Android app
   short: "Guided setup for your tags, plus starter automations and tap-to-run shortcuts."
   features:
@@ -143,7 +143,7 @@
   status: planned
   price: TBD
   price_note: Wear OS
-  image: /assets/img/products/forge-nfc-watch-app.svg
+  image: /assets/img/products/forge-nfc-watch-app.png
   alt: Forge NFC Wear OS companion app
   short: "Future companion for quick actions, confirmations, and tag management from your wrist."
   features:
