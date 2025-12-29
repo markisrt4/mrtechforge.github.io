@@ -234,3 +234,21 @@
     - Local services
     - System experimentation
   notes: "Educational focus • Hardware not provided"
+
+- id: automated-android-app-toolkit
+  category: software-toolkits
+  name: "Automated Android App Toolkit"
+  short_name: "Android Build Toolkit"
+  image: /assets/images/products/android-build-toolkit.jpg
+  description: >
+    A self-contained Docker-based Android build environment designed for CLI-first workflows.
+    Clone your repo, run one command, and produce APKs/AABs without installing the Android SDK locally.
+    Built for reproducible builds on laptops, Chromebooks, VPS/CI, and headless systems.
+  short_features:
+    - Docker-based, self-contained environment
+    - CLI-first (headless-friendly)
+    - Reproducible builds across machines
+    - Works great for CI pipelines
+  badge: "New"
+  cta_label: "Learn More"
+  url: /products/software-toolkits/automated-android-app-toolkit/
