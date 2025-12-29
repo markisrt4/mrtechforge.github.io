@@ -254,11 +254,13 @@ main > h1:first-child {
 
 /* Make text links look clickable again (don’t touch buttons) */
 a:not(.forge-btn) {
-  color: var(--forge-blue, #4db3ff);
+  color: var(--forge-silver, #cfd8e3);
   text-decoration: none;
   text-underline-offset: 0px;
 }
 
 a:not(.forge-btn):hover {
   text-decoration-thickness: 2px;
+  color: var(--forge-blue, #4db3ff);
+}
 }
