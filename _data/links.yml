@@ -28,7 +28,7 @@ services:
 products:
   index: "/products/"
   nfc: "/products/nfc/"
-  labs: "/products/labs/"
+  lab: "/products/lab/"
   software_toolkits: "/products/software_toolkits/"
   all: "/products/all/"
 
