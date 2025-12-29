@@ -252,14 +252,36 @@ main > h1:first-child {
   max-width: 900px;
 }
 
-/* Make text links look clickable again (don’t touch buttons) */
-a:not(.forge-btn) {
-  color: var(--forge-silver, #cfd8e3);
+/* ------------------------------
+   LINKS
+   (Important: do NOT restyle buttons)
+------------------------------ */
+
+/* Default text links (non-buttons only) */
+a:not(.forge-btn):not(.btn):not(.btn-forge) {
+  color: var(--forge-subtext, #aab4c7);
   text-decoration: none;
   text-underline-offset: 0px;
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease,
+    text-decoration-color 0.25s ease;
 }
 
-a:not(.forge-btn):hover {
-  text-decoration-thickness: 2px;
-  color: var(--forge-blue, #4db3ff);
+a:not(.forge-btn):not(.btn):not(.btn-forge):hover {
+  color: var(--forge-hotmetal, #f5b841);
+  text-shadow: 0 0 10px rgba(245, 184, 65, 0.45);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:not(.forge-btn):not(.btn):not(.btn-forge):visited {
+  color: var(--forge-subtext, #aab4c7);
+}
+
+/* Safety: button-like anchors must never look like text links */
+a.forge-btn,
+a.btn,
+a.btn-forge {
+  text-decoration: none;
 }
