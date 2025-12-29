@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Software Toolkits"
-permalink: /products/software-toolkits/
+permalink: /products/software_toolkits/
 description: "Purpose-built software tools and build environments designed to remove friction from real development workflows."
 ---
 
