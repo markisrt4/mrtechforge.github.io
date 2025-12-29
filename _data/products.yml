@@ -152,3 +152,85 @@
     - "Designed for Wear OS"
   cta_label: Coming Soon
   cta_url: /products/nfc/#forge-nfc-watch-app
+
+# ==========================================================
+# FORGE LAB — LEARNING & EXPLORATION
+# Hands-on systems • Guided learning • BYO hardware
+# ==========================================================
+
+- id: lab-bootable-linux-toolkit
+  category: forge-lab
+  name: "Bootable Linux Toolkits"
+  image: /assets/images/lab/bootable-linux.jpg
+  description: >
+    Explore live-boot Linux environments used for system recovery,
+    diagnostics, and learning. This lab focuses on understanding
+    how bootable toolkits work, when to use them, and how to safely
+    create your own using trusted distributions.
+  focus_areas:
+    - Live Linux environments
+    - System recovery concepts
+    - Safe diagnostics
+    - Boot media fundamentals
+  notes: "Educational use only • Bring your own USB drive"
+
+- id: lab-sdr-fundamentals
+  category: forge-lab
+  name: "Software-Defined Radio Fundamentals"
+  image: /assets/images/lab/sdr-fundamentals.jpg
+  description: >
+    A guided introduction to software-defined radio concepts.
+    Learn how modern radios use software to receive, visualize,
+    and analyze signals — without diving into unsafe or regulated
+    transmission scenarios.
+  focus_areas:
+    - SDR concepts
+    - Signal visualization
+    - Software tooling
+    - Hardware compatibility awareness
+  notes: "Receive-only learning focus • Hardware optional"
+
+- id: lab-self-hosted-web
+  category: forge-lab
+  name: "Self-Hosted Web Fundamentals"
+  image: /assets/images/lab/self-hosted-web.jpg
+  description: >
+    Learn the fundamentals behind hosting a simple website locally.
+    This lab explores web servers, networking basics, and security
+    considerations — with an emphasis on learning, not production hosting.
+  focus_areas:
+    - Local web servers
+    - Networking basics
+    - Security awareness
+    - Development workflows
+  notes: "Learning & development use • Not public hosting"
+
+- id: lab-linux-exploration
+  category: forge-lab
+  name: "Linux Exploration & Migration"
+  image: /assets/images/lab/linux-exploration.jpg
+  description: >
+    A practical learning lab for exploring Linux as a daily-use
+    operating system. Covers desktop environments, file systems,
+    software management, and how Linux differs from Windows or macOS.
+  focus_areas:
+    - Linux desktop basics
+    - System configuration
+    - File systems
+    - Everyday workflows
+  notes: "Bring your own computer • No resale hardware"
+
+- id: lab-raspberry-pi-platform
+  category: forge-lab
+  name: "Raspberry Pi as a Learning Platform"
+  image: /assets/images/lab/raspberry-pi-platform.jpg
+  description: >
+    Use the Raspberry Pi as a hands-on learning platform to understand
+    Linux systems, networking, and small-scale services. Focuses on
+    experimentation, clarity, and safe exploration — not production devices.
+  focus_areas:
+    - Single-board computers
+    - Linux fundamentals
+    - Local services
+    - System experimentation
+  notes: "Educational focus • Hardware not provided"
