@@ -484,3 +484,17 @@
     word-break: break-word;
   }
 }
+
+/* ----------------------------------------
+   Product card pricing emphasis
+----------------------------------------- */
+.products .forge-card-price {
+  color: var(--forge-blue, #4db3ff);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.2px;
+}
+
+.products .forge-card-price-row {
+  margin-top: 0.6rem;
+}
