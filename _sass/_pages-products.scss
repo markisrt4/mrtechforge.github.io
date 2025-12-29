@@ -516,3 +516,21 @@
 .products #nfc-starter-pack .forge-card-price {
   font-size: 1.25rem;
 }
+
+/* ----------------------------------------
+   Product card pricing emphasis
+----------------------------------------- */
+.products .forge-card-price {
+  color: var(--forge-blue, #4db3ff);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.2px;
+}
+
+.products .forge-card-price-row {
+  margin-top: 0.6rem;
+}
+
+.products #nfc-starter-pack .forge-card-price {
+  font-size: 1.25rem;
+}
