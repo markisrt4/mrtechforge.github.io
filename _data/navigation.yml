@@ -22,8 +22,6 @@ main:
   - title: "Products"
     key: "pages.products"
     children:
-      - title: "NFC Tags"
-        key: "products.nfc"
       - title: "Labs"
         key: "products.lab"
       - title: "Software Toolkits"
