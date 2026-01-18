@@ -17,4 +17,7 @@
 
   /* Blue RGB helper */
   --forge-accent-rgb: 10, 109, 255;
+
+  --forge-blue: var(--forge-accent);
+  --forge-blue-rgb: var(--forge-accent-rgb);
 }
