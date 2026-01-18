@@ -1,66 +1,63 @@
-{% comment %}
-  breadcrumbs.html
-  - Robust breadcrumb trail based on site.data.navigation.main
-  - Fixes incorrect page detection due to bad split syntax / partial matches
-  - GitHub Pages / Liquid-safe: no "startswith" operator
-{% endcomment %}
-
 {% assign nav_root = site.data.navigation.main | default: site.data.navigation %}
 {% assign home_url = "/" | relative_url %}
 
 {% assign current_url = page.url | default: "/" %}
 {% assign current_url = current_url | replace: "index.html", "" %}
 
-{%- comment -%}
-  Normalize: ensure leading slash, and remove any double slashes.
-{%- endcomment -%}
 {% assign first_char = current_url | slice: 0, 1 %}
 {% unless first_char == "/" %}
   {% assign current_url = "/" | append: current_url %}
 {% endunless %}
-{% assign current_url = current_url | replace: "//", "/" %}
+{% assign current_clean = current_url | replace: "//", "/" %}
 
 {%- comment -%}
-  Helper: compare “clean” urls (strip trailing slash except root)
+  Remove trailing slash (Liquid-safe, no regex):
 {%- endcomment -%}
-{% assign current_clean = current_url | replace: "//", "/" %}
-{% if current_clean != "/" %}
-  {% assign current_clean = current_clean | replace: "/$", "" %}
+{% if current_clean != "/" and current_clean endswith "/" %}
+  {% assign current_clean = current_clean | slice: 0, current_clean.size | minus: 1 %}
 {% endif %}
 
 {% assign top_item = nil %}
 {% assign child_item = nil %}
+{% assign best_len = 0 %}
 
 {% if nav_root %}
-  {%- for item in nav_root -%}
+  {% for item in nav_root %}
     {% assign item_url = item.url | default: "" %}
     {% assign item_clean = item_url | replace: "index.html", "" | replace: "//", "/" %}
-    {% if item_clean != "/" %}
-      {% assign item_clean = item_clean | replace: "/$", "" %}
+
+    {% if item_clean != "/" and item_clean != "" and item_clean endswith "/" %}
+      {% assign item_clean = item_clean | slice: 0, item_clean.size | minus: 1 %}
     {% endif %}
 
-    {%- comment -%}
-      Prefer exact match. Otherwise allow “starts with” match for sections like /services/...
-      NOTE: Using "contains" here as you had it; it is not a true prefix check but kept for compatibility.
-    {%- endcomment -%}
-    {% if current_clean == item_clean or (item_clean != "/" and current_clean != "/" and current_clean contains item_clean) %}
-      {% assign top_item = item %}
-
-      {% if item.dropdown %}
-        {%- for child in item.dropdown -%}
-          {% assign child_url = child.url | default: "" %}
-          {% assign child_clean = child_url | replace: "index.html", "" | replace: "//", "/" %}
-          {% if child_clean != "/" %}
-            {% assign child_clean = child_clean | replace: "/$", "" %}
-          {% endif %}
-
-          {% if current_clean == child_clean %}
-            {% assign child_item = child %}
-          {% endif %}
-        {%- endfor -%}
+    {% assign ilen = item_clean | size %}
+    {% if ilen > 0 %}
+      {% assign prefix = current_clean | slice: 0, ilen %}
+      {% if current_clean == item_clean or (item_clean != "/" and prefix == item_clean) %}
+        {% if ilen > best_len %}
+          {% assign best_len = ilen %}
+          {% assign top_item = item %}
+          {% assign child_item = nil %}
+        {% endif %}
       {% endif %}
     {% endif %}
-  {%- endfor -%}
+  {% endfor %}
+{% endif %}
+
+{%- comment -%}
+  Child matching (exact only)
+{%- endcomment -%}
+{% if top_item and top_item.children %}
+  {% for child in top_item.children %}
+    {% assign child_url = child.url | default: "" %}
+    {% assign child_clean = child_url | replace: "index.html", "" | replace: "//", "/" %}
+    {% if child_clean != "/" and child_clean != "" and child_clean endswith "/" %}
+      {% assign child_clean = child_clean | slice: 0, child_clean.size | minus: 1 %}
+    {% endif %}
+    {% if current_clean == child_clean %}
+      {% assign child_item = child %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
 
 <nav class="forge-breadcrumbs" aria-label="Breadcrumbs">
@@ -74,10 +71,7 @@
   {% if child_item and child_item.title and child_item.url %}
     <span class="sep">/</span>
     <a href="{{ child_item.url | relative_url }}">{{ child_item.title }}</a>
-  {% elsif current_clean != "/" and (top_item == nil or (top_item and (top_item.url | replace:"/","") == "" )) %}
-    {%- comment -%}
-      Fallback: if not found in nav, show the page title.
-    {%- endcomment -%}
+  {% elsif current_clean != "/" and top_item == nil %}
     <span class="sep">/</span>
     <span class="current">{{ page.title }}</span>
   {% endif %}

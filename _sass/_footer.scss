@@ -83,26 +83,48 @@
   margin: 0;
 }
 
-/* Make column headings smaller + tighter */
+/* ===============================
+   Footer Column Headings
+   =============================== */
 .footer-heading {
+  font-family: "Orbitron", sans-serif;
   font-size: 0.78rem;
-  letter-spacing: 0.09em;
-  margin: 0 0 0.3rem;
-  opacity: 0.85;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--forge-silver);
+  opacity: 0.9;
+
+  margin-bottom: 0.35rem;
 }
 
-/* Make the brand wordmark + mission match the footer tone */
+/* ===============================
+   Footer Brand Wordmark
+   =============================== */
 .footer-wordmark {
-  font-size: 0.9rem;
-  color: var(--forge-subtext);
-  margin: 0 0 0.35rem;
-  opacity: 0.9;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--forge-silver);
+  opacity: 0.95;
+
+  margin-bottom: 0.4rem;
+
+  /* Subtle forged-metal glow */
+  text-shadow:
+    0 0 6px rgba(var(--forge-silver-rgb), 0.25),
+    0 0 12px rgba(var(--forge-blue-rgb), 0.15);
 }
 
 .footer-mission {
   font-size: 0.9rem;
-  opacity: 0.82;
+  line-height: 1.45;
   color: var(--forge-subtext);
+  opacity: 0.85;
 }
 
 .footer-column li + li {

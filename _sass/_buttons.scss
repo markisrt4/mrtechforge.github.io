@@ -198,12 +198,6 @@
   line-height: 1;
 }
 
-/* legacy safeguard */
-.forge-btn,
-.forge-btn * {
-  color: #000;
-}
-
 /* ----------------------------------------
    Button text color safety lock
 ----------------------------------------- */
@@ -215,4 +209,136 @@
 .btn-forge:hover,
 .btn-forge:hover * {
   color: rgba(18, 18, 18, 0.92);
+}
+
+/* ==========================================================
+   Canonical button class (site-wide)
+   Make .forge-btn an alias of the modern Forge button system
+   ========================================================== */
+
+.forge-btn {
+  /* Base button layout (same intent as .btn) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  text-decoration: none;
+  font-weight: 800;
+
+  min-height: 3.15rem;
+  line-height: 1.1;
+  text-align: center;
+
+  padding: 0.74rem 1.05rem;
+  border-radius: 18px;
+  box-sizing: border-box;
+  max-width: 100%;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease,
+    color 450ms ease;
+}
+
+.forge-btn:active {
+  transform: translateY(1px);
+}
+
+/* Forge “light metal” surface + readable foreground (same intent as .btn-forge) */
+.forge-btn {
+  position: relative;
+  overflow: hidden;
+
+  color: rgba(14, 22, 32, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+
+  background: radial-gradient(
+    120% 140% at 30% 20%,
+    rgba(245, 248, 252, 0.92) 0%,
+    rgba(220, 228, 238, 0.84) 45%,
+    rgba(190, 198, 210, 0.78) 100%
+  );
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+
+  /* same glow knobs */
+  --forge-ring-blue: rgba(0, 150, 255, 0.70);
+  --forge-ring-silver: rgba(210, 220, 235, 0.58);
+  --forge-ring-warm: rgba(255, 170, 60, 0.34);
+  --forge-ring-opacity: 0.44;
+  --forge-ring-blur: 12px;
+  --forge-ring-speed: 12.5s;
+}
+
+.forge-btn,
+.forge-btn * {
+  color: inherit;
+}
+
+/* Glow ring */
+.forge-btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    var(--forge-ring-blue),
+    var(--forge-ring-silver),
+    var(--forge-ring-warm),
+    var(--forge-ring-silver),
+    var(--forge-ring-blue)
+  );
+  background-size: 260% 100%;
+  opacity: var(--forge-ring-opacity);
+
+  filter: blur(var(--forge-ring-blur));
+  animation: forgeBtnGlow var(--forge-ring-speed) linear infinite;
+
+  transition: opacity 900ms ease, filter 900ms ease;
+}
+
+/* Inner bevel */
+.forge-btn::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 17px;
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+    inset 0 0 26px rgba(255, 255, 255, 0.12);
+  opacity: 0.95;
+}
+
+.forge-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.forge-btn:hover {
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.48);
+
+  --forge-ring-blue: rgba(0, 170, 255, 0.78);
+  --forge-ring-warm: rgba(0, 170, 255, 0.34);
+  --forge-ring-opacity: 0.62;
+  --forge-ring-blur: 14px;
+}
+
+/* Desktop: single-line buttons */
+@media (min-width: 900px) {
+  .forge-btn {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }

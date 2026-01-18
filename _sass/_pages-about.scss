@@ -372,3 +372,14 @@
   flex-wrap: wrap;
   margin-top: 1rem;
 }
+
+.about-btn--ghost {
+  background: transparent;
+  border: 1px solid rgba(190, 205, 220, 0.35);
+  color: rgba(235, 245, 255, 0.92);
+}
+
+.about-btn--ghost:hover {
+  border-color: rgba(60, 180, 255, 0.45);
+  box-shadow: 0 0 18px rgba(60, 180, 255, 0.12);
+}
