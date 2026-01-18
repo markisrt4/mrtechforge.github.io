@@ -172,81 +172,249 @@ These are **drop‑in replacements** that most people can start using immediatel
 <button class="accordion-btn">🔍 Search & Browsing <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Search, Chrome search bar</p>
-<ul>
-  <li>🔍 <a href="https://duckduckgo.com">DuckDuckGo</a> – Private search with no profile‑based ad targeting.</li>
-  <li>🧭 <a href="https://search.brave.com">Brave Search</a> – Good results with built‑in tracker blocking.</li>
-  <li>🌐 <a href="https://www.startpage.com">Startpage</a> – Google results proxied through a privacy layer.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://duckduckgo.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🔍</span> DuckDuckGo</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Private search with no profile‑based ad targeting.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://search.brave.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧭</span> Brave Search</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Good results with built‑in tracker blocking.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://www.startpage.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🌐</span> Startpage</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Google results proxied through a privacy layer.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">📧 Email <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Gmail</p>
-<ul>
-  <li>✉️ <a href="https://proton.me/mail">Proton Mail</a> – End‑to‑end encrypted email based in Switzerland.</li>
-  <li>📬 <a href="https://mailbox.org">Mailbox.org</a> – Privacy‑focused email with strong business features.</li>
-  <li>🔐 <a href="https://tutanota.com">Tutanota</a> – Encrypted email with zero‑knowledge calendar support.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://proton.me/mail" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">✉️</span> Proton Mail</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">End‑to‑end encrypted email based in Switzerland.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://mailbox.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📬</span> Mailbox.org</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Privacy‑focused email with strong business features.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://tutanota.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🔐</span> Tutanota</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Encrypted email with zero‑knowledge calendar support.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">📆 Calendar & Contacts <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Calendar, Google Contacts</p>
-<ul>
-  <li>📅 <a href="https://proton.me/calendar">Proton Calendar</a> – Encrypted calendar for personal and family schedules.</li>
-  <li>👥 <a href="https://proton.me/contacts">Proton Contacts</a> – Secure contact storage tied into Proton Mail.</li>
-  <li>📇 Any email provider that supports CardDAV/CalDAV – Lets you sync contacts and calendars without Google.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://proton.me/calendar" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📅</span> Proton Calendar</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Encrypted calendar for personal and family schedules.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://proton.me/contacts" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">👥</span> Proton Contacts</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Secure contact storage tied into Proton Mail.</div>
+  </a>
+
+  <div class="forge-tool-card is-nolink">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📇</span> CardDAV / CalDAV Providers</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Any provider that supports CardDAV/CalDAV lets you sync contacts and calendars without Google.</div>
+  </div>
+</div>
 </div>
 
 <button class="accordion-btn">🔑 Passwords & 2FA <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Passwords saved in Chrome, Google Password Manager, Google Authenticator</p>
-<ul>
-  <li>🗝️ <a href="https://bitwarden.com">Bitwarden</a> – Open‑source password manager with apps for all platforms.</li>
-  <li>🗝️ <a href="https://proton.me/pass">Proton Pass</a> – Passwords + secure notes + built‑in 2FA/TOTP codes.</li>
-  <li>🔐 <a href="https://github.com/beemdevelopment/Aegis">Aegis</a> – Encrypted 2FA (TOTP) app for Android with local backups.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://bitwarden.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🗝️</span> Bitwarden</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Open‑source password manager with apps for all platforms.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://proton.me/pass" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🗝️</span> Proton Pass</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Passwords + secure notes + built‑in 2FA/TOTP codes.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://github.com/beemdevelopment/Aegis" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🔐</span> Aegis</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Encrypted 2FA (TOTP) app for Android with local backups.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">💬 Messaging & SMS <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Messages, Google Chat, basic SMS apps</p>
-<ul>
-  <li>💬 <a href="https://signal.org">Signal</a> – Private, end‑to‑end encrypted messaging and calling.</li>
-  <li>📱 <a href="https://github.com/SimpleMobileTools/Simple-SMS-Messenger">Simple SMS</a> – Clean, offline SMS app with no tracking.</li>
-  <li>💬 <a href="https://github.com/moezbhatti/qksms">QKSMS</a> – Open‑source SMS app with a modern interface.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://signal.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">💬</span> Signal</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Private, end‑to‑end encrypted messaging and calling.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://github.com/SimpleMobileTools/Simple-SMS-Messenger" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📱</span> Simple SMS</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Clean, offline SMS app with no tracking.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://github.com/moezbhatti/qksms" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">💬</span> QKSMS</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Open‑source SMS app with a modern interface.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">▶️ YouTube Alternatives <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> YouTube app, YouTube in browser</p>
-<ul>
-  <li>📺 <a href="https://newpipe.net">NewPipe</a> – Lightweight Android client that plays YouTube without Google libraries.</li>
-  <li>📺 <a href="https://piped.video">Piped</a> – Web front‑end for YouTube that strips tracking and ads.</li>
-  <li>📺 <a href="https://github.com/greyjayapp/greyjay">Greyjay</a> – Unified media app that can pull from YouTube and other sources.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://newpipe.net" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📺</span> NewPipe</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Lightweight Android client that plays YouTube without Google libraries.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://piped.video" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📺</span> Piped</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Web front‑end for YouTube that strips tracking and ads.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://github.com/greyjayapp/greyjay" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📺</span> Greyjay</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Unified media app that can pull from YouTube and other sources.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">🌍 Maps & Navigation <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Maps</p>
-<ul>
-  <li>🗺️ <a href="https://www.magicearth.com">Magic Earth</a> – Turn‑by‑turn navigation using OpenStreetMap data, no tracking.</li>
-  <li>🗺️ <a href="https://organicmaps.app">Organic Maps</a> – Offline‑friendly maps focused on privacy and battery life.</li>
-  <li>🧭 <a href="https://wego.here.com">HERE WeGo</a> – Solid, mainstream navigation app that works well in cars and offline.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://www.magicearth.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🗺️</span> Magic Earth</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Turn‑by‑turn navigation using OpenStreetMap data, no tracking.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://organicmaps.app" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🗺️</span> Organic Maps</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Offline‑friendly maps focused on privacy and battery life.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://wego.here.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧭</span> HERE WeGo</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Mainstream navigation that works well in cars and offline.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">📁 Files & Cloud <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Drive, file storage in Google account</p>
-<ul>
-  <li>📁 <a href="https://github.com/zhanghai/MaterialFiles">Material Files</a> – Local file manager that doesn’t phone home.</li>
-  <li>☁️ <a href="https://proton.me/drive">Proton Drive</a> – Encrypted cloud storage for important personal files.</li>
-  <li>☁️ <a href="https://www.sync.com">Sync.com</a> – Zero‑knowledge cloud storage with simple sharing features.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://github.com/zhanghai/MaterialFiles" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📁</span> Material Files</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Local file manager that doesn’t phone home.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://proton.me/drive" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">☁️</span> Proton Drive</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Encrypted cloud storage for important personal files.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://www.sync.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">☁️</span> Sync.com</div>
+      <span class="forge-diff-badge">Easy</span>
+    </div>
+    <div class="forge-tool-desc">Zero‑knowledge cloud storage with simple sharing features.</div>
+  </a>
+</div>
 </div>
 
 </div> <!-- END .forge-accordion -->
@@ -268,47 +436,132 @@ Tools that require **some setup** or **migration steps**, but are still very man
 <button class="accordion-btn">📸 Photo Platforms <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Photos</p>
-<ul>
-  <li>🖼️ <a href="https://immich.app">Immich</a> – Self‑hostable, mobile‑friendly photo backup with face recognition.</li>
-  <li>🖼️ <a href="https://photoprism.app">PhotoPrism</a> – Powerful photo library with search, tags, and AI‑driven organization.</li>
-  <li>🖼️ Local NAS (Synology, TrueNAS, etc.) – Store photos under your own roof instead of in a third‑party cloud.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://immich.app" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🖼️</span> Immich</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Self‑hostable, mobile‑friendly photo backup with face recognition.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://photoprism.app" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🖼️</span> PhotoPrism</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Powerful photo library with search, tags, and AI‑driven organization.</div>
+  </a>
+
+  <div class="forge-tool-card is-nolink">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🖼️</span> Local NAS</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Synology, TrueNAS, etc. Store photos under your own roof instead of in a third‑party cloud.</div>
+  </div>
+</div>
 </div>
 
 <button class="accordion-btn">🔁 Sync <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Drive sync, Android "backup to Google"</p>
-<ul>
-  <li>🔁 <a href="https://syncthing.net">Syncthing</a> – Peer‑to‑peer file sync between your own devices, no central server.</li>
-  <li>🧮 <a href="https://rclone.org">rclone</a> – Command‑line tool to sync data between clouds and local storage.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://syncthing.net" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🔁</span> Syncthing</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Peer‑to‑peer file sync between your own devices, no central server.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://rclone.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧮</span> rclone</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Command‑line tool to sync data between clouds and local storage.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">📝 Notes <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Keep, simple Docs notes</p>
-<ul>
-  <li>🗒️ <a href="https://joplinapp.org">Joplin</a> – Encrypted notes with sync across desktop and mobile.</li>
-  <li>📓 <a href="https://logseq.com">Logseq</a> or <a href="https://obsidian.md">Obsidian</a> – Local‑first knowledge base tools that store notes as plain files.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://joplinapp.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🗒️</span> Joplin</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Encrypted notes with sync across desktop and mobile.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://logseq.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📓</span> Logseq</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Local‑first knowledge base tool that stores notes as plain files.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://obsidian.md" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📓</span> Obsidian</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Local‑first note system; great for personal knowledge bases (stores notes as files).</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">📱 Phone Numbers & VoIP <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Voice</p>
-<ul>
-  <li>📱 <a href="https://mysudo.com">MySudo</a> – Multiple private phone numbers and email aliases in one app.</li>
-  <li>📱 <a href="https://jmp.chat">JMP.chat</a> – Phone‑number‑to‑XMPP bridge that lets you use calls and SMS through a chat app.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://mysudo.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📱</span> MySudo</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Multiple private phone numbers and email aliases in one app.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://jmp.chat" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📱</span> JMP.chat</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Phone‑number‑to‑XMPP bridge that lets you use calls and SMS through a chat app.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">🏠 Smart Home <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Home, Nest ecosystem</p>
-<ul>
-  <li>🏡 <a href="https://www.home-assistant.io">Home Assistant</a> – Local‑first smart home hub with deep device support.</li>
-  <li>🧱 <a href="https://hubitat.com">Hubitat</a> – Hub that keeps automation logic and data in your house.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://www.home-assistant.io" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🏡</span> Home Assistant</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Local‑first smart home hub with deep device support.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://hubitat.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧱</span> Hubitat</div>
+      <span class="forge-diff-badge">Medium</span>
+    </div>
+    <div class="forge-tool-desc">Hub that keeps automation logic and data in your house.</div>
+  </a>
+</div>
 </div>
 
 </div> <!-- END .forge-accordion -->
@@ -330,48 +583,132 @@ For users who want **maximum privacy**, **self‑hosting**, and **complete contr
 <button class="accordion-btn">☁️ Self‑Hosted Cloud <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Drive, Docs, Sheets, Calendar (in one big account)</p>
-<ul>
-  <li>☁️ <a href="https://nextcloud.com">Nextcloud</a> – All‑in‑one private cloud with files, calendar, contacts, tasks, and more.</li>
-  <li>📂 Self‑hosted file servers (TrueNAS, Unraid, etc.) – Raw storage under your direct control.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://nextcloud.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">☁️</span> Nextcloud</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">All‑in‑one private cloud with files, calendar, contacts, tasks, and more.</div>
+  </a>
+
+  <div class="forge-tool-card is-nolink">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📂</span> Self‑Hosted File Servers</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">TrueNAS, Unraid, etc. Raw storage under your direct control.</div>
+  </div>
+</div>
 </div>
 
 <button class="accordion-btn">🤖 Android Without Google <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Stock Android with Google Play Services</p>
-<ul>
-  <li>🧬 <a href="https://grapheneos.org">GrapheneOS</a> – Security‑focused Android variant for selected Pixel devices.</li>
-  <li>🧩 <a href="https://microg.org">microG</a> – Open‑source re‑implementation of Google Play Services for apps that expect it.</li>
-  <li>📦 <a href="https://f-droid.org">F‑Droid</a> – App store for open‑source Android software.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://grapheneos.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧬</span> GrapheneOS</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Security‑focused Android variant for selected Pixel devices.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://microg.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧩</span> microG</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Open‑source re‑implementation of Google Play Services for apps that expect it.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://f-droid.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">📦</span> F‑Droid</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">App store for open‑source Android software.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">📸 Self‑Hosted Photos <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google Photos as your only photo home</p>
-<ul>
-  <li>🖼️ <a href="https://immich.app">Immich</a> – Designed specifically as a modern Google Photos alternative.</li>
-  <li>🖼️ <a href="https://photoprism.app">PhotoPrism</a> – Great for large archives and serious photo organization.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://immich.app" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🖼️</span> Immich</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Designed specifically as a modern Google Photos alternative.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://photoprism.app" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🖼️</span> PhotoPrism</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Great for large archives and serious photo organization.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">🧮 Backup & Advanced Sync <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Google account "device backup", Drive desktop sync</p>
-<ul>
-  <li>🔁 <a href="https://syncthing.net">Syncthing</a> – Continuous, encrypted syncing between your own machines.</li>
-  <li>🧮 <a href="https://rclone.org">rclone</a> – Scriptable backups between many different cloud providers.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://syncthing.net" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🔁</span> Syncthing</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Continuous, encrypted syncing between your own machines.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://rclone.org" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧮</span> rclone</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Scriptable backups between many different cloud providers.</div>
+  </a>
+</div>
 </div>
 
 <button class="accordion-btn">🏭 Backend Platforms <span class="arrow">▶</span></button>
 <div class="panel">
 <p><strong>Replaces:</strong> Firebase, Firestore, some Google Cloud developer services</p>
-<ul>
-  <li>🧱 <a href="https://supabase.com">Supabase</a> – Postgres‑based Firebase alternative with authentication and storage.</li>
-  <li>🧱 <a href="https://appwrite.io">Appwrite</a> – Self‑hostable backend for web and mobile apps.</li>
-  <li>🧱 <a href="https://pocketbase.io">PocketBase</a> – Lightweight backend that can run on a tiny server or even a Raspberry Pi.</li>
-</ul>
+
+<div class="forge-tool-grid">
+  <a class="forge-tool-card" href="https://supabase.com" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧱</span> Supabase</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Postgres‑based Firebase alternative with authentication and storage.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://appwrite.io" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧱</span> Appwrite</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Self‑hostable backend for web and mobile apps.</div>
+  </a>
+
+  <a class="forge-tool-card" href="https://pocketbase.io" target="_blank" rel="noopener">
+    <div class="forge-tool-top">
+      <div class="forge-tool-title"><span class="forge-tool-ico">🧱</span> PocketBase</div>
+      <span class="forge-diff-badge">Hard</span>
+    </div>
+    <div class="forge-tool-desc">Lightweight backend that can run on a tiny server (even a Raspberry Pi).</div>
+  </a>
+</div>
 </div>
 
 </div> <!-- END .forge-accordion -->

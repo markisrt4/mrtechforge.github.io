@@ -459,3 +459,125 @@
   padding-top: 0.6rem;
   padding-bottom: 0.75rem;
 }
+
+/* ----------------------------------------------------------
+   Google Replacement Tool Cards (inside accordion panels)
+-----------------------------------------------------------*/
+
+/* Difficulty accents come from the surrounding complexity section */
+.guide-page .forge-easy   { --diff-accent: rgba(90, 255, 160, 0.95); --diff-accent-bg: rgba(90, 255, 160, 0.14); }
+.guide-page .forge-medium { --diff-accent: rgba(245, 184, 65, 0.95); --diff-accent-bg: rgba(245, 184, 65, 0.14); }
+.guide-page .forge-hard   { --diff-accent: rgba(255, 95, 95, 0.95);  --diff-accent-bg: rgba(255, 95, 95, 0.12); }
+
+.guide-page .forge-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.85rem;
+  margin-top: 0.65rem;
+}
+
+.guide-page .forge-tool-card {
+  grid-column: span 12;
+  display: block;
+  text-decoration: none;
+  color: rgba(235,245,255,0.95);
+
+  padding: 0.9rem 0.95rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left: 4px solid var(--diff-accent, rgba(60,180,255,0.65));
+
+  background:
+    radial-gradient(650px 260px at 12% 10%, rgba(60,180,255,0.14), rgba(0,0,0,0.00) 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.35));
+
+  box-shadow:
+    0 0 0 rgba(0,0,0,0),
+    0 10px 26px rgba(0,0,0,0.45);
+
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 720px) {
+  .guide-page .forge-tool-card { grid-column: span 6; }
+}
+
+@media (min-width: 1100px) {
+  .guide-page .forge-tool-card { grid-column: span 4; }
+}
+
+.guide-page a.forge-tool-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow:
+    0 0 18px rgba(60,180,255,0.12),
+    0 14px 34px rgba(0,0,0,0.55);
+}
+
+.guide-page .forge-tool-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,0.018) 0px,
+      rgba(255,255,255,0.018) 1px,
+      rgba(0,0,0,0.00) 4px,
+      rgba(0,0,0,0.00) 9px
+    );
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.guide-page .forge-tool-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.guide-page .forge-tool-title {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guide-page .forge-tool-ico {
+  filter: drop-shadow(0 0 8px rgba(60,180,255,0.25));
+}
+
+.guide-page .forge-diff-badge {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  color: rgba(255,255,255,0.92);
+  border: 1px solid color-mix(in srgb, var(--diff-accent) 45%, rgba(255,255,255,0.10));
+  background: var(--diff-accent-bg, rgba(60,180,255,0.12));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--diff-accent) 18%, rgba(0,0,0,0));
+}
+
+.guide-page .forge-tool-desc {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.55rem;
+  color: rgba(225,235,245,0.92);
+  line-height: 1.6;
+}
+
+.guide-page .forge-tool-card.is-nolink {
+  cursor: default;
+}
