@@ -83,11 +83,25 @@
   margin: 0;
 }
 
+/* Make column headings smaller + tighter */
 .footer-heading {
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  margin: 0 0 0.3rem;
+  opacity: 0.85;
+}
+
+/* Make the brand wordmark + mission match the footer tone */
+.footer-wordmark {
   font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0 0 0.35rem; /* kill default H3 top margin */
+  color: var(--forge-subtext);
+  margin: 0 0 0.35rem;
+  opacity: 0.9;
+}
+
+.footer-mission {
+  font-size: 0.9rem;
+  opacity: 0.82;
   color: var(--forge-subtext);
 }
 
