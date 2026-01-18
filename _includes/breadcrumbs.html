@@ -1,19 +1,25 @@
+{%- comment -%}
+  Forge Breadcrumbs (GitHub Pages compatible)
+  - No endswith (unsupported)
+  - No regex replace
+  - Uses prefix match by slicing
+{%- endcomment -%}
+
 {% assign nav_root = site.data.navigation.main | default: site.data.navigation %}
 {% assign home_url = "/" | relative_url %}
 
 {% assign current_url = page.url | default: "/" %}
-{% assign current_url = current_url | replace: "index.html", "" %}
+{% assign current_clean = current_url | replace: "index.html", "" | replace: "//", "/" %}
 
-{% assign first_char = current_url | slice: 0, 1 %}
+{%- comment -%} Ensure leading slash {%- endcomment -%}
+{% assign first_char = current_clean | slice: 0, 1 %}
 {% unless first_char == "/" %}
-  {% assign current_url = "/" | append: current_url %}
+  {% assign current_clean = "/" | append: current_clean %}
 {% endunless %}
-{% assign current_clean = current_url | replace: "//", "/" %}
 
-{%- comment -%}
-  Remove trailing slash (Liquid-safe, no regex):
-{%- endcomment -%}
-{% if current_clean != "/" and current_clean endswith "/" %}
+{%- comment -%} Trim trailing slash (Liquid-safe) {%- endcomment -%}
+{% assign last_char = current_clean | slice: -1, 1 %}
+{% if current_clean != "/" and last_char == "/" %}
   {% assign current_clean = current_clean | slice: 0, current_clean.size | minus: 1 %}
 {% endif %}
 
@@ -21,12 +27,16 @@
 {% assign child_item = nil %}
 {% assign best_len = 0 %}
 
+{%- comment -%}
+  Find best top-level nav match by longest prefix.
+{%- endcomment -%}
 {% if nav_root %}
   {% for item in nav_root %}
     {% assign item_url = item.url | default: "" %}
     {% assign item_clean = item_url | replace: "index.html", "" | replace: "//", "/" %}
 
-    {% if item_clean != "/" and item_clean != "" and item_clean endswith "/" %}
+    {% assign last_char = item_clean | slice: -1, 1 %}
+    {% if item_clean != "/" and item_clean != "" and last_char == "/" %}
       {% assign item_clean = item_clean | slice: 0, item_clean.size | minus: 1 %}
     {% endif %}
 
@@ -45,15 +55,18 @@
 {% endif %}
 
 {%- comment -%}
-  Child matching (exact only)
+  Find exact child match under the selected top item.
 {%- endcomment -%}
 {% if top_item and top_item.children %}
   {% for child in top_item.children %}
     {% assign child_url = child.url | default: "" %}
     {% assign child_clean = child_url | replace: "index.html", "" | replace: "//", "/" %}
-    {% if child_clean != "/" and child_clean != "" and child_clean endswith "/" %}
+
+    {% assign last_char = child_clean | slice: -1, 1 %}
+    {% if child_clean != "/" and child_clean != "" and last_char == "/" %}
       {% assign child_clean = child_clean | slice: 0, child_clean.size | minus: 1 %}
     {% endif %}
+
     {% if current_clean == child_clean %}
       {% assign child_item = child %}
     {% endif %}
