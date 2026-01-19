@@ -19,8 +19,8 @@ class: about about-v5
       </p>
 
       <div class="about-actions-top">
-        <a class="forge-btn about-btn" href="{{ links.pages.contact | relative_url }}">Get in Touch</a>
-        <a class="forge-btn about-btn about-btn--ghost" href="{{ links.pages.services | relative_url }}">Explore Services</a>
+        <a class="forge-btn forge-btn--ghost about-btn" href="{{ links.pages.contact | relative_url }}">Get in Touch</a>
+        <a class="forge-btn forge-btn--primary about-btn about-btn--ghost" href="{{ links.pages.services | relative_url }}">Explore Services</a>
       </div>
 
       <div class="about-lead-block">
@@ -237,8 +237,8 @@ class: about about-v5
     </p>
 
     <div class="about-actions">
-      <a class="forge-btn about-btn" href="{{ links.pages.contact | relative_url }}">Reach out</a>
-      <a class="forge-btn about-btn about-btn--ghost" href="{{ links.pages.products | relative_url }}">Explore products</a>
+      <a class="forge-btn forge-btn--ghost about-btn" href="{{ links.pages.contact | relative_url }}">Reach out</a>
+      <a class="fforge-btn forge-btn--primary about-btn" href="{{ links.pages.products | relative_url }}">Explore products</a>
     </div>
   </div>
 
